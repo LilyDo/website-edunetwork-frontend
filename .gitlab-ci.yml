@@ -28,6 +28,7 @@ build:
 deploy:
   stage: deploy
   script:
+    # check ssh-agent
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
