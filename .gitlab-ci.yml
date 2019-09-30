@@ -31,8 +31,8 @@ deploy:
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "$SSH_GKC_DEV_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - echo "$SSH_GKC_DEV_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - echo "$SSH_GKC_DEV_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ssh ${GKC_DEV_USER}@${GKC_DEV_SERVER} 'bash -s' < ./deploy.sh
