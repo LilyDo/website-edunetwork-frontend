@@ -1,29 +1,5 @@
-// Variables
-$backgroundColor: red;
-
-// Reusable styles
-%whiteColorText {
-  color: white;
-}
+@import './shared.scss';
 
 .App {
-  // Nesting
-  .App-logo {
-    height: 40vmin;
-  }
-
-  .App-header {
-    background-color: red;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    @extend %whiteColorText;
-  }
-
-  .App-link {
-    @extend %whiteColorText;
-  }
+  @extend %fontText;
 }

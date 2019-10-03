@@ -1,0 +1,30 @@
+// colors
+$grey: #929292;
+$brown: #B97A2A;
+$gold: #D59E29;
+
+// media query
+$mobileBreakPoint: 768px;
+@media only screen and (max-width: $mobileBreakPoint) {
+  %fontHeader {
+    font-size: 14px;
+  }
+  %fontText {
+    font-size: 12px;
+  }
+  %fontSmallText {
+    font-size: 6px;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  %fontHeader {
+    font-size: 20px;
+  }
+  %fontText {
+    font-size: 14px;
+  }
+  %fontSmallText {
+    font-size: 12px;
+  }
+}
