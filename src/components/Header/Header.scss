@@ -1,0 +1,43 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/images/header_background.svg');
+  background-size: cover;
+  color: white;
+
+  $headerInnerPadding: 15px;
+
+  .UpperHeader {
+    padding: $headerInnerPadding;
+    display: flex;
+    justify-content: flex-end;
+
+    .LanguageSelector {
+
+    }
+  }
+
+  .LowerHeader {
+    padding: $headerInnerPadding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .HamburgerMenu {
+
+    }
+
+    .NavigationLinks {
+      display: flex;
+      flex-direction: row;
+
+      .NavigationLink {
+        padding: 15px 50px;
+      }
+    }
+
+    .SignIn {
+
+    }
+  }
+}
