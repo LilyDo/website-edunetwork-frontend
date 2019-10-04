@@ -1,0 +1,51 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.Footer {
+  background-image: url('../../assets/images/footer_background.svg');
+	background-size: cover;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  
+}
+
+.FooterLogo {
+  width: 35%;
+}
+
+.FooterInfo {
+  width: 65%;
+
+
+  .UpperFooterInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+
+
+    text-align: center;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 10px 15px 0 0;
+    }
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 35px 130px 0 0;
+    }
+  }
+
+
+  .LowerFooterInfo {
+    text-align: center;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 8px 0;
+    }
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 20px 0;
+    }
+  }
+
+
+}
