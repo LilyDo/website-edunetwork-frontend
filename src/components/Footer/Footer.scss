@@ -1,6 +1,18 @@
 @import '../../shared.scss';
 @import '../../assets/font/font.scss';
 
+
+%FooterTitle {
+  font-family: 'Poppins-SemiBold';
+  @media only screen and (max-width: $mobileBreakPoint) {
+    font-size: 9px;
+  }
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    font-size: 18px;
+  }
+
+}
+
 .Footer {
   background-image: url('../../assets/images/footer_background.svg');
 	background-size: cover;
@@ -16,36 +28,52 @@
 
 .FooterInfo {
   width: 65%;
-
-
-  .UpperFooterInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-
-
-
-    text-align: center;
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding: 10px 15px 0 0;
-    }
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding: 35px 130px 0 0;
-    }
-  }
-
-
-  .LowerFooterInfo {
-    text-align: center;
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding: 8px 0;
-    }
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding: 20px 0;
-    }
-  }
-
-
 }
+
+.UpperFooterInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .NavigationLink {
+    @extend %FooterTitle;
+    
+  }
+  .FooterContact {
+    .Title {
+      @extend %FooterTitle;
+    }
+  }
+
+  .FooterPlugin {
+    .Title {
+      @extend %FooterTitle;
+    }
+  }
+
+
+  text-align: center;
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 10px 15px 0 0;
+  }
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 35px 130px 0 0;
+  }
+}
+
+
+.LowerFooterInfo {
+  text-align: center;
+  font-family: 'Poppins-Medium';
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 8px 0;
+    font-size: 5px;
+  }
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 20px 0;
+    font-size: 10px;
+  }
+}
+
+
