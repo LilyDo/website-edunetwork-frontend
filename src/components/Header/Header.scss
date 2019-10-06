@@ -3,110 +3,111 @@
 
 %styleTextHeader {
   font-family: 'Poppins-Bold';
-	color: $darkgrey;
+  color: $darkgrey;
   padding: 15px 25px;
   transform: skewX(-30deg);
   text-decoration: none;
-  &:visited { 
+  &:visited {
     color: $brown;
     border: 1px solid white;
     background-color: white;
-   }
-  &:hover { 
+  }
+  &:hover {
     color: $brown;
     border: 1px solid white;
     background-color: white;
- }
-  & > span { display: inline-block; transform: skew(30deg); }
+  }
+  & > span {
+    display: inline-block;
+    transform: skew(30deg);
+  }
 }
 
 .Header {
-	display: flex;
-	flex-direction: column;
-	color: white;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
 .UpperHeader {
-	background-image: url('../../assets/images/header_background.svg');
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+  background-image: url('../../assets/images/header_background.svg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
-	.LanguageSelector {
+  .LanguageSelector {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-		@media only screen and (max-width: $mobileBreakPoint) {
+    @media only screen and (max-width: $mobileBreakPoint) {
       padding: 25px 25px 25px 0;
-     > img {
+      > img {
         padding-left: 12px;
       }
-		}
-
-		@media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding: 15px 140px 80px 0;
-      
-     > img {
-      padding-left: 40px;
     }
-		}
 
-		img {
-			z-index: 2;
-		}
-	}
-	.UpperHeaderlinks {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
-		padding-right: 140px;
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 15px 140px 80px 0;
 
-		.NavigationContainer {
-			display: flex;
-			flex-direction: row;
-			// padding-right: 170px;
+      > img {
+        padding-left: 40px;
+      }
+    }
 
-			.NavigationLink {
-				@extend %fontHeader;
-				@extend %styleTextHeader;
-			}
-		}
-		.SignInDesktop {
+    img {
+      z-index: 2;
+    }
+  }
+  .UpperHeaderlinks {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-right: 140px;
+
+    .NavigationContainer {
+      display: flex;
+      flex-direction: row;
+      // padding-right: 170px;
+
+      .NavigationLink {
+        @extend %fontHeader;
+        @extend %styleTextHeader;
+      }
+    }
+    .SignInDesktop {
       padding-bottom: 25px;
       color: $gold;
       span {
-      border: 1px solid white;
-      border-radius: 28px;
-      background-color: white;
-      padding: 12px 34px;
+        border: 1px solid white;
+        border-radius: 28px;
+        background-color: white;
+        padding: 12px 34px;
       }
-      
-		}
-	}
+    }
+  }
 }
 
 .LowerHeader {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   color: black;
   padding: 15px 25px;
   font-size: 10px;
-  
-  .HamburgerMenu {
 
+  .HamburgerMenu {
   }
 
   .SignInMobile {
     color: white;
     span {
-    border: 1px solid $gold;
-    border-radius: 28px;
-    background-color: $gold;
-    z-index: -1;
-    padding: 4px 8px;
+      border: 1px solid $gold;
+      border-radius: 28px;
+      background-color: $gold;
+      z-index: -1;
+      padding: 4px 8px;
     }
   }
 }
