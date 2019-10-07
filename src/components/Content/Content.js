@@ -13,7 +13,7 @@ function Content() {
       image_url: 'info_carousel_1.svg',
     },
     {
-      icon: 'icon_plane.svg',
+      icon: 'icon_link.svg',
       title: 'SỨ MỆNH',
       subtitle: '',
       description: `Giúp cho tất cả thành viên không kể độ tuổi, ngành nghề, tôn giáo, giới tính đều có thể nâng cao tri thức, nâng cao thu nhập và thành công.
@@ -42,7 +42,7 @@ function Content() {
               <div className="InfoText">
                 <div className="Icon">
                   <img
-                    src={`../../assets/images/${infoCarouselItem.icon}`}
+                    src={require(`../../assets/images/${infoCarouselItem.icon}`)}
                     alt="icon"
                   ></img>
                 </div>
@@ -56,8 +56,7 @@ function Content() {
               </div>
               <div className="Image">
                 <img
-                  // src={`../../assets/images/${infoCarouselItem.image_url}`}
-                  src="https://unsplash.it/550/372"
+                  src={require(`../../assets/images/${infoCarouselItem.image_url}`)}
                   alt="image"
                 />
               </div>
