@@ -22,6 +22,10 @@ export const CarouselContainer = styled.div`
   }};
 `;
 
+export const CourseCarouselContainer = styled.div`
+  display: flex;
+`;
+
 export const Wrapper = styled.div`
   width: 100%;
   overflow: hidden;
@@ -30,6 +34,13 @@ export const Wrapper = styled.div`
 export const CarouselSlot = styled.div`
   flex: 1 0 100%;
   flex-basis: 80%;
+  margin-right: 20px;
+  order: ${props => props.order};
+`;
+
+export const CourseCarouselSlot = styled.div`
+  flex: 1 0 100%;
+  flex-basis: 20%;
   margin-right: 20px;
   order: ${props => props.order};
 `;

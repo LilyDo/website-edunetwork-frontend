@@ -1,6 +1,7 @@
 import React from 'react';
 import './Content.scss';
 import Carousel from '../Carousel/Carousel';
+import CourseCarousel from '../Carousel/CourseCarousel';
 
 function Content() {
   const infoCarouselData = [
@@ -107,7 +108,7 @@ function Content() {
       </div>
 
       <div className="CourseCarousel">
-        <Carousel title="CourseCarousel">
+        <CourseCarousel title="CourseCarousel">
           {courseCarouselData.map((courseCarouselItem, index) => (
             <div className="InfoCardContainer" key={index}>
               <div className="Level">{courseCarouselItem.level}</div>
@@ -120,7 +121,7 @@ function Content() {
               <div className="PayNow">THANH TOÁN NGAY</div>
             </div>
           ))}
-        </Carousel>
+        </CourseCarousel>
       </div>
     </div>
   );
