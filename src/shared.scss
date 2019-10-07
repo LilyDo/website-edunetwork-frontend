@@ -35,3 +35,20 @@ $mobileBreakPoint: 768px;
     font-size: 12px;
   }
 }
+
+// font weight
+%fontRegular {
+  font-family: 'Poppins-Regular';
+}
+%fontBold {
+  font-family: 'Poppins-Bold';
+}
+%fontItalic {
+  font-family: 'Poppins-Italic';
+}
+%fontMedium {
+  font-family: 'Poppins-Medium';
+}
+%fontSemiBold {
+  font-family: 'Poppins-SemiBold';
+}

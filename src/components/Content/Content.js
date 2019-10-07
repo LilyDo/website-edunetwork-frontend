@@ -64,6 +64,12 @@ function Content() {
           ))}
         </Carousel>
       </div>
+      <div className="Quote">
+        <span>"</span>
+        {`CHÚNG TÔI MUỐN XÂY DỰNG MỘT CỘNG ĐỒNG
+        THAY ĐỔI VỀ TRI THỨC VÀ THAY ĐỔI VỀ THU NHẬP`}
+        <span>"</span>
+      </div>
     </div>
   );
 }
