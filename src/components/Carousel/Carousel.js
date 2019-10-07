@@ -49,12 +49,8 @@ const Carousel = props => {
           ))}
         </CarouselContainer>
       </Wrapper>
-      <SlideButton onClick={() => slide(PREV)} float="left">
-        Prev
-      </SlideButton>
-      <SlideButton onClick={() => slide(NEXT)} float="right">
-        Next
-      </SlideButton>
+      <SlideButton onClick={() => slide(PREV)}>Prev</SlideButton>
+      <SlideButton onClick={() => slide(NEXT)}>Next</SlideButton>
     </div>
   );
 };

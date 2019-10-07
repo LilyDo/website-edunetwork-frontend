@@ -23,6 +23,39 @@ function Content() {
     },
   ];
 
+  const courseCarouselData = [
+    {
+      level: 'Beginner',
+      backgroundImage: 'beginner_background.png',
+      price: 50,
+      title: 'Làm chủ tư duy thịnh vượng',
+    },
+    {
+      level: 'Intermediate',
+      backgroundImage: 'intermediate_background.png',
+      price: 200,
+      title: 'Nghệ thuật bán hàng đỉnh cao',
+    },
+    {
+      level: 'Advanced',
+      backgroundImage: 'advanced_background.png',
+      price: 500,
+      title: 'Phù thủy Marketing',
+    },
+    {
+      level: 'Expert',
+      backgroundImage: 'expert_background.png',
+      price: 1000,
+      title: 'Bậc thầy về nghệ thuật lãnh đạo',
+    },
+    {
+      level: 'Master',
+      backgroundImage: 'master_background.png',
+      price: 2000,
+      title: 'Khai thác sức mạnh tiềm ẩn bên trong bạn',
+    },
+  ];
+
   return (
     <div>
       <div className="Video">
@@ -35,6 +68,7 @@ function Content() {
           allowFullScreen
         />
       </div>
+
       <div className="InfoCarousel">
         <Carousel title="Carousel">
           {infoCarouselData.map((infoCarouselItem, index) => (
@@ -64,11 +98,29 @@ function Content() {
           ))}
         </Carousel>
       </div>
+
       <div className="Quote">
         <span>"</span>
         {`CHÚNG TÔI MUỐN XÂY DỰNG MỘT CỘNG ĐỒNG
         THAY ĐỔI VỀ TRI THỨC VÀ THAY ĐỔI VỀ THU NHẬP`}
         <span>"</span>
+      </div>
+
+      <div className="CourseCarousel">
+        <Carousel title="CourseCarousel">
+          {courseCarouselData.map((courseCarouselItem, index) => (
+            <div className="InfoCardContainer" key={index}>
+              <div className="Level">{courseCarouselItem.level}</div>
+              <img
+                src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
+                alt="image"
+              />
+              <div className="Price">{courseCarouselItem.price}</div>
+              <div className="Title">{courseCarouselItem.title}</div>
+              <div className="PayNow">THANH TOÁN NGAY</div>
+            </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );

@@ -45,9 +45,7 @@ export const SlideButton = styled.button`
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-  margin-top: 20px;
   text-decoration: none;
-  float: ${props => props.float};
 
   &:active {
     position: relative;
