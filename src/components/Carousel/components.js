@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const NEXT = 'NEXT';
 export const PREV = 'PREV';
 
+const mobileBreakPoint = '768px';
+const desktopBreakPoint = '769px';
+
 export const Item = styled.div`
   text-align: center;
   padding: 100px;
@@ -46,15 +49,27 @@ export const CarouselSlot = styled.div`
 
 export const CourseCarouselSlot = styled.div`
   flex: 1 0 100%;
-  flex-basis: 20%;
+  flex-basis: 260px;
   overflow: hidden;
   order: ${props => props.order};
 `;
 
 export const SlideButton = styled.button`
+  border: none;
+  background: none;
+
+  img {
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+      width: 40px;
+    }
+
+    @media only screen and (min-width: ${desktopBreakPoint}) {
+      width: 60px;
+    }
+  }
+
   &:active {
     position: relative;
-    top: 1px;
   }
   &:focus {
     cursor: pointer;
@@ -78,4 +93,20 @@ export const Code = styled.code`
   border-radius: 3px;
   margin: 0;
   padding: 0.2em 0.4em;
+`;
+
+export const CenteredDiv = styled.div`
+  @media only screen and (max-width: ${mobileBreakPoint}) {
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  @media only screen and (min-width: ${desktopBreakPoint}) {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  display: flex;
+  justify-content: space-between;
 `;

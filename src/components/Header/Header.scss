@@ -31,6 +31,24 @@
   color: white;
 }
 
+@media only screen and (max-width: $mobileBreakPoint) {
+  .LowerHeader {
+    display: flex;
+  }
+  .UpperHeaderlinks {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  .LowerHeader {
+    display: none;
+  }
+  .UpperHeaderlinks {
+    display: flex;
+  }
+}
+
 .UpperHeader {
   background-image: url('../../assets/images/header_background.svg');
   background-size: cover;
@@ -64,7 +82,7 @@
     }
   }
   .UpperHeaderlinks {
-    display: flex;
+    // display: flex;
     flex-direction: row;
     align-items: flex-end;
     padding-right: 20px;
@@ -92,7 +110,7 @@
 }
 
 .LowerHeader {
-  display: flex;
+  // display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: black;

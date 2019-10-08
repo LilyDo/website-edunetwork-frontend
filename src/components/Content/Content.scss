@@ -76,7 +76,7 @@
     @media only screen and (max-width: $mobileBreakPoint) {
       padding: 5px 10px;
       margin-top: -30px;
-      margin-left: 35px;
+      margin-left: 40px;
       max-width: 291px;
       max-height: 203px;
       order: 1;
@@ -93,9 +93,6 @@
       @extend %fontBold;
     }
 
-    .Subtitle {
-    }
-
     .Description {
       padding-top: 20px;
     }
@@ -109,11 +106,14 @@
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding-bottom: 80px;
+
+    .InfoCardContainer {
+      margin-bottom: 10px;
+    }
   }
 
   .InfoCardContainer {
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
     position: relative;
     padding: 0 5px;
     img {
@@ -276,6 +276,8 @@
 
 .CourseCarousel {
   .InfoCardContainer {
-    max-width: 260px;
+    width: 240px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }

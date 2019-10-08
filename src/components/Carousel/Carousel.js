@@ -9,6 +9,7 @@ import {
   SlideButton,
   PREV,
   NEXT,
+  CenteredDiv,
 } from './components';
 
 const getOrder = ({ index, pos, numItems }) => {
@@ -51,12 +52,14 @@ const Carousel = props => {
           ))}
         </CarouselContainer>
       </Wrapper>
-      <SlideButton onClick={() => slide(PREV)}>
-        <img src={PrevIcon} alt="Prev"></img>
-      </SlideButton>
-      <SlideButton onClick={() => slide(NEXT)}>
-        <img src={NextIcon} alt="Prev"></img>
-      </SlideButton>
+      <CenteredDiv>
+        <SlideButton onClick={() => slide(PREV)}>
+          <img src={PrevIcon} alt="Prev"></img>
+        </SlideButton>
+        <SlideButton onClick={() => slide(NEXT)}>
+          <img src={NextIcon} alt="Prev"></img>
+        </SlideButton>
+      </CenteredDiv>
     </div>
   );
 };
