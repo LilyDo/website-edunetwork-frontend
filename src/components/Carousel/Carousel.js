@@ -1,4 +1,6 @@
 import React from 'react';
+import PrevIcon from '../../assets/images/icon_prev.svg';
+import NextIcon from '../../assets/images/icon_next.svg';
 import { useSwipeable } from 'react-swipeable';
 import {
   Wrapper,
@@ -49,8 +51,12 @@ const Carousel = props => {
           ))}
         </CarouselContainer>
       </Wrapper>
-      <SlideButton onClick={() => slide(PREV)}>Prev</SlideButton>
-      <SlideButton onClick={() => slide(NEXT)}>Next</SlideButton>
+      <SlideButton onClick={() => slide(PREV)}>
+        <img src={PrevIcon} alt="Prev"></img>
+      </SlideButton>
+      <SlideButton onClick={() => slide(NEXT)}>
+        <img src={NextIcon} alt="Prev"></img>
+      </SlideButton>
     </div>
   );
 };

@@ -61,8 +61,6 @@ function Content() {
     <div>
       <div className="Video">
         <iframe
-          width="784"
-          height="438"
           src="https://www.youtube.com/embed/KRiSMXFpWIg"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -122,15 +120,10 @@ function Content() {
           {courseCarouselData.map((courseCarouselItem, index) => (
             <div className="InfoCardContainer" key={index}>
               <div className="Level">{courseCarouselItem.level}</div>
-              <div className="ImageContainer">
-                <img
-                  src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
-                  alt="image"
-                />
-                <div className="Price">
-                  {courseCarouselItem.price}
-                </div>
-              </div>
+              <img
+                src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
+                alt="image"
+              />
               <div className="Title">{courseCarouselItem.title}</div>
               <div className="PayContainer">
                 <div className="PayNow">THANH TOÁN NGAY</div>

@@ -15,15 +15,21 @@ export const CarouselContainer = styled.div`
   transition: ${props =>
     props.sliding ? 'none' : 'transform 1s ease'};
   transform: ${props => {
-    if (!props.sliding) return 'translateX(calc(-80% - 20px))';
-    if (props.dir === PREV)
-      return 'translateX(calc(2 * (-80% - 20px)))';
-    return 'translateX(0%)';
+    if (!props.sliding) return 'translateX(0px)';
+    if (props.dir === PREV) return 'translateX(-80%)';
+    return 'translateX(80%)';
   }};
 `;
 
 export const CourseCarouselContainer = styled.div`
   display: flex;
+  transition: ${props =>
+    props.sliding ? 'none' : 'transform 1s ease'};
+  transform: ${props => {
+    if (!props.sliding) return 'translateX(0% )';
+    if (props.dir === PREV) return 'translateX(-20%)';
+    return 'translateX(20%)';
+  }};
 `;
 
 export const Wrapper = styled.div`
@@ -41,27 +47,17 @@ export const CarouselSlot = styled.div`
 export const CourseCarouselSlot = styled.div`
   flex: 1 0 100%;
   flex-basis: 20%;
+  overflow: hidden;
   order: ${props => props.order};
 `;
 
 export const SlideButton = styled.button`
-    color: #ffffff;
-    font-family: Open Sans;
-    font-size: 16px;
-    font-weight: 100;
-    padding: 10px;
-    background-color: #f66f3e;
-    border: 1px solid white;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-  text-decoration: none;
-
   &:active {
     position: relative;
     top: 1px;
   }
   &:focus {
+    cursor: pointer;
     outline: 0;
   }
 `;
