@@ -7,6 +7,13 @@
   background-position: center;
   text-align: center;
   padding: 20px 0;
+  @media only screen and (max-width: $mobileBreakPoint) {
+    margin-top: 20px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    margin-top: 30px;
+  }
 }
 
 .InfoCarousel {
@@ -15,7 +22,7 @@
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
-    padding: 75px 0;
+    padding: 70px 0;
   }
 
   .InfoCardContainer {
@@ -68,10 +75,101 @@
   }
 }
 
+.CourseCarousel {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-bottom: 50px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 80px;
+  }
+
+  .InfoCardContainer {
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    position: relative;
+    .Level {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      padding: 5px 10px;
+      border: 1px solid $gold;
+      @extend %fontSemiBold;
+      color: white;
+      background-color: $gold;
+      border-radius: 28px;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 10px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 12px;
+      }
+    }
+
+    .ImageContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .Price {
+        position: absolute;
+        top: 230px;
+        @extend %fontBold;
+        font-size: 20px;
+        color: white;
+        background-color: $gold;
+        transform: skewX(-25deg);
+        padding: 5px 15px;
+        border: 1px solid $gold;
+        box-sizing: content-box;
+      }
+    }
+
+    .Title {
+      @extend %fontMedium;
+      padding: 40px 10px 40px 10px;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 14px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 20px;
+        height: 70px;
+      }
+    }
+
+    .PayContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 20px;
+
+      .PayNow {
+        padding: 10px 40px;
+        border: 1px solid $gold;
+        @extend %fontSemiBold;
+        color: white;
+        background-color: $gold;
+        border-radius: 28px;
+      }
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 12px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 .Quote {
   background-image: url('../../assets/images/quote_background.svg');
   background-size: contain;
-  background-position: center center;
+  background-position: center;
   @extend %fontBold;
   color: $brown;
   text-align: center;
@@ -114,6 +212,51 @@
       &:first-child {
         margin-left: -35px;
       }
+    }
+  }
+}
+
+.CourseTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CourseTitle {
+  text-align: center;
+  line-height: 1.3;
+  border-top: 1px solid $gold;
+  min-width: 80%;
+
+  .Title {
+    @extend %fontBold;
+  }
+  .Note {
+    @extend %fontMedium;
+  }
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 22px;
+
+    .Title {
+      font-size: 12px;
+    }
+    .Note {
+      font-size: 7px;
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 45px 0 25px 0;
+    margin-top: 75px;
+
+    .Title {
+      font-size: 30px;
+    }
+    .Note {
+      font-size: 11px;
     }
   }
 }

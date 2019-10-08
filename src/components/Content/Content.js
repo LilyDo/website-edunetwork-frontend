@@ -61,8 +61,8 @@ function Content() {
     <div>
       <div className="Video">
         <iframe
-          width="560"
-          height="315"
+          width="784"
+          height="438"
           src="https://www.youtube.com/embed/KRiSMXFpWIg"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -107,18 +107,34 @@ function Content() {
         <span>"</span>
       </div>
 
+      <div className="CourseTitleContainer">
+        <div className="CourseTitle">
+          <div className="Title">CÁC KHÓA HỌC CỦA CHÚNG TÔI</div>
+          <div className="Note">
+            Lưu ý: Giá của khóa học đã bao gồm thuế phí, thành viên
+            không phải mất thêm bất kì khoản chi phí nào.
+          </div>
+        </div>
+      </div>
+
       <div className="CourseCarousel">
         <CourseCarousel title="CourseCarousel">
           {courseCarouselData.map((courseCarouselItem, index) => (
             <div className="InfoCardContainer" key={index}>
               <div className="Level">{courseCarouselItem.level}</div>
-              <img
-                src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
-                alt="image"
-              />
-              <div className="Price">{courseCarouselItem.price}</div>
+              <div className="ImageContainer">
+                <img
+                  src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
+                  alt="image"
+                />
+                <div className="Price">
+                  {courseCarouselItem.price}
+                </div>
+              </div>
               <div className="Title">{courseCarouselItem.title}</div>
-              <div className="PayNow">THANH TOÁN NGAY</div>
+              <div className="PayContainer">
+                <div className="PayNow">THANH TOÁN NGAY</div>
+              </div>
             </div>
           ))}
         </CourseCarousel>

@@ -41,7 +41,6 @@ export const CarouselSlot = styled.div`
 export const CourseCarouselSlot = styled.div`
   flex: 1 0 100%;
   flex-basis: 20%;
-  margin-right: 20px;
   order: ${props => props.order};
 `;
 

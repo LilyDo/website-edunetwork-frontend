@@ -23,9 +23,7 @@ function Header() {
               <span>CONTACT</span>
             </div>
           </div>
-          <div className="SignInDesktop">
-            <span>Sign in</span>
-          </div>
+          <div className="SignInDesktop">Sign in</div>
         </div>
       </div>
 
