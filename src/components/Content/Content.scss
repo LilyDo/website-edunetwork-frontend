@@ -179,51 +179,63 @@
   }
 }
 
-.Quote {
-  background-image: url('../../assets/images/quote_background.svg');
-  background-size: contain;
-  background-position: center;
-  @extend %fontBold;
-  color: $brown;
-  text-align: center;
-  white-space: pre-line;
+.QuoteContainer {
+  border-bottom: 1px solid $gold;
   max-width: 1103px;
-  box-sizing: border-box;
   margin: auto;
-  position: relative;
-
-  span {
-    color: $grey;
-    line-height: 1px;
-    position: absolute;
-  }
 
   @media only screen and (max-width: $mobileBreakPoint) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 11px;
-    span {
-      font-size: 25px;
-      margin-top: 10px;
-      margin-left: 3px;
-
-      &:first-child {
-        margin-left: -13px;
-      }
-    }
+    padding-bottom: 22px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    font-size: 30px;
-    span {
-      font-size: 80px;
-      margin-top: 30px;
-      margin-left: 5px;
+    padding-bottom: 75px;
+  }
 
-      &:first-child {
-        margin-left: -35px;
+  .Quote {
+    background-image: url('../../assets/images/quote_background.svg');
+    background-size: contain;
+    background-position: center;
+    @extend %fontBold;
+    color: $brown;
+    text-align: center;
+    white-space: pre-line;
+    box-sizing: border-box;
+    position: relative;
+
+    span {
+      color: $grey;
+      line-height: 1px;
+      position: absolute;
+    }
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 11px;
+      span {
+        font-size: 25px;
+        margin-top: 10px;
+        margin-left: 3px;
+
+        &:first-child {
+          margin-left: -13px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      font-size: 30px;
+      span {
+        font-size: 80px;
+        margin-top: 30px;
+        margin-left: 5px;
+
+        &:first-child {
+          margin-left: -35px;
+        }
       }
     }
   }
@@ -238,7 +250,6 @@
 .CourseTitle {
   text-align: center;
   line-height: 1.3;
-  border-top: 1px solid $gold;
   min-width: 80%;
 
   .Title {
@@ -251,7 +262,6 @@
   @media only screen and (max-width: $mobileBreakPoint) {
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 22px;
 
     .Title {
       font-size: 12px;
@@ -263,7 +273,6 @@
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding: 45px 0 25px 0;
-    margin-top: 75px;
 
     .Title {
       font-size: 30px;

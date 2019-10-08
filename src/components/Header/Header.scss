@@ -69,6 +69,10 @@
       }
     }
 
+    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+      padding: 33px 25px 33px 0;
+    }
+
     @media only screen and (min-width: $mobileBreakPoint + 1) {
       padding: 15px 20px 80px 0;
 
