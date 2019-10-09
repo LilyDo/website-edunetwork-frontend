@@ -1,0 +1,141 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+%styleTextHeader {
+  font-family: 'Poppins-Bold';
+  color: $darkgrey;
+  padding: 13px 22px;
+  transform: skewX(-25deg);
+  text-decoration: none;
+  &:visited {
+    color: $brown;
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+  }
+  &:hover {
+    color: $brown;
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+  }
+  & > span {
+    display: inline-block;
+    transform: skew(25deg);
+  }
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+@media only screen and (max-width: $mobileBreakPoint) {
+  .LowerHeader {
+    display: flex;
+  }
+  .UpperHeaderlinks {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  .LowerHeader {
+    display: none;
+  }
+  .UpperHeaderlinks {
+    display: flex;
+  }
+}
+
+.UpperHeader {
+  background-image: url('../../assets/images/header_background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .LanguageSelector {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 25px 25px 25px 0;
+      > img {
+        padding-left: 10px;
+      }
+    }
+
+    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+      padding: 33px 25px 33px 0;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 15px 20px 80px 0;
+
+      > img {
+        padding-left: 40px;
+      }
+    }
+
+    img {
+      z-index: 2;
+    }
+  }
+  .UpperHeaderlinks {
+    // display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-right: 20px;
+
+    .NavigationContainer {
+      display: flex;
+      flex-direction: row;
+      // padding-right: 170px;
+
+      .NavigationLink {
+        @extend %fontHeader;
+        @extend %styleTextHeader;
+      }
+    }
+    .SignInDesktop {
+      color: $gold;
+      border: 1px solid white;
+      border-radius: 28px;
+      background-color: white;
+      padding: 10px 30px;
+      margin-bottom: 15px;
+      margin-left: 15px;
+    }
+  }
+}
+
+.LowerHeader {
+  // display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: black;
+  padding: 15px 25px;
+  font-size: 10px;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    border-bottom: 1px solid $darkgrey;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+  }
+
+  .HamburgerMenu {
+  }
+
+  .SignInMobile {
+    color: white;
+    border: 1px solid $gold;
+    border-radius: 25px;
+    background-color: $gold;
+    padding: 4px 12px;
+  }
+}

@@ -1,0 +1,57 @@
+// colors
+$grey: #929292;
+$darkgrey: #707070;
+$brown: #b97a2a;
+$gold: #d59e29;
+
+.Header,
+.Footer,
+.Content {
+  font-family: 'Poppins-Regular';
+}
+
+// media query
+$mobileBreakPoint: 768px;
+$smallMobileBreakPoint: 600px;
+$inBetweenBreakpoint: 1024px;
+
+@media only screen and (max-width: $mobileBreakPoint) {
+  %fontHeader {
+    font-size: 12px;
+  }
+  %fontText {
+    font-size: 10px;
+  }
+  %fontSmallText {
+    font-size: 6px;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  %fontHeader {
+    font-size: 20px;
+  }
+  %fontText {
+    font-size: 14px;
+  }
+  %fontSmallText {
+    font-size: 12px;
+  }
+}
+
+// font weight
+%fontRegular {
+  font-family: 'Poppins-Regular';
+}
+%fontBold {
+  font-family: 'Poppins-Bold';
+}
+%fontItalic {
+  font-family: 'Poppins-Italic';
+}
+%fontMedium {
+  font-family: 'Poppins-Medium';
+}
+%fontSemiBold {
+  font-family: 'Poppins-SemiBold';
+}
