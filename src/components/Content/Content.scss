@@ -6,7 +6,16 @@
   background-repeat: no-repeat;
   background-position: center;
   text-align: center;
-  padding: 20px 0;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    margin-top: 30px;
+    padding: 20px 0;
+  }
 
   > iframe {
     @media only screen and (max-width: $mobileBreakPoint) {
@@ -19,18 +28,11 @@
       height: 438px;
     }
   }
-  @media only screen and (max-width: $mobileBreakPoint) {
-    margin-top: 20px;
-  }
-
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
-    margin-top: 30px;
-  }
 }
 
 .InfoCarousel {
-  @media only screen and (max-width: $mobileBreakPoint) {
-    padding: 25px 15px;
+  @media only screen and (max-width: $mobileBreakPoint - 1) {
+    padding: 25px 0;
     .Icon {
       padding-left: 10px;
       padding-bottom: 5px;
@@ -43,6 +45,7 @@
     .Image {
       > img {
         width: 100%;
+        margin-left: 25px;
       }
       max-width: 242px;
       max-height: 163px;
@@ -54,7 +57,7 @@
     }
   }
 
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
+  @media only screen and (min-width: $mobileBreakPoint) {
     padding: 70px 0;
 
     .Icon {
@@ -63,8 +66,8 @@
     }
     .InfoCardContainer {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      padding: 10px 0;
     }
   }
 
@@ -73,18 +76,21 @@
     z-index: 1;
     box-shadow: 6px 8px 15px 0px rgba(213, 158, 41, 0.1);
 
-    @media only screen and (max-width: $mobileBreakPoint) {
+    @media only screen and (max-width: $mobileBreakPoint - 1) {
       padding: 5px 10px;
       margin-top: -30px;
-      margin-left: 40px;
+      margin-bottom: 15px;
+      margin-left: 75px;
+      margin-right: 20px;
       max-width: 291px;
       max-height: 203px;
       order: 1;
     }
 
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
+    @media only screen and (min-width: $mobileBreakPoint) {
       padding: 20px 20px 10px 20px;
       margin-right: -35px;
+      margin-left: 10px;
       max-width: 436px;
     }
 
@@ -100,6 +106,9 @@
 }
 
 .CourseCarousel {
+  display: flex;
+  flex-direction: column;
+
   @media only screen and (max-width: $mobileBreakPoint) {
     padding-bottom: 50px;
   }
@@ -112,10 +121,18 @@
     }
   }
 
+  .CourseBackground {
+    width: auto;
+    height: 100%;
+    margin-bottom: -280px;
+  }
+
   .InfoCardContainer {
+    width: 240px;
+    margin-left: 10px;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
     position: relative;
-    padding: 0 5px;
+    background-color: white;
     img {
       width: 100%;
     }
@@ -141,7 +158,7 @@
 
     .Title {
       @extend %fontMedium;
-      padding: 20px 0;
+      padding: 15px;
 
       @media only screen and (max-width: $mobileBreakPoint) {
         font-size: 14px;
@@ -280,13 +297,5 @@
     .Note {
       font-size: 11px;
     }
-  }
-}
-
-.CourseCarousel {
-  .InfoCardContainer {
-    width: 240px;
-    margin-right: 10px;
-    margin-left: 10px;
   }
 }

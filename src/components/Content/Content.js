@@ -2,7 +2,7 @@ import React from 'react';
 import './Content.scss';
 import Carousel from '../Carousel/Carousel';
 import CourseCarousel from '../Carousel/CourseCarousel';
-
+import CourseBackground from '../../assets/images/course_background.png';
 function Content() {
   const infoCarouselData = [
     {
@@ -118,6 +118,11 @@ function Content() {
       </div>
 
       <div className="CourseCarousel">
+        <img
+          className="CourseBackground"
+          alt="course background"
+          src={CourseBackground}
+        ></img>
         <CourseCarousel title="CourseCarousel">
           {courseCarouselData.map((courseCarouselItem, index) => (
             <div className="InfoCardContainer" key={index}>

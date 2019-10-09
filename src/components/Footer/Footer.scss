@@ -18,22 +18,34 @@
   display: flex;
   flex-direction: row;
   color: white;
-  @media only screen and (max-width: $mobileBreakPoint) {
+  @media only screen and (max-width: $inBetweenBreakpoint) {
     background-image: url('../../assets/images/footer_background_2.svg');
     font-size: 6px;
   }
 
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
+  @media only screen and (min-width: $inBetweenBreakpoint + 1) {
     background-image: url('../../assets/images/footer_background.svg');
   }
 }
 
 .FooterLogo {
-  width: 35%;
+  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+    width: 40%
+  }
+  @media only screen and (min-width: $smallMobileBreakPoint )  {
+    width: 35%
+  }
 }
 
 .FooterInfo {
-  width: 65%;
+  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+    width: 60%;
+  }
+  @media only screen and (min-width: $smallMobileBreakPoint)  {
+    width: 65%
+  }
+
+ 
 }
 
 .UpperFooterInfo {
@@ -42,40 +54,22 @@
   flex-wrap: wrap;
   border-bottom: 1px solid white;
 
-  @media only screen and (max-width: $mobileBreakPoint) {
-    margin: 10px 15px 0 15px;
+  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+    margin: 12px 12px 0 10px;    
   }
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
-    margin: 35px 25px 0 0;
+  @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+    margin: 15px 15px 0 15px;
+ 
   }
+  @media only screen and (min-width: $mobileBreakPoint  + 1) and (max-width: $inBetweenBreakpoint) {
+    margin: 20px 0  0;
 
-  @media only screen and (max-width: $smallMobileBreakPoint) {
-    flex-direction: column;
-    .FooterPlugin {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border-top: 1px solid white;
-      margin-top: 10px;
-    }
   }
-  @media only screen and (min-width: $smallMobileBreakPoint + 1) {
-    flex-direction: row;
-    .NavigationContactContainer {
-      width: calc(65% - 10px);
-      padding-right: 10px;
-    }
-    .FooterPlugin {
-      width: 35%;
-    }
+  @media only screen and (min-width: $inBetweenBreakpoint + 1) {
+    margin: 20px 20px 0 35px;
   }
-
-  .NavigationContactContainer {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .FooterNavigation {
-  }
+ 
+ 
 
   .NavigationLink {
     @extend %FooterTitle;
@@ -92,11 +86,32 @@
     .Title {
       @extend %FooterTitle;
     }
+    .ContactInfo {
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 6px;}
+  
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 12px;      }
+      }
   }
 
   .FooterPlugin {
+    @media only screen and (max-width: $mobileBreakPoint) {
+      border-top: 1px solid white;  
+      width:100%;
+      padding-top: 8px;  
+      padding-bottom: 8px;  
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     .Title {
       @extend %FooterTitle;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding-bottom: 0;
+        padding-right: 10px;
+      }
     }
 
     .PluginIcon {
@@ -108,7 +123,7 @@
 
         @media only screen and (min-width: $mobileBreakPoint + 1) {
           width: 39px;
-          padding-right: 10px;
+          padding-right: 8px;
         }
       }
     }
@@ -117,12 +132,19 @@
 
 .LowerFooterInfo {
   @extend %fontMedium;
-  @media only screen and (max-width: $mobileBreakPoint) {
+  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
     text-align: left;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     font-size: 5px;
+  }
+  @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+    // text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    // font-size: 5px;
   }
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     text-align: center;

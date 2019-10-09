@@ -4,7 +4,9 @@ export const NEXT = 'NEXT';
 export const PREV = 'PREV';
 
 const mobileBreakPoint = '768px';
+const smallMobileBreakPoint = '600px';
 const desktopBreakPoint = '769px';
+const inBetweenBreakpoint = '1024px';
 
 export const Item = styled.div`
   text-align: center;
@@ -19,20 +21,32 @@ export const CarouselContainer = styled.div`
     props.sliding ? 'none' : 'transform 1s ease'};
   transform: ${props => {
     if (!props.sliding) return 'translateX(0px)';
-    if (props.dir === PREV) return 'translateX(-80%)';
-    return 'translateX(80%)';
+    if (props.dir === PREV) return 'translateX(-60%)';
+    return 'translateX(60%)';
   }};
 `;
 
 export const CourseCarouselContainer = styled.div`
   display: flex;
-  transition: ${props =>
-    props.sliding ? 'none' : 'transform 1s ease'};
-  transform: ${props => {
-    if (!props.sliding) return 'translateX(0% )';
-    if (props.dir === PREV) return 'translateX(-20%)';
-    return 'translateX(20%)';
-  }};
+  @media only screen and (max-width: ${smallMobileBreakPoint}) {
+    transition: ${props =>
+      props.sliding ? 'none' : 'transform 1s ease'};
+    transform: ${props => {
+      if (!props.sliding) return 'translateX(0% )';
+      if (props.dir === PREV) return 'translateX(-80%)';
+      return 'translateX(80%)';
+    }};
+  }
+
+  @media only screen and (min-width: ${inBetweenBreakpoint}) {
+    transition: ${props =>
+      props.sliding ? 'none' : 'transform 1s ease'};
+    transform: ${props => {
+      if (!props.sliding) return 'translateX(0% )';
+      if (props.dir === PREV) return 'translateX(-20%)';
+      return 'translateX(20%)';
+    }};
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -41,15 +55,22 @@ export const Wrapper = styled.div`
 `;
 
 export const CarouselSlot = styled.div`
+  @media only screen and (max-width: ${smallMobileBreakPoint}) {
+    flex-basis: 100%;
+  }
+
+  @media only screen and (min-width: ${inBetweenBreakpoint}) {
+    flex-basis: 80%;
+    margin-right: 50px;
+  }
+
   flex: 1 0 100%;
-  flex-basis: 80%;
-  margin-right: 20px;
   order: ${props => props.order};
 `;
 
 export const CourseCarouselSlot = styled.div`
   flex: 1 0 100%;
-  flex-basis: 260px;
+  flex-basis: 240px;
   overflow: hidden;
   order: ${props => props.order};
 `;
@@ -59,11 +80,11 @@ export const SlideButton = styled.button`
   background: none;
 
   img {
-    @media only screen and (max-width: ${mobileBreakPoint}) {
+    @media only screen and (max-width: ${smallMobileBreakPoint}) {
       width: 40px;
     }
 
-    @media only screen and (min-width: ${desktopBreakPoint}) {
+    @media only screen and (min-width: ${mobileBreakPoint}) {
       width: 60px;
     }
   }
@@ -96,13 +117,13 @@ export const Code = styled.code`
 `;
 
 export const CenteredDiv = styled.div`
-  @media only screen and (max-width: ${mobileBreakPoint}) {
+  @media only screen and (max-width: ${smallMobileBreakPoint}) {
     padding-top: 5px;
     padding-right: 10px;
     padding-left: 10px;
   }
 
-  @media only screen and (min-width: ${desktopBreakPoint}) {
+  @media only screen and (min-width: ${inBetweenBreakpoint}) {
     padding-top: 10px;
     padding-right: 20px;
     padding-left: 20px;

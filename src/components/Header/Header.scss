@@ -65,7 +65,7 @@
     @media only screen and (max-width: $mobileBreakPoint) {
       padding: 25px 25px 25px 0;
       > img {
-        padding-left: 12px;
+        padding-left: 10px;
       }
     }
 
@@ -121,14 +121,21 @@
   padding: 15px 25px;
   font-size: 10px;
 
+  @media only screen and (max-width: $mobileBreakPoint) {
+    border-bottom: 1px solid $darkgrey;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+  }
+
   .HamburgerMenu {
   }
 
   .SignInMobile {
     color: white;
     border: 1px solid $gold;
-    border-radius: 28px;
+    border-radius: 25px;
     background-color: $gold;
-    padding: 4px 8px;
+    padding: 4px 12px;
   }
 }
