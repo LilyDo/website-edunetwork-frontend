@@ -7,7 +7,7 @@ $gold: #d59e29;
 .Header,
 .Footer,
 .Content {
-  font-family: 'Muli-Regular';
+  @extend %fontRegular;
 }
 
 // media query

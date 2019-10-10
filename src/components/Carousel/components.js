@@ -99,7 +99,6 @@ export const SlideButton = styled.button`
 `;
 
 export const AppContainer = styled.div`
-  font-family: sans-serif;
   text-align: center;
   width: 75%;
 `;
