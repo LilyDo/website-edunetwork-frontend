@@ -2,7 +2,7 @@
 @import '../../assets/font/font.scss';
 
 %styleTextHeader {
-  font-family: 'Poppins-Bold';
+  @extend %fontBold;
   color: $darkgrey;
   padding: 13px 22px;
   transform: skewX(-25deg);
