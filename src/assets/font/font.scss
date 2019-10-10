@@ -1,26 +1,24 @@
-
 @font-face {
-  font-family: 'Poppins-Regular';
-  src: url('./Poppins-Regular.ttf')  format('truetype')
-  }
-
-@font-face {
-  font-family: 'Poppins-Bold';
-  src: url('./Poppins-Bold.ttf')  format('truetype')
+  font-family: 'Muli-Regular';
+  src: url('./Muli-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Poppins-Italic';
-  src: url('./Poppins-BlackItalic.ttf')  format('truetype')
+  font-family: 'Muli-Bold';
+  src: url('./Muli-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Poppins-Medium';
-  src: url('./Poppins-Medium.ttf')  format('truetype')
+  font-family: 'Muli-Italic';
+  src: url('./Muli-BlackItalic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Poppins-SemiBold';
-  src: url('./Poppins-SemiBold.ttf')  format('truetype')
-} 
+  font-family: 'Muli-Medium';
+  src: url('./Muli-Regular.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Muli-SemiBold';
+  src: url('./Muli-SemiBold.ttf') format('truetype');
+}

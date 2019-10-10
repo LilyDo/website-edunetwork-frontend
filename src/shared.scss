@@ -7,7 +7,7 @@ $gold: #d59e29;
 .Header,
 .Footer,
 .Content {
-  font-family: 'Poppins-Regular';
+  font-family: 'Muli-Regular';
 }
 
 // media query
@@ -41,17 +41,17 @@ $inBetweenBreakpoint: 1024px;
 
 // font weight
 %fontRegular {
-  font-family: 'Poppins-Regular';
+  font-family: 'Muli-Regular';
 }
 %fontBold {
-  font-family: 'Poppins-Bold';
+  font-family: 'Muli-Bold';
 }
 %fontItalic {
-  font-family: 'Poppins-Italic';
+  font-family: 'Muli-Italic';
 }
 %fontMedium {
-  font-family: 'Poppins-Medium';
+  font-family: 'Muli-Medium';
 }
 %fontSemiBold {
-  font-family: 'Poppins-SemiBold';
+  font-family: 'Muli-SemiBold';
 }
