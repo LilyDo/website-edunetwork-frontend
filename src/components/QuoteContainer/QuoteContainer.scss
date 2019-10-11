@@ -1,0 +1,63 @@
+@import '../../shared.scss';
+
+.QuoteContainer {
+  border-bottom: 1px solid $gold;
+  max-width: 1103px;
+  margin: auto;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-bottom: 22px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 75px;
+  }
+
+  .Quote {
+    background-image: url('../../assets/images/quote_background.svg');
+    background-size: contain;
+    background-position: center;
+    @extend %fontBold;
+    color: $brown;
+    text-align: center;
+    white-space: pre-line;
+    box-sizing: border-box;
+    position: relative;
+
+    span {
+      color: $grey;
+      line-height: 1px;
+      position: absolute;
+    }
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 11px;
+      span {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-left: 3px;
+
+        &:first-child {
+          margin-left: -13px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      font-size: 30px;
+      span {
+        font-size: 60px;
+        margin-top: 20px;
+        margin-left: 5px;
+
+        &:first-child {
+          margin-left: -35px;
+        }
+      }
+    }
+  }
+}

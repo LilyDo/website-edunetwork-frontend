@@ -3,6 +3,7 @@ import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import CourseCarousel from '../Carousel/CourseCarousel';
 import CourseBackground from '../../assets/images/course_background.png';
+import QuoteContainer from '../QuoteContainer/QuoteContainer';
 
 function HomePage() {
   const infoCarouselData = [
@@ -99,14 +100,7 @@ function HomePage() {
         </Carousel>
       </div>
 
-      <div className="QuoteContainer">
-        <div className="Quote">
-          <span>"</span>
-          {`CHÚNG TÔI MUỐN XÂY DỰNG MỘT CỘNG ĐỒNG
-        THAY ĐỔI VỀ TRI THỨC VÀ THAY ĐỔI VỀ THU NHẬP`}
-          <span>"</span>
-        </div>
-      </div>
+      <QuoteContainer />
 
       <div className="CourseTitleContainer">
         <div className="CourseTitle">
