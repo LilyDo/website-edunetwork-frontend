@@ -118,7 +118,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div classN ame="CourseCarousel">
+      <div className="CourseCarousel">
         <img
           className="CourseBackground"
           alt="course background"
