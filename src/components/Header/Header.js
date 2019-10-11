@@ -15,17 +15,13 @@ function Header() {
         <div className="UpperHeaderlinks">
           <div className="NavigationContainer">
             <div className="NavigationLink">
-              <span>
-                <Link to="/">HOME</Link>
-              </span>
+              <Link to="/">HOME</Link>
             </div>
             <div className="NavigationLink">
               <Link to="/courses">COURSE</Link>
             </div>
             <div className="NavigationLink">
-              <span>
-                <Link to="/contact">CONTACT</Link>
-              </span>
+              <Link to="/contact">CONTACT</Link>
             </div>
           </div>
           <div className="SignInDesktop">Sign in</div>
