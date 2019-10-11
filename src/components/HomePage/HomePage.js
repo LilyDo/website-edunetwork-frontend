@@ -1,9 +1,10 @@
 import React from 'react';
-import './Content.scss';
+import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import CourseCarousel from '../Carousel/CourseCarousel';
 import CourseBackground from '../../assets/images/course_background.png';
-function Content() {
+
+function HomePage() {
   const infoCarouselData = [
     {
       icon: 'icon_plane.svg',
@@ -117,7 +118,7 @@ function Content() {
         </div>
       </div>
 
-      <div className="CourseCarousel">
+      <div classN ame="CourseCarousel">
         <img
           className="CourseBackground"
           alt="course background"
@@ -143,4 +144,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default HomePage;

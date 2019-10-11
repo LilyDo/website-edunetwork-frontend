@@ -99,6 +99,11 @@
       .NavigationLink {
         @extend %fontHeader;
         @extend %styleTextHeader;
+
+        a {
+          text-decoration: none;
+          color: $darkgrey;
+        }
       }
     }
     .SignInDesktop {

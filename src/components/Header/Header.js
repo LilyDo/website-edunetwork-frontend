@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
 
@@ -14,13 +15,17 @@ function Header() {
         <div className="UpperHeaderlinks">
           <div className="NavigationContainer">
             <div className="NavigationLink">
-              <span>HOME</span>
+              <span>
+                <Link to="/">HOME</Link>
+              </span>
             </div>
             <div className="NavigationLink">
-              <span>COURSE</span>
+              <Link to="/courses">COURSE</Link>
             </div>
             <div className="NavigationLink">
-              <span>CONTACT</span>
+              <span>
+                <Link to="/contact">CONTACT</Link>
+              </span>
             </div>
           </div>
           <div className="SignInDesktop">Sign in</div>
