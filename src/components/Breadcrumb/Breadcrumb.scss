@@ -1,0 +1,28 @@
+@import '../../shared.scss';
+
+.Breadcrumb {
+  @extend %quoteSize;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid $gold;
+  border-bottom: 1px solid $gold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .Text {
+    a {
+      color: $gold;
+      @extend %fontBold;
+      @extend %fontHeader;
+      text-decoration: none;
+    }
+  }
+
+  .Arrow {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}

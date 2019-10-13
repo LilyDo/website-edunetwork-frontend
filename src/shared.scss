@@ -57,4 +57,7 @@ $inBetweenBreakpoint: 1024px;
 }
 
 // width & height
-$quoteWidth: 1103px;
+%quoteSize {
+  max-width: 1103px;
+  margin: auto;
+}
