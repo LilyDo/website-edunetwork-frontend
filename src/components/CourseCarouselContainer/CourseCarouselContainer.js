@@ -61,7 +61,7 @@ function CourseCarouselContainer() {
               <div className="Level">{courseCarouselItem.level}</div>
               <img
                 src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
-                alt="image"
+                alt="carousel background"
               />
               <div className="Title">{courseCarouselItem.title}</div>
               <div className="PayContainer">

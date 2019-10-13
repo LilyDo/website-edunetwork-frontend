@@ -29,6 +29,7 @@ function HomePage() {
     <div>
       <div className="Video">
         <iframe
+          title="hero_youtube"
           src="https://www.youtube.com/embed/KRiSMXFpWIg"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -58,7 +59,7 @@ function HomePage() {
               <div className="Image">
                 <img
                   src={require(`../../assets/images/${infoCarouselItem.image_url}`)}
-                  alt="image"
+                  alt="info carousel"
                 />
               </div>
             </div>
