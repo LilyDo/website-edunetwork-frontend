@@ -14,15 +14,15 @@ function Header() {
         </div>
         <div className="UpperHeaderlinks">
           <div className="NavigationContainer">
-            <div className="NavigationLink">
-              <Link to="/">HOME</Link>
-            </div>
-            <div className="NavigationLink">
-              <Link to="/courses">COURSE</Link>
-            </div>
-            <div className="NavigationLink">
-              <Link to="/contact">CONTACT</Link>
-            </div>
+            <Link to="/" className="NavigationLink">
+              <span>HOME</span>
+            </Link>
+            <Link to="/courses" className="NavigationLink">
+              <span>COURSE</span>
+            </Link>
+            <Link to="/contact" className="NavigationLink">
+              <span>CONTACT</span>
+            </Link>
           </div>
           <div className="SignInDesktop">Sign in</div>
         </div>

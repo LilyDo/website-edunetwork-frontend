@@ -7,19 +7,13 @@
   padding: 13px 22px;
   transform: skewX(-25deg);
   text-decoration: none;
-  &:visited {
-    color: $brown;
-    border: 1px solid white;
-    background-color: white;
-    cursor: pointer;
-  }
   &:hover {
     color: $brown;
     border: 1px solid white;
     background-color: white;
     cursor: pointer;
   }
-  & > a {
+  & > span {
     display: inline-block;
     transform: skew(25deg);
   }
