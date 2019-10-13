@@ -5,7 +5,6 @@ export const PREV = 'PREV';
 
 const mobileBreakPoint = '768px';
 const smallMobileBreakPoint = '600px';
-const desktopBreakPoint = '769px';
 const inBetweenBreakpoint = '1024px';
 
 export const Item = styled.div`

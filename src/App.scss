@@ -4,4 +4,6 @@
   @extend %fontText;
   @extend %fontRegular;
   color: $darkgrey;
+  max-width: 1366px;
+  margin: auto;
 }

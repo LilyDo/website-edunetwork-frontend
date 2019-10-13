@@ -30,10 +30,10 @@
 
 .FooterLogo {
   @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    width: 40%
+    width: 40%;
   }
-  @media only screen and (min-width: $smallMobileBreakPoint )  {
-    width: 35%
+  @media only screen and (min-width: $smallMobileBreakPoint) {
+    width: 35%;
   }
 }
 
@@ -41,11 +41,9 @@
   @media only screen and (max-width: $smallMobileBreakPoint - 1) {
     width: 60%;
   }
-  @media only screen and (min-width: $smallMobileBreakPoint)  {
-    width: 65%
+  @media only screen and (min-width: $smallMobileBreakPoint) {
+    width: 65%;
   }
-
- 
 }
 
 .UpperFooterInfo {
@@ -55,24 +53,25 @@
   border-bottom: 1px solid white;
 
   @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    margin: 12px 12px 0 10px;    
+    margin: 12px 12px 0 10px;
   }
   @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
     margin: 15px 15px 0 15px;
- 
   }
   @media only screen and (min-width: $mobileBreakPoint  + 1) and (max-width: $inBetweenBreakpoint) {
-    margin: 20px 0  0;
-
+    margin: 20px 0 0;
   }
   @media only screen and (min-width: $inBetweenBreakpoint + 1) {
     margin: 20px 20px 0 35px;
   }
- 
- 
 
   .NavigationLink {
     @extend %FooterTitle;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
     @media only screen and (max-width: $mobileBreakPoint) {
       padding-bottom: 7px;
@@ -87,21 +86,22 @@
       @extend %FooterTitle;
     }
     .ContactInfo {
-
       @media only screen and (max-width: $mobileBreakPoint) {
-        font-size: 6px;}
-  
-      @media only screen and (min-width: $mobileBreakPoint + 1) {
-        font-size: 12px;      }
+        font-size: 6px;
       }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 12px;
+      }
+    }
   }
 
   .FooterPlugin {
     @media only screen and (max-width: $mobileBreakPoint) {
-      border-top: 1px solid white;  
-      width:100%;
-      padding-top: 8px;  
-      padding-bottom: 8px;  
+      border-top: 1px solid white;
+      width: 100%;
+      padding-top: 8px;
+      padding-bottom: 8px;
       display: flex;
       flex-direction: row;
       align-items: center;
