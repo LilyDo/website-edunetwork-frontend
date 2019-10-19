@@ -5,6 +5,7 @@ export const PREV = 'PREV';
 
 const mobileBreakPoint = '768px';
 const smallMobileBreakPoint = '600px';
+const upperSmallMobileBreakPoint = '601px';
 const inBetweenBreakpoint = '1024px';
 
 export const Item = styled.div`
@@ -37,7 +38,7 @@ export const CourseCarouselContainer = styled.div`
     }};
   }
 
-  @media only screen and (min-width: ${inBetweenBreakpoint}) {
+  @media only screen and (min-width: ${upperSmallMobileBreakPoint}) {
     transition: ${props =>
       props.sliding ? 'none' : 'transform 1s ease'};
     transform: ${props => {
