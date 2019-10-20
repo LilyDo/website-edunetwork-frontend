@@ -2,8 +2,7 @@
 
 .QuoteContainer {
   border-bottom: 1px solid $gold;
-  max-width: 1103px;
-  margin: auto;
+  @extend %quoteSize;
 
   @media only screen and (max-width: $mobileBreakPoint) {
     padding-bottom: 20px;
