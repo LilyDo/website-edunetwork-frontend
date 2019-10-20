@@ -13,142 +13,150 @@
   }
 }
 
-.Footer {
-  background-size: cover;
-  display: flex;
-  flex-direction: row;
-  color: white;
-  @media only screen and (max-width: $inBetweenBreakpoint) {
-    background-image: url('../../assets/images/footer_background_2.svg');
-    font-size: 6px;
-  }
+.FooterBackground {
+  background-color: $gold;
+  width: 100%;
 
-  @media only screen and (min-width: $inBetweenBreakpoint + 1) {
-    background-image: url('../../assets/images/footer_background.svg');
-  }
-}
-
-.FooterLogo {
-  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    width: 40%;
-  }
-  @media only screen and (min-width: $smallMobileBreakPoint) {
-    width: 35%;
-  }
-}
-
-.FooterInfo {
-  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    width: 60%;
-  }
-  @media only screen and (min-width: $smallMobileBreakPoint) {
-    width: 65%;
-  }
-}
-
-.UpperFooterInfo {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  border-bottom: 1px solid white;
-
-  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    margin: 12px 12px 0 10px;
-  }
-  @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
-    margin: 15px 15px 0 15px;
-  }
-  @media only screen and (min-width: $mobileBreakPoint  + 1) and (max-width: $inBetweenBreakpoint) {
-    margin: 20px 0 0;
-  }
-  @media only screen and (min-width: $inBetweenBreakpoint + 1) {
-    margin: 20px 20px 0 35px;
-  }
-
-  .NavigationLink {
-    @extend %FooterTitle;
-
-    a {
-      text-decoration: none;
-      color: white;
+  .Footer {
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    background-color: white;
+    max-width: $appMaxWidth;
+    margin: auto;
+    @media only screen and (max-width: $inBetweenBreakpoint) {
+      background-image: url('../../assets/images/footer_background_2.svg');
+      font-size: 6px;
     }
 
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding-bottom: 7px;
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding-bottom: 15px;
+    @media only screen and (min-width: $inBetweenBreakpoint + 1) {
+      background-image: url('../../assets/images/footer_background.svg');
     }
   }
-  .FooterContact {
-    .Title {
+
+  .FooterLogo {
+    @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+      width: 40%;
+    }
+    @media only screen and (min-width: $smallMobileBreakPoint) {
+      width: 35%;
+    }
+  }
+
+  .FooterInfo {
+    @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+      width: 60%;
+    }
+    @media only screen and (min-width: $smallMobileBreakPoint) {
+      width: 65%;
+    }
+  }
+
+  .UpperFooterInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 1px solid white;
+
+    @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+      margin: 12px 12px 0 10px;
+    }
+    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+      margin: 15px 15px 0 15px;
+    }
+    @media only screen and (min-width: $mobileBreakPoint  + 1) and (max-width: $inBetweenBreakpoint) {
+      margin: 20px 0 0;
+    }
+    @media only screen and (min-width: $inBetweenBreakpoint + 1) {
+      margin: 20px 20px 0 35px;
+    }
+
+    .NavigationLink {
       @extend %FooterTitle;
-    }
-    .ContactInfo {
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
       @media only screen and (max-width: $mobileBreakPoint) {
-        font-size: 6px;
+        padding-bottom: 7px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
-        font-size: 12px;
+        padding-bottom: 15px;
       }
     }
-  }
-
-  .FooterPlugin {
-    @media only screen and (max-width: $mobileBreakPoint) {
-      border-top: 1px solid white;
-      width: 100%;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    .Title {
-      @extend %FooterTitle;
-      @media only screen and (max-width: $mobileBreakPoint) {
-        padding-bottom: 0;
-        padding-right: 10px;
+    .FooterContact {
+      .Title {
+        @extend %FooterTitle;
       }
-    }
-
-    .PluginIcon {
-      img {
+      .ContactInfo {
         @media only screen and (max-width: $mobileBreakPoint) {
-          width: 17px;
-          padding-right: 5px;
+          font-size: 6px;
         }
 
         @media only screen and (min-width: $mobileBreakPoint + 1) {
-          width: 39px;
-          padding-right: 8px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .FooterPlugin {
+      @media only screen and (max-width: $mobileBreakPoint) {
+        border-top: 1px solid white;
+        width: 100%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .Title {
+        @extend %FooterTitle;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding-bottom: 0;
+          padding-right: 10px;
+        }
+      }
+
+      .PluginIcon {
+        img {
+          @media only screen and (max-width: $mobileBreakPoint) {
+            width: 17px;
+            padding-right: 5px;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            width: 39px;
+            padding-right: 8px;
+          }
         }
       }
     }
   }
-}
 
-.LowerFooterInfo {
-  @extend %fontMedium;
-  @media only screen and (max-width: $smallMobileBreakPoint - 1) {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    font-size: 5px;
-  }
-  @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
-    // text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    // font-size: 5px;
-  }
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 10px;
+  .LowerFooterInfo {
+    @extend %fontMedium;
+    @media only screen and (max-width: $smallMobileBreakPoint - 1) {
+      text-align: left;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      font-size: 5px;
+    }
+    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+      // text-align: left;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      // font-size: 5px;
+    }
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 10px;
+    }
   }
 }

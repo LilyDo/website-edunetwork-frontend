@@ -4,6 +4,11 @@
   @extend %fontText;
   @extend %fontRegular;
   color: $darkgrey;
-  max-width: 1366px;
+  -webkit-backface-visibility: hidden;
+  transform: perspective(0px);
+}
+
+.Content {
+  max-width: $appMaxWidth;
   margin: auto;
 }

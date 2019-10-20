@@ -1,28 +1,44 @@
 @import '../../shared.scss';
+@import '../../assets/font/font.scss';
 
-.Breadcrumb {
-  @extend %quoteSize;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-top: 1px solid $gold;
-  border-bottom: 1px solid $gold;
+.BreadCrumb {
+  @extend %fontHeader;
+  @extend %fontBold;
+
+  max-width: 1103px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  .Text {
-    a {
-      color: $gold;
-      @extend %fontBold;
-      @extend %fontHeader;
-      text-decoration: none;
+  a {
+    text-decoration: none;
+    color: $brown;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 20px 0px 20px 25px;
+
+    .ArrowRight {
+      padding: 0 10px;
+
+      > img {
+        max-width: 20px;
+      }
     }
   }
 
-  .Arrow {
-    margin-right: 20px;
-    margin-left: 20px;
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 20px 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-top: 1px solid $gold;
+    border-bottom: 1px solid $gold;
+
+    .ArrowRight {
+      padding: 0 20px;
+    }
   }
 }

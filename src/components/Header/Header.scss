@@ -19,10 +19,17 @@
   }
 }
 
+.HeaderBackground {
+  background-color: $gold;
+  width: 100%;
+}
+
 .Header {
   display: flex;
   flex-direction: column;
   color: white;
+  background-color: $gold;
+  border: none;
 }
 
 @media only screen and (max-width: $mobileBreakPoint) {
@@ -47,9 +54,13 @@
   background-image: url('../../assets/images/header_background.svg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  max-width: $appMaxWidth;
+  margin: auto;
+  width: 100%;
 
   .LanguageSelector {
     display: flex;
@@ -111,7 +122,6 @@
     }
   }
 }
-
 .LowerHeader {
   // display: flex;
   flex-direction: row;
@@ -119,6 +129,7 @@
   color: black;
   padding: 15px 25px;
   font-size: 10px;
+  background-color: white;
 
   @media only screen and (max-width: $mobileBreakPoint) {
     border-bottom: 1px solid $darkgrey;
