@@ -4,7 +4,6 @@
 .BreadCrumb {
   @extend %fontHeader;
   @extend %fontBold;
-  color: $brown;
 
   max-width: 1103px;
   margin-left: auto;
@@ -12,6 +11,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  a {
+    text-decoration: none;
+    color: $brown;
+    cursor: pointer;
+  }
 
   @media only screen and (max-width: $mobileBreakPoint) {
     padding: 20px 0px 20px 25px;

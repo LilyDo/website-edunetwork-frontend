@@ -6,11 +6,15 @@ import ArrowRight from '../../assets/images/arrow_right.svg';
 function Breadcrumb() {
   return (
     <div className="BreadCrumb">
-      <div className="Home">HOME</div>
+      <Link to="/" className="Home">
+        <span>HOME</span>
+      </Link>
       <div className="ArrowRight">
         <img alt="arrow right" src={ArrowRight} />
       </div>
-      <div className="Current">COURSE</div>
+      <Link to="/courses" className="Current">
+        <span>COURSE</span>
+      </Link>
     </div>
   );
 }
