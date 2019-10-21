@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
+import LoginPopup from './components/LoginPopup/LoginPopup';
 import Footer from './components/Footer/Footer';
 import HomePage from './components/HomePage/HomePage';
 import CoursePage from './components/CoursePage/CoursePage';
@@ -17,6 +18,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <LoginPopup />
         <div className="Content">
           <Switch>
             <Route exact path="/">
