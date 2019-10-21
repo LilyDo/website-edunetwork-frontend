@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './components/HomePage/HomePage';
 import CoursePage from './components/CoursePage/CoursePage';
+import CourseDetail from './components/CourseDetail/CourseDetail';
 import ContactPage from './components/ContactPage/ContactPage';
 import {
   BrowserRouter as Router,
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path="/courses">
               <CoursePage />
+            </Route>
+            <Route exact path="/courses/detail">
+              <CourseDetail />
             </Route>
             <Route exact path="/contact">
               <ContactPage />

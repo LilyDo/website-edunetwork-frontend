@@ -1,0 +1,100 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+$mobileMargin: 10px 25px 10px 25px;
+
+.CourseInfoContainer {
+  max-width: 1103px;
+  margin: auto;
+  border-bottom: 1px solid $gold;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 45px;
+  }
+
+  .CourseInfo {
+    max-width: 720px;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin: auto;
+    }
+
+    .CourseInfoTitleContainer {
+      border: 1px solid white;
+      box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        margin: $mobileMargin;
+        padding: 5px 15px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px 30px;
+      }
+
+      .CourseInfoTitle {
+        @extend %fontBold;
+        background-color: $gold;
+        display: inline-block;
+        transform: skewX(-25deg);
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding: 5px 15px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding: 7px 20px;
+        }
+
+        span {
+          color: white;
+          display: inline-block;
+          transform: skewX(25deg);
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .CourseInfoContent {
+      border: 1px solid white;
+      box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        margin: $mobileMargin;
+        margin-bottom: 25px;
+        padding: 10px 10px 0 10px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0px 30px;
+      }
+
+      .Head {
+        @extend %fontBold;
+        color: $darkgrey;
+        border-bottom: 1px solid #d6d6d6;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 12px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding-top: 15px;
+          padding-bottom: 5px;
+        }
+      }
+      p {
+        white-space: pre-line;
+      }
+    }
+  }
+}
