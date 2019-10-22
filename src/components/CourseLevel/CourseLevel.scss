@@ -84,18 +84,53 @@ $mobilePaddingLine: 0 0 7px 0;
         padding: $paddingContainer;
       }
 
-      img {
-        padding-top: 5px;
-      }
-
-      .LevelContainer {
-        .Text {
-          padding-bottom: 7px;
-        }
-      }
       .Text {
         color: $brown;
         text-align: center;
+        padding-bottom: 5px;
+      }
+
+      .Level {
+        background-color: $gold;
+        border-radius: 28px;
+        color: white;
+        @extend %fontBold;
+        padding: 5px 15px;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 12px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+        }
+      }
+      .NumberContainer {
+        background-color: $gold;
+        color: white;
+        transform: skewX(-25deg);
+        padding: 5px 15px;
+
+        .PriceNumber {
+          display: inline-block;
+          transform: skewX(25deg);
+
+          span {
+            @extend %fontExtraBold;
+          }
+        }
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 14px;
+          sup {
+            font-size: 10px;
+          }
+        }
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 20px;
+
+          sup {
+            font-size: 12px;
+          }
+        }
       }
     }
 

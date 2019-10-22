@@ -5,8 +5,6 @@ import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import ThumNail from '../../assets/images/video_thumnail.png';
-import LevelExpert from '../../assets/images/level_expert.svg';
-import PriceExpert from '../../assets/images/price_expert.svg';
 
 function CourseLevel() {
   return (
@@ -22,14 +20,15 @@ function CourseLevel() {
           <div className="Level_PriceContainer">
             <div className="LevelContainer">
               <div className="Text">Level</div>
-              <div className="Level">
-                <img alt="expert" src={LevelExpert}></img>
-              </div>
+              <div className="Level">Expert</div>
             </div>
             <div className="PriceContainer">
               <div className="Text">Price</div>
-              <div className="Price">
-                <img alt="1000 usd" src={PriceExpert}></img>
+              <div className="NumberContainer">
+                <div className="PriceNumber">
+                  <span>1000</span>
+                  <sup>usd</sup>
+                </div>
               </div>
             </div>
           </div>

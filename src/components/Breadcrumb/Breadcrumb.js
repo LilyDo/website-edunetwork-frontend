@@ -15,6 +15,12 @@ function Breadcrumb() {
       <Link to="/courses" className="Current">
         <span>COURSE</span>
       </Link>
+      <div className="ArrowRight">
+        <img alt="arrow right" src={ArrowRight} />
+      </div>
+      <Link to="/courses/mycourse" className="MyCourse">
+        <span>KHÓA HỌC CỦA TÔI</span>
+      </Link>
     </div>
   );
 }

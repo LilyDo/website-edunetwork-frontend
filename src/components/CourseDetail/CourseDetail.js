@@ -3,6 +3,7 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import CourseLevel from '../CourseLevel/CourseLevel';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselContainer';
+import LoginPopup from '../LoginPopup/LoginPopup';
 
 function CourseDetail() {
   return (
@@ -11,6 +12,7 @@ function CourseDetail() {
       <CourseLevel />
       <CourseInfo />
       <CourseCarouselContainer />
+      <LoginPopup />
     </div>
   );
 }
