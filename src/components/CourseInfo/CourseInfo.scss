@@ -3,29 +3,28 @@
 
 $mobileMargin: 10px 25px 10px 25px;
 %titleSelected {
-    background-color: $gold;
+  background-color: $gold;
+  display: inline-block;
+  transform: skewX(-25deg);
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 5px 15px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 7px 20px;
+  }
+
+  span {
+    color: white;
     display: inline-block;
-    transform: skewX(-25deg);
+    transform: skewX(25deg);
 
     @media only screen and (max-width: $mobileBreakPoint) {
-      padding: 5px 15px;
+      font-size: 12px;
     }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding: 7px 20px;
-    }
-
-    span {
-      color: white;
-      display: inline-block;
-      transform: skewX(25deg);
-
-      @media only screen and (max-width: $mobileBreakPoint) {
-        font-size: 12px;
-      }
   }
 }
-
 
 .CourseInfoContainer {
   max-width: 1103px;
@@ -64,12 +63,11 @@ $mobileMargin: 10px 25px 10px 25px;
       padding: 10px 30px;
     }
 
-    .IntroductionTitle, .CurriculumTitle {
-      &:hover{
+    .IntroductionTitle,
+    .CurriculumTitle {
+      &:hover {
         @extend %titleSelected;
       }
-     
-      
     }
   }
 
@@ -143,30 +141,20 @@ $mobileMargin: 10px 25px 10px 25px;
         padding-bottom: 5px;
       }
     }
-  
 
     .Course {
+      margin-bottom: 15px;
 
       .Name {
-
-        li.Name {
-          @extend %fontSemiBold;
-          color: red;
-          background-color: $gold;
-          color: white
-        }
+        @extend %fontSemiBold;
+        background-color: $gold;
+        color: white;
+        padding: 8px;
       }
 
       .Part {
         color: $darkgrey;
       }
-
-
     }
   }
 }
-    
-  
-
-
-

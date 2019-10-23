@@ -32,47 +32,49 @@ mỗi tuần.
 Khóa học sẽ bao gồm 5 khóa học học online sau: 
 - Khóa 1: CHÂN DUNG NHÀ LÃNH ĐẠO
 - Khóa 2: NHỮNG TỐ CHẤT CỦA NHÀ LÃNH ĐẠO TÀI BA
-- Khóa 3:  NHÀ LÃNH ĐẠO QUYỀN LỰC
+- Khóa 3: NHÀ LÃNH ĐẠO QUYỀN LỰC
 - Khóa 4: KHẢ NĂNG GIẢI QUYẾT MÂU THUẪN
-- Khóa 5: TRỞ  THÀNH NHÀ LÃNH ĐẠO TÀI BA TRONG THỜI ĐẠI MỚI`}
+- Khóa 5: TRỞ THÀNH NHÀ LÃNH ĐẠO TÀI BA TRONG THỜI ĐẠI MỚI`}
           </p>
         </div>
       </div>
       <div className="CourseCurriculum">
         <div className="CurriculumContent">
           <div className="Head">Giáo trình</div>
-          <ul ClassName="Course">
-            <li className="Name">KHÓA 1: CHÂN DUNG NHÀ LÃNH ĐẠO
-              <ul className="Part">
-                <li>Phần 1: Tổng quan về lãnh đạo
-                  <ul className="Lesson">
-                  <li>
-                  Bài 1: Thế nào là một lãnh đạo
-                </li>
-                <li>Bài 2: Các cấp độ lãnh đạo</li>
-                <li>
-                  Bài 3: Vai trò và trách nhiệm của lãnh đạo
-                </li>
-                <li>
-                  Bài 4: Bài 4: Hiệu quả lãnh đạo
-                </li>
-                  </ul>
-                </li>
-                <li>Phần 2: Điều kiện cần của một người lãnh đạo tài ba</li>
-              </ul>
-            </li>
-                
-            <li className="Name">
- KHÓA 2: NHỮNG TỐ CHẤT CỦA NHÀ LÃNH ĐẠO TÀI BA
-            </li>
-            <li className="Name">KHÓA 3: NHÀ LÃNH ĐẠO QUYỀN LỰC</li>
-            <li className="Name">
+          <div className="Course">
+            <div className="Name">KHÓA 1: CHÂN DUNG NHÀ LÃNH ĐẠO</div>
+            <div className="Part">
+              <div>Phần 1: Tổng quan về lãnh đạo</div>
+              <div className="Lesson">
+                <div>Bài 1: Thế nào là một lãnh đạo</div>
+                <div>Bài 2: Các cấp độ lãnh đạo</div>
+                <div>Bài 3: Vai trò và trách nhiệm của lãnh đạo</div>
+                <div>Bài 4: Bài 4: Hiệu quả lãnh đạo</div>
+              </div>
+              <div>
+                Phần 2: Điều kiện cần của một người lãnh đạo tài ba
+              </div>
+            </div>
+          </div>
+
+          <div className="Course">
+            <div className="Name">
+              KHÓA 2: NHỮNG TỐ CHẤT CỦA NHÀ LÃNH ĐẠO TÀI BA
+            </div>
+          </div>
+          <div className="Course">
+            <div className="Name">KHÓA 3: NHÀ LÃNH ĐẠO QUYỀN LỰC</div>
+          </div>
+          <div className="Course">
+            <div className="Name">
               KHÓA 4: KHẢ NĂNG GIẢI QUYẾT MÂU THUẪN
-            </li>
-            <li className="Name">
+            </div>
+          </div>
+          <div className="Course">
+            <div className="Name">
               KHÓA 5: TRỞ THÀNH NHÀ LÃNH ĐẠO TÀI BA TRONG THỜI ĐẠI MỚI
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
