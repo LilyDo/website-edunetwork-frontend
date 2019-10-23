@@ -1,10 +1,14 @@
 import React from 'react';
 import './LoginPopup.scss';
+import CancelButton from '../../assets/images/icon_cancel.svg';
 
 function LoginPopup() {
   return (
     <div className="Overlay">
       <div className="LoginPopup">
+        <div className="CancelButton">
+          <img alt="cancel" src={CancelButton}></img>
+        </div>
         <div>Hãy đăng nhập để tiến hành thanh toán</div>
 
         <div className="Container">

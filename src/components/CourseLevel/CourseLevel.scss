@@ -107,12 +107,12 @@ $mobilePaddingLine: 0 0 7px 0;
       .NumberContainer {
         background-color: $gold;
         color: white;
-        transform: skewX(-25deg);
-        padding: 5px 15px;
+        transform: skewX(-30deg);
+        padding: 5px 10px;
 
         .PriceNumber {
           display: inline-block;
-          transform: skewX(25deg);
+          transform: skewX(30deg);
 
           span {
             @extend %fontExtraBold;

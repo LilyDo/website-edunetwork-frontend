@@ -4,14 +4,15 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './components/HomePage/HomePage';
 import CoursePage from './components/CoursePage/CoursePage';
-import CourseDetail from './components/CourseDetail/CourseDetail';
+import CourseDetailPage from './components/CourseDetailPage/CourseDetailPage';
+import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import LoginPopup from './components/LoginPopup/LoginPopup';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
-
 function App() {
   return (
     <Router>
@@ -26,7 +27,10 @@ function App() {
               <CoursePage />
             </Route>
             <Route exact path="/courses/detail">
-              <CourseDetail />
+              <CourseDetailPage />
+            </Route>
+            <Route exact path="/courses/order">
+              <OrderPage />
             </Route>
             <Route exact path="/contact">
               <ContactPage />
@@ -34,6 +38,7 @@ function App() {
           </Switch>
         </div>
         <Footer />
+        <LoginPopup />
       </div>
     </Router>
   );
