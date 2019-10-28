@@ -1,0 +1,26 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.HamburgerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @extend %fontBold;
+  font-size: 12px;
+
+  a {
+    text-decoration: none;
+  }
+  .Menu {
+    width: 100%;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    text-align: center;
+  }
+  :last-child {
+    border-bottom: none;
+  }
+}

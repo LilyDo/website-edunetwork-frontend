@@ -3,6 +3,7 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
+import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 
 function Header() {
   return (
@@ -28,13 +29,16 @@ function Header() {
         </div>
       </div>
 
-      <div className="LowerHeader">
-        <div className="HamburgerMenu">
-          <img alt="menu" src={HamburgerIcon} />
+      <div>
+        <div className="LowerHeader">
+          <div className="HamburgerMenu">
+            <img alt="menu" src={HamburgerIcon} />
+          </div>
+          <div className="SignInMobile">
+            <span>Sign in</span>
+          </div>
         </div>
-        <div className="SignInMobile">
-          <span>Sign in</span>
-        </div>
+        <HamburgerMenu />
       </div>
     </div>
   );
