@@ -1,5 +1,6 @@
 // vendor
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,12 +16,14 @@ import CourseDetailPage from './components/CourseDetailPage/CourseDetailPage';
 import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
+import { simpleAction } from './actions/simpleAction';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
+          <button onClick={this.simpleAction}>Test redux action</button>
           <Header />
           <div className="Content">
             <Switch>
@@ -47,6 +50,16 @@ class App extends Component {
       </Router >
     );
   }
+
+  simpleAction = (event) => {
+    this.props.simpleAction();
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+})
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch(simpleAction())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App);
