@@ -1,0 +1,291 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+$paddingLine: 0 0 15px 0;
+$mobilePaddingLine: 0 0 7px 0;
+$paddingRightHeader: 20px;
+$walletPaddingContainer: 12px 0 12px 0;
+
+.OrderInfoContainer {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    align-content: center;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    max-width: 1103px;
+    margin: auto;
+  }
+
+  .Title {
+    @extend %fontHeader;
+    @extend %fontBold;
+    padding-bottom: 15px;
+  }
+
+  .OrderInfo {
+    @media only screen and (max-width: $mobileBreakPoint) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 25px;
+      margin-right: 25px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .CourseInfo {
+      box-sizing: border-box;
+      box-shadow: 10px 3px 30px rgba(213, 158, 41, 0.1);
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding: 20px;
+        width: 640px;
+        margin-bottom: 30px;
+      }
+
+      .CourseHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .HeaderText {
+          @extend %fontHeader;
+          @extend %fontBold;
+          padding-right: $paddingRightHeader;
+        }
+        .Text {
+          color: $brown;
+          text-align: center;
+          padding-bottom: 5px;
+        }
+        .LevelContainer {
+          padding-right: $paddingRightHeader;
+          .Level {
+            background-color: $gold;
+            border-radius: 28px;
+            color: white;
+            @extend %fontBold;
+            padding: 5px 15px;
+
+            @media only screen and (max-width: $mobileBreakPoint) {
+              font-size: 12px;
+            }
+
+            @media only screen and (min-width: $mobileBreakPoint + 1) {
+            }
+          }
+        }
+        .PriceContainer {
+          .NumberContainer {
+            background-color: $gold;
+            color: white;
+            transform: skewX(-30deg);
+            padding: 5px 10px;
+
+            .PriceNumber {
+              display: inline-block;
+              transform: skewX(30deg);
+
+              span {
+                @extend %fontExtraBold;
+              }
+            }
+            @media only screen and (max-width: $mobileBreakPoint) {
+              font-size: 14px;
+              sup {
+                font-size: 10px;
+              }
+            }
+            @media only screen and (min-width: $mobileBreakPoint + 1) {
+              font-size: 20px;
+
+              sup {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .Info {
+        padding-top: 15px;
+        margin-top: 15px;
+        border-top: 1px solid $grey;
+
+        .Container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+            padding: $mobilePaddingLine;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            padding: $paddingLine;
+          }
+
+          img {
+            padding-right: 10px;
+          }
+        }
+        span {
+          @extend %fontExtraBold;
+          color: $grey;
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+
+    .WalletInfoContainer {
+      background: linear-gradient(to right, $darkgrey 50%, #fff 0%)
+          top/12px 1px repeat-x,
+        /* top */ linear-gradient($darkgrey 50%, #fff 0%) right/1px
+          12px repeat-y,
+        /* right */ linear-gradient(to right, $darkgrey 50%, #fff 0%)
+          bottom/12px 1px repeat-x,
+        /* bottom */ linear-gradient($darkgrey 50%, #fff 0%) left/1px
+          12px repeat-y; /* left */
+
+      box-sizing: border-box;
+      box-shadow: 10px 3px 30px rgba(213, 158, 41, 0.1);
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        width: 332px;
+        margin-bottom: 30px;
+      }
+
+      .WalletTitle {
+        background: linear-gradient(to right, $darkgrey 50%, $gold 0%)
+            top/12px 1px repeat-x,
+          /* top */ linear-gradient($darkgrey 50%, $gold 0%) right/1px
+            12px repeat-y,
+          /* right */
+            linear-gradient(to right, $darkgrey 50%, $gold 0%)
+            bottom/12px 1px repeat-x,
+          /* bottom */ linear-gradient($darkgrey 50%, $gold 0%)
+            left/1px 12px repeat-y; /* left */
+        background-color: $gold;
+        text-align: center;
+        color: white;
+        @extend %fontHeader;
+        @extend %fontBold;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+      .WalletInfo {
+        padding-right: 15px;
+        padding-left: 20px;
+
+        .WalletInfoItems {
+          :last-child {
+            border: none;
+          }
+          padding-bottom: 15px;
+        }
+
+        .Container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: $walletPaddingContainer;
+          border-bottom: 1px solid $grey;
+
+          .Text {
+            width: 70%;
+          }
+          .Number {
+            width: 20%;
+            text-align: right;
+          }
+          .Currency {
+            text-align: right;
+            width: 10%;
+            color: black;
+          }
+
+          &.Remaining {
+            .Number {
+              @media only screen and (max-width: $mobileBreakPoint) {
+              }
+
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 25px;
+                color: $grey;
+                @include fontBold();
+              }
+            }
+          }
+          &.PendingOrder {
+            .Number {
+              @media only screen and (max-width: $mobileBreakPoint) {
+              }
+
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 25px;
+                color: black;
+                @include fontBold();
+              }
+            }
+          }
+          &.Missing {
+            .Number {
+              @media only screen and (max-width: $mobileBreakPoint) {
+              }
+
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 25px;
+                color: $gold;
+                @include fontBold();
+              }
+            }
+          }
+        }
+        .TopupNow {
+          @extend %fontBold;
+          padding-top: 7px;
+          padding-bottom: 7px;
+          color: white;
+          background-color: $brown;
+          text-align: center;
+          width: 85%;
+          margin: auto;
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+
+  .TextNotice {
+    white-space: pre-line;
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding-bottom: 60px;
+    }
+  }
+}

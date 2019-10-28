@@ -1,0 +1,196 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+$paddingContainer: 15px 0;
+$MobilePaddingContainer: 10px 0;
+$paddingLine: 0 0 15px 0;
+$mobilePaddingLine: 0 0 7px 0;
+
+.CourseName {
+  color: $darkgrey;
+  @extend %fontBold;
+  @extend %fontHeader;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 25px;
+    padding-bottom: 10px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    max-width: 1103px;
+    margin: auto;
+    padding-bottom: 15px;
+  }
+}
+.CourseLevelContainer {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    max-width: 1103px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .CourseVideo {
+    img {
+      @media only screen and (max-width: $mobileBreakPoint) {
+        width: 313px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        max-width: 720px;
+      }
+    }
+  }
+  .CourseLevel {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    box-shadow: 10px 3px 30px rgba(213, 158, 41, 0.16);
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 0 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 70%;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      margin-left: 15px;
+      max-width: 362px;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .Level_PriceContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding: $MobilePaddingContainer;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding: $paddingContainer;
+      }
+
+      .Text {
+        color: $brown;
+        text-align: center;
+        padding-bottom: 5px;
+      }
+
+      .Level {
+        background-color: $gold;
+        border-radius: 28px;
+        color: white;
+        @extend %fontBold;
+        padding: 5px 15px;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 12px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+        }
+      }
+      .NumberContainer {
+        background-color: $gold;
+        color: white;
+        transform: skewX(-30deg);
+        padding: 5px 10px;
+
+        .PriceNumber {
+          display: inline-block;
+          transform: skewX(30deg);
+
+          span {
+            @extend %fontExtraBold;
+          }
+        }
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 14px;
+          sup {
+            font-size: 10px;
+          }
+        }
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 20px;
+
+          sup {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .PayNow {
+      border-top: 1px solid #d6d6d6;
+      border-bottom: 1px solid #d6d6d6;
+      text-align: center;
+      line-height: 1.5;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding: $MobilePaddingContainer;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding: $paddingContainer;
+      }
+
+      .PayButton {
+        color: white;
+        @extend %fontBold;
+        background-color: $gold;
+        border-radius: 10px;
+        padding: 10px 0;
+        margin-bottom: 10px;
+      }
+      .Quantity {
+        @extend %fontBold;
+      }
+    }
+
+    .Info {
+      padding-top: 15px;
+      .Container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding: $mobilePaddingLine;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding: $paddingLine;
+        }
+
+        img {
+          padding-right: 10px;
+        }
+      }
+      span {
+        @extend %fontExtraBold;
+        color: $grey;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
