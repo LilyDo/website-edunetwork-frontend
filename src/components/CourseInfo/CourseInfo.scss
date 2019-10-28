@@ -147,69 +147,88 @@ $mobileMargin: 10px 25px 10px 25px;
       padding-bottom: 20px;
 
       .Course {
-        margin-bottom: 15px;
-
-        .Name {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          @extend %fontSemiBold;
-          background-color: $gold;
-          color: white;
-          padding-top: 8px;
-          padding-bottom: 8px;
-
-          img {
-            padding-left: 10px;
-            padding-right: 10px;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          margin-bottom: 10px;
+          .Part {
+            img {
+              padding-left: 20px;
+              padding-right: 10px;
+            }
+          }
+          .Lesson {
+            margin-left: 20px;
           }
         }
 
-        .Part {
-          background-color: $lightgrey;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          padding-top: 8px;
-          padding-bottom: 8px;
-          margin-top: 2px;
-          img {
-            padding-left: 35px;
-            padding-right: 10px;
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          margin-bottom: 15px;
+
+          .Part {
+            img {
+              padding-left: 35px;
+              padding-right: 10px;
+            }
+          }
+          .Lesson {
+            margin-left: 30px;
           }
         }
+      }
 
-        .Lessons {
+      .Name {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @extend %fontSemiBold;
+        background-color: $gold;
+        color: white;
+        padding-top: 8px;
+        padding-bottom: 8px;
 
-          .LessonContainer {
+        img {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+
+      .Part {
+        background-color: $lightgrey;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-top: 2px;
+      }
+
+      .Lessons {
+        .LessonContainer {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          align-items: center;
+          .Lesson {
             display: flex;
-              justify-content: space-between;
-              flex-direction: row;
-              align-items: center;
-            .Lesson {
-              display: flex;
-              justify-content: flex-start;
-              flex-direction: row;
-              align-items: center;
-              padding-top: 8px;
-              padding-bottom: 8px;
-              margin-left: 30px;
-              border-bottom: 1px solid $lightgrey;
-              img {
-                padding-left: 10px;
-                padding-right: 10px;
-              }             
-            }
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid $lightgrey;
 
-            .Duration {
-              justify-self: flex-end;
+            img {
+              padding-left: 10px;
+              padding-right: 10px;
             }
-
           }
 
-          :last-child {
-            border-bottom: none;
+          .Duration {
+            justify-self: flex-end;
           }
+        }
+
+        :last-child {
+          border-bottom: none;
         }
       }
     }

@@ -7,6 +7,7 @@ import CoursePage from './components/CoursePage/CoursePage';
 import CourseDetailPage from './components/CourseDetailPage/CourseDetailPage';
 import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuccessfulPage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import {
   BrowserRouter as Router,
@@ -17,25 +18,30 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
-        <div className="Content">
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/courses">
-              <CoursePage />
-            </Route>
-            <Route exact path="/courses/detail">
-              <CourseDetailPage />
-            </Route>
-            <Route exact path="/courses/order">
-              <OrderPage />
-            </Route>
-            <Route exact path="/contact">
-              <ContactPage />
-            </Route>
-          </Switch>
+        <div className="HeaderContentContainer">
+          <Header />
+          <div className="Content">
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route exact path="/courses">
+                <CoursePage />
+              </Route>
+              <Route exact path="/courses/detail">
+                <CourseDetailPage />
+              </Route>
+              <Route exact path="/courses/order">
+                <OrderPage />
+              </Route>
+              <Route exact path="/courses/paymentsucessful">
+                <PaymentSuccessfulPage />
+              </Route>
+              <Route exact path="/contact">
+                <ContactPage />
+              </Route>
+            </Switch>
+          </div>
         </div>
         <Footer />
         <LoginPopup />
