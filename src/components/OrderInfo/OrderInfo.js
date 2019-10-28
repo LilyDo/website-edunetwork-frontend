@@ -15,16 +15,18 @@ function OrderInfo() {
             <div className="HeaderText">
               BẬC THẦY VỀ NGHỆ THUẬT LÃNH ĐẠO
             </div>
-            <div className="LevelContainer">
-              <div className="Text">Level</div>
-              <div className="Level">Expert</div>
-            </div>
-            <div className="PriceContainer">
-              <div className="Text">Price</div>
-              <div className="NumberContainer">
-                <div className="PriceNumber">
-                  <span>1000</span>
-                  <sup>usd</sup>
+            <div className="LevelPrice">
+              <div className="LevelContainer">
+                <div className="Text">Level</div>
+                <div className="Level">Expert</div>
+              </div>
+              <div className="PriceContainer">
+                <div className="Text">Price</div>
+                <div className="NumberContainer">
+                  <div className="PriceNumber">
+                    <span>1000</span>
+                    <sup>usd</sup>
+                  </div>
                 </div>
               </div>
             </div>

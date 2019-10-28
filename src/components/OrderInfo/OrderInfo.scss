@@ -2,13 +2,15 @@
 @import '../../assets/font/font.scss';
 
 $paddingLine: 0 0 15px 0;
-$mobilePaddingLine: 0 0 7px 0;
+$mobilePaddingLine: 0 0 10px 0;
 $paddingRightHeader: 20px;
 $walletPaddingContainer: 12px 0 12px 0;
 
 .OrderInfoContainer {
   @media only screen and (max-width: $mobileBreakPoint) {
     align-content: center;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -27,8 +29,6 @@ $walletPaddingContainer: 12px 0 12px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-left: 25px;
-      margin-right: 25px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -41,6 +41,8 @@ $walletPaddingContainer: 12px 0 12px 0;
       box-sizing: border-box;
       box-shadow: 10px 3px 30px rgba(213, 158, 41, 0.1);
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding: 10px 15px;
+        margin-bottom: 15px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -51,63 +53,99 @@ $walletPaddingContainer: 12px 0 12px 0;
 
       .CourseHeader {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         align-items: center;
+      
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          flex-direction: row;
+          justify-content: space-between;
+        }
 
         .HeaderText {
           @extend %fontHeader;
           @extend %fontBold;
-          padding-right: $paddingRightHeader;
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+            padding-top: 10px;
+            padding-bottom: 10px;
+  
+          }
+          
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            padding-right: $paddingRightHeader;
+
+          }
         }
         .Text {
           color: $brown;
           text-align: center;
           padding-bottom: 5px;
         }
-        .LevelContainer {
-          padding-right: $paddingRightHeader;
-          .Level {
-            background-color: $gold;
-            border-radius: 28px;
-            color: white;
-            @extend %fontBold;
-            padding: 5px 15px;
 
-            @media only screen and (max-width: $mobileBreakPoint) {
-              font-size: 12px;
-            }
+        .LevelPrice {
+          display: flex;
+        align-items: center;
+        flex-direction: row;
+       
 
-            @media only screen and (min-width: $mobileBreakPoint + 1) {
+        @media only screen and (max-width: $mobileBreakPoint) {
+          justify-content: space-between;
+          width: 100%;
+        }
+        
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          justify-content: space-around;
+        }
+
+          .LevelContainer {
+            padding-right: $paddingRightHeader;
+            .Level {
+              background-color: $gold;
+              border-radius: 28px;
+              color: white;
+              @extend %fontBold;
+              padding: 5px 15px;
+  
+              @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 12px;
+              }
+  
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+              }
             }
           }
-        }
-        .PriceContainer {
-          .NumberContainer {
-            background-color: $gold;
-            color: white;
-            transform: skewX(-30deg);
-            padding: 5px 10px;
-
-            .PriceNumber {
-              display: inline-block;
-              transform: skewX(30deg);
-
-              span {
-                @extend %fontExtraBold;
+          .PriceContainer {
+            .NumberContainer {
+              background-color: $gold;
+              color: white;
+              transform: skewX(-30deg);
+              padding: 5px 10px;
+  
+              .PriceNumber {
+                display: inline-block;
+                transform: skewX(30deg);
+  
+                span {
+                  @extend %fontExtraBold;
+                }
               }
-            }
-            @media only screen and (max-width: $mobileBreakPoint) {
-              font-size: 14px;
-              sup {
-                font-size: 10px;
+              @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 14px;
+                sup {
+                  font-size: 10px;
+                }
               }
-            }
-            @media only screen and (min-width: $mobileBreakPoint + 1) {
-              font-size: 20px;
-
-              sup {
-                font-size: 12px;
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 20px;
+  
+                sup {
+                  font-size: 12px;
+                }
               }
             }
           }
@@ -165,6 +203,7 @@ $walletPaddingContainer: 12px 0 12px 0;
       box-shadow: 10px 3px 30px rgba(213, 158, 41, 0.1);
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        margin-bottom: 15px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -192,7 +231,7 @@ $walletPaddingContainer: 12px 0 12px 0;
       }
       .WalletInfo {
         padding-right: 15px;
-        padding-left: 20px;
+        padding-left: 15px;
 
         .WalletInfoItems {
           :last-child {
@@ -223,37 +262,40 @@ $walletPaddingContainer: 12px 0 12px 0;
 
           &.Remaining {
             .Number {
+              color: $grey;
+              @include fontBold();
               @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 17px;
               }
 
               @media only screen and (min-width: $mobileBreakPoint + 1) {
                 font-size: 25px;
-                color: $grey;
-                @include fontBold();
               }
             }
           }
           &.PendingOrder {
             .Number {
+              color: black;
+              @include fontBold();
               @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 17px;
               }
 
               @media only screen and (min-width: $mobileBreakPoint + 1) {
                 font-size: 25px;
-                color: black;
-                @include fontBold();
               }
             }
           }
           &.Missing {
             .Number {
+              color: $gold;
+              @include fontBold();
               @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 17px;
               }
 
               @media only screen and (min-width: $mobileBreakPoint + 1) {
                 font-size: 25px;
-                color: $gold;
-                @include fontBold();
               }
             }
           }
@@ -269,6 +311,7 @@ $walletPaddingContainer: 12px 0 12px 0;
           margin: auto;
 
           @media only screen and (max-width: $mobileBreakPoint) {
+            margin-bottom: 10px;
           }
 
           @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -282,6 +325,7 @@ $walletPaddingContainer: 12px 0 12px 0;
   .TextNotice {
     white-space: pre-line;
     @media only screen and (max-width: $mobileBreakPoint) {
+      padding-bottom: 30px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
