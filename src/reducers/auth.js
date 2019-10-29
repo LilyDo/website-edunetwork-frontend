@@ -1,16 +1,31 @@
 import * as types from '../actions';
 
-export default function (state = [], action) {
-  const response = action.response;
+const initialState = {
+  loading: false,
+  auth: [],
+  error: null
+};
 
+export default function (state = initialState, action) {
   switch (action.type) {
     case types.LOGIN_REQUEST:
-      console.log('xxx', "make API call");
-      console.log('xxx', action.payload)
+      return {
+        ...state,
+        loading: true
+      };
     case types.LOGIN_SUCCESS:
-      return { ...state, response };
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        auth: [...state.auth, action.payload]
+      };
     case types.LOGIN_FAILURE:
-      return { ...state, response };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
     default:
       return state;
   }
