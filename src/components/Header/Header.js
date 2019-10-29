@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
+import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
 
 function Header() {
   return (
@@ -27,6 +28,7 @@ function Header() {
           </div>
           <Link to="/signin" className="SignInDesktop">
             <span>Sign in</span>
+            <AccountMenuPopup />
           </Link>
         </div>
       </div>
