@@ -8,8 +8,9 @@ import CourseDetailPage from './components/CourseDetailPage/CourseDetailPage';
 import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuccessfulPage';
-import LoginPopup from './components/LoginPopup/LoginPopup';
 import SigninPage from './components/SigninPage/SigninPage';
+import LoginPopup from './components/LoginPopup/LoginPopup';
+import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,6 +50,7 @@ function App() {
         </div>
         <Footer />
         <LoginPopup />
+        <ForgotPasswordPopup />
       </div>
     </Router>
   );

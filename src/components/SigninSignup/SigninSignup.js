@@ -40,6 +40,10 @@ function SigninSignup() {
           <div className="Username">
             <span>Username</span>
             <input type="text"></input>
+            <div className="Note">
+              * Rất tiếc, username này đã có người khác đặt. Vui lòng
+              chọn tên khác
+            </div>
           </div>
           <div className="Email">
             <span>Email</span>

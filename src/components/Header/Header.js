@@ -25,7 +25,9 @@ function Header() {
               <span>CONTACT</span>
             </Link>
           </div>
-          <div className="SignInDesktop">Sign in</div>
+          <Link to="/signin" className="SignInDesktop">
+            <span>Sign in</span>
+          </Link>
         </div>
       </div>
 
@@ -34,9 +36,9 @@ function Header() {
           <div className="HamburgerMenu">
             <img alt="menu" src={HamburgerIcon} />
           </div>
-          <div className="SignInMobile">
+          <Link to="/signin" className="SignInMobile">
             <span>Sign in</span>
-          </div>
+          </Link>
         </div>
         <HamburgerMenu />
       </div>
