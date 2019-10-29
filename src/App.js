@@ -15,7 +15,10 @@ import CoursePage from './components/CoursePage/CoursePage';
 import CourseDetailPage from './components/CourseDetailPage/CourseDetailPage';
 import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuccessfulPage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
+import SigninPage from './components/SigninPage/SigninPage';
+
 import { simpleAction } from './actions/simpleAction';
 
 class App extends Component {
@@ -23,26 +26,33 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <button onClick={this.simpleAction}>Test redux action</button>
-          <Header />
-          <div className="Content">
-            <Switch>
-              <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/courses">
-                <CoursePage />
-              </Route>
-              <Route exact path="/courses/detail">
-                <CourseDetailPage />
-              </Route>
-              <Route exact path="/courses/order">
-                <OrderPage />
-              </Route>
-              <Route exact path="/contact">
-                <ContactPage />
-              </Route>
-            </Switch>
+          <div className="HeaderContentContainer">
+            <Header />
+            <div className="Content">
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route exact path="/courses">
+                  <CoursePage />
+                </Route>
+                <Route exact path="/courses/detail">
+                  <CourseDetailPage />
+                </Route>
+                <Route exact path="/courses/order">
+                  <OrderPage />
+                </Route>
+                <Route exact path="/courses/paymentsucessful">
+                  <PaymentSuccessfulPage />
+                </Route>
+                <Route exact path="/signin">
+                  <SigninPage />
+                </Route>
+                <Route exact path="/contact">
+                  <ContactPage />
+                </Route>
+              </Switch>
+            </div>
           </div>
           <Footer />
           <LoginPopup />

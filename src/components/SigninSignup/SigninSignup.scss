@@ -1,0 +1,164 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+%LoginHeader {
+  @extend %fontExtraBold;
+  color: $brown;
+  @extend %fontHeader;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+%styleLoginSelected {
+  border-bottom: 3px solid $brown;
+}
+
+%styleButton {
+  background-color: $brown;
+  color: white;
+  @extend %fontBold;
+  border-radius: 10px;
+  cursor: pointer;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 12px 100px;
+    text-align: center;
+  }
+}
+
+.SigninSignupContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    max-width: 1103px;
+    margin: auto;
+    margin-bottom: 110px;
+  }
+
+  .Head {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    .Title {
+      width: 45%;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 25px;
+        margin-bottom: 25px;
+      }
+
+      span {
+        @extend %LoginHeader;
+      }
+
+      &:hover {
+        @extend %styleLoginSelected;
+      }
+    }
+  }
+
+  .Signin,
+  .Signup {
+    @media only screen and (max-width: $mobileBreakPoint) {
+      width: 50%;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      width: 45%;
+    }
+  }
+
+  .Body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid $lightgrey;
+    box-sizing: border-box;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 30px 50px;
+    }
+
+    .Email,
+    .Password,
+    .Username,
+    .Fullname,
+    .Sponsor,
+    .PhoneNumber,
+    .RePassword {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      span {
+        @extend %fontExtraBold;
+        color: $grey;
+      }
+
+      input {
+        border: none;
+        margin-top: 7px;
+        margin-bottom: 25px;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+        height: 50px;
+        @extend %fontSemiBold;
+        color: $darkgrey;
+        font-size: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    .ForgotPassword {
+      font-style: italic;
+    }
+  }
+  .Button {
+    max-width: 1103px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 70px;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+
+    .SigninButton,
+    .SignupButton {
+      width: 45%;
+      text-align: center;
+
+      span {
+        text-align: center;
+        box-sizing: border-box;
+        @extend %styleButton;
+      }
+    }
+  }
+}
