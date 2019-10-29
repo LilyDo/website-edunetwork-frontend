@@ -19,8 +19,6 @@ import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuc
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import SigninPage from './components/SigninPage/SigninPage';
 
-import { simpleAction } from './actions/simpleAction';
-
 class App extends Component {
   render() {
     return (
@@ -61,15 +59,11 @@ class App extends Component {
     );
   }
 
-  simpleAction = (event) => {
-    this.props.simpleAction();
-  }
 }
 
 const mapStateToProps = state => ({
   ...state
 })
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
