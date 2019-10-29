@@ -9,6 +9,7 @@ import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuccessfulPage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
+import SigninPage from './components/SigninPage/SigninPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,6 +37,9 @@ function App() {
               </Route>
               <Route exact path="/courses/paymentsucessful">
                 <PaymentSuccessfulPage />
+              </Route>
+              <Route exact path="/signin">
+                <SigninPage />
               </Route>
               <Route exact path="/contact">
                 <ContactPage />
