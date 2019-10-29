@@ -6,6 +6,8 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // custom
 import './App.scss';
 import Header from './components/Header/Header';
@@ -54,6 +56,7 @@ class App extends Component {
           </div>
           <Footer />
           <LoginPopup />
+          <ToastContainer />
         </div>
       </Router >
     );

@@ -1,4 +1,5 @@
 import * as types from '../actions';
+import { toast } from 'react-toastify';
 
 const initialState = {
   loading: false,
@@ -14,6 +15,15 @@ export default function (state = initialState, action) {
         loading: true
       };
     case types.LOGIN_SUCCESS:
+      if (action.payload.data) {
+        localStorage.setItem(types.TOKEN_KEY, action.payload.data.token)
+      }
+      const duration = 3000
+      toast("Đăng nhập thành công!", { autoClose: duration })
+      setTimeout(function () {
+        window.location.pathname = '/'
+      }, duration)
+
       return {
         ...state,
         loading: false,
@@ -21,6 +31,8 @@ export default function (state = initialState, action) {
         auth: [...state.auth, action.payload]
       };
     case types.LOGIN_FAILURE:
+      localStorage.removeItem(types.TOKEN_KEY)
+
       return {
         ...state,
         loading: false,
