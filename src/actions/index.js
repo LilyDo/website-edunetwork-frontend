@@ -1,3 +1,4 @@
+// export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1'
 export const BASE_URL =
   'http://api.edunetwork.dev.gkcsoftware.com/api/v1';
 export const TOKEN_KEY = 'token';
