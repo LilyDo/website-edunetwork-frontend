@@ -1,0 +1,104 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+// @extend %fontExtraBold;
+// display: flex;
+// flex-direction: row;
+// justify-content: space-between;
+
+// max-width: 1103px;
+// margin: auto;
+
+// @extend %fontBold;
+
+.MyProfile {
+  .Title {
+    padding-bottom: 5px;
+    border-bottom: 1px solid $lightgrey;
+  }
+  .Profile {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .EditIcon {
+      $size: 50px;
+      position: absolute;
+      right: $size/2;
+      top: $size/2;
+    }
+
+    .Avatar,
+    .Data {
+      @extend %fontBold;
+      color: $grey;
+    }
+
+    .Avatar {
+      text-align: center;
+
+      .Photo {
+        $size: 155px;
+        width: $size;
+        height: $size;
+        border-radius: $size/2;
+        border: 1px solid $lightgrey;
+        display: flex;
+      }
+    }
+    .GroupProfile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      width: 100%;
+      .GroupProfile1,
+      .GroupProfile2 {
+        width: 25%;
+        .Data {
+          border-bottom: 1px solid $lightgrey;
+        }
+
+        .Text {
+          color: $lightgrey;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 20px;
+
+    .Title {
+      font-size: 20px;
+    }
+
+    .Profile {
+      .Avatar {
+        font-size: 25px;
+        .Photo {
+          margin-top: 18px;
+          margin-bottom: 14px;
+        }
+      }
+
+      .GroupProfile {
+        padding-top: 90px;
+        padding-bottom: 90px;
+        .Text {
+        }
+
+        .Data {
+          padding-top: 8px;
+          padding-bottom: 13px;
+          margin-bottom: 13px;
+        }
+      }
+    }
+  }
+}
