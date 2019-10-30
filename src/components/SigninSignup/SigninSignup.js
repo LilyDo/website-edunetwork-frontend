@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './SigninSignup.scss';
-import { loginAction } from '../../actions/auth';
+import { loginAction, registerAction } from '../../actions/auth';
 import { bindActionCreators } from "redux";
+import {getUrlParameter} from '../../services/appService';
 
 class SigninSignup extends Component {
   state = {
     email: "",
     password: "",
-    isShowLogin: true
+
+    isShowLogin: true,
+
+    refUser: "",
+    fullName: "",
+    userName: "",
+    number: "",
+    rePassword: ""
   }
 
   setEmail = event => {
@@ -17,6 +25,26 @@ class SigninSignup extends Component {
 
   setPassword = event => {
     this.setState({ password: event.target.value })
+  }
+
+  setFullName = event => {
+    this.setState({ fullName: event.target.value })
+  }
+
+  setRefUser = event => {
+    this.setState({ refUser: event.target.value })
+  }
+  
+  setUserName = event => {
+    this.setState({ userName: event.target.value })
+  }
+  
+  setNumber = event => {
+    this.setState({ number: event.target.value })
+  }
+  
+  setRePassword = event => {
+    this.setState({ rePassword: event.target.value })
   }
 
   login = () => {
@@ -28,15 +56,33 @@ class SigninSignup extends Component {
     this.props.actions.loginAction(data)
   }
 
+  register = () => {
+    const data = {
+      "name": this.state.fullName,
+      "user_name": this.state.userName,
+      "email": this.state.email,
+      "password": this.state.password,
+      "cf_password": this.state.rePassword,
+      "user_code": this.state.refUser,
+      "phone": this.state.number
+    }
+    this.props.actions.registerAction(data)
+  }
+
   changeTab = () => {
-    console.log("cos va");
     this.setState({
       isShowLogin: !this.state.isShowLogin
     })
   }
 
+  componentDidMount () {
+    this.setState({
+      refUser: getUrlParameter('refUser')
+    });
+  }
+
   render() {
-    const { email, password } = this.state
+    const { email, password, fullName, refUser, userName, number, rePassword } = this.state;
 
     return (
       <div className="SigninSignupContainer">
@@ -73,31 +119,31 @@ class SigninSignup extends Component {
             <div className="Signup">
               <div className="Fullname">
                 <span>Họ Tên</span>
-                <input type="text"></input>
+                <input type="text" value={fullName} onChange={this.setFullName}></input>
               </div>
               <div className="Username">
                 <span>Username</span>
-                <input type="text"></input>
+                <input type="text" value={userName} onChange={this.setUserName}></input>
               </div>
               <div className="Email">
                 <span>Email</span>
-                <input type="text"></input>
+                <input type="text" value={email} onChange={this.setEmail}></input>
               </div>
               <div className="Sponsor">
                 <span>Người bảo trợ cho bạn</span>
-                <input type="text"></input>
+                <input type="text" value={refUser} onChange={this.setRefUser}></input>
               </div>
               <div className="PhoneNumber">
                 <span>Số điện thoại</span>
-                <input type="number"></input>
+                <input type="number" value={number} onChange={this.setNumber}></input>
               </div>
               <div className="Password">
                 <span>Mật khẩu</span>
-                <input type="text"></input>
+                <input type="password" value={password} onChange={this.setPassword}></input>
               </div>
               <div className="RePassword">
                 <span>Nhập lại mật khẩu</span>
-                <input type="text"></input>
+                <input type="password" value={rePassword} onChange={this.setRePassword}></input>
               </div>
             </div>
           }
@@ -109,7 +155,7 @@ class SigninSignup extends Component {
           </div>
         }
         { !this.state.isShowLogin &&
-          <div className="SignupButton">
+          <div className="SignupButton"  onClick={this.register}>
             <span>ĐĂNG KÝ</span>
           </div>
         }
@@ -128,6 +174,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         loginAction,
+        registerAction
       },
       dispatch,
     ),

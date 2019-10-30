@@ -20,9 +20,9 @@ export default function (state = initialState, action) {
       const duration = 3000
       if (action.payload.data.token) {
         localStorage.setItem(types.TOKEN_KEY, action.payload.data.token)
-        toast("Đăng nhập thành công!", { autoClose: duration })
+        toast.success("Login successful!", { autoClose: duration })
       } else {
-        toast(action.payload.errors[0], { autoClose: duration })
+        toast.error(action.payload.errors[0], { autoClose: duration })
       };
       
     case types.LOGIN_FAILURE:

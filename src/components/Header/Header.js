@@ -60,7 +60,7 @@ class Header extends Component {
             }
             { this.state.isLogined && 
               <div className="AvatarHeader">
-                <img src={this.state.currentUser.avatar} />
+                <img src={this.state.currentUser.avatar || 'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'} />
                 <div className="NameHeader">{this.state.currentUser.name}</div>
                 <div class="dropdown-content">
                   <Link to="/signin">
@@ -87,7 +87,7 @@ class Header extends Component {
             }
             { this.state.isLogined && 
               <div className="AvatarHeader">
-                <img src={this.state.currentUser.avatar} />
+                <img src={this.state.currentUser.avatar || 'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'} />
                 <div className="NameHeader">{this.state.currentUser.name}</div>
                 <div class="dropdown-content">
                   <Link to="/signin">

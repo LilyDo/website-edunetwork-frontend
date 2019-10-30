@@ -25,7 +25,7 @@ export default function (state = initialState, action) {
           window.location.pathname = '/'
         }, duration)
       } else {
-        toast(action.payload.message, { autoClose: duration })
+        toast.error(action.payload.message, { autoClose: duration })
       }
 
       return {

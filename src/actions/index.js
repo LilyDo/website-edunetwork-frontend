@@ -10,6 +10,10 @@ export const GET_PROFILE_REQUEST = "GET_PROFILE_REQUEST";
 export const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 export const GET_PROFILE_FAILURE = "GET_PROFILE_FAILURE";
 
+export const REGISTER_REQUEST = "REGISTER_REQUEST";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILURE = "REGISTER_FAILURE";
+
 // This middleware will just add the property "async dispatch"
 // to actions with the "async" propperty set to true
 export const asyncDispatchMiddleware = store => next => action => {
