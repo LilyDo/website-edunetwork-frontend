@@ -5,9 +5,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 // custom
 import './App.scss';
 import Header from './components/Header/Header';
@@ -25,8 +27,36 @@ import AccountCoursePage from './components/AccountCoursePage/AccountCoursePage'
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 
+// services
+import { getUserFormLocal } from './services/appService';
+
+
+function PrivateRoute ({component: Component, authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authed === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/signin', state: {from: props.location}}} />}
+    />
+  )
+}
+
 class App extends Component {
+  state = {
+    isLogined : false
+  }
+
+  checkCurrentUser() {
+    if (getUserFormLocal()) {
+      this.state.isLogined = true;
+      this.state.currentUser = getUserFormLocal();
+    }
+  }
+
   render() {
+    this.checkCurrentUser();
+
     return (
       <Router>
         <div className="App">
@@ -55,9 +85,7 @@ class App extends Component {
                 <Route exact path="/account/dashboard">
                   <AccountDashboardPage />
                 </Route>
-                <Route exact path="/account/profile">
-                  <AccountProfilePage />
-                </Route>
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile" component={AccountProfilePage} />
                 <Route exact path="/account/course">
                   <AccountCoursePage />
                 </Route>
