@@ -74,8 +74,14 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div class="dropdown-content">
-                  <Link to="/signin">
-                    <div>User Profile</div>
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
+                  <Link to="/account/profile">
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
@@ -108,8 +114,14 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div class="dropdown-content">
-                  <Link to="/signin">
-                    <div>User Profile</div>
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
+                  <Link to="/account/profile">
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>

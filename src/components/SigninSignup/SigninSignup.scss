@@ -73,6 +73,7 @@
 
       &:hover {
         @extend %styleLoginSelected;
+        cursor: pointer;
       }
     }
   }

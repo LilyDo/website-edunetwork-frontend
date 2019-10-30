@@ -1,10 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component }from 'react';
 import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
+import { getUserFormLocal } from '../../services/appService';
 
 class AccountBreadcrumb extends Component {
+  state = {
+    isLogined: false,
+    currentUser: {},
+  };
+
+  checkCurrentUser() {
+    if (getUserFormLocal()) {
+      this.state.isLogined = true;
+      this.state.currentUser = getUserFormLocal();
+    }
+  }
+
   render() {
+    this.checkCurrentUser();
+
     return (
       <div className="AccountBreadcrumb">
         <div className="Container">
@@ -41,9 +56,9 @@ class AccountBreadcrumb extends Component {
             </Link>
           </div>
           <div className="AccountContainer">
-            <div class="Text">Xin chào! </div>
-            <div class="Fullname"> Hồ Đức Lợi</div>
-            <div class="Username">{'(loiho)'}</div>
+            <div class="Text">Hello! </div>
+            <div class="Fullname">{this.state.currentUser.name}</div>
+            <div class="Username"> ({this.state.currentUser.code})</div>
           </div>
         </div>
       </div>
