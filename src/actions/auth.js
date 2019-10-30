@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { BASE_URL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './index';
+import {getProfileAction} from './profile';
 
 export const loginAction = (user) => {
   return dispatch => {
     dispatch(loginRequest());
 
-    axios.post(`${BASE_URL}/login`, user)
-      .then(response => dispatch(loginSuccess(response.data)))
+    axios.post(`${BASE_URL}/users/login`, user)
+      .then(response => {
+        dispatch(loginSuccess(response.data));
+        dispatch(getProfileAction(response.data.data.token));
+      })
       .catch(error => dispatch(loginFailure(error.message)))
   }
 }

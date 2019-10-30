@@ -79,6 +79,7 @@
 
   .Signin,
   .Signup {
+    margin: 0 auto;
     @media only screen and (max-width: $mobileBreakPoint) {
       width: 50%;
     }
@@ -153,7 +154,7 @@
     .SignupButton {
       width: 45%;
       text-align: center;
-
+      margin: 0 auto;
       span {
         text-align: center;
         box-sizing: border-box;
