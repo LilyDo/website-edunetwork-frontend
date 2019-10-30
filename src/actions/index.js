@@ -1,4 +1,5 @@
-export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1'
+// export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1'
+export const BASE_URL = 'http://api.edunetwork.dev.giakiemcoder.com/api/v1'
 export const TOKEN_KEY = 'token';
 export const CURRENT_USER = 'current_user';
 
