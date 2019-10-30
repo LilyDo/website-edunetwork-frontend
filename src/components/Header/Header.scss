@@ -137,15 +137,60 @@
   @media only screen and (min-width: $mobileBreakPoint + 1) {
   }
 
-  .HamburgerMenu {
-  }
-
   .SignInMobile {
     color: white;
     border: 1px solid $gold;
     border-radius: 25px;
     background-color: $gold;
     padding: 4px 12px;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.AvatarHeader {
+  position: relative;
+  float: right;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  &:hover {
+    .dropdown-content {
+      display: block;
+    }
+  }
+  img {
+    height: 60px;
+    float: left;
+    border-radius: 50%;
+  }
+  .NameHeader {
+    float: left;
+    color: white;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-left: 15px;
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  bottom: -90px;
+  right: -10px;
+  width: 110px;
+  background-color: #d59e29;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  div {
+    padding: 9px;
+    color: white;
+    font-weight: 600;
+    border-bottom: solid 1px #ffffff40;
+    &:hover {
+      cursor: pointer;
+    }
   }
   a {
     text-decoration: none;

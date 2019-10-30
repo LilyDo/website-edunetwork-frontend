@@ -1,82 +1,231 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './SigninSignup.scss';
+import { loginAction, registerAction } from '../../actions/auth';
+import { bindActionCreators } from 'redux';
+import { getUrlParameter } from '../../services/appService';
 
-function SigninSignup() {
-  return (
-    <div className="SigninSignupContainer">
-      <div className="Head">
-        <div className="Title">
-          <div>
-            <span>ĐĂNG NHẬP</span>
-          </div>
-          <div>Đã là thành viên của EDUNETWORK</div>
-        </div>
-        <div className="Title">
-          <div>
-            <span>ĐĂNG KÝ</span>
-          </div>
-          <div>Dành cho thành viên mới</div>
-        </div>
-      </div>
+class SigninSignup extends Component {
+  state = {
+    email: '',
+    password: '',
 
-      <div className="Body">
-        <div className="Signin">
-          <div className="Email">
-            <span>Email</span>
-            <input type="text"></input>
-          </div>
-          <div className="Password">
-            <span>Mật khẩu</span>
-            <input type="text"></input>
-          </div>
-          <div className="ForgotPassword">Quên mật khẩu?</div>
-        </div>
+    isShowLogin: true,
 
-        <div className="Signup">
-          <div className="Fullname">
-            <span>Họ Tên</span>
-            <input type="text"></input>
-          </div>
-          <div className="Username">
-            <span>Username</span>
-            <input type="text"></input>
-            <div className="Note">
-              * Rất tiếc, username này đã có người khác đặt. Vui lòng
-              chọn tên khác
+    refUser: '',
+    fullName: '',
+    userName: '',
+    number: '',
+    rePassword: '',
+  };
+
+  setEmail = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  setPassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  setFullName = event => {
+    this.setState({ fullName: event.target.value });
+  };
+
+  setRefUser = event => {
+    this.setState({ refUser: event.target.value });
+  };
+
+  setUserName = event => {
+    this.setState({ userName: event.target.value });
+  };
+
+  setNumber = event => {
+    this.setState({ number: event.target.value });
+  };
+
+  setRePassword = event => {
+    this.setState({ rePassword: event.target.value });
+  };
+
+  login = () => {
+    const { email, password } = this.state;
+    const data = {
+      email,
+      password,
+    };
+    this.props.actions.loginAction(data);
+  };
+
+  register = () => {
+    const data = {
+      name: this.state.fullName,
+      user_name: this.state.userName,
+      email: this.state.email,
+      password: this.state.password,
+      cf_password: this.state.rePassword,
+      user_code: this.state.refUser,
+      phone: this.state.number,
+    };
+    this.props.actions.registerAction(data);
+  };
+
+  changeTab = () => {
+    this.setState({
+      isShowLogin: !this.state.isShowLogin,
+    });
+  };
+
+  componentDidMount() {
+    this.setState({
+      refUser: getUrlParameter('refUser'),
+    });
+  }
+
+  render() {
+    const {
+      email,
+      password,
+      fullName,
+      refUser,
+      userName,
+      number,
+      rePassword,
+    } = this.state;
+
+    return (
+      <div className="SigninSignupContainer">
+        <div className="Head">
+          <div className="Title" onClick={this.changeTab.bind(this)}>
+            <div>
+              <span>ĐĂNG NHẬP</span>
             </div>
+            <div>Đã là thành viên của EDUNETWORK</div>
           </div>
-          <div className="Email">
-            <span>Email</span>
-            <input type="text"></input>
+          <div className="Title" onClick={this.changeTab.bind(this)}>
+            <div>
+              <span>ĐĂNG KÝ</span>
+            </div>
+            <div>Dành cho thành viên mới</div>
           </div>
-          <div className="Sponsor">
-            <span>Người bảo trợ cho bạn</span>
-            <input type="text"></input>
-          </div>
-          <div className="PhoneNumber">
-            <span>Số điện thoại</span>
-            <input type="number"></input>
-          </div>
-          <div className="Password">
-            <span>Mật khẩu</span>
-            <input type="text"></input>
-          </div>
-          <div className="RePassword">
-            <span>Nhập lại mật khẩu</span>
-            <input type="text"></input>
-          </div>
+        </div>
+
+        <div className="Body">
+          {this.state.isShowLogin && (
+            <div className="Signin">
+              <div className="Email">
+                <span>Email</span>
+                <input
+                  type="text"
+                  value={email}
+                  onChange={this.setEmail}
+                ></input>
+              </div>
+              <div className="Password">
+                <span>Mật khẩu</span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={this.setPassword}
+                ></input>
+              </div>
+              <div className="ForgotPassword">Quên mật khẩu?</div>
+            </div>
+          )}
+          {!this.state.isShowLogin && (
+            <div className="Signup">
+              <div className="Fullname">
+                <span>Họ Tên</span>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={this.setFullName}
+                ></input>
+              </div>
+              <div className="Username">
+                <span>Username</span>
+                <input
+                  type="text"
+                  value={userName}
+                  onChange={this.setUserName}
+                ></input>
+              </div>
+              <div className="Email">
+                <span>Email</span>
+                <input
+                  type="text"
+                  value={email}
+                  onChange={this.setEmail}
+                ></input>
+              </div>
+              <div className="Sponsor">
+                <span>Người bảo trợ cho bạn</span>
+                <input
+                  type="text"
+                  value={refUser}
+                  onChange={this.setRefUser}
+                ></input>
+              </div>
+              <div className="PhoneNumber">
+                <span>Số điện thoại</span>
+                <input
+                  type="number"
+                  value={number}
+                  onChange={this.setNumber}
+                ></input>
+              </div>
+              <div className="Password">
+                <span>Mật khẩu</span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={this.setPassword}
+                ></input>
+              </div>
+              <div className="RePassword">
+                <span>Nhập lại mật khẩu</span>
+                <input
+                  type="password"
+                  value={rePassword}
+                  onChange={this.setRePassword}
+                ></input>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="Button">
+          {this.state.isShowLogin && (
+            <div className="SigninButton" onClick={this.login}>
+              <span>ĐĂNG NHẬP</span>
+            </div>
+          )}
+          {!this.state.isShowLogin && (
+            <div className="SignupButton" onClick={this.register}>
+              <span>ĐĂNG KÝ</span>
+            </div>
+          )}
         </div>
       </div>
-      <div className="Button">
-        <div className="SigninButton">
-          <span>ĐĂNG NHẬP</span>
-        </div>
-        <div className="SignupButton">
-          <span>ĐĂNG KÝ</span>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default SigninSignup;
+const mapStateToProps = (state, ownProps) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        loginAction,
+        registerAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SigninSignup);

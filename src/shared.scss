@@ -11,6 +11,10 @@ $gold: #d59e29;
   @extend %fontRegular;
 }
 
+a {
+  text-decoration: none;
+}
+
 // media query
 $mobileBreakPoint: 768px;
 $smallMobileBreakPoint: 600px;
