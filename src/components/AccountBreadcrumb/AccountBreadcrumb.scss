@@ -16,10 +16,13 @@
   a {
     text-decoration: none;
     cursor: pointer;
-    border-bottom: 3px solid $brown;
     padding-bottom: 5px;
     @extend %fontSemiBold;
     color: grey;
+  }
+
+  .ActiveTab {
+    border-bottom: 3px solid $brown;
   }
 
   .Container {
