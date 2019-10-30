@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
-import { bindActionCreators } from "redux";
+import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {getUserFormLocal} from '../../services/appService';
+import { getUserFormLocal } from '../../services/appService';
 
 const currentUser = localStorage.getItem('current_user');
 
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: {}
-  }
+    currentUser: {},
+  };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
@@ -26,9 +27,9 @@ class Header extends Component {
   doLogout() {
     localStorage.removeItem('current_user');
     this.checkCurrentUser();
-    setTimeout(function () {
-      window.location.pathname = '/'
-    }, 500)
+    setTimeout(function() {
+      window.location.pathname = '/';
+    }, 500);
   }
 
   render() {
@@ -53,15 +54,25 @@ class Header extends Component {
                 <span>CONTACT</span>
               </Link>
             </div>
-            { !this.state.isLogined && 
+            {!this.state.isLogined && (
               <Link to="/signin">
-                <div className="SignInDesktop">Sign in</div>
+                <div className="SignInDesktop">
+                  <span>Sign in</span>
+                  <AccountMenuPopup />
+                </div>
               </Link>
-            }
-            { this.state.isLogined && 
+            )}
+            {this.state.isLogined && (
               <div className="AvatarHeader">
-                <img src={this.state.currentUser.avatar || 'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'} />
-                <div className="NameHeader">{this.state.currentUser.name}</div>
+                <img
+                  src={
+                    this.state.currentUser.avatar ||
+                    'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
+                  }
+                />
+                <div className="NameHeader">
+                  {this.state.currentUser.name}
+                </div>
                 <div class="dropdown-content">
                   <Link to="/signin">
                     <div>User Profile</div>
@@ -69,26 +80,33 @@ class Header extends Component {
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
               </div>
-            }
+            )}
           </div>
         </div>
-  
+
         <div>
           <div className="LowerHeader">
             <div className="HamburgerMenu">
               <img alt="menu" src={HamburgerIcon} />
             </div>
-            { !this.state.isLogined && 
+            {!this.state.isLogined && (
               <div className="SignInMobile">
                 <Link to="/signin">
                   <span>Sign in</span>
                 </Link>
               </div>
-            }
-            { this.state.isLogined && 
+            )}
+            {this.state.isLogined && (
               <div className="AvatarHeader">
-                <img src={this.state.currentUser.avatar || 'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'} />
-                <div className="NameHeader">{this.state.currentUser.name}</div>
+                <img
+                  src={
+                    this.state.currentUser.avatar ||
+                    'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
+                  }
+                />
+                <div className="NameHeader">
+                  {this.state.currentUser.name}
+                </div>
                 <div class="dropdown-content">
                   <Link to="/signin">
                     <div>User Profile</div>
@@ -96,7 +114,7 @@ class Header extends Component {
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
               </div>
-            }
+            )}
           </div>
           <HamburgerMenu />
         </div>
@@ -106,17 +124,16 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return state
-}
+  return state;
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators(
-      {
-      },
-      dispatch,
-    ),
+    actions: bindActionCreators({}, dispatch),
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);

@@ -1,0 +1,186 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.MyWallet {
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 130px;
+  }
+
+  .Title {
+    color: #424b5f;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $lightgrey;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .Card {
+    background-image: url(../../assets/images/background_card.svg);
+    background-repeat: no-repeat;
+    background-color: linear-gradient(#f9d423, #f83600);
+    background-position: center;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      width: 426px;
+      height: 240px;
+      margin: auto;
+      box-sizing: border-box;
+      padding-top: 6px;
+      padding-left: 25px;
+    }
+
+    .User {
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        img {
+          width: 55px;
+          height: 55px;
+          margin-right: 10px;
+        }
+      }
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      @extend %fontBold;
+    }
+
+    .Balance {
+      color: white;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 85px;
+
+        .Text {
+          font-size: 20px;
+        }
+        .Number {
+          font-size: 41px;
+        }
+      }
+
+      .Text {
+        text-align: left;
+      }
+
+      .Number {
+        @extend %fontSemiBold;
+      }
+    }
+  }
+
+  .ButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      width: 426px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+
+      .WithdrawButton,
+      .TopupButton {
+        font-size: 16px;
+        padding: 10px 50px;
+      }
+    }
+
+    .WithdrawButton,
+    .TopupButton {
+      background-color: $brown;
+      color: white;
+      @extend %fontSemiBold;
+      border-radius: 10px;
+    }
+  }
+
+  .Transactions {
+    .Text {
+      @extend %fontSemiBold;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        font-size: 16px;
+      }
+    }
+
+    .Actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+        .Withdraw {
+          margin-right: 200px;
+        }
+      }
+
+      .Withdraw,
+      .Topup {
+        border-bottom: 3px solid $brown;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+      }
+    }
+
+    table {
+      width: 100%;
+      tr,
+      th {
+        padding: 30px 50px;
+      }
+
+      thead {
+        tr {
+          box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+          padding: 30px 50px;
+        }
+      }
+
+      tbody {
+        tr td {
+          border-bottom: 1px solid $lightgrey;
+          text-align: center;
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}

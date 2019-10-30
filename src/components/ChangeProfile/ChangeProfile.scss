@@ -1,0 +1,150 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.ChangeProfile {
+  .Title {
+    color: #424b5f;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $lightgrey;
+  }
+  .Profile {
+    .Avatar {
+      font-size: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      .Photo {
+        $size: 155px;
+        width: $size;
+        height: $size;
+        border-radius: $size/2;
+        border: 1px solid $lightgrey;
+      }
+
+      .ChangePhotoText {
+        color: $grey;
+      }
+
+      .ChangePhotoButton {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-style: italic;
+        background-color: $gold;
+        border-radius: 15px;
+        padding: 2px 12px;
+        border: 1px solid $gold;
+        box-sizing: border-box;
+        display: inline-flex;
+        margin-top: 2px;
+
+        img {
+          padding-right: 5px;
+        }
+      }
+    }
+    .GroupProfile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      .GroupProfile1,
+      .GroupProfile2 {
+        .Text {
+          color: $lightgrey;
+        }
+      }
+
+      .NewPassword {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      input {
+        border: none;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        @extend %fontSemiBold;
+        color: $darkgrey;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .ButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    @extend %fontSemiBold;
+    color: white;
+
+    .CancelButton,
+    .UpdateButton {
+      background-color: $brown;
+      border-radius: 10px;
+    }
+  }
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+
+    .Title {
+      font-size: 20px;
+    }
+
+    .Profile {
+      .Avatar {
+        .Photo {
+          margin-top: 18px;
+        }
+      }
+      .GroupProfile {
+        padding-top: 40px;
+        .GroupProfile1 {
+          margin-right: 40px;
+        }
+        .Text {
+        }
+
+        .NewPassword {
+          :first-child {
+            padding-right: 45px;
+          }
+        }
+      }
+
+      input {
+        height: 50px;
+        width: 268px;
+        font-size: 14px;
+      }
+    }
+
+    .ButtonContainer {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      font-size: 16px;
+
+      .CancelButton,
+      .UpdateButton {
+        padding: 10px 45px;
+      }
+
+      .CancelButton {
+        margin-right: 20px;
+      }
+    }
+  }
+}

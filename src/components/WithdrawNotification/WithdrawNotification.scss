@@ -1,0 +1,66 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.WithdrawNotification {
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 13s0px;
+  }
+
+  .Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #424b5f;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $lightgrey;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    img {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .Message {
+    white-space: pre-line;
+  }
+
+  .BackToWallet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    background-color: $brown;
+    color: white;
+    @extend %fontSemiBold;
+    border-radius: 10px;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 30px;
+    }
+
+    img {
+      padding-right: 10px;
+    }
+  }
+}

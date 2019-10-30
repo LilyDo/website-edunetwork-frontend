@@ -4,7 +4,7 @@ import CancelButton from '../../assets/images/icon_cancel.svg';
 
 function LoginPopup() {
   return (
-    <div className="Overlay">
+    <div className="LoginOverlay">
       <div className="LoginPopup">
         <div className="CancelButton">
           <img alt="cancel" src={CancelButton}></img>
