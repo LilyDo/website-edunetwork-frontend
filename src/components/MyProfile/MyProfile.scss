@@ -1,16 +1,6 @@
 @import '../../shared.scss';
 @import '../../assets/font/font.scss';
 
-// @extend %fontExtraBold;
-// display: flex;
-// flex-direction: row;
-// justify-content: space-between;
-
-// max-width: 1103px;
-// margin: auto;
-
-// @extend %fontBold;
-
 .MyProfile {
   .Title {
     padding-bottom: 5px;
@@ -50,12 +40,14 @@
     .GroupProfile {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
+      flex-wrap: wrap;
       align-items: flex-start;
+
       width: 100%;
       .GroupProfile1,
       .GroupProfile2 {
-        width: 25%;
+        min-width: 40%;
         .Data {
           border-bottom: 1px solid $lightgrey;
         }
@@ -72,7 +64,7 @@
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding-left: 150px;
-    padding-right: 20px;
+    padding-right: 150px;
 
     .Title {
       font-size: 20px;
@@ -88,8 +80,8 @@
       }
 
       .GroupProfile {
-        padding-top: 90px;
-        padding-bottom: 90px;
+        padding: 90px 100px 90px 150px;
+
         .Text {
         }
 
