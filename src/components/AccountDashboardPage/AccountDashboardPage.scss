@@ -1,16 +1,23 @@
 @import '../../shared.scss';
 @import '../../assets/font/font.scss';
 
-.AccountDashboardPage {
+%paddingTitle {
   @media only screen and (max-width: $mobileBreakPoint) {
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding-left: 150px;
     padding-right: 150px;
-    padding-bottom: 90px;
+    padding-bottom: 15px;
   }
+}
+
+.AccountDashboardPage {
+  padding-bottom: 90px;
+
   .Overview {
+    @extend %paddingTitle;
+
     .Title {
       color: $darkblue;
       @extend %fontHeader;
@@ -125,6 +132,113 @@
           }
         }
       }
+    }
+  }
+  .RevenueChart {
+    @media only screen and (max-width: $mobileBreakPoint) {
+  
+    }
+    
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+     padding-bottom: 70px; 
+    }
+    .Title {
+      @extend %fontSemiBold;
+      @extend %fontHeader;
+      color: $lightblue;
+      padding-bottom: 15px;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-left: 150px;
+        padding-right: 150px;
+        padding-bottom: 15px;
+      }
+    }
+
+    .Chart {
+    }
+  }
+
+  .RevenueTable {
+    @media only screen and (max-width: $mobileBreakPoint) {
+  
+    }
+    
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+     padding-bottom: 70px; 
+    }
+    .Title {
+      @extend %fontSemiBold;
+      @extend %fontHeader;
+      color: $lightblue;
+      @extend %paddingTitle;
+    }
+
+    .Table {
+      text-align: center;
+      max-width: 1166px;
+      margin: auto;
+
+      thead tr th {
+        width: 100%;
+        background-color: $gold;
+        color: white;
+        padding: 15px 0px;
+        border: none;
+      }
+
+      thead tr {
+        box-shadow: 0px 0px 7px #e4e1e1;
+        border: none;
+      }
+
+      tbody tr td {
+        width: 100%;
+        padding: 15px 0px;
+        color: black;
+        border-bottom: 1px solid $lightgrey;
+      }
+    }
+  }
+
+  .Members {
+    @media only screen and (max-width: $mobileBreakPoint) {
+  
+    }
+    
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+     padding-bottom: 70px; 
+    }
+
+    .Title {
+      @extend %fontSemiBold;
+      @extend %fontHeader;
+      color: $lightblue;
+      @extend %paddingTitle;
+    }
+
+    .Status {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      @extend %paddingTitle;
+      @media only screen and (max-width: $mobileBreakPoint) {
+  
+      }
+      
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+       :first-child {
+         margin-right: 150px;
+       } 
+      }
+    }
+
+    .Table {
     }
   }
 }
