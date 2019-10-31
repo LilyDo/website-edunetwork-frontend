@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 .ChangeProfile {
   .Title {
@@ -90,7 +90,11 @@
     .UpdateButton {
       background-color: $brown;
       border-radius: 10px;
-      cursor: pointer;
+      color: white;
+      font-size: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

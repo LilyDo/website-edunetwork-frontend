@@ -33,6 +33,7 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
       };
+
     case types.LOGIN_FAILURE:
       localStorage.removeItem(types.TOKEN_KEY);
 
