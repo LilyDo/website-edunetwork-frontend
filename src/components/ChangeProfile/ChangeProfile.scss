@@ -1,9 +1,9 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 .ChangeProfile {
   .Title {
-    color: #424b5f;
+    color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
   }
@@ -90,7 +90,11 @@
     .UpdateButton {
       background-color: $brown;
       border-radius: 10px;
-      cursor: pointer;
+      color: white;
+      font-size: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

@@ -10,7 +10,7 @@ class SigninSignup extends Component {
     email: '',
     password: '',
 
-    isShowLogin: true,
+    isShowLogin: false,
 
     refUser: '',
     fullName: '',
@@ -97,15 +97,15 @@ class SigninSignup extends Component {
         <div className="Head">
           <div className="Title" onClick={this.changeTab.bind(this)}>
             <div>
-              <span>ĐĂNG NHẬP</span>
+              <span>REGISTER</span>
             </div>
-            <div>Đã là thành viên của EDUNETWORK</div>
+            <div>Become a new member!</div>
           </div>
           <div className="Title" onClick={this.changeTab.bind(this)}>
             <div>
-              <span>ĐĂNG KÝ</span>
+              <span>LOGIN</span>
             </div>
-            <div>Dành cho thành viên mới</div>
+            <div>Already be EDUNETWORK's member?</div>
           </div>
         </div>
 
@@ -121,20 +121,20 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Password">
-                <span>Mật khẩu</span>
+                <span>Password</span>
                 <input
                   type="password"
                   value={password}
                   onChange={this.setPassword}
                 ></input>
               </div>
-              <div className="ForgotPassword">Quên mật khẩu?</div>
+              <div className="ForgotPassword">Forgot password?</div>
             </div>
           )}
           {!this.state.isShowLogin && (
             <div className="Signup">
               <div className="Fullname">
-                <span>Họ Tên</span>
+                <span>Full Name</span>
                 <input
                   type="text"
                   value={fullName}
@@ -158,7 +158,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Sponsor">
-                <span>Người bảo trợ cho bạn</span>
+                <span>Referral</span>
                 <input
                   type="text"
                   value={refUser}
@@ -166,7 +166,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="PhoneNumber">
-                <span>Số điện thoại</span>
+                <span>Phone number</span>
                 <input
                   type="number"
                   value={number}
@@ -174,7 +174,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Password">
-                <span>Mật khẩu</span>
+                <span>Password</span>
                 <input
                   type="password"
                   value={password}
@@ -182,7 +182,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="RePassword">
-                <span>Nhập lại mật khẩu</span>
+                <span>RePassword</span>
                 <input
                   type="password"
                   value={rePassword}
@@ -195,12 +195,12 @@ class SigninSignup extends Component {
         <div className="Button">
           {this.state.isShowLogin && (
             <div className="SigninButton" onClick={this.login}>
-              <span>ĐĂNG NHẬP</span>
+              <span>LOGIN</span>
             </div>
           )}
           {!this.state.isShowLogin && (
             <div className="SignupButton" onClick={this.register}>
-              <span>ĐĂNG KÝ</span>
+              <span>REGISTER</span>
             </div>
           )}
         </div>

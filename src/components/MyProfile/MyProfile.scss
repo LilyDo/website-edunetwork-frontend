@@ -3,7 +3,7 @@
 
 .MyProfile {
   .Title {
-    color: #424b5f;
+    color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
   }
@@ -18,7 +18,9 @@
       position: absolute;
       right: $size/2;
       top: $size/2;
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .Avatar,

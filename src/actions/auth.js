@@ -19,7 +19,14 @@ export const loginAction = user => {
       .post(`${BASE_URL}/users/login`, user)
       .then(response => {
         dispatch(loginSuccess(response.data));
-        dispatch(getProfileAction(response.data.data.token));
+        dispatch(
+          getProfileAction({
+            token: response.data.data.token,
+            options: {
+              redirect: true,
+            },
+          }),
+        );
       })
       .catch(error => dispatch(loginFailure(error.message)));
   };

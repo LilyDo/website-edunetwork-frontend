@@ -12,7 +12,7 @@
   }
 
   .Title {
-    color: #424b5f;
+    color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
 
@@ -28,7 +28,7 @@
   .Card {
     background-image: url(../../assets/images/background_card.svg);
     background-repeat: no-repeat;
-    background-color: linear-gradient(#f9d423, #f83600);
+    // background-color: linear-gradient(#f9d423, #f83600);
     background-position: center;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
 
@@ -96,6 +96,9 @@
     align-items: center;
     justify-content: space-between;
     margin: auto;
+    &:hover {
+      cursor: pointer;
+    }
     @media only screen and (max-width: $mobileBreakPoint) {
     }
 
@@ -138,6 +141,9 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+      &:hover {
+        cursor: pointer;
+      }
 
       @media only screen and (max-width: $mobileBreakPoint) {
       }
@@ -153,10 +159,12 @@
 
       .Withdraw,
       .Topup {
-        border-bottom: 3px solid $brown;
         padding-left: 5px;
         padding-right: 5px;
         padding-bottom: 5px;
+        &.ActiveTab {
+          border-bottom: 3px solid $brown;
+        }
       }
     }
 

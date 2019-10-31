@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import './MyProfile.scss';
 import EditIcon from '../../assets/images/icon_edit.svg';
-import UserPhoto from '../../assets/images/userphoto.png';
+import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
+import { getUserFormLocal } from '../../services/appService';
+import { USER_WEBSITE_URL } from '../../actions/index';
 
 class MyProfile extends Component {
+  state = {
+    isLogined: false,
+    currentUser: {},
+  };
+
+  checkCurrentUser() {
+    if (getUserFormLocal()) {
+      this.state.isLogined = true;
+      this.state.currentUser = getUserFormLocal();
+    }
+  }
+
   render() {
+    this.checkCurrentUser();
+
     return (
       <div className="MyProfile">
-        <div className="Title">Thông tin cá nhân</div>
+        <div className="Title">Personal Information</div>
         <div className="Profile">
           <img
             className="EditIcon"
@@ -16,36 +32,54 @@ class MyProfile extends Component {
             onClick={this.props.toggleEditProfileForm}
           ></img>
           <div className="Avatar">
-            <img className="Photo" alt="avatar" src={UserPhoto}></img>
-            <div>Hồ Đức Lợi</div>
+            <img
+              className="Photo"
+              alt="avatar"
+              src={this.state.currentUser.avatar || DefaultUserAvatar}
+            ></img>
+            <div>{this.state.currentUser.name}</div>
           </div>
           <div className="GroupProfile">
             <div className="GroupProfile1">
               <div className="Fullname">
-                <div className="Text">Họ Tên</div>
-                <div className="Data">Hồ Đức Lợi</div>
+                <div className="Text">Full Name</div>
+                <div className="Data">
+                  {this.state.currentUser.name}
+                </div>
               </div>
               <div className="Email">
                 <div className="Text">Email</div>
-                <div className="Data">nguyenvana@gmail.com</div>
+                <div className="Data">
+                  {this.state.currentUser.email}
+                </div>
               </div>
-              <div className="ReferralCode">
-                <div className="Text">Mã giới thiệu của bạn</div>
-                <div className="Data">loiho</div>
+              <div className="PhoneNumber">
+                <div className="Text">Phone Number</div>
+                <div className="Data">
+                  {this.state.currentUser.phone}
+                </div>
               </div>
             </div>
             <div className="GroupProfile2">
-              <div className="PhoneNumber">
-                <div className="Text">Số điện thoại</div>
-                <div className="Data">08765456</div>
+              <div className="ReferralCode">
+                <div className="Text">Referral Code</div>
+                <div className="Data">
+                  {this.state.currentUser.code}
+                </div>
               </div>
               <div className="Password">
-                <div className="Text">Mật khẩu</div>
-                <div className="Data">************</div>
+                <div className="Text">Referral Link</div>
+                <div className="Data">
+                  {USER_WEBSITE_URL +
+                    '/signin?refUser=' +
+                    this.state.currentUser.code}
+                </div>
               </div>
               <div className="Sponsor">
-                <div className="Text">Người bảo trợ cho bạn</div>
-                <div className="Data">tranvanb</div>
+                <div className="Text">Your Referral</div>
+                <div className="Data">
+                  {this.state.currentUser.presenter}
+                </div>
               </div>
             </div>
           </div>

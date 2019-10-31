@@ -26,7 +26,8 @@ class Header extends Component {
   }
 
   doLogout() {
-    localStorage.removeItem(CURRENT_USER_KEY);
+    localStorage.removeItem('current_user');
+    localStorage.removeItem('token');
     this.checkCurrentUser();
     setTimeout(function() {
       window.location.pathname = '/';
@@ -77,9 +78,15 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div className="dropdown-content">
+                <div class="dropdown-content">
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
                   <Link to="/account/profile">
-                    <div>User Profile</div>
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
@@ -112,9 +119,15 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div className="dropdown-content">
+                <div class="dropdown-content">
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
                   <Link to="/account/profile">
-                    <div>User Profile</div>
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
