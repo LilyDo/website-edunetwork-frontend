@@ -9,6 +9,9 @@ import WithdrawNotification from '../WithdrawNotification/WithdrawNotification';
 class AccountProfilePage extends Component {
   state = {
     showProfileForm: false,
+    showWalletForm: true,
+    showWithdrawForm: false,
+    showWithdrawNotification: false,
   };
 
   toggleEditProfileForm = () => {
@@ -23,8 +26,41 @@ class AccountProfilePage extends Component {
     });
   };
 
+  onWithdrawClick = () => {
+    this.setState({
+      showWalletForm: false,
+      showWithdrawForm: true,
+    });
+  };
+
+  onCancelClick = () => {
+    this.setState({
+      showWalletForm: true,
+      showWithdrawForm: false,
+    });
+  };
+
+  onRequestClick = () => {
+    this.setState({
+      showWithdrawForm: false,
+      showWithdrawNotification: true,
+    });
+  };
+
+  onGoBackClick = () => {
+    this.setState({
+      showWalletForm: true,
+      showWithdrawNotification: false,
+    });
+  };
+
   render() {
-    const { showProfileForm } = this.state;
+    const {
+      showWalletForm,
+      showProfileForm,
+      showWithdrawForm,
+      showWithdrawNotification,
+    } = this.state;
 
     return (
       <div>
@@ -37,9 +73,19 @@ class AccountProfilePage extends Component {
         {showProfileForm && (
           <ChangeProfile onCancel={this.onEditFormCancel} />
         )}
-        <MyWallet />
-        <MyWallet_Withdraw />
-        <WithdrawNotification />
+
+        {showWalletForm && (
+          <MyWallet onWithdrawClick={this.onWithdrawClick} />
+        )}
+        {showWithdrawForm && (
+          <MyWallet_Withdraw
+            onCancelClick={this.onCancelClick}
+            onRequestClick={this.onRequestClick}
+          />
+        )}
+        {showWithdrawNotification && (
+          <WithdrawNotification onGoBackClick={this.onGoBackClick} />
+        )}
       </div>
     );
   }

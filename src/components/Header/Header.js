@@ -78,7 +78,7 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div className="dropdown-content">
-                  <Link to="/signin">
+                  <Link to="/account/profile">
                     <div>User Profile</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
@@ -113,7 +113,7 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div className="dropdown-content">
-                  <Link to="/signin">
+                  <Link to="/account/profile">
                     <div>User Profile</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>

@@ -169,6 +169,7 @@
     }
   }
 
+  .CancelButton,
   .TransactionRequest {
     box-sizing: border-box;
     display: inline;
@@ -176,6 +177,7 @@
     color: white;
     @extend %fontSemiBold;
     border-radius: 10px;
+    cursor: pointer;
 
     @media only screen and (max-width: $mobileBreakPoint) {
     }
@@ -184,5 +186,9 @@
       font-size: 16px;
       padding: 10px 40px;
     }
+  }
+
+  .CancelButton {
+    margin-right: 20px;
   }
 }
