@@ -9,7 +9,7 @@ class CourseCard extends Component {
       <div className="InfoCardContainer">
         <div className="Level">{courseCarouselItem.level}</div>
         <img
-          src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
+          src={require(`../../assets/images/${courseCarouselItem.level.toLowerCase()}_background.png`)}
           alt="carousel background"
         />
         <div className="Title">{courseCarouselItem.title}</div>

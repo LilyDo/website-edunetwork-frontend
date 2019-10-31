@@ -1,0 +1,14 @@
+@import '../../shared.scss';
+
+.AvailableCourses {
+  .Description {
+    @extend %fontHeader;
+    padding-bottom: 30px;
+  }
+
+  .CoursesContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
