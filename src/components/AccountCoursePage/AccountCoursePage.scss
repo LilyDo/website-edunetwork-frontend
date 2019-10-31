@@ -1,9 +1,13 @@
 @import '../../shared.scss';
 
-.AvailableCourses {
-  .Description {
+.CourseBlock {
+  padding-bottom: 70px;
+
+  .Title {
     @extend %fontHeader;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $darkgrey;
+    margin-bottom: 20px;
   }
 
   .CoursesContainer {

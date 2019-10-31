@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { differenceWith, get } from 'lodash';
 
 import './AccountCoursePage.scss';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
@@ -22,15 +23,25 @@ class AccountCoursePage extends Component {
   };
 
   render() {
-    const { courses } = this.props.courses;
+    const {
+      courses,
+      userCourses: { buy = [] },
+    } = this.props.courses;
+
+    const unboughtCourses = differenceWith(
+      get(courses, 'courses'),
+      get(courses, 'userCourses.buy'),
+      (all, bought) => all.id !== bought.id,
+    );
+
     return (
       <div>
         <AccountBreadcrumb />
 
-        <div className="AvailableCourses">
-          <div className="Description">Khóa học bổ sung cho bạn</div>
+        <div className="CourseBlock">
+          <div className="Title">Khóa học của bạn</div>
           <div className="CoursesContainer">
-            {courses.map((course, index) => (
+            {buy.map((course, index) => (
               <CourseCard
                 courseCarouselItem={course}
                 onPayClick={this.onPayClick}
@@ -39,6 +50,21 @@ class AccountCoursePage extends Component {
             ))}
           </div>
         </div>
+
+        {unboughtCourses.length > 0 && (
+          <div className="CourseBlock">
+            <div className="Title">Khóa học bổ sung cho bạn</div>
+            <div className="CoursesContainer">
+              {unboughtCourses.map((course, index) => (
+                <CourseCard
+                  courseCarouselItem={course}
+                  onPayClick={this.onPayClick}
+                  key={index}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -47,6 +73,7 @@ class AccountCoursePage extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     courses: state.courses,
+    userCourses: state.userCourses,
   };
 };
 
