@@ -1,5 +1,7 @@
+import { CURRENT_USER_KEY } from '../actions';
+
 export const getUserFormLocal = function() {
-  let user = localStorage.getItem('current_user');
+  let user = localStorage.getItem(CURRENT_USER_KEY);
   if (user && user !== 'null' && user !== 'undefined') {
     return JSON.parse(user);
   } else {

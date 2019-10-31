@@ -19,9 +19,9 @@ export default function(state = initialState, action) {
     case types.GET_PROFILE_SUCCESS:
       const duration = 100;
       if (action.payload.statusCode === 200) {
-        let currentUser = action.payload.data[0];
+        let currentUser = action.payload.data;
         localStorage.setItem(
-          types.CURRENT_USER,
+          types.CURRENT_USER_KEY,
           JSON.stringify(currentUser),
         );
         setTimeout(function() {

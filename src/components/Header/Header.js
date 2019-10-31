@@ -8,11 +8,12 @@ import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
+import { CURRENT_USER_KEY } from '../../actions';
 
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: localStorage.getItem('current_user'),
+    currentUser: localStorage.getItem(CURRENT_USER_KEY),
   };
 
   checkCurrentUser() {
@@ -25,16 +26,18 @@ class Header extends Component {
   }
 
   doLogout() {
-    localStorage.removeItem('current_user');
+    localStorage.removeItem(CURRENT_USER_KEY);
     this.checkCurrentUser();
     setTimeout(function() {
       window.location.pathname = '/';
     }, 500);
   }
 
-  render() {
+  componentWillMount() {
     this.checkCurrentUser();
+  }
 
+  render() {
     return (
       <div className="Header">
         <div className="UpperHeader">
@@ -74,7 +77,7 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to="/signin">
                     <div>User Profile</div>
                   </Link>
@@ -109,7 +112,7 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to="/signin">
                     <div>User Profile</div>
                   </Link>
