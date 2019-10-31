@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
       if (action.payload.data.statusCode == 200) {
         let currentUser = action.payload.data.data;
         localStorage.setItem(
-          types.CURRENT_USER,
+          types.CURRENT_USER_KEY,
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
