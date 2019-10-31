@@ -13,7 +13,6 @@
 }
 
 .AccountDashboardPage {
-
   .Overview {
     @extend %paddingTitle;
 
@@ -43,7 +42,6 @@
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
         padding-top: 25px;
-        padding-bottom: 25px;
       }
 
       .MyRank {
@@ -90,7 +88,6 @@
         .Money,
         .People {
           box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-          margin-bottom: 25px;
           padding: 15px 20px;
         }
 
@@ -101,6 +98,9 @@
         }
 
         .MoneyContainer {
+          :first-child {
+            margin-bottom: 25px;
+          }
           .Money {
             .Number {
               color: $brown;
@@ -117,6 +117,9 @@
         }
 
         .PeopleContainer {
+          :first-child {
+            margin-bottom: 25px;
+          }
           .People {
             .Number {
               color: $blue;
@@ -156,12 +159,14 @@
     }
 
     .Chart {
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px 20px 0 20px;
     }
   }
 
   .RevenueTable {
     @extend %paddingTitle;
-    
+
     @media only screen and (max-width: $mobileBreakPoint) {
     }
 
@@ -195,7 +200,6 @@
         background-color: $gold;
         color: white;
         padding: 15px 0px;
-        
       }
 
       tbody tr td {
@@ -227,19 +231,17 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-      
+
       div {
         border-bottom: 3px solid $brown;
         padding-bottom: 5px;
         margin-bottom: 20px;
-
       }
 
       @media only screen and (max-width: $mobileBreakPoint) {
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
-        
         :first-child {
           margin-right: 150px;
         }
@@ -251,7 +253,6 @@
       text-align: center;
       margin: auto;
       border-collapse: collapse;
-
 
       thead tr th {
         background-color: $gold;
@@ -265,7 +266,5 @@
         border-bottom: 1px solid $lightgrey;
       }
     }
-
-
   }
 }

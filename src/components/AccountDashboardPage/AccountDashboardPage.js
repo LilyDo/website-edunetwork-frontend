@@ -2,6 +2,7 @@ import React from 'react';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import MyRank from '../../assets/images/img_rank.svg';
 import './AccountDashboardPage.scss';
+import DashboardChart from '../../components/DashboardChart/DashboardChart';
 
 function AccountDashboardPage() {
   return (
@@ -49,7 +50,9 @@ function AccountDashboardPage() {
           <div className="Title">
             BIỂU ĐỒ DOANH THU, HOA HỒNG THEO THÁNG
           </div>
-          <div className="Chart"></div>
+          <div className="Chart">
+            <DashboardChart />
+          </div>
         </div>
         <div className="RevenueTable">
           <div className="Title">THỐNG KÊ</div>
