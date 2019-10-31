@@ -9,18 +9,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
 
-const currentUser = localStorage.getItem('current_user');
-
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: {},
+    currentUser: localStorage.getItem('current_user'),
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.isLogined = true;
-      this.state.currentUser = getUserFormLocal();
+      this.setState({
+        isLogined: true,
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
@@ -65,6 +65,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
@@ -99,6 +100,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
