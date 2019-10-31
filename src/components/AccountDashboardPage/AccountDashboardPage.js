@@ -53,27 +53,27 @@ function AccountDashboardPage() {
         </div>
         <div className="RevenueTable">
           <div className="Title">THỐNG KÊ</div>
-          <div className="Table">
+          <table className="Table">
             <thead className="RevenueTableHead">
               <tr>
-                <th>Doanh thu</th>
-                <th>Tháng 01</th>
-                <th>Tháng 02</th>
-                <th>Tháng 03</th>
-                <th>Tháng 04</th>
-                <th>Tháng 05</th>
-                <th>Tháng 06</th>
-                <th>Tháng 07</th>
-                <th>Tháng 09</th>
-                <th>Tháng 09</th>
-                <th>Tháng 10</th>
-                <th>Tháng 11</th>
-                <th>Tháng 12</th>
+                <th className="FirstCell">Doanh thu</th>
+                <th className="EqualCell">Tháng 01</th>
+                <th className="EqualCell">Tháng 02</th>
+                <th className="EqualCell">Tháng 03</th>
+                <th className="EqualCell">Tháng 04</th>
+                <th className="EqualCell">Tháng 05</th>
+                <th className="EqualCell">Tháng 06</th>
+                <th className="EqualCell">Tháng 07</th>
+                <th className="EqualCell">Tháng 09</th>
+                <th className="EqualCell">Tháng 09</th>
+                <th className="EqualCell">Tháng 10</th>
+                <th className="EqualCell">Tháng 11</th>
+                <th className="EqualCell">Tháng 12</th>
               </tr>
             </thead>
             <tbody className="RevenueTableBody">
               <tr>
-                <td>DOANH THU CÁ NHÂN</td>
+                <td className="FirstCell">DOANH THU CÁ NHÂN</td>
                 <td>$350</td>
                 <td>$300</td>
                 <td>$180</td>
@@ -103,17 +103,38 @@ function AccountDashboardPage() {
                 <td>$$4,827</td>
               </tr>
             </tbody>
-
-            
-          </div>
+          </table>
         </div>
-        <div className="Members">
+        <div className="Member">
           <div className="Title">DANH SÁCH THÀNH VIÊN CỦA BẠN</div>
           <div className="Status">
             <div className="Paid">ĐÃ THANH TOÁN</div>
             <div className="NotPaid">CHƯA THANH TOÁN</div>
           </div>
-          <div className="Table"></div>
+          <table className="Table">
+            <thead className="MemberTableHead">
+              <tr>
+                <th>Tên</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Ngày kích hoạt</th>
+                <th>Khóa học</th>
+                <th>Tổng hoa hồng</th>
+              </tr>
+            </thead>
+            <tbody className="MemberTableBody">
+              <tr>
+                <td>Lợi Hồ</td>
+                <td>loiho</td>
+                <td>loiho@gmail.com</td>
+                <td>0908 704 321</td>
+                <td>02/09/2018</td>
+                <td>Master</td>
+                <td>$20,300</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
