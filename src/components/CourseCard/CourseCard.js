@@ -3,7 +3,7 @@ import './CourseCard.scss';
 
 class CourseCard extends Component {
   render() {
-    const { courseCarouselItem } = this.props;
+    const { courseCarouselItem, onPayClick } = this.props;
 
     return (
       <div className="InfoCardContainer">
@@ -14,7 +14,12 @@ class CourseCard extends Component {
         />
         <div className="Title">{courseCarouselItem.title}</div>
         <div className="PayContainer">
-          <div className="PayNow">THANH TOÁN NGAY</div>
+          <div
+            className="PayNow"
+            onClick={() => this.props.onPayClick(courseCarouselItem)}
+          >
+            THANH TOÁN NGAY
+          </div>
         </div>
       </div>
     );

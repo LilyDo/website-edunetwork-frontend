@@ -5,12 +5,19 @@ import { connect } from 'react-redux';
 import './AccountCoursePage.scss';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import CourseCard from '../CourseCard/CourseCard';
-import { getCourseAction } from '../../actions/courses';
+import {
+  getCourseAction,
+  buyCourseAction,
+} from '../../actions/courses';
 
 class AccountCoursePage extends Component {
   componentWillMount() {
     this.props.actions.getCourseAction();
   }
+
+  onPayClick = course => {
+    this.props.actions.buyCourseAction(course.id);
+  };
 
   render() {
     const { courses } = this.props.courses;
@@ -22,7 +29,11 @@ class AccountCoursePage extends Component {
           <div className="Description">Khóa học bổ sung cho bạn</div>
           <div className="CoursesContainer">
             {courses.map((course, index) => (
-              <CourseCard courseCarouselItem={course} key={index} />
+              <CourseCard
+                courseCarouselItem={course}
+                onPayClick={this.onPayClick}
+                key={index}
+              />
             ))}
           </div>
         </div>
@@ -39,7 +50,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators({ getCourseAction }, dispatch),
+    actions: bindActionCreators(
+      { getCourseAction, buyCourseAction },
+      dispatch,
+    ),
   };
 };
 
