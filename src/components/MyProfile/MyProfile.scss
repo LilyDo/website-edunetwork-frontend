@@ -18,6 +18,9 @@
       position: absolute;
       right: $size/2;
       top: $size/2;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .Avatar,

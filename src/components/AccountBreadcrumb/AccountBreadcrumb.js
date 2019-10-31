@@ -1,4 +1,4 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
@@ -34,16 +34,30 @@ class AccountBreadcrumb extends Component {
               <span>Dashboard</span>
             </Link>
 
-            <Link
-              to="/account/profile"
-              className={
-                window.location.pathname === '/account/profile' &&
-                'ActiveTab'
-              }
-            >
-              <span>Profile</span>
-              <img alt="arrow down" src={ArrowDown}></img>
-            </Link>
+            <div className="profile-menu">
+              <Link
+                to="/account/profile"
+                className={
+                  window.location.pathname === '/account/profile' &&
+                  'ActiveTab'
+                }
+              >
+                <span>Profile</span>
+                <img alt="arrow down" src={ArrowDown}></img>
+              </Link>
+
+              <div class="dropdown-content">
+                <Link to="/account/profile">
+                  <div>Personal Information</div>
+                </Link>
+                <Link to="/account/profile/wallet">
+                  <div>My Wallet</div>
+                </Link>
+                <Link to="/account/profile/withraw">
+                  <div>Withraw</div>
+                </Link>
+              </div>
+            </div>
 
             <Link
               to="/account/course"
@@ -58,7 +72,10 @@ class AccountBreadcrumb extends Component {
           <div className="AccountContainer">
             <div class="Text">Hello! </div>
             <div class="Fullname">{this.state.currentUser.name}</div>
-            <div class="Username"> ({this.state.currentUser.code})</div>
+            <div class="Username">
+              {' '}
+              ({this.state.currentUser.code})
+            </div>
           </div>
         </div>
       </div>

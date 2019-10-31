@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import MyProfile from '../MyProfile/MyProfile';
 import ChangeProfile from '../ChangeProfile/ChangeProfile';
 import MyWallet from '../MyWallet/MyWallet';
 import MyWallet_Withdraw from '../MyWallet_Withdraw/MyWallet_Withdraw';
 import WithdrawNotification from '../WithdrawNotification/WithdrawNotification';
+import { showUpdateFormAction } from '../../actions/profile';
+import { bindActionCreators } from 'redux';
 
 class AccountProfilePage extends Component {
   state = {
@@ -12,37 +15,51 @@ class AccountProfilePage extends Component {
   };
 
   toggleEditProfileForm = () => {
-    this.setState({
-      showProfileForm: !this.state.showProfileForm,
-    });
+    this.props.actions.showUpdateFormAction();
   };
 
   onEditFormCancel = () => {
-    this.setState({
-      showProfileForm: false,
-    });
+    this.props.actions.showUpdateFormAction();
   };
 
   render() {
     const { showProfileForm } = this.state;
-
     return (
       <div>
         <AccountBreadcrumb />
-        {!showProfileForm && (
+        {!this.props.state.isEditing && (
           <MyProfile
             toggleEditProfileForm={this.toggleEditProfileForm}
           />
         )}
-        {showProfileForm && (
+        {this.props.state.isEditing && (
           <ChangeProfile onCancel={this.onEditFormCancel} />
         )}
-        <MyWallet />
-        <MyWallet_Withdraw />
-        <WithdrawNotification />
       </div>
     );
   }
 }
 
-export default AccountProfilePage;
+const mapStateToProps = ({ profile }, ownProps) => {
+  return {
+    state: {
+      isEditing: profile.isEditing,
+    },
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        showUpdateFormAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AccountProfilePage);

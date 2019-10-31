@@ -23,6 +23,8 @@ import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuc
 import SigninPage from './components/SigninPage/SigninPage';
 import AccountDashboardPage from './components/AccountDashboardPage/AccountDashboardPage';
 import AccountProfilePage from './components/AccountProfilePage/AccountProfilePage';
+import MyWallet from './components/MyWallet/MyWallet';
+import MyWallet_Withdraw from './components/MyWallet_Withdraw/MyWallet_Withdraw';
 import AccountCoursePage from './components/AccountCoursePage/AccountCoursePage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
@@ -82,13 +84,12 @@ class App extends Component {
                 <Route exact path="/signin">
                   <SigninPage />
                 </Route>
-                <Route exact path="/account/dashboard">
-                  <AccountDashboardPage />
-                </Route>
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/dashboard" component={AccountDashboardPage} />
                 <PrivateRoute authed={this.state.isLogined} exact path="/account/profile" component={AccountProfilePage} />
-                <Route exact path="/account/course">
-                  <AccountCoursePage />
-                </Route>
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/wallet" component={MyWallet} />
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withraw" component={MyWallet_Withdraw} />
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withraw-noti" component={AccountProfilePage} />
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/course" component={AccountCoursePage} />
                 <Route exact path="/contact">
                   <ContactPage />
                 </Route>

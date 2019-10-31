@@ -159,6 +159,7 @@
     cursor: pointer;
     .dropdown-content {
       opacity: 1;
+      height: 150px;
     }
   }
   img {
@@ -181,6 +182,8 @@
   top: 65px;
   right: -10px;
   width: 110px;
+  height: 0;
+  overflow: hidden;
   background-color: #d59e29;
   padding: 10px;
   text-align: center;

@@ -10,7 +10,7 @@ class SigninSignup extends Component {
     email: '',
     password: '',
 
-    isShowLogin: true,
+    isShowLogin: false,
 
     refUser: '',
     fullName: '',
@@ -97,15 +97,15 @@ class SigninSignup extends Component {
         <div className="Head">
           <div className="Title" onClick={this.changeTab.bind(this)}>
             <div>
-              <span>LOGIN</span>
-            </div>
-            <div>Already be EDUNETWORK's member?</div>
-          </div>
-          <div className="Title" onClick={this.changeTab.bind(this)}>
-            <div>
               <span>REGISTER</span>
             </div>
             <div>Become a new member!</div>
+          </div>
+          <div className="Title" onClick={this.changeTab.bind(this)}>
+            <div>
+              <span>LOGIN</span>
+            </div>
+            <div>Already be EDUNETWORK's member?</div>
           </div>
         </div>
 

@@ -26,6 +26,7 @@ class Header extends Component {
 
   doLogout() {
     localStorage.removeItem('current_user');
+    localStorage.removeItem('token');
     this.checkCurrentUser();
     setTimeout(function() {
       window.location.pathname = '/';
