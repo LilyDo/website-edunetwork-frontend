@@ -8,9 +8,13 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILURE,
   SHOW_UPDATE_FORM,
+  GET_CHARGE_HISTORY_REQUEST,
+  GET_CHARGE_HISTORY_SUCCESS,
+  GET_CHARGE_HISTORY_FAILURE
 } from './index';
 import * as types from '../actions/index';
 
+// GET PROFILE
 export const getProfileAction = payload => {
   return dispatch => {
     dispatch(getProfileRequest());
@@ -24,8 +28,9 @@ export const getProfileAction = payload => {
             data: response.data,
             options: payload.options,
           })
-        )}
         )
+      }
+      )
       .catch(error => dispatch(getProfileFailure(error.message)));
   };
 };
@@ -44,6 +49,7 @@ const getProfileFailure = error => ({
   payload: { error },
 });
 
+// UPDATE PROFILE
 export const updateProfileAction = userProfile => {
   return dispatch => {
     dispatch(updateProfileRequest(userProfile));
@@ -77,6 +83,7 @@ const updateProfileFailure = error => ({
   payload: { error },
 });
 
+// SHOW UPDATE FORM
 export const showUpdateFormAction = () => {
   return dispatch => {
     dispatch(showUpProfileRequest());
@@ -85,4 +92,31 @@ export const showUpdateFormAction = () => {
 
 const showUpProfileRequest = () => ({
   type: SHOW_UPDATE_FORM,
+});
+
+// GET CHARGE HISTORY
+export const getChargeHistoryAction = () => {
+  return dispatch => {
+    dispatch(getChargeHistoryRequest());
+    axios
+      .post(`${BASE_URL}/users/charge-history`, { token: localStorage.getItem(types.TOKEN_KEY) })
+      .then(response => {
+        dispatch(getChargeHistorySuccess(response.data));
+      })
+      .catch(error => dispatch(getChargeHistoryFailure(error.message)));
+  };
+};
+
+const getChargeHistoryRequest = () => ({
+  type: GET_CHARGE_HISTORY_REQUEST
+});
+
+const getChargeHistorySuccess = response => ({
+  type: GET_CHARGE_HISTORY_SUCCESS,
+  payload: { ...response },
+});
+
+const getChargeHistoryFailure = error => ({
+  type: GET_CHARGE_HISTORY_FAILURE,
+  payload: { error },
 });

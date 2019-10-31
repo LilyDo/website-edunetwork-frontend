@@ -7,9 +7,16 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
+  ACTIVE_ACCOUNT_REQUEST,
+  ACTIVE_ACCOUNT_SUCCESS,
+  ACTIVE_ACCOUNT_FAILURE
 } from './index';
-import { getProfileAction } from './profile';
-import { toast } from 'react-toastify';
+import {
+  getProfileAction
+} from './profile';
+import {
+  toast
+} from 'react-toastify';
 
 export const loginAction = user => {
   return dispatch => {
@@ -39,17 +46,22 @@ const loginRequest = user => ({
 
 const loginSuccess = response => ({
   type: LOGIN_SUCCESS,
-  payload: { ...response },
+  payload: {
+    ...response
+  },
 });
 
 const loginFailure = error => ({
   type: LOGIN_FAILURE,
-  payload: { error },
+  payload: {
+    error
+  },
 });
 
+// REGISTER ACCOUNT
 export const registerAction = user => {
   return dispatch => {
-    dispatch(loginRequest());
+    dispatch(registerRequest());
 
     axios
       .post(`${BASE_URL}/users/register`, user)
@@ -57,12 +69,9 @@ export const registerAction = user => {
         console.log('response', response);
         if (response.data.statusCode === 200) {
           dispatch(registerSuccess(response.data));
-          dispatch(
-            loginAction({
-              email: user.email,
-              password: user.password,
-            }),
-          );
+          setTimeout(function () {
+            window.location.pathname = '/register-pending-active';
+          }, 100);
         } else {
           let obj = response.data.errors;
           console.log('obj', obj);
@@ -87,10 +96,60 @@ const registerRequest = user => ({
 
 const registerSuccess = response => ({
   type: REGISTER_SUCCESS,
-  payload: { ...response },
+  payload: {
+    ...response
+  },
 });
 
 const registerFailure = error => ({
   type: REGISTER_FAILURE,
-  payload: { error },
+  payload: {
+    error
+  },
+});
+
+// VERIFY ACCOUNT
+export const verifyAccountAction = code => {
+  return dispatch => {
+    dispatch(verifyAccountRequest());
+
+    axios.post(`${BASE_URL}/users/verify-register`, {
+      "verify_code": code
+    }).then(response => {
+      console.log('response', response);
+      if (response.data.statusCode === 200) {
+        dispatch(verifyAccountSuccess(response.data));
+      } else {
+        let obj = response.data.errors;
+        console.log('obj', obj);
+        Object.keys(obj).forEach(function eachKey(key) {
+          toast.error(JSON.stringify(obj[key]), {
+            autoClose: 3000,
+          });
+        });
+        dispatch(
+          verifyAccountFailure(Object.keys(response.data.errors)[0]),
+        );
+      }
+    }).catch(error => dispatch(registerFailure(error.message)));
+  };
+};
+
+const verifyAccountRequest = user => ({
+  type: ACTIVE_ACCOUNT_REQUEST,
+  payload: user,
+});
+
+const verifyAccountSuccess = response => ({
+  type: ACTIVE_ACCOUNT_SUCCESS,
+  payload: {
+    ...response
+  },
+});
+
+const verifyAccountFailure = error => ({
+  type: ACTIVE_ACCOUNT_FAILURE,
+  payload: {
+    error
+  },
 });

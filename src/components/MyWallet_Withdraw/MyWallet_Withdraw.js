@@ -8,18 +8,18 @@ import { getUserFormLocal } from '../../services/appService';
 class MyWallet_Withdraw extends Component {
   state = {
     currentUser: {},
-    isShowWithraw: true,
+    isShowWithdraw: true,
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.currentUser = getUserFormLocal();
+      this.setState.currentUser = getUserFormLocal();
     }
   }
 
   toggleShowTab = () => {
     this.setState({
-      isShowWithraw: !this.state.isShowWithraw,
+      isShowWithdraw: !this.state.isShowWithdraw,
     });
   };
 

@@ -22,6 +22,14 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
+export const GET_CHARGE_HISTORY_REQUEST = 'GET_CHARGE_HISTORY_REQUEST';
+export const GET_CHARGE_HISTORY_SUCCESS = 'GET_CHARGE_HISTORY_SUCCESS';
+export const GET_CHARGE_HISTORY_FAILURE = 'GET_CHARGE_HISTORY_FAILURE';
+
+export const ACTIVE_ACCOUNT_REQUEST = 'ACTIVE_ACCOUNT_REQUEST';
+export const ACTIVE_ACCOUNT_SUCCESS = 'ACTIVE_ACCOUNT_SUCCESS';
+export const ACTIVE_ACCOUNT_FAILURE = 'ACTIVE_ACCOUNT_FAILURE';
+
 // This middleware will just add the property "async dispatch"
 // to actions with the "async" propperty set to true
 export const asyncDispatchMiddleware = store => next => action => {

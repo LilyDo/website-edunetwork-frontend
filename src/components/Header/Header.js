@@ -13,15 +13,13 @@ import { CURRENT_USER_KEY } from '../../actions';
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: localStorage.getItem(CURRENT_USER_KEY),
+    currentUser: getUserFormLocal(),
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.setState({
-        isLogined: true,
-        currentUser: getUserFormLocal(),
-      });
+      this.state.currentUser = getUserFormLocal();
+      this.state.isLogined = true;
     }
   }
 
@@ -29,16 +27,14 @@ class Header extends Component {
     localStorage.removeItem('current_user');
     localStorage.removeItem('token');
     this.checkCurrentUser();
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.pathname = '/';
     }, 500);
   }
 
-  componentWillMount() {
-    this.checkCurrentUser();
-  }
-
   render() {
+    this.checkCurrentUser();
+
     return (
       <div className="Header">
         <div className="UpperHeader">
