@@ -41,9 +41,9 @@ class AccountBreadcrumb extends Component {
             </Link>
           </div>
           <div className="AccountContainer">
-            <div class="Text">Xin chào! </div>
-            <div class="Fullname"> Hồ Đức Lợi</div>
-            <div class="Username">{'(loiho)'}</div>
+            <div className="Text">Xin chào! </div>
+            <div className="Fullname"> Hồ Đức Lợi</div>
+            <div className="Username">{'(loiho)'}</div>
           </div>
         </div>
       </div>
