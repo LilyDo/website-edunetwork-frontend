@@ -2,6 +2,7 @@ import React from 'react';
 import './CourseCarouselContainer.scss';
 import CourseCarousel from '../Carousel/CourseCarousel';
 import CourseBackground from '../../assets/images/course_background.png';
+import CourseCard from '../CourseCard/CourseCard';
 
 const courseCarouselData = [
   {
@@ -57,17 +58,10 @@ function CourseCarouselContainer() {
         ></img>
         <CourseCarousel title="CourseCarousel">
           {courseCarouselData.map((courseCarouselItem, index) => (
-            <div className="InfoCardContainer" key={index}>
-              <div className="Level">{courseCarouselItem.level}</div>
-              <img
-                src={require(`../../assets/images/${courseCarouselItem.backgroundImage}`)}
-                alt="carousel background"
-              />
-              <div className="Title">{courseCarouselItem.title}</div>
-              <div className="PayContainer">
-                <div className="PayNow">THANH TOÁN NGAY</div>
-              </div>
-            </div>
+            <CourseCard
+              courseCarouselItem={courseCarouselItem}
+              key={index}
+            />
           ))}
         </CourseCarousel>
       </div>
