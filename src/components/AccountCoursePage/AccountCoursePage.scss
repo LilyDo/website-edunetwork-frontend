@@ -1,0 +1,32 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.AccountCoursePage {
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 60px;
+  }
+
+  .Title {
+    font-size: 20px;
+    color: $darkblue;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $lightgrey;
+  }
+
+  .CourseContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 70px;
+
+    .Course {
+      margin-right: 20px;
+    }
+  }
+}

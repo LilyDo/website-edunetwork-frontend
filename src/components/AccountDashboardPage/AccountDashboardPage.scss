@@ -1,0 +1,130 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.AccountDashboardPage {
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 90px;
+  }
+  .Overview {
+    .Title {
+      color: $darkblue;
+      @extend %fontHeader;
+      @extend %fontBold;
+      border-bottom: 1px solid $lightgrey;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-bottom: 10px;
+      }
+    }
+
+    .OverviewContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+
+      .MyRank {
+        position: relative;
+        @extend %fontBold;
+        @extend %fontHeader;
+        color: $brown;
+        text-align: right;
+        border: 1px solid $brown;
+        white-space: nowrap;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding: 30px 65px 30px 10px;
+          margin-right: 70px;
+          margin-bottom: 50px;
+          margin-top: 50px;
+        }
+
+        .RankImg {
+          position: absolute;
+
+          @media only screen and (max-width: $mobileBreakPoint) {
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            $sizeRank: 120px;
+            right: -$sizeRank/2;
+            top: -$sizeRank/2;
+          }
+        }
+      }
+
+      .Statistics {
+        min-width: 60%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+
+        .Money,
+        .People {
+          box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+          margin-bottom: 25px;
+          padding: 15px 20px;
+        }
+
+        .Text {
+          white-space: nowrap;
+          color: $darkblue;
+          padding-top: 7px;
+        }
+
+        .MoneyContainer {
+          .Money {
+            .Number {
+              color: $brown;
+              @extend %fontSemiBold;
+
+              @media only screen and (max-width: $mobileBreakPoint) {
+              }
+
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 33px;
+              }
+            }
+          }
+        }
+
+        .PeopleContainer {
+          .People {
+            .Number {
+              color: $blue;
+              @extend %fontSemiBold;
+              @media only screen and (max-width: $mobileBreakPoint) {
+              }
+
+              @media only screen and (min-width: $mobileBreakPoint + 1) {
+                font-size: 33px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
