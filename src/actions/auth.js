@@ -42,12 +42,11 @@ const loginFailure = error => ({
 
 export const registerAction = user => {
   return dispatch => {
-    dispatch(loginRequest());
+    dispatch(registerRequest());
 
     axios
       .post(`${BASE_URL}/users/register`, user)
       .then(response => {
-        console.log('response', response);
         if (response.data.statusCode === 200) {
           dispatch(registerSuccess(response.data));
           dispatch(
@@ -58,7 +57,6 @@ export const registerAction = user => {
           );
         } else {
           let obj = response.data.errors;
-          console.log('obj', obj);
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
               autoClose: 3000,

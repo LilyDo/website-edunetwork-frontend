@@ -7,10 +7,8 @@ import {
 } from './index';
 
 export const getProfileAction = token => {
-  console.log('getProfileAction', token);
   return dispatch => {
     dispatch(getProfileRequest(token));
-    console.log('dispatch(getProfileRequest', token);
     axios
       .post(`${BASE_URL}/users/profile`, { token: token })
       .then(response => dispatch(getProfileSuccess(response.data)))
