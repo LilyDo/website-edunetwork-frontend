@@ -16,33 +16,6 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
-// This middleware will just add the property "async dispatch"
-// to actions with the "async" propperty set to true
-export const asyncDispatchMiddleware = store => next => action => {
-  let syncActivityFinished = false;
-  let actionQueue = [];
-
-  function flushQueue() {
-    actionQueue.forEach(a => store.dispatch(a)); // flush queue
-    actionQueue = [];
-  }
-
-  function asyncDispatch(asyncAction) {
-    actionQueue = actionQueue.concat([asyncAction]);
-
-    if (syncActivityFinished) {
-      flushQueue();
-    }
-  }
-
-  const actionWithAsyncDispatch = Object.assign({}, action, {
-    asyncDispatch,
-  });
-
-  const res = next(actionWithAsyncDispatch);
-
-  syncActivityFinished = true;
-  flushQueue();
-
-  return res;
-};
+export const GET_COURSE_REQUEST = 'GET_COURSE_REQUEST';
+export const GET_COURSE_SUCCESS = 'GET_COURSE_SUCCESS';
+export const GET_COURSE_FAILURE = 'GET_COURSE_FAILURE';
