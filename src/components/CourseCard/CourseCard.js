@@ -6,7 +6,7 @@ class CourseCard extends Component {
     const { courseCarouselItem, onPayClick } = this.props;
 
     return (
-      <div className="InfoCardContainer">
+      <div className="CourseCardContainer">
         <div className="Level">{courseCarouselItem.level}</div>
         <img
           src={require(`../../assets/images/${courseCarouselItem.level.toLowerCase()}_background.png`)}
