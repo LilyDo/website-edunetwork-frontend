@@ -7,12 +7,14 @@ import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import CourseCard from '../CourseCard/CourseCard';
 import {
   getCourseAction,
+  getUserCoursesAction,
   buyCourseAction,
 } from '../../actions/courses';
 
 class AccountCoursePage extends Component {
   componentWillMount() {
     this.props.actions.getCourseAction();
+    this.props.actions.getUserCoursesAction();
   }
 
   onPayClick = course => {
@@ -51,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
-      { getCourseAction, buyCourseAction },
+      { getCourseAction, getUserCoursesAction, buyCourseAction },
       dispatch,
     ),
   };
