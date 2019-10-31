@@ -96,6 +96,9 @@
     align-items: center;
     justify-content: space-between;
     margin: auto;
+    &:hover {
+      cursor: pointer;
+    }
     @media only screen and (max-width: $mobileBreakPoint) {
     }
 
@@ -117,6 +120,7 @@
       color: white;
       @extend %fontSemiBold;
       border-radius: 10px;
+      cursor: pointer;
     }
   }
 
@@ -137,6 +141,9 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+      &:hover {
+        cursor: pointer;
+      }
 
       @media only screen and (max-width: $mobileBreakPoint) {
       }
@@ -152,10 +159,12 @@
 
       .Withdraw,
       .Topup {
-        border-bottom: 3px solid $brown;
         padding-left: 5px;
         padding-right: 5px;
         padding-bottom: 5px;
+        &.ActiveTab {
+          border-bottom: 3px solid $brown;
+        }
       }
     }
 

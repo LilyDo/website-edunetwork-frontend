@@ -8,33 +8,37 @@ import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
-
-const currentUser = localStorage.getItem('current_user');
+import { CURRENT_USER_KEY } from '../../actions';
 
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: {},
+    currentUser: localStorage.getItem(CURRENT_USER_KEY),
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.isLogined = true;
-      this.state.currentUser = getUserFormLocal();
+      this.setState({
+        isLogined: true,
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
   doLogout() {
     localStorage.removeItem('current_user');
+    localStorage.removeItem('token');
     this.checkCurrentUser();
     setTimeout(function() {
       window.location.pathname = '/';
     }, 500);
   }
 
-  render() {
+  componentWillMount() {
     this.checkCurrentUser();
+  }
 
+  render() {
     return (
       <div className="Header">
         <div className="UpperHeader">
@@ -65,6 +69,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
@@ -74,8 +79,14 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div class="dropdown-content">
-                  <Link to="/signin">
-                    <div>User Profile</div>
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
+                  <Link to="/account/profile">
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>
@@ -99,6 +110,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
@@ -108,8 +120,14 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div class="dropdown-content">
-                  <Link to="/signin">
-                    <div>User Profile</div>
+                  <Link to="/account/dashboard">
+                    <div>Dashboard</div>
+                  </Link>
+                  <Link to="/account/profile">
+                    <div>My Profile</div>
+                  </Link>
+                  <Link to="/account/course">
+                    <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
                 </div>

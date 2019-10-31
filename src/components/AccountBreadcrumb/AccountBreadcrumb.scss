@@ -73,4 +73,22 @@
       }
     }
   }
+  .profile-menu {
+    position: relative;
+    &:hover {
+      .dropdown-content {
+        opacity: 1;
+        height: 110px;
+      }
+    }
+  }
+
+  .profile-menu .dropdown-content {
+    font-size: 15px;
+    top: 35px;
+    right: 0;
+    width: 200px;
+    z-index: 999;
+    height: 0;
+  }
 }
