@@ -55,7 +55,7 @@ export const registerAction = user => {
       .post(`${BASE_URL}/users/register`, user)
       .then(response => {
         console.log('response', response);
-        if (response.data.statusCode == 200) {
+        if (response.data.statusCode === 200) {
           dispatch(registerSuccess(response.data));
           dispatch(
             loginAction({

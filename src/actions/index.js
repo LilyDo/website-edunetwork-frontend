@@ -3,7 +3,7 @@ export const USER_WEBSITE_URL = 'https://edunetwork.dev.gkcsoftware.com';
 // export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1';
 export const BASE_URL = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1';
 export const TOKEN_KEY = 'token';
-export const CURRENT_USER = 'current_user';
+export const CURRENT_USER_KEY = 'current_user';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

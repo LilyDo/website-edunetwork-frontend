@@ -87,6 +87,18 @@ class MyWallet_Withdraw extends Component {
           </div>
           <div className="TransactionRequest">YÊU CẦU GIAO DỊCH</div>
         </div>
+        <div
+          className="CancelButton"
+          onClick={this.props.onCancelClick}
+        >
+          HỦY BỎ
+        </div>
+        <div
+          className="TransactionRequest"
+          onClick={this.props.onRequestClick}
+        >
+          YÊU CẦU GIAO DỊCH
+        </div>
       </div>
     );
   }

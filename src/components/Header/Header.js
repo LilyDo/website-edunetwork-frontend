@@ -8,19 +8,20 @@ import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
-
-const currentUser = localStorage.getItem('current_user');
+import { CURRENT_USER_KEY } from '../../actions';
 
 class Header extends Component {
   state = {
     isLogined: false,
-    currentUser: {},
+    currentUser: localStorage.getItem(CURRENT_USER_KEY),
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.isLogined = true;
-      this.state.currentUser = getUserFormLocal();
+      this.setState({
+        isLogined: true,
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
@@ -33,9 +34,11 @@ class Header extends Component {
     }, 500);
   }
 
-  render() {
+  componentWillMount() {
     this.checkCurrentUser();
+  }
 
+  render() {
     return (
       <div className="Header">
         <div className="UpperHeader">
@@ -66,6 +69,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
@@ -106,6 +110,7 @@ class Header extends Component {
             {this.state.isLogined && (
               <div className="AvatarHeader">
                 <img
+                  alt="user profile"
                   src={
                     this.state.currentUser.avatar ||
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'

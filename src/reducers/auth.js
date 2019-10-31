@@ -19,7 +19,10 @@ export default function(state = initialState, action) {
     case types.LOGIN_SUCCESS:
       const duration = 3000;
       if (action.payload.data.token) {
-        localStorage.setItem('token', action.payload.data.token);
+        localStorage.setItem(
+          types.TOKEN_KEY,
+          action.payload.data.token,
+        );
         toast.success('Login successful!', { autoClose: duration });
       } else {
         toast.error(action.payload.errors[0], {
