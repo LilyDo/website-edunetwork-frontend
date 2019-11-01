@@ -6,9 +6,11 @@ const initialState = {
   auth: [],
   error: null,
   isEditing: false,
+  withdrawList: [],
+  chargeList: [],
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const duration = 3000;
 
   switch (action.type) {
@@ -27,7 +29,7 @@ export default function(state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function() {
+          setTimeout(function () {
             window.location.pathname = '/';
           }, 100);
         }
@@ -61,7 +63,7 @@ export default function(state = initialState, action) {
 
     case types.UPDATE_PROFILE_SUCCESS:
       state.isEditing = false;
-      if (action.payload.statusCode == 200) {
+      if (action.payload.statusCode === 200) {
         toast.success('Update profile successful!', {
           autoClose: duration,
         });
@@ -91,6 +93,78 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isEditing: !state.isEditing,
+      };
+
+    // GET CHARGE HISTORY
+    case types.GET_CHARGE_HISTORY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_CHARGE_HISTORY_SUCCESS:
+      if (action.payload.statusCode === 200) {
+        return {
+          ...state,
+          withdrawList: action.payload.data.draw,
+          chargeList: action.payload.data.charge,
+        };
+      } else {
+        toast.error(action.payload.errors[0], {
+          autoClose: duration,
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.GET_CHARGE_HISTORY_FAILURE:
+      toast.error('Cannot get charge history', {
+        autoClose: duration,
+      });
+      return {
+        ...state
+      }
+
+    // WITHDRAW MONEY
+    case types.WITHDRAW_MONEY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.WITHDRAW_MONEY_SUCCESS:
+      if (action.payload.statusCode === 200) {
+        toast.success('Request successful!', {
+          autoClose: duration
+        });
+        setTimeout(function () {
+          window.location.pathname = '/account/profile/withdraw-noti';
+        }, 100);
+      } else {
+        toast.error(action.payload.errors[0], {
+          autoClose: duration
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.WITHDRAW_MONEY_FAILURE:
+      toast.error('Cannot send request to withraw money', {
+        autoClose: duration,
+      });
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
       };
 
     default:

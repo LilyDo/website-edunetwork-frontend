@@ -6,13 +6,11 @@ import { getUserFormLocal } from '../../services/appService';
 
 class AccountBreadcrumb extends Component {
   state = {
-    isLogined: false,
-    currentUser: {},
+    currentUser: {}
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.isLogined = true;
       this.state.currentUser = getUserFormLocal();
     }
   }
@@ -53,8 +51,8 @@ class AccountBreadcrumb extends Component {
                 <Link to="/account/profile/wallet">
                   <div>My Wallet</div>
                 </Link>
-                <Link to="/account/profile/withraw">
-                  <div>Withraw</div>
+                <Link to="/account/profile/withdraw">
+                  <div>Withdraw</div>
                 </Link>
               </div>
             </div>

@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 .WithdrawNotification {
   @media only screen and (max-width: $mobileBreakPoint) {
@@ -62,6 +62,10 @@
 
     img {
       padding-right: 10px;
+    }
+    div {
+      color: white;
+      float: right;
     }
   }
 }

@@ -25,28 +25,31 @@ import AccountDashboardPage from './components/AccountDashboardPage/AccountDashb
 import AccountProfilePage from './components/AccountProfilePage/AccountProfilePage';
 import MyWallet from './components/MyWallet/MyWallet';
 import MyWallet_Withdraw from './components/MyWallet_Withdraw/MyWallet_Withdraw';
+import WithdrawNotification from './components/WithdrawNotification/WithdrawNotification';
 import AccountCoursePage from './components/AccountCoursePage/AccountCoursePage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
+import SignupVerify from './components/SignupVerify/SignupVerify';
+import SignupPendingVerify from './components/SignupPendingVerify/SignupPendingVerify';
 
 // services
 import { getUserFormLocal } from './services/appService';
 
 
-function PrivateRoute ({component: Component, authed, ...rest}) {
+function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) => authed === true
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/signin', state: {from: props.location}}} />}
+        : <Redirect to={{ pathname: '/signin', state: { from: props.location } }} />}
     />
   )
 }
 
 class App extends Component {
   state = {
-    isLogined : false
+    isLogined: false
   }
 
   checkCurrentUser() {
@@ -84,11 +87,17 @@ class App extends Component {
                 <Route exact path="/signin">
                   <SigninPage />
                 </Route>
+                <Route exact path="/verify">
+                  <SignupVerify />
+                </Route>
+                <Route exact path="/register-pending-active">
+                  <SignupPendingVerify />
+                </Route>
                 <PrivateRoute authed={this.state.isLogined} exact path="/account/dashboard" component={AccountDashboardPage} />
                 <PrivateRoute authed={this.state.isLogined} exact path="/account/profile" component={AccountProfilePage} />
                 <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/wallet" component={MyWallet} />
-                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withraw" component={MyWallet_Withdraw} />
-                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withraw-noti" component={AccountProfilePage} />
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withdraw" component={MyWallet_Withdraw} />
+                <PrivateRoute authed={this.state.isLogined} exact path="/account/profile/withdraw-noti" component={WithdrawNotification} />
                 <PrivateRoute authed={this.state.isLogined} exact path="/account/course" component={AccountCoursePage} />
                 <Route exact path="/contact">
                   <ContactPage />

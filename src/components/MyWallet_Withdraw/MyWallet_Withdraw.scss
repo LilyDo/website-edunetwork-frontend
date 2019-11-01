@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 .MyWallet_Withdraw {
   @media only screen and (max-width: $mobileBreakPoint) {
@@ -81,8 +81,7 @@
       }
 
       select {
-        background: url(../../assets/images/icon_grey_arrow_down.svg)
-          96% / 5% no-repeat white;
+        background: url(../../assets/images/icon_grey_arrow_down.svg) 96% / 5% no-repeat white;
         background-position: right;
       }
     }
@@ -175,6 +174,7 @@
     display: inline;
     background-color: $brown;
     color: white;
+    margin-left: 10px;
     @extend %fontSemiBold;
     border-radius: 10px;
     cursor: pointer;

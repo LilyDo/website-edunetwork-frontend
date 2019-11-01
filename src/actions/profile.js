@@ -8,9 +8,16 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILURE,
   SHOW_UPDATE_FORM,
+  GET_CHARGE_HISTORY_REQUEST,
+  GET_CHARGE_HISTORY_SUCCESS,
+  GET_CHARGE_HISTORY_FAILURE,
+  WITHDRAW_MONEY_REQUEST,
+  WITHDRAW_MONEY_SUCCESS,
+  WITHDRAW_MONEY_FAILURE
 } from './index';
 import * as types from '../actions/index';
 
+// GET PROFILE
 export const getProfileAction = payload => {
   return dispatch => {
     dispatch(getProfileRequest());
@@ -44,6 +51,7 @@ const getProfileFailure = error => ({
   payload: { error },
 });
 
+// UPDATE PROFILE
 export const updateProfileAction = userProfile => {
   return dispatch => {
     dispatch(updateProfileRequest(userProfile));
@@ -77,6 +85,7 @@ const updateProfileFailure = error => ({
   payload: { error },
 });
 
+// SHOW UPDATE FORM
 export const showUpdateFormAction = () => {
   return dispatch => {
     dispatch(showUpProfileRequest());
@@ -85,4 +94,60 @@ export const showUpdateFormAction = () => {
 
 const showUpProfileRequest = () => ({
   type: SHOW_UPDATE_FORM,
+});
+
+// GET CHARGE HISTORY
+export const getChargeHistoryAction = () => {
+  return dispatch => {
+    dispatch(getChargeHistoryRequest());
+    axios
+      .post(`${BASE_URL}/users/charge-history`, { token: localStorage.getItem(types.TOKEN_KEY) })
+      .then(response => {
+        dispatch(getChargeHistorySuccess(response.data));
+      })
+      .catch(error => dispatch(getChargeHistoryFailure(error.message)));
+  };
+};
+
+const getChargeHistoryRequest = () => ({
+  type: GET_CHARGE_HISTORY_REQUEST
+});
+
+const getChargeHistorySuccess = response => ({
+  type: GET_CHARGE_HISTORY_SUCCESS,
+  payload: { ...response },
+});
+
+const getChargeHistoryFailure = error => ({
+  type: GET_CHARGE_HISTORY_FAILURE,
+  payload: { error },
+});
+
+// WITHDRAW MONEY
+export const withdrawMoneyAction = (payload) => {
+  return dispatch => {
+    dispatch(withdrawMoneyRequest());
+    payload.append('token', localStorage.getItem(types.TOKEN_KEY));
+    axios
+      .post(`${BASE_URL}/users/draw-money`, payload)
+      .then(response => {
+        dispatch(withdrawMoneySuccess(response.data));
+      })
+      .catch(error => dispatch(withdrawMoneyFailure(error.message)));
+  };
+};
+
+const withdrawMoneyRequest = payload => ({
+  type: WITHDRAW_MONEY_REQUEST,
+  payload: payload
+});
+
+const withdrawMoneySuccess = response => ({
+  type: WITHDRAW_MONEY_SUCCESS,
+  payload: { ...response },
+});
+
+const withdrawMoneyFailure = error => ({
+  type: WITHDRAW_MONEY_FAILURE,
+  payload: { error },
 });
