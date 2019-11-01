@@ -84,11 +84,12 @@ class App extends Component {
                 <Route exact path={routes.courses}>
                   <CoursePage />
                 </Route>
-                <Route exact path={routes.courseDetail}>
-                  <CourseDetailPage />
-                </Route>
+                {/* this should be declared before courseDetail or "order" will become the id param */}
                 <Route exact path={routes.courseOrder}>
                   <OrderPage />
+                </Route>
+                <Route exact path={routes.courseDetail}>
+                  <CourseDetailPage />
                 </Route>
                 <Route exact path={routes.coursePaymentSuccessful}>
                   <PaymentSuccessfulPage />
