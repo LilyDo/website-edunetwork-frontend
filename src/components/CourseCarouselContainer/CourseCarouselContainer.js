@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { filter } from 'lodash';
 
 import './CourseCarouselContainer.scss';
 import CourseCarousel from '../Carousel/CourseCarousel';
@@ -14,9 +15,14 @@ class CourseCarouselContainer extends Component {
   }
 
   render() {
-    const {
+    let {
       courses: { courses },
+      excludeId,
     } = this.props;
+
+    if (excludeId) {
+      courses = filter(courses, course => course.id !== excludeId);
+    }
 
     return (
       <div>

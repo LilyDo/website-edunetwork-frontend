@@ -56,8 +56,9 @@ export const getCourseDetailAction = courseId => {
   return dispatch => {
     dispatch(getCourseDetailRequest());
 
+    const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .get(`${BASE_URL}/courses/${courseId}`)
+      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
       .then(response =>
         dispatch(getCourseDetailSuccess(response.data)),
       )

@@ -16,14 +16,14 @@ class CourseDetailPage extends Component {
   }
 
   render() {
-    const { courseDetail } = this.props;
-    console.log('xxx courseDetail', courseDetail);
+    const { courseDetail = {} } = this.props;
+
     return (
       <div>
         <Breadcrumb />
-        <CourseLevel />
+        <CourseLevel courseDetail={courseDetail} />
         <CourseInfo />
-        <CourseCarouselContainer />
+        <CourseCarouselContainer excludeId={courseDetail.id} />
       </div>
     );
   }
