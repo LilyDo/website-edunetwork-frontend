@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { get } from 'lodash';
 import {
   BASE_URL,
   LOGIN_REQUEST,
@@ -13,6 +14,7 @@ import {
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
+import { getUserCoursesAction } from './courses';
 
 export const loginAction = user => {
   return dispatch => {
@@ -24,12 +26,13 @@ export const loginAction = user => {
         dispatch(loginSuccess(response.data));
         dispatch(
           getProfileAction({
-            token: response.data.data.token,
+            token: get(response, 'data.data.token'),
             options: {
               redirect: true,
             },
           }),
         );
+        dispatch(getUserCoursesAction());
       })
       .catch(error => dispatch(loginFailure(error.message)));
   };
