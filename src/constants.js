@@ -2,7 +2,7 @@ export const routes = {
   home: '/',
   // course
   courses: '/courses',
-  courseDetail: '/courses/detail',
+  courseDetail: '/courses/:id',
   courseOrder: '/courses/order',
   coursePaymentSuccessful: '/courses/paymentsucessful',
   // auth

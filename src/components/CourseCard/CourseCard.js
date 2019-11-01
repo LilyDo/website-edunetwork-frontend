@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './CourseCard.scss';
+import { routes } from '../../constants';
+import { Link } from 'react-router-dom';
 
 class CourseCard extends Component {
   render() {
-    const { courseCarouselItem, onPayClick } = this.props;
+    const { courseCarouselItem } = this.props;
 
     return (
       <div className="CourseCardContainer">
@@ -20,12 +22,9 @@ class CourseCard extends Component {
         </div>
         <div className="Title">{courseCarouselItem.title}</div>
         <div className="PayContainer">
-          <div
-            className="PayNow"
-            onClick={() => this.props.onPayClick(courseCarouselItem)}
-          >
-            THANH TOÁN NGAY
-          </div>
+          <Link to={routes.courseDetail}>
+            <div className="PayNow">THANH TOÁN NGAY</div>
+          </Link>
         </div>
       </div>
     );

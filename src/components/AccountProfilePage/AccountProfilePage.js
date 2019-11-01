@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import MyProfile from '../MyProfile/MyProfile';
 import ChangeProfile from '../ChangeProfile/ChangeProfile';
-import MyWallet from '../MyWallet/MyWallet';
-import MyWallet_Withdraw from '../MyWallet_Withdraw/MyWallet_Withdraw';
-import WithdrawNotification from '../WithdrawNotification/WithdrawNotification';
 import { showUpdateFormAction } from '../../actions/profile';
 import { bindActionCreators } from 'redux';
 
@@ -54,7 +51,6 @@ class AccountProfilePage extends Component {
   };
 
   render() {
-    const { showProfileForm } = this.state;
     return (
       <div>
         <AccountBreadcrumb />

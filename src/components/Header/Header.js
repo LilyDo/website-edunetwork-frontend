@@ -8,7 +8,6 @@ import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
-import { CURRENT_USER_KEY } from '../../actions';
 import { routes } from '../../constants';
 
 class Header extends Component {
@@ -82,7 +81,7 @@ class Header extends Component {
                   <Link to={routes.accountProfile}>
                     <div>My Profile</div>
                   </Link>
-                  <Link to={routes.acountCourses}>
+                  <Link to={routes.accountCourses}>
                     <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
@@ -123,7 +122,7 @@ class Header extends Component {
                   <Link to={routes.accountProfile}>
                     <div>My Profile</div>
                   </Link>
-                  <Link to={routes.acountCourses}>
+                  <Link to={routes.accountCourses}>
                     <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>

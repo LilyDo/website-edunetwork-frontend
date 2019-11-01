@@ -135,7 +135,7 @@ class App extends Component {
                 <PrivateRoute
                   authed={this.state.isLogined}
                   exact
-                  path={routes.acountCourses}
+                  path={routes.accountCourses}
                   component={AccountCoursePage}
                 />
                 <Route exact path={routes.contact}>
