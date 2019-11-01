@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './ChangeProfile.scss';
-import UploadIcon from '../../assets/images/icon_upload.svg';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import { getUserFormLocal } from '../../services/appService';
 import { updateProfileAction } from '../../actions/profile';
@@ -97,7 +96,6 @@ class ChangeProfile extends Component {
                   <input
                     type="text"
                     name="fullName"
-                    name="name"
                     value={this.state.fullName}
                     onChange={this.handleChange('fullName')}
                   ></input>

@@ -1,7 +1,9 @@
 // export const USER_WEBSITE_URL = 'http://localhost:3000';
-export const USER_WEBSITE_URL = 'https://edunetwork.dev.gkcsoftware.com';
+export const USER_WEBSITE_URL =
+  'https://edunetwork.dev.gkcsoftware.com';
 // export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1';
-export const BASE_URL = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1';
+export const BASE_URL =
+  'https://api.edunetwork.dev.gkcsoftware.com/api/v1';
 export const TOKEN_KEY = 'token';
 export const CURRENT_USER_KEY = 'current_user';
 
@@ -40,6 +42,10 @@ export const WITHDRAW_MONEY_FAILURE = 'WITHDRAW_MONEY_FAILURE';
 export const GET_COURSE_REQUEST = 'GET_COURSE_REQUEST';
 export const GET_COURSE_SUCCESS = 'GET_COURSE_SUCCESS';
 export const GET_COURSE_FAILURE = 'GET_COURSE_FAILURE';
+
+export const GET_COURSE_DETAIL_REQUEST = 'GET_COURSE_DETAIL_REQUEST';
+export const GET_COURSE_DETAIL_SUCCESS = 'GET_COURSE_DETAIL_SUCCESS';
+export const GET_COURSE_DETAIL_FAILURE = 'GET_COURSE_DETAIL_FAILURE';
 
 export const BUY_COURSE_REQUEST = 'BUY_COURSE_REQUEST';
 export const BUY_COURSE_SUCCESS = 'BUY_COURSE_SUCCESS';

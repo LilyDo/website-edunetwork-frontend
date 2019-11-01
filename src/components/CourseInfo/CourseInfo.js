@@ -1,137 +1,206 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
+import { get } from 'lodash';
+
 import './CourseInfo.scss';
 import BulletIcon from '../../assets/images/icon_bullet.svg';
 import PlusIcon from '../../assets/images/icon_plus.svg';
 import PlayIcon from '../../assets/images/icon_play.svg';
+import AttachmentIcon from '../../assets/images/icon_attachment.svg';
 
-function CourseInfo() {
-  return (
-    <div className="CourseInfoContainer">
-      <div className="Title">
-        <div className="IntroductionTitle">
-          <span>Thông tin khóa học</span>
-        </div>
-        <div className="CurriculumTitle">
-          <span>Giáo trình</span>
-        </div>
-      </div>
-      <div className="CourseIntroduction">
-        <div className="IntroductionContent">
-          <div className="Head">Giới thiệu khóa học</div>
-          <p>
-            {`Bạn là một người cầu tiến và mong muốn thăng tiến trở thành lãnh đạo?
+class CourseInfo extends Component {
+  state = {
+    isIntroductionVisible: false,
+    activeAttachment: {},
+  };
 
-Bạn đam mê công việc và mong muốn được tăng lương gấp 3 lần?
+  showCourseIntroduction = () => {
+    this.setState({
+      isIntroductionVisible: true,
+    });
+  };
 
-Các chủ doanh nghiệp, nhà lãnh đạo, nhà quản lý đang đau đầu về nhân sự yếu kém, tổ chức 
-lộn xộn?
+  hideCourseIntroduction = () => {
+    this.setState({
+      isIntroductionVisible: false,
+    });
+  };
 
-Khóa học Chìa khóa lãnh đạo chính là cánh cửa mở ra con đường tiến thân và phát triển sự 
-nghiệp bền vững cho những cá nhân và các chủ doanh nghiệp. 
+  toggleChapter = chapter => {
+    const key = `isChapter${chapter.id}Visible`;
+    this.setState({
+      [key]: !this.state[key],
+    });
+  };
 
-Chưa biết phát triển sự nghiệp từ đâu sẽ biết cách thăng tiến lên vị trí cao nhất trong sự nghiệp. 
-Chủ doanh nghiệp, nhà lãnh đạo, nhà quản lý sẽ vận hành doanh nghiệp nhàn hơn, chỉ với 1 giờ 
-mỗi tuần. 
-Khóa học sẽ bao gồm 5 khóa học học online sau: 
-- Khóa 1: CHÂN DUNG NHÀ LÃNH ĐẠO
-- Khóa 2: NHỮNG TỐ CHẤT CỦA NHÀ LÃNH ĐẠO TÀI BA
-- Khóa 3: NHÀ LÃNH ĐẠO QUYỀN LỰC
-- Khóa 4: KHẢ NĂNG GIẢI QUYẾT MÂU THUẪN
-- Khóa 5: TRỞ THÀNH NHÀ LÃNH ĐẠO TÀI BA TRONG THỜI ĐẠI MỚI`}
-          </p>
-        </div>
-      </div>
-      <div className="CourseCurriculum">
-        <div className="Head">Giáo trình</div>
-        <div className="CurriculumContent">
-          <div className="Course">
-            <div className="Name">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>KHÓA 1: CHÂN DUNG NHÀ LÃNH ĐẠO</div>
+  togglePart = part => {
+    const key = `isPart${part.id}Visible`;
+    this.setState({
+      [key]: !this.state[key],
+    });
+  };
+
+  formatDuration = duration => {
+    let hours = Math.floor(duration / 60);
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    let minutes = duration % 60;
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${hours}:${minutes}:00`;
+  };
+
+  setActiveAttachment = attachment => {
+    this.setState({
+      activeAttachment: attachment,
+    });
+  };
+
+  render() {
+    const { isIntroductionVisible, activeAttachment } = this.state;
+    const { courseDetail } = this.props;
+    const chapters = get(courseDetail, 'child', []);
+
+    return (
+      <div className="CourseInfoContainer">
+        {activeAttachment && (
+          <div className="AttachmentPlayer">
+            <iframe
+              title="hero_youtube"
+              src={activeAttachment.link_file}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+
+        <div className="TitleDescriptionCurriculumnContainer">
+          <div className="Title">
+            <div
+              className={
+                isIntroductionVisible === true
+                  ? 'IntroductionTitle Active'
+                  : 'IntroductionTitle'
+              }
+              onClick={this.showCourseIntroduction}
+            >
+              <span>Thông tin khóa học</span>
             </div>
-            <div className="Part">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>Phần 1: Tổng quan về lãnh đạo</div>
+            <div
+              className={
+                isIntroductionVisible === false
+                  ? 'CurriculumTitle Active'
+                  : 'CurriculumTitle'
+              }
+              onClick={this.hideCourseIntroduction}
+            >
+              <span>Giáo trình</span>
             </div>
-            <div className="Lessons">
-              <div className="LessonContainer">
-                <div className="Lesson">
-                  <img alt="play" src={PlayIcon}></img>
-                  <div>Bài 1: Thế nào là một nhà lãnh đạo</div>
-                </div>
-                <div className="Duration">time</div>
+          </div>
+
+          {isIntroductionVisible && (
+            <div className="CourseIntroduction">
+              <div className="IntroductionContent">
+                <div className="Head">Giới thiệu khóa học</div>
+                <p>{courseDetail.description}</p>
               </div>
-              <div className="LessonContainer">
-                <div className="Lesson">
-                  <img alt="play" src={PlayIcon}></img>
-                  <div>Bài 2: Các cấp độ lãnh đạo</div>
-                </div>
-                <div className="Duration">time</div>
-              </div>
-              <div className="LessonContainer">
-                <div className="Lesson">
-                  <img alt="play" src={PlayIcon}></img>
-                  <div>
-                    Bài 3: Vai trò và trách nhiệm của lãnh đạo
+            </div>
+          )}
+
+          {!isIntroductionVisible && (
+            <div className="CourseCurriculum">
+              <div className="Head">Giáo trình</div>
+              <div className="CurriculumContent">
+                {chapters.map(chapter => (
+                  <div className="Course" key={chapter.id}>
+                    <div
+                      className="Name"
+                      onClick={() => this.toggleChapter(chapter)}
+                    >
+                      {this.state[`isChapter${chapter.id}Visible`] ? (
+                        <img alt="bullet" src={BulletIcon}></img>
+                      ) : (
+                        <img alt="plus" src={PlusIcon}></img>
+                      )}
+                      <div>{chapter.title}</div>
+                    </div>
+
+                    {this.state[`isChapter${chapter.id}Visible`] &&
+                      chapter.parts.map(part => (
+                        <Fragment>
+                          <div
+                            className="Part"
+                            key={part.id}
+                            onClick={() => this.togglePart(part)}
+                          >
+                            {this.state[`isPart${part.id}Visible`] ? (
+                              <img
+                                alt="bullet"
+                                src={BulletIcon}
+                              ></img>
+                            ) : (
+                              <img alt="plus" src={PlusIcon}></img>
+                            )}
+                            <div>{part.title}</div>
+                          </div>
+
+                          {this.state[`isPart${part.id}Visible`] &&
+                            part.lessons.map(lesson => (
+                              <div
+                                className="Lessons"
+                                key={lesson.id}
+                              >
+                                <div className="LessonContainer">
+                                  <div className="Lesson">
+                                    <div className="Duration">
+                                      {this.formatDuration(
+                                        lesson.duration,
+                                      )}
+                                    </div>
+                                    <div className="LessonTitle">
+                                      {lesson.title}
+                                    </div>
+                                  </div>
+                                  <img
+                                    alt="play"
+                                    src={PlayIcon}
+                                  ></img>
+                                </div>
+                                <div className="Attachments">
+                                  {lesson.attachments.map(
+                                    attachment => (
+                                      <div
+                                        className="Attachment"
+                                        onClick={() =>
+                                          this.setActiveAttachment(
+                                            attachment,
+                                          )
+                                        }
+                                      >
+                                        <img
+                                          src={AttachmentIcon}
+                                          alt="attachment"
+                                        />
+                                        {attachment.link_file}
+                                      </div>
+                                    ),
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                        </Fragment>
+                      ))}
                   </div>
-                </div>
-                <div className="Duration">time</div>
-              </div>
-              <div className="LessonContainer">
-                <div className="Lesson">
-                  <img alt="play" src={PlayIcon}></img>
-                  <div>Bài 4: Bài 4: Hiệu quả lãnh đạo</div>
-                </div>
-                <div className="Duration">time</div>
+                ))}
               </div>
             </div>
-
-            <div className="Part">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>
-                Phần 2: Điều kiện cần của một người lãnh đạo tài ba
-              </div>
-            </div>
-          </div>
-
-          <div className="Course">
-            <div className="Name">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>KHÓA 2: NHỮNG TỐ CHẤT CỦA NHÀ LÃNH ĐẠO TÀI BA</div>
-            </div>
-          </div>
-          <div className="Course">
-            <div className="Name">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>KHÓA 3: NHÀ LÃNH ĐẠO QUYỀN LỰC</div>
-            </div>
-          </div>
-          <div className="Course">
-            <div className="Name">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>KHÓA 4: KHẢ NĂNG GIẢI QUYẾT MÂU THUẪN</div>
-            </div>
-          </div>
-          <div className="Course">
-            <div className="Name">
-              <img alt="bullet" src={BulletIcon}></img>
-              <img alt="plus" src={PlusIcon}></img>
-              <div>
-                KHÓA 5: TRỞ THÀNH NHÀ LÃNH ĐẠO TÀI BA TRONG THỜI ĐẠI
-                MỚI
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default CourseInfo;
