@@ -16,7 +16,7 @@ import {
   WITHDRAW_MONEY_FAILURE,
   GET_USER_DASHBOARD_REQUEST,
   GET_USER_DASHBOARD_SUCCESS,
-  GET_USER_DASHBOARD_FAILURE
+  GET_USER_DASHBOARD_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -166,17 +166,21 @@ export const getUserDashboardAction = () => {
   return dispatch => {
     dispatch(getUserDashboardRequest());
     axios
-      .post(`${BASE_URL}/users/dashboard`, { token: localStorage.getItem(types.TOKEN_KEY) || "" })
+      .post(`${BASE_URL}/users/dashboard`, {
+        token: localStorage.getItem(types.TOKEN_KEY) || '',
+      })
       .then(response => {
-        console.log("get dashboard response", response.data);
+        console.log('get dashboard response', response.data);
         dispatch(getUserDashboardSuccess(response.data));
       })
-      .catch(error => dispatch(getUserDashboardFailure(error.message)));
+      .catch(error =>
+        dispatch(getUserDashboardFailure(error.message)),
+      );
   };
 };
 
 const getUserDashboardRequest = () => ({
-  type: GET_USER_DASHBOARD_REQUEST
+  type: GET_USER_DASHBOARD_REQUEST,
 });
 
 const getUserDashboardSuccess = response => ({

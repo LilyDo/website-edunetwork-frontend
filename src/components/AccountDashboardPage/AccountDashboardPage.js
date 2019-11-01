@@ -77,8 +77,8 @@ class AccountDashboardPage extends Component {
             <div className="Chart">
               <DashboardChart data={
                 {
-                  revenueByMonth: this.props.state.dashboard.revenue_by_month,
-                  commissionByMonth: this.props.state.dashboard.commission_by_month
+                  revenueByMonth: this.props.state.dashboard.total_revenue_month,
+                  commissionByMonth: this.props.state.dashboard.total_commission_month
                 }
               } />
             </div>
@@ -106,13 +106,13 @@ class AccountDashboardPage extends Component {
               <tbody className="RevenueTableBody">
                 <tr>
                   <td className="FirstCell">COMMISSION</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.commission_by_month && this.props.state.dashboard.commission_by_month.map((item, index) => (
+                  {this.props.state.dashboard && this.props.state.dashboard.total_commission_month && this.props.state.dashboard.total_commission_month.map((item, index) => (
                     <td key={index}>{currencyFormatter(item)}</td>
                   ))}
                 </tr>
                 <tr>
                   <td>TOTAL GROUP REVENUE</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.revenue_by_month && this.props.state.dashboard.revenue_by_month.map((item, index) => (
+                  {this.props.state.dashboard && this.props.state.dashboard.total_revenue_month && this.props.state.dashboard.total_revenue_month.map((item, index) => (
                     <td key={index}>{currencyFormatter(item)}</td>
                   ))}
                 </tr>
