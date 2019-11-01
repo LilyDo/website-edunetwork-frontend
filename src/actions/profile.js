@@ -13,7 +13,7 @@ import {
   GET_CHARGE_HISTORY_FAILURE,
   WITHDRAW_MONEY_REQUEST,
   WITHDRAW_MONEY_SUCCESS,
-  WITHDRAW_MONEY_FAILURE
+  WITHDRAW_MONEY_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -101,16 +101,20 @@ export const getChargeHistoryAction = () => {
   return dispatch => {
     dispatch(getChargeHistoryRequest());
     axios
-      .post(`${BASE_URL}/users/charge-history`, { token: localStorage.getItem(types.TOKEN_KEY) })
+      .post(`${BASE_URL}/users/charge-history`, {
+        token: localStorage.getItem(types.TOKEN_KEY),
+      })
       .then(response => {
         dispatch(getChargeHistorySuccess(response.data));
       })
-      .catch(error => dispatch(getChargeHistoryFailure(error.message)));
+      .catch(error =>
+        dispatch(getChargeHistoryFailure(error.message)),
+      );
   };
 };
 
 const getChargeHistoryRequest = () => ({
-  type: GET_CHARGE_HISTORY_REQUEST
+  type: GET_CHARGE_HISTORY_REQUEST,
 });
 
 const getChargeHistorySuccess = response => ({
@@ -124,7 +128,7 @@ const getChargeHistoryFailure = error => ({
 });
 
 // WITHDRAW MONEY
-export const withdrawMoneyAction = (payload) => {
+export const withdrawMoneyAction = payload => {
   return dispatch => {
     dispatch(withdrawMoneyRequest());
     payload.append('token', localStorage.getItem(types.TOKEN_KEY));
@@ -139,7 +143,7 @@ export const withdrawMoneyAction = (payload) => {
 
 const withdrawMoneyRequest = payload => ({
   type: WITHDRAW_MONEY_REQUEST,
-  payload: payload
+  payload: payload,
 });
 
 const withdrawMoneySuccess = response => ({

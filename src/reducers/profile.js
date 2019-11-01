@@ -10,7 +10,7 @@ const initialState = {
   chargeList: [],
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   const duration = 3000;
 
   switch (action.type) {
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function () {
+          setTimeout(function() {
             window.location.pathname = '/';
           }, 100);
         }
@@ -126,8 +126,8 @@ export default function (state = initialState, action) {
         autoClose: duration,
       });
       return {
-        ...state
-      }
+        ...state,
+      };
 
     // WITHDRAW MONEY
     case types.WITHDRAW_MONEY_REQUEST:
@@ -139,14 +139,14 @@ export default function (state = initialState, action) {
     case types.WITHDRAW_MONEY_SUCCESS:
       if (action.payload.statusCode === 200) {
         toast.success('Request successful!', {
-          autoClose: duration
+          autoClose: duration,
         });
-        setTimeout(function () {
+        setTimeout(function() {
           window.location.pathname = '/account/profile/withdraw-noti';
         }, 100);
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration
+          autoClose: duration,
         });
       }
 
