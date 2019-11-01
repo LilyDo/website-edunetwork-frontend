@@ -23,6 +23,20 @@ class CourseInfo extends Component {
     });
   };
 
+  toggleChapter = chapter => {
+    const key = `isChapter${chapter.id}Visible`;
+    this.setState({
+      [key]: !this.state[key],
+    });
+  };
+
+  togglePart = part => {
+    const key = `isPart${part.id}Visible`;
+    this.setState({
+      [key]: !this.state[key],
+    });
+  };
+
   render() {
     const { isIntroductionVisible } = this.state;
     const { courseDetail } = this.props;
@@ -66,39 +80,49 @@ class CourseInfo extends Component {
           <div className="CourseCurriculum">
             <div className="Head">Giáo trình</div>
             <div className="CurriculumContent">
-              {chapters.map((chapter, index) => (
+              {chapters.map(chapter => (
                 <div className="Course" key={chapter.id}>
-                  <div className="Name">
+                  <div
+                    className="Name"
+                    onClick={() => this.toggleChapter(chapter)}
+                  >
                     <img alt="bullet" src={BulletIcon}></img>
                     <img alt="plus" src={PlusIcon}></img>
-                    <div>
-                      KHÓA {index + 1}: {chapter.title}
-                    </div>
+                    <div>{chapter.title}</div>
                   </div>
 
-                  {chapter.parts.map(part => (
-                    <Fragment>
-                      <div className="Part" key={part.id}>
-                        <img alt="bullet" src={BulletIcon}></img>
-                        <img alt="plus" src={PlusIcon}></img>
-                        <div>{part.title}</div>
-                      </div>
-
-                      {part.lessons.map(lesson => (
-                        <div className="Lessons" key={lesson.id}>
-                          <div className="LessonContainer">
-                            <div className="Lesson">
-                              <img alt="play" src={PlayIcon}></img>
-                              <div>{lesson.title}</div>
-                            </div>
-                            <div className="Duration">
-                              {lesson.duration}
-                            </div>
-                          </div>
+                  {this.state[`isChapter${chapter.id}Visible`] &&
+                    chapter.parts.map(part => (
+                      <Fragment>
+                        <div
+                          className="Part"
+                          key={part.id}
+                          onClick={() => this.togglePart(part)}
+                        >
+                          <img alt="bullet" src={BulletIcon}></img>
+                          <img alt="plus" src={PlusIcon}></img>
+                          <div>{part.title}</div>
                         </div>
-                      ))}
-                    </Fragment>
-                  ))}
+
+                        {this.state[`isPart${part.id}Visible`] &&
+                          part.lessons.map(lesson => (
+                            <div className="Lessons" key={lesson.id}>
+                              <div className="LessonContainer">
+                                <div className="Lesson">
+                                  <img
+                                    alt="play"
+                                    src={PlayIcon}
+                                  ></img>
+                                  <div>{lesson.title}</div>
+                                </div>
+                                <div className="Duration">
+                                  {lesson.duration}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                      </Fragment>
+                    ))}
                 </div>
               ))}
             </div>
