@@ -23,17 +23,16 @@ export const getProfileAction = payload => {
     dispatch(getProfileRequest());
     axios
       .post(`${BASE_URL}/users/profile`, {
-        token: payload.token
+        token: payload.token,
       })
       .then(response => {
         dispatch(
           getProfileSuccess({
             data: response.data,
             options: payload.options,
-          })
-        )
-      }
-      )
+          }),
+        );
+      })
       .catch(error => dispatch(getProfileFailure(error.message)));
   };
 };

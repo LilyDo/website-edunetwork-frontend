@@ -66,7 +66,6 @@ export const registerAction = user => {
     axios
       .post(`${BASE_URL}/users/register`, user)
       .then(response => {
-        console.log('response', response);
         if (response.data.statusCode === 200) {
           dispatch(registerSuccess(response.data));
           setTimeout(function () {
@@ -74,7 +73,6 @@ export const registerAction = user => {
           }, 100);
         } else {
           let obj = response.data.errors;
-          console.log('obj', obj);
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
               autoClose: 3000,

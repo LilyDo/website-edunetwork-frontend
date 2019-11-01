@@ -1,0 +1,70 @@
+@import '../../shared.scss';
+
+.CourseCardContainer {
+  width: 240px;
+  margin-left: 10px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background-color: white;
+  img {
+    width: 100%;
+  }
+  .Level {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    padding: 5px 10px;
+    border: 1px solid $gold;
+    @extend %fontSemiBold;
+    color: white;
+    background-color: $gold;
+    border-radius: 28px;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 10px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 12px;
+    }
+  }
+
+  .Title {
+    @extend %fontMedium;
+    padding: 15px;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 14px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 18px;
+      height: 70px;
+    }
+  }
+
+  .PayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+
+    .PayNow {
+      text-align: center;
+      padding: 10px 25px;
+      border: 1px solid $gold;
+      @extend %fontSemiBold;
+      color: white;
+      background-color: $gold;
+      border-radius: 28px;
+      cursor: pointer;
+    }
+    @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 12px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      font-size: 14px;
+    }
+  }
+}

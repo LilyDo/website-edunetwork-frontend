@@ -34,6 +34,18 @@ export const WITHDRAW_MONEY_REQUEST = 'WITHDRAW_MONEY_REQUEST';
 export const WITHDRAW_MONEY_SUCCESS = 'WITHDRAW_MONEY_SUCCESS';
 export const WITHDRAW_MONEY_FAILURE = 'WITHDRAW_MONEY_FAILURE';
 
+export const GET_COURSE_REQUEST = 'GET_COURSE_REQUEST';
+export const GET_COURSE_SUCCESS = 'GET_COURSE_SUCCESS';
+export const GET_COURSE_FAILURE = 'GET_COURSE_FAILURE';
+
+export const BUY_COURSE_REQUEST = 'BUY_COURSE_REQUEST';
+export const BUY_COURSE_SUCCESS = 'BUY_COURSE_SUCCESS';
+export const BUY_COURSE_FAILURE = 'BUY_COURSE_FAILURE';
+
+export const GET_USER_COURSESS_REQUEST = 'GET_USER_COURSESS_REQUEST';
+export const GET_USER_COURSESS_SUCCESS = 'GET_USER_COURSESS_SUCCESS';
+export const GET_USER_COURSESS_FAILURE = 'GET_USER_COURSESS_FAILURE';
+
 // This middleware will just add the property "async dispatch"
 // to actions with the "async" propperty set to true
 export const asyncDispatchMiddleware = store => next => action => {

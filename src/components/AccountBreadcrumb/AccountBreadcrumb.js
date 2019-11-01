@@ -44,7 +44,7 @@ class AccountBreadcrumb extends Component {
                 <img alt="arrow down" src={ArrowDown}></img>
               </Link>
 
-              <div class="dropdown-content">
+              <div className="dropdown-content">
                 <Link to="/account/profile">
                   <div>Personal Information</div>
                 </Link>
@@ -68,9 +68,11 @@ class AccountBreadcrumb extends Component {
             </Link>
           </div>
           <div className="AccountContainer">
-            <div class="Text">Hello! </div>
-            <div class="Fullname">{this.state.currentUser.name}</div>
-            <div class="Username">
+            <div className="Text">Hello! </div>
+            <div className="Fullname">
+              {this.state.currentUser.name}
+            </div>
+            <div className="Username">
               {' '}
               ({this.state.currentUser.code})
             </div>

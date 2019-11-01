@@ -74,7 +74,7 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to="/account/dashboard">
                     <div>Dashboard</div>
                   </Link>
@@ -115,7 +115,7 @@ class Header extends Component {
                 <div className="NameHeader">
                   {this.state.currentUser.name}
                 </div>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to="/account/dashboard">
                     <div>Dashboard</div>
                   </Link>
