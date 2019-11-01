@@ -22,7 +22,12 @@ class CourseCard extends Component {
         </div>
         <div className="Title">{courseCarouselItem.title}</div>
         <div className="PayContainer">
-          <Link to={routes.courseDetail}>
+          <Link
+            to={routes.courseDetail.replace(
+              ':id',
+              courseCarouselItem.id,
+            )}
+          >
             <div className="PayNow">THANH TOÁN NGAY</div>
           </Link>
         </div>

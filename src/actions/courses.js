@@ -5,6 +5,9 @@ import {
   GET_COURSE_REQUEST,
   GET_COURSE_SUCCESS,
   GET_COURSE_FAILURE,
+  GET_COURSE_DETAIL_REQUEST,
+  GET_COURSE_DETAIL_SUCCESS,
+  GET_COURSE_DETAIL_FAILURE,
   GET_USER_COURSESS_REQUEST,
   GET_USER_COURSESS_SUCCESS,
   GET_USER_COURSESS_FAILURE,
@@ -13,6 +16,11 @@ import {
   BUY_COURSE_FAILURE,
 } from './index';
 
+/**
+ * +-------------+
+ * | GET COURSES |
+ * +-------------+
+ */
 export const getCourseAction = () => {
   return dispatch => {
     dispatch(getCourseRequest());
@@ -39,6 +47,46 @@ const getCourseFailure = error => ({
   payload: { error },
 });
 
+/**
+ * +-------------------+
+ * | GET COURSE DETAIL |
+ * +-------------------+
+ */
+export const getCourseDetailAction = courseId => {
+  return dispatch => {
+    dispatch(getCourseDetailRequest());
+
+    axios
+      .get(`${BASE_URL}/courses/${courseId}`)
+      .then(response =>
+        dispatch(getCourseDetailSuccess(response.data)),
+      )
+      .catch(error =>
+        dispatch(getCourseDetailFailure(error.message)),
+      );
+  };
+};
+
+const getCourseDetailRequest = () => ({
+  type: GET_COURSE_DETAIL_REQUEST,
+  payload: {},
+});
+
+const getCourseDetailSuccess = response => ({
+  type: GET_COURSE_DETAIL_SUCCESS,
+  payload: { ...response },
+});
+
+const getCourseDetailFailure = error => ({
+  type: GET_COURSE_DETAIL_FAILURE,
+  payload: { error },
+});
+
+/**
+ * +--------------------+
+ * | GET USER'S COURSES |
+ * +--------------------+
+ */
 export const getUserCoursesAction = () => {
   return dispatch => {
     dispatch(getUserCoursesRequest());
