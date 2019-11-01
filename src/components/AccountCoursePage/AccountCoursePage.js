@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { differenceWith, get } from 'lodash';
+import { filter } from 'lodash';
 
 import './AccountCoursePage.scss';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
@@ -27,11 +27,10 @@ class AccountCoursePage extends Component {
       courses,
       userCourses: { buy = [] },
     } = this.props.courses;
-
-    const unboughtCourses = differenceWith(
-      get(courses, 'courses'),
-      get(courses, 'userCourses.buy'),
-      (all, bought) => all.id !== bought.id,
+    const boughtCourseIds = buy.map(bought => bought.id);
+    const unboughtCourses = filter(
+      courses,
+      course => !boughtCourseIds.includes(course.id),
     );
 
     return (
