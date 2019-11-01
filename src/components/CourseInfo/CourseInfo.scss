@@ -28,6 +28,7 @@ $mobileMargin: 10px 25px 10px 25px;
 
 .CourseInfoContainer {
   max-width: 1103px;
+  width: 100%;
   margin: auto;
   border-bottom: 1px solid $gold;
   display: flex;
@@ -41,8 +42,29 @@ $mobileMargin: 10px 25px 10px 25px;
     font-size: 14px;
   }
 
-  .Title {
+  .AttachmentPlayer {
+    text-align: center;
+
+    iframe {
+      @media only screen and (max-width: $mobileBreakPoint) {
+        width: 313px;
+        height: 175px;
+      }
+
+      @media only screen and (min-width: 1000px) {
+        width: 600px;
+        height: 335px;
+      }
+    }
+  }
+
+  .TitleDescriptionCurriculumnContainer {
     max-width: 720px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .Title {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -79,7 +101,6 @@ $mobileMargin: 10px 25px 10px 25px;
   }
 
   .CourseIntroduction {
-    max-width: 720px;
     box-sizing: border-box;
     border: 1px solid white;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -117,7 +138,6 @@ $mobileMargin: 10px 25px 10px 25px;
   }
 
   .CourseCurriculum {
-    max-width: 720px;
     box-sizing: border-box;
     border: 1px solid white;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -255,6 +275,7 @@ $mobileMargin: 10px 25px 10px 25px;
             padding: 10px;
             display: flex;
             align-items: center;
+            cursor: pointer;
 
             img {
               padding-right: 10px;

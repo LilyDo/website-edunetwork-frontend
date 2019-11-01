@@ -10,6 +10,7 @@ import AttachmentIcon from '../../assets/images/icon_attachment.svg';
 class CourseInfo extends Component {
   state = {
     isIntroductionVisible: false,
+    activeAttachment: {},
   };
 
   showCourseIntroduction = () => {
@@ -50,117 +51,153 @@ class CourseInfo extends Component {
     return `${hours}:${minutes}:00`;
   };
 
+  setActiveAttachment = attachment => {
+    this.setState({
+      activeAttachment: attachment,
+    });
+  };
+
   render() {
-    const { isIntroductionVisible } = this.state;
+    const { isIntroductionVisible, activeAttachment } = this.state;
     const { courseDetail } = this.props;
     const chapters = get(courseDetail, 'child', []);
 
     return (
       <div className="CourseInfoContainer">
-        <div className="Title">
-          <div
-            className={
-              isIntroductionVisible === true
-                ? 'IntroductionTitle Active'
-                : 'IntroductionTitle'
-            }
-            onClick={this.showCourseIntroduction}
-          >
-            <span>Thông tin khóa học</span>
-          </div>
-          <div
-            className={
-              isIntroductionVisible === false
-                ? 'CurriculumTitle Active'
-                : 'CurriculumTitle'
-            }
-            onClick={this.hideCourseIntroduction}
-          >
-            <span>Giáo trình</span>
-          </div>
-        </div>
-
-        {isIntroductionVisible && (
-          <div className="CourseIntroduction">
-            <div className="IntroductionContent">
-              <div className="Head">Giới thiệu khóa học</div>
-              <p>{courseDetail.description}</p>
-            </div>
+        {activeAttachment && (
+          <div className="AttachmentPlayer">
+            <iframe
+              title="hero_youtube"
+              src={activeAttachment.link_file}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         )}
 
-        {!isIntroductionVisible && (
-          <div className="CourseCurriculum">
-            <div className="Head">Giáo trình</div>
-            <div className="CurriculumContent">
-              {chapters.map(chapter => (
-                <div className="Course" key={chapter.id}>
-                  <div
-                    className="Name"
-                    onClick={() => this.toggleChapter(chapter)}
-                  >
-                    {this.state[`isChapter${chapter.id}Visible`] ? (
-                      <img alt="bullet" src={BulletIcon}></img>
-                    ) : (
-                      <img alt="plus" src={PlusIcon}></img>
-                    )}
-                    <div>{chapter.title}</div>
-                  </div>
+        <div className="TitleDescriptionCurriculumnContainer">
+          <div className="Title">
+            <div
+              className={
+                isIntroductionVisible === true
+                  ? 'IntroductionTitle Active'
+                  : 'IntroductionTitle'
+              }
+              onClick={this.showCourseIntroduction}
+            >
+              <span>Thông tin khóa học</span>
+            </div>
+            <div
+              className={
+                isIntroductionVisible === false
+                  ? 'CurriculumTitle Active'
+                  : 'CurriculumTitle'
+              }
+              onClick={this.hideCourseIntroduction}
+            >
+              <span>Giáo trình</span>
+            </div>
+          </div>
 
-                  {this.state[`isChapter${chapter.id}Visible`] &&
-                    chapter.parts.map(part => (
-                      <Fragment>
-                        <div
-                          className="Part"
-                          key={part.id}
-                          onClick={() => this.togglePart(part)}
-                        >
-                          {this.state[`isPart${part.id}Visible`] ? (
-                            <img alt="bullet" src={BulletIcon}></img>
-                          ) : (
-                            <img alt="plus" src={PlusIcon}></img>
-                          )}
-                          <div>{part.title}</div>
-                        </div>
+          {isIntroductionVisible && (
+            <div className="CourseIntroduction">
+              <div className="IntroductionContent">
+                <div className="Head">Giới thiệu khóa học</div>
+                <p>{courseDetail.description}</p>
+              </div>
+            </div>
+          )}
 
-                        {this.state[`isPart${part.id}Visible`] &&
-                          part.lessons.map(lesson => (
-                            <div className="Lessons" key={lesson.id}>
-                              <div className="LessonContainer">
-                                <div className="Lesson">
-                                  <div className="Duration">
-                                    {this.formatDuration(
-                                      lesson.duration,
-                                    )}
-                                  </div>
-                                  <div className="LessonTitle">
-                                    {lesson.title}
-                                  </div>
-                                </div>
-                                <img alt="play" src={PlayIcon}></img>
-                              </div>
-                              <div className="Attachments">
-                                {lesson.attachments.map(
-                                  attachment => (
-                                    <div className="Attachment">
-                                      <img
-                                        src={AttachmentIcon}
-                                        alt="attachment"
-                                      />
-                                      {attachment.link_file}
+          {!isIntroductionVisible && (
+            <div className="CourseCurriculum">
+              <div className="Head">Giáo trình</div>
+              <div className="CurriculumContent">
+                {chapters.map(chapter => (
+                  <div className="Course" key={chapter.id}>
+                    <div
+                      className="Name"
+                      onClick={() => this.toggleChapter(chapter)}
+                    >
+                      {this.state[`isChapter${chapter.id}Visible`] ? (
+                        <img alt="bullet" src={BulletIcon}></img>
+                      ) : (
+                        <img alt="plus" src={PlusIcon}></img>
+                      )}
+                      <div>{chapter.title}</div>
+                    </div>
+
+                    {this.state[`isChapter${chapter.id}Visible`] &&
+                      chapter.parts.map(part => (
+                        <Fragment>
+                          <div
+                            className="Part"
+                            key={part.id}
+                            onClick={() => this.togglePart(part)}
+                          >
+                            {this.state[`isPart${part.id}Visible`] ? (
+                              <img
+                                alt="bullet"
+                                src={BulletIcon}
+                              ></img>
+                            ) : (
+                              <img alt="plus" src={PlusIcon}></img>
+                            )}
+                            <div>{part.title}</div>
+                          </div>
+
+                          {this.state[`isPart${part.id}Visible`] &&
+                            part.lessons.map(lesson => (
+                              <div
+                                className="Lessons"
+                                key={lesson.id}
+                              >
+                                <div className="LessonContainer">
+                                  <div className="Lesson">
+                                    <div className="Duration">
+                                      {this.formatDuration(
+                                        lesson.duration,
+                                      )}
                                     </div>
-                                  ),
-                                )}
+                                    <div className="LessonTitle">
+                                      {lesson.title}
+                                    </div>
+                                  </div>
+                                  <img
+                                    alt="play"
+                                    src={PlayIcon}
+                                  ></img>
+                                </div>
+                                <div className="Attachments">
+                                  {lesson.attachments.map(
+                                    attachment => (
+                                      <div
+                                        className="Attachment"
+                                        onClick={() =>
+                                          this.setActiveAttachment(
+                                            attachment,
+                                          )
+                                        }
+                                      >
+                                        <img
+                                          src={AttachmentIcon}
+                                          alt="attachment"
+                                        />
+                                        {attachment.link_file}
+                                      </div>
+                                    ),
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                          ))}
-                      </Fragment>
-                    ))}
-                </div>
-              ))}
+                            ))}
+                        </Fragment>
+                      ))}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }
