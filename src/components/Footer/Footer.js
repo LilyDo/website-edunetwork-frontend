@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import { Link } from 'react-router-dom';
+import { routes } from '../../constants';
 import IconFacebook from '../../assets/images/icon_facebook.svg';
 import IconTwitter from '../../assets/images/icon_twitter.svg';
 import IconYoutube from '../../assets/images/icon_youtube.svg';
@@ -17,13 +18,13 @@ function Footer() {
           <div className="UpperFooterInfo">
             <div className="FooterNavigation">
               <div className="NavigationLink Home">
-                <Link to="/">HOME</Link>
+                <Link to={routes.home}>HOME</Link>
               </div>
               <div className="NavigationLink Course">
-                <Link to="/courses">COURSE</Link>
+                <Link to={routes.courses}>COURSE</Link>
               </div>
               <div className="NavigationLink Contact">
-                <Link to="/contact">CONTACT</Link>
+                <Link to={routes.contact}>CONTACT</Link>
               </div>
             </div>
             <div className="FooterContact">

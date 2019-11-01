@@ -62,9 +62,12 @@ export const registerAction = user => {
     axios
       .post(`${BASE_URL}/users/register`, user)
       .then(response => {
-        if (response.data.statusCode === 200 && response.data.errors.length === 0) {
+        if (
+          response.data.statusCode === 200 &&
+          response.data.errors.length === 0
+        ) {
           dispatch(registerSuccess(response.data));
-          setTimeout(function () {
+          setTimeout(function() {
             window.location.pathname = '/register-pending-active';
           }, 100);
         } else {
@@ -112,7 +115,6 @@ export const verifyAccountAction = code => {
         verify_code: code,
       })
       .then(response => {
-        console.log('response', response);
         if (
           response.data.statusCode === 200 &&
           response.data.errors.length === 0
@@ -120,7 +122,6 @@ export const verifyAccountAction = code => {
           dispatch(verifyAccountSuccess(response.data));
         } else {
           let obj = response.data.errors;
-          console.log('obj', obj);
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
               autoClose: 3000,

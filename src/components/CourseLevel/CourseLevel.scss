@@ -6,6 +6,11 @@ $MobilePaddingContainer: 10px 0;
 $paddingLine: 0 0 15px 0;
 $mobilePaddingLine: 0 0 7px 0;
 
+.CourseLevelComponentContainer {
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 300px;
+}
 .CourseName {
   color: $darkgrey;
   @extend %fontBold;
@@ -40,17 +45,6 @@ $mobilePaddingLine: 0 0 7px 0;
     justify-content: space-between;
   }
 
-  .CourseVideo {
-    img {
-      @media only screen and (max-width: $mobileBreakPoint) {
-        width: 313px;
-      }
-
-      @media only screen and (min-width: $mobileBreakPoint + 1) {
-        max-width: 720px;
-      }
-    }
-  }
   .CourseLevel {
     display: flex;
     flex-direction: column;
@@ -116,6 +110,7 @@ $mobilePaddingLine: 0 0 7px 0;
 
           span {
             @extend %fontExtraBold;
+            padding-right: 5px;
           }
         }
         @media only screen and (max-width: $mobileBreakPoint) {

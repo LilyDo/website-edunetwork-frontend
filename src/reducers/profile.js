@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_PROFILE_SUCCESS:
-      if (action.payload.data.statusCode == 200) {
+      if (action.payload.data.statusCode === 200) {
         let currentUser = action.payload.data.data;
         localStorage.setItem(
           types.CURRENT_USER_KEY,
