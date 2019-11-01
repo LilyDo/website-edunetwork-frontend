@@ -49,6 +49,10 @@ export const GET_USER_COURSESS_REQUEST = 'GET_USER_COURSESS_REQUEST';
 export const GET_USER_COURSESS_SUCCESS = 'GET_USER_COURSESS_SUCCESS';
 export const GET_USER_COURSESS_FAILURE = 'GET_USER_COURSESS_FAILURE';
 
+export const GET_USER_DASHBOARD_REQUEST = 'GET_USER_DASHBOARD_REQUEST';
+export const GET_USER_DASHBOARD_SUCCESS = 'GET_USER_DASHBOARD_SUCCESS';
+export const GET_USER_DASHBOARD_FAILURE = 'GET_USER_DASHBOARD_FAILURE';
+
 // This middleware will just add the property "async dispatch"
 // to actions with the "async" propperty set to true
 export const asyncDispatchMiddleware = store => next => action => {
