@@ -76,6 +76,9 @@
         cursor: pointer;
       }
     }
+    .Active {
+      @extend %styleLoginSelected;
+    }
   }
 
   .Signin,
