@@ -30,6 +30,10 @@ export const ACTIVE_ACCOUNT_REQUEST = 'ACTIVE_ACCOUNT_REQUEST';
 export const ACTIVE_ACCOUNT_SUCCESS = 'ACTIVE_ACCOUNT_SUCCESS';
 export const ACTIVE_ACCOUNT_FAILURE = 'ACTIVE_ACCOUNT_FAILURE';
 
+export const WITHDRAW_MONEY_REQUEST = 'WITHDRAW_MONEY_REQUEST';
+export const WITHDRAW_MONEY_SUCCESS = 'WITHDRAW_MONEY_SUCCESS';
+export const WITHDRAW_MONEY_FAILURE = 'WITHDRAW_MONEY_FAILURE';
+
 // This middleware will just add the property "async dispatch"
 // to actions with the "async" propperty set to true
 export const asyncDispatchMiddleware = store => next => action => {

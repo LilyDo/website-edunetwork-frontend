@@ -105,7 +105,7 @@ class MyWallet extends Component {
                     <tr>
                       <td>{item.created_at || ''}</td>
                       <td>{item.charge_code || 'not available'}</td>
-                      <td>{item.price || ''}</td>
+                      <td>{currencyFormatter(item.price) || ''}</td>
                       <td className="capitalize">{item.status || ''}</td>
                     </tr>
                   ))}
@@ -128,7 +128,7 @@ class MyWallet extends Component {
                     <tr>
                       <td>{item.created_at || ''}</td>
                       <td>{item.charge_code || 'not available'}</td>
-                      <td>{item.price || ''}</td>
+                      <td>{currencyFormatter(item.price) || ''}</td>
                       <td className="capitalize">{item.status || ''}</td>
                     </tr>
                   ))}

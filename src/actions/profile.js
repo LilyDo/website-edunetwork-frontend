@@ -10,7 +10,10 @@ import {
   SHOW_UPDATE_FORM,
   GET_CHARGE_HISTORY_REQUEST,
   GET_CHARGE_HISTORY_SUCCESS,
-  GET_CHARGE_HISTORY_FAILURE
+  GET_CHARGE_HISTORY_FAILURE,
+  WITHDRAW_MONEY_REQUEST,
+  WITHDRAW_MONEY_SUCCESS,
+  WITHDRAW_MONEY_FAILURE
 } from './index';
 import * as types from '../actions/index';
 
@@ -118,5 +121,34 @@ const getChargeHistorySuccess = response => ({
 
 const getChargeHistoryFailure = error => ({
   type: GET_CHARGE_HISTORY_FAILURE,
+  payload: { error },
+});
+
+// WITHDRAW MONEY
+export const withdrawMoneyAction = (payload) => {
+  return dispatch => {
+    dispatch(withdrawMoneyRequest());
+    payload.append('token', localStorage.getItem(types.TOKEN_KEY));
+    axios
+      .post(`${BASE_URL}/users/draw-money`, payload)
+      .then(response => {
+        dispatch(withdrawMoneySuccess(response.data));
+      })
+      .catch(error => dispatch(withdrawMoneyFailure(error.message)));
+  };
+};
+
+const withdrawMoneyRequest = payload => ({
+  type: WITHDRAW_MONEY_REQUEST,
+  payload: payload
+});
+
+const withdrawMoneySuccess = response => ({
+  type: WITHDRAW_MONEY_SUCCESS,
+  payload: { ...response },
+});
+
+const withdrawMoneyFailure = error => ({
+  type: WITHDRAW_MONEY_FAILURE,
   payload: { error },
 });

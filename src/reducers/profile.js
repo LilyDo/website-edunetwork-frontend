@@ -125,6 +125,41 @@ export default function (state = initialState, action) {
       toast.error('Cannot get charge history', {
         autoClose: duration,
       });
+      return {
+        ...state
+      }
+
+    // WITHDRAW MONEY
+    case types.WITHDRAW_MONEY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.WITHDRAW_MONEY_SUCCESS:
+      if (action.payload.statusCode === 200) {
+        toast.success('Request successful!', {
+          autoClose: duration
+        });
+        setTimeout(function () {
+          window.location.pathname = '/account/profile/withdraw-noti';
+        }, 100);
+      } else {
+        toast.error(action.payload.errors[0], {
+          autoClose: duration
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.WITHDRAW_MONEY_FAILURE:
+      toast.error('Cannot send request to withraw money', {
+        autoClose: duration,
+      });
 
       return {
         ...state,
