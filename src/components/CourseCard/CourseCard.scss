@@ -29,6 +29,41 @@
     }
   }
 
+  .Price {
+    $height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -$height/2;
+
+    .ContentWrapper {
+      background-color: $gold;
+      padding-right: 20px;
+      padding-left: 20px;
+      transform: skewX(-25deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $height;
+
+      .Amount {
+        @extend %fontHeader;
+        @extend %fontBold;
+        color: white;
+        display: inline-block;
+        transform: skewX(25deg);
+      }
+
+      .Currency {
+        padding-left: 5px;
+        color: white;
+        display: inline-block;
+        transform: skewX(25deg);
+      }
+    }
+  }
+
   .Title {
     @extend %fontMedium;
     padding: 15px;
