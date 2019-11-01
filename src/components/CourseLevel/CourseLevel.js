@@ -5,7 +5,6 @@ import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
-import ThumNail from '../../assets/images/video_thumnail.png';
 
 class CourseLevel extends Component {
   calculateLessons = (chapters = []) => {
