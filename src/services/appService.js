@@ -1,6 +1,6 @@
 import { CURRENT_USER_KEY } from '../actions';
 
-export const getUserFormLocal = function() {
+export const getUserFormLocal = function () {
   let user = localStorage.getItem(CURRENT_USER_KEY);
   if (user && user !== 'null' && user !== 'undefined') {
     return JSON.parse(user);
@@ -28,9 +28,6 @@ export const getUrlParameter = function getUrlParameter(sParam) {
 
 // Create our number formatter.
 export const currencyFormatter = amount => {
-  let formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-  return formatter.format(amount);
+  let formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+  return "$" + formatter.format(amount);
 };
