@@ -5,6 +5,7 @@ import './CourseInfo.scss';
 import BulletIcon from '../../assets/images/icon_bullet.svg';
 import PlusIcon from '../../assets/images/icon_plus.svg';
 import PlayIcon from '../../assets/images/icon_play.svg';
+import AttachmentIcon from '../../assets/images/icon_attachment.svg';
 
 class CourseInfo extends Component {
   state = {
@@ -35,6 +36,18 @@ class CourseInfo extends Component {
     this.setState({
       [key]: !this.state[key],
     });
+  };
+
+  formatDuration = duration => {
+    let hours = Math.floor(duration / 60);
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    let minutes = duration % 60;
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${hours}:${minutes}:00`;
   };
 
   render() {
@@ -86,8 +99,11 @@ class CourseInfo extends Component {
                     className="Name"
                     onClick={() => this.toggleChapter(chapter)}
                   >
-                    <img alt="bullet" src={BulletIcon}></img>
-                    <img alt="plus" src={PlusIcon}></img>
+                    {this.state[`isChapter${chapter.id}Visible`] ? (
+                      <img alt="bullet" src={BulletIcon}></img>
+                    ) : (
+                      <img alt="plus" src={PlusIcon}></img>
+                    )}
                     <div>{chapter.title}</div>
                   </div>
 
@@ -99,8 +115,11 @@ class CourseInfo extends Component {
                           key={part.id}
                           onClick={() => this.togglePart(part)}
                         >
-                          <img alt="bullet" src={BulletIcon}></img>
-                          <img alt="plus" src={PlusIcon}></img>
+                          {this.state[`isPart${part.id}Visible`] ? (
+                            <img alt="bullet" src={BulletIcon}></img>
+                          ) : (
+                            <img alt="plus" src={PlusIcon}></img>
+                          )}
                           <div>{part.title}</div>
                         </div>
 
@@ -109,15 +128,29 @@ class CourseInfo extends Component {
                             <div className="Lessons" key={lesson.id}>
                               <div className="LessonContainer">
                                 <div className="Lesson">
-                                  <img
-                                    alt="play"
-                                    src={PlayIcon}
-                                  ></img>
-                                  <div>{lesson.title}</div>
+                                  <div className="Duration">
+                                    {this.formatDuration(
+                                      lesson.duration,
+                                    )}
+                                  </div>
+                                  <div className="LessonTitle">
+                                    {lesson.title}
+                                  </div>
                                 </div>
-                                <div className="Duration">
-                                  {lesson.duration}
-                                </div>
+                                <img alt="play" src={PlayIcon}></img>
+                              </div>
+                              <div className="Attachments">
+                                {lesson.attachments.map(
+                                  attachment => (
+                                    <div className="Attachment">
+                                      <img
+                                        src={AttachmentIcon}
+                                        alt="attachment"
+                                      />
+                                      {attachment.link_file}
+                                    </div>
+                                  ),
+                                )}
                               </div>
                             </div>
                           ))}
