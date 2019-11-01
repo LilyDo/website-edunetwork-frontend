@@ -70,11 +70,11 @@ class App extends Component {
 
   render() {
     this.checkCurrentUser();
-
     return (
       <Router>
         <div className="App">
           <div className="HeaderContentContainer">
+            <ToastContainer />
             <Header />
             <div className="Content">
               <Switch>
@@ -146,7 +146,6 @@ class App extends Component {
           </div>
           <Footer />
           <LoginPopup />
-          <ToastContainer />
           <ForgotPasswordPopup />
         </div>
       </Router>
