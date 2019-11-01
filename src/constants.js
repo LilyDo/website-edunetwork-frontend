@@ -2,7 +2,7 @@ export const routes = {
   home: '/',
   // course
   courses: '/courses',
-  courseOrder: '/courses/order', // this should be declared before courseDetail or "order" will become the id param
+  courseOrder: '/courses/order/:id', // this should be declared before courseDetail or "order" will become the id param
   courseDetail: '/courses/:id',
   coursePaymentSuccessful: '/courses/paymentsucessful',
   // auth
