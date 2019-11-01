@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
+import { get } from 'lodash';
 
 import './CourseDetailPage.scss';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
@@ -14,6 +15,14 @@ class CourseDetailPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.actions.getCourseDetailAction(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const newId = get(nextProps, 'match.params.id');
+    const currentId = get(this, 'props.match.params.id');
+    if (newId && currentId && newId != currentId) {
+      this.props.actions.getCourseDetailAction(newId);
+    }
   }
 
   render() {
