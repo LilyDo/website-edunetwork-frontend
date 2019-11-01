@@ -91,7 +91,7 @@ function AccountDashboardPage() {
                 <td>$847</td>
               </tr>
               <tr>
-                <td>DOANH THU CÁ NHÂN</td>
+                <td>DOANH THU TOÀN NHÓM</td>
                 <td>$1,250</td>
                 <td>$1,600</td>
                 <td>$2,730</td>

@@ -3,6 +3,10 @@
 
 %paddingTitle {
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -18,11 +22,13 @@
 
     .Title {
       color: $darkblue;
-      @extend %fontHeader;
       @extend %fontBold;
+      @extend %fontHeader;
+
       border-bottom: 1px solid $lightgrey;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding-bottom: 5px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -32,81 +38,112 @@
 
     .OverviewContainer {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         padding-top: 25px;
       }
 
       .MyRank {
         position: relative;
         @extend %fontBold;
-        @extend %fontHeader;
         color: $brown;
-        text-align: right;
         border: 1px solid $brown;
         white-space: nowrap;
 
         @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 10px;
+          text-align: center;
+          padding: 10px 30px 10px 10px;
         }
 
         @media only screen and (min-width: $mobileBreakPoint + 1) {
-          padding: 30px 65px 30px 10px;
+          padding: 30px 60px 30px 10px;
           margin-right: 70px;
           margin-bottom: 50px;
           margin-top: 50px;
+          font-size: 20px;
+          text-align: right;
         }
 
         .RankImg {
+          background-color: white;
           position: absolute;
 
           @media only screen and (max-width: $mobileBreakPoint) {
+            $sizeRank: 60px;
+            width: $sizeRank;
+            right: -$sizeRank/2;
+            top: -$sizeRank/2 - 8px;
           }
-
           @media only screen and (min-width: $mobileBreakPoint + 1) {
             $sizeRank: 120px;
+            width: $sizeRank;
             right: -$sizeRank/2;
-            top: -$sizeRank/2;
+            top: -$sizeRank/2 - 15px;
           }
         }
       }
 
       .Statistics {
-        min-width: 60%;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
         align-items: center;
         text-align: center;
+        justify-content: space-evenly;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          width: 100%;
+          padding-top: 20px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          min-width: 60%;
+        }
 
         .Money,
         .People {
           box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-          padding: 15px 20px;
-        }
 
+          @media only screen and (max-width: $mobileBreakPoint) {
+            padding: 10px 5px;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            padding: 15px 20px;
+          }
+        }
         .Text {
-          white-space: nowrap;
           color: $darkblue;
-          padding-top: 7px;
+          @media only screen and (max-width: $mobileBreakPoint) {
+            padding-top: 5px;
+            font-size: 8px;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            white-space: nowrap;
+            padding-top: 10px;
+          }
         }
 
         .MoneyContainer {
-          :first-child {
-            margin-bottom: 25px;
-          }
           .Money {
             .Number {
               color: $brown;
               @extend %fontSemiBold;
 
               @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 17px;
               }
 
               @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -117,14 +154,12 @@
         }
 
         .PeopleContainer {
-          :first-child {
-            margin-bottom: 25px;
-          }
           .People {
             .Number {
               color: $blue;
               @extend %fontSemiBold;
               @media only screen and (max-width: $mobileBreakPoint) {
+                font-size: 17px;
               }
 
               @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -133,50 +168,65 @@
             }
           }
         }
+
+        .TotalCommission,
+        .TotalReferral {
+          @media only screen and (max-width: $mobileBreakPoint) {
+            margin-bottom: 15px;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            margin-bottom: 25px;
+          }
+        }
       }
     }
   }
   .RevenueChart {
     @extend %paddingTitle;
 
-    @media only screen and (max-width: $mobileBreakPoint) {
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding-bottom: 70px;
-    }
     .Title {
       @extend %fontSemiBold;
-      @extend %fontHeader;
       color: $lightblue;
-      padding-bottom: 15px;
+      @extend %fontHeader;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding-bottom: 5px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-bottom: 15px;
       }
     }
 
     .Chart {
       box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-      padding: 20px 20px 0 20px;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding-top: 5px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding: 20px 20px 0 20px;
+      }
     }
   }
 
   .RevenueTable {
     @extend %paddingTitle;
+    overflow-x: auto;
 
-    @media only screen and (max-width: $mobileBreakPoint) {
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-    }
     .Title {
       @extend %fontSemiBold;
-      @extend %fontHeader;
       color: $lightblue;
-      padding-bottom: 15px;
+      @extend %fontHeader;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding-bottom: 5px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-bottom: 15px;
+      }
     }
 
     .Table {
@@ -185,45 +235,70 @@
       margin: auto;
       border-collapse: collapse;
 
-      .FirstCell {
-        width: 16%;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-      .EqualCell {
-        width: 7%;
-        padding-left: 5px;
-        padding-right: 5px;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        .FirstCell {
+          width: 16%;
+        }
+        .EqualCell {
+          width: 7%;
+        }
+
+        thead tr th {
+          background-color: $gold;
+          color: white;
+          padding: 5px;
+        }
+
+        tbody tr td {
+          padding: 5px;
+          color: black;
+          border-bottom: 1px solid $lightgrey;
+        }
       }
 
-      thead tr th {
-        background-color: $gold;
-        color: white;
-        padding: 15px 0px;
-      }
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        .FirstCell {
+          width: 16%;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        .EqualCell {
+          width: 7%;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
 
-      tbody tr td {
-        padding: 15px 0px;
-        color: black;
-        border-bottom: 1px solid $lightgrey;
+        thead tr th {
+          background-color: $gold;
+          color: white;
+          padding: 15px 0px;
+        }
+
+        tbody tr td {
+          padding: 15px 0px;
+          color: black;
+          border-bottom: 1px solid $lightgrey;
+        }
       }
     }
   }
 
   .Member {
+    overflow-x: auto;
+
     @extend %paddingTitle;
-
-    @media only screen and (max-width: $mobileBreakPoint) {
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-    }
 
     .Title {
       @extend %fontSemiBold;
       @extend %fontHeader;
       color: $lightblue;
-      padding-bottom: 15px;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding-bottom: 5px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-bottom: 15px;
+      }
     }
 
     .Status {
@@ -234,16 +309,27 @@
 
       div {
         border-bottom: 3px solid $brown;
-        padding-bottom: 5px;
-        margin-bottom: 20px;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding-bottom: 2px;
+          margin-bottom: 10px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          margin-bottom: 20px;
+          padding-bottom: 5px;
+        }
       }
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        :first-child {
+          margin-right: 30px;
+        }
+        font-size: 10px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
         :first-child {
-          margin-right: 150px;
+          margin-right: 100px;
         }
       }
     }
@@ -254,16 +340,34 @@
       margin: auto;
       border-collapse: collapse;
 
-      thead tr th {
-        background-color: $gold;
-        color: white;
-        padding: 15px 0px;
-        border: none;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        overflow-x: auto;
+
+        thead tr th {
+          background-color: $gold;
+          color: white;
+          padding: 5px;
+          border: none;
+        }
+        tbody tr td {
+          padding: 5px;
+          color: black;
+          border-bottom: 1px solid $lightgrey;
+        }
       }
-      tbody tr td {
-        padding: 15px 0px;
-        color: black;
-        border-bottom: 1px solid $lightgrey;
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        thead tr th {
+          background-color: $gold;
+          color: white;
+          padding: 15px 0px;
+          border: none;
+        }
+        tbody tr td {
+          padding: 15px 0px;
+          color: black;
+          border-bottom: 1px solid $lightgrey;
+        }
       }
     }
   }

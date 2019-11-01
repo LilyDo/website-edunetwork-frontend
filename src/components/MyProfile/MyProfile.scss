@@ -2,10 +2,48 @@
 @import '../../assets/font/font.scss';
 
 .MyProfile {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 40px;
+
+    .Avatar {
+      .Photo {
+        margin-bottom: 5px;
+      }
+    }
+
+    .Data {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-left: 150px;
+    padding-right: 150px;
+
+    .Avatar {
+      font-size: 25px;
+      .Photo {
+        margin-top: 18px;
+        margin-bottom: 14px;
+      }
+    }
+
+    .Data {
+      padding-top: 8px;
+      padding-bottom: 13px;
+      margin-bottom: 13px;
+    }
+  }
+
   .Title {
     color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
+    @extend %fontHeader;
   }
   .Profile {
     position: relative;
@@ -13,13 +51,28 @@
     flex-direction: row;
     justify-content: space-between;
 
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 20px 0;
+    }
+
     .EditIcon {
-      $size: 50px;
       position: absolute;
-      right: $size/2;
-      top: $size/2;
+
       &:hover {
         cursor: pointer;
+      }
+      @media only screen and (max-width: $mobileBreakPoint) {
+        $size: 25px;
+        width: $size;
+        right: $size/2;
+        top: $size/2;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        $size: 50px;
+        width: $size;
+        right: $size/2;
+        top: $size/2;
       }
     }
 
@@ -39,61 +92,46 @@
         border-radius: $size/2;
         border: 1px solid $lightgrey;
         display: flex;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          $size: 80px;
+          width: $size;
+          height: $size;
+          border-radius: $size/2;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          $size: 155px;
+          width: $size;
+          height: $size;
+          border-radius: $size/2;
+        }
       }
     }
     .GroupProfile {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: flex-start;
-
-      width: 100%;
-      .GroupProfile1,
-      .GroupProfile2 {
-        min-width: 40%;
-        .Data {
-          border-bottom: 1px solid $lightgrey;
-        }
-
-        .Text {
-          color: $lightgrey;
-        }
+      @media only screen and (max-width: $mobileBreakPoint) {
+        padding-left: 30px;
+        width: calc(100% - 30px);
       }
-    }
-  }
 
-  @media only screen and (max-width: $mobileBreakPoint) {
-  }
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding: 90px;
+        max-width: 600px;
+      }
 
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
-    padding-left: 150px;
-    padding-right: 150px;
+      .Data {
+        word-break: break-word;
+        border-bottom: 1px solid $lightgrey;
 
-    .Title {
-      font-size: 20px;
-    }
-
-    .Profile {
-      .Avatar {
-        font-size: 25px;
-        .Photo {
-          margin-top: 18px;
-          margin-bottom: 14px;
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          div {
+            min-height: 40px;
+          }
         }
       }
 
-      .GroupProfile {
-        padding: 90px 100px 90px 150px;
-
-        .Text {
-        }
-
-        .Data {
-          padding-top: 8px;
-          padding-bottom: 13px;
-          margin-bottom: 13px;
-        }
+      .Text {
+        color: $lightgrey;
       }
     }
   }
