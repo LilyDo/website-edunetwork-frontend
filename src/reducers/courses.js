@@ -27,6 +27,24 @@ export default function(state = initialState, action) {
         loading: false,
         error: action.payload.error,
       };
+    case types.GET_COURSE_DETAIL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_COURSE_DETAIL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        courseDetail: action.payload.data,
+      };
+    case types.GET_COURSE_DETAIL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
     case types.GET_USER_COURSESS_REQUEST:
       return {
         ...state,

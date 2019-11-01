@@ -3,24 +3,28 @@ import { Link } from 'react-router-dom';
 import './MyWallet.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import { getUserFormLocal, currencyFormatter } from '../../services/appService';
+import {
+  getUserFormLocal,
+  currencyFormatter,
+} from '../../services/appService';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getChargeHistoryAction } from '../../actions/profile';
+import { routes } from '../../constants';
 
 class MyWallet extends Component {
   state = {
     currentUser: {},
     isShowWithdraw: true,
     drawList: [],
-    chargeList: []
+    chargeList: [],
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
       this.setState({
-        currentUser: getUserFormLocal()
-      })
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
@@ -32,7 +36,7 @@ class MyWallet extends Component {
 
   getChargeHistory = () => {
     this.props.actions.getChargeHistoryAction();
-  }
+  };
 
   componentDidMount() {
     this.checkCurrentUser();
@@ -40,7 +44,6 @@ class MyWallet extends Component {
   }
 
   render() {
-
     return (
       <div>
         <AccountBreadcrumb />
@@ -59,11 +62,15 @@ class MyWallet extends Component {
             </div>
             <div className="Balance">
               <div className="Text">Balance</div>
-              <div className="Number">{currencyFormatter(this.state.currentUser.total_price)}</div>
+              <div className="Number">
+                {currencyFormatter(
+                  this.state.currentUser.total_price,
+                )}
+              </div>
             </div>
           </div>
           <div className="ButtonContainer">
-            <Link to="/account/profile/withdraw">
+            <Link to={routes.accountWithdraw}>
               <div className="WithdrawButton">WITHDRAW</div>
             </Link>
             <div className="TopupButton">DEPOSIT</div>
@@ -101,15 +108,17 @@ class MyWallet extends Component {
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  {this.props.state.drawList && this.props.state.drawList.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.created_at || ''}</td>
-                      <td>{item.charge_code || 'not available'}</td>
-                      <td>{currencyFormatter(item.price) || ''}</td>
-                      <td className="capitalize">{item.status || ''}</td>
-                    </tr>
-                  ))}
-
+                  {this.props.state.drawList &&
+                    this.props.state.drawList.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.created_at || ''}</td>
+                        <td>{item.charge_code || 'not available'}</td>
+                        <td>{currencyFormatter(item.price) || ''}</td>
+                        <td className="capitalize">
+                          {item.status || ''}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             )}
@@ -124,14 +133,17 @@ class MyWallet extends Component {
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  {this.props.state.chargeList && this.props.state.chargeList.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.created_at || ''}</td>
-                      <td>{item.charge_code || 'not available'}</td>
-                      <td>{currencyFormatter(item.price) || ''}</td>
-                      <td className="capitalize">{item.status || ''}</td>
-                    </tr>
-                  ))}
+                  {this.props.state.chargeList &&
+                    this.props.state.chargeList.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.created_at || ''}</td>
+                        <td>{item.charge_code || 'not available'}</td>
+                        <td>{currencyFormatter(item.price) || ''}</td>
+                        <td className="capitalize">
+                          {item.status || ''}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             )}
@@ -146,7 +158,7 @@ const mapStateToProps = ({ profile }, ownProps) => {
   return {
     state: {
       drawList: profile.withdrawList,
-      chargeList: profile.chargeList
+      chargeList: profile.chargeList,
     },
   };
 };
@@ -164,5 +176,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MyWallet);

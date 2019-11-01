@@ -1,0 +1,16 @@
+@import '../../shared.scss';
+
+.CourseDetailPage {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    .CourseInfoLevelContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    .CourseInfoLevelContainer {
+      display: flex;
+    }
+  }
+}
