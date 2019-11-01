@@ -17,12 +17,9 @@ class CourseLevel extends Component {
     const { courseDetail } = this.props;
 
     return (
-      <div>
+      <div className="CourseLevelComponentContainer">
         <div className="CourseName">{courseDetail.title}</div>
         <div className="CourseLevelContainer">
-          <div className="CourseVideo">
-            <img alt="thumnail" src={ThumNail}></img>
-          </div>
           <div className="CourseLevel">
             <div className="Level_PriceContainer">
               <div className="LevelContainer">

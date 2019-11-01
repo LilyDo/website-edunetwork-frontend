@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 
+import './CourseDetailPage.scss';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import CourseLevel from '../CourseLevel/CourseLevel';
 import CourseInfo from '../CourseInfo/CourseInfo';
@@ -19,10 +20,12 @@ class CourseDetailPage extends Component {
     const { courseDetail = {} } = this.props;
 
     return (
-      <div>
+      <div className="CourseDetailPage">
         <Breadcrumb />
-        <CourseLevel courseDetail={courseDetail} />
-        <CourseInfo />
+        <div className="CourseInfoLevelContainer">
+          <CourseInfo />
+          <CourseLevel courseDetail={courseDetail} />
+        </div>
         <CourseCarouselContainer excludeId={courseDetail.id} />
       </div>
     );

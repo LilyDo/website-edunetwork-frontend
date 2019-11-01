@@ -30,6 +30,8 @@ $mobileMargin: 10px 25px 10px 25px;
   max-width: 1103px;
   margin: auto;
   border-bottom: 1px solid $gold;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (max-width: $mobileBreakPoint) {
   }
