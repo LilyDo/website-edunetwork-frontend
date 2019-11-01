@@ -62,9 +62,12 @@ export const registerAction = user => {
     axios
       .post(`${BASE_URL}/users/register`, user)
       .then(response => {
-        if (response.data.statusCode === 200 && response.data.errors.length === 0) {
+        if (
+          response.data.statusCode === 200 &&
+          response.data.errors.length === 0
+        ) {
           dispatch(registerSuccess(response.data));
-          setTimeout(function () {
+          setTimeout(function() {
             window.location.pathname = '/register-pending-active';
           }, 100);
         } else {

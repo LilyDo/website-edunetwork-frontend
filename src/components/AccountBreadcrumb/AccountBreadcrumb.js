@@ -3,10 +3,11 @@ import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
 import { getUserFormLocal } from '../../services/appService';
+import { routes } from '../../constants';
 
 class AccountBreadcrumb extends Component {
   state = {
-    currentUser: {}
+    currentUser: {},
   };
 
   checkCurrentUser() {
@@ -23,7 +24,7 @@ class AccountBreadcrumb extends Component {
         <div className="Container">
           <div className="LinkContainer">
             <Link
-              to="/account/dashboard"
+              to={routes.accountDashboard}
               className={
                 window.location.pathname === '/account/dashboard' &&
                 'ActiveTab'
@@ -34,7 +35,7 @@ class AccountBreadcrumb extends Component {
 
             <div className="profile-menu">
               <Link
-                to="/account/profile"
+                to={routes.accountProfile}
                 className={
                   window.location.pathname === '/account/profile' &&
                   'ActiveTab'
@@ -45,20 +46,20 @@ class AccountBreadcrumb extends Component {
               </Link>
 
               <div className="dropdown-content">
-                <Link to="/account/profile">
+                <Link to={routes.accountProfile}>
                   <div>Personal Information</div>
                 </Link>
-                <Link to="/account/profile/wallet">
+                <Link to={routes.accountWallet}>
                   <div>My Wallet</div>
                 </Link>
-                <Link to="/account/profile/withdraw">
+                <Link to={routes.accountWithdraw}>
                   <div>Withdraw</div>
                 </Link>
               </div>
             </div>
 
             <Link
-              to="/account/course"
+              to={routes.acountCourses}
               className={
                 window.location.pathname === '/account/course' &&
                 'ActiveTab'

@@ -1,7 +1,9 @@
 // export const USER_WEBSITE_URL = 'http://localhost:3000';
-export const USER_WEBSITE_URL = 'https://edunetwork.dev.gkcsoftware.com';
+export const USER_WEBSITE_URL =
+  'https://edunetwork.dev.gkcsoftware.com';
 // export const BASE_URL = 'http://web-dev.edunetwork.com/api/v1';
-export const BASE_URL = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1';
+export const BASE_URL =
+  'https://api.edunetwork.dev.gkcsoftware.com/api/v1';
 export const TOKEN_KEY = 'token';
 export const CURRENT_USER_KEY = 'current_user';
 

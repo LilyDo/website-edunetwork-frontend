@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
 import { CURRENT_USER_KEY } from '../../actions';
+import { routes } from '../../constants';
 
 class Header extends Component {
   state = {
@@ -27,7 +28,7 @@ class Header extends Component {
     localStorage.removeItem('current_user');
     localStorage.removeItem('token');
     this.checkCurrentUser();
-    setTimeout(function () {
+    setTimeout(function() {
       window.location.pathname = '/';
     }, 500);
   }
@@ -44,18 +45,18 @@ class Header extends Component {
           </div>
           <div className="UpperHeaderlinks">
             <div className="NavigationContainer">
-              <Link to="/" className="NavigationLink">
+              <Link to={routes.home} className="NavigationLink">
                 <span>HOME</span>
               </Link>
-              <Link to="/courses" className="NavigationLink">
+              <Link to={routes.courses} className="NavigationLink">
                 <span>COURSE</span>
               </Link>
-              <Link to="/contact" className="NavigationLink">
+              <Link to={routes.contact} className="NavigationLink">
                 <span>CONTACT</span>
               </Link>
             </div>
             {!this.state.isLogined && (
-              <Link to="/signin">
+              <Link to={routes.signin}>
                 <div className="SignInDesktop">
                   <span>Sign in</span>
                   <AccountMenuPopup />
@@ -75,13 +76,13 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div className="dropdown-content">
-                  <Link to="/account/dashboard">
+                  <Link to={routes.accountDashboard}>
                     <div>Dashboard</div>
                   </Link>
-                  <Link to="/account/profile">
+                  <Link to={routes.accountProfile}>
                     <div>My Profile</div>
                   </Link>
-                  <Link to="/account/course">
+                  <Link to={routes.acountCourses}>
                     <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>
@@ -98,7 +99,7 @@ class Header extends Component {
             </div>
             {!this.state.isLogined && (
               <div className="SignInMobile">
-                <Link to="/signin">
+                <Link to={routes.signin}>
                   <span>Sign in</span>
                 </Link>
               </div>
@@ -116,13 +117,13 @@ class Header extends Component {
                   {this.state.currentUser.name}
                 </div>
                 <div className="dropdown-content">
-                  <Link to="/account/dashboard">
+                  <Link to={routes.accountDashboard}>
                     <div>Dashboard</div>
                   </Link>
-                  <Link to="/account/profile">
+                  <Link to={routes.accountProfile}>
                     <div>My Profile</div>
                   </Link>
-                  <Link to="/account/course">
+                  <Link to={routes.acountCourses}>
                     <div>My Course</div>
                   </Link>
                   <div onClick={this.doLogout.bind(this)}>Logout</div>

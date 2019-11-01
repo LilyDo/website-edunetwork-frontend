@@ -5,9 +5,13 @@ import { bindActionCreators } from 'redux';
 import './MyWallet_Withdraw.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import { getUserFormLocal, currencyFormatter } from '../../services/appService';
+import {
+  getUserFormLocal,
+  currencyFormatter,
+} from '../../services/appService';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import { withdrawMoneyAction } from '../../actions/profile';
+import { routes } from '../../constants';
 
 class MyWallet_Withdraw extends Component {
   state = {
@@ -15,14 +19,14 @@ class MyWallet_Withdraw extends Component {
     bankName: '',
     bankAccount: '',
     fullName: '',
-    amount: ''
+    amount: '',
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
       this.setState({
-        currentUser: getUserFormLocal()
-      })
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
@@ -42,8 +46,8 @@ class MyWallet_Withdraw extends Component {
       bank_branch: this.state.bankBranch,
       bank_account: this.state.bankAccount,
       full_name: this.state.fullName,
-      amount: this.state.amount
-    }
+      amount: this.state.amount,
+    };
     var form_data = new FormData();
 
     for (var key in payload) {
@@ -51,7 +55,7 @@ class MyWallet_Withdraw extends Component {
     }
 
     this.props.actions.withdrawMoneyAction(form_data);
-  }
+  };
 
   handleChange = name => event => {
     this.setState({
@@ -60,13 +64,12 @@ class MyWallet_Withdraw extends Component {
   };
 
   render() {
-
     const {
       bankName,
       bankBranch,
       bankAccount,
       fullName,
-      amount
+      amount,
     } = this.state;
 
     return (
@@ -86,35 +89,50 @@ class MyWallet_Withdraw extends Component {
               </div>
               <div className="Bank">
                 <div>Bank name*</div>
-                <input placeholder="What is your bank name" value={bankName} onChange={this.handleChange('bankName')} />
+                <input
+                  placeholder="What is your bank name"
+                  value={bankName}
+                  onChange={this.handleChange('bankName')}
+                />
               </div>
               <div className="Bank">
                 <div>Bank branch</div>
-                <input placeholder="What is your bank branch" value={bankBranch} onChange={this.handleChange('bankBranch')} />
+                <input
+                  placeholder="What is your bank branch"
+                  value={bankBranch}
+                  onChange={this.handleChange('bankBranch')}
+                />
               </div>
               <div className="BankAccount">
                 <div>Bank account*</div>
                 <input
                   type="text"
                   placeholder="What is your bank account"
-                  value={bankAccount} onChange={this.handleChange('bankAccount')} />
+                  value={bankAccount}
+                  onChange={this.handleChange('bankAccount')}
+                />
               </div>
               <div className="BankAccount">
                 <div>Full name*</div>
                 <input
                   type="text"
                   placeholder="What is full name"
-                  value={fullName} onChange={this.handleChange('fullName')} />
+                  value={fullName}
+                  onChange={this.handleChange('fullName')}
+                />
               </div>
               <div className="WithdrawAmount">
                 <div>Amount*</div>
                 <input
                   type="number"
                   placeholder="How much do you want to withdraw"
-                  value={amount} onChange={this.handleChange('amount')} />
+                  value={amount}
+                  onChange={this.handleChange('amount')}
+                />
               </div>
               <div className="Note">
-                Important: The money you want to withdraw must be lower than you balance.
+                Important: The money you want to withdraw must be
+                lower than you balance.
               </div>
             </div>
 
@@ -123,18 +141,29 @@ class MyWallet_Withdraw extends Component {
                 <img
                   className="Photo"
                   alt="avatar"
-                  src={this.state.currentUser.avatar || DefaultUserAvatar}
+                  src={
+                    this.state.currentUser.avatar || DefaultUserAvatar
+                  }
                 ></img>
                 <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
                 <div className="Text">Balance</div>
-                <div className="Number">{currencyFormatter(this.state.currentUser.total_price)}</div>
+                <div className="Number">
+                  {currencyFormatter(
+                    this.state.currentUser.total_price,
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div className="TransactionRequest" onClick={this.withdrawMoneyAction}>REQUEST</div>
-          <Link to="/account/profile/wallet">
+          <div
+            className="TransactionRequest"
+            onClick={this.withdrawMoneyAction}
+          >
+            REQUEST
+          </div>
+          <Link to={routes.accountWallet}>
             <div className="TransactionRequest">CANCEL</div>
           </Link>
         </div>
@@ -156,5 +185,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 export default connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MyWallet_Withdraw);
