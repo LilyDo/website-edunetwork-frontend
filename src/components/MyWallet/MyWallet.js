@@ -102,7 +102,7 @@ class MyWallet extends Component {
                 </thead>
                 <tbody className="TransactionTableBody">
                   {this.props.state.drawList && this.props.state.drawList.map((item, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td>{item.created_at || ''}</td>
                       <td>{item.charge_code || 'not available'}</td>
                       <td>{currencyFormatter(item.price) || ''}</td>
@@ -125,7 +125,7 @@ class MyWallet extends Component {
                 </thead>
                 <tbody className="TransactionTableBody">
                   {this.props.state.chargeList && this.props.state.chargeList.map((item, index) => (
-                    <tr>
+                    <tr key={index}>
                       <td>{item.created_at || ''}</td>
                       <td>{item.charge_code || 'not available'}</td>
                       <td>{currencyFormatter(item.price) || ''}</td>

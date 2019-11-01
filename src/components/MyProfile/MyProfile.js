@@ -76,9 +76,9 @@ class MyProfile extends Component {
                 </div>
               </div>
               <div className="Sponsor">
-                <div className="Text">Your Referral</div>
+                <div className="Text">Invited By</div>
                 <div className="Data">
-                  {this.state.currentUser.presenter}
+                  {this.state.currentUser.presenter_code}
                 </div>
               </div>
             </div>

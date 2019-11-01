@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './SignupVerify.scss';
 import { verifyAccountAction } from '../../actions/auth';
 import { bindActionCreators } from 'redux';
@@ -23,7 +24,14 @@ class SignupVerify extends Component {
           <span>Please wait a moment. Your account is being activated.</span>
         )}
         {this.props.auth.isVerify && (
-          <span>Your account has been actived. Now you can login with your account. Thanks.</span>
+          <div>
+            <span>Your account has been activated. Now you can login with your account. Thanks.</span>
+            <div className="ButtonContainer">
+              <Link to="/signin?tab=login">
+                <div className="gotoLogin">LOGIN NOW</div>
+              </Link>
+            </div>
+          </div>
         )}
       </div>
     );

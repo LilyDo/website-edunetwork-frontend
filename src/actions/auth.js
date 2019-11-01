@@ -115,7 +115,7 @@ export const verifyAccountAction = code => {
       "verify_code": code
     }).then(response => {
       console.log('response', response);
-      if (response.data.statusCode === 200) {
+      if (response.data.statusCode === 200 && response.data.errors.length === 0) {
         dispatch(verifyAccountSuccess(response.data));
       } else {
         let obj = response.data.errors;
