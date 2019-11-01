@@ -23,7 +23,7 @@ class CourseDetailPage extends Component {
       <div className="CourseDetailPage">
         <Breadcrumb />
         <div className="CourseInfoLevelContainer">
-          <CourseInfo />
+          <CourseInfo courseDetail={courseDetail} />
           <CourseLevel courseDetail={courseDetail} />
         </div>
         <CourseCarouselContainer excludeId={courseDetail.id} />

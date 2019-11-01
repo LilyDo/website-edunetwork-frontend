@@ -67,9 +67,14 @@ $mobileMargin: 10px 25px 10px 25px;
 
     .IntroductionTitle,
     .CurriculumTitle {
+      cursor: pointer;
       &:hover {
         @extend %titleSelected;
       }
+    }
+
+    .Active {
+      border-bottom: 1px solid $gold;
     }
   }
 
