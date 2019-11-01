@@ -5,10 +5,10 @@ const initialState = {
   loading: false,
   auth: [],
   error: null,
-  isVerify: false
+  isVerify: false,
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   const duration = 3000;
   switch (action.type) {
     // LOGIN
@@ -49,25 +49,29 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
-        isVerify: false
+        isVerify: false,
       };
 
     case types.ACTIVE_ACCOUNT_SUCCESS:
-      toast.success('Active account successful!', { autoClose: duration });
+      toast.success('Active account successful!', {
+        autoClose: duration,
+      });
       return {
         ...state,
         loading: false,
-        isVerify: true
+        isVerify: true,
       };
 
     case types.ACTIVE_ACCOUNT_FAILURE:
-      toast.error('Cannote active the account', { autoClose: duration });
+      toast.error('Cannote active the account', {
+        autoClose: duration,
+      });
 
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        isVerify: false
+        isVerify: false,
       };
 
     default:
