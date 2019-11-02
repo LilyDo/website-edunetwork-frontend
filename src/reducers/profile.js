@@ -4,7 +4,7 @@ import { routes } from '../constants';
 
 const initialState = {
   loading: false,
-  auth: [],
+  data: {},
   error: null,
   isEditing: false,
   withdrawList: [],
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        auth: [...state.auth, action.payload],
+        data: action.payload.data.data,
       };
 
     case types.GET_PROFILE_FAILURE:

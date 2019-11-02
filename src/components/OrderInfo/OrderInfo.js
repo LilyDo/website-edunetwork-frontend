@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { get } from 'lodash';
 
 import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
@@ -10,8 +11,10 @@ import { formatDurationText } from '../../services/appService';
 
 class OrderInfo extends Component {
   render() {
-    const { courseDetail = {} } = this.props;
-    console.log('xxx courseDetail', courseDetail);
+    const { courseDetail, profile } = this.props;
+    const shouldDepositAmount =
+      profile.total_price - courseDetail.price;
+    const shouldDeposit = shouldDepositAmount < 0;
 
     return (
       <div className="OrderInfoContainer">
@@ -66,23 +69,27 @@ class OrderInfo extends Component {
               <div className="WalletInfoItems">
                 <div className="Container Remaining">
                   <div className="Text">Số dư hiện tại trong ví:</div>
-                  <div className="Number">700</div>
+                  <div className="Number">{profile.total_price}</div>
                   <div className="Currency">usd</div>
                 </div>
                 <div className="Container PendingOrder">
                   <div className="Text">Đơn hàng cần thanh toán:</div>
-                  <div className="Number">1000</div>
+                  <div className="Number">{courseDetail.price}</div>
                   <div className="Currency">usd</div>
                 </div>
                 <div className="Container Missing">
                   <div className="Text">
                     Để thanh toán cho đơn hàng, bạn cần nạp thêm:
                   </div>
-                  <div className="Number">300</div>
+                  <div className="Number">
+                    {shouldDeposit ? shouldDepositAmount : 0}
+                  </div>
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              <div className="TopupNow">NẠP NGAY</div>
+              <div className="TopupNow">
+                {shouldDeposit ? 'NẠP NGAY' : 'THANH TOÁN NGAY'}
+              </div>
             </div>
           </div>
         </div>
@@ -98,7 +105,8 @@ Ngoài ra, chúng tôi cũng đã gửi thông tin khóa học qua email cho b�
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    courseDetail: state.courses.courseDetail,
+    courseDetail: get(state, 'courses.courseDetail', {}),
+    profile: get(state, 'profile.data'),
   };
 };
 
