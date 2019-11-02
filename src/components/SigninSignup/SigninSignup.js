@@ -70,9 +70,9 @@ class SigninSignup extends Component {
     this.props.actions.registerAction(data);
   };
 
-  showLoginForm = (isShowLogin) => {
+  showLoginForm = isShowLogin => {
     this.setState({
-      isShowLogin: isShowLogin
+      isShowLogin: isShowLogin,
     });
   };
 
@@ -95,19 +95,25 @@ class SigninSignup extends Component {
       userName,
       number,
       rePassword,
-      isShowLogin
+      isShowLogin,
     } = this.state;
 
     return (
       <div className="SigninSignupContainer">
         <div className="Head">
-          <div className={isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, true)}>
+          <div
+            className={isShowLogin ? 'Title Active' : 'Title'}
+            onClick={this.showLoginForm.bind(this, true)}
+          >
             <div>
               <span>LOGIN</span>
             </div>
             <div>Already be EDUNETWORK's member?</div>
           </div>
-          <div className={!isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, false)}>
+          <div
+            className={!isShowLogin ? 'Title Active' : 'Title'}
+            onClick={this.showLoginForm.bind(this, false)}
+          >
             <div>
               <span>REGISTER</span>
             </div>
@@ -216,7 +222,7 @@ class SigninSignup extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { ...state }
+  return { ...state };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
