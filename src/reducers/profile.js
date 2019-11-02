@@ -1,10 +1,10 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
-import { routes } from '../constants';
+import { routes, toastDuration } from '../constants';
 
 const initialState = {
   loading: false,
-  auth: [],
+  data: {},
   error: null,
   isEditing: false,
   withdrawList: [],
@@ -12,9 +12,7 @@ const initialState = {
   dashboard: {},
 };
 
-export default function(state = initialState, action) {
-  const duration = 3000;
-
+export default function (state = initialState, action) {
   switch (action.type) {
     // GET CURRENT USER PROFILE
     case types.GET_PROFILE_REQUEST:
@@ -34,13 +32,13 @@ export default function(state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function() {
+          setTimeout(function () {
             window.location.pathname = `${routes.accountDashboard}`;
           }, 100);
         }
       } else {
         toast.error(action.payload.message, {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
 
@@ -48,7 +46,7 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        auth: [...state.auth, action.payload],
+        data: action.payload.data.data,
       };
 
     case types.GET_PROFILE_FAILURE:
@@ -75,11 +73,11 @@ export default function(state = initialState, action) {
         action.payload.errors.length === 0
       ) {
         toast.success('Update profile successful!', {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
 
@@ -91,7 +89,7 @@ export default function(state = initialState, action) {
 
     case types.UPDATE_PROFILE_FAILURE:
       toast.error('Cannot update profile', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
 
       return {
@@ -127,7 +125,7 @@ export default function(state = initialState, action) {
         };
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
 
@@ -139,7 +137,7 @@ export default function(state = initialState, action) {
 
     case types.GET_CHARGE_HISTORY_FAILURE:
       toast.error('Cannot get charge history', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
       return {
         ...state,
@@ -159,14 +157,14 @@ export default function(state = initialState, action) {
         action.payload.errors.length === 0
       ) {
         toast.success('Request successful!', {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
 
@@ -178,7 +176,7 @@ export default function(state = initialState, action) {
 
     case types.WITHDRAW_MONEY_FAILURE:
       toast.error('Cannot send request to withraw money', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
 
       return {
@@ -207,7 +205,7 @@ export default function(state = initialState, action) {
         };
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
 
@@ -219,7 +217,7 @@ export default function(state = initialState, action) {
 
     case types.GET_USER_DASHBOARD_FAILURE:
       toast.error('Cannot get user dashboard!', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
 
       return {

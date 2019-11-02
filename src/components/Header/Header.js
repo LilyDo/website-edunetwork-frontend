@@ -28,7 +28,7 @@ class Header extends Component {
     localStorage.removeItem('token');
     this.checkCurrentUser();
     setTimeout(function() {
-      window.location.pathname = '/';
+      window.location.pathname = routes.home;
     }, 500);
   }
 

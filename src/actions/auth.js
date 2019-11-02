@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { get } from 'lodash';
 import {
   BASE_URL,
   LOGIN_REQUEST,
@@ -13,6 +14,7 @@ import {
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
+import { routes, toastDuration } from '../constants';
 
 export const loginAction = user => {
   return dispatch => {
@@ -24,7 +26,7 @@ export const loginAction = user => {
         dispatch(loginSuccess(response.data));
         dispatch(
           getProfileAction({
-            token: response.data.data.token,
+            token: get(response, 'data.data.token'),
             options: {
               redirect: true,
             },
@@ -68,13 +70,13 @@ export const registerAction = user => {
         ) {
           dispatch(registerSuccess(response.data));
           setTimeout(function() {
-            window.location.pathname = '/register-pending-active';
+            window.location.pathname = routes.registerPendingActive;
           }, 100);
         } else {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
-              autoClose: 3000,
+              autoClose: toastDuration,
             });
           });
           dispatch(
@@ -124,7 +126,7 @@ export const verifyAccountAction = code => {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
-              autoClose: 3000,
+              autoClose: toastDuration,
             });
           });
           dispatch(

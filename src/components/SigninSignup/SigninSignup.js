@@ -10,7 +10,8 @@ class SigninSignup extends Component {
     email: '',
     password: '',
 
-    isShowLogin: false,
+    isLoginShowed: true,
+    isRegisterShowed: false,
 
     refUser: '',
     fullName: '',
@@ -81,7 +82,7 @@ class SigninSignup extends Component {
     });
     let tab = getUrlParameter('tab');
     if (tab === 'login') {
-      this.setState({ isShowLogin: true });
+      this.setState({ isLoginShowed: true });
     }
   }
 
@@ -100,17 +101,17 @@ class SigninSignup extends Component {
     return (
       <div className="SigninSignupContainer">
         <div className="Head">
-          <div className="Title" onClick={this.showLoginForm.bind(this, false)}>
-            <div>
-              <span>REGISTER</span>
-            </div>
-            <div>Become a new member!</div>
-          </div>
-          <div className="Title" onClick={this.showLoginForm.bind(this, true)}>
+          <div className={isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, true)}>
             <div>
               <span>LOGIN</span>
             </div>
             <div>Already be EDUNETWORK's member?</div>
+          </div>
+          <div className={!isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, false)}>
+            <div>
+              <span>REGISTER</span>
+            </div>
+            <div>Become a new member!</div>
           </div>
         </div>
 

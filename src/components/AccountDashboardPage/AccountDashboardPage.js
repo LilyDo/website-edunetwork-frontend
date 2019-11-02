@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { get } from 'lodash';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import ManagerRank from '../../assets/images/manager_rank.svg';
 import DirectorRank from '../../assets/images/director_rank.svg';
@@ -7,17 +8,20 @@ import DashboardChart from '../../components/DashboardChart/DashboardChart';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUserDashboardAction } from '../../actions/profile';
-import { currencyFormatter, getUserFormLocal } from '../../services/appService'
+import {
+  currencyFormatter,
+  getUserFormLocal,
+} from '../../services/appService';
 
 class AccountDashboardPage extends Component {
   state = {
     currentUser: {},
-    isShowPaid: true
-  }
+    isShowPaid: true,
+  };
 
   componentDidMount() {
     this.setState({
-      currentUser: getUserFormLocal()
+      currentUser: getUserFormLocal(),
     });
     this.props.actions.getUserDashboardAction();
   }
@@ -36,7 +40,7 @@ class AccountDashboardPage extends Component {
 
     const {
       dashboard
-    } = this.props.state;
+    } = this.props;
 
     return (
       <div>
@@ -68,24 +72,18 @@ class AccountDashboardPage extends Component {
                 <div className="PeopleContainer">
                   <div className="People TotalReferral">
                     <div className="Number">{dashboard.total_user || "0"}</div>
-                    <div className="Text">
-                      TOTAL REFERRAL
-                    </div>
+                    <div className="Text">TOTAL REFERRAL</div>
                   </div>
                   <div className="People TotalActive">
                     <div className="Number">{(dashboard.total_active_user && dashboard.total_active_user.length) || "0"}</div>
-                    <div className="Text">
-                      TOTAL ACTIVE USER
-                    </div>
+                    <div className="Text">TOTAL ACTIVE USER</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="RevenueChart">
-            <div className="Title">
-              REVENUE CHART
-            </div>
+            <div className="Title">REVENUE CHART</div>
             <div className="Chart">
               <DashboardChart data={
                 {
@@ -185,14 +183,11 @@ class AccountDashboardPage extends Component {
       </div>
     );
   }
-
 }
 
 const mapStateToProps = ({ profile }, ownProps) => {
   return {
-    state: {
-      dashboard: profile.dashboard
-    },
+    dashboard: get(profile, 'dashboard', {}),
   };
 };
 
@@ -200,7 +195,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
-        getUserDashboardAction
+        getUserDashboardAction,
       },
       dispatch,
     ),
@@ -209,5 +204,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AccountDashboardPage);

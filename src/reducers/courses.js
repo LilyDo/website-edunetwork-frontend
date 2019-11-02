@@ -1,8 +1,11 @@
 import * as types from '../actions';
+import { toast } from 'react-toastify';
+import { routes, toastDuration } from '../constants';
 
 const initialState = {
   loading: false,
   courses: [],
+  courseDetail: {},
   userCourses: [],
   error: null,
 };
@@ -57,6 +60,46 @@ export default function(state = initialState, action) {
         userCourses: action.payload.data,
       };
     case types.GET_USER_COURSESS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.BUY_COURSE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.BUY_COURSE_SUCCESS:
+      toast.success('Buy course successfully!', {
+        autoClose: toastDuration,
+      });
+      setTimeout(function() {
+        window.location.pathname = routes.coursePaymentSuccessful;
+      }, toastDuration);
+
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.BUY_COURSE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.DEPOSIT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.DEPOSIT_SUCCESS:
+      window.location = action.payload.data.url;
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.DEPOSIT_FAILURE:
       return {
         ...state,
         loading: false,

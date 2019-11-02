@@ -26,7 +26,7 @@ class AccountBreadcrumb extends Component {
             <Link
               to={routes.accountDashboard}
               className={
-                window.location.pathname === '/account/dashboard'
+                window.location.pathname === routes.accountDashboard
                   ? 'ActiveTab'
                   : ''
               }
@@ -38,7 +38,7 @@ class AccountBreadcrumb extends Component {
               <Link
                 to={routes.accountProfile}
                 className={
-                  window.location.pathname === '/account/profile'
+                  window.location.pathname === routes.accountDashboard
                     ? 'ActiveTab'
                     : ''
                 }
@@ -63,7 +63,7 @@ class AccountBreadcrumb extends Component {
             <Link
               to={routes.accountCourses}
               className={
-                window.location.pathname === '/account/course'
+                window.location.pathname === routes.accountCourses
                   ? 'ActiveTab'
                   : ''
               }
