@@ -17,14 +17,7 @@ import {
 import { getUserFormLocal } from '../../services/appService';
 
 class CourseDetailPage extends Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    const user = getUserFormLocal();
-    if (getUserFormLocal()) {
-      this.props.actions.getUserCourseDetailAction(id);
-    } else {
-      this.props.actions.getCourseDetailAction(id);
-    }
+  componentWillReceiveProps() {
     this.props.actions.getUserCoursesAction();
   }
 
@@ -32,7 +25,11 @@ class CourseDetailPage extends Component {
     const newId = get(nextProps, 'match.params.id');
     const currentId = get(this, 'props.match.params.id');
     if (newId && currentId && newId !== currentId) {
-      this.props.actions.getCourseDetailAction(newId);
+      if (getUserFormLocal()) {
+        this.props.actions.getUserCourseDetailAction(newId);
+      } else {
+        this.props.actions.getCourseDetailAction(newId);
+      }
     }
   }
 

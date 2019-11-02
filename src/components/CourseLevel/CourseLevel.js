@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import { Link } from 'react-router-dom';
 
 import './CourseLevel.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
@@ -9,6 +8,7 @@ import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import { routes } from '../../constants';
 import { getUserFormLocal } from '../../services/appService';
+import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
   onPayClick = () => {
@@ -63,7 +63,9 @@ class CourseLevel extends Component {
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
                   Thời lượng:{' '}
-                  <span>{courseDetail.duration} phút</span>
+                  <span>
+                    {formatDurationText(courseDetail.duration)} phút
+                  </span>
                 </div>
               </div>
               <div className="Container">
