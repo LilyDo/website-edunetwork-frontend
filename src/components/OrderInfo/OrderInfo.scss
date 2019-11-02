@@ -54,7 +54,6 @@ $walletPaddingContainer: 12px 0 12px 0;
       .CourseHeader {
         display: flex;
         align-items: center;
-      
 
         @media only screen and (max-width: $mobileBreakPoint) {
           flex-direction: column;
@@ -73,12 +72,10 @@ $walletPaddingContainer: 12px 0 12px 0;
           @media only screen and (max-width: $mobileBreakPoint) {
             padding-top: 10px;
             padding-bottom: 10px;
-  
           }
-          
+
           @media only screen and (min-width: $mobileBreakPoint + 1) {
             padding-right: $paddingRightHeader;
-
           }
         }
         .Text {
@@ -89,18 +86,17 @@ $walletPaddingContainer: 12px 0 12px 0;
 
         .LevelPrice {
           display: flex;
-        align-items: center;
-        flex-direction: row;
-       
+          align-items: center;
+          flex-direction: row;
 
-        @media only screen and (max-width: $mobileBreakPoint) {
-          justify-content: space-between;
-          width: 100%;
-        }
-        
-        @media only screen and (min-width: $mobileBreakPoint + 1) {
-          justify-content: space-around;
-        }
+          @media only screen and (max-width: $mobileBreakPoint) {
+            justify-content: space-between;
+            width: 100%;
+          }
+
+          @media only screen and (min-width: $mobileBreakPoint + 1) {
+            justify-content: space-around;
+          }
 
           .LevelContainer {
             padding-right: $paddingRightHeader;
@@ -110,11 +106,11 @@ $walletPaddingContainer: 12px 0 12px 0;
               color: white;
               @extend %fontBold;
               padding: 5px 15px;
-  
+
               @media only screen and (max-width: $mobileBreakPoint) {
                 font-size: 12px;
               }
-  
+
               @media only screen and (min-width: $mobileBreakPoint + 1) {
               }
             }
@@ -125,13 +121,14 @@ $walletPaddingContainer: 12px 0 12px 0;
               color: white;
               transform: skewX(-30deg);
               padding: 5px 10px;
-  
+
               .PriceNumber {
                 display: inline-block;
                 transform: skewX(30deg);
-  
+
                 span {
                   @extend %fontExtraBold;
+                  padding-right: 5px;
                 }
               }
               @media only screen and (max-width: $mobileBreakPoint) {
@@ -142,7 +139,7 @@ $walletPaddingContainer: 12px 0 12px 0;
               }
               @media only screen and (min-width: $mobileBreakPoint + 1) {
                 font-size: 20px;
-  
+
                 sup {
                   font-size: 12px;
                 }

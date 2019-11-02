@@ -9,11 +9,6 @@ import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import { routes } from '../../constants';
 class CourseLevel extends Component {
-  calculateLessons = (chapters = []) => {
-    let total = 0;
-    chapters.forEach(chapter => (total += chapter.parts.length));
-  };
-
   render() {
     const { courseDetail, userCourses } = this.props;
     const isCourseBought = get(userCourses, 'buy', []).every(
