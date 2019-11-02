@@ -79,15 +79,9 @@
 
     .Balance {
       color: white;
+
       @media only screen and (max-width: $mobileBreakPoint) {
         padding-top: 70px;
-
-        .Text {
-          font-size: 14px;
-        }
-        .Number {
-          font-size: 20px;
-        }
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -95,12 +89,25 @@
       }
 
       .Text {
-        font-size: 20px;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 14px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 20px;
+        }
       }
 
       .Number {
         @extend %fontBold;
-        font-size: 41px;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 20px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 41px;
+        }
       }
     }
   }
