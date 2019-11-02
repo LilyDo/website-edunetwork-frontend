@@ -8,8 +8,15 @@ import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import { formatDurationText } from '../../services/appService';
+import { buyCourseAction } from '../../actions/courses';
 
 class OrderInfo extends Component {
+  deposit = () => {};
+
+  pay = () => {
+    this.props.actions.buyCourseAction(this.props.courseDetail.id);
+  };
+
   render() {
     const { courseDetail, profile } = this.props;
     const shouldDepositAmount =
@@ -87,9 +94,15 @@ class OrderInfo extends Component {
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              <div className="TopupNow">
-                {shouldDeposit ? 'NẠP NGAY' : 'THANH TOÁN NGAY'}
-              </div>
+              {shouldDeposit ? (
+                <div className="CTAButton" onClick={this.deposit}>
+                  NẠP NGAY
+                </div>
+              ) : (
+                <div className="CTAButton" onClick={this.pay}>
+                  THANH TOÁN NGAY
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -112,7 +125,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators({}, dispatch),
+    actions: bindActionCreators(
+      {
+        buyCourseAction,
+      },
+      dispatch,
+    ),
   };
 };
 export default connect(

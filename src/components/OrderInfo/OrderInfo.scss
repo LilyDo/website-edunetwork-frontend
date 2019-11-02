@@ -297,7 +297,7 @@ $walletPaddingContainer: 12px 0 12px 0;
             }
           }
         }
-        .TopupNow {
+        .CTAButton {
           @extend %fontBold;
           padding-top: 7px;
           padding-bottom: 7px;
@@ -306,6 +306,7 @@ $walletPaddingContainer: 12px 0 12px 0;
           text-align: center;
           width: 85%;
           margin: auto;
+          cursor: pointer;
 
           @media only screen and (max-width: $mobileBreakPoint) {
             margin-bottom: 10px;

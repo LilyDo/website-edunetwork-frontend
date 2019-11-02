@@ -1,4 +1,6 @@
 import * as types from '../actions';
+import { toast } from 'react-toastify';
+import { routes, toastDuration } from '../constants';
 
 const initialState = {
   loading: false,
@@ -58,6 +60,30 @@ export default function(state = initialState, action) {
         userCourses: action.payload.data,
       };
     case types.GET_USER_COURSESS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.BUY_COURSE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.BUY_COURSE_SUCCESS:
+      toast.success('Buy course successfully!', {
+        autoClose: toastDuration,
+      });
+      setTimeout(function() {
+        window.location.pathname = routes.accountWithdrawNoti;
+      }, toastDuration);
+
+      return {
+        ...state,
+        loading: false,
+        // userCourses: action.payload.data,
+      };
+    case types.BUY_COURSE_FAILURE:
       return {
         ...state,
         loading: false,

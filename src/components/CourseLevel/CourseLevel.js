@@ -11,7 +11,7 @@ import { routes } from '../../constants';
 class CourseLevel extends Component {
   render() {
     const { courseDetail, userCourses } = this.props;
-    const isCourseBought = get(userCourses, 'buy', []).every(
+    const isCourseBought = !!get(userCourses, 'buy', []).find(
       boughtCourse => boughtCourse.id === courseDetail.id,
     );
 
