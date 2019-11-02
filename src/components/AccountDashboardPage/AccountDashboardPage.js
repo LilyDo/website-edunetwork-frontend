@@ -128,7 +128,7 @@ class AccountDashboardPage extends Component {
               </thead>
               <tbody className="RevenueTableBody">
                 <tr>
-                  <td className="FirstCell">COMMISSION</td>
+                  <td className="FirstCell">TOTAL COMMISSION</td>
                   {this.props.state.dashboard &&
                     this.props.state.dashboard
                       .total_commission_month &&

@@ -237,15 +237,14 @@
       text-align: center;
       margin: auto;
       border-collapse: collapse;
+      .FirstCell {
+        width: 16%;
+      }
+      .EqualCell {
+        width: 7%;
+      }
 
       @media only screen and (max-width: $mobileBreakPoint) {
-        .FirstCell {
-          width: 16%;
-        }
-        .EqualCell {
-          width: 7%;
-        }
-
         thead tr th {
           background-color: $gold;
           color: white;
@@ -260,17 +259,6 @@
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
-        .FirstCell {
-          width: 16%;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-        .EqualCell {
-          width: 7%;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-
         thead tr th {
           background-color: $gold;
           color: white;

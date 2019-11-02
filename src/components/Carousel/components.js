@@ -28,13 +28,16 @@ export const CarouselContainer = styled.div`
 
 export const CourseCarouselContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
   @media only screen and (max-width: ${smallMobileBreakPoint}) {
     transition: ${props =>
       props.sliding ? 'none' : 'transform 1s ease'};
     transform: ${props => {
       if (!props.sliding) return 'translateX(0% )';
-      if (props.dir === PREV) return 'translateX(-80%)';
-      return 'translateX(80%)';
+      if (props.dir === PREV) return 'translateX(-20%)';
+      return 'translateX(20%)';
     }};
   }
 
@@ -69,10 +72,15 @@ export const CarouselSlot = styled.div`
 `;
 
 export const CourseCarouselSlot = styled.div`
-  flex: 1 0 100%;
-  flex-basis: 240px;
-  overflow: hidden;
   order: ${props => props.order};
+
+  @media only screen and (max-width: ${mobileBreakPoint}) {
+    flex: 1 0 140px;
+  }
+
+  @media only screen and (min-width: ${mobileBreakPoint + 1}) {
+    flex: 1 0 100%;
+  }
 `;
 
 export const SlideButton = styled.button`

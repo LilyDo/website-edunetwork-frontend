@@ -1,22 +1,23 @@
 @import '../../shared.scss';
 
-.AccountCoursePage {
+.CourseBlock {
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding-bottom: 50px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 30px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 50px;
     padding-left: 150px;
     padding-right: 150px;
-    padding-bottom: 60px;
   }
 
-  .Title {
+  .CourseName {
     color: $darkblue;
     border-bottom: 1px solid $lightgrey;
     @extend %fontHeader;
+    text-align: left;
 
     @media only screen and (max-width: $mobileBreakPoint) {
       padding-bottom: 5px;
@@ -24,42 +25,14 @@
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
       padding-bottom: 7px;
+      margin-bottom: 20px;
     }
-  }
-  .CourseContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding-top: 10px;
-      padding-bottom: 20px;
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding-top: 20px;
-      padding-bottom: 70px;
-    }
-
-    .Course {
-      margin-right: 20px;
-    }
-  }
-}
-
-.CourseBlock {
-  padding-bottom: 70px;
-
-  .Title {
-    @extend %fontHeader;
-    padding-bottom: 10px;
-    border-bottom: 1px solid $darkgrey;
-    margin-bottom: 20px;
   }
 
   .CoursesContainer {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    overflow-x: scroll;
+    flex-wrap: wrap;
   }
 }

@@ -3,6 +3,9 @@
 
 .MyWallet {
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -15,12 +18,13 @@
     color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
+    @extend %fontHeader;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      margin-bottom: 20px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
-      font-size: 20px;
       margin-bottom: 40px;
     }
   }
@@ -28,24 +32,34 @@
   .Card {
     background-image: url(../../assets/images/background_card.svg);
     background-repeat: no-repeat;
-    // background-color: linear-gradient(#f9d423, #f83600);
     background-position: center;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+    margin: auto;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      max-width: 300px;
+      height: 170px;
+      background-size: cover;
+
+      padding-top: 10px;
+      padding-left: 20px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
       width: 426px;
       height: 240px;
-      margin: auto;
       box-sizing: border-box;
-      padding-top: 6px;
+      padding-top: 5px;
       padding-left: 25px;
     }
 
     .User {
       @media only screen and (max-width: $mobileBreakPoint) {
+        img {
+          width: 32px;
+          height: 32px;
+          margin-right: 5px;
+        }
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -65,19 +79,19 @@
 
     .Balance {
       color: white;
-
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding-top: 65px;
+
+        .Text {
+          font-size: 14px;
+        }
+        .Number {
+          font-size: 20px;
+        }
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
         padding-top: 85px;
-
-        .Text {
-          font-size: 20px;
-        }
-        .Number {
-          font-size: 41px;
-        }
       }
 
       .Text {
@@ -85,7 +99,7 @@
       }
 
       .Number {
-        @extend %fontSemiBold;
+        @extend %fontBold;
       }
     }
   }
@@ -94,23 +108,34 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     margin: auto;
     &:hover {
       cursor: pointer;
     }
     @media only screen and (max-width: $mobileBreakPoint) {
+      padding-top: 15px;
+      padding-bottom: 30px;
+      justify-content: space-evenly;
+
+      .WithdrawButton,
+      .TopupButton {
+        font-size: 12px;
+        padding: 5px 25px;
+        border-radius: 5px;
+      }
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
-      width: 426px;
       padding-top: 40px;
       padding-bottom: 40px;
+      justify-content: space-between;
+      width: 426px;
 
       .WithdrawButton,
       .TopupButton {
         font-size: 16px;
         padding: 10px 50px;
+        border-radius: 10px;
       }
     }
 
@@ -119,7 +144,6 @@
       background-color: $brown;
       color: white;
       @extend %fontSemiBold;
-      border-radius: 10px;
       cursor: pointer;
     }
   }
@@ -129,6 +153,7 @@
       @extend %fontSemiBold;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 12px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -146,6 +171,12 @@
       }
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .Withdraw {
+          margin-right: 40px;
+        }
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -162,6 +193,9 @@
         padding-left: 5px;
         padding-right: 5px;
         padding-bottom: 5px;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding-bottom: 2px;
+        }
         &.ActiveTab {
           border-bottom: 3px solid $brown;
         }
@@ -170,24 +204,46 @@
 
     table {
       width: 100%;
-      tr,
-      th {
-        padding: 30px 50px;
-      }
-
       thead {
         tr {
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
-          padding: 30px 50px;
+          color: $grey;
+        }
+        @media only screen and (max-width: $mobileBreakPoint) {
+          tr,
+          th {
+            padding: 10px;
+          }
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          tr,
+          th {
+            padding: 25px;
+          }
         }
       }
 
       tbody {
-        tr td {
-          border-bottom: 1px solid $lightgrey;
-          text-align: center;
-          padding-top: 20px;
-          padding-bottom: 20px;
+        tr {
+          color: black;
+        }
+        @media only screen and (max-width: $mobileBreakPoint) {
+          tr td {
+            border-bottom: 1px solid $lightgrey;
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          tr td {
+            border-bottom: 1px solid $lightgrey;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+          }
         }
       }
     }
