@@ -38,7 +38,7 @@ class AccountBreadcrumb extends Component {
               <Link
                 to={routes.accountProfile}
                 className={
-                  window.location.pathname === routes.accountDashboard
+                  window.location.pathname === routes.accountProfile
                     ? 'ActiveTab'
                     : ''
                 }
