@@ -12,7 +12,7 @@ const initialState = {
   dashboard: {},
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     // GET CURRENT USER PROFILE
     case types.GET_PROFILE_REQUEST:
@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function () {
+          setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
           }, 100);
         }
@@ -159,7 +159,7 @@ export default function (state = initialState, action) {
         toast.success('Request successful!', {
           autoClose: toastDuration,
         });
-        setTimeout(function () {
+        setTimeout(function() {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {

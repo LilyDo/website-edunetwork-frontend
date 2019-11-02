@@ -32,8 +32,8 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 import SignupVerify from './components/SignupVerify/SignupVerify';
 import SignupPendingVerify from './components/SignupPendingVerify/SignupPendingVerify';
-import LoadingOverlay from 'react-loading-overlay'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import LoadingOverlay from 'react-loading-overlay';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 
 // services
 import { getUserFormLocal } from './services/appService';
@@ -46,13 +46,13 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
         authed === true ? (
           <Component {...props} />
         ) : (
-            <Redirect
-              to={{
-                pathname: routes.signin,
-                state: { from: props.location },
-              }}
-            />
-          )
+          <Redirect
+            to={{
+              pathname: routes.signin,
+              state: { from: props.location },
+            }}
+          />
+        )
       }
     />
   );
@@ -60,7 +60,7 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
 
 class App extends Component {
   state = {
-    isLogined: false
+    isLogined: false,
   };
 
   checkCurrentUser() {
@@ -78,17 +78,17 @@ class App extends Component {
           active={this.props.loading}
           spinner={<ScaleLoader />}
           styles={{
-            spinner: (base) => ({
+            spinner: base => ({
               ...base,
               width: '100px',
               '& svg circle': {
-                stroke: 'rgba(255, 0, 0, 0.5)'
-              }
+                stroke: 'rgba(255, 0, 0, 0.5)',
+              },
             }),
-            overlay: (base) => ({
+            overlay: base => ({
               ...base,
-              "z-index": 99
-            })
+              'z-index': 99,
+            }),
           }}
         >
           <div className="App">
@@ -164,11 +164,10 @@ class App extends Component {
                   </Route>
                 </Switch>
               </div>
-              <Footer />
-              <LoginPopup />
-              <ToastContainer />
-              <ForgotPasswordPopup />
             </div>
+            <Footer />
+            <LoginPopup />
+            <ForgotPasswordPopup />
           </div>
         </LoadingOverlay>
       </Router>
@@ -178,7 +177,10 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   ...state,
-  loading: state.auth.loading || state.profile.loading || state.courses.loading
+  loading:
+    state.auth.loading ||
+    state.profile.loading ||
+    state.courses.loading,
 });
 
 const mapDispatchToProps = dispatch => ({});

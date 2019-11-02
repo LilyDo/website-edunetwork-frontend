@@ -2,15 +2,18 @@ import axios from 'axios';
 import {
   BASE_URL,
   TOKEN_KEY,
-  GET_COURSE_REQUEST,
-  GET_COURSE_SUCCESS,
-  GET_COURSE_FAILURE,
+  GET_COURSES_REQUEST,
+  GET_COURSES_SUCCESS,
+  GET_COURSES_FAILURE,
   GET_COURSE_DETAIL_REQUEST,
   GET_COURSE_DETAIL_SUCCESS,
   GET_COURSE_DETAIL_FAILURE,
-  GET_USER_COURSESS_REQUEST,
-  GET_USER_COURSESS_SUCCESS,
-  GET_USER_COURSESS_FAILURE,
+  GET_USER_COURSES_REQUEST,
+  GET_USER_COURSES_SUCCESS,
+  GET_USER_COURSES_FAILURE,
+  GET_USER_COURSE_DETAIL_REQUEST,
+  GET_USER_COURSE_DETAIL_SUCCESS,
+  GET_USER_COURSE_DETAIL_FAILURE,
   BUY_COURSE_REQUEST,
   BUY_COURSE_SUCCESS,
   BUY_COURSE_FAILURE,
@@ -24,29 +27,29 @@ import {
  * | GET COURSES |
  * +-------------+
  */
-export const getCourseAction = () => {
+export const getCoursesAction = () => {
   return dispatch => {
-    dispatch(getCourseRequest());
+    dispatch(getCoursesRequest());
 
     axios
       .get(`${BASE_URL}/courses`)
-      .then(response => dispatch(getCourseSuccess(response.data)))
-      .catch(error => dispatch(getCourseFailure(error.message)));
+      .then(response => dispatch(getCoursesSuccess(response.data)))
+      .catch(error => dispatch(getCoursesFailure(error.message)));
   };
 };
 
-const getCourseRequest = () => ({
-  type: GET_COURSE_REQUEST,
+const getCoursesRequest = () => ({
+  type: GET_COURSES_REQUEST,
   payload: {},
 });
 
-const getCourseSuccess = response => ({
-  type: GET_COURSE_SUCCESS,
+const getCoursesSuccess = response => ({
+  type: GET_COURSES_SUCCESS,
   payload: { ...response },
 });
 
-const getCourseFailure = error => ({
-  type: GET_COURSE_FAILURE,
+const getCoursesFailure = error => ({
+  type: GET_COURSES_FAILURE,
   payload: { error },
 });
 
@@ -59,9 +62,8 @@ export const getCourseDetailAction = courseId => {
   return dispatch => {
     dispatch(getCourseDetailRequest());
 
-    const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
+      .get(`${BASE_URL}/courses/${courseId}`)
       .then(response =>
         dispatch(getCourseDetailSuccess(response.data)),
       )
@@ -106,20 +108,61 @@ export const getUserCoursesAction = () => {
 };
 
 const getUserCoursesRequest = () => ({
-  type: GET_USER_COURSESS_REQUEST,
+  type: GET_USER_COURSES_REQUEST,
   payload: {},
 });
 
 const getUserCoursesSuccess = response => ({
-  type: GET_USER_COURSESS_SUCCESS,
+  type: GET_USER_COURSES_SUCCESS,
   payload: { ...response },
 });
 
 const getUserCoursesFailure = error => ({
-  type: GET_USER_COURSESS_FAILURE,
+  type: GET_USER_COURSES_FAILURE,
   payload: { error },
 });
 
+/**
+ * +--------------------------+
+ * | GET USER'S COURSE DETAIL |
+ * +--------------------------+
+ */
+export const getUserCourseDetailAction = courseId => {
+  return dispatch => {
+    dispatch(getUserCourseDetailRequest(courseId));
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    axios
+      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
+      .then(response =>
+        dispatch(getUserCourseDetailSuccess(response.data)),
+      )
+      .catch(error =>
+        dispatch(getUserCourseDetailFailure(error.message)),
+      );
+  };
+};
+
+const getUserCourseDetailRequest = id => ({
+  type: GET_USER_COURSE_DETAIL_REQUEST,
+  payload: {},
+});
+
+const getUserCourseDetailSuccess = response => ({
+  type: GET_USER_COURSE_DETAIL_SUCCESS,
+  payload: { ...response },
+});
+
+const getUserCourseDetailFailure = error => ({
+  type: GET_USER_COURSE_DETAIL_FAILURE,
+  payload: { error },
+});
+
+/**
+ * +------------+
+ * | BUY COURSE |
+ * +------------+
+ */
 export const buyCourseAction = courseId => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
@@ -149,6 +192,11 @@ const buyCourseFailure = error => ({
   payload: { error },
 });
 
+/**
+ * +---------+
+ * | DEPOSIT |
+ * +---------+
+ */
 export const depositAction = amount => {
   return dispatch => {
     dispatch(depositRequest(amount));

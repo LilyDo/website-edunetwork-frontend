@@ -34,26 +34,33 @@ export const currencyFormatter = amount => {
   return '$' + formatter.format(amount);
 };
 
-export const formatDuration = duration => {
-  let hours = Math.floor(duration / 60);
+const splitHoursMinutesSeconds = duration => {
+  let hours = Math.floor(duration / 3600);
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = duration % 60;
+  let minutes = Math.floor(duration / 60) % 60;
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}:00`;
+  let seconds = duration % 60;
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  return {
+    hours,
+    minutes,
+    seconds,
+  };
+};
+
+export const formatDuration = duration => {
+  const formattedDuration = splitHoursMinutesSeconds(duration);
+  return `${formattedDuration.hours}:${formattedDuration.minutes}:${formattedDuration.seconds}`;
 };
 
 export const formatDurationText = duration => {
-  let hours = Math.floor(duration / 60);
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = duration % 60;
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  return `${hours} giờ ${minutes} phút`;
+  const formattedDuration = splitHoursMinutesSeconds(duration);
+  return `${formattedDuration.hours} giờ ${formattedDuration.minutes} phút ${formattedDuration.seconds} giây`;
 };

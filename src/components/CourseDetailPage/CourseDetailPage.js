@@ -12,20 +12,31 @@ import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselCo
 import {
   getUserCoursesAction,
   getCourseDetailAction,
+  getUserCourseDetailAction,
 } from '../../actions/courses';
+import { getUserFormLocal } from '../../services/appService';
 
 class CourseDetailPage extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.actions.getCourseDetailAction(id);
     this.props.actions.getUserCoursesAction();
   }
 
   componentWillReceiveProps(nextProps) {
-    const newId = get(nextProps, 'match.params.id');
-    const currentId = get(this, 'props.match.params.id');
-    if (newId && currentId && newId !== currentId) {
-      this.props.actions.getCourseDetailAction(newId);
+    const newId = parseInt(get(nextProps, 'match.params.id'), 0);
+    const courseDetail = get(this, 'props.courseDetail', {});
+    const currentId = parseInt(get(courseDetail, 'id', 0));
+    const loading = get(this, 'props.loading');
+    if (
+      newId > 0 &&
+      currentId > 0 &&
+      !loading &&
+      (Object.keys(courseDetail).length === 0 || newId !== currentId)
+    ) {
+      if (getUserFormLocal()) {
+        this.props.actions.getUserCourseDetailAction(newId);
+      } else {
+        this.props.actions.getCourseDetailAction(newId);
+      }
     }
   }
 
@@ -52,6 +63,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     courseDetail: get(state, 'courses.courseDetail', {}),
     userCourses: get(state, 'courses.userCourses', []),
+    loading: get(state, 'courses.loading', false),
   };
 };
 
@@ -61,6 +73,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         getUserCoursesAction,
         getCourseDetailAction,
+        getUserCourseDetailAction,
       },
       dispatch,
     ),

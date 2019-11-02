@@ -10,7 +10,7 @@ import { formatDuration } from '../../services/appService';
 
 class CourseInfo extends Component {
   state = {
-    isIntroductionVisible: false,
+    isIntroductionVisible: true,
     activeAttachment: {},
   };
 

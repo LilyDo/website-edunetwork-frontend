@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import { Link } from 'react-router-dom';
 
 import './CourseLevel.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
@@ -8,7 +7,17 @@ import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import { routes } from '../../constants';
+import { getUserFormLocal } from '../../services/appService';
+import { formatDurationText } from '../../services/appService';
+
 class CourseLevel extends Component {
+  onPayClick = () => {
+    const url = getUserFormLocal()
+      ? routes.courseOrder.replace(':id', this.props.courseDetail.id)
+      : routes.signin;
+    window.location.pathname = url;
+  };
+
   render() {
     const { courseDetail, userCourses } = this.props;
     const isCourseBought = !!get(userCourses, 'buy', []).find(
@@ -37,14 +46,9 @@ class CourseLevel extends Component {
             </div>
             <div className="PayNow">
               {!isCourseBought && (
-                <Link
-                  to={routes.courseOrder.replace(
-                    ':id',
-                    courseDetail.id,
-                  )}
-                >
-                  <div className="PayButton">THANH TOÁN NGAY</div>
-                </Link>
+                <div className="PayButton" onClick={this.onPayClick}>
+                  THANH TOÁN NGAY
+                </div>
               )}
               <div className="Include">
                 Khóa học này bao gồm:
@@ -59,7 +63,9 @@ class CourseLevel extends Component {
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
                   Thời lượng:{' '}
-                  <span>{courseDetail.duration} phút</span>
+                  <span>
+                    {formatDurationText(courseDetail.duration)} phút
+                  </span>
                 </div>
               </div>
               <div className="Container">
