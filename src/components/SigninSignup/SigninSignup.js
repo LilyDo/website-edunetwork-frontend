@@ -175,6 +175,7 @@ class SigninSignup extends Component {
                   type="text"
                   value={refUser}
                   onChange={this.setRefUser}
+                  disabled
                 ></input>
               </div>
               <div className="PhoneNumber">
