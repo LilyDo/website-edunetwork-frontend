@@ -1,10 +1,6 @@
 import * as types from '../actions';
-import {
-  toast
-} from 'react-toastify';
-import {
-  routes
-} from '../constants';
+import { toast } from 'react-toastify';
+import { routes } from '../constants';
 
 const initialState = {
   loading: false,
@@ -39,14 +35,12 @@ export default function (state = initialState, action) {
         );
         if (action.payload.options.redirect) {
           setTimeout(function () {
-            window.location.pathname = `${
-              routes.accountDashboard
-              }`;
+            window.location.pathname = `${routes.accountDashboard}`;
           }, 100);
         }
       } else {
         toast.error(action.payload.message, {
-          autoClose: duration
+          autoClose: duration,
         });
       }
 
@@ -97,7 +91,7 @@ export default function (state = initialState, action) {
 
     case types.UPDATE_PROFILE_FAILURE:
       toast.error('Cannot update profile', {
-        autoClose: duration
+        autoClose: duration,
       });
 
       return {
@@ -149,7 +143,7 @@ export default function (state = initialState, action) {
       });
       return {
         ...state,
-        loading: false
+        loading: false,
       };
 
     // WITHDRAW MONEY
@@ -168,7 +162,7 @@ export default function (state = initialState, action) {
           autoClose: duration,
         });
         setTimeout(function () {
-          window.location.pathname = '/account/profile/withdraw-noti';
+          window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
         toast.error(action.payload.errors[0], {
