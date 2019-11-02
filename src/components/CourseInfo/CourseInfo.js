@@ -6,6 +6,7 @@ import BulletIcon from '../../assets/images/icon_bullet.svg';
 import PlusIcon from '../../assets/images/icon_plus.svg';
 import PlayIcon from '../../assets/images/icon_play.svg';
 import AttachmentIcon from '../../assets/images/icon_attachment.svg';
+import { formatDuration } from '../../services/appService';
 
 class CourseInfo extends Component {
   state = {
@@ -37,18 +38,6 @@ class CourseInfo extends Component {
     this.setState({
       [key]: !this.state[key],
     });
-  };
-
-  formatDuration = duration => {
-    let hours = Math.floor(duration / 60);
-    if (hours < 10) {
-      hours = `0${hours}`;
-    }
-    let minutes = duration % 60;
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-    return `${hours}:${minutes}:00`;
   };
 
   setActiveAttachment = attachment => {
@@ -155,7 +144,7 @@ class CourseInfo extends Component {
                                 <div className="LessonContainer">
                                   <div className="Lesson">
                                     <div className="Duration">
-                                      {this.formatDuration(
+                                      {formatDuration(
                                         lesson.duration,
                                       )}
                                     </div>

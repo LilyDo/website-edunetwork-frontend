@@ -18,10 +18,6 @@ class AccountCoursePage extends Component {
     this.props.actions.getUserCoursesAction();
   }
 
-  onPayClick = course => {
-    this.props.actions.buyCourseAction(course.id);
-  };
-
   render() {
     const {
       courses,
@@ -41,11 +37,7 @@ class AccountCoursePage extends Component {
           <div className="Title">Khóa học của bạn</div>
           <div className="CoursesContainer">
             {buy.map((course, index) => (
-              <CourseCard
-                courseCarouselItem={course}
-                onPayClick={this.onPayClick}
-                key={index}
-              />
+              <CourseCard courseCarouselItem={course} key={index} />
             ))}
           </div>
         </div>
@@ -55,11 +47,7 @@ class AccountCoursePage extends Component {
             <div className="Title">Khóa học bổ sung cho bạn</div>
             <div className="CoursesContainer">
               {unboughtCourses.map((course, index) => (
-                <CourseCard
-                  courseCarouselItem={course}
-                  onPayClick={this.onPayClick}
-                  key={index}
-                />
+                <CourseCard courseCarouselItem={course} key={index} />
               ))}
             </div>
           </div>

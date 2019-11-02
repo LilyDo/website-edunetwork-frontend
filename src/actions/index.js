@@ -51,6 +51,10 @@ export const BUY_COURSE_REQUEST = 'BUY_COURSE_REQUEST';
 export const BUY_COURSE_SUCCESS = 'BUY_COURSE_SUCCESS';
 export const BUY_COURSE_FAILURE = 'BUY_COURSE_FAILURE';
 
+export const DEPOSIT_REQUEST = 'DEPOSIT_REQUEST';
+export const DEPOSIT_SUCCESS = 'DEPOSIT_SUCCESS';
+export const DEPOSIT_FAILURE = 'DEPOSIT_FAILURE';
+
 export const GET_USER_COURSESS_REQUEST = 'GET_USER_COURSESS_REQUEST';
 export const GET_USER_COURSESS_SUCCESS = 'GET_USER_COURSESS_SUCCESS';
 export const GET_USER_COURSESS_FAILURE = 'GET_USER_COURSESS_FAILURE';
@@ -61,34 +65,3 @@ export const GET_USER_DASHBOARD_SUCCESS =
   'GET_USER_DASHBOARD_SUCCESS';
 export const GET_USER_DASHBOARD_FAILURE =
   'GET_USER_DASHBOARD_FAILURE';
-
-// This middleware will just add the property "async dispatch"
-// to actions with the "async" propperty set to true
-export const asyncDispatchMiddleware = store => next => action => {
-  let syncActivityFinished = false;
-  let actionQueue = [];
-
-  function flushQueue() {
-    actionQueue.forEach(a => store.dispatch(a)); // flush queue
-    actionQueue = [];
-  }
-
-  function asyncDispatch(asyncAction) {
-    actionQueue = actionQueue.concat([asyncAction]);
-
-    if (syncActivityFinished) {
-      flushQueue();
-    }
-  }
-
-  const actionWithAsyncDispatch = Object.assign({}, action, {
-    asyncDispatch,
-  });
-
-  const res = next(actionWithAsyncDispatch);
-
-  syncActivityFinished = true;
-  flushQueue();
-
-  return res;
-};

@@ -1,5 +1,6 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
+import { toastDuration } from '../constants';
 
 const initialState = {
   loading: false,
@@ -9,7 +10,6 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  const duration = 3000;
   switch (action.type) {
     // LOGIN
     case types.LOGIN_REQUEST:
@@ -24,10 +24,12 @@ export default function(state = initialState, action) {
           types.TOKEN_KEY,
           action.payload.data.token,
         );
-        toast.success('Login successful!', { autoClose: duration });
+        toast.success('Login successful!', {
+          autoClose: toastDuration,
+        });
       } else {
         toast.error(action.payload.errors[0], {
-          autoClose: duration,
+          autoClose: toastDuration,
         });
       }
       return {
@@ -54,7 +56,7 @@ export default function(state = initialState, action) {
 
     case types.ACTIVE_ACCOUNT_SUCCESS:
       toast.success('Active account successful!', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
       return {
         ...state,
@@ -64,7 +66,7 @@ export default function(state = initialState, action) {
 
     case types.ACTIVE_ACCOUNT_FAILURE:
       toast.error('Cannote active the account', {
-        autoClose: duration,
+        autoClose: toastDuration,
       });
 
       return {

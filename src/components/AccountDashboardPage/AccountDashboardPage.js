@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { get } from 'lodash';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import MyRank from '../../assets/images/img_rank.svg';
 import './AccountDashboardPage.scss';
@@ -6,28 +7,32 @@ import DashboardChart from '../../components/DashboardChart/DashboardChart';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getUserDashboardAction } from '../../actions/profile';
-import { currencyFormatter, getUserFormLocal } from '../../services/appService'
+import {
+  currencyFormatter,
+  getUserFormLocal,
+} from '../../services/appService';
 
 class AccountDashboardPage extends Component {
   state = {
     currentUser: {},
-    isShowPaid: true
-  }
+    isShowPaid: true,
+  };
 
   componentDidMount() {
     this.setState({
-      currentUser: getUserFormLocal()
+      currentUser: getUserFormLocal(),
     });
     this.props.actions.getUserDashboardAction();
   }
 
   toggle = () => {
     this.setState({
-      isShowPaid: !this.state.isShowPaid
-    })
-  }
+      isShowPaid: !this.state.isShowPaid,
+    });
+  };
 
   render() {
+    const { dashboard } = this.props;
     return (
       <div>
         <AccountBreadcrumb />
@@ -40,47 +45,61 @@ class AccountDashboardPage extends Component {
                   <div>YOUR LEVEL</div>
                   <div className="level">DIRECTOR</div>
                 </div>
-                <img alt="rank" className="RankImg" src={MyRank}></img>
+                <img
+                  alt="rank"
+                  className="RankImg"
+                  src={MyRank}
+                ></img>
               </div>
               <div className="Statistics">
                 <div className="MoneyContainer">
                   <div className="Money TotalCommission">
-                    <div className="Number">{(this.props.state.dashboard.total_commission && currencyFormatter(this.props.state.dashboard.total_commission)) || "..."}</div>
+                    <div className="Number">
+                      {(dashboard.total_commission &&
+                        currencyFormatter(
+                          dashboard.total_commission,
+                        )) ||
+                        '...'}
+                    </div>
                     <div className="Text">TOTAL COMMISSION</div>
                   </div>
                   <div className="Money TotalRevenue">
-                    <div className="Number">{(this.props.state.dashboard.total_revenue && currencyFormatter(this.props.state.dashboard.total_revenue)) || "..."}</div>
+                    <div className="Number">
+                      {(dashboard.total_revenue &&
+                        currencyFormatter(dashboard.total_revenue)) ||
+                        '...'}
+                    </div>
                     <div className="Text">TOTAL GROUP REVENUE</div>
                   </div>
                 </div>
                 <div className="PeopleContainer">
                   <div className="People TotalReferral">
-                    <div className="Number">{this.props.state.dashboard.total_user || '...'}</div>
-                    <div className="Text">
-                      TOTAL REFERRAL
+                    <div className="Number">
+                      {dashboard.total_user || '...'}
                     </div>
+                    <div className="Text">TOTAL REFERRAL</div>
                   </div>
                   <div className="People TotalActive">
-                    <div className="Number">{(this.props.state.dashboard.total_active_user && this.props.state.dashboard.total_inactive_user.length) || "..."}</div>
-                    <div className="Text">
-                      TOTAL ACTIVE USER
+                    <div className="Number">
+                      {(dashboard.total_active_user &&
+                        dashboard.total_inactive_user.length) ||
+                        '...'}
                     </div>
+                    <div className="Text">TOTAL ACTIVE USER</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="RevenueChart">
-            <div className="Title">
-              REVENUE CHART
-            </div>
+            <div className="Title">REVENUE CHART</div>
             <div className="Chart">
-              <DashboardChart data={
-                {
-                  revenueByMonth: this.props.state.dashboard.total_revenue_month,
-                  commissionByMonth: this.props.state.dashboard.total_commission_month
-                }
-              } />
+              <DashboardChart
+                data={{
+                  revenueByMonth: dashboard.total_revenue_month,
+                  commissionByMonth: dashboard.total_commission_month,
+                }}
+              />
             </div>
           </div>
           <div className="RevenueTable">
@@ -106,15 +125,23 @@ class AccountDashboardPage extends Component {
               <tbody className="RevenueTableBody">
                 <tr>
                   <td className="FirstCell">COMMISSION</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.total_commission_month && this.props.state.dashboard.total_commission_month.map((item, index) => (
-                    <td key={index}>{currencyFormatter(item)}</td>
-                  ))}
+                  {dashboard &&
+                    dashboard.total_commission_month &&
+                    dashboard.total_commission_month.map(
+                      (item, index) => (
+                        <td key={index}>{currencyFormatter(item)}</td>
+                      ),
+                    )}
                 </tr>
                 <tr>
                   <td>TOTAL GROUP REVENUE</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.total_revenue_month && this.props.state.dashboard.total_revenue_month.map((item, index) => (
-                    <td key={index}>{currencyFormatter(item)}</td>
-                  ))}
+                  {dashboard &&
+                    dashboard.total_revenue_month &&
+                    dashboard.total_revenue_month.map(
+                      (item, index) => (
+                        <td key={index}>{currencyFormatter(item)}</td>
+                      ),
+                    )}
                 </tr>
               </tbody>
             </table>
@@ -122,8 +149,22 @@ class AccountDashboardPage extends Component {
           <div className="Member">
             <div className="Title">YOUR MEMBER</div>
             <div className="Status">
-              <div className={'Paid ' + (this.state.isShowPaid && 'active')} onClick={this.toggle}>PAID</div>
-              <div className={'Unpaid ' + (!this.state.isShowPaid && 'active')} onClick={this.toggle}>UNPAID</div>
+              <div
+                className={
+                  'Paid ' + (this.state.isShowPaid && 'active')
+                }
+                onClick={this.toggle}
+              >
+                PAID
+              </div>
+              <div
+                className={
+                  'Unpaid ' + (!this.state.isShowPaid && 'active')
+                }
+                onClick={this.toggle}
+              >
+                UNPAID
+              </div>
             </div>
             <table className="Table">
               <thead className="MemberTableHead">
@@ -139,32 +180,46 @@ class AccountDashboardPage extends Component {
               </thead>
               {this.state.isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard && this.props.state.dashboard.total_active_user && this.props.state.dashboard.total_active_user.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.name}</td>
-                      <td>{item.code}</td>
-                      <td>{item.email}</td>
-                      <td>{item.phone}</td>
-                      <td>{item.register_date}</td>
-                      <td>{currencyFormatter(item.max_price || 0)}</td>
-                      <td>{currencyFormatter(item.total_price) || 0}</td>
-                    </tr>
-                  ))}
+                  {dashboard &&
+                    dashboard.total_active_user &&
+                    dashboard.total_active_user.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.name}</td>
+                        <td>{item.code}</td>
+                        <td>{item.email}</td>
+                        <td>{item.phone}</td>
+                        <td>{item.register_date}</td>
+                        <td>
+                          {currencyFormatter(item.max_price || 0)}
+                        </td>
+                        <td>
+                          {currencyFormatter(item.total_price) || 0}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               )}
               {!this.state.isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard && this.props.state.dashboard.total_inactive_user && this.props.state.dashboard.total_inactive_user.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.name}</td>
-                      <td>{item.code}</td>
-                      <td>{item.email}</td>
-                      <td>{item.phone}</td>
-                      <td>{item.register_date}</td>
-                      <td>{currencyFormatter(item.max_price || 0)}</td>
-                      <td>{currencyFormatter(item.total_price || 0)}</td>
-                    </tr>
-                  ))}
+                  {dashboard &&
+                    dashboard.total_inactive_user &&
+                    dashboard.total_inactive_user.map(
+                      (item, index) => (
+                        <tr key={index}>
+                          <td>{item.name}</td>
+                          <td>{item.code}</td>
+                          <td>{item.email}</td>
+                          <td>{item.phone}</td>
+                          <td>{item.register_date}</td>
+                          <td>
+                            {currencyFormatter(item.max_price || 0)}
+                          </td>
+                          <td>
+                            {currencyFormatter(item.total_price || 0)}
+                          </td>
+                        </tr>
+                      ),
+                    )}
                 </tbody>
               )}
             </table>
@@ -173,14 +228,11 @@ class AccountDashboardPage extends Component {
       </div>
     );
   }
-
 }
 
 const mapStateToProps = ({ profile }, ownProps) => {
   return {
-    state: {
-      dashboard: profile.dashboard
-    },
+    dashboard: get(profile, 'dashboard', {}),
   };
 };
 
@@ -188,7 +240,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
-        getUserDashboardAction
+        getUserDashboardAction,
       },
       dispatch,
     ),
@@ -197,5 +249,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AccountDashboardPage);

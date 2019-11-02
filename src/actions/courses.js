@@ -14,6 +14,9 @@ import {
   BUY_COURSE_REQUEST,
   BUY_COURSE_SUCCESS,
   BUY_COURSE_FAILURE,
+  DEPOSIT_REQUEST,
+  DEPOSIT_SUCCESS,
+  DEPOSIT_FAILURE,
 } from './index';
 
 /**
@@ -143,5 +146,34 @@ const buyCourseSuccess = response => ({
 
 const buyCourseFailure = error => ({
   type: BUY_COURSE_FAILURE,
+  payload: { error },
+});
+
+export const depositAction = amount => {
+  return dispatch => {
+    dispatch(depositRequest(amount));
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    axios
+      .post(
+        `${BASE_URL}/users/recharge?price=${amount}&token=${token}`,
+      )
+      .then(response => dispatch(depositSuccess(response.data)))
+      .catch(error => dispatch(depositFailure(error.message)));
+  };
+};
+
+const depositRequest = amount => ({
+  type: DEPOSIT_REQUEST,
+  payload: { amount: amount },
+});
+
+const depositSuccess = response => ({
+  type: DEPOSIT_SUCCESS,
+  payload: { ...response },
+});
+
+const depositFailure = error => ({
+  type: DEPOSIT_FAILURE,
   payload: { error },
 });

@@ -70,11 +70,11 @@ class App extends Component {
 
   render() {
     this.checkCurrentUser();
-
     return (
       <Router>
         <div className="App">
           <div className="HeaderContentContainer">
+            <ToastContainer />
             <Header />
             <div className="Content">
               <Switch>
@@ -84,14 +84,16 @@ class App extends Component {
                 <Route exact path={routes.courses}>
                   <CoursePage />
                 </Route>
-                <Route exact path={routes.courseDetail}>
-                  <CourseDetailPage />
+                {/* this should be declared before courseDetail or "paymentsucessful" will become the id param */}
+                <Route exact path={routes.coursePaymentSuccessful}>
+                  <PaymentSuccessfulPage />
                 </Route>
+                {/* this should be declared before courseDetail or "order" will become the id param */}
                 <Route exact path={routes.courseOrder}>
                   <OrderPage />
                 </Route>
-                <Route exact path={routes.coursePaymentSuccessful}>
-                  <PaymentSuccessfulPage />
+                <Route exact path={routes.courseDetail}>
+                  <CourseDetailPage />
                 </Route>
                 <Route exact path={routes.signin}>
                   <SigninPage />
@@ -146,7 +148,6 @@ class App extends Component {
           </div>
           <Footer />
           <LoginPopup />
-          <ToastContainer />
           <ForgotPasswordPopup />
         </div>
       </Router>
