@@ -24,6 +24,7 @@ class Header extends Component {
   }
 
   doLogout() {
+    localStorage.clear('persist:persistedStore');
     localStorage.removeItem('current_user');
     localStorage.removeItem('token');
     this.checkCurrentUser();
