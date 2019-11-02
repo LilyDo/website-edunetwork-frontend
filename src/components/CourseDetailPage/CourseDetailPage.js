@@ -24,7 +24,15 @@ class CourseDetailPage extends Component {
   componentWillReceiveProps(nextProps) {
     const newId = get(nextProps, 'match.params.id');
     const currentId = get(this, 'props.match.params.id');
-    if (newId && currentId && newId !== currentId) {
+    const courseDetail = get(this, 'props.courseDetail');
+    const loading = get(this, 'props.loading');
+    if (
+      (newId &&
+        currentId &&
+        !loading &&
+        Object.keys(courseDetail).length === 0) ||
+      newId !== currentId
+    ) {
       if (getUserFormLocal()) {
         this.props.actions.getUserCourseDetailAction(newId);
       } else {
@@ -56,6 +64,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     courseDetail: get(state, 'courses.courseDetail', {}),
     userCourses: get(state, 'courses.userCourses', []),
+    loading: get(state, 'loading', false),
   };
 };
 
