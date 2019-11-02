@@ -70,17 +70,9 @@ class SigninSignup extends Component {
     this.props.actions.registerAction(data);
   };
 
-  showLoginTab = () => {
+  showLoginForm = (isShowLogin) => {
     this.setState({
-      isLoginShowed: true,
-      isRegisterShowed: false,
-    });
-  };
-
-  showRegisterTab = () => {
-    this.setState({
-      isLoginShowed: false,
-      isRegisterShowed: true,
+      isShowLogin: isShowLogin
     });
   };
 
@@ -103,26 +95,19 @@ class SigninSignup extends Component {
       userName,
       number,
       rePassword,
-      isLoginShowed,
-      isRegisterShowed,
+      isShowLogin
     } = this.state;
 
     return (
       <div className="SigninSignupContainer">
         <div className="Head">
-          <div
-            className={isLoginShowed ? 'Title Active' : 'Title'}
-            onClick={this.showLoginTab}
-          >
+          <div className={isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, true)}>
             <div>
               <span>LOGIN</span>
             </div>
             <div>Already be EDUNETWORK's member?</div>
           </div>
-          <div
-            className={isRegisterShowed ? 'Title Active' : 'Title'}
-            onClick={this.showRegisterTab}
-          >
+          <div className={!isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, false)}>
             <div>
               <span>REGISTER</span>
             </div>
@@ -131,7 +116,7 @@ class SigninSignup extends Component {
         </div>
 
         <div className="Body">
-          {isLoginShowed && (
+          {isShowLogin && (
             <div className="Signin">
               <div className="Email">
                 <span>Email</span>
@@ -152,7 +137,7 @@ class SigninSignup extends Component {
               <div className="ForgotPassword">Forgot password?</div>
             </div>
           )}
-          {isRegisterShowed && (
+          {!isShowLogin && (
             <div className="Signup">
               <div className="Fullname">
                 <span>Full Name</span>
@@ -214,12 +199,12 @@ class SigninSignup extends Component {
           )}
         </div>
         <div className="Button">
-          {isLoginShowed && (
+          {isShowLogin && (
             <div className="SigninButton" onClick={this.login}>
               <span>LOGIN</span>
             </div>
           )}
-          {isRegisterShowed && (
+          {!isShowLogin && (
             <div className="SignupButton" onClick={this.register}>
               <span>REGISTER</span>
             </div>
@@ -231,7 +216,7 @@ class SigninSignup extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return state;
+  return { ...state }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
