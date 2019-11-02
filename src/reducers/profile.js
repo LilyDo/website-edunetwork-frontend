@@ -1,5 +1,6 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
+import { routes } from '../constants';
 
 const initialState = {
   loading: false,
@@ -142,7 +143,7 @@ export default function(state = initialState, action) {
           autoClose: duration,
         });
         setTimeout(function() {
-          window.location.pathname = '/account/profile/withdraw-noti';
+          window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
         toast.error(action.payload.errors[0], {

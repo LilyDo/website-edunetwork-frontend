@@ -3,6 +3,7 @@ import * as types from '../actions';
 const initialState = {
   loading: false,
   courses: [],
+  courseDetail: {},
   userCourses: [],
   error: null,
 };

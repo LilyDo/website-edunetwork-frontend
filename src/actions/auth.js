@@ -14,7 +14,7 @@ import {
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
-import { getUserCoursesAction } from './courses';
+import { routes } from '../constants';
 
 export const loginAction = user => {
   return dispatch => {
@@ -32,7 +32,6 @@ export const loginAction = user => {
             },
           }),
         );
-        dispatch(getUserCoursesAction());
       })
       .catch(error => dispatch(loginFailure(error.message)));
   };
@@ -71,7 +70,7 @@ export const registerAction = user => {
         ) {
           dispatch(registerSuccess(response.data));
           setTimeout(function() {
-            window.location.pathname = '/register-pending-active';
+            window.location.pathname = routes.registerPendingActive;
           }, 100);
         } else {
           let obj = response.data.errors;
