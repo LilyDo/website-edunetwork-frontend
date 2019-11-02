@@ -17,21 +17,20 @@ import {
 import { getUserFormLocal } from '../../services/appService';
 
 class CourseDetailPage extends Component {
-  componentWillReceiveProps() {
+  componentDidMount() {
     this.props.actions.getUserCoursesAction();
   }
 
   componentWillReceiveProps(nextProps) {
-    const newId = get(nextProps, 'match.params.id');
-    const currentId = get(this, 'props.match.params.id');
-    const courseDetail = get(this, 'props.courseDetail');
+    const newId = parseInt(get(nextProps, 'match.params.id'), 0);
+    const courseDetail = get(this, 'props.courseDetail', {});
+    const currentId = parseInt(get(courseDetail, 'id', 0));
     const loading = get(this, 'props.loading');
     if (
-      (newId &&
-        currentId &&
-        !loading &&
-        Object.keys(courseDetail).length === 0) ||
-      newId !== currentId
+      newId > 0 &&
+      currentId > 0 &&
+      !loading &&
+      (Object.keys(courseDetail).length === 0 || newId !== currentId)
     ) {
       if (getUserFormLocal()) {
         this.props.actions.getUserCourseDetailAction(newId);
@@ -64,7 +63,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     courseDetail: get(state, 'courses.courseDetail', {}),
     userCourses: get(state, 'courses.userCourses', []),
-    loading: get(state, 'loading', false),
+    loading: get(state, 'courses.loading', false),
   };
 };
 
