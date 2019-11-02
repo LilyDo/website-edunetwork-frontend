@@ -21,6 +21,7 @@
   cursor: pointer;
 
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 5px 25px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -36,21 +37,19 @@
   align-items: center;
 
   @media only screen and (max-width: $mobileBreakPoint) {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 10px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
-    max-width: 1103px;
-    margin: auto;
-    margin-bottom: 110px;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 130px;
   }
 
   .Head {
     width: 100%;
-    padding-left: 50px;
-    padding-right: 50px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -60,11 +59,14 @@
       width: 45%;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        margin-bottom: 10px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
         padding-top: 25px;
         margin-bottom: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
       }
 
       span {
@@ -85,7 +87,7 @@
   .Signup {
     margin: 0 auto;
     @media only screen and (max-width: $mobileBreakPoint) {
-      width: 50%;
+      width: 80%;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -103,6 +105,7 @@
     box-sizing: border-box;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 10px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -119,7 +122,13 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      margin-bottom: 25px;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        margin-bottom: 10px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        margin-bottom: 25px;
+      }
 
       span {
         @extend %fontExtraBold;
@@ -130,12 +139,20 @@
         border: none;
         margin-top: 7px;
         box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-        height: 50px;
         @extend %fontSemiBold;
         color: $darkgrey;
-        font-size: 14px;
         padding-left: 10px;
         padding-right: 10px;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          height: 25px;
+          font-size: 12px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 14px;
+          height: 50px;
+        }
       }
 
       .Note {
@@ -150,22 +167,26 @@
     }
   }
   .Button {
-    max-width: 1103px;
     width: 100%;
     margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 70px;
-    padding-left: 50px;
-    padding-right: 50px;
     box-sizing: border-box;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      margin-top: 70px;
+    }
 
     .SigninButton,
     .SignupButton {
-      width: 45%;
       text-align: center;
       margin: 0 auto;
+      width: 45%;
       span {
         text-align: center;
         box-sizing: border-box;

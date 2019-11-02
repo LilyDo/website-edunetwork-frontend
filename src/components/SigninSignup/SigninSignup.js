@@ -108,7 +108,7 @@ class SigninSignup extends Component {
             <div>
               <span>LOGIN</span>
             </div>
-            <div>Already be EDUNETWORK's member?</div>
+            <div>Already a member?</div>
           </div>
           <div
             className={!isShowLogin ? 'Title Active' : 'Title'}
@@ -170,7 +170,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Sponsor">
-                <span>Referral</span>
+                <span>Referral Code</span>
                 <input
                   type="text"
                   value={refUser}
@@ -194,7 +194,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="RePassword">
-                <span>RePassword</span>
+                <span>Confirm password</span>
                 <input
                   type="password"
                   value={rePassword}
