@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
+
 import './CourseLevel.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
+import { routes } from '../../constants';
+import { getUserFormLocal } from '../../services/appService';
+import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
-  calculateLessons = (chapters = []) => {
-    let total = 0;
-    chapters.forEach(chapter => (total += chapter.parts.length));
+  onPayClick = () => {
+    const url = getUserFormLocal()
+      ? routes.courseOrder.replace(':id', this.props.courseDetail.id)
+      : routes.signin;
+    window.location.pathname = url;
   };
 
   render() {
-    const { courseDetail } = this.props;
+    const { courseDetail, userCourses } = this.props;
+    const isCourseBought = !!get(userCourses, 'buy', []).find(
+      boughtCourse => boughtCourse.id === courseDetail.id,
+    );
 
     return (
       <div className="CourseLevelComponentContainer">
@@ -36,7 +45,11 @@ class CourseLevel extends Component {
               </div>
             </div>
             <div className="PayNow">
-              <div className="PayButton">THANH TOÁN NGAY</div>
+              {!isCourseBought && (
+                <div className="PayButton" onClick={this.onPayClick}>
+                  THANH TOÁN NGAY
+                </div>
+              )}
               <div className="Include">
                 Khóa học này bao gồm:
                 <div className="Quantity">
@@ -50,13 +63,16 @@ class CourseLevel extends Component {
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
                   Thời lượng:{' '}
-                  <span>{courseDetail.duration} phút</span>
+                  <span>
+                    {formatDurationText(courseDetail.duration)} phút
+                  </span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="book" src={BookIcon}></img>
                 <div className="Text">
-                  Giáo trình: <span>bài giảng</span>
+                  Giáo trình:{' '}
+                  <span>{courseDetail.total_lesson} bài giảng</span>
                 </div>
               </div>
               <div className="Container">

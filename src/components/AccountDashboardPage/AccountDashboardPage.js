@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { get } from 'lodash';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import MyRank from '../../assets/images/img_rank.svg';
+import ManagerRank from '../../assets/images/manager_rank.svg';
+import DirectorRank from '../../assets/images/director_rank.svg';
 import './AccountDashboardPage.scss';
 import DashboardChart from '../../components/DashboardChart/DashboardChart';
 import { connect } from 'react-redux';
@@ -24,13 +26,17 @@ class AccountDashboardPage extends Component {
     this.props.actions.getUserDashboardAction();
   }
 
-  toggle = () => {
+  toggle = isShowPaid => {
     this.setState({
-      isShowPaid: !this.state.isShowPaid,
+      isShowPaid: isShowPaid,
     });
   };
 
   render() {
+    const { isShowPaid, currentUser } = this.state;
+
+    const { dashboard } = this.props;
+
     return (
       <div>
         <AccountBreadcrumb />
@@ -38,36 +44,49 @@ class AccountDashboardPage extends Component {
           <div className="Overview">
             <div className="Title">SUMMARY</div>
             <div className="OverviewContainer">
-              <div className="MyRank">
+              <div
+                className={
+                  'MyRank ' +
+                  (currentUser.rank === null ? 'NoRank' : '')
+                }
+              >
                 <div className="Text">
-                  <div>YOUR LEVEL</div>
-                  <div className="level">DIRECTOR</div>
+                  <div>YOUR RANK</div>
+                  <div className="level">
+                    {currentUser.rank || 'member'}
+                  </div>
                 </div>
-                <img
-                  alt="rank"
-                  className="RankImg"
-                  src={MyRank}
-                ></img>
+                {currentUser.rank && (
+                  <img
+                    alt="rank"
+                    className="RankImg"
+                    src={
+                      currentUser.rank === 'manager'
+                        ? ManagerRank
+                        : currentUser.rank === 'director'
+                        ? DirectorRank
+                        : ''
+                    }
+                  ></img>
+                )}
               </div>
               <div className="Statistics">
                 <div className="MoneyContainer">
                   <div className="Money TotalCommission">
                     <div className="Number">
-                      {(this.props.state.dashboard.total_commission &&
+                      {(dashboard.total_commission &&
                         currencyFormatter(
-                          this.props.state.dashboard.total_commission,
+                          dashboard.total_commission,
                         )) ||
-                        '...'}
+                        '0'}
                     </div>
                     <div className="Text">TOTAL COMMISSION</div>
                   </div>
                   <div className="Money TotalRevenue">
                     <div className="Number">
-                      {(this.props.state.dashboard.total_revenue &&
-                        currencyFormatter(
-                          this.props.state.dashboard.total_revenue,
-                        )) ||
-                        '...'}
+                      {(dashboard.total_revenue &&
+                        currencyFormatter(dashboard.total_revenue)) ||
+                        '0'}
                     </div>
                     <div className="Text">TOTAL GROUP REVENUE</div>
                   </div>
@@ -75,17 +94,15 @@ class AccountDashboardPage extends Component {
                 <div className="PeopleContainer">
                   <div className="People TotalReferral">
                     <div className="Number">
-                      {this.props.state.dashboard.total_user || '...'}
+                      {dashboard.total_user || '0'}
                     </div>
                     <div className="Text">TOTAL REFERRAL</div>
                   </div>
                   <div className="People TotalActive">
                     <div className="Number">
-                      {(this.props.state.dashboard
-                        .total_active_user &&
-                        this.props.state.dashboard.total_inactive_user
-                          .length) ||
-                        '...'}
+                      {(dashboard.total_active_user &&
+                        dashboard.total_active_user.length) ||
+                        '0'}
                     </div>
                     <div className="Text">TOTAL ACTIVE USER</div>
                   </div>
@@ -98,10 +115,8 @@ class AccountDashboardPage extends Component {
             <div className="Chart">
               <DashboardChart
                 data={{
-                  revenueByMonth: this.props.state.dashboard
-                    .total_revenue_month,
-                  commissionByMonth: this.props.state.dashboard
-                    .total_commission_month,
+                  revenueByMonth: dashboard.total_revenue_month,
+                  commissionByMonth: dashboard.total_commission_month,
                 }}
               />
             </div>
@@ -128,11 +143,10 @@ class AccountDashboardPage extends Component {
               </thead>
               <tbody className="RevenueTableBody">
                 <tr>
-                  <td className="FirstCell">TOTAL COMMISSION</td>
-                  {this.props.state.dashboard &&
-                    this.props.state.dashboard
-                      .total_commission_month &&
-                    this.props.state.dashboard.total_commission_month.map(
+                  <td className="FirstCell">COMMISSION</td>
+                  {dashboard &&
+                    dashboard.total_commission_month &&
+                    dashboard.total_commission_month.map(
                       (item, index) => (
                         <td key={index}>{currencyFormatter(item)}</td>
                       ),
@@ -140,9 +154,9 @@ class AccountDashboardPage extends Component {
                 </tr>
                 <tr>
                   <td>TOTAL GROUP REVENUE</td>
-                  {this.props.state.dashboard &&
-                    this.props.state.dashboard.total_revenue_month &&
-                    this.props.state.dashboard.total_revenue_month.map(
+                  {dashboard &&
+                    dashboard.total_revenue_month &&
+                    dashboard.total_revenue_month.map(
                       (item, index) => (
                         <td key={index}>{currencyFormatter(item)}</td>
                       ),
@@ -155,18 +169,14 @@ class AccountDashboardPage extends Component {
             <div className="Title">YOUR MEMBER</div>
             <div className="Status">
               <div
-                className={
-                  'Paid ' + (this.state.isShowPaid && 'active')
-                }
-                onClick={this.toggle}
+                className={'Paid ' + (isShowPaid && 'active')}
+                onClick={this.toggle.bind(this, true)}
               >
                 PAID
               </div>
               <div
-                className={
-                  'Unpaid ' + (!this.state.isShowPaid && 'active')
-                }
-                onClick={this.toggle}
+                className={'Unpaid ' + (!isShowPaid && 'active')}
+                onClick={this.toggle.bind(this, false)}
               >
                 UNPAID
               </div>
@@ -183,34 +193,32 @@ class AccountDashboardPage extends Component {
                   <th>Commission</th>
                 </tr>
               </thead>
-              {this.state.isShowPaid && (
+              {isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard &&
-                    this.props.state.dashboard.total_active_user &&
-                    this.props.state.dashboard.total_active_user.map(
-                      (item, index) => (
-                        <tr key={index}>
-                          <td>{item.name}</td>
-                          <td>{item.code}</td>
-                          <td>{item.email}</td>
-                          <td>{item.phone}</td>
-                          <td>{item.register_date}</td>
-                          <td>
-                            {currencyFormatter(item.max_price || 0)}
-                          </td>
-                          <td>
-                            {currencyFormatter(item.total_price) || 0}
-                          </td>
-                        </tr>
-                      ),
-                    )}
+                  {dashboard &&
+                    dashboard.total_active_user &&
+                    dashboard.total_active_user.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.name}</td>
+                        <td>{item.code}</td>
+                        <td>{item.email}</td>
+                        <td>{item.phone}</td>
+                        <td>{item.register_date}</td>
+                        <td>
+                          {currencyFormatter(item.max_price || 0)}
+                        </td>
+                        <td>
+                          {currencyFormatter(item.total_price) || 0}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               )}
-              {!this.state.isShowPaid && (
+              {!isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard &&
-                    this.props.state.dashboard.total_inactive_user &&
-                    this.props.state.dashboard.total_inactive_user.map(
+                  {dashboard &&
+                    dashboard.total_inactive_user &&
+                    dashboard.total_inactive_user.map(
                       (item, index) => (
                         <tr key={index}>
                           <td>{item.name}</td>
@@ -239,9 +247,7 @@ class AccountDashboardPage extends Component {
 
 const mapStateToProps = ({ profile }, ownProps) => {
   return {
-    state: {
-      dashboard: profile.dashboard,
-    },
+    dashboard: get(profile, 'dashboard', {}),
   };
 };
 

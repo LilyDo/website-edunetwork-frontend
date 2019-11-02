@@ -29,8 +29,38 @@ export const getUrlParameter = function getUrlParameter(sParam) {
 // Create our number formatter.
 export const currencyFormatter = amount => {
   let formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+    maximumFractionDigits: 0,
   });
-  return formatter.format(amount);
+  return '$' + formatter.format(amount);
+};
+
+const splitHoursMinutesSeconds = duration => {
+  let hours = Math.floor(duration / 3600);
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = Math.floor(duration / 60) % 60;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let seconds = duration % 60;
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  return {
+    hours,
+    minutes,
+    seconds,
+  };
+};
+
+export const formatDuration = duration => {
+  const formattedDuration = splitHoursMinutesSeconds(duration);
+  return `${formattedDuration.hours}:${formattedDuration.minutes}:${formattedDuration.seconds}`;
+};
+
+export const formatDurationText = duration => {
+  const formattedDuration = splitHoursMinutesSeconds(duration);
+  return `${formattedDuration.hours} giờ ${formattedDuration.minutes} phút ${formattedDuration.seconds} giây`;
 };

@@ -1,4 +1,4 @@
-@import './shared.scss';
+@import "./shared.scss";
 
 .App {
   @extend %fontText;
@@ -15,4 +15,18 @@
 .Content {
   max-width: $appMaxWidth;
   margin: auto;
+}
+
+.css-0 div {
+  background-color: #ffffff;
+}
+
+._loading_overlay_overlay {
+  position: fixed !important;
+  z-index: 98 !important;
+}
+
+.Toastify__toast-container {
+  position: fixed !important;
+  z-index: 999 !important;
 }

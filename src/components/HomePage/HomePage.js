@@ -30,7 +30,7 @@ function HomePage() {
       <div className="Video">
         <iframe
           title="hero_youtube"
-          src="https://www.youtube.com/embed/KRiSMXFpWIg"
+          src="https://www.youtube.com/embed/Hqu4Va2WqzA"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

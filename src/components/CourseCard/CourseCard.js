@@ -29,7 +29,7 @@ class CourseCard extends Component {
                 courseCarouselItem.id,
               )}
             >
-              <div className="PayNow">THANH TOÁN NGAY</div>
+              <div className="PayNow">XEM CHI TIẾT</div>
             </Link>
           </div>
         </div>

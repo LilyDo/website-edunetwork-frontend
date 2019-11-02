@@ -2,9 +2,9 @@ export const routes = {
   home: '/',
   // course
   courses: '/courses',
+  coursePaymentSuccessful: '/courses/paymentsucessful', // this should be declared before courseDetail or "paymentsucessful" will become the id param
+  courseOrder: '/courses/order/:id', // this should be declared before courseDetail or "order" will become the id param
   courseDetail: '/courses/:id',
-  courseOrder: '/courses/order',
-  coursePaymentSuccessful: '/courses/paymentsucessful',
   // auth
   signin: '/signin',
   verify: '/verify',
@@ -19,3 +19,5 @@ export const routes = {
   // misc
   contact: '/contact',
 };
+
+export const toastDuration = 3000;

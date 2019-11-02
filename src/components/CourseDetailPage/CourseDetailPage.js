@@ -9,31 +9,62 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import CourseLevel from '../CourseLevel/CourseLevel';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselContainer';
-import { getCourseDetailAction } from '../../actions/courses';
+import {
+  getUserCoursesAction,
+  getCourseDetailAction,
+  getUserCourseDetailAction,
+} from '../../actions/courses';
+import { getUserFormLocal } from '../../services/appService';
+import { routes } from '../../constants';
 
 class CourseDetailPage extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.actions.getCourseDetailAction(id);
+    this.props.actions.getUserCoursesAction();
   }
 
   componentWillReceiveProps(nextProps) {
-    const newId = get(nextProps, 'match.params.id');
-    const currentId = get(this, 'props.match.params.id');
-    if (newId && currentId && newId != currentId) {
-      this.props.actions.getCourseDetailAction(newId);
+    const newId = parseInt(get(nextProps, 'match.params.id'), 0);
+    const courseDetail = get(this, 'props.courseDetail', {});
+    const currentId = parseInt(get(courseDetail, 'id', 0));
+    const loading = get(this, 'props.loading');
+    if (
+      newId > 0 &&
+      currentId > 0 &&
+      !loading &&
+      (Object.keys(courseDetail).length === 0 || newId !== currentId)
+    ) {
+      if (getUserFormLocal()) {
+        this.props.actions.getUserCourseDetailAction(newId);
+      } else {
+        this.props.actions.getCourseDetailAction(newId);
+      }
     }
   }
 
   render() {
-    const { courseDetail = {} } = this.props;
+    const { courseDetail, userCourses } = this.props;
 
     return (
       <div className="CourseDetailPage">
-        <Breadcrumb />
+        <Breadcrumb
+          data={[
+            { link: routes.home, text: 'HOME' },
+            { link: routes.courses, text: 'COURSES' },
+            {
+              link: routes.courseDetail.replace(
+                ':id',
+                courseDetail.id,
+              ),
+              text: 'COURSE DETAILS',
+            },
+          ]}
+        />
         <div className="CourseInfoLevelContainer">
           <CourseInfo courseDetail={courseDetail} />
-          <CourseLevel courseDetail={courseDetail} />
+          <CourseLevel
+            courseDetail={courseDetail}
+            userCourses={userCourses}
+          />
         </div>
         <CourseCarouselContainer excludeId={courseDetail.id} />
       </div>
@@ -43,7 +74,9 @@ class CourseDetailPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    courseDetail: state.courses.courseDetail,
+    courseDetail: get(state, 'courses.courseDetail', {}),
+    userCourses: get(state, 'courses.userCourses', []),
+    loading: get(state, 'courses.loading', false),
   };
 };
 
@@ -51,7 +84,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
+        getUserCoursesAction,
         getCourseDetailAction,
+        getUserCourseDetailAction,
       },
       dispatch,
     ),

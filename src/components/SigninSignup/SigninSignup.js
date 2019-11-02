@@ -10,7 +10,8 @@ class SigninSignup extends Component {
     email: '',
     password: '',
 
-    isShowLogin: false,
+    isLoginShowed: true,
+    isRegisterShowed: false,
 
     refUser: '',
     fullName: '',
@@ -69,9 +70,9 @@ class SigninSignup extends Component {
     this.props.actions.registerAction(data);
   };
 
-  changeTab = () => {
+  showLoginForm = (isShowLogin) => {
     this.setState({
-      isShowLogin: !this.state.isShowLogin,
+      isShowLogin: isShowLogin
     });
   };
 
@@ -81,7 +82,7 @@ class SigninSignup extends Component {
     });
     let tab = getUrlParameter('tab');
     if (tab === 'login') {
-      this.setState({ isShowLogin: true });
+      this.setState({ isLoginShowed: true });
     }
   }
 
@@ -94,27 +95,28 @@ class SigninSignup extends Component {
       userName,
       number,
       rePassword,
+      isShowLogin
     } = this.state;
 
     return (
       <div className="SigninSignupContainer">
         <div className="Head">
-          <div className="Title" onClick={this.changeTab.bind(this)}>
-            <div>
-              <span>REGISTER</span>
-            </div>
-            <div>Become a new member!</div>
-          </div>
-          <div className="Title" onClick={this.changeTab.bind(this)}>
+          <div className={isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, true)}>
             <div>
               <span>LOGIN</span>
             </div>
             <div>Already be EDUNETWORK's member?</div>
           </div>
+          <div className={!isShowLogin ? 'Title Active' : 'Title'} onClick={this.showLoginForm.bind(this, false)}>
+            <div>
+              <span>REGISTER</span>
+            </div>
+            <div>Become a new member!</div>
+          </div>
         </div>
 
         <div className="Body">
-          {this.state.isShowLogin && (
+          {isShowLogin && (
             <div className="Signin">
               <div className="Email">
                 <span>Email</span>
@@ -135,7 +137,7 @@ class SigninSignup extends Component {
               <div className="ForgotPassword">Forgot password?</div>
             </div>
           )}
-          {!this.state.isShowLogin && (
+          {!isShowLogin && (
             <div className="Signup">
               <div className="Fullname">
                 <span>Full Name</span>
@@ -197,12 +199,12 @@ class SigninSignup extends Component {
           )}
         </div>
         <div className="Button">
-          {this.state.isShowLogin && (
+          {isShowLogin && (
             <div className="SigninButton" onClick={this.login}>
               <span>LOGIN</span>
             </div>
           )}
-          {!this.state.isShowLogin && (
+          {!isShowLogin && (
             <div className="SignupButton" onClick={this.register}>
               <span>REGISTER</span>
             </div>
@@ -214,7 +216,7 @@ class SigninSignup extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return state;
+  return { ...state }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

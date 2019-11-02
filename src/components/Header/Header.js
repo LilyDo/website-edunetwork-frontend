@@ -14,6 +14,7 @@ class Header extends Component {
   state = {
     isLogined: false,
     currentUser: getUserFormLocal(),
+    isHamburgerMenuVisible: false,
   };
 
   checkCurrentUser() {
@@ -23,14 +24,21 @@ class Header extends Component {
     }
   }
 
-  doLogout() {
+  doLogout = () => {
+    localStorage.clear('persist:root');
     localStorage.removeItem('current_user');
     localStorage.removeItem('token');
     this.checkCurrentUser();
     setTimeout(function() {
-      window.location.pathname = '/';
+      window.location.pathname = routes.home;
     }, 500);
-  }
+  };
+
+  toggleHamburgerMenu = () => {
+    this.setState({
+      isHamburgerMenuVisible: !this.state.isHamburgerMenuVisible,
+    });
+  };
 
   render() {
     this.checkCurrentUser();
@@ -93,7 +101,10 @@ class Header extends Component {
 
         <div>
           <div className="LowerHeader">
-            <div className="HamburgerMenu">
+            <div
+              className="HamburgerMenu"
+              onClick={this.toggleHamburgerMenu}
+            >
               <img alt="menu" src={HamburgerIcon} />
             </div>
             {!this.state.isLogined && (
@@ -112,7 +123,7 @@ class Header extends Component {
                     'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
                   }
                 />
-                <div className="NameHeader">
+                <div className="NameHeader NameHeaderMobile">
                   {this.state.currentUser.name}
                 </div>
                 <div className="dropdown-content">
@@ -125,12 +136,12 @@ class Header extends Component {
                   <Link to={routes.accountCourses}>
                     <div>My Course</div>
                   </Link>
-                  <div onClick={this.doLogout.bind(this)}>Logout</div>
+                  <div onClick={this.doLogout}>Logout</div>
                 </div>
               </div>
             )}
           </div>
-          <HamburgerMenu />
+          {this.state.isHamburgerMenuVisible && <HamburgerMenu />}
         </div>
       </div>
     );
