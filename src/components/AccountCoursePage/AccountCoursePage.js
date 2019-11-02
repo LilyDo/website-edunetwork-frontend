@@ -7,14 +7,14 @@ import './AccountCoursePage.scss';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import CourseCard from '../CourseCard/CourseCard';
 import {
-  getCourseAction,
+  getCoursesAction,
   getUserCoursesAction,
   buyCourseAction,
 } from '../../actions/courses';
 
 class AccountCoursePage extends Component {
   componentWillMount() {
-    this.props.actions.getCourseAction();
+    this.props.actions.getCoursesAction();
     this.props.actions.getUserCoursesAction();
   }
 
@@ -67,7 +67,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
-      { getCourseAction, getUserCoursesAction, buyCourseAction },
+      { getCoursesAction, getUserCoursesAction, buyCourseAction },
       dispatch,
     ),
   };

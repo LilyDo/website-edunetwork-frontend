@@ -12,19 +12,19 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case types.GET_COURSE_REQUEST:
+    case types.GET_COURSES_REQUEST:
       return {
         ...state,
         loading: true,
       };
 
-    case types.GET_COURSE_SUCCESS:
+    case types.GET_COURSES_SUCCESS:
       return {
         ...state,
         loading: false,
         courses: action.payload.data,
       };
-    case types.GET_COURSE_FAILURE:
+    case types.GET_COURSES_FAILURE:
       return {
         ...state,
         loading: false,

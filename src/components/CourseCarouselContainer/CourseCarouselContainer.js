@@ -7,11 +7,11 @@ import './CourseCarouselContainer.scss';
 import CourseCarousel from '../Carousel/CourseCarousel';
 import CourseBackground from '../../assets/images/course_background.png';
 import CourseCard from '../CourseCard/CourseCard';
-import { getCourseAction } from '../../actions/courses';
+import { getCoursesAction } from '../../actions/courses';
 
 class CourseCarouselContainer extends Component {
   componentWillMount() {
-    this.props.actions.getCourseAction();
+    this.props.actions.getCoursesAction();
   }
 
   render() {
@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
-        getCourseAction,
+        getCoursesAction,
       },
       dispatch,
     ),

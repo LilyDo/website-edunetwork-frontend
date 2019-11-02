@@ -2,9 +2,9 @@ import axios from 'axios';
 import {
   BASE_URL,
   TOKEN_KEY,
-  GET_COURSE_REQUEST,
-  GET_COURSE_SUCCESS,
-  GET_COURSE_FAILURE,
+  GET_COURSES_REQUEST,
+  GET_COURSES_SUCCESS,
+  GET_COURSES_FAILURE,
   GET_COURSE_DETAIL_REQUEST,
   GET_COURSE_DETAIL_SUCCESS,
   GET_COURSE_DETAIL_FAILURE,
@@ -27,29 +27,29 @@ import {
  * | GET COURSES |
  * +-------------+
  */
-export const getCourseAction = () => {
+export const getCoursesAction = () => {
   return dispatch => {
-    dispatch(getCourseRequest());
+    dispatch(getCoursesRequest());
 
     axios
       .get(`${BASE_URL}/courses`)
-      .then(response => dispatch(getCourseSuccess(response.data)))
-      .catch(error => dispatch(getCourseFailure(error.message)));
+      .then(response => dispatch(getCoursesSuccess(response.data)))
+      .catch(error => dispatch(getCoursesFailure(error.message)));
   };
 };
 
-const getCourseRequest = () => ({
-  type: GET_COURSE_REQUEST,
+const getCoursesRequest = () => ({
+  type: GET_COURSES_REQUEST,
   payload: {},
 });
 
-const getCourseSuccess = response => ({
-  type: GET_COURSE_SUCCESS,
+const getCoursesSuccess = response => ({
+  type: GET_COURSES_SUCCESS,
   payload: { ...response },
 });
 
-const getCourseFailure = error => ({
-  type: GET_COURSE_FAILURE,
+const getCoursesFailure = error => ({
+  type: GET_COURSES_FAILURE,
   payload: { error },
 });
 
