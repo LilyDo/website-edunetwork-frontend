@@ -14,7 +14,7 @@ import {
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
-import { routes } from '../constants';
+import { routes, toastDuration } from '../constants';
 
 export const loginAction = user => {
   return dispatch => {
@@ -76,7 +76,7 @@ export const registerAction = user => {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
-              autoClose: 3000,
+              autoClose: toastDuration,
             });
           });
           dispatch(
@@ -126,7 +126,7 @@ export const verifyAccountAction = code => {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
             toast.error(JSON.stringify(obj[key]), {
-              autoClose: 3000,
+              autoClose: toastDuration,
             });
           });
           dispatch(

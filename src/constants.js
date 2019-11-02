@@ -19,3 +19,5 @@ export const routes = {
   // misc
   contact: '/contact',
 };
+
+export const toastDuration = 3000;
