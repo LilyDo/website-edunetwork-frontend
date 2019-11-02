@@ -46,6 +46,25 @@ export default function(state = initialState, action) {
         error: action.payload.error,
       };
 
+    // LOGIN
+    case types.REGISTER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case types.REGISTER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+      };
+
     // VERIFY EMAIL ACCOUNT
     case types.ACTIVE_ACCOUNT_REQUEST:
       return {
