@@ -29,10 +29,9 @@ export const getUrlParameter = function getUrlParameter(sParam) {
 // Create our number formatter.
 export const currencyFormatter = amount => {
   let formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+    maximumFractionDigits: 0,
   });
-  return formatter.format(amount);
+  return '$' + formatter.format(amount);
 };
 
 const splitHoursMinutesSeconds = duration => {

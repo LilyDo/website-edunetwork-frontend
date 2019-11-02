@@ -95,7 +95,7 @@ class ChangeProfile extends Component {
                   <div className="Text">Full Name</div>
                   <input
                     type="text"
-                    name="fullName"
+                    name="name"
                     value={this.state.fullName}
                     onChange={this.handleChange('fullName')}
                   ></input>

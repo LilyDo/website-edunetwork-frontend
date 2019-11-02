@@ -50,6 +50,12 @@ class AccountProfilePage extends Component {
     });
   };
 
+  componentDidMount() {
+    if (this.props.state.isEditing) {
+      this.toggleEditProfileForm();
+    }
+  }
+
   render() {
     return (
       <div>

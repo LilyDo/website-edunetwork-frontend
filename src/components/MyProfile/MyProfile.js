@@ -71,7 +71,7 @@ class MyProfile extends Component {
               <div className="Password">
                 <div className="Text">Referral Link</div>
                 <div className="Data">
-                  {`${USER_WEBSITE_URL}${routes.signin}?refUser={this.state.currentUser.code}`}
+                  {`${USER_WEBSITE_URL}${routes.signin}?refUser=${this.state.currentUser.code}`}
                 </div>
               </div>
               <div className="Sponsor">

@@ -12,7 +12,7 @@ const initialState = {
   dashboard: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     // GET CURRENT USER PROFILE
     case types.GET_PROFILE_REQUEST:
@@ -32,8 +32,8 @@ export default function(state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function() {
-            window.location.pathname = '/';
+          setTimeout(function () {
+            window.location.pathname = `${routes.accountDashboard}`;
           }, 100);
         }
       } else {
@@ -119,6 +119,7 @@ export default function(state = initialState, action) {
       ) {
         return {
           ...state,
+          loading: false,
           withdrawList: action.payload.data.draw,
           chargeList: action.payload.data.charge,
         };
@@ -140,6 +141,7 @@ export default function(state = initialState, action) {
       });
       return {
         ...state,
+        loading: false,
       };
 
     // WITHDRAW MONEY
@@ -157,7 +159,7 @@ export default function(state = initialState, action) {
         toast.success('Request successful!', {
           autoClose: toastDuration,
         });
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
@@ -191,7 +193,6 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_USER_DASHBOARD_SUCCESS:
-      console.log('dashboard response', action.payload);
       if (
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
