@@ -10,8 +10,7 @@ class SigninSignup extends Component {
     email: '',
     password: '',
 
-    isLoginShowed: true,
-    isRegisterShowed: false,
+    isShowLogin: true,
 
     refUser: '',
     fullName: '',
@@ -82,7 +81,7 @@ class SigninSignup extends Component {
     });
     let tab = getUrlParameter('tab');
     if (tab === 'login') {
-      this.setState({ isLoginShowed: true });
+      this.setState({ isShowLogin: true });
     }
   }
 
