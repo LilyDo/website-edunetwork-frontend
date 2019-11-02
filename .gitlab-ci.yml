@@ -15,15 +15,28 @@ before_script:
   - 'which ssh-agent || ( apk update && apk add openssh-client )'
   - docker info
 
-build:
+.build-env: &build-env
   stage: build
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
-    - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - echo $DOCKER_IMAGE
+    - docker pull $DOCKER_IMAGE || true
+    - docker build --cache-from $DOCKER_IMAGE --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $DOCKER_IMAGE .
+    - docker push $DOCKER_IMAGE
+
+build-dev:
+  variables:
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE
+  <<: *build-env
   only:
     - dev
+
+build-tags:
+  variables:
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  <<: *build-env
+  only:
+    - tags
 
 deploy:
   stage: deploy

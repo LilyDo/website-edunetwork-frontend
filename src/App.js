@@ -73,25 +73,12 @@ class App extends Component {
   render() {
     this.checkCurrentUser();
     return (
-      <Router>
-        <LoadingOverlay
-          active={this.props.loading}
-          spinner={<ScaleLoader />}
-          styles={{
-            spinner: base => ({
-              ...base,
-              width: '100px',
-              '& svg circle': {
-                stroke: 'rgba(255, 0, 0, 0.5)',
-              },
-            }),
-            overlay: base => ({
-              ...base,
-              'z-index': 99,
-            }),
-          }}
-        >
-          <div className="App">
+      <LoadingOverlay
+        active={this.props.loading}
+        spinner={<ScaleLoader />}
+      >
+        <Router>
+          <div className="App">{this.props.loading}
             <div className="HeaderContentContainer">
               <ToastContainer />
               <Header />
@@ -169,14 +156,13 @@ class App extends Component {
             <LoginPopup />
             <ForgotPasswordPopup />
           </div>
-        </LoadingOverlay>
-      </Router>
+        </Router>
+      </LoadingOverlay>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  ...state,
   loading:
     state.auth.loading ||
     state.profile.loading ||

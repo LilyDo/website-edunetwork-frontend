@@ -65,7 +65,7 @@ export default function(state = initialState, action) {
       };
 
     case types.ACTIVE_ACCOUNT_FAILURE:
-      toast.error('Cannote active the account', {
+      toast.error('Cannot active the account', {
         autoClose: toastDuration,
       });
 
