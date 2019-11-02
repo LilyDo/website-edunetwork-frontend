@@ -8,9 +8,9 @@ import {
   GET_COURSE_DETAIL_REQUEST,
   GET_COURSE_DETAIL_SUCCESS,
   GET_COURSE_DETAIL_FAILURE,
-  GET_USER_COURSESS_REQUEST,
-  GET_USER_COURSESS_SUCCESS,
-  GET_USER_COURSESS_FAILURE,
+  GET_USER_COURSES_REQUEST,
+  GET_USER_COURSES_SUCCESS,
+  GET_USER_COURSES_FAILURE,
   GET_USER_COURSE_DETAIL_REQUEST,
   GET_USER_COURSE_DETAIL_SUCCESS,
   GET_USER_COURSE_DETAIL_FAILURE,
@@ -108,17 +108,17 @@ export const getUserCoursesAction = () => {
 };
 
 const getUserCoursesRequest = () => ({
-  type: GET_USER_COURSESS_REQUEST,
+  type: GET_USER_COURSES_REQUEST,
   payload: {},
 });
 
 const getUserCoursesSuccess = response => ({
-  type: GET_USER_COURSESS_SUCCESS,
+  type: GET_USER_COURSES_SUCCESS,
   payload: { ...response },
 });
 
 const getUserCoursesFailure = error => ({
-  type: GET_USER_COURSESS_FAILURE,
+  type: GET_USER_COURSES_FAILURE,
   payload: { error },
 });
 

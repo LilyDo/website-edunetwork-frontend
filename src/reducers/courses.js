@@ -50,18 +50,18 @@ export default function(state = initialState, action) {
         loading: false,
         error: action.payload.error,
       };
-    case types.GET_USER_COURSESS_REQUEST:
+    case types.GET_USER_COURSES_REQUEST:
       return {
         ...state,
-        loading: true,
+        isloading: true,
       };
-    case types.GET_USER_COURSESS_SUCCESS:
+    case types.GET_USER_COURSES_SUCCESS:
       return {
         ...state,
         loading: false,
         userCourses: action.payload.data,
       };
-    case types.GET_USER_COURSESS_FAILURE:
+    case types.GET_USER_COURSES_FAILURE:
       return {
         ...state,
         loading: false,
