@@ -12,7 +12,7 @@ const initialState = {
   dashboard: {},
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   const duration = 3000;
 
   switch (action.type) {
@@ -34,7 +34,7 @@ export default function (state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function () {
+          setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
           }, 100);
         }
@@ -161,7 +161,7 @@ export default function (state = initialState, action) {
         toast.success('Request successful!', {
           autoClose: duration,
         });
-        setTimeout(function () {
+        setTimeout(function() {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
