@@ -12,12 +12,19 @@ import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselCo
 import {
   getUserCoursesAction,
   getCourseDetailAction,
+  getUserCourseDetailAction,
 } from '../../actions/courses';
+import { getUserFormLocal } from '../../services/appService';
 
 class CourseDetailPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.actions.getCourseDetailAction(id);
+    const user = getUserFormLocal();
+    if (getUserFormLocal()) {
+      this.props.actions.getUserCourseDetailAction(id);
+    } else {
+      this.props.actions.getCourseDetailAction(id);
+    }
     this.props.actions.getUserCoursesAction();
   }
 
@@ -61,6 +68,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         getUserCoursesAction,
         getCourseDetailAction,
+        getUserCourseDetailAction,
       },
       dispatch,
     ),

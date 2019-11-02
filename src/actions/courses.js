@@ -11,6 +11,9 @@ import {
   GET_USER_COURSESS_REQUEST,
   GET_USER_COURSESS_SUCCESS,
   GET_USER_COURSESS_FAILURE,
+  GET_USER_COURSE_DETAIL_REQUEST,
+  GET_USER_COURSE_DETAIL_SUCCESS,
+  GET_USER_COURSE_DETAIL_FAILURE,
   BUY_COURSE_REQUEST,
   BUY_COURSE_SUCCESS,
   BUY_COURSE_FAILURE,
@@ -59,9 +62,8 @@ export const getCourseDetailAction = courseId => {
   return dispatch => {
     dispatch(getCourseDetailRequest());
 
-    const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
+      .get(`${BASE_URL}/courses/${courseId}`)
       .then(response =>
         dispatch(getCourseDetailSuccess(response.data)),
       )
@@ -120,6 +122,47 @@ const getUserCoursesFailure = error => ({
   payload: { error },
 });
 
+/**
+ * +--------------------------+
+ * | GET USER'S COURSE DETAIL |
+ * +--------------------------+
+ */
+export const getUserCourseDetailAction = courseId => {
+  return dispatch => {
+    dispatch(getUserCourseDetailRequest(courseId));
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    axios
+      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
+      .then(response =>
+        dispatch(getUserCourseDetailSuccess(response.data)),
+      )
+      .catch(error =>
+        dispatch(getUserCourseDetailFailure(error.message)),
+      );
+  };
+};
+
+const getUserCourseDetailRequest = id => ({
+  type: GET_USER_COURSE_DETAIL_REQUEST,
+  payload: {},
+});
+
+const getUserCourseDetailSuccess = response => ({
+  type: GET_USER_COURSE_DETAIL_SUCCESS,
+  payload: { ...response },
+});
+
+const getUserCourseDetailFailure = error => ({
+  type: GET_USER_COURSE_DETAIL_FAILURE,
+  payload: { error },
+});
+
+/**
+ * +------------+
+ * | BUY COURSE |
+ * +------------+
+ */
 export const buyCourseAction = courseId => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
@@ -149,6 +192,11 @@ const buyCourseFailure = error => ({
   payload: { error },
 });
 
+/**
+ * +---------+
+ * | DEPOSIT |
+ * +---------+
+ */
 export const depositAction = amount => {
   return dispatch => {
     dispatch(depositRequest(amount));
