@@ -27,9 +27,11 @@ $inBetweenBreakpoint: 1024px;
   %fontHeader {
     font-size: 12px;
   }
+
   %fontText {
     font-size: 10px;
   }
+
   %fontSmallText {
     font-size: 6px;
   }
@@ -39,9 +41,11 @@ $inBetweenBreakpoint: 1024px;
   %fontHeader {
     font-size: 20px;
   }
+
   %fontText {
     font-size: 14px;
   }
+
   %fontSmallText {
     font-size: 12px;
   }
@@ -51,24 +55,23 @@ $inBetweenBreakpoint: 1024px;
 %fontRegular {
   font-family: 'Muli-Regular';
 }
+
 %fontBold {
   font-family: 'Muli-Bold';
 }
+
 @mixin fontBold() {
   font-family: 'Muli-Bold';
 }
+
 %fontExtraBold {
   font-family: 'Muli-ExtraBold';
 }
-%fontItalic {
-  font-family: 'Muli-Italic';
-}
-%fontLightItalic {
-  font-family: 'Muli-LightItalic';
-}
+
 %fontMedium {
   font-family: 'Muli-Medium';
 }
+
 %fontSemiBold {
   font-family: 'Muli-SemiBold';
 }
@@ -80,3 +83,7 @@ $inBetweenBreakpoint: 1024px;
 }
 
 $appMaxWidth: 1466px;
+
+.capitalize {
+  text-transform: capitalize;
+}

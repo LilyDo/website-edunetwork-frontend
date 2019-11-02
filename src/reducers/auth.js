@@ -5,9 +5,11 @@ const initialState = {
   loading: false,
   auth: [],
   error: null,
+  isVerify: false,
 };
 
 export default function(state = initialState, action) {
+  const duration = 3000;
   switch (action.type) {
     // LOGIN
     case types.LOGIN_REQUEST:
@@ -17,7 +19,6 @@ export default function(state = initialState, action) {
       };
 
     case types.LOGIN_SUCCESS:
-      const duration = 3000;
       if (action.payload.data.token) {
         localStorage.setItem(
           types.TOKEN_KEY,
@@ -43,7 +44,35 @@ export default function(state = initialState, action) {
         error: action.payload.error,
       };
 
-    // REGISTER
+    // VERIFY EMAIL ACCOUNT
+    case types.ACTIVE_ACCOUNT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        isVerify: false,
+      };
+
+    case types.ACTIVE_ACCOUNT_SUCCESS:
+      toast.success('Active account successful!', {
+        autoClose: duration,
+      });
+      return {
+        ...state,
+        loading: false,
+        isVerify: true,
+      };
+
+    case types.ACTIVE_ACCOUNT_FAILURE:
+      toast.error('Cannote active the account', {
+        autoClose: duration,
+      });
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        isVerify: false,
+      };
 
     default:
       return state;

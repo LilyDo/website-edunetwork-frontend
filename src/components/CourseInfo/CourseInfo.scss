@@ -28,8 +28,11 @@ $mobileMargin: 10px 25px 10px 25px;
 
 .CourseInfoContainer {
   max-width: 1103px;
+  width: 100%;
   margin: auto;
   border-bottom: 1px solid $gold;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (max-width: $mobileBreakPoint) {
   }
@@ -39,8 +42,29 @@ $mobileMargin: 10px 25px 10px 25px;
     font-size: 14px;
   }
 
-  .Title {
+  .AttachmentPlayer {
+    text-align: center;
+
+    iframe {
+      @media only screen and (max-width: $mobileBreakPoint) {
+        width: 313px;
+        height: 175px;
+      }
+
+      @media only screen and (min-width: 1000px) {
+        width: 600px;
+        height: 335px;
+      }
+    }
+  }
+
+  .TitleDescriptionCurriculumnContainer {
     max-width: 720px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .Title {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -65,14 +89,18 @@ $mobileMargin: 10px 25px 10px 25px;
 
     .IntroductionTitle,
     .CurriculumTitle {
+      cursor: pointer;
       &:hover {
         @extend %titleSelected;
       }
     }
+
+    .Active {
+      border-bottom: 1px solid $gold;
+    }
   }
 
   .CourseIntroduction {
-    max-width: 720px;
     box-sizing: border-box;
     border: 1px solid white;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -110,7 +138,6 @@ $mobileMargin: 10px 25px 10px 25px;
   }
 
   .CourseCurriculum {
-    max-width: 720px;
     box-sizing: border-box;
     border: 1px solid white;
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -155,9 +182,6 @@ $mobileMargin: 10px 25px 10px 25px;
               padding-right: 10px;
             }
           }
-          .Lesson {
-            margin-left: 20px;
-          }
         }
 
         @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -168,9 +192,6 @@ $mobileMargin: 10px 25px 10px 25px;
               padding-left: 35px;
               padding-right: 10px;
             }
-          }
-          .Lesson {
-            margin-left: 30px;
           }
         }
       }
@@ -184,6 +205,7 @@ $mobileMargin: 10px 25px 10px 25px;
         color: white;
         padding-top: 8px;
         padding-bottom: 8px;
+        cursor: pointer;
 
         img {
           padding-left: 10px;
@@ -199,14 +221,31 @@ $mobileMargin: 10px 25px 10px 25px;
         padding-top: 8px;
         padding-bottom: 8px;
         margin-top: 2px;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        .Lessons {
+          margin-left: 20px;
+        }
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        .Lessons {
+          margin-left: 30px;
+        }
       }
 
       .Lessons {
+        margin-bottom: 10px;
+
         .LessonContainer {
           display: flex;
           justify-content: space-between;
           flex-direction: row;
           align-items: center;
+          border-bottom: 1px solid $lightgrey;
+
           .Lesson {
             display: flex;
             justify-content: flex-start;
@@ -214,7 +253,10 @@ $mobileMargin: 10px 25px 10px 25px;
             align-items: center;
             padding-top: 8px;
             padding-bottom: 8px;
-            border-bottom: 1px solid $lightgrey;
+
+            .LessonTitle {
+              padding-right: 10px;
+            }
 
             img {
               padding-left: 10px;
@@ -223,12 +265,22 @@ $mobileMargin: 10px 25px 10px 25px;
           }
 
           .Duration {
-            justify-self: flex-end;
+            padding-right: 10px;
           }
         }
 
-        :last-child {
-          border-bottom: none;
+        .Attachments {
+          .Attachment {
+            background-color: rgba(214, 214, 214, 0.3);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            img {
+              padding-right: 10px;
+            }
+          }
         }
       }
     }

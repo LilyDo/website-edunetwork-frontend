@@ -1,72 +1,138 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import './MyWallet_Withdraw.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
-import UserPhoto from '../../assets/images/user_default_avatar.png';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import { getUserFormLocal } from '../../services/appService';
+import {
+  getUserFormLocal,
+  currencyFormatter,
+} from '../../services/appService';
+import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
+import { withdrawMoneyAction } from '../../actions/profile';
+import { routes } from '../../constants';
 
 class MyWallet_Withdraw extends Component {
   state = {
     currentUser: {},
-    isShowWithraw: true,
+    bankName: '',
+    bankAccount: '',
+    fullName: '',
+    amount: '',
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.currentUser = getUserFormLocal();
+      this.setState({
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
   toggleShowTab = () => {
     this.setState({
-      isShowWithraw: !this.state.isShowWithraw,
+      isShowWithdraw: !this.state.isShowWithdraw,
+    });
+  };
+
+  componentDidMount() {
+    this.checkCurrentUser();
+  }
+
+  withdrawMoneyAction = () => {
+    let payload = {
+      bank_name: this.state.bankName,
+      bank_branch: this.state.bankBranch,
+      bank_account: this.state.bankAccount,
+      full_name: this.state.fullName,
+      amount: this.state.amount,
+    };
+    var form_data = new FormData();
+
+    for (var key in payload) {
+      form_data.append(key, payload[key]);
+    }
+
+    this.props.actions.withdrawMoneyAction(form_data);
+  };
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
     });
   };
 
   render() {
-    this.checkCurrentUser();
+    const {
+      bankName,
+      bankBranch,
+      bankAccount,
+      fullName,
+      amount,
+    } = this.state;
 
     return (
       <div>
         <AccountBreadcrumb />
         <div className="MyWallet_Withdraw">
           <div className="Title">
-            <div>Thông tin ví của tôi</div>
+            <div>My Wallet</div>
             <img alt="arrow right" src={ArrowRight}></img>
-            <div>Rút tiền</div>
+            <div>Withdraw</div>
           </div>
 
           <div className="ContentContainer">
             <div className="TransactionInfo">
               <div>
-                Hãy nhập các thông tin bên dưới để tiến hành rút tiền
+                Please fill in the following information to withdraw
               </div>
               <div className="Bank">
-                <div>Chọn ngân hàng</div>
-                <select placeholder="Nhập ngân hàng của bạn">
-                  <option>Vietcombank</option>
-                  <option>Sacombank</option>
-                  <option>ACB</option>
-                  <option>VPBank</option>
-                </select>
+                <div>Bank name*</div>
+                <input
+                  placeholder="What is your bank name"
+                  value={bankName}
+                  onChange={this.handleChange('bankName')}
+                />
+              </div>
+              <div className="Bank">
+                <div>Bank branch</div>
+                <input
+                  placeholder="What is your bank branch"
+                  value={bankBranch}
+                  onChange={this.handleChange('bankBranch')}
+                />
               </div>
               <div className="BankAccount">
-                <div>Số tài khoản</div>
+                <div>Bank account*</div>
                 <input
-                  type="number"
-                  placeholder="Nhập số tài khoản"
-                ></input>
+                  type="text"
+                  placeholder="What is your bank account"
+                  value={bankAccount}
+                  onChange={this.handleChange('bankAccount')}
+                />
+              </div>
+              <div className="BankAccount">
+                <div>Full name*</div>
+                <input
+                  type="text"
+                  placeholder="What is full name"
+                  value={fullName}
+                  onChange={this.handleChange('fullName')}
+                />
               </div>
               <div className="WithdrawAmount">
-                <div>Số tiền giao dịch</div>
+                <div>Amount*</div>
                 <input
                   type="number"
-                  placeholder="Nhập số tiền cần rút"
-                ></input>
+                  placeholder="How much do you want to withdraw"
+                  value={amount}
+                  onChange={this.handleChange('amount')}
+                />
               </div>
               <div className="Note">
-                Lưu ý: Số tiền cần rút phải nhỏ hơn hoặc bằng với số
-                dư trong ví của bạn.
+                Important: The money you want to withdraw must be
+                lower than you balance.
               </div>
             </div>
 
@@ -75,33 +141,49 @@ class MyWallet_Withdraw extends Component {
                 <img
                   className="Photo"
                   alt="avatar"
-                  src={UserPhoto}
+                  src={
+                    this.state.currentUser.avatar || DefaultUserAvatar
+                  }
                 ></img>
-                <div>Hồ Đức Lợi</div>
+                <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
-                <div className="Text">Số dư hiện tại</div>
-                <div className="Number">$250,000</div>
+                <div className="Text">Balance</div>
+                <div className="Number">
+                  {currencyFormatter(
+                    this.state.currentUser.total_price,
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div className="TransactionRequest">YÊU CẦU GIAO DỊCH</div>
-        </div>
-        <div
-          className="CancelButton"
-          onClick={this.props.onCancelClick}
-        >
-          HỦY BỎ
-        </div>
-        <div
-          className="TransactionRequest"
-          onClick={this.props.onRequestClick}
-        >
-          YÊU CẦU GIAO DỊCH
+          <div
+            className="TransactionRequest"
+            onClick={this.withdrawMoneyAction}
+          >
+            REQUEST
+          </div>
+          <Link to={routes.accountWallet}>
+            <div className="TransactionRequest">CANCEL</div>
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-export default MyWallet_Withdraw;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        withdrawMoneyAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(MyWallet_Withdraw);

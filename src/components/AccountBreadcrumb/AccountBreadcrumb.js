@@ -3,16 +3,15 @@ import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
 import { getUserFormLocal } from '../../services/appService';
+import { routes } from '../../constants';
 
 class AccountBreadcrumb extends Component {
   state = {
-    isLogined: false,
     currentUser: {},
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.isLogined = true;
       this.state.currentUser = getUserFormLocal();
     }
   }
@@ -25,10 +24,11 @@ class AccountBreadcrumb extends Component {
         <div className="Container">
           <div className="LinkContainer">
             <Link
-              to="/account/dashboard"
+              to={routes.accountDashboard}
               className={
-                window.location.pathname === '/account/dashboard' &&
-                'ActiveTab'
+                window.location.pathname === '/account/dashboard'
+                  ? 'ActiveTab'
+                  : ''
               }
             >
               <span>Dashboard</span>
@@ -36,43 +36,47 @@ class AccountBreadcrumb extends Component {
 
             <div className="profile-menu">
               <Link
-                to="/account/profile"
+                to={routes.accountProfile}
                 className={
-                  window.location.pathname === '/account/profile' &&
-                  'ActiveTab'
+                  window.location.pathname === '/account/profile'
+                    ? 'ActiveTab'
+                    : ''
                 }
               >
                 <span>Profile</span>
                 <img alt="arrow down" src={ArrowDown}></img>
               </Link>
 
-              <div class="dropdown-content">
-                <Link to="/account/profile">
+              <div className="dropdown-content">
+                <Link to={routes.accountProfile}>
                   <div>Personal Information</div>
                 </Link>
-                <Link to="/account/profile/wallet">
+                <Link to={routes.accountWallet}>
                   <div>My Wallet</div>
                 </Link>
-                <Link to="/account/profile/withraw">
-                  <div>Withraw</div>
+                <Link to={routes.accountWithdraw}>
+                  <div>Withdraw</div>
                 </Link>
               </div>
             </div>
 
             <Link
-              to="/account/course"
+              to={routes.accountCourses}
               className={
-                window.location.pathname === '/account/course' &&
-                'ActiveTab'
+                window.location.pathname === '/account/course'
+                  ? 'ActiveTab'
+                  : ''
               }
             >
               <span>Course</span>
             </Link>
           </div>
           <div className="AccountContainer">
-            <div class="Text">Hello! </div>
-            <div class="Fullname">{this.state.currentUser.name}</div>
-            <div class="Username">
+            <div className="Text">Hello! </div>
+            <div className="Fullname">
+              {this.state.currentUser.name}
+            </div>
+            <div className="Username">
               {' '}
               ({this.state.currentUser.code})
             </div>

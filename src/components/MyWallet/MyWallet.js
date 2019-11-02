@@ -3,29 +3,47 @@ import { Link } from 'react-router-dom';
 import './MyWallet.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import { getUserFormLocal } from '../../services/appService';
+import {
+  getUserFormLocal,
+  currencyFormatter,
+} from '../../services/appService';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getChargeHistoryAction } from '../../actions/profile';
+import { routes } from '../../constants';
 
 class MyWallet extends Component {
   state = {
     currentUser: {},
-    isShowWithraw: true,
+    isShowWithdraw: true,
+    drawList: [],
+    chargeList: [],
   };
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
-      this.state.currentUser = getUserFormLocal();
+      this.setState({
+        currentUser: getUserFormLocal(),
+      });
     }
   }
 
   toggleShowTab = () => {
     this.setState({
-      isShowWithraw: !this.state.isShowWithraw,
+      isShowWithdraw: !this.state.isShowWithdraw,
     });
   };
 
-  render() {
-    this.checkCurrentUser();
+  getChargeHistory = () => {
+    this.props.actions.getChargeHistoryAction();
+  };
 
+  componentDidMount() {
+    this.checkCurrentUser();
+    this.getChargeHistory();
+  }
+
+  render() {
     return (
       <div>
         <AccountBreadcrumb />
@@ -44,12 +62,16 @@ class MyWallet extends Component {
             </div>
             <div className="Balance">
               <div className="Text">Balance</div>
-              <div className="Number">$250,000</div>
+              <div className="Number">
+                {currencyFormatter(
+                  this.state.currentUser.total_price,
+                )}
+              </div>
             </div>
           </div>
           <div className="ButtonContainer">
-          <Link to="/account/profile/withraw">
-            <div className="WithdrawButton">WITHRAW</div>
+            <Link to={routes.accountWithdraw}>
+              <div className="WithdrawButton">WITHDRAW</div>
             </Link>
             <div className="TopupButton">DEPOSIT</div>
           </div>
@@ -59,23 +81,23 @@ class MyWallet extends Component {
               <div
                 className={
                   'Withdraw ' +
-                  (this.state.isShowWithraw && 'ActiveTab')
+                  (this.state.isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab}
               >
-                Withraw
+                Withdraw
               </div>
               <div
                 className={
                   'Topup ' +
-                  (!this.state.isShowWithraw && 'ActiveTab')
+                  (!this.state.isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab}
               >
                 Deposit
               </div>
             </div>
-            {this.state.isShowWithraw && (
+            {this.state.isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
@@ -86,16 +108,21 @@ class MyWallet extends Component {
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  <tr>
-                    <td>15/03/2019</td>
-                    <td>EX 203456</td>
-                    <td>$400,00</td>
-                    <td>Success</td>
-                  </tr>
+                  {this.props.state.drawList &&
+                    this.props.state.drawList.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.created_at || ''}</td>
+                        <td>{item.charge_code || 'not available'}</td>
+                        <td>{currencyFormatter(item.price) || ''}</td>
+                        <td className="capitalize">
+                          {item.status || ''}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             )}
-            {!this.state.isShowWithraw && (
+            {!this.state.isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
@@ -106,8 +133,17 @@ class MyWallet extends Component {
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  <tr>
-                  </tr>
+                  {this.props.state.chargeList &&
+                    this.props.state.chargeList.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.created_at || ''}</td>
+                        <td>{item.charge_code || 'not available'}</td>
+                        <td>{currencyFormatter(item.price) || ''}</td>
+                        <td className="capitalize">
+                          {item.status || ''}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             )}
@@ -118,4 +154,27 @@ class MyWallet extends Component {
   }
 }
 
-export default MyWallet;
+const mapStateToProps = ({ profile }, ownProps) => {
+  return {
+    state: {
+      drawList: profile.withdrawList,
+      chargeList: profile.chargeList,
+    },
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        getChargeHistoryAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MyWallet);

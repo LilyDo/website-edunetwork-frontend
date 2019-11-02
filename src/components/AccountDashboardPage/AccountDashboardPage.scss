@@ -323,6 +323,12 @@
           margin-bottom: 20px;
           padding-bottom: 5px;
         }
+        &.active {
+          border-bottom: 3px solid $brown;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       @media only screen and (max-width: $mobileBreakPoint) {
@@ -375,5 +381,16 @@
         }
       }
     }
+  }
+  .Text {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .level {
+    margin-top: 10px;
+    color: #3694fc;
+    background-color: white;
+    font-size: 25px;
   }
 }

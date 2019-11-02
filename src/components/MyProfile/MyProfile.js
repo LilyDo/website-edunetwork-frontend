@@ -4,6 +4,7 @@ import EditIcon from '../../assets/images/icon_edit.svg';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import { getUserFormLocal } from '../../services/appService';
 import { USER_WEBSITE_URL } from '../../actions/index';
+import { routes } from '../../constants';
 
 class MyProfile extends Component {
   state = {
@@ -68,15 +69,13 @@ class MyProfile extends Component {
             <div className="Password">
               <div className="Text">Referral Link</div>
               <div className="Data">
-                {USER_WEBSITE_URL +
-                  '/signin?refUser=' +
-                  this.state.currentUser.code}
+                {`${USER_WEBSITE_URL}${routes.signin}?refUser={this.state.currentUser.code}`}
               </div>
             </div>
             <div className="Sponsor">
               <div className="Text">Your Referral</div>
               <div className="Data">
-                {this.state.currentUser.presenter}
+                {this.state.currentUser.presenter_code}
               </div>
             </div>
           </div>

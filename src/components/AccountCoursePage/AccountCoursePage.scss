@@ -1,5 +1,4 @@
 @import '../../shared.scss';
-@import '../../assets/font/font.scss';
 
 .AccountCoursePage {
   @media only screen and (max-width: $mobileBreakPoint) {
@@ -31,20 +30,36 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    
+
     @media only screen and (max-width: $mobileBreakPoint) {
       padding-top: 10px;
-      padding-bottom: 20px;  
+      padding-bottom: 20px;
     }
-    
+
     @media only screen and (min-width: $mobileBreakPoint + 1) {
       padding-top: 20px;
       padding-bottom: 70px;
-      
     }
 
     .Course {
       margin-right: 20px;
     }
+  }
+}
+
+.CourseBlock {
+  padding-bottom: 70px;
+
+  .Title {
+    @extend %fontHeader;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $darkgrey;
+    margin-bottom: 20px;
+  }
+
+  .CoursesContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
 }
