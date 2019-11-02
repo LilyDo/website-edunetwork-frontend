@@ -41,44 +41,41 @@ class MyProfile extends Component {
             <div>{this.state.currentUser.name}</div>
           </div>
           <div className="GroupProfile">
-            <div className="GroupProfile1">
-              <div className="Fullname">
-                <div className="Text">Full Name</div>
-                <div className="Data">
-                  {this.state.currentUser.name}
-                </div>
-              </div>
-              <div className="Email">
-                <div className="Text">Email</div>
-                <div className="Data">
-                  {this.state.currentUser.email}
-                </div>
-              </div>
-              <div className="PhoneNumber">
-                <div className="Text">Phone Number</div>
-                <div className="Data">
-                  {this.state.currentUser.phone}
-                </div>
+            <div className="Fullname">
+              <div className="Text">Full Name</div>
+              <div className="Data">
+                {this.state.currentUser.name}
               </div>
             </div>
-            <div className="GroupProfile2">
-              <div className="ReferralCode">
-                <div className="Text">Referral Code</div>
-                <div className="Data">
-                  {this.state.currentUser.code}
-                </div>
+            <div className="Email">
+              <div className="Text">Email</div>
+              <div className="Data">
+                {this.state.currentUser.email}
               </div>
-              <div className="Password">
-                <div className="Text">Referral Link</div>
-                <div className="Data">
-                  {`${USER_WEBSITE_URL}${routes.signin}?refUser=${this.state.currentUser.code}`}
-                </div>
+            </div>
+            <div className="PhoneNumber">
+              <div className="Text">Phone Number</div>
+              <div className="Data">
+                {this.state.currentUser.phone}
               </div>
-              <div className="Sponsor">
-                <div className="Text">Invited By</div>
-                <div className="Data">
-                  {this.state.currentUser.presenter_code}
-                </div>
+            </div>
+
+            <div className="ReferralCode">
+              <div className="Text">Referral Code</div>
+              <div className="Data">
+                {this.state.currentUser.code}
+              </div>
+            </div>
+            <div className="Password">
+              <div className="Text">Referral Link</div>
+              <div className="Data">
+                {`${USER_WEBSITE_URL}${routes.signin}?refUser={this.state.currentUser.code}`}
+              </div>
+            </div>
+            <div className="Sponsor">
+              <div className="Text">Your Referral</div>
+              <div className="Data">
+                {this.state.currentUser.presenter_code}
               </div>
             </div>
           </div>

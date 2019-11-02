@@ -20,16 +20,18 @@ class CourseCard extends Component {
             <sup className="Currency">USD</sup>
           </div>
         </div>
-        <div className="Title">{courseCarouselItem.title}</div>
-        <div className="PayContainer">
-          <Link
-            to={routes.courseDetail.replace(
-              ':id',
-              courseCarouselItem.id,
-            )}
-          >
-            <div className="PayNow">XEM CHI TIẾT</div>
-          </Link>
+        <div className="TitleButtonGroup">
+          <div className="Title">{courseCarouselItem.title}</div>
+          <div className="PayContainer">
+            <Link
+              to={routes.courseDetail.replace(
+                ':id',
+                courseCarouselItem.id,
+              )}
+            >
+              <div className="PayNow">XEM CHI TIẾT</div>
+            </Link>
+          </div>
         </div>
       </div>
     );

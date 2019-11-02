@@ -87,7 +87,7 @@ class MyWallet_Withdraw extends Component {
               <div>
                 Please fill in the following information to withdraw
               </div>
-              <div className="Bank">
+              <div className="BankName">
                 <div>Bank name*</div>
                 <input
                   placeholder="What is your bank name"
@@ -95,7 +95,7 @@ class MyWallet_Withdraw extends Component {
                   onChange={this.handleChange('bankName')}
                 />
               </div>
-              <div className="Bank">
+              <div className="BankBranch">
                 <div>Bank branch</div>
                 <input
                   placeholder="What is your bank branch"
@@ -112,11 +112,11 @@ class MyWallet_Withdraw extends Component {
                   onChange={this.handleChange('bankAccount')}
                 />
               </div>
-              <div className="BankAccount">
+              <div className="FullName">
                 <div>Full name*</div>
                 <input
                   type="text"
-                  placeholder="What is full name"
+                  placeholder="What is your full name"
                   value={fullName}
                   onChange={this.handleChange('fullName')}
                 />
@@ -164,7 +164,7 @@ class MyWallet_Withdraw extends Component {
             REQUEST
           </div>
           <Link to={routes.accountWallet}>
-            <div className="TransactionRequest">CANCEL</div>
+            <div className="CancelButton">CANCEL</div>
           </Link>
         </div>
       </div>

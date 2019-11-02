@@ -17,9 +17,17 @@
   }
 
   .CourseBackground {
-    width: auto;
-    height: 100%;
-    margin-bottom: -280px;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      width: auto;
+      height: 210px;
+      margin-bottom: -170px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      width: auto;
+      height: 370px;
+      margin-bottom: -285px;
+    }
   }
 }
 

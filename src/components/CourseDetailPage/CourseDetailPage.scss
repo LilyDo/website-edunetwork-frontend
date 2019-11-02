@@ -1,16 +1,20 @@
 @import '../../shared.scss';
 
 .CourseDetailPage {
-  @media only screen and (max-width: $mobileBreakPoint) {
-    .CourseInfoLevelContainer {
-      display: flex;
+  .CourseInfoLevelContainer {
+    display: flex;
+    border-bottom: 1px solid $gold;
+    @media only screen and (max-width: $mobileBreakPoint) {
       flex-direction: column;
+      justify-content: center;
+      padding-bottom: 20px;
     }
-  }
 
-  @media only screen and (min-width: $mobileBreakPoint + 1) {
-    .CourseInfoLevelContainer {
-      display: flex;
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 150px;
+      margin-right: 150px;
     }
   }
 }

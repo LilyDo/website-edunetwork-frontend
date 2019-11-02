@@ -5,9 +5,6 @@
   @extend %fontHeader;
   @extend %fontBold;
 
-  max-width: 1103px;
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,9 +28,9 @@
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
+    margin: 45px 150px;
     padding: 20px 0;
-    margin-top: 45px;
-    margin-bottom: 45px;
+
     border-top: 1px solid $gold;
     border-bottom: 1px solid $gold;
 

@@ -323,7 +323,7 @@ $walletPaddingContainer: 12px 0 12px 0;
   .TextNotice {
     white-space: pre-line;
     @media only screen and (max-width: $mobileBreakPoint) {
-      padding-bottom: 30px;
+      padding-bottom: 50px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {

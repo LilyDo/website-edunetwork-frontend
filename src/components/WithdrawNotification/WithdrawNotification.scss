@@ -1,14 +1,15 @@
-@import "../../shared.scss";
-@import "../../assets/font/font.scss";
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
 
 .WithdrawNotification {
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 20px 10px 50px 10px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding-left: 150px;
     padding-right: 150px;
-    padding-bottom: 13s0px;
+    padding-bottom: 130px;
   }
 
   .Title {
@@ -19,18 +20,23 @@
     color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
+    @extend %fontHeader;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      margin-bottom: 20px;
+      img {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 20px;
+      }
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    img {
-      padding-left: 20px;
-      padding-right: 20px;
+      margin-bottom: 40px;
+      img {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
     }
   }
 
@@ -39,12 +45,11 @@
   }
 
   .BackToWallet {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    display: inline-flex;
     background-color: $brown;
     color: white;
     @extend %fontSemiBold;
@@ -52,6 +57,9 @@
     cursor: pointer;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 12px;
+      padding: 5px 10px;
+      margin-top: 20px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -61,11 +69,11 @@
     }
 
     img {
-      padding-right: 10px;
-    }
-    div {
-      color: white;
-      float: right;
+      margin-right: 10px;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        width: 20px;
+      }
     }
   }
 }

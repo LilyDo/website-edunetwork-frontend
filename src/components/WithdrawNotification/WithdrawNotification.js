@@ -22,15 +22,15 @@ class WithdrawNotification extends Component {
             We will inform you when your request is processed.
           </div>
         </div>
-        <div
-          className="BackToWallet"
-          onClick={this.props.onGoBackClick}
-        >
-          <Link to={routes.accountWallet}>
+        <Link to={routes.accountWallet}>
+          <div
+            className="BackToWallet"
+            onClick={this.props.onGoBackClick}
+          >
             <img alt="arrow back" src={ArrowBack}></img>
             <div>Back to Wallet</div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     );
   }

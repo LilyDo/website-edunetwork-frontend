@@ -1,8 +1,11 @@
-@import "../../shared.scss";
-@import "../../assets/font/font.scss";
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
 
 .MyWallet_Withdraw {
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -19,17 +22,22 @@
     color: $darkblue;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
+    @extend %fontHeader;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      margin-bottom: 20px;
+      img {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
-      font-size: 20px;
-    }
-
-    img {
-      padding-left: 20px;
-      padding-right: 20px;
+      margin-bottom: 40px;
+      img {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   }
 
@@ -41,23 +49,24 @@
     flex-wrap: wrap-reverse;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      padding-bottom: 20px;
     }
-
     @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding-top: 40px;
       padding-bottom: 40px;
     }
 
     .TransactionInfo {
-      .Bank,
+      .BankName,
       .BankAccount,
+      .FullName,
+      .BankBranch,
       .WithdrawAmount {
         @extend %fontSemiBold;
         color: black;
       }
 
-      .Bank {
-        padding-top: 20px;
+      .BankName {
+        padding-top: 25px;
       }
 
       input,
@@ -67,21 +76,33 @@
         appearance: none;
         background-color: white;
         border: none;
-        margin-top: 6px;
-        margin-bottom: 25px;
         box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-        height: 50px;
-        width: 334px;
         box-sizing: border-box;
         @extend %fontBold;
         color: $darkgrey;
-        font-size: 14px;
-        padding-left: 22px;
-        padding-right: 22px;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          padding-left: 10px;
+          padding-right: 10px;
+          height: 30px;
+          width: 100%;
+          align-self: center;
+          margin-top: 6px;
+          margin-bottom: 15px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          padding-left: 22px;
+          padding-right: 22px;
+          height: 50px;
+          width: 334px;
+          margin-top: 6px;
+          margin-bottom: 25px;
+        }
       }
 
       select {
-        background: url(../../assets/images/icon_grey_arrow_down.svg) 96% / 5% no-repeat white;
+        background: url(../../assets/images/icon_grey_arrow_down.svg)
+          96% / 5% no-repeat white;
         background-position: right;
       }
     }
@@ -106,24 +127,36 @@
   .Card {
     background-image: url(../../assets/images/background_card.svg);
     background-repeat: no-repeat;
-    background-color: linear-gradient(#f9d423, #f83600);
     background-position: center;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+    margin: auto;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      width: 100%;
+      max-width: 300px;
+      height: 170px;
+      background-size: cover;
+
+      padding-top: 10px;
+      padding-left: 15px;
+      margin-bottom: 25px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
       width: 426px;
       height: 240px;
       box-sizing: border-box;
-      padding-top: 6px;
+      padding-top: 5px;
       padding-left: 25px;
-      margin-bottom: 20px;
     }
 
     .User {
       @media only screen and (max-width: $mobileBreakPoint) {
+        img {
+          width: 32px;
+          height: 32px;
+          margin-right: 5px;
+        }
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -145,25 +178,33 @@
       color: white;
 
       @media only screen and (max-width: $mobileBreakPoint) {
+        padding-top: 70px;
       }
 
       @media only screen and (min-width: $mobileBreakPoint + 1) {
         padding-top: 85px;
-
-        .Text {
-          font-size: 20px;
-        }
-        .Number {
-          font-size: 41px;
-        }
       }
 
       .Text {
-        text-align: left;
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 14px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 20px;
+        }
       }
 
       .Number {
-        @extend %fontSemiBold;
+        @extend %fontBold;
+
+        @media only screen and (max-width: $mobileBreakPoint) {
+          font-size: 20px;
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          font-size: 41px;
+        }
       }
     }
   }
@@ -174,12 +215,13 @@
     display: inline;
     background-color: $brown;
     color: white;
-    margin-left: 10px;
     @extend %fontSemiBold;
     border-radius: 10px;
     cursor: pointer;
 
     @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 12px;
+      padding: 5px 20px;
     }
 
     @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -189,6 +231,6 @@
   }
 
   .CancelButton {
-    margin-right: 20px;
+    margin-left: 20px;
   }
 }
