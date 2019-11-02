@@ -75,15 +75,31 @@ export default function(state = initialState, action) {
         autoClose: toastDuration,
       });
       setTimeout(function() {
-        window.location.pathname = routes.accountWithdrawNoti;
+        window.location.pathname = routes.coursePaymentSuccessful;
       }, toastDuration);
 
       return {
         ...state,
         loading: false,
-        // userCourses: action.payload.data,
       };
     case types.BUY_COURSE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.DEPOSIT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.DEPOSIT_SUCCESS:
+      window.location = action.payload.data.url;
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.DEPOSIT_FAILURE:
       return {
         ...state,
         loading: false,

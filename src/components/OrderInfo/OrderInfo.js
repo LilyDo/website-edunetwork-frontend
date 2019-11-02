@@ -8,10 +8,15 @@ import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import { formatDurationText } from '../../services/appService';
-import { buyCourseAction } from '../../actions/courses';
+import {
+  buyCourseAction,
+  depositAction,
+} from '../../actions/courses';
 
 class OrderInfo extends Component {
-  deposit = () => {};
+  deposit = depositAmount => {
+    this.props.actions.depositAction(depositAmount);
+  };
 
   pay = () => {
     this.props.actions.buyCourseAction(this.props.courseDetail.id);
@@ -19,9 +24,14 @@ class OrderInfo extends Component {
 
   render() {
     const { courseDetail, profile } = this.props;
-    const shouldDepositAmount =
-      profile.total_price - courseDetail.price;
-    const shouldDeposit = shouldDepositAmount < 0;
+    let shouldDepositAmount =
+      // profile.total_price - courseDetail.price;
+      0 - courseDetail.price;
+    let shouldDeposit = false;
+    if (shouldDepositAmount < 0) {
+      shouldDeposit = true;
+      shouldDepositAmount = shouldDepositAmount * -1;
+    }
 
     return (
       <div className="OrderInfoContainer">
@@ -95,7 +105,10 @@ class OrderInfo extends Component {
                 </div>
               </div>
               {shouldDeposit ? (
-                <div className="CTAButton" onClick={this.deposit}>
+                <div
+                  className="CTAButton"
+                  onClick={() => this.deposit(shouldDepositAmount)}
+                >
                   NẠP NGAY
                 </div>
               ) : (
@@ -128,6 +141,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         buyCourseAction,
+        depositAction,
       },
       dispatch,
     ),
