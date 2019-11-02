@@ -74,22 +74,32 @@ class DashboardChart extends Component {
       },
       dataArray: [
         {
-          name: 'Doanh thu toàn nhóm',
-          data: [30, 80, 100, 120, 150, 190, 220, 240],
+          name: 'Total group revenue',
+          data: this.props.data.revenueByMonth,
         },
         {
-          name: 'Doanh thu cá nhân',
-          data: [50, 70, 65, 50, 80, 100, 200, 270],
+          name: 'Commission',
+          data: this.props.data.commissionByMonth,
         },
       ],
     };
   }
 
   render() {
+    console.log(this.props.data);
     return (
       <Chart
         options={this.state.config}
-        series={this.state.dataArray}
+        series={[
+          {
+            name: 'Total group revenue',
+            data: this.props.data.revenueByMonth,
+          },
+          {
+            name: 'Commission',
+            data: this.props.data.commissionByMonth,
+          },
+        ]}
         type="bar"
         height={450}
       />

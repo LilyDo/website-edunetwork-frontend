@@ -14,6 +14,9 @@ import {
   WITHDRAW_MONEY_REQUEST,
   WITHDRAW_MONEY_SUCCESS,
   WITHDRAW_MONEY_FAILURE,
+  GET_USER_DASHBOARD_REQUEST,
+  GET_USER_DASHBOARD_SUCCESS,
+  GET_USER_DASHBOARD_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -66,7 +69,9 @@ export const updateProfileAction = userProfile => {
           }),
         );
       })
-      .catch(error => dispatch(updateProfileFailure(error.message)));
+      .catch(error => {
+        dispatch(updateProfileFailure(error.message));
+      });
   };
 };
 
@@ -153,5 +158,37 @@ const withdrawMoneySuccess = response => ({
 
 const withdrawMoneyFailure = error => ({
   type: WITHDRAW_MONEY_FAILURE,
+  payload: { error },
+});
+
+// GET USER DASHBOARD
+export const getUserDashboardAction = () => {
+  return dispatch => {
+    dispatch(getUserDashboardRequest());
+    axios
+      .post(`${BASE_URL}/users/dashboard`, {
+        token: localStorage.getItem(types.TOKEN_KEY) || '',
+      })
+      .then(response => {
+        console.log('get dashboard response', response.data);
+        dispatch(getUserDashboardSuccess(response.data));
+      })
+      .catch(error =>
+        dispatch(getUserDashboardFailure(error.message)),
+      );
+  };
+};
+
+const getUserDashboardRequest = () => ({
+  type: GET_USER_DASHBOARD_REQUEST,
+});
+
+const getUserDashboardSuccess = response => ({
+  type: GET_USER_DASHBOARD_SUCCESS,
+  payload: { ...response },
+});
+
+const getUserDashboardFailure = error => ({
+  type: GET_USER_DASHBOARD_FAILURE,
   payload: { error },
 });
