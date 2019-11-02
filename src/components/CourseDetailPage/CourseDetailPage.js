@@ -15,6 +15,7 @@ import {
   getUserCourseDetailAction,
 } from '../../actions/courses';
 import { getUserFormLocal } from '../../services/appService';
+import { routes } from '../../constants';
 
 class CourseDetailPage extends Component {
   componentDidMount() {
@@ -45,7 +46,19 @@ class CourseDetailPage extends Component {
 
     return (
       <div className="CourseDetailPage">
-        <Breadcrumb />
+        <Breadcrumb
+          data={[
+            { link: routes.home, text: 'HOME' },
+            { link: routes.courses, text: 'COURSES' },
+            {
+              link: routes.courseDetail.replace(
+                ':id',
+                courseDetail.id,
+              ),
+              text: 'COURSE DETAILS',
+            },
+          ]}
+        />
         <div className="CourseInfoLevelContainer">
           <CourseInfo courseDetail={courseDetail} />
           <CourseLevel

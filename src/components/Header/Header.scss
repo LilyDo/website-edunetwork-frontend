@@ -7,7 +7,7 @@
   padding: 13px 22px;
   transform: skewX(-25deg);
   text-decoration: none;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   &:hover {
     color: $brown;
     border: 1px solid white;
@@ -123,9 +123,9 @@
   }
 }
 .LowerHeader {
-  // display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   color: black;
   padding: 15px 25px;
   font-size: 10px;
@@ -147,6 +147,10 @@
   }
   a {
     text-decoration: none;
+  }
+
+  .NameHeaderMobile {
+    color: $darkgrey !important;
   }
 }
 
@@ -188,7 +192,7 @@
   padding: 10px;
   text-align: center;
   border-radius: 5px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   div {
     padding: 9px;
     color: white;

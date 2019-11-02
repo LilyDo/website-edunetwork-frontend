@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import './Breadcrumb.scss';
-import { routes } from '../../constants';
 import { Link } from 'react-router-dom';
 import ArrowRight from '../../assets/images/arrow_right.svg';
 
-function Breadcrumb() {
-  return (
-    <div className="BreadCrumb">
-      <Link to={routes.home} className="Home">
-        <span>HOME</span>
-      </Link>
-      <div className="ArrowRight">
-        <img alt="arrow right" src={ArrowRight} />
+class Breadcrumb extends Component {
+  render() {
+    const { data = [] } = this.props;
+    return (
+      <div className="BreadCrumb">
+        {data.map((menu, index) => (
+          <Fragment key={index}>
+            <Link to={menu.link} className="BreadcrumbItem">
+              <span>{menu.text}</span>
+            </Link>
+            {index !== data.length - 1 && (
+              <div className="ArrowRight">
+                <img alt="arrow right" src={ArrowRight} />
+              </div>
+            )}
+          </Fragment>
+        ))}
       </div>
-      <Link to={routes.courses} className="Current">
-        <span>COURSE</span>
-      </Link>
-      <div className="ArrowRight">
-        <img alt="arrow right" src={ArrowRight} />
-      </div>
-      <Link to={routes.accountCourses} className="MyCourse">
-        <span>KHÓA HỌC CỦA TÔI</span>
-      </Link>
-    </div>
-  );
+    );
+  }
 }
 
 export default Breadcrumb;
