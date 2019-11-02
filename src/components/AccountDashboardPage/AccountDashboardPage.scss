@@ -17,6 +17,9 @@
 }
 
 .AccountDashboardPage {
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-bottom: 20px;
+  }
   .Overview {
     @extend %paddingTitle;
 
@@ -287,6 +290,8 @@
     overflow-x: auto;
 
     @extend %paddingTitle;
+    @media only screen and (max-width: $mobileBreakPoint) {
+    }
 
     .Title {
       @extend %fontSemiBold;
