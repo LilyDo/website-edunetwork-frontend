@@ -169,9 +169,6 @@ class App extends Component {
               <ToastContainer />
               <ForgotPasswordPopup />
             </div>
-            <Footer />
-            <LoginPopup />
-            <ForgotPasswordPopup />
           </div>
         </LoadingOverlay>
       </Router>
