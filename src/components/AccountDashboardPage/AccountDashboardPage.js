@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
-import MyRank from '../../assets/images/img_rank.svg';
+import ManagerRank from '../../assets/images/manager_rank.svg';
+import DirectorRank from '../../assets/images/director_rank.svg';
 import './AccountDashboardPage.scss';
 import DashboardChart from '../../components/DashboardChart/DashboardChart';
 import { connect } from 'react-redux';
@@ -21,13 +22,22 @@ class AccountDashboardPage extends Component {
     this.props.actions.getUserDashboardAction();
   }
 
-  toggle = () => {
+  toggle = (isShowPaid) => {
     this.setState({
-      isShowPaid: !this.state.isShowPaid
+      isShowPaid: isShowPaid
     })
   }
 
   render() {
+    const {
+      isShowPaid,
+      currentUser
+    } = this.state;
+
+    const {
+      dashboard
+    } = this.props.state;
+
     return (
       <div>
         <AccountBreadcrumb />
@@ -35,33 +45,35 @@ class AccountDashboardPage extends Component {
           <div className="Overview">
             <div className="Title">SUMMARY</div>
             <div className="OverviewContainer">
-              <div className="MyRank">
+              <div className={"MyRank " + (currentUser.rank === null ? "NoRank" : "")}>
                 <div className="Text">
-                  <div>YOUR LEVEL</div>
-                  <div className="level">DIRECTOR</div>
+                  <div>YOUR RANK</div>
+                  <div className="level">{currentUser.rank || 'member'}</div>
                 </div>
-                <img alt="rank" className="RankImg" src={MyRank}></img>
+                {currentUser.rank && (
+                  <img alt="rank" className="RankImg" src={currentUser.rank === 'manager' ? ManagerRank : currentUser.rank === 'director' ? DirectorRank : ''}></img>
+                )}
               </div>
               <div className="Statistics">
                 <div className="MoneyContainer">
                   <div className="Money TotalCommission">
-                    <div className="Number">{(this.props.state.dashboard.total_commission && currencyFormatter(this.props.state.dashboard.total_commission)) || "..."}</div>
+                    <div className="Number">{(dashboard.total_commission && currencyFormatter(dashboard.total_commission)) || "0"}</div>
                     <div className="Text">TOTAL COMMISSION</div>
                   </div>
                   <div className="Money TotalRevenue">
-                    <div className="Number">{(this.props.state.dashboard.total_revenue && currencyFormatter(this.props.state.dashboard.total_revenue)) || "..."}</div>
+                    <div className="Number">{(dashboard.total_revenue && currencyFormatter(dashboard.total_revenue)) || "0"}</div>
                     <div className="Text">TOTAL GROUP REVENUE</div>
                   </div>
                 </div>
                 <div className="PeopleContainer">
                   <div className="People TotalReferral">
-                    <div className="Number">{this.props.state.dashboard.total_user || '...'}</div>
+                    <div className="Number">{dashboard.total_user || "0"}</div>
                     <div className="Text">
                       TOTAL REFERRAL
                     </div>
                   </div>
                   <div className="People TotalActive">
-                    <div className="Number">{(this.props.state.dashboard.total_active_user && this.props.state.dashboard.total_inactive_user.length) || "..."}</div>
+                    <div className="Number">{(dashboard.total_active_user && dashboard.total_active_user.length) || "0"}</div>
                     <div className="Text">
                       TOTAL ACTIVE USER
                     </div>
@@ -77,8 +89,8 @@ class AccountDashboardPage extends Component {
             <div className="Chart">
               <DashboardChart data={
                 {
-                  revenueByMonth: this.props.state.dashboard.total_revenue_month,
-                  commissionByMonth: this.props.state.dashboard.total_commission_month
+                  revenueByMonth: dashboard.total_revenue_month,
+                  commissionByMonth: dashboard.total_commission_month
                 }
               } />
             </div>
@@ -106,13 +118,13 @@ class AccountDashboardPage extends Component {
               <tbody className="RevenueTableBody">
                 <tr>
                   <td className="FirstCell">COMMISSION</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.total_commission_month && this.props.state.dashboard.total_commission_month.map((item, index) => (
+                  {dashboard && dashboard.total_commission_month && dashboard.total_commission_month.map((item, index) => (
                     <td key={index}>{currencyFormatter(item)}</td>
                   ))}
                 </tr>
                 <tr>
                   <td>TOTAL GROUP REVENUE</td>
-                  {this.props.state.dashboard && this.props.state.dashboard.total_revenue_month && this.props.state.dashboard.total_revenue_month.map((item, index) => (
+                  {dashboard && dashboard.total_revenue_month && dashboard.total_revenue_month.map((item, index) => (
                     <td key={index}>{currencyFormatter(item)}</td>
                   ))}
                 </tr>
@@ -122,8 +134,8 @@ class AccountDashboardPage extends Component {
           <div className="Member">
             <div className="Title">YOUR MEMBER</div>
             <div className="Status">
-              <div className={'Paid ' + (this.state.isShowPaid && 'active')} onClick={this.toggle}>PAID</div>
-              <div className={'Unpaid ' + (!this.state.isShowPaid && 'active')} onClick={this.toggle}>UNPAID</div>
+              <div className={'Paid ' + (isShowPaid && 'active')} onClick={this.toggle.bind(this, true)}>PAID</div>
+              <div className={'Unpaid ' + (!isShowPaid && 'active')} onClick={this.toggle.bind(this, false)}>UNPAID</div>
             </div>
             <table className="Table">
               <thead className="MemberTableHead">
@@ -137,9 +149,9 @@ class AccountDashboardPage extends Component {
                   <th>Commission</th>
                 </tr>
               </thead>
-              {this.state.isShowPaid && (
+              {isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard && this.props.state.dashboard.total_active_user && this.props.state.dashboard.total_active_user.map((item, index) => (
+                  {dashboard && dashboard.total_active_user && dashboard.total_active_user.map((item, index) => (
                     <tr key={index}>
                       <td>{item.name}</td>
                       <td>{item.code}</td>
@@ -152,9 +164,9 @@ class AccountDashboardPage extends Component {
                   ))}
                 </tbody>
               )}
-              {!this.state.isShowPaid && (
+              {!isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {this.props.state.dashboard && this.props.state.dashboard.total_inactive_user && this.props.state.dashboard.total_inactive_user.map((item, index) => (
+                  {dashboard && dashboard.total_inactive_user && dashboard.total_inactive_user.map((item, index) => (
                     <tr key={index}>
                       <td>{item.name}</td>
                       <td>{item.code}</td>

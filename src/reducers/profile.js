@@ -1,5 +1,10 @@
 import * as types from '../actions';
-import { toast } from 'react-toastify';
+import {
+  toast
+} from 'react-toastify';
+import {
+  routes
+} from '../constants';
 
 const initialState = {
   loading: false,
@@ -11,7 +16,7 @@ const initialState = {
   dashboard: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const duration = 3000;
 
   switch (action.type) {
@@ -33,12 +38,16 @@ export default function(state = initialState, action) {
           JSON.stringify(currentUser),
         );
         if (action.payload.options.redirect) {
-          setTimeout(function() {
-            window.location.pathname = '/';
+          setTimeout(function () {
+            window.location.pathname = `${
+              routes.accountDashboard
+              }`;
           }, 100);
         }
       } else {
-        toast.error(action.payload.message, { autoClose: duration });
+        toast.error(action.payload.message, {
+          autoClose: duration
+        });
       }
 
       return {
@@ -87,8 +96,9 @@ export default function(state = initialState, action) {
       };
 
     case types.UPDATE_PROFILE_FAILURE:
-      console.log('UPDATE_PROFILE_FAILURE');
-      toast.error('Cannot update profile', { autoClose: duration });
+      toast.error('Cannot update profile', {
+        autoClose: duration
+      });
 
       return {
         ...state,
@@ -117,6 +127,7 @@ export default function(state = initialState, action) {
       ) {
         return {
           ...state,
+          loading: false,
           withdrawList: action.payload.data.draw,
           chargeList: action.payload.data.charge,
         };
@@ -138,6 +149,7 @@ export default function(state = initialState, action) {
       });
       return {
         ...state,
+        loading: false
       };
 
     // WITHDRAW MONEY
@@ -155,7 +167,7 @@ export default function(state = initialState, action) {
         toast.success('Request successful!', {
           autoClose: duration,
         });
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.pathname = '/account/profile/withdraw-noti';
         }, 100);
       } else {
@@ -189,7 +201,6 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_USER_DASHBOARD_SUCCESS:
-      console.log('dashboard response', action.payload);
       if (
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0

@@ -28,9 +28,9 @@ class MyWallet extends Component {
     }
   }
 
-  toggleShowTab = () => {
+  toggleShowTab = (isShowWithdraw) => {
     this.setState({
-      isShowWithdraw: !this.state.isShowWithdraw,
+      isShowWithdraw: isShowWithdraw,
     });
   };
 
@@ -44,6 +44,10 @@ class MyWallet extends Component {
   }
 
   render() {
+    const {
+      isShowWithdraw
+    } = this.state;
+
     return (
       <div>
         <AccountBreadcrumb />
@@ -81,23 +85,23 @@ class MyWallet extends Component {
               <div
                 className={
                   'Withdraw ' +
-                  (this.state.isShowWithdraw && 'ActiveTab')
+                  (isShowWithdraw && 'ActiveTab')
                 }
-                onClick={this.toggleShowTab}
+                onClick={this.toggleShowTab.bind(this, true)}
               >
                 Withdraw
               </div>
               <div
                 className={
                   'Topup ' +
-                  (!this.state.isShowWithdraw && 'ActiveTab')
+                  (!isShowWithdraw && 'ActiveTab')
                 }
-                onClick={this.toggleShowTab}
+                onClick={this.toggleShowTab.bind(this, false)}
               >
                 Deposit
               </div>
             </div>
-            {this.state.isShowWithdraw && (
+            {isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
@@ -122,7 +126,7 @@ class MyWallet extends Component {
                 </tbody>
               </table>
             )}
-            {!this.state.isShowWithdraw && (
+            {!isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
