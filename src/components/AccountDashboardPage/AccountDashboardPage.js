@@ -115,8 +115,9 @@ class AccountDashboardPage extends Component {
             <div className="Chart">
               <DashboardChart
                 data={{
-                  revenueByMonth: dashboard.total_revenue_month,
-                  commissionByMonth: dashboard.total_commission_month,
+                  revenueByMonth: dashboard.total_revenue_month || [],
+                  commissionByMonth:
+                    dashboard.total_commission_month || [],
                 }}
               />
             </div>
@@ -169,13 +170,13 @@ class AccountDashboardPage extends Component {
             <div className="Title">YOUR MEMBER</div>
             <div className="Status">
               <div
-                className={'Paid ' + (isShowPaid && 'active')}
+                className={isShowPaid ? 'Paid active' : 'Paid'}
                 onClick={this.toggle.bind(this, true)}
               >
                 PAID
               </div>
               <div
-                className={'Unpaid ' + (!isShowPaid && 'active')}
+                className={isShowPaid ? 'Paid' : 'Paid active'}
                 onClick={this.toggle.bind(this, false)}
               >
                 UNPAID
