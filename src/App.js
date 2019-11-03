@@ -32,6 +32,7 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 import SignupVerify from './components/SignupVerify/SignupVerify';
 import SignupPendingVerify from './components/SignupPendingVerify/SignupPendingVerify';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 
@@ -78,7 +79,8 @@ class App extends Component {
         spinner={<ScaleLoader />}
       >
         <Router>
-          <div className="App">{this.props.loading}
+          <div className="App">
+            {this.props.loading}
             <div className="HeaderContentContainer">
               <ToastContainer />
               <Header />
@@ -99,7 +101,9 @@ class App extends Component {
                     <OrderPage />
                   </Route>
                   <Route exact path={routes.courseDetail}>
-                    <CourseDetailPage />
+                    <ScrollToTop>
+                      <CourseDetailPage />
+                    </ScrollToTop>
                   </Route>
                   <Route exact path={routes.signin}>
                     <SigninPage />
