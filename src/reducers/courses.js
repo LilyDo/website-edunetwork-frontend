@@ -1,5 +1,6 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
+import { get } from 'lodash';
 import { routes, toastDuration } from '../constants';
 
 const initialState = {
@@ -73,11 +74,28 @@ export default function(state = initialState, action) {
         loading: true,
       };
     case types.BUY_COURSE_SUCCESS:
-      toast.success('Buy course successfully!', {
+      let message = '';
+      let pathname = '';
+
+      if (action.payload.shouldDepositAmount > 0) {
+        message = 'Request course successfully!';
+        pathname = routes.coursePaymentSuccessful.replace(
+          ':id',
+          'failed',
+        );
+      } else {
+        message = 'Buy course successfully!';
+        pathname = routes.coursePaymentSuccessful.replace(
+          ':id',
+          'successful',
+        );
+      }
+
+      toast.success(message, {
         autoClose: toastDuration,
       });
       setTimeout(function() {
-        window.location.pathname = routes.coursePaymentSuccessful;
+        window.location.pathname = pathname;
       }, toastDuration);
 
       return {
@@ -85,6 +103,12 @@ export default function(state = initialState, action) {
         loading: false,
       };
     case types.BUY_COURSE_FAILURE:
+      toast.error(
+        get(action, 'payload.error', 'Buy course failed!'),
+        {
+          autoClose: toastDuration,
+        },
+      );
       return {
         ...state,
         loading: false,

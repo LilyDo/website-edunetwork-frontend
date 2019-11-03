@@ -18,9 +18,12 @@ class OrderInfo extends Component {
     this.props.actions.depositAction(depositAmount);
   };
 
-  pay = () => {
+  pay = (shouldDeposit, shouldDepositAmount) => {
     window.confirm('Are you sure you want to buy this course?') &&
-      this.props.actions.buyCourseAction(this.props.courseDetail.id);
+      this.props.actions.buyCourseAction(
+        this.props.courseDetail.id,
+        shouldDeposit ? shouldDepositAmount : 0,
+      );
   };
 
   render() {
@@ -104,7 +107,12 @@ class OrderInfo extends Component {
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              <div className="CTAButton" onClick={this.pay}>
+              <div
+                className="CTAButton"
+                onClick={() =>
+                  this.pay(shouldDeposit, shouldDepositAmount)
+                }
+              >
                 THANH TOÁN NGAY
               </div>
             </div>
