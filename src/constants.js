@@ -21,3 +21,8 @@ export const routes = {
 };
 
 export const toastDuration = 3000;
+
+export const keys = {
+  // google key
+  googleRecaptchaSiteKey: '6LfkxsAUAAAAABCC_nnWUKz-0OhBcio0H0rtInIH',
+};

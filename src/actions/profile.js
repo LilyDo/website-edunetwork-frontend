@@ -170,7 +170,6 @@ export const getUserDashboardAction = () => {
         token: localStorage.getItem(types.TOKEN_KEY) || '',
       })
       .then(response => {
-        console.log('get dashboard response', response.data);
         dispatch(getUserDashboardSuccess(response.data));
       })
       .catch(error =>

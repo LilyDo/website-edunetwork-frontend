@@ -86,7 +86,6 @@ class DashboardChart extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <Chart
         options={this.state.config}
