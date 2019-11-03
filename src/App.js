@@ -80,7 +80,6 @@ class App extends Component {
       >
         <Router>
           <div className="App">
-            {this.props.loading}
             <div className="HeaderContentContainer">
               <ToastContainer />
               <Header />
@@ -170,7 +169,8 @@ const mapStateToProps = state => ({
   loading:
     state.auth.loading ||
     state.profile.loading ||
-    state.courses.loading,
+    state.courses.loading ||
+    state.contact.loading,
 });
 
 const mapDispatchToProps = dispatch => ({});
