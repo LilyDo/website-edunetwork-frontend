@@ -104,7 +104,7 @@ class ChangeProfile extends Component {
                   <div className="Text">Email</div>
                   <input
                     type="text"
-                    value={this.state.currentUser.email}
+                    defaultValue={this.state.currentUser.email}
                     disabled
                   ></input>
                 </div>
@@ -139,7 +139,7 @@ class ChangeProfile extends Component {
                     ></input>
                   </div>
                   <div>
-                    <div className="Text">Re New Password</div>
+                    <div className="Text">Confirm Password</div>
                     <input
                       type="password"
                       name="cf_password"
@@ -151,7 +151,7 @@ class ChangeProfile extends Component {
                     <input
                       type="text"
                       name="token"
-                      value={this.state.token}
+                      defaultValue={this.state.token}
                       hidden
                     ></input>
                   </div>
