@@ -72,31 +72,22 @@ class DashboardChart extends Component {
           color: ['red'],
         },
       },
-      dataArray: [
-        {
-          name: 'Total group revenue',
-          data: this.props.data.revenueByMonth,
-        },
-        {
-          name: 'Commission',
-          data: this.props.data.commissionByMonth,
-        },
-      ],
     };
   }
 
   render() {
+    const { data = {} } = this.props;
     return (
       <Chart
         options={this.state.config}
         series={[
           {
             name: 'Total group revenue',
-            data: this.props.data.revenueByMonth,
+            data: data.revenueByMonth,
           },
           {
             name: 'Commission',
-            data: this.props.data.commissionByMonth,
+            data: data.commissionByMonth,
           },
         ]}
         type="bar"

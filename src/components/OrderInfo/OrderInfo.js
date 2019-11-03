@@ -25,8 +25,7 @@ class OrderInfo extends Component {
   render() {
     const { courseDetail, profile } = this.props;
     let shouldDepositAmount =
-      // profile.total_price - courseDetail.price;
-      0 - courseDetail.price;
+      profile.total_price - courseDetail.price;
     let shouldDeposit = false;
     if (shouldDepositAmount < 0) {
       shouldDeposit = true;
@@ -104,18 +103,9 @@ class OrderInfo extends Component {
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              {shouldDeposit ? (
-                <div
-                  className="CTAButton"
-                  onClick={() => this.deposit(shouldDepositAmount)}
-                >
-                  NẠP NGAY
-                </div>
-              ) : (
-                <div className="CTAButton" onClick={this.pay}>
-                  THANH TOÁN NGAY
-                </div>
-              )}
+              <div className="CTAButton" onClick={this.pay}>
+                THANH TOÁN NGAY
+              </div>
             </div>
           </div>
         </div>

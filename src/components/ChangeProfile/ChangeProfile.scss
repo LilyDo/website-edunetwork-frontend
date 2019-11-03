@@ -1,29 +1,30 @@
-@import "../../shared.scss";
-@import "../../assets/font/font.scss";
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
 
 .ChangeProfile {
   .Title {
     color: $darkblue;
+    @extend %fontHeader;
     padding-bottom: 5px;
     border-bottom: 1px solid $lightgrey;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin-bottom: 10px;
+    }
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      margin-bottom: 20px;
+
+    }
+
+
   }
   .Profile {
     .Avatar {
       font-size: 10px;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-
-      .Photo {
-        $size: 155px;
-        width: $size;
-        height: $size;
-        border-radius: $size/2;
-        border: 1px solid $lightgrey;
-      }
 
       .ChangePhotoText {
         color: $grey;
+        padding-left: 5px;
       }
 
       .ChangePhotoButton {
@@ -51,7 +52,7 @@
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: flex-end;
       .GroupProfile1,
       .GroupProfile2 {
         .Text {
@@ -91,7 +92,6 @@
       background-color: $brown;
       border-radius: 10px;
       color: white;
-      font-size: 15px;
       &:hover {
         cursor: pointer;
       }
@@ -99,28 +99,96 @@
   }
 
   @media only screen and (max-width: $mobileBreakPoint) {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 50px;
+
+    .Profile {
+      .Text {
+        color: $lightgrey;
+      }
+
+      .Avatar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-bottom: 20px;
+
+        .Photo {
+          $size: 80px;
+          width: $size;
+          height: $size;
+          border-radius: $size/2;
+          border: 1px solid $lightgrey;
+        }
+      }
+
+      .GroupProfile1 {
+        width: 100%;
+        .Fullname,
+        .Email,
+        .PhoneNumber {
+          input {
+            width: 90%;
+            height: 30px;
+            font-size: 12px;
+          }
+        }
+      }
+      .GroupProfile2 {
+        width: 100%;
+        input {
+          width: 90%;
+          height: 30px;
+          font-size: 12px;
+
+        }
+        .NewPassword {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+
+    .ButtonContainer {
+      padding-top: 20px;
+
+      .CancelButton,
+      .UpdateButton {
+        padding: 5px 20px;
+        font-size: 12px;
+      }
+
+      .CancelButton {
+        margin-right: 10px;
+      }
+    }
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
     padding-left: 150px;
     padding-right: 150px;
-
-    .Title {
-      font-size: 20px;
-    }
+    padding-bottom: 130px;
 
     .Profile {
       .Avatar {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+
         .Photo {
-          margin-top: 18px;
+          $size: 155px;
+          width: $size;
+          height: $size;
+          border-radius: $size/2;
+          border: 1px solid $lightgrey;
         }
       }
       .GroupProfile {
         padding-top: 40px;
         .GroupProfile1 {
           margin-right: 40px;
-        }
-        .Text {
         }
 
         .NewPassword {
@@ -140,11 +208,12 @@
     .ButtonContainer {
       padding-top: 70px;
       padding-bottom: 70px;
-      font-size: 16px;
 
       .CancelButton,
       .UpdateButton {
         padding: 10px 45px;
+        font-size: 16px;
+
       }
 
       .CancelButton {

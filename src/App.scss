@@ -1,4 +1,4 @@
-@import "./shared.scss";
+@import './shared.scss';
 
 .App {
   @extend %fontText;
@@ -29,4 +29,15 @@
 .Toastify__toast-container {
   position: fixed !important;
   z-index: 999 !important;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='password'] {
+  border: 1px solid $lightgrey !important;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16) !important;
+}
+
+input[type='submit'] {
+  border: none;
 }
