@@ -19,7 +19,8 @@ class OrderInfo extends Component {
   };
 
   pay = () => {
-    this.props.actions.buyCourseAction(this.props.courseDetail.id);
+    window.confirm('Are you sure you want to buy this course?') &&
+      this.props.actions.buyCourseAction(this.props.courseDetail.id);
   };
 
   render() {
