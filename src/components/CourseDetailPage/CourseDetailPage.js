@@ -29,7 +29,6 @@ class CourseDetailPage extends Component {
     const loading = get(this, 'props.loading');
     if (
       newId > 0 &&
-      currentId > 0 &&
       !loading &&
       (Object.keys(courseDetail).length === 0 || newId !== currentId)
     ) {
