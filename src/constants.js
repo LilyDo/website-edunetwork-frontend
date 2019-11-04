@@ -1,5 +1,6 @@
 export const routes = {
   home: '/',
+  sendContactSuccessful: '/send-contact-successful',
   // course
   courses: '/courses',
   coursePaymentSuccessful: '/courses/payment/:status', // this should be declared before courseDetail or "paymentsucessful" will become the id param

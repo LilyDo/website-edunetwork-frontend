@@ -32,6 +32,7 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 import SignupVerify from './components/SignupVerify/SignupVerify';
 import SignupPendingVerify from './components/SignupPendingVerify/SignupPendingVerify';
+import SendContactSuccessful from './components/SendContactSuccessful/SendContactSuccessful';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
@@ -112,6 +113,9 @@ class App extends Component {
                   </Route>
                   <Route exact path={routes.registerPendingActive}>
                     <SignupPendingVerify />
+                  </Route>
+                  <Route exact path={routes.sendContactSuccessful}>
+                    <SendContactSuccessful />
                   </Route>
                   <PrivateRoute
                     authed={this.state.isLogined}

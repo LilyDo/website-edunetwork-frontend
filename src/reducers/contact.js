@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
           autoClose: toastDuration,
         });
         setTimeout(function() {
-          window.location.pathname = `${routes.home}`;
+          window.location.pathname = `${routes.sendContactSuccessful}`;
         }, 100);
       } else {
         let obj = response.data.errors;
