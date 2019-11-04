@@ -30,23 +30,22 @@ function Footer() {
             <div className="FooterContact">
               <div className="Title">CONNECT WITH US</div>
               <div className="ContactInfo">
-                <div className="Email">Email: abc@edunetwork.com</div>
-                <div className="Hotline">Hotline: 0909 456 789</div>
-                <div className="Facebook">
+                <div className="Email">Email: info@edunetwork.global</div>
+                {/* <div className="Facebook">
                   Fanpage: fb.com/EduNetwork
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="FooterPlugin">
-              <div className="Title">FOLLOW US</div>
+              {/* <div className="Title">FOLLOW US</div>
               <div className="PluginIcon">
                 <img src={IconFacebook} alt="icon facebook" />
                 <img src={IconTwitter} alt="icon twitter" />
                 <img src={IconYoutube} alt="icon youtube" />
                 <img src={IconLinkedin} alt="icon linkedin" />
                 <img src={IconPinterest} alt="icon pinterest" />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="LowerFooterInfo">

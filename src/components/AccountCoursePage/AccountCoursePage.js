@@ -34,7 +34,7 @@ class AccountCoursePage extends Component {
         <AccountBreadcrumb />
 
         <div className="CourseBlock">
-          <div className="CourseName">Khóa học của bạn</div>
+          <div className="CourseName">Your courses</div>
           <div className="CoursesContainer">
             {buy.map((course, index) => (
               <CourseCard courseCarouselItem={course} key={index} isBought={true} />
@@ -44,7 +44,7 @@ class AccountCoursePage extends Component {
 
         {unboughtCourses.length > 0 && (
           <div className="CourseBlock">
-            <div className="CourseName">Khóa học bổ sung cho bạn</div>
+            <div className="CourseName">Other courses</div>
             <div className="CoursesContainer">
               {unboughtCourses.map((course, index) => (
                 <CourseCard courseCarouselItem={course} key={index} />

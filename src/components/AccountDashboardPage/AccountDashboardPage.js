@@ -216,7 +216,7 @@ class AccountDashboardPage extends Component {
                           {currencyFormatter(item.max_price || 0)}
                         </td>
                         <td>
-                          {currencyFormatter(item.total_price) || 0}
+                          {currencyFormatter(item.commission) || 0}
                         </td>
                       </tr>
                     ))}
@@ -238,7 +238,7 @@ class AccountDashboardPage extends Component {
                             {currencyFormatter(item.max_price || 0)}
                           </td>
                           <td>
-                            {currencyFormatter(item.total_price || 0)}
+                            {currencyFormatter(item.commission || 0)}
                           </td>
                         </tr>
                       ),
