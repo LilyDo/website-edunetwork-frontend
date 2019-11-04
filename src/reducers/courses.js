@@ -103,12 +103,9 @@ export default function(state = initialState, action) {
         loading: false,
       };
     case types.BUY_COURSE_FAILURE:
-      toast.error(
-        get(action, 'payload.error', 'Buy course failed!'),
-        {
-          autoClose: toastDuration,
-        },
-      );
+      toast.error('The account is locked for transactions!', {
+        autoClose: toastDuration,
+      });
       return {
         ...state,
         loading: false,
