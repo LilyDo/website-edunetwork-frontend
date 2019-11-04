@@ -118,11 +118,11 @@ class OrderInfo extends Component {
             </div>
           </div>
         </div>
-        <div className="TextNotice">{`Lưu ý:
+        <div className="TextNotice">{`Note:
 
-Sau khi tiến hành thanh toán, khóa học của bạn sẽ được kích hoạt ngay để bạn có thể bắt đầu vào học.
+After payment, your course will be activated immediately.
 
-Ngoài ra, chúng tôi cũng đã gửi thông tin khóa học qua email cho bạn. Hãy kiểm tra email nhé!`}</div>
+Beside, we sent the course information to your email. Please check, thanks!`}</div>
       </div>
     );
   }

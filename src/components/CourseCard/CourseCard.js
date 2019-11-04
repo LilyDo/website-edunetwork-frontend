@@ -29,7 +29,7 @@ class CourseCard extends Component {
                 courseCarouselItem.id,
               )}
             >
-              <div className="PayNow">{isBought ? 'VÀO HỌC NGAY' : 'XEM CHI TIẾT'}</div>
+              <div className="PayNow">{isBought ? 'LEARN NOW' : 'SEE DETAIL'}</div>
             </Link>
           </div>
         </div>
