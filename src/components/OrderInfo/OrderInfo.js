@@ -38,10 +38,10 @@ class OrderInfo extends Component {
 
     return (
       <div className="OrderInfoContainer">
-        <div className="Title">THÔNG TIN ĐƠN HÀNG CỦA BẠN</div>
+        <div className="Title">YOUR ORDER INFORMATION</div>
         <div className="OrderInfo">
           <div className="CourseInfo">
-            <div>Tên khóa học</div>
+            <div>Course name</div>
             <div className="CourseHeader">
               <div className="HeaderText">{courseDetail.title}</div>
               <div className="LevelPrice">
@@ -64,7 +64,7 @@ class OrderInfo extends Component {
               <div className="Container">
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
-                  Thời lượng:{' '}
+                  Duration:{' '}
                   <span>
                     {formatDurationText(courseDetail.duration)}
                   </span>
@@ -73,33 +73,33 @@ class OrderInfo extends Component {
               <div className="Container">
                 <img alt="book" src={BookIcon}></img>
                 <div className="Text">
-                  Giáo trình:{' '}
-                  <span>{courseDetail.total_lesson} bài giảng</span>
+                  Content:{' '}
+                  <span>{courseDetail.total_lesson} videos</span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="own" src={OwnerIcon}></img>
-                <div className="Text">Sở hữu khóa học trọn đời</div>
+                <div className="Text">Lifetime learning</div>
               </div>
             </div>
           </div>
           <div className="WalletInfoContainer">
-            <div className="WalletTitle">VÍ CỦA BẠN</div>
+            <div className="WalletTitle">YOUR WALLET</div>
             <div className="WalletInfo">
               <div className="WalletInfoItems">
                 <div className="Container Remaining">
-                  <div className="Text">Số dư hiện tại trong ví:</div>
+                  <div className="Text">Balance:</div>
                   <div className="Number">{profile.total_price}</div>
-                  <div className="Currency">usd</div>
+                  <div className="Currency">USD</div>
                 </div>
                 <div className="Container PendingOrder">
-                  <div className="Text">Đơn hàng cần thanh toán:</div>
+                  <div className="Text">Need to purchased:</div>
                   <div className="Number">{courseDetail.price}</div>
-                  <div className="Currency">usd</div>
+                  <div className="Currency">USD</div>
                 </div>
                 <div className="Container Missing">
                   <div className="Text">
-                    Để thanh toán cho đơn hàng, bạn cần nạp thêm:
+                    Amount to top up:
                   </div>
                   <div className="Number">
                     {shouldDeposit ? shouldDepositAmount : 0}
@@ -113,7 +113,7 @@ class OrderInfo extends Component {
                   this.pay(shouldDeposit, shouldDepositAmount)
                 }
               >
-                THANH TOÁN NGAY
+                PURCHASE NOW
               </div>
             </div>
           </div>
