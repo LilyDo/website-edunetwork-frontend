@@ -74,7 +74,7 @@ class RequestDeposit extends Component {
                 deposit
               </div>
               <div className="WithdrawAmount">
-                <div>Amount*</div>
+                <div>Amount* (USD)</div>
                 <input
                   type="number"
                   placeholder="How much do you want to deposit"

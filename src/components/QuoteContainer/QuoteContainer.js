@@ -6,8 +6,7 @@ function QuoteContainer() {
     <div className="QuoteContainer">
       <div className="Quote">
         <span>"</span>
-        {`CHÚNG TÔI MUỐN XÂY DỰNG MỘT CỘNG ĐỒNG
-        THAY ĐỔI VỀ TRI THỨC VÀ THAY ĐỔI VỀ THU NHẬP`}
+        {`Building a community to enpower and enrich every individual's lives through education and networking.`}
         <span>"</span>
       </div>
     </div>

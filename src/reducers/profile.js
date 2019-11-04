@@ -200,8 +200,11 @@ export default function(state = initialState, action) {
         toast.success('Request successful!', {
           autoClose: toastDuration,
         });
+        let pathname = routes.accountDepositNoti
+          .replace(':code', action.payload.data.code)
+          .replace(':amount', action.payload.data.amount);
         setTimeout(function() {
-          window.location.pathname = routes.accountDepositNoti;
+          window.location.pathname = pathname;
         }, 100);
       } else {
         toast.error(action.payload.errors[0], {
