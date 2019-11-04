@@ -194,7 +194,9 @@
   }
   .RevenueChart {
     @extend %paddingTitle;
-    overflow: scroll;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      overflow: scroll;
+    }
 
     .Title {
       @extend %fontSemiBold;

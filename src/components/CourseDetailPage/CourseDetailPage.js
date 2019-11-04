@@ -54,7 +54,7 @@ class CourseDetailPage extends Component {
                 ':id',
                 courseDetail.id,
               ),
-              text: 'COURSE DETAILS',
+              text: 'DETAILS',
             },
           ]}
         />
