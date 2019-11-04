@@ -174,7 +174,9 @@ export const requestDepositAction = payload => {
       .then(response => {
         dispatch(requestDepositSuccess(response.data));
       })
-      .catch(error => dispatch(requestDepositFailure(error.response)));
+      .catch(error =>
+        dispatch(requestDepositFailure(error.response)),
+      );
   };
 };
 
