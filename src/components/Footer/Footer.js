@@ -49,7 +49,7 @@ function Footer() {
             </div>
           </div>
           <div className="LowerFooterInfo">
-            &copy; 2019 by EDUNETWORK. Allright reserved.
+            &copy; 2019 by EDUNETWORK. All rights reserved.
           </div>
         </div>
       </div>

@@ -30,7 +30,6 @@ $mobileMargin: 10px 25px 10px 25px;
   max-width: 1103px;
   width: 100%;
   margin: auto;
-  // border-bottom: 1px solid $gold;
   display: flex;
   flex-direction: column;
 
@@ -44,6 +43,10 @@ $mobileMargin: 10px 25px 10px 25px;
 
   .AttachmentPlayer {
     text-align: center;
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      max-width: 720px;
+    }
 
     iframe {
       @media only screen and (max-width: $mobileBreakPoint) {
@@ -61,7 +64,7 @@ $mobileMargin: 10px 25px 10px 25px;
   .TitleDescriptionCurriculumnContainer,
   .CourseAvatar {
     max-width: 720px;
-    margin: auto;
+    // margin: auto;
     width: 100%;
   }
 

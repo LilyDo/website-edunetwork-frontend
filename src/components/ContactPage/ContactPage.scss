@@ -1,5 +1,5 @@
-@import "../../shared.scss";
-@import "../../assets/font/font.scss";
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
 
 .ContactPage {
   @media only screen and (max-width: $mobileBreakPoint) {
@@ -9,6 +9,7 @@
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-top: 150px;
     padding-left: 150px;
     padding-right: 150px;
     padding-bottom: 130px;
@@ -100,7 +101,8 @@
       }
 
       select {
-        background: url(../../assets/images/icon_grey_arrow_down.svg) 96% / 5% no-repeat white;
+        background: url(../../assets/images/icon_grey_arrow_down.svg)
+          96% / 5% no-repeat white;
         background-position: right;
       }
 

@@ -13,10 +13,7 @@
     }
     @media only screen and (min-width: $mobileBreakPoint + 1) {
       margin-bottom: 20px;
-
     }
-
-
   }
   .Profile {
     .Avatar {
@@ -142,7 +139,6 @@
           width: 90%;
           height: 30px;
           font-size: 12px;
-
         }
         .NewPassword {
           display: flex;
@@ -207,13 +203,11 @@
 
     .ButtonContainer {
       padding-top: 70px;
-      padding-bottom: 70px;
 
       .CancelButton,
       .UpdateButton {
         padding: 10px 45px;
         font-size: 16px;
-
       }
 
       .CancelButton {

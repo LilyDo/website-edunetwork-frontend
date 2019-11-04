@@ -1,6 +1,6 @@
 import React from 'react';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
-import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselContainer';
+import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { routes } from '../../constants';
 
@@ -14,7 +14,7 @@ function CoursePage() {
         ]}
       />
       <QuoteContainer />
-      <CourseCarouselContainer />
+      <CourseCardContainer />
     </div>
   );
 }

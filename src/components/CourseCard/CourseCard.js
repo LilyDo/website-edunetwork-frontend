@@ -8,7 +8,7 @@ class CourseCard extends Component {
     const { courseCarouselItem, isBought } = this.props;
 
     return (
-      <div className="CourseCardContainer">
+      <div className="CourseCard">
         <div className="Level">{courseCarouselItem.level}</div>
         <img
           src={require(`../../assets/images/${courseCarouselItem.level.toLowerCase()}_background.jpg`)}
