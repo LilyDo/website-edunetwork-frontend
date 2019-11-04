@@ -80,13 +80,13 @@ export default function(state = initialState, action) {
       if (action.payload.shouldDepositAmount > 0) {
         message = 'Request course successfully!';
         pathname = routes.coursePaymentSuccessful.replace(
-          ':id',
+          ':status',
           'failed',
         );
       } else {
         message = 'Buy course successfully!';
         pathname = routes.coursePaymentSuccessful.replace(
-          ':id',
+          ':status',
           'successful',
         );
       }

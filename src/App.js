@@ -26,6 +26,7 @@ import AccountDashboardPage from './components/AccountDashboardPage/AccountDashb
 import AccountProfilePage from './components/AccountProfilePage/AccountProfilePage';
 import MyWallet from './components/MyWallet/MyWallet';
 import MyWallet_Withdraw from './components/MyWallet_Withdraw/MyWallet_Withdraw';
+import RequestDeposit from './components/RequestDeposit/RequestDeposit';
 import WithdrawNotification from './components/WithdrawNotification/WithdrawNotification';
 import AccountCoursePage from './components/AccountCoursePage/AccountCoursePage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
@@ -39,6 +40,7 @@ import ScaleLoader from 'react-spinners/ScaleLoader';
 
 // services
 import { getUserFormLocal } from './services/appService';
+import DepositNotification from './components/DepositNotification/DepositNotification';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -144,8 +146,20 @@ class App extends Component {
                   <PrivateRoute
                     authed={this.state.isLogined}
                     exact
+                    path={routes.accountDeposit}
+                    component={RequestDeposit}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
                     path={routes.accountWithdrawNoti}
                     component={WithdrawNotification}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
+                    path={routes.accountDepositNoti}
+                    component={DepositNotification}
                   />
                   <PrivateRoute
                     authed={this.state.isLogined}

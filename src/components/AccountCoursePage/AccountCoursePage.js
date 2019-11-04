@@ -37,7 +37,7 @@ class AccountCoursePage extends Component {
           <div className="CourseName">Khóa học của bạn</div>
           <div className="CoursesContainer">
             {buy.map((course, index) => (
-              <CourseCard courseCarouselItem={course} key={index} />
+              <CourseCard courseCarouselItem={course} key={index} isBought={true} />
             ))}
           </div>
         </div>

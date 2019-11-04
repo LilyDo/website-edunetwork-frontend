@@ -41,6 +41,7 @@ class CourseInfo extends Component {
   };
 
   setActiveAttachment = attachment => {
+    console.log('attachment:', attachment);
     this.setState({
       activeAttachment: attachment,
     });
@@ -57,7 +58,7 @@ class CourseInfo extends Component {
           <div className="AttachmentPlayer">
             <iframe
               title="hero_youtube"
-              src={activeAttachment.link_file}
+              src={`${activeAttachment.link_file}?autoplay=1&showinfo=0&controls=1`}
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

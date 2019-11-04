@@ -9,8 +9,12 @@ import {
 } from '../../services/appService';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getChargeHistoryAction } from '../../actions/profile';
+import {
+  getChargeHistoryAction,
+  getProfileAction,
+} from '../../actions/profile';
 import { routes } from '../../constants';
+import * as types from '../../actions/index';
 
 class MyWallet extends Component {
   state = {
@@ -28,7 +32,7 @@ class MyWallet extends Component {
     }
   }
 
-  toggleShowTab = (isShowWithdraw) => {
+  toggleShowTab = isShowWithdraw => {
     this.setState({
       isShowWithdraw: isShowWithdraw,
     });
@@ -39,14 +43,15 @@ class MyWallet extends Component {
   };
 
   componentDidMount() {
+    this.props.actions.getProfileAction({
+      token: localStorage.getItem(types.TOKEN_KEY),
+    });
     this.checkCurrentUser();
     this.getChargeHistory();
   }
 
   render() {
-    const {
-      isShowWithdraw
-    } = this.state;
+    const { isShowWithdraw } = this.state;
 
     return (
       <div>
@@ -77,15 +82,16 @@ class MyWallet extends Component {
             <Link to={routes.accountWithdraw}>
               <div className="WithdrawButton">WITHDRAW</div>
             </Link>
-            <div className="TopupButton">DEPOSIT</div>
+            <Link to={routes.accountDeposit}>
+              <div className="TopupButton">DEPOSIT</div>
+            </Link>
           </div>
           <div className="Transactions">
             <div className="Text">TRANSACTIONS</div>
             <div className="Actions">
               <div
                 className={
-                  'Withdraw ' +
-                  (isShowWithdraw && 'ActiveTab')
+                  'Withdraw ' + (isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab.bind(this, true)}
               >
@@ -93,8 +99,7 @@ class MyWallet extends Component {
               </div>
               <div
                 className={
-                  'Topup ' +
-                  (!isShowWithdraw && 'ActiveTab')
+                  'Topup ' + (!isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab.bind(this, false)}
               >
@@ -172,6 +177,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getChargeHistoryAction,
+        getProfileAction,
       },
       dispatch,
     ),

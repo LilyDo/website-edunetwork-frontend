@@ -17,6 +17,8 @@ export const routes = {
   accountWithdraw: '/account/profile/withdraw',
   accountWithdrawNoti: '/account/profile/withdraw-noti',
   accountCourses: '/account/courses',
+  accountDeposit: '/account/deposit',
+  accountDepositNoti: '/account/profile/deposit-noti',
   // misc
   contact: '/contact',
 };
