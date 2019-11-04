@@ -58,10 +58,17 @@ $mobileMargin: 10px 25px 10px 25px;
     }
   }
 
-  .TitleDescriptionCurriculumnContainer {
+  .TitleDescriptionCurriculumnContainer,
+  .CourseAvatar {
     max-width: 720px;
     margin: auto;
     width: 100%;
+  }
+
+  .CourseAvatar {
+    img {
+      width: 100%;
+    }
   }
 
   .Title {

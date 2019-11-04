@@ -7,12 +7,12 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // custom
 import './App.scss';
-import { routes } from './constants';
+import { routes, toastDuration } from './constants';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './components/HomePage/HomePage';
@@ -66,6 +66,12 @@ class App extends Component {
   state = {
     isLogined: false,
   };
+
+  componentDidMount() {
+    toast.configure({
+      autoClose: toastDuration,
+    });
+  }
 
   checkCurrentUser() {
     if (getUserFormLocal()) {
