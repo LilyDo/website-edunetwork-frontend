@@ -184,6 +184,7 @@ export default function(state = initialState, action) {
           autoClose: toastDuration,
         });
         let pathname = routes.accountDepositNoti
+          .replace(':isBuyCourse', 'deposit')
           .replace(':code', action.payload.data.code)
           .replace(':amount', action.payload.data.amount);
         setTimeout(function() {
