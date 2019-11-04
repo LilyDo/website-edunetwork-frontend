@@ -4,9 +4,26 @@ import './DepositNotification.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
+import {
+  getUrlParameter,
+  currencyFormatter,
+} from '../../services/appService';
 
 class DepositNotification extends Component {
+  state = {
+    code: '',
+    amount: 0,
+  };
+
+  componentDidMount() {
+    this.setState({
+      code: this.props.match.params.code,
+      amount: this.props.match.params.amount,
+    });
+  }
+
   render() {
+    const { code, amount } = this.state;
     return (
       <div className="WithdrawNotification">
         <div className="Title">
@@ -25,9 +42,19 @@ class DepositNotification extends Component {
             <br />
             <br />
           </div>
+          You would need to make payment with the amount of:{' '}
+          <b>{currencyFormatter(amount)}</b> (1 USD = 24.000 VND)
+          <br />
+          <br />- Verification code: <b>{code}</b>
+          <br />
+          <br />
           Transfer information: Please indicate FAST Transfer
           <br />
           <br />
+          <div>
+            <br />
+            <br />
+          </div>
         </div>
         <div>
           - <b>Vietnam bank account</b>
@@ -54,11 +81,7 @@ class DepositNotification extends Component {
             Bitcoin wallet address: 1Ay16q45QTmzWCZbpLRZvHNoGmPo85kmSQ
           </b>
           <br />
-          Transaction Number:{' '}
-          <b>
-            Your Transaction Code (Please get it in your wallet or you
-            email)
-          </b>
+          <br />
           <br />
           <br />
         </div>

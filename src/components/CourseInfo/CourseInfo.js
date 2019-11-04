@@ -79,7 +79,7 @@ class CourseInfo extends Component {
               }
               onClick={this.showCourseIntroduction}
             >
-              <span>Thông tin khóa học</span>
+              <span>Course detail</span>
             </div>
             <div
               className={
@@ -89,14 +89,14 @@ class CourseInfo extends Component {
               }
               onClick={this.hideCourseIntroduction}
             >
-              <span>Giáo trình</span>
+              <span>Content</span>
             </div>
           </div>
 
           {isIntroductionVisible && (
             <div className="CourseIntroduction">
               <div className="IntroductionContent">
-                <div className="Head">Giới thiệu khóa học</div>
+                <div className="Head">Course introduction</div>
                 <p>{courseDetail.description}</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ class CourseInfo extends Component {
 
           {!isIntroductionVisible && (
             <div className="CourseCurriculum">
-              <div className="Head">Giáo trình</div>
+              <div className="Head">Content</div>
               <div className="CurriculumContent">
                 {chapters.map(chapter => (
                   <div className="Course" key={chapter.id}>

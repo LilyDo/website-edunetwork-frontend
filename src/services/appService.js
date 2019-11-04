@@ -64,7 +64,7 @@ export const formatDuration = duration => {
 
 export const formatDurationText = duration => {
   const formattedDuration = splitHoursMinutesSeconds(duration);
-  return `${formattedDuration.hours} giờ ${formattedDuration.minutes} phút ${formattedDuration.seconds} giây`;
+  return `${formattedDuration.hours} hours ${formattedDuration.minutes} minutes ${formattedDuration.seconds} seconds`;
 };
 
 export const extractAndShoweErrorMessages = error => {

@@ -1,6 +1,6 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
-import { routes } from '../constants';
+import { routes, toastDuration } from '../constants';
 import { extractAndShoweErrorMessages } from '../services/appService';
 
 const initialState = {
@@ -180,9 +180,14 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Request successful!');
+        toast.success('Request successful!', {
+          autoClose: toastDuration,
+        });
+        let pathname = routes.accountDepositNoti
+          .replace(':code', action.payload.data.code)
+          .replace(':amount', action.payload.data.amount);
         setTimeout(function() {
-          window.location.pathname = routes.accountDepositNoti;
+          window.location.pathname = pathname;
         }, 100);
       } else {
         toast.error(action.payload.errors[0]);
