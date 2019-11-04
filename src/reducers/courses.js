@@ -8,6 +8,7 @@ const initialState = {
   courseDetail: {},
   userCourses: [],
   error: null,
+  orderObj: {},
 };
 
 export default function(state = initialState, action) {
@@ -53,7 +54,7 @@ export default function(state = initialState, action) {
     case types.GET_USER_COURSES_REQUEST:
       return {
         ...state,
-        isloading: true,
+        loading: true,
       };
     case types.GET_USER_COURSES_SUCCESS:
       return {
@@ -75,13 +76,14 @@ export default function(state = initialState, action) {
     case types.BUY_COURSE_SUCCESS:
       let message = '';
       let pathname = '';
-
+      let orderObj = {};
       if (action.payload.shouldDepositAmount > 0) {
+        orderObj = action.payload.data || {};
         message = 'Request course successfully!';
-        pathname = routes.coursePaymentSuccessful.replace(
-          ':status',
-          'failed',
-        );
+        pathname = routes.accountDepositNoti
+          .replace(':isBuyCourse', 'buy')
+          .replace(':code', orderObj.payment_code)
+          .replace(':amount', orderObj.amount_need);
       } else {
         message = 'Buy course successfully!';
         pathname = routes.coursePaymentSuccessful.replace(
@@ -98,6 +100,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        orderObj: orderObj,
       };
     case types.BUY_COURSE_FAILURE:
       toast.error('The account is locked for transactions!');

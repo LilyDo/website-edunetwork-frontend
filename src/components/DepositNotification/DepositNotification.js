@@ -4,26 +4,28 @@ import './DepositNotification.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
-import {
-  getUrlParameter,
-  currencyFormatter,
-} from '../../services/appService';
+import { currencyFormatter } from '../../services/appService';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class DepositNotification extends Component {
   state = {
+    isBuyCourse: 'buy',
     code: '',
     amount: 0,
   };
 
   componentDidMount() {
     this.setState({
+      isBuyCourse: this.props.match.params.isBuyCourse,
       code: this.props.match.params.code,
       amount: this.props.match.params.amount,
     });
   }
 
   render() {
-    const { code, amount } = this.state;
+    const { isBuyCourse, code, amount } = this.state;
+
     return (
       <div className="WithdrawNotification">
         <div className="Title">
@@ -43,9 +45,43 @@ class DepositNotification extends Component {
             <br />
           </div>
           You would need to make payment with the amount of:{' '}
-          <b>{currencyFormatter(amount)}</b> (1 USD = 24.000 VND)
+          <b>
+            {currencyFormatter(
+              isBuyCourse === 'buy'
+                ? this.props.orderObj.amount_need
+                : amount,
+            )}
+          </b>{' '}
+          (1 USD = 24.000 VND)
           <br />
-          <br />- Verification code: <b>{code}</b>
+          {isBuyCourse === 'buy' && (
+            <div>
+              <br />- Date and time:{' '}
+              <b>{this.props.orderObj.date || ''}</b>
+              <br />- Verification code:{' '}
+              <b>{this.props.orderObj.payment_code || code}</b>
+              <br />- Member ID:{' '}
+              <b>{this.props.orderObj.user_code || ''}</b>
+              <br />- Existing balance:{' '}
+              <b>
+                {currencyFormatter(this.props.orderObj.amount) || ''}
+              </b>
+              <br />- Amount to top up:{' '}
+              <b>
+                {currencyFormatter(this.props.orderObj.amount_need) ||
+                  ''}
+              </b>
+              <br />- Course Level:{' '}
+              <b>{this.props.orderObj.level || ''}</b>
+              <br />- Status:{' '}
+              <b>{this.props.orderObj.status || ''}</b>
+            </div>
+          )}
+          {isBuyCourse === 'deposit' && (
+            <div>
+              <br />- Verification code: <b>{code}</b>
+            </div>
+          )}
           <br />
           <br />
           Transfer information: Please indicate FAST Transfer
@@ -116,4 +152,19 @@ class DepositNotification extends Component {
   }
 }
 
-export default DepositNotification;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    orderObj: state.courses.orderObj,
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators({}, dispatch),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DepositNotification);

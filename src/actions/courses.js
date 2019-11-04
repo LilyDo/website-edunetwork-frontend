@@ -21,7 +21,6 @@ import {
   DEPOSIT_SUCCESS,
   DEPOSIT_FAILURE,
 } from './index';
-import { getProfileAction } from './profile';
 
 /**
  * +-------------+
@@ -177,12 +176,6 @@ export const buyCourseAction = (courseId, shouldDepositAmount) => {
         dispatch(
           buyCourseSuccess(response.data, shouldDepositAmount),
         );
-        dispatch(
-          getProfileAction({
-            token: localStorage.getItem(TOKEN_KEY),
-            options: { redirect: false },
-          }),
-        );
       })
       .catch(error => dispatch(buyCourseFailure(error.message)));
   };
@@ -219,12 +212,6 @@ export const depositAction = amount => {
       )
       .then(response => {
         dispatch(depositSuccess(response.data));
-        dispatch(
-          getProfileAction({
-            token: localStorage.getItem(TOKEN_KEY),
-            options: { redirect: false },
-          }),
-        );
       })
       .catch(error => dispatch(depositFailure(error.message)));
   };
