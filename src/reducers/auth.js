@@ -1,4 +1,5 @@
 import * as types from '../actions';
+import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { toastDuration } from '../constants';
 
@@ -60,6 +61,14 @@ export default function(state = initialState, action) {
       };
 
     case types.REGISTER_FAILURE:
+      const errorMessages = get(
+        action,
+        'payload.error.data.message',
+        '',
+      ).split(',');
+      errorMessages.map(message => toast.error(message), {
+        autoClose: toastDuration,
+      });
       return {
         ...state,
         loading: false,

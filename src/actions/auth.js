@@ -84,7 +84,7 @@ export const registerAction = user => {
           );
         }
       })
-      .catch(error => dispatch(registerFailure(error.message)));
+      .catch(error => dispatch(registerFailure(error.response)));
   };
 };
 
