@@ -1,6 +1,7 @@
 import * as types from '../actions';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
+import { extractAndShoweErrorMessages } from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -59,12 +60,7 @@ export default function(state = initialState, action) {
       };
 
     case types.REGISTER_FAILURE:
-      const errorMessages = get(
-        action,
-        'payload.error.data.message',
-        '',
-      ).split(',');
-      errorMessages.map(message => toast.error(message));
+      extractAndShoweErrorMessages(action.payload.error);
       return {
         ...state,
         loading: false,

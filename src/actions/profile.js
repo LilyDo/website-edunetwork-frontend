@@ -145,7 +145,7 @@ export const withdrawMoneyAction = payload => {
       .then(response => {
         dispatch(withdrawMoneySuccess(response.data));
       })
-      .catch(error => dispatch(withdrawMoneyFailure(error.message)));
+      .catch(error => dispatch(withdrawMoneyFailure(error.response)));
   };
 };
 
@@ -174,7 +174,7 @@ export const requestDepositAction = payload => {
       .then(response => {
         dispatch(requestDepositSuccess(response.data));
       })
-      .catch(error => dispatch(requestDepositFailure(error.message)));
+      .catch(error => dispatch(requestDepositFailure(error.response)));
   };
 };
 

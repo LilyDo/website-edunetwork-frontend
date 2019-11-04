@@ -1,6 +1,7 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
 import { routes } from '../constants';
+import { extractAndShoweErrorMessages } from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -159,7 +160,7 @@ export default function(state = initialState, action) {
       };
 
     case types.WITHDRAW_MONEY_FAILURE:
-      toast.error('Cannot send request to withraw money');
+      extractAndShoweErrorMessages(action.payload.error);
 
       return {
         ...state,
@@ -194,7 +195,7 @@ export default function(state = initialState, action) {
       };
 
     case types.DEPOSIT_MONEY_FAILURE:
-      toast.error('Cannot send request to deposit money');
+      extractAndShoweErrorMessages(action.payload.error);
 
       return {
         ...state,

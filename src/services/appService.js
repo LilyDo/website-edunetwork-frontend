@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+import { toast } from 'react-toastify';
 import { CURRENT_USER_KEY } from '../actions';
 
 export const getUserFormLocal = function() {
@@ -63,4 +65,9 @@ export const formatDuration = duration => {
 export const formatDurationText = duration => {
   const formattedDuration = splitHoursMinutesSeconds(duration);
   return `${formattedDuration.hours} giờ ${formattedDuration.minutes} phút ${formattedDuration.seconds} giây`;
+};
+
+export const extractAndShoweErrorMessages = error => {
+  const errorMessages = get(error, 'data.message', '').split(',');
+  errorMessages.map(message => toast.error(message));
 };
