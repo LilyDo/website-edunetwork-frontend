@@ -144,8 +144,14 @@ export const withdrawMoneyAction = payload => {
       .post(`${BASE_URL}/users/draw-money`, payload)
       .then(response => {
         dispatch(withdrawMoneySuccess(response.data));
+        dispatch(
+          getProfileAction({
+            token: localStorage.getItem(types.TOKEN_KEY),
+            options: { redirect: false },
+          }),
+        );
       })
-      .catch(error => dispatch(withdrawMoneyFailure(error.message)));
+      .catch(error => dispatch(withdrawMoneyFailure(error.response)));
   };
 };
 
@@ -172,9 +178,17 @@ export const requestDepositAction = payload => {
     axios
       .post(`${BASE_URL}/users/recharge`, payload)
       .then(response => {
+        dispatch(
+          getProfileAction({
+            token: localStorage.getItem(types.TOKEN_KEY),
+            options: { redirect: false },
+          }),
+        );
         dispatch(requestDepositSuccess(response.data));
       })
-      .catch(error => dispatch(requestDepositFailure(error.message)));
+      .catch(error =>
+        dispatch(requestDepositFailure(error.response)),
+      );
   };
 };
 
