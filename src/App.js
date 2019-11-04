@@ -26,18 +26,21 @@ import AccountDashboardPage from './components/AccountDashboardPage/AccountDashb
 import AccountProfilePage from './components/AccountProfilePage/AccountProfilePage';
 import MyWallet from './components/MyWallet/MyWallet';
 import MyWallet_Withdraw from './components/MyWallet_Withdraw/MyWallet_Withdraw';
+import RequestDeposit from './components/RequestDeposit/RequestDeposit';
 import WithdrawNotification from './components/WithdrawNotification/WithdrawNotification';
 import AccountCoursePage from './components/AccountCoursePage/AccountCoursePage';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ForgotPasswordPopup from './components/ForgotPasswordPopup/ForgotPasswordPopup';
 import SignupVerify from './components/SignupVerify/SignupVerify';
 import SignupPendingVerify from './components/SignupPendingVerify/SignupPendingVerify';
+import SendContactSuccessful from './components/SendContactSuccessful/SendContactSuccessful';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 
 // services
 import { getUserFormLocal } from './services/appService';
+import DepositNotification from './components/DepositNotification/DepositNotification';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -113,6 +116,9 @@ class App extends Component {
                   <Route exact path={routes.registerPendingActive}>
                     <SignupPendingVerify />
                   </Route>
+                  <Route exact path={routes.sendContactSuccessful}>
+                    <SendContactSuccessful />
+                  </Route>
                   <PrivateRoute
                     authed={this.state.isLogined}
                     exact
@@ -140,8 +146,20 @@ class App extends Component {
                   <PrivateRoute
                     authed={this.state.isLogined}
                     exact
+                    path={routes.accountDeposit}
+                    component={RequestDeposit}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
                     path={routes.accountWithdrawNoti}
                     component={WithdrawNotification}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
+                    path={routes.accountDepositNoti}
+                    component={DepositNotification}
                   />
                   <PrivateRoute
                     authed={this.state.isLogined}

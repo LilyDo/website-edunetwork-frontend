@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUserFormLocal } from '../../services/appService';
 import { routes } from '../../constants';
+import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 
 class Header extends Component {
   state = {
@@ -75,12 +76,16 @@ class Header extends Component {
                 <img
                   alt="user profile"
                   src={
-                    this.state.currentUser.avatar ||
-                    'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
+                    this.state.currentUser.avatar || DefaultUserAvatar
                   }
                 />
                 <div className="NameHeader">
                   {this.state.currentUser.name}
+                  <img
+                    className="UserArrowDown"
+                    alt="option"
+                    src={ArrowDown}
+                  />
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>
@@ -119,12 +124,16 @@ class Header extends Component {
                 <img
                   alt="user profile"
                   src={
-                    this.state.currentUser.avatar ||
-                    'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png'
+                    this.state.currentUser.avatar || DefaultUserAvatar
                   }
                 />
                 <div className="NameHeader NameHeaderMobile">
                   {this.state.currentUser.name}
+                  <img
+                    className="UserArrowDown"
+                    alt="option"
+                    src={ArrowDown}
+                  />
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>

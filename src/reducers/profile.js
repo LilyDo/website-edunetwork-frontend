@@ -50,7 +50,7 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_PROFILE_FAILURE:
-      localStorage.removeItem(types.TOKEN_KEY);
+      // localStorage.removeItem(types.TOKEN_KEY);
 
       return {
         ...state,
@@ -176,6 +176,47 @@ export default function(state = initialState, action) {
 
     case types.WITHDRAW_MONEY_FAILURE:
       toast.error('Cannot send request to withraw money', {
+        autoClose: toastDuration,
+      });
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+
+    // DEPOSIT MONEY
+    case types.DEPOSIT_MONEY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.DEPOSIT_MONEY_SUCCESS:
+      if (
+        action.payload.statusCode === 200 &&
+        action.payload.errors.length === 0
+      ) {
+        toast.success('Request successful!', {
+          autoClose: toastDuration,
+        });
+        setTimeout(function() {
+          window.location.pathname = routes.accountDepositNoti;
+        }, 100);
+      } else {
+        toast.error(action.payload.errors[0], {
+          autoClose: toastDuration,
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.DEPOSIT_MONEY_FAILURE:
+      toast.error('Cannot send request to deposit money', {
         autoClose: toastDuration,
       });
 

@@ -1,5 +1,6 @@
 export const routes = {
   home: '/',
+  sendContactSuccessful: '/send-contact-successful',
   // course
   courses: '/courses',
   coursePaymentSuccessful: '/courses/payment/:status', // this should be declared before courseDetail or "paymentsucessful" will become the id param
@@ -16,6 +17,8 @@ export const routes = {
   accountWithdraw: '/account/profile/withdraw',
   accountWithdrawNoti: '/account/profile/withdraw-noti',
   accountCourses: '/account/courses',
+  accountDeposit: '/account/deposit',
+  accountDepositNoti: '/account/profile/deposit-noti',
   // misc
   contact: '/contact',
 };

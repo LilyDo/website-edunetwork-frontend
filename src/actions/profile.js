@@ -17,6 +17,9 @@ import {
   GET_USER_DASHBOARD_REQUEST,
   GET_USER_DASHBOARD_SUCCESS,
   GET_USER_DASHBOARD_FAILURE,
+  DEPOSIT_MONEY_REQUEST,
+  DEPOSIT_MONEY_SUCCESS,
+  DEPOSIT_MONEY_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -158,6 +161,35 @@ const withdrawMoneySuccess = response => ({
 
 const withdrawMoneyFailure = error => ({
   type: WITHDRAW_MONEY_FAILURE,
+  payload: { error },
+});
+
+// DEPOSIT MONEY
+export const requestDepositAction = payload => {
+  return dispatch => {
+    dispatch(requestDepositRequest());
+    payload.token = localStorage.getItem(types.TOKEN_KEY);
+    axios
+      .post(`${BASE_URL}/users/recharge`, payload)
+      .then(response => {
+        dispatch(requestDepositSuccess(response.data));
+      })
+      .catch(error => dispatch(requestDepositFailure(error.message)));
+  };
+};
+
+const requestDepositRequest = payload => ({
+  type: DEPOSIT_MONEY_REQUEST,
+  payload: payload,
+});
+
+const requestDepositSuccess = response => ({
+  type: DEPOSIT_MONEY_SUCCESS,
+  payload: { ...response },
+});
+
+const requestDepositFailure = error => ({
+  type: DEPOSIT_MONEY_FAILURE,
   payload: { error },
 });
 
