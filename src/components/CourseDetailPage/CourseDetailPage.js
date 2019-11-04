@@ -8,7 +8,7 @@ import './CourseDetailPage.scss';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import CourseLevel from '../CourseLevel/CourseLevel';
 import CourseInfo from '../CourseInfo/CourseInfo';
-import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselContainer';
+import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
 import {
   getUserCoursesAction,
   getCourseDetailAction,
@@ -65,7 +65,7 @@ class CourseDetailPage extends Component {
             userCourses={userCourses}
           />
         </div>
-        <CourseCarouselContainer excludeId={courseDetail.id} />
+        <CourseCardContainer excludeId={courseDetail.id} />
       </div>
     );
   }

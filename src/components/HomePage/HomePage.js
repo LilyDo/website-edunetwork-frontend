@@ -2,7 +2,7 @@ import React from 'react';
 import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
-import CourseCarouselContainer from '../CourseCarouselContainer/CourseCarouselContainer';
+import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
 
 function HomePage() {
   const infoCarouselData = [
@@ -69,7 +69,7 @@ function HomePage() {
 
       <QuoteContainer />
 
-      <CourseCarouselContainer />
+      <CourseCardContainer />
     </div>
   );
 }

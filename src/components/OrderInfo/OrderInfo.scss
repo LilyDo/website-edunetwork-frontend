@@ -8,14 +8,15 @@ $walletPaddingContainer: 12px 0 12px 0;
 
 .OrderInfoContainer {
   @media only screen and (max-width: $mobileBreakPoint) {
-    align-content: center;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 50px;
   }
 
   @media only screen and (min-width: $mobileBreakPoint + 1) {
-    max-width: 1103px;
-    margin: auto;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 130px;
   }
 
   .Title {
@@ -322,12 +323,5 @@ $walletPaddingContainer: 12px 0 12px 0;
 
   .TextNotice {
     white-space: pre-line;
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding-bottom: 50px;
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding-bottom: 60px;
-    }
   }
 }
