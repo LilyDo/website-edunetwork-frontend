@@ -1,6 +1,6 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
-import { routes, toastDuration } from '../constants';
+import { routes } from '../constants';
 
 const initialState = {
   loading: false,
@@ -37,9 +37,7 @@ export default function(state = initialState, action) {
           }, 100);
         }
       } else {
-        toast.error(action.payload.message, {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.message);
       }
 
       return {
@@ -72,13 +70,9 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Update profile successful!', {
-          autoClose: toastDuration,
-        });
+        toast.success('Update profile successful!');
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
 
       return {
@@ -88,9 +82,7 @@ export default function(state = initialState, action) {
       };
 
     case types.UPDATE_PROFILE_FAILURE:
-      toast.error('Cannot update profile', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot update profile');
 
       return {
         ...state,
@@ -124,9 +116,7 @@ export default function(state = initialState, action) {
           chargeList: action.payload.data.charge,
         };
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
 
       return {
@@ -136,9 +126,7 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_CHARGE_HISTORY_FAILURE:
-      toast.error('Cannot get charge history', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot get charge history');
       return {
         ...state,
         loading: false,
@@ -156,16 +144,12 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Request successful!', {
-          autoClose: toastDuration,
-        });
+        toast.success('Request successful!');
         setTimeout(function() {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 100);
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
 
       return {
@@ -175,9 +159,7 @@ export default function(state = initialState, action) {
       };
 
     case types.WITHDRAW_MONEY_FAILURE:
-      toast.error('Cannot send request to withraw money', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot send request to withraw money');
 
       return {
         ...state,
@@ -197,16 +179,12 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Request successful!', {
-          autoClose: toastDuration,
-        });
+        toast.success('Request successful!');
         setTimeout(function() {
           window.location.pathname = routes.accountDepositNoti;
         }, 100);
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
 
       return {
@@ -216,9 +194,7 @@ export default function(state = initialState, action) {
       };
 
     case types.DEPOSIT_MONEY_FAILURE:
-      toast.error('Cannot send request to deposit money', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot send request to deposit money');
 
       return {
         ...state,
@@ -245,9 +221,7 @@ export default function(state = initialState, action) {
           dashboard: action.payload.data,
         };
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
 
       return {
@@ -257,9 +231,7 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_USER_DASHBOARD_FAILURE:
-      toast.error('Cannot get user dashboard!', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot get user dashboard!');
 
       return {
         ...state,

@@ -1,7 +1,6 @@
 import * as types from '../actions';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
-import { toastDuration } from '../constants';
 
 const initialState = {
   loading: false,
@@ -25,13 +24,9 @@ export default function(state = initialState, action) {
           types.TOKEN_KEY,
           action.payload.data.token,
         );
-        toast.success('Login successful!', {
-          autoClose: toastDuration,
-        });
+        toast.success('Login successful!');
       } else {
-        toast.error(action.payload.errors[0], {
-          autoClose: toastDuration,
-        });
+        toast.error(action.payload.errors[0]);
       }
       return {
         ...state,
@@ -39,6 +34,9 @@ export default function(state = initialState, action) {
       };
 
     case types.LOGIN_FAILURE:
+      if (get(action, 'payload.error.status', 0) === 401) {
+        toast.error('Wrong username or password!');
+      }
       localStorage.removeItem(types.TOKEN_KEY);
 
       return {
@@ -66,12 +64,11 @@ export default function(state = initialState, action) {
         'payload.error.data.message',
         '',
       ).split(',');
-      errorMessages.map(message => toast.error(message), {
-        autoClose: toastDuration,
-      });
+      errorMessages.map(message => toast.error(message));
       return {
         ...state,
         loading: false,
+        error: action.payload.error,
       };
 
     // VERIFY EMAIL ACCOUNT
@@ -83,9 +80,7 @@ export default function(state = initialState, action) {
       };
 
     case types.ACTIVE_ACCOUNT_SUCCESS:
-      toast.success('Active account successful!', {
-        autoClose: toastDuration,
-      });
+      toast.success('Active account successful!');
       return {
         ...state,
         loading: false,
@@ -93,9 +88,7 @@ export default function(state = initialState, action) {
       };
 
     case types.ACTIVE_ACCOUNT_FAILURE:
-      toast.error('Cannot active the account', {
-        autoClose: toastDuration,
-      });
+      toast.error('Cannot active the account');
 
       return {
         ...state,

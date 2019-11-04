@@ -33,7 +33,7 @@ export const loginAction = user => {
           }),
         );
       })
-      .catch(error => dispatch(loginFailure(error.message)));
+      .catch(error => dispatch(loginFailure(error.response)));
   };
 };
 
@@ -75,9 +75,7 @@ export const registerAction = user => {
         } else {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
-            toast.error(JSON.stringify(obj[key]), {
-              autoClose: toastDuration,
-            });
+            toast.error(JSON.stringify(obj[key]));
           });
           dispatch(
             registerFailure(Object.keys(response.data.errors)[0]),
@@ -125,9 +123,7 @@ export const verifyAccountAction = code => {
         } else {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {
-            toast.error(JSON.stringify(obj[key]), {
-              autoClose: toastDuration,
-            });
+            toast.error(JSON.stringify(obj[key]));
           });
           dispatch(
             verifyAccountFailure(
