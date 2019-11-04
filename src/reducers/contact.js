@@ -1,6 +1,5 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
-import { toastDuration } from '../constants';
 import { routes } from '../constants';
 
 const initialState = {
@@ -23,18 +22,14 @@ export default function(state = initialState, action) {
         response.data.statusCode === 200 &&
         response.data.errors.length === 0
       ) {
-        toast.success('Sent sucessfull!', {
-          autoClose: toastDuration,
-        });
+        toast.success('Sent sucessfull!');
         setTimeout(function() {
-          window.location.pathname = `${routes.home}`;
+          window.location.pathname = `${routes.sendContactSuccessful}`;
         }, 100);
       } else {
         let obj = response.data.errors;
         Object.keys(obj).forEach(function eachKey(key) {
-          toast.error(JSON.stringify(obj[key]), {
-            autoClose: toastDuration,
-          });
+          toast.error(JSON.stringify(obj[key]));
         });
       }
 
@@ -45,9 +40,7 @@ export default function(state = initialState, action) {
       };
 
     case types.SEND_CONTACT_FAILURE:
-      toast.error(action.payload.message, {
-        autoClose: toastDuration,
-      });
+      toast.error(action.payload.message);
 
       return {
         ...state,

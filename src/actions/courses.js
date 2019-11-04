@@ -21,6 +21,7 @@ import {
   DEPOSIT_SUCCESS,
   DEPOSIT_FAILURE,
 } from './index';
+import { getProfileAction } from './profile';
 
 /**
  * +-------------+
@@ -172,11 +173,17 @@ export const buyCourseAction = (courseId, shouldDepositAmount) => {
       .post(
         `${BASE_URL}/users/buying-course?course_id=${courseId}&token=${token}`,
       )
-      .then(response =>
+      .then(response => {
         dispatch(
           buyCourseSuccess(response.data, shouldDepositAmount),
-        ),
-      )
+        );
+        dispatch(
+          getProfileAction({
+            token: localStorage.getItem(TOKEN_KEY),
+            options: { redirect: false },
+          }),
+        );
+      })
       .catch(error => dispatch(buyCourseFailure(error.message)));
   };
 };
@@ -210,7 +217,15 @@ export const depositAction = amount => {
       .post(
         `${BASE_URL}/users/recharge?price=${amount}&token=${token}`,
       )
-      .then(response => dispatch(depositSuccess(response.data)))
+      .then(response => {
+        dispatch(depositSuccess(response.data));
+        dispatch(
+          getProfileAction({
+            token: localStorage.getItem(TOKEN_KEY),
+            options: { redirect: false },
+          }),
+        );
+      })
       .catch(error => dispatch(depositFailure(error.message)));
   };
 };

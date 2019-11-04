@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class CourseCard extends Component {
   render() {
-    const { courseCarouselItem } = this.props;
+    const { courseCarouselItem, isBought } = this.props;
 
     return (
       <div className="CourseCard">
@@ -29,7 +29,7 @@ class CourseCard extends Component {
                 courseCarouselItem.id,
               )}
             >
-              <div className="PayNow">XEM CHI TIẾT</div>
+              <div className="PayNow">{isBought ? 'LEARN NOW' : 'SEE DETAIL'}</div>
             </Link>
           </div>
         </div>

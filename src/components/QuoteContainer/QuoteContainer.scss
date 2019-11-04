@@ -2,6 +2,7 @@
 
 .QuoteContainer {
   border-bottom: 1px solid $gold;
+  text-transform: uppercase;
   @extend %quoteSize;
 
   @media only screen and (max-width: $mobileBreakPoint) {

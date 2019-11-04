@@ -57,6 +57,9 @@ class AccountBreadcrumb extends Component {
                 <Link to={routes.accountWithdraw}>
                   <div>Withdraw</div>
                 </Link>
+                <Link to={routes.accountDeposit}>
+                  <div>Deposit</div>
+                </Link>
               </div>
             </div>
 

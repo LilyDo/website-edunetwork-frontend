@@ -25,11 +25,13 @@ class CourseCardContainer extends Component {
 
     return (
       <div>
-        <div className="CourseTitle">
-          <div className="Title">CÁC KHÓA HỌC CỦA CHÚNG TÔI</div>
-          <div className="Note">
-            Lưu ý: Giá của khóa học đã bao gồm thuế phí, thành viên
-            không phải mất thêm bất kì khoản chi phí nào.
+        <div className="CourseTitleContainer">
+          <div className="CourseTitle">
+            <div className="Title">OUR COURSES</div>
+            <div className="Note">
+              Note: The price is included tax, you do not have to pay
+              any more extra cost.
+            </div>
           </div>
         </div>
 

@@ -7,11 +7,15 @@ import './AccountDashboardPage.scss';
 import DashboardChart from '../../components/DashboardChart/DashboardChart';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getUserDashboardAction } from '../../actions/profile';
+import {
+  getUserDashboardAction,
+  getProfileAction,
+} from '../../actions/profile';
 import {
   currencyFormatter,
   getUserFormLocal,
 } from '../../services/appService';
+import * as types from '../../actions/index';
 
 class AccountDashboardPage extends Component {
   state = {
@@ -24,6 +28,9 @@ class AccountDashboardPage extends Component {
       currentUser: getUserFormLocal(),
     });
     this.props.actions.getUserDashboardAction();
+    this.props.actions.getProfileAction({
+      token: localStorage.getItem(types.TOKEN_KEY),
+    });
   }
 
   toggle = isShowPaid => {
@@ -209,7 +216,7 @@ class AccountDashboardPage extends Component {
                           {currencyFormatter(item.max_price || 0)}
                         </td>
                         <td>
-                          {currencyFormatter(item.total_price) || 0}
+                          {currencyFormatter(item.commission) || 0}
                         </td>
                       </tr>
                     ))}
@@ -231,7 +238,7 @@ class AccountDashboardPage extends Component {
                             {currencyFormatter(item.max_price || 0)}
                           </td>
                           <td>
-                            {currencyFormatter(item.total_price || 0)}
+                            {currencyFormatter(item.commission || 0)}
                           </td>
                         </tr>
                       ),
@@ -257,6 +264,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getUserDashboardAction,
+        getProfileAction,
       },
       dispatch,
     ),

@@ -47,14 +47,13 @@ class CourseLevel extends Component {
             <div className="PayNow">
               {!isCourseBought && (
                 <div className="PayButton" onClick={this.onPayClick}>
-                  THANH TOÁN NGAY
+                  PURCHASE NOW
                 </div>
               )}
               <div className="Include">
-                Khóa học này bao gồm:
+                This course included:
                 <div className="Quantity">
-                  Combo {get(courseDetail, 'child', []).length} khóa
-                  học online{' '}
+                  Combo {get(courseDetail, 'child', []).length} courses{' '}
                 </div>
               </div>
             </div>
@@ -62,27 +61,27 @@ class CourseLevel extends Component {
               <div className="Container">
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
-                  Thời lượng:{' '}
+                  Duration:{' '}
                   <span>
-                    {formatDurationText(courseDetail.duration)} phút
+                    {formatDurationText(courseDetail.duration)}
                   </span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="book" src={BookIcon}></img>
                 <div className="Text">
-                  Giáo trình:{' '}
-                  <span>{courseDetail.total_lesson} bài giảng</span>
+                  Content:{' '}
+                  <span>{courseDetail.total_lesson} videos</span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="own" src={OwnerIcon}></img>
-                <div className="Text">Sở hữu khóa học trọn đời</div>
+                <div className="Text">Lifetime learning</div>
               </div>
               <div className="Container">
                 <img alt="student" src={StudentIcon}></img>
                 <div className="Text">
-                  <span>{courseDetail.attendees}</span> học viên
+                  <span>{courseDetail.attendees}</span> members
                 </div>
               </div>
             </div>

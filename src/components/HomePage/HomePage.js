@@ -8,19 +8,28 @@ function HomePage() {
   const infoCarouselData = [
     {
       icon: 'icon_plane.svg',
-      title: 'TẦM NHÌN',
-      subtitle: 'CHINH PHỤC NHỮNG TẦM CAO MỚI',
+      title: 'VISION',
+      subtitle: 'SOAR TO GREATER HEIGHTS',
       description:
-        'Trở thành nền tảng dẫn đầu trong lĩnh vực giáo dục và đạo tạo trực tuyến trên thế giới với cam kết mang đến những trải nghiệm học tập quý giá, nhắm giúp học viên khám phá bản thân, thay đổi tầm nhìn và đạt được những thành công trong cuộc sống.',
+        'To bring education and networking easily available for everyone making our portal the most comprehensive and resourceful platform in the world at anytime and anywhere.',
       image_url: 'info_carousel_1.png',
     },
     {
       icon: 'icon_link.svg',
-      title: 'SỨ MỆNH',
+      title: 'MISSION',
       subtitle: '',
-      description: `Giúp cho tất cả thành viên không kể độ tuổi, ngành nghề, tôn giáo, giới tính đều có thể nâng cao tri thức, nâng cao thu nhập và thành công.
-
-        Chúng tôi cam kết không ngừng cải tiến mọi hoạt động, cập nhật thêm các khóa học, các chương trình để giúp thành viên ngày càng thành công hơn nữa.`,
+      description: `Helping all members regardless of age, industry, religion and gender to enhance their knowledge, increase income and succeed.  We are committed to constantly improving all activities, updating more courses and programs to help our members become more and more successful.`,
+      image_url: 'info_carousel_1.png',
+    },
+    {
+      icon: 'icon_link.svg',
+      title: 'CORE VALUES',
+      subtitle: '',
+      description: `- We put customer satisfaction as the core value.
+ - We are committed to creating a friendly, professional working and learning environment where every member has the opportunity to grow.
+ - We operate on transparency, ethics and efficiency.
+ - We make continuous efforts to improve, perfect and develop.
+ - We contribute positively to the community.`,
       image_url: 'info_carousel_1.png',
     },
   ];
@@ -28,13 +37,14 @@ function HomePage() {
   return (
     <div>
       <div className="Video">
-        <iframe
-          title="hero_youtube"
-          src="https://www.youtube.com/embed/Hqu4Va2WqzA"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        <iframe title='home-video'
+          src="https://player.vimeo.com/video/362199467"
+          width="640"
+          height="360"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
 
       <div className="InfoCarousel">
