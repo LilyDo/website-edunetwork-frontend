@@ -20,6 +20,9 @@
   @media only screen and (max-width: $mobileBreakPoint) {
     padding-bottom: 20px;
   }
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 60px;
+  }
   .Overview {
     @extend %paddingTitle;
 
@@ -191,7 +194,9 @@
   }
   .RevenueChart {
     @extend %paddingTitle;
-    overflow: scroll;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      overflow: scroll;
+    }
 
     .Title {
       @extend %fontSemiBold;

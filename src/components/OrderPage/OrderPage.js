@@ -15,11 +15,11 @@ class OrderPage extends Component {
             { link: routes.courses, text: 'COURSES' },
             {
               link: routes.courseDetail.replace(':id', id),
-              text: 'COURSE DETAILS',
+              text: 'DETAILS',
             },
             {
               link: routes.courseOrder.replace(':id', id),
-              text: 'ORDER DETAILS',
+              text: 'ORDER',
             },
           ]}
         />

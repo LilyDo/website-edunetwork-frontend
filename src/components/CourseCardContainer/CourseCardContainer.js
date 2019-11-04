@@ -3,13 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { filter } from 'lodash';
 
-import './CourseCarouselContainer.scss';
-import CourseCarousel from '../Carousel/CourseCarousel';
+import './CourseCardContainer.scss';
 import CourseBackground from '../../assets/images/course_background.png';
 import CourseCard from '../CourseCard/CourseCard';
 import { getCoursesAction } from '../../actions/courses';
 
-class CourseCarouselContainer extends Component {
+class CourseCardContainer extends Component {
   componentWillMount() {
     this.props.actions.getCoursesAction();
   }
@@ -36,20 +35,20 @@ class CourseCarouselContainer extends Component {
           </div>
         </div>
 
-        <div className="CourseCarousel">
+        <div className="CourseCardContainer">
           <img
             className="CourseBackground"
             alt="course background"
             src={CourseBackground}
           ></img>
-          <CourseCarousel title="CourseCarousel">
+          <div className="CourseCards">
             {courses.map((courseCarouselItem, index) => (
               <CourseCard
                 courseCarouselItem={courseCarouselItem}
                 key={index}
               />
             ))}
-          </CourseCarousel>
+          </div>
         </div>
       </div>
     );
@@ -73,4 +72,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CourseCarouselContainer);
+)(CourseCardContainer);

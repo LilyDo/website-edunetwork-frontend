@@ -5,7 +5,6 @@ export const PREV = 'PREV';
 
 const mobileBreakPoint = '768px';
 const smallMobileBreakPoint = '600px';
-const upperSmallMobileBreakPoint = '601px';
 const inBetweenBreakpoint = '1024px';
 
 export const Item = styled.div`
@@ -26,32 +25,6 @@ export const CarouselContainer = styled.div`
   }};
 `;
 
-export const CourseCarouselContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  @media only screen and (max-width: ${smallMobileBreakPoint}) {
-    transition: ${props =>
-      props.sliding ? 'none' : 'transform 1s ease'};
-    transform: ${props => {
-      if (!props.sliding) return 'translateX(0% )';
-      if (props.dir === PREV) return 'translateX(-20%)';
-      return 'translateX(20%)';
-    }};
-  }
-
-  @media only screen and (min-width: ${upperSmallMobileBreakPoint}) {
-    transition: ${props =>
-      props.sliding ? 'none' : 'transform 1s ease'};
-    transform: ${props => {
-      if (!props.sliding) return 'translateX(0% )';
-      if (props.dir === PREV) return 'translateX(-20%)';
-      return 'translateX(20%)';
-    }};
-  }
-`;
-
 export const Wrapper = styled.div`
   width: 100%;
   overflow: hidden;
@@ -69,18 +42,6 @@ export const CarouselSlot = styled.div`
 
   flex: 1 0 100%;
   order: ${props => props.order};
-`;
-
-export const CourseCarouselSlot = styled.div`
-  order: ${props => props.order};
-
-  @media only screen and (max-width: ${mobileBreakPoint}) {
-    flex: 1 0 140px;
-  }
-
-  @media only screen and (min-width: ${mobileBreakPoint + 1}) {
-    flex: 1 0 100%;
-  }
 `;
 
 export const SlideButton = styled.button`

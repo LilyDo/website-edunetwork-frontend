@@ -4,7 +4,7 @@
 %FooterTitle {
   @extend %fontSemiBold;
   @media only screen and (max-width: $mobileBreakPoint) {
-    font-size: 8px;
+    font-size: 10px;
     padding-bottom: 7px;
   }
   @media only screen and (min-width: $mobileBreakPoint + 1) {
@@ -93,13 +93,7 @@
         @extend %FooterTitle;
       }
       .ContactInfo {
-        @media only screen and (max-width: $mobileBreakPoint) {
-          font-size: 6px;
-        }
-
-        @media only screen and (min-width: $mobileBreakPoint + 1) {
-          font-size: 12px;
-        }
+        @extend %fontSmallText;
       }
     }
 
@@ -139,24 +133,22 @@
 
   .LowerFooterInfo {
     @extend %fontMedium;
+    @extend %fontSmallText;
+
     @media only screen and (max-width: $smallMobileBreakPoint - 1) {
       text-align: left;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 10px;
-      font-size: 5px;
     }
     @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
-      // text-align: left;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 15px;
-      // font-size: 5px;
     }
     @media only screen and (min-width: $mobileBreakPoint + 1) {
       text-align: center;
       padding: 20px 0;
-      font-size: 10px;
     }
   }
 }
