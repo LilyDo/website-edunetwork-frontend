@@ -33,7 +33,7 @@ before_script:
 
 build-dev:
   variables:
-    DOCKER_IMAGE: $CI_REGISTRY_IMAGE
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:latest
   <<: *build-env
   only:
     - dev
