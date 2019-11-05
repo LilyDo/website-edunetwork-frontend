@@ -38,9 +38,9 @@ function HomePage() {
           src="https://player.vimeo.com/video/362199467"
           width="640"
           height="360"
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; fullscreen"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
 
