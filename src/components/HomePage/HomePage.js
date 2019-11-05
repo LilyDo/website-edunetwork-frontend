@@ -25,11 +25,7 @@ function HomePage() {
       icon: 'icon_link.svg',
       title: 'CORE VALUES',
       subtitle: '',
-      description: `- We put customer satisfaction as the core value.
- - We are committed to creating a friendly, professional working and learning environment where every member has the opportunity to grow.
- - We operate on transparency, ethics and efficiency.
- - We make continuous efforts to improve, perfect and develop.
- - We contribute positively to the community.`,
+      description: `We put customer satisfaction as the core value. We are committed to creating a friendly, professional working and learning environment where every member has the opportunity to grow. We operate on transparency, ethics and efficiency. We make continuous efforts to improve, perfect and develop. We contribute positively to the community.`,
       image_url: 'info_carousel_1.png',
     },
   ];
@@ -37,7 +33,8 @@ function HomePage() {
   return (
     <div>
       <div className="Video">
-        <iframe title='home-video'
+        <iframe
+          title="home-video"
           src="https://player.vimeo.com/video/362199467"
           width="640"
           height="360"
