@@ -144,12 +144,6 @@ export const withdrawMoneyAction = payload => {
       .post(`${BASE_URL}/users/draw-money`, payload)
       .then(response => {
         dispatch(withdrawMoneySuccess(response.data));
-        dispatch(
-          getProfileAction({
-            token: localStorage.getItem(types.TOKEN_KEY),
-            options: { redirect: false },
-          }),
-        );
       })
       .catch(error => dispatch(withdrawMoneyFailure(error.response)));
   };

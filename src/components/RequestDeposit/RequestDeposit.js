@@ -9,9 +9,13 @@ import {
   currencyFormatter,
 } from '../../services/appService';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
-import { requestDepositAction } from '../../actions/profile';
+import {
+  requestDepositAction,
+  getProfileAction,
+} from '../../actions/profile';
 import { routes } from '../../constants';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
+import * as types from '../../actions/index';
 
 class RequestDeposit extends Component {
   state = {
@@ -37,6 +41,16 @@ class RequestDeposit extends Component {
   };
 
   componentDidMount() {
+    this.props.actions.getProfileAction({
+      token: localStorage.getItem(types.TOKEN_KEY),
+    });
+    this.checkCurrentUser();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentUser: nextProps.currentUser,
+    });
     this.checkCurrentUser();
   }
 
@@ -124,11 +138,18 @@ class RequestDeposit extends Component {
   }
 }
 
+const mapStateToProps = ({ profile }, ownProps) => {
+  return {
+    currentUser: profile.data,
+  };
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
         requestDepositAction,
+        getProfileAction,
       },
       dispatch,
     ),
@@ -136,6 +157,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(RequestDeposit);

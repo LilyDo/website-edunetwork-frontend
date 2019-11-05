@@ -24,14 +24,6 @@ class MyWallet extends Component {
     chargeList: [],
   };
 
-  checkCurrentUser() {
-    if (getUserFormLocal()) {
-      this.setState({
-        currentUser: getUserFormLocal(),
-      });
-    }
-  }
-
   toggleShowTab = isShowWithdraw => {
     this.setState({
       isShowWithdraw: isShowWithdraw,
@@ -42,16 +34,30 @@ class MyWallet extends Component {
     this.props.actions.getChargeHistoryAction();
   };
 
+  checkCurrentUser() {
+    if (getUserFormLocal()) {
+      this.setState({
+        currentUser: getUserFormLocal(),
+      });
+    }
+  }
+
   componentDidMount() {
     this.props.actions.getProfileAction({
       token: localStorage.getItem(types.TOKEN_KEY),
     });
-    this.checkCurrentUser();
     this.getChargeHistory();
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentUser: nextProps.currentUser,
+    });
+    this.checkCurrentUser();
+  }
+
   render() {
-    const { isShowWithdraw } = this.state;
+    const { currentUser, isShowWithdraw } = this.state;
 
     return (
       <div>
@@ -63,18 +69,14 @@ class MyWallet extends Component {
               <img
                 className="Photo"
                 alt="avatar"
-                src={
-                  this.state.currentUser.avatar || DefaultUserAvatar
-                }
+                src={currentUser.avatar || DefaultUserAvatar}
               ></img>
-              <div>{this.state.currentUser.name || ''}</div>
+              <div>{currentUser.name || ''}</div>
             </div>
             <div className="Balance">
               <div className="Text">Balance</div>
               <div className="Number">
-                {currencyFormatter(
-                  this.state.currentUser.total_price,
-                )}
+                {currencyFormatter(currentUser.total_price)}
               </div>
             </div>
           </div>
@@ -168,6 +170,7 @@ const mapStateToProps = ({ profile }, ownProps) => {
     state: {
       drawList: profile.withdrawList,
       chargeList: profile.chargeList,
+      currentUser: profile.data,
     },
   };
 };

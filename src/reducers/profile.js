@@ -11,6 +11,7 @@ const initialState = {
   withdrawList: [],
   chargeList: [],
   dashboard: {},
+  timeStamp: Date.now(),
 };
 
 export default function(state = initialState, action) {
@@ -35,7 +36,7 @@ export default function(state = initialState, action) {
         if (action.payload.options.redirect) {
           setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
-          }, 100);
+          }, 1000);
         }
       } else {
         toast.error(action.payload.message);
@@ -46,6 +47,7 @@ export default function(state = initialState, action) {
         loading: false,
         error: null,
         data: action.payload.data.data,
+        timeStamp: Date.now(),
       };
 
     case types.GET_PROFILE_FAILURE:
