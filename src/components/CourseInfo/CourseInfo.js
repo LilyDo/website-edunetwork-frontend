@@ -6,12 +6,16 @@ import BulletIcon from '../../assets/images/icon_bullet.svg';
 import PlusIcon from '../../assets/images/icon_plus.svg';
 import PlayIcon from '../../assets/images/icon_play.svg';
 import AttachmentIcon from '../../assets/images/icon_attachment.svg';
-import { formatDuration } from '../../services/appService';
+import {
+  formatDuration,
+  getUserFormLocal,
+} from '../../services/appService';
 
 class CourseInfo extends Component {
   state = {
     isIntroductionVisible: true,
     activeAttachment: {},
+    currentUser: {},
   };
 
   showCourseIntroduction = () => {
@@ -48,8 +52,18 @@ class CourseInfo extends Component {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  componentDidMount() {
+    this.setState({
+      currentUser: getUserFormLocal(),
+    });
+  }
+
   render() {
-    const { isIntroductionVisible, activeAttachment } = this.state;
+    const {
+      isIntroductionVisible,
+      activeAttachment,
+      currentUser,
+    } = this.state;
     const { courseDetail } = this.props;
     const chapters = get(courseDetail, 'child', []);
 
@@ -83,16 +97,18 @@ class CourseInfo extends Component {
             >
               <span>Course detail</span>
             </div>
-            <div
-              className={
-                isIntroductionVisible === false
-                  ? 'CurriculumTitle Active'
-                  : 'CurriculumTitle'
-              }
-              onClick={this.hideCourseIntroduction}
-            >
-              <span>Content</span>
-            </div>
+            {!(currentUser.max_price < courseDetail.price) && (
+              <div
+                className={
+                  isIntroductionVisible === false
+                    ? 'CurriculumTitle Active'
+                    : 'CurriculumTitle'
+                }
+                onClick={this.hideCourseIntroduction}
+              >
+                <span>Content</span>
+              </div>
+            )}
           </div>
 
           {isIntroductionVisible && (
