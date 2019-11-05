@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 $mobileMargin: 10px 25px 10px 25px;
 %titleSelected {
@@ -255,6 +255,9 @@ $mobileMargin: 10px 25px 10px 25px;
           flex-direction: row;
           align-items: center;
           border-bottom: 1px solid $lightgrey;
+          :hover {
+            cursor: pointer;
+          }
 
           .Lesson {
             display: flex;
@@ -266,6 +269,9 @@ $mobileMargin: 10px 25px 10px 25px;
 
             .LessonTitle {
               padding-right: 10px;
+              &.Active {
+                color: #d59e28;
+              }
             }
 
             img {

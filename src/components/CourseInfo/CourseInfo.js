@@ -44,6 +44,8 @@ class CourseInfo extends Component {
     this.setState({
       activeAttachment: attachment,
     });
+    // this changes the scrolling behavior to "smooth"
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   render() {
@@ -53,7 +55,7 @@ class CourseInfo extends Component {
 
     return (
       <div className="CourseInfoContainer">
-        {activeAttachment.link_file ? (
+        {activeAttachment && activeAttachment.link_file ? (
           <div className="AttachmentPlayer">
             <iframe
               title="hero_youtube"
@@ -140,19 +142,34 @@ class CourseInfo extends Component {
                           </div>
 
                           {this.state[`isPart${part.id}Visible`] &&
-                            part.lessons.map(lesson => (
+                            part.lessons.map((lesson, index) => (
                               <div
                                 className="Lessons"
                                 key={lesson.id}
                               >
                                 <div className="LessonContainer">
-                                  <div className="Lesson">
+                                  <div
+                                    className="Lesson"
+                                    onClick={() =>
+                                      this.setActiveAttachment(
+                                        lesson.attachments[0],
+                                      )
+                                    }
+                                  >
                                     <div className="Duration">
                                       {formatDuration(
                                         lesson.duration,
                                       )}
                                     </div>
-                                    <div className="LessonTitle">
+                                    <div
+                                      className={
+                                        'LessonTitle ' +
+                                        (activeAttachment ===
+                                        lesson.attachments[0]
+                                          ? 'Active'
+                                          : '')
+                                      }
+                                    >
                                       {lesson.title}
                                     </div>
                                   </div>
@@ -163,22 +180,25 @@ class CourseInfo extends Component {
                                 </div>
                                 <div className="Attachments">
                                   {lesson.attachments.map(
-                                    attachment => (
-                                      <div
-                                        className="Attachment"
-                                        onClick={() =>
-                                          this.setActiveAttachment(
-                                            attachment,
-                                          )
-                                        }
-                                      >
-                                        <img
-                                          src={AttachmentIcon}
-                                          alt="attachment"
-                                        />
-                                        {attachment.link_file}
-                                      </div>
-                                    ),
+                                    (attachment, index) =>
+                                      !attachment.type ===
+                                        'Video' && (
+                                        <div
+                                          key={index}
+                                          className="Attachment"
+                                          onClick={() =>
+                                            this.setActiveAttachment(
+                                              attachment,
+                                            )
+                                          }
+                                        >
+                                          <img
+                                            src={AttachmentIcon}
+                                            alt="attachment"
+                                          />
+                                          {attachment.link_file}
+                                        </div>
+                                      ),
                                   )}
                                 </div>
                               </div>
