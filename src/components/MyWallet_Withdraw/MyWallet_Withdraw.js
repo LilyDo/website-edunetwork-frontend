@@ -10,8 +10,12 @@ import {
   currencyFormatter,
 } from '../../services/appService';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
-import { withdrawMoneyAction } from '../../actions/profile';
+import {
+  withdrawMoneyAction,
+  getProfileAction,
+} from '../../actions/profile';
 import { routes } from '../../constants';
+import * as types from '../../actions/index';
 
 class MyWallet_Withdraw extends Component {
   state = {
@@ -37,6 +41,16 @@ class MyWallet_Withdraw extends Component {
   };
 
   componentDidMount() {
+    this.props.actions.getProfileAction({
+      token: localStorage.getItem(types.TOKEN_KEY),
+    });
+    this.checkCurrentUser();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentUser: nextProps.currentUser,
+    });
     this.checkCurrentUser();
   }
 
@@ -172,11 +186,18 @@ class MyWallet_Withdraw extends Component {
   }
 }
 
+const mapStateToProps = ({ profile }, ownProps) => {
+  return {
+    currentUser: profile.data,
+  };
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
         withdrawMoneyAction,
+        getProfileAction,
       },
       dispatch,
     ),
@@ -184,6 +205,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(MyWallet_Withdraw);

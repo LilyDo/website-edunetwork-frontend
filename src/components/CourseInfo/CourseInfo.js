@@ -121,8 +121,8 @@ class CourseInfo extends Component {
                     </div>
 
                     {this.state[`isChapter${chapter.id}Visible`] &&
-                      chapter.parts.map(part => (
-                        <Fragment>
+                      chapter.parts.map((part, index) => (
+                        <Fragment key={index}>
                           <div
                             className="Part"
                             key={part.id}
