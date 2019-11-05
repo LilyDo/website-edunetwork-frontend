@@ -1,0 +1,89 @@
+// colors
+$lightgrey: #d6d6d6;
+$grey: #929292;
+$darkgrey: #707070;
+$brown: #b97a2a;
+$gold: #d59e29;
+$darkblue: #424b5f;
+$blue: #3794fc;
+$lightblue: #67758d;
+
+.Header,
+.Footer,
+.Content {
+  @extend %fontRegular;
+}
+
+a {
+  text-decoration: none;
+}
+
+// media query
+$mobileBreakPoint: 768px;
+$smallMobileBreakPoint: 600px;
+$inBetweenBreakpoint: 1024px;
+
+@media only screen and (max-width: $mobileBreakPoint) {
+  %fontHeader {
+    font-size: 12px;
+  }
+
+  %fontText {
+    font-size: 10px;
+  }
+
+  %fontSmallText {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  %fontHeader {
+    font-size: 20px;
+  }
+
+  %fontText {
+    font-size: 14px;
+  }
+
+  %fontSmallText {
+    font-size: 12px;
+  }
+}
+
+// font weight
+%fontRegular {
+  font-family: 'Muli-Regular';
+}
+
+%fontBold {
+  font-family: 'Muli-Bold';
+}
+
+@mixin fontBold() {
+  font-family: 'Muli-Bold';
+}
+
+%fontExtraBold {
+  font-family: 'Muli-ExtraBold';
+}
+
+%fontMedium {
+  font-family: 'Muli-Medium';
+}
+
+%fontSemiBold {
+  font-family: 'Muli-SemiBold';
+}
+
+// width & height
+%quoteSize {
+  max-width: 1103px;
+  margin: auto;
+}
+
+$appMaxWidth: 1466px;
+
+.capitalize {
+  text-transform: capitalize;
+}

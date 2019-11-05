@@ -1,0 +1,106 @@
+@import '../../shared.scss';
+
+.Video {
+  background-image: url('../../assets/images/video_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    margin-top: 70px;
+    padding: 20px 0;
+  }
+
+  > iframe {
+    @media only screen and (max-width: $mobileBreakPoint) {
+      width: 313px;
+      height: 175px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      width: 784px;
+      height: 438px;
+    }
+  }
+}
+
+.InfoCarousel {
+  @media only screen and (max-width: $mobileBreakPoint - 1) {
+    padding: 25px 0;
+    .Icon {
+      padding-left: 10px;
+      padding-bottom: 5px;
+      max-width: 22px;
+      max-height: 20px;
+      > img {
+        width: 100%;
+      }
+    }
+    .Image {
+      > img {
+        width: 100%;
+        margin-left: 25px;
+      }
+      max-width: 242px;
+      max-height: 163px;
+    }
+
+    .InfoCardContainer {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint) {
+    padding: 70px 0;
+
+    .Icon {
+      padding-left: 25px;
+      padding-bottom: 5px;
+    }
+    .InfoCardContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .InfoText {
+    background-color: white;
+    z-index: 1;
+    box-shadow: 6px 8px 15px 0px rgba(213, 158, 41, 0.1);
+
+    @media only screen and (max-width: $mobileBreakPoint - 1) {
+      padding: 5px 10px;
+      margin-top: -30px;
+      margin-bottom: 15px;
+      margin-left: 75px;
+      margin-right: 20px;
+      max-width: 291px;
+      max-height: 203px;
+      order: 1;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint) {
+      padding: 20px 20px 10px 20px;
+      margin-right: -35px;
+      margin-left: 10px;
+      max-width: 436px;
+    }
+
+    .Title {
+      @extend %fontHeader;
+      @extend %fontBold;
+    }
+
+    .Description {
+      padding-top: 20px;
+    }
+  }
+}

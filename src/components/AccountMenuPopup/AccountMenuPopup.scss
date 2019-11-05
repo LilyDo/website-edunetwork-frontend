@@ -1,0 +1,39 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.AccountMenuPopup {
+  display: none;
+  background-color: white;
+  position: absolute;
+
+  color: $grey;
+  box-shadow: 0 0 5px rgba(185, 122, 42, 1);
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    top: 172px;
+    right: 20px;
+    padding: 20px 35px;
+
+    .MenuList {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-direction: column;
+      font-size: 15px;
+      border-bottom: 1px solid $lightgrey;
+
+      .Menu {
+        padding-bottom: 20px;
+      }
+    }
+
+    .Logout {
+      text-align: right;
+      font-style: italic;
+      padding-top: 12px;
+    }
+  }
+}

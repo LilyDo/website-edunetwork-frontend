@@ -1,0 +1,304 @@
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
+
+$mobileMargin: 10px 25px 10px 25px;
+%titleSelected {
+  background-color: $gold;
+  display: inline-block;
+  transform: skewX(-25deg);
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 5px 15px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding: 7px 20px;
+  }
+
+  span {
+    color: white;
+    display: inline-block;
+    transform: skewX(25deg);
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 12px;
+    }
+  }
+}
+
+.CourseInfoContainer {
+  max-width: 1103px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 45px;
+    font-size: 14px;
+  }
+
+  .AttachmentPlayer {
+    text-align: center;
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      max-width: 720px;
+    }
+
+    iframe {
+      @media only screen and (max-width: $mobileBreakPoint) {
+        width: 313px;
+        height: 175px;
+      }
+
+      @media only screen and (min-width: 1000px) {
+        width: 600px;
+        height: 335px;
+      }
+    }
+  }
+
+  .TitleDescriptionCurriculumnContainer,
+  .CourseAvatar {
+    max-width: 720px;
+    // margin: auto;
+    width: 100%;
+  }
+
+  .CourseAvatar {
+    img {
+      width: 100%;
+    }
+  }
+
+  .Title {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid white;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+    @extend %fontBold;
+    color: $darkgrey;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin: $mobileMargin;
+      padding: 5px 15px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      min-height: 54px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px 30px;
+    }
+
+    .IntroductionTitle,
+    .CurriculumTitle {
+      cursor: pointer;
+      &:hover {
+        @extend %titleSelected;
+      }
+    }
+
+    .Active {
+      border-bottom: 1px solid $gold;
+    }
+  }
+
+  .CourseIntroduction {
+    box-sizing: border-box;
+    border: 1px solid white;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin: $mobileMargin;
+      margin-bottom: 25px;
+      padding: 10px 10px 0 10px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 0px 30px;
+    }
+
+    .Head {
+      @extend %fontBold;
+      color: $darkgrey;
+      border-bottom: 1px solid #d6d6d6;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 12px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+    }
+
+    p {
+      white-space: pre-line;
+    }
+  }
+
+  .CourseCurriculum {
+    box-sizing: border-box;
+    border: 1px solid white;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      margin: $mobileMargin;
+      margin-bottom: 25px;
+      padding: 10px 10px 0 10px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 0px 30px;
+    }
+
+    .Head {
+      @extend %fontBold;
+      color: $darkgrey;
+      border-bottom: 1px solid #d6d6d6;
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        font-size: 12px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+    }
+
+    .CurriculumContent {
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .Course {
+        @media only screen and (max-width: $mobileBreakPoint) {
+          margin-bottom: 10px;
+          .Part {
+            img {
+              padding-left: 20px;
+              padding-right: 10px;
+            }
+          }
+        }
+
+        @media only screen and (min-width: $mobileBreakPoint + 1) {
+          margin-bottom: 15px;
+
+          .Part {
+            img {
+              padding-left: 35px;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+
+      .Name {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @extend %fontSemiBold;
+        background-color: $gold;
+        color: white;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        cursor: pointer;
+
+        img {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+
+      .Part {
+        background-color: $lightgrey;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-top: 2px;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: $mobileBreakPoint) {
+        .Lessons {
+          margin-left: 20px;
+        }
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        .Lessons {
+          margin-left: 30px;
+        }
+      }
+
+      .Lessons {
+        margin-bottom: 10px;
+
+        .LessonContainer {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          align-items: center;
+          border-bottom: 1px solid $lightgrey;
+          :hover {
+            cursor: pointer;
+          }
+
+          .Lesson {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+
+            .LessonTitle {
+              padding-right: 10px;
+              &.Active {
+                color: #d59e28;
+              }
+            }
+
+            img {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+          }
+
+          .Duration {
+            padding-right: 10px;
+          }
+        }
+
+        .Attachments {
+          .Attachment {
+            background-color: rgba(214, 214, 214, 0.3);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            img {
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

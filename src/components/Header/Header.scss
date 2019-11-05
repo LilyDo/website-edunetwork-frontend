@@ -1,0 +1,256 @@
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
+
+%styleTextHeader {
+  @extend %fontBold;
+  color: $darkgrey;
+  padding: 13px 22px;
+  transform: skewX(-25deg);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  &:hover {
+    color: $brown;
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+  }
+  & > span {
+    display: inline-block;
+    transform: skew(25deg);
+  }
+}
+
+.HeaderBackground {
+  background-color: $gold;
+  width: 100%;
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: $gold;
+  border: none;
+}
+
+@media only screen and (max-width: $mobileBreakPoint) {
+  .LowerHeader {
+    display: flex;
+  }
+  .UpperHeaderlinks {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $mobileBreakPoint + 1) {
+  .LowerHeader {
+    display: none;
+  }
+  .UpperHeaderlinks {
+    display: flex;
+  }
+}
+
+.UpperHeader {
+  background-image: url("../../assets/images/header_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: $appMaxWidth;
+  margin: auto;
+  width: 100%;
+
+  .LanguageSelector {
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 25px 25px 25px 0;
+      > img {
+        padding-left: 10px;
+      }
+    }
+
+    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+      padding: 33px 25px 33px 0;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 15px 20px 80px 0;
+
+      > img {
+        padding-left: 40px;
+      }
+    }
+
+    img {
+      z-index: 2;
+    }
+  }
+  .UpperHeaderlinks {
+    // display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-right: 20px;
+
+    .NavigationContainer {
+      display: flex;
+      flex-direction: row;
+      // padding-right: 170px;
+
+      .NavigationLink {
+        @extend %fontHeader;
+        @extend %styleTextHeader;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: $darkgrey;
+    }
+    .SignInDesktop {
+      color: $gold;
+      border: 1px solid white;
+      border-radius: 28px;
+      background-color: white;
+      padding: 10px 30px;
+      margin-bottom: 15px;
+      margin-left: 15px;
+    }
+  }
+}
+.LowerHeader {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  font-size: 10px;
+  background-color: white;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    border-bottom: 1px solid $darkgrey;
+    display: flex;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    display: none;
+  }
+
+  .SignInMobile {
+    color: white;
+    border: 1px solid $gold;
+    border-radius: 25px;
+    background-color: $gold;
+    padding: 4px 12px;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .NameHeaderMobile {
+    color: $darkgrey !important;
+  }
+}
+
+.AvatarHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  @extend %fontBold;
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    padding-bottom: 7px;
+    margin-left: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .dropdown-content {
+      opacity: 1;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        height: 95px;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        height: 150px;
+      }
+    }
+  }
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+    @media only screen and (max-width: $mobileBreakPoint) {
+      height: 30px;
+      width: 30px;
+    }
+  }
+  .NameHeader {
+    color: white;
+    padding-left: 10px;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      font-size: 12px;
+      color: $darkgrey;
+      padding-left: 5px;
+    }
+    img.UserArrowDown {
+      height: 8px;
+    }
+  }
+}
+
+.dropdown-content {
+  font-weight: 400;
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+  background-color: #d59e29;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+  @extend %fontBold;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    top: 40px;
+    right: -10px;
+    padding: 5px 10px;
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    top: 45px;
+    right: -10px;
+    width: 110px;
+    padding: 10px;
+  }
+
+  div {
+    border-bottom: solid 1px #ffffff40;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 5px 15px;
+    }
+
+    @media only screen and (min-width: $mobileBreakPoint + 1) {
+      padding: 9px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    div {
+      color: white;
+    }
+  }
+}

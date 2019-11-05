@@ -1,0 +1,50 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.PaymentSucessful {
+  max-width: 1103px;
+  margin: auto;
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding-left: 25px;
+    padding-top: 15px;
+
+    .Title {
+      padding-bottom: 15px;
+    }
+
+    .JoinClassButton {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding: 7px 40px;
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    max-width: 1103px;
+    margin: auto;
+
+    .Title {
+      padding-bottom: 25px;
+    }
+
+    .JoinClassButton {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      padding: 12px 100px;
+    }
+  }
+
+  .Title {
+    @extend %fontBold;
+  }
+  .JoinClassButton {
+    background-color: $brown;
+    color: white;
+    @extend %fontBold;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

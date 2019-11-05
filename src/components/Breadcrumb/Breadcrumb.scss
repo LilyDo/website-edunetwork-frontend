@@ -1,0 +1,41 @@
+@import '../../shared.scss';
+@import '../../assets/font/font.scss';
+
+.BreadCrumb {
+  @extend %fontHeader;
+  @extend %fontBold;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: $brown;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: $mobileBreakPoint) {
+    padding: 20px 0px 20px 25px;
+
+    .ArrowRight {
+      padding: 0 10px;
+
+      > img {
+        max-width: 20px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $mobileBreakPoint + 1) {
+    margin: 45px 150px;
+    padding: 20px 0;
+
+    border-top: 1px solid $gold;
+    border-bottom: 1px solid $gold;
+
+    .ArrowRight {
+      padding: 0 20px;
+    }
+  }
+}
