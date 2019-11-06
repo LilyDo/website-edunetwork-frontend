@@ -53,7 +53,7 @@ class CourseLevel extends Component {
               <div className="Include">
                 This course included:
                 <div className="Quantity">
-                  Combo {get(courseDetail, 'child', []).length} courses{' '}
+                  Combo {courseDetail.total_course} courses
                 </div>
               </div>
             </div>
