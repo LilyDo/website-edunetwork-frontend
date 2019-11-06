@@ -18,6 +18,13 @@ before_script:
 .build-env: &build-env
   stage: build
   script:
+    - >
+      if [ "$CI_COMMIT_REF_NAME" == "dev" ]; then
+        rm .env.production
+      else
+        mv .env.production .env
+      fi
+    - cat .env
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
     - echo $DOCKER_IMAGE
     - docker pull $DOCKER_IMAGE || true
@@ -26,7 +33,7 @@ before_script:
 
 build-dev:
   variables:
-    DOCKER_IMAGE: $CI_REGISTRY_IMAGE
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:latest
   <<: *build-env
   only:
     - dev
