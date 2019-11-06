@@ -196,7 +196,7 @@ class AccountDashboardPage extends Component {
                   <th>Username</th>
                   <th>Email</th>
                   <th>Phone Number</th>
-                  <th>Active Date</th>
+                  <th>Register Date</th>
                   <th>Courses</th>
                   <th>Commission</th>
                 </tr>

@@ -35,7 +35,7 @@ class DepositNotification extends Component {
         </div>
         <div className="Message">
           <div>
-            Your withdraw request has been sent to EDUNETWORK.
+            Your deposit request has been sent to EDUNETWORK.
             <br />
             <br />
           </div>
