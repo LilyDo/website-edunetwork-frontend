@@ -37,6 +37,7 @@ export const currencyFormatter = amount => {
 };
 
 const splitHoursMinutesSeconds = duration => {
+  duration = parseInt(duration, 10);
   let hours = Math.floor(duration / 3600);
   if (hours < 10) {
     hours = `0${hours}`;
