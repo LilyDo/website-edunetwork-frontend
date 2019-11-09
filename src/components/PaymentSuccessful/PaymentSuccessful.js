@@ -22,11 +22,11 @@ class PaymentSuccessful extends Component {
           <Fragment>
             <div className="Title">REQUEST A PAYMENT SUCCESSFUL!</div>
             <div>
-              Your request will be process soon. Please check your
+              Your request will be processed soon. Please check your
               mail box for more information.
             </div>
             <Link to={routes.courses}>
-              <div className="JoinClassButton">XEM CÁC KHÓA HỌC</div>
+              <div className="JoinClassButton">GO TO COURSE PAGE</div>
             </Link>
           </Fragment>
         )}
