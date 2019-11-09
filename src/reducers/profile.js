@@ -33,10 +33,10 @@ export default function(state = initialState, action) {
           types.CURRENT_USER_KEY,
           JSON.stringify(currentUser),
         );
-        if (action.payload.options.redirect) {
+        if (action.payload && action.payload.options && action.payload.options.redirect) {
           setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
-          }, 1000);
+          }, 3000);
         }
       } else {
         toast.error(action.payload.message);
@@ -150,7 +150,7 @@ export default function(state = initialState, action) {
         toast.success('Request successful!');
         setTimeout(function() {
           window.location.pathname = routes.accountWithdrawNoti;
-        }, 100);
+        }, 3000);
       } else {
         toast.error(action.payload.errors[0]);
       }
@@ -191,7 +191,7 @@ export default function(state = initialState, action) {
           .replace(':amount', action.payload.data.amount);
         setTimeout(function() {
           window.location.pathname = pathname;
-        }, 100);
+        }, 3000);
       } else {
         toast.error(action.payload.errors[0]);
       }

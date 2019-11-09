@@ -12,8 +12,16 @@ import {
   buyCourseAction,
   depositAction,
 } from '../../actions/courses';
+import * as types from '../../actions/index';
+import { getProfileAction } from '../../actions/profile';
 
 class OrderInfo extends Component {
+  componentDidMount() {
+    this.props.actions.getProfileAction({
+      token: localStorage.getItem(types.TOKEN_KEY),
+    });
+  }
+
   deposit = depositAmount => {
     this.props.actions.depositAction(depositAmount);
   };
@@ -98,9 +106,7 @@ class OrderInfo extends Component {
                   <div className="Currency">USD</div>
                 </div>
                 <div className="Container Missing">
-                  <div className="Text">
-                    Amount to top up:
-                  </div>
+                  <div className="Text">Amount to top up:</div>
                   <div className="Number">
                     {shouldDeposit ? shouldDepositAmount : 0}
                   </div>
@@ -141,6 +147,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         buyCourseAction,
         depositAction,
+        getProfileAction,
       },
       dispatch,
     ),
