@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
         toast.success('Sent sucessfull!');
         setTimeout(function() {
           window.location.pathname = `${routes.sendContactSuccessful}`;
-        }, 100);
+        }, 3000);
       } else {
         let obj = response.data.errors;
         Object.keys(obj).forEach(function eachKey(key) {

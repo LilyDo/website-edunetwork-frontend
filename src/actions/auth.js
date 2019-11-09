@@ -71,7 +71,7 @@ export const registerAction = user => {
           dispatch(registerSuccess(response.data));
           setTimeout(function() {
             window.location.pathname = routes.registerPendingActive;
-          }, 100);
+          }, 3000);
         } else {
           let obj = response.data.errors;
           Object.keys(obj).forEach(function eachKey(key) {

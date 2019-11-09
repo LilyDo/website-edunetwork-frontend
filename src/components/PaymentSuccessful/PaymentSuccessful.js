@@ -12,25 +12,21 @@ class PaymentSuccessful extends Component {
       <div className="PaymentSucessful">
         {status === 'successful' ? (
           <Fragment>
-            <div className="Title">THANH TOÁN THÀNH CÔNG!</div>
-            <div>
-              Xin chúc mừng bạn đã sở hữu khóa học tuyệt vời này.
-            </div>
+            <div className="Title">PURCHASE SUCCESSFUL!</div>
+            <div>Congratulation! You owned this course.</div>
             <Link to={routes.accountCourses}>
-              <div className="JoinClassButton">VÀO HỌC NGAY</div>
+              <div className="JoinClassButton">LEARN NOW</div>
             </Link>
           </Fragment>
         ) : (
           <Fragment>
-            <div className="Title">
-              YÊU CẦU THANH TOÁN THÀNH CÔNG!
-            </div>
+            <div className="Title">REQUEST A PAYMENT SUCCESSFUL!</div>
             <div>
-              Yêu cầu của bạn sẽ được xử lý qua email, vui lòng kiểm
-              tra email để biết thêm thông tin chi tiết.
+              Your request will be processed soon. Please check your
+              mail box for more information.
             </div>
             <Link to={routes.courses}>
-              <div className="JoinClassButton">XEM CÁC KHÓA HỌC</div>
+              <div className="JoinClassButton">GO TO COURSE PAGE</div>
             </Link>
           </Fragment>
         )}
