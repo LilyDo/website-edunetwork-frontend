@@ -81,7 +81,9 @@ class CourseInfo extends Component {
           </div>
         ) : (
           <div className="CourseAvatar">
-            <img src={courseDetail.avatar} alt="course avatar" />
+            {courseDetail.avatar && (
+              <img src={courseDetail.avatar} alt="course avatar" />
+            )}
           </div>
         )}
 

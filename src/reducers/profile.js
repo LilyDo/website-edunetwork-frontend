@@ -33,7 +33,11 @@ export default function(state = initialState, action) {
           types.CURRENT_USER_KEY,
           JSON.stringify(currentUser),
         );
-        if (action.payload && action.payload.options && action.payload.options.redirect) {
+        if (
+          action.payload &&
+          action.payload.options &&
+          action.payload.options.redirect
+        ) {
           setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
           }, 3000);
