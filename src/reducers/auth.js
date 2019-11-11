@@ -100,6 +100,26 @@ export default function(state = initialState, action) {
         ...state,
         isForgotPasswordPopupShown: action.payload,
       };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_SUCCESS:
+      toast.success('Please check your email to reset password!');
+      return {
+        ...state,
+        loading: false,
+        isForgotPasswordPopupShown: false,
+      };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_FAILURE:
+      toast.error('Cannot reset password');
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
     default:
       return state;
   }

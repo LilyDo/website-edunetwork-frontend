@@ -12,6 +12,9 @@ import {
   ACTIVE_ACCOUNT_SUCCESS,
   ACTIVE_ACCOUNT_FAILURE,
   TOGGLE_FORGOT_PASSWORD_POPUP,
+  SEND_FORGOT_PASSWORD_EMAIL_REQUEST,
+  SEND_FORGOT_PASSWORD_EMAIL_SUCCESS,
+  SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
@@ -156,6 +159,7 @@ const verifyAccountFailure = error => ({
   },
 });
 
+// Forgot password
 export const toggleForgotPasswordPopup = flag => {
   return dispatch => {
     dispatch(setToggleForgotPasswordPopup(flag));
@@ -165,4 +169,36 @@ export const toggleForgotPasswordPopup = flag => {
 const setToggleForgotPasswordPopup = flag => ({
   type: TOGGLE_FORGOT_PASSWORD_POPUP,
   payload: flag,
+});
+
+export const sendForgotPasswordEmail = email => {
+  return dispatch => {
+    dispatch(sendForgotPasswordEmailRequest(email));
+
+    axios
+      .post(`${BASE_URL}/users/send-email-reset-password`, {
+        email,
+      })
+      .then(response =>
+        dispatch(sendForgotPasswordEmailSuccess(response.data)),
+      )
+      .catch(error =>
+        dispatch(sendForgotPasswordEmailFailure(error.message)),
+      );
+  };
+};
+
+const sendForgotPasswordEmailRequest = email => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_REQUEST,
+  payload: email,
+});
+
+const sendForgotPasswordEmailSuccess = response => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_SUCCESS,
+  payload: { ...response },
+});
+
+const sendForgotPasswordEmailFailure = error => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
+  payload: { error },
 });

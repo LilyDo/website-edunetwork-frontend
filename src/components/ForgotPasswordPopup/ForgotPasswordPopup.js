@@ -2,13 +2,30 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { toggleForgotPasswordPopup } from '../../actions/auth';
+import {
+  toggleForgotPasswordPopup,
+  sendForgotPasswordEmail,
+} from '../../actions/auth';
 import './ForgotPasswordPopup.scss';
 import CancelButton from '../../assets/images/icon_cancel.svg';
 
 class ForgotPasswordPopup extends React.Component {
+  state = {
+    email: '',
+  };
+
   hideForgotPasswordPopup = () => {
     this.props.actions.toggleForgotPasswordPopup(false);
+  };
+
+  sendForgotPasswordEmail = () => {
+    this.props.actions.sendForgotPasswordEmail(this.state.email);
+  };
+
+  setEmail = event => {
+    this.setState({
+      email: event.target.value,
+    });
   };
 
   render() {
@@ -28,10 +45,15 @@ class ForgotPasswordPopup extends React.Component {
           </div>
           <input
             className="Email.GetPassword"
-            type="text"
+            type="email"
             placeholder="Enter your email..."
+            value={this.state.email}
+            onChange={this.setEmail}
           ></input>
-          <div className="SendButton">
+          <div
+            className="SendButton"
+            onClick={this.sendForgotPasswordEmail}
+          >
             <span>SEND</span>
           </div>
         </div>
@@ -49,6 +71,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         toggleForgotPasswordPopup,
+        sendForgotPasswordEmail,
       },
       dispatch,
     ),
