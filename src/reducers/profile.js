@@ -1,7 +1,10 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
 import { routes, toastDuration } from '../constants';
-import { extractAndShoweErrorMessages } from '../services/appService';
+import {
+  extractAndShoweErrorMessages,
+  checkSessionLogout,
+} from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -43,8 +46,17 @@ export default function(state = initialState, action) {
           }, 3000);
         }
       } else {
-        toast.error(action.payload.message);
+        toast.error(
+          (action.payload.data && action.payload.data.message) || '',
+        );
       }
+
+      checkSessionLogout(
+        (action.payload.data &&
+          action.payload.data.data &&
+          action.payload.data.data.action) ||
+          '',
+      );
 
       return {
         ...state,

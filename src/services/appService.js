@@ -1,6 +1,7 @@
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { CURRENT_USER_KEY } from '../actions';
+import { routes } from '../constants';
 
 export const getUserFormLocal = function() {
   let user = localStorage.getItem(CURRENT_USER_KEY);
@@ -71,4 +72,15 @@ export const formatDurationText = duration => {
 export const extractAndShoweErrorMessages = error => {
   const errorMessages = get(error, 'data.message', '').split(',');
   errorMessages.map(message => toast.error(message));
+};
+
+export const checkSessionLogout = action => {
+  if (action === 'logout') {
+    localStorage.clear('persist:root');
+    localStorage.removeItem('current_user');
+    localStorage.removeItem('token');
+    setTimeout(function() {
+      window.location.pathname = routes.signin;
+    }, 3000);
+  }
 };
