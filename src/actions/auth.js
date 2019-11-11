@@ -15,6 +15,9 @@ import {
   SEND_FORGOT_PASSWORD_EMAIL_REQUEST,
   SEND_FORGOT_PASSWORD_EMAIL_SUCCESS,
   SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
@@ -200,5 +203,35 @@ const sendForgotPasswordEmailSuccess = response => ({
 
 const sendForgotPasswordEmailFailure = error => ({
   type: SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
+  payload: { error },
+});
+
+export const resetPassword = data => {
+  return dispatch => {
+    dispatch(resetPasswordRequest(data));
+
+    axios
+      .post(`${BASE_URL}/users/reset-password`, {
+        code: data.code,
+        password: data.password,
+        cf_password: data.confirmPassword,
+      })
+      .then(response => dispatch(resetPasswordSuccess(response.data)))
+      .catch(error => dispatch(resetPasswordFailure(error.message)));
+  };
+};
+
+const resetPasswordRequest = email => ({
+  type: RESET_PASSWORD_REQUEST,
+  payload: email,
+});
+
+const resetPasswordSuccess = response => ({
+  type: RESET_PASSWORD_SUCCESS,
+  payload: { ...response },
+});
+
+const resetPasswordFailure = error => ({
+  type: RESET_PASSWORD_FAILURE,
   payload: { error },
 });

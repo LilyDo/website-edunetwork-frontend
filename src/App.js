@@ -22,6 +22,7 @@ import OrderPage from './components/OrderPage/OrderPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import PaymentSuccessfulPage from './components/PaymentSuccessfulPage/PaymentSuccessfulPage';
 import SigninPage from './components/SigninPage/SigninPage';
+import ResetPassword from './components/ResetPassword/ResetPassword';
 import AccountDashboardPage from './components/AccountDashboardPage/AccountDashboardPage';
 import AccountProfilePage from './components/AccountProfilePage/AccountProfilePage';
 import MyWallet from './components/MyWallet/MyWallet';
@@ -121,6 +122,9 @@ class App extends Component {
                   </Route>
                   <Route exact path={routes.registerPendingActive}>
                     <SignupPendingVerify />
+                  </Route>
+                  <Route path={routes.resetPassword}>
+                    <ResetPassword />
                   </Route>
                   <Route exact path={routes.sendContactSuccessful}>
                     <SendContactSuccessful />

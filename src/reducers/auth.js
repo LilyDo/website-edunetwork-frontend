@@ -113,7 +113,30 @@ export default function(state = initialState, action) {
         isForgotPasswordPopupShown: false,
       };
     case types.SEND_FORGOT_PASSWORD_EMAIL_FAILURE:
-      toast.error('Cannot reset password');
+      toast.error(
+        'Cannot reset password, make sure you enter correct email address!',
+      );
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.RESET_PASSWORD_SUCCESS:
+      toast.success('Password reseted!');
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.RESET_PASSWORD_FAILURE:
+      toast.error(
+        'Cannot reset password, make sure you enter correct email address!',
+      );
 
       return {
         ...state,
