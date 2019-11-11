@@ -2,6 +2,7 @@ import * as types from '../actions';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { routes, toastDuration } from '../constants';
+import { clearLocalStorage } from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -40,6 +41,10 @@ export default function(state = initialState, action) {
       };
     case types.GET_USER_COURSE_DETAIL_SUCCESS:
     case types.GET_COURSE_DETAIL_SUCCESS:
+      if (get(action, 'payload.statusCode', 0) >= 400) {
+        clearLocalStorage();
+        return;
+      }
       return {
         ...state,
         loading: false,
@@ -48,12 +53,7 @@ export default function(state = initialState, action) {
     case types.GET_USER_COURSE_DETAIL_FAILURE:
     case types.GET_COURSE_DETAIL_FAILURE:
       if (get(action, 'payload.error.status', 0) >= 400) {
-        localStorage.clear('persist:root');
-        localStorage.removeItem('current_user');
-        localStorage.removeItem('token');
-        setTimeout(function() {
-          window.location.pathname = routes.signin;
-        }, 500);
+        clearLocalStorage();
       }
       return {
         ...state,

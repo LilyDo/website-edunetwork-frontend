@@ -76,11 +76,15 @@ export const extractAndShoweErrorMessages = error => {
 
 export const checkSessionLogout = action => {
   if (action === 'logout') {
-    localStorage.clear('persist:root');
-    localStorage.removeItem('current_user');
-    localStorage.removeItem('token');
-    setTimeout(function() {
-      window.location.pathname = routes.signin;
-    }, 3000);
+    clearLocalStorage();
   }
+};
+
+export const clearLocalStorage = () => {
+  localStorage.clear('persist:root');
+  localStorage.removeItem('current_user');
+  localStorage.removeItem('token');
+  setTimeout(function() {
+    window.location.pathname = routes.signin;
+  }, 500);
 };
