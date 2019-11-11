@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './SigninSignup.scss';
-import { loginAction, registerAction } from '../../actions/auth';
+import {
+  loginAction,
+  registerAction,
+  toggleForgotPasswordPopup,
+} from '../../actions/auth';
 import { bindActionCreators } from 'redux';
 import { getUrlParameter } from '../../services/appService';
 
@@ -85,6 +89,10 @@ class SigninSignup extends Component {
     }
   }
 
+  showForgotPasswordPopup = () => {
+    this.props.actions.toggleForgotPasswordPopup(true);
+  };
+
   render() {
     const {
       email,
@@ -139,7 +147,12 @@ class SigninSignup extends Component {
                   onChange={this.setPassword}
                 ></input>
               </div>
-              <div className="ForgotPassword">Forgot password?</div>
+              <div
+                className="ForgotPassword"
+                onClick={this.showForgotPasswordPopup}
+              >
+                Forgot password?
+              </div>
             </div>
           )}
           {!isShowLogin && (
@@ -231,6 +244,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         loginAction,
         registerAction,
+        toggleForgotPasswordPopup,
       },
       dispatch,
     ),
