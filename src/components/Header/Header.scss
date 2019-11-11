@@ -199,6 +199,9 @@
       font-size: 12px;
       color: $darkgrey;
       padding-left: 5px;
+      img.UserArrowDown {
+        filter: invert(46%) sepia(1%) saturate(1918%) hue-rotate(82deg) brightness(94%) contrast(84%);
+      }
     }
     img.UserArrowDown {
       height: 8px;
