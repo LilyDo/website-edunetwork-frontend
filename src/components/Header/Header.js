@@ -124,7 +124,9 @@ class Header extends Component {
                 <img
                   alt="user profile"
                   src={
-                    this.state.currentUser.avatar || DefaultUserAvatar
+                    (this.state.currentUser &&
+                      this.state.currentUser.avatar) ||
+                    DefaultUserAvatar
                   }
                 />
                 <div className="NameHeader NameHeaderMobile">

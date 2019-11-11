@@ -8,6 +8,7 @@ const initialState = {
   auth: [],
   error: null,
   isVerify: false,
+  isForgotPasswordPopupShown: false,
 };
 
 export default function(state = initialState, action) {
@@ -93,6 +94,55 @@ export default function(state = initialState, action) {
         isVerify: false,
       };
 
+    // FORGOT PASSWORD
+    case types.TOGGLE_FORGOT_PASSWORD_POPUP:
+      return {
+        ...state,
+        isForgotPasswordPopupShown: action.payload,
+      };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_SUCCESS:
+      toast.success('Please check your email to reset password!');
+      return {
+        ...state,
+        loading: false,
+        isForgotPasswordPopupShown: false,
+      };
+    case types.SEND_FORGOT_PASSWORD_EMAIL_FAILURE:
+      toast.error(
+        'Cannot reset password, make sure you enter correct email address!',
+      );
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case types.RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.RESET_PASSWORD_SUCCESS:
+      toast.success('Password reseted!');
+      return {
+        ...state,
+        loading: false,
+      };
+    case types.RESET_PASSWORD_FAILURE:
+      toast.error(
+        'Cannot reset password, make sure you enter correct email address!',
+      );
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
     default:
       return state;
   }

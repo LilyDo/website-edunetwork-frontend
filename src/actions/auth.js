@@ -11,6 +11,13 @@ import {
   ACTIVE_ACCOUNT_REQUEST,
   ACTIVE_ACCOUNT_SUCCESS,
   ACTIVE_ACCOUNT_FAILURE,
+  TOGGLE_FORGOT_PASSWORD_POPUP,
+  SEND_FORGOT_PASSWORD_EMAIL_REQUEST,
+  SEND_FORGOT_PASSWORD_EMAIL_SUCCESS,
+  SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
@@ -153,4 +160,78 @@ const verifyAccountFailure = error => ({
   payload: {
     error,
   },
+});
+
+// Forgot password
+export const toggleForgotPasswordPopup = flag => {
+  return dispatch => {
+    dispatch(setToggleForgotPasswordPopup(flag));
+  };
+};
+
+const setToggleForgotPasswordPopup = flag => ({
+  type: TOGGLE_FORGOT_PASSWORD_POPUP,
+  payload: flag,
+});
+
+export const sendForgotPasswordEmail = email => {
+  return dispatch => {
+    dispatch(sendForgotPasswordEmailRequest(email));
+
+    axios
+      .post(`${BASE_URL}/users/send-email-reset-password`, {
+        email,
+      })
+      .then(response =>
+        dispatch(sendForgotPasswordEmailSuccess(response.data)),
+      )
+      .catch(error =>
+        dispatch(sendForgotPasswordEmailFailure(error.message)),
+      );
+  };
+};
+
+const sendForgotPasswordEmailRequest = email => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_REQUEST,
+  payload: email,
+});
+
+const sendForgotPasswordEmailSuccess = response => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_SUCCESS,
+  payload: { ...response },
+});
+
+const sendForgotPasswordEmailFailure = error => ({
+  type: SEND_FORGOT_PASSWORD_EMAIL_FAILURE,
+  payload: { error },
+});
+
+export const resetPassword = data => {
+  return dispatch => {
+    dispatch(resetPasswordRequest(data));
+
+    axios
+      .post(`${BASE_URL}/users/reset-password`, {
+        code: data.code,
+        password: data.password,
+        cf_password: data.confirmPassword,
+      })
+      .then(response => dispatch(resetPasswordSuccess(response.data)))
+      .catch(error => dispatch(resetPasswordFailure(error.message)));
+  };
+};
+
+const resetPasswordRequest = email => ({
+  type: RESET_PASSWORD_REQUEST,
+  payload: email,
+});
+
+const resetPasswordSuccess = response => ({
+  type: RESET_PASSWORD_SUCCESS,
+  payload: { ...response },
+});
+
+const resetPasswordFailure = error => ({
+  type: RESET_PASSWORD_FAILURE,
+  payload: { error },
 });
