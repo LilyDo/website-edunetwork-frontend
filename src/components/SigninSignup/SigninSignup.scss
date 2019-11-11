@@ -95,6 +95,10 @@
     }
   }
 
+  .BodySpacingTop {
+    margin-top: 20px;
+  }
+
   .Body {
     width: 100%;
     display: flex;
@@ -164,6 +168,7 @@
     }
     .ForgotPassword {
       font-style: italic;
+      cursor: pointer;
     }
   }
   .Button {

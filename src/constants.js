@@ -10,6 +10,7 @@ export const routes = {
   signin: '/signin',
   verify: '/verify',
   registerPendingActive: '/register-pending-active',
+  resetPassword: '/reset-password',
   // account
   accountDashboard: '/account/dashboard',
   accountProfile: '/account/profile',
@@ -18,7 +19,8 @@ export const routes = {
   accountWithdrawNoti: '/account/profile/withdraw-noti',
   accountCourses: '/account/courses',
   accountDeposit: '/account/deposit',
-  accountDepositNoti: '/account/profile/deposit-noti/:isBuyCourse/:code/:amount',
+  accountDepositNoti:
+    '/account/profile/deposit-noti/:isBuyCourse/:code/:amount',
   // misc
   contact: '/contact',
 };
