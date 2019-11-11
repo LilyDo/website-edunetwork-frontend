@@ -11,6 +11,7 @@ import {
   ACTIVE_ACCOUNT_REQUEST,
   ACTIVE_ACCOUNT_SUCCESS,
   ACTIVE_ACCOUNT_FAILURE,
+  TOGGLE_FORGOT_PASSWORD_POPUP,
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
@@ -153,4 +154,15 @@ const verifyAccountFailure = error => ({
   payload: {
     error,
   },
+});
+
+export const toggleForgotPasswordPopup = flag => {
+  return dispatch => {
+    dispatch(setToggleForgotPasswordPopup(flag));
+  };
+};
+
+const setToggleForgotPasswordPopup = flag => ({
+  type: TOGGLE_FORGOT_PASSWORD_POPUP,
+  payload: flag,
 });

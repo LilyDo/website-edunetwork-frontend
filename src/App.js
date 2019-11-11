@@ -181,7 +181,9 @@ class App extends Component {
             </div>
             <Footer />
             <LoginPopup />
-            <ForgotPasswordPopup />
+            {this.props.isForgotPasswordPopupShown && (
+              <ForgotPasswordPopup />
+            )}
           </div>
         </Router>
       </LoadingOverlay>
@@ -195,6 +197,7 @@ const mapStateToProps = state => ({
     state.profile.loading ||
     state.courses.loading ||
     state.contact.loading,
+  isForgotPasswordPopupShown: state.auth.isForgotPasswordPopupShown,
 });
 
 const mapDispatchToProps = dispatch => ({});

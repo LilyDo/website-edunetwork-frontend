@@ -8,6 +8,7 @@ const initialState = {
   auth: [],
   error: null,
   isVerify: false,
+  isForgotPasswordPopupShown: false,
 };
 
 export default function(state = initialState, action) {
@@ -93,6 +94,12 @@ export default function(state = initialState, action) {
         isVerify: false,
       };
 
+    // FORGOT PASSWORD
+    case types.TOGGLE_FORGOT_PASSWORD_POPUP:
+      return {
+        ...state,
+        isForgotPasswordPopupShown: action.payload,
+      };
     default:
       return state;
   }
