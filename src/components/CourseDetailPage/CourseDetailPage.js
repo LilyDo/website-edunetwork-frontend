@@ -18,6 +18,11 @@ import { getUserFormLocal } from '../../services/appService';
 import { routes } from '../../constants';
 
 class CourseDetailPage extends Component {
+  state = {
+    currentId: '',
+    newId: '',
+  };
+
   componentDidMount() {
     this.props.actions.getUserCoursesAction();
   }
@@ -27,6 +32,12 @@ class CourseDetailPage extends Component {
     const courseDetail = get(this, 'props.courseDetail', {});
     const currentId = parseInt(get(courseDetail, 'id', 0));
     const loading = get(this, 'props.loading');
+
+    this.setState({
+      currentId: currentId,
+      newId: newId,
+    });
+
     if (
       newId > 0 &&
       !loading &&
@@ -42,6 +53,7 @@ class CourseDetailPage extends Component {
 
   render() {
     const { courseDetail, userCourses } = this.props;
+    const { currentId, newId } = this.state;
 
     return (
       <div className="CourseDetailPage">
@@ -59,7 +71,10 @@ class CourseDetailPage extends Component {
           ]}
         />
         <div className="CourseInfoLevelContainer">
-          <CourseInfo courseDetail={courseDetail} />
+          <CourseInfo
+            courseDetail={courseDetail}
+            isNewId={newId !== currentId}
+          />
           <CourseLevel
             courseDetail={courseDetail}
             userCourses={userCourses}
