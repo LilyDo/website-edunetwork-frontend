@@ -68,7 +68,7 @@ export const getCourseDetailAction = courseId => {
         dispatch(getCourseDetailSuccess(response.data)),
       )
       .catch(error =>
-        dispatch(getCourseDetailFailure(error.message)),
+        dispatch(getCourseDetailFailure(error.response)),
       );
   };
 };
@@ -138,7 +138,7 @@ export const getUserCourseDetailAction = courseId => {
         dispatch(getUserCourseDetailSuccess(response.data)),
       )
       .catch(error =>
-        dispatch(getUserCourseDetailFailure(error.message)),
+        dispatch(getUserCourseDetailFailure(error.response)),
       );
   };
 };

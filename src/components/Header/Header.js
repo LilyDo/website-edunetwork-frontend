@@ -7,7 +7,10 @@ import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getUserFormLocal } from '../../services/appService';
+import {
+  getUserFormLocal,
+  clearLocalStorage,
+} from '../../services/appService';
 import { routes } from '../../constants';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 
@@ -26,13 +29,7 @@ class Header extends Component {
   }
 
   doLogout = () => {
-    localStorage.clear('persist:root');
-    localStorage.removeItem('current_user');
-    localStorage.removeItem('token');
-    this.checkCurrentUser();
-    setTimeout(function() {
-      window.location.pathname = routes.home;
-    }, 500);
+    clearLocalStorage();
   };
 
   toggleHamburgerMenu = () => {
@@ -169,7 +166,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

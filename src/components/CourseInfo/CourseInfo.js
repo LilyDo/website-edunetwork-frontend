@@ -64,12 +64,18 @@ class CourseInfo extends Component {
       activeAttachment,
       currentUser,
     } = this.state;
-    const { courseDetail } = this.props;
+    const { courseDetail, isNewId } = this.props;
     const chapters = get(courseDetail, 'child', []);
+
+    if (isNewId) {
+      activeAttachment.link_file = '';
+    }
 
     return (
       <div className="CourseInfoContainer">
-        {activeAttachment && activeAttachment.link_file ? (
+        {activeAttachment &&
+        activeAttachment.link_file &&
+        !isNewId ? (
           <div className="AttachmentPlayer">
             <iframe
               title="hero_youtube"
