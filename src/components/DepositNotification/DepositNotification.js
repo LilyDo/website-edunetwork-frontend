@@ -95,8 +95,8 @@ class DepositNotification extends Component {
         <div>
           - <b>Vietnam bank account</b>
           <br />+ Full Name: <b>Ngô Thị Minh Hoa</b>
-          <br />+ Bank account: <b>908062415500001</b>
-          <br />+ Bank name: <b>Nam Á Bank</b>
+          <br />+ Bank account: <b>196981241</b>
+          <br />+ Bank name: <b>VP Bank</b>
           <br />
           <br />
         </div>
