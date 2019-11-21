@@ -47,7 +47,7 @@ export default function(state = initialState, action) {
         error: action.payload.error,
       };
 
-    // LOGIN
+    // REGISTER
     case types.REGISTER_REQUEST:
       return {
         ...state,
