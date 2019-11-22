@@ -119,7 +119,7 @@ class OrderInfo extends Component {
                   this.pay(shouldDeposit, shouldDepositAmount)
                 }
               >
-                PURCHASE NOW
+                {shouldDeposit ? 'DEPOSIT NOW' : 'PURCHASE NOW'}
               </div>
             </div>
           </div>

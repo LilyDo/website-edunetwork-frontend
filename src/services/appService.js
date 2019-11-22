@@ -70,8 +70,17 @@ export const formatDurationText = duration => {
 };
 
 export const extractAndShoweErrorMessages = error => {
-  const errorMessages = get(error, 'data.message', '').split(',');
-  errorMessages.map(message => toast.error(message));
+  let errObj = JSON.parse(error.data.message);
+  let keys = Object.keys(errObj);
+  keys.map(key => toast.error(errObj[key][0]));
+};
+
+export const formDataToObject = formData => {
+  let jsonObject = {};
+  for (const [key, value] of formData.entries()) {
+    jsonObject[key] = value;
+  }
+  return jsonObject;
 };
 
 export const checkSessionLogout = action => {

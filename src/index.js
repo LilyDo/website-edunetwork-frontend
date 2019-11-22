@@ -9,12 +9,12 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={configureStore().store}>
-    <PersistGate
+    {/* <PersistGate
       loading={null}
       persistor={configureStore().persistor}
-    >
-      <App />
-    </PersistGate>
+    > */}
+    <App />
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById('root'),
 );
