@@ -27,7 +27,7 @@
 }
 
 .Toastify__toast-container {
-  position: absolute !important;
+  position: fixed !important;
   z-index: 999 !important;
 }
 
@@ -40,10 +40,4 @@ input[type='password'] {
 
 input[type='submit'] {
   border: none;
-}
-
-.Toastify {
-  position: sticky;
-  top: 0;
-  z-index: 99999;
 }
