@@ -89,7 +89,7 @@ class App extends Component {
         spinner={<ScaleLoader />}
       >
         <Router>
-          <ToastContainer className="custom-toast" />
+          <ToastContainer />
           <div className="App">
             <div className="HeaderContentContainer">
               <Header />
