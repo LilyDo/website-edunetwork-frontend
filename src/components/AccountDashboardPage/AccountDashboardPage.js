@@ -67,14 +67,8 @@ class AccountDashboardPage extends Component {
                   <img
                     alt="rank"
                     className="RankImg"
-                    src={
-                      currentUser.rank === 'manager'
-                        ? ManagerRank
-                        : currentUser.rank === 'director'
-                        ? DirectorRank
-                        : ''
-                    }
-                  ></img>
+                    src={(currentUser.rank === 'manager')? ManagerRank : ((currentUser.rank === "director")? DirectorRank : "")}
+                  />
                 )}
               </div>
               <div className="Statistics">
