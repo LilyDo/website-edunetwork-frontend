@@ -124,7 +124,7 @@ class SigninSignup extends Component {
           {isShowLogin && (
             <div className="Signin">
               <div className="Email">
-                <span>Email:</span>
+                <span>Email</span>
                 <input
                   type="text"
                   value={email}
@@ -132,7 +132,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Password">
-                <span>Password:</span>
+                <span>Password</span>
                 <input
                   type="password"
                   value={password}
