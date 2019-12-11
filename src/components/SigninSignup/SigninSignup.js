@@ -80,12 +80,17 @@ class SigninSignup extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      refUser: getUrlParameter('refUser'),
-    });
-    let tab = getUrlParameter('tab');
+    let tab = getUrlParameter('tab') || 'login';
     if (tab === 'login') {
       this.setState({ isShowLogin: true });
+    }
+
+    let refUser = getUrlParameter('refUser') || '';
+    this.setState({
+      refUser: refUser,
+    });
+    if (refUser) {
+      this.setState({ isShowLogin: false });
     }
   }
 
