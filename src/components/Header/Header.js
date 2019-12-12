@@ -149,7 +149,11 @@ class Header extends Component {
               </div>
             )}
           </div>
-          {this.state.isHamburgerMenuVisible && <HamburgerMenu />}
+          {this.state.isHamburgerMenuVisible && (
+            <HamburgerMenu
+              toggleHamburgerMenu={this.toggleHamburgerMenu}
+            />
+          )}
         </div>
       </div>
     );
@@ -166,4 +170,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);
