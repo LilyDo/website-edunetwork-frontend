@@ -22,6 +22,8 @@ class MyWallet_Withdraw extends Component {
     currentUser: {},
     bankName: '',
     bankAccount: '',
+    bankAddress: '',
+    swiftCode: '',
     fullName: '',
     amount: '',
   };
@@ -57,10 +59,12 @@ class MyWallet_Withdraw extends Component {
   withdrawMoneyAction = () => {
     let payload = {
       bank_name: this.state.bankName,
-      bank_branch: this.state.bankBranch,
+      // bank_branch: this.state.bankBranch,
       bank_account: this.state.bankAccount,
       full_name: this.state.fullName,
       amount: this.state.amount,
+      bank_address: this.state.bankAddress,
+      swift_code: this.state.swiftCode
     };
     var form_data = new FormData();
 
@@ -80,8 +84,10 @@ class MyWallet_Withdraw extends Component {
   render() {
     const {
       bankName,
-      bankBranch,
+      // bankBranch,
       bankAccount,
+      bankAddress,
+      swiftCode,
       fullName,
       amount,
     } = this.state;
@@ -102,32 +108,50 @@ class MyWallet_Withdraw extends Component {
                 Please fill in the following information to withdraw
               </div>
               <div className="BankName">
-                <div>Bank name*</div>
+                <div>Name of Beneficiary Bank*</div>
                 <input
-                  placeholder="What is your bank name"
+                  placeholder="What is your name of beneficiary bank"
                   value={bankName}
                   onChange={this.handleChange('bankName')}
                 />
               </div>
-              <div className="BankBranch">
-                <div>Bank branch</div>
+              {/* <div className="BankBranch">
+                <div>Branch of Beneficiary Bank</div>
                 <input
-                  placeholder="What is your bank branch"
+                  placeholder="What is your branch of beneficiary bank"
                   value={bankBranch}
                   onChange={this.handleChange('bankBranch')}
                 />
-              </div>
+              </div> */}
               <div className="BankAccount">
-                <div>Bank account*</div>
+                <div>Bank Account number*</div>
                 <input
                   type="text"
-                  placeholder="What is your bank account"
+                  placeholder="What is your bank account number"
                   value={bankAccount}
                   onChange={this.handleChange('bankAccount')}
                 />
               </div>
+              <div className="BankAddress">
+                <div>Address of Beneficiary Bank</div>
+                <input
+                  type="text"
+                  placeholder="What is your address of beneficiary bank"
+                  value={bankAddress}
+                  onChange={this.handleChange('bankAddress')}
+                />
+              </div>
+              <div className="SwiftCode">
+                <div>Swift Code</div>
+                <input
+                  type="text"
+                  placeholder="What is your swift code"
+                  value={swiftCode}
+                  onChange={this.handleChange('swiftCode')}
+                />
+              </div>
               <div className="FullName">
-                <div>Full name*</div>
+                <div>Full Name*</div>
                 <input
                   type="text"
                   placeholder="What is your full name"
@@ -142,6 +166,8 @@ class MyWallet_Withdraw extends Component {
                   placeholder="How much do you want to withdraw"
                   value={amount}
                   onChange={this.handleChange('amount')}
+                  step="1"
+                  min="0"
                 />
               </div>
               <div className="Note">

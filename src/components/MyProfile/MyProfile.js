@@ -59,6 +59,12 @@ class MyProfile extends Component {
                 {this.state.currentUser.phone}
               </div>
             </div>
+            <div className="Country">
+              <div className="Text">Country</div>
+              <div className="Data">
+                {this.state.currentUser.country}
+              </div>
+            </div>
 
             <div className="ReferralCode">
               <div className="Text">Referral Code</div>
