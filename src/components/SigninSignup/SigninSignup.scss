@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 %LoginHeader {
   @extend %fontExtraBold;
@@ -122,6 +122,7 @@
     .Fullname,
     .Sponsor,
     .PhoneNumber,
+    .Country,
     .RePassword {
       display: flex;
       flex-direction: column;
@@ -139,7 +140,8 @@
         color: $grey;
       }
 
-      input {
+      input,
+      select {
         border: none;
         margin-top: 7px;
         box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
