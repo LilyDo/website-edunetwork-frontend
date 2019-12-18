@@ -60,6 +60,8 @@
       .BankAccount,
       .FullName,
       .BankBranch,
+      .BankAddress,
+      .SwiftCode,
       .WithdrawAmount {
         @extend %fontSemiBold;
         color: black;

@@ -36,9 +36,9 @@ export default function(state = initialState, action) {
       };
 
     case types.LOGIN_FAILURE:
-    console.log(action);
+      console.log(action);
       // if (get(action, 'payload.error.status', 0) === 401) {
-        toast.error(action.payload.error.data.message);
+      toast.error(action.payload.error.data.message);
       // }
       localStorage.removeItem(types.TOKEN_KEY);
 
