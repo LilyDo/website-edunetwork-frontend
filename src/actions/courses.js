@@ -170,7 +170,7 @@ export const buyCourseAction = (courseId, shouldDepositAmount) => {
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/buying-course?course_id=${courseId}&token=${token}`,
+        `${BASE_URL}/users/buying-course?course_id=${courseId}&should_deposit_amount=${shouldDepositAmount}&token=${token}`,
       )
       .then(response => {
         dispatch(
