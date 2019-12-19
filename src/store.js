@@ -14,10 +14,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export default function configureStore(initialState = {}) {
   let store = createStore(
-    persistedReducer,
+    rootReducer,
     initialState,
     composeWithDevTools(applyMiddleware(thunk)),
   );
-  let persistor = persistStore(store);
-  return { store, persistor };
+  // let persistor = persistStore(store);
+  // return { store, persistor };
+  return { store };
 }
