@@ -7,10 +7,14 @@ import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
-import { formatDurationText } from '../../services/appService';
+import {
+  getUrlParameter,
+  formatDurationText,
+} from '../../services/appService';
 import {
   buyCourseAction,
   depositAction,
+  getCourseDetailAction,
 } from '../../actions/courses';
 import * as types from '../../actions/index';
 import { getProfileAction } from '../../actions/profile';
@@ -20,6 +24,9 @@ class OrderInfo extends Component {
     this.props.actions.getProfileAction({
       token: localStorage.getItem(types.TOKEN_KEY),
     });
+
+    let courseId = getUrlParameter('id') || '';
+    this.props.actions.getCourseDetailAction(courseId);
   }
 
   deposit = depositAmount => {
@@ -148,6 +155,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         buyCourseAction,
         depositAction,
         getProfileAction,
+        getCourseDetailAction,
       },
       dispatch,
     ),
