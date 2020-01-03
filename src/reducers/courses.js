@@ -118,6 +118,38 @@ export default function(state = initialState, action) {
         loading: false,
         error: action.payload.error,
       };
+
+    // GET ORDER DETAIL BY CODE
+    case types.GET_ORDER_DETAIL_BY_CODE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_ORDER_DETAIL_BY_CODE_SUCCESS:
+      if (
+        action.payload.statusCode === 200 &&
+        action.payload.errors.length === 0
+      ) {
+        orderObj = action.payload.data || {};
+      } else {
+        toast.error(action.payload.errors[0]);
+      }
+
+      return {
+        ...state,
+        loading: false,
+        orderObj: orderObj,
+      };
+
+    case types.GET_ORDER_DETAIL_BY_CODE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+
+    // DEPOSIT REQUEST
     case types.DEPOSIT_REQUEST:
       return {
         ...state,

@@ -7,6 +7,7 @@ import { routes } from '../../constants';
 import { currencyFormatter } from '../../services/appService';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { getOrderDetailByCode } from '../../actions/profile';
 
 class DepositNotification extends Component {
   state = {
@@ -16,11 +17,15 @@ class DepositNotification extends Component {
   };
 
   componentDidMount() {
+    let code = this.props.match.params.code || '';
+
     this.setState({
       isBuyCourse: this.props.match.params.isBuyCourse,
-      code: this.props.match.params.code,
+      code: code,
       amount: this.props.match.params.amount,
     });
+
+    this.props.actions.getOrderDetailByCode(code);
   }
 
   render() {
@@ -160,7 +165,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators({}, dispatch),
+    actions: bindActionCreators(
+      {
+        getOrderDetailByCode,
+      },
+      dispatch,
+    ),
   };
 };
 
