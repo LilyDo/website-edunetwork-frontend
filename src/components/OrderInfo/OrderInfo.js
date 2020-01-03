@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
+import { bindActionCreators, compose } from 'redux';
 import { get } from 'lodash';
 
 import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
-import {
-  getUrlParameter,
-  formatDurationText,
-} from '../../services/appService';
+import { formatDurationText } from '../../services/appService';
 import {
   buyCourseAction,
   depositAction,
@@ -25,7 +23,7 @@ class OrderInfo extends Component {
       token: localStorage.getItem(types.TOKEN_KEY),
     });
 
-    let courseId = getUrlParameter('id') || '';
+    let courseId = parseInt(get(this.props, 'match.params.id'), 0);
     this.props.actions.getCourseDetailAction(courseId);
   }
 
@@ -161,7 +159,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     ),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(OrderInfo);
