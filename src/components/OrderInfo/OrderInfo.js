@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
+import { bindActionCreators, compose } from 'redux';
 import { get } from 'lodash';
 
 import './OrderInfo.scss';
@@ -11,6 +12,7 @@ import { formatDurationText } from '../../services/appService';
 import {
   buyCourseAction,
   depositAction,
+  getCourseDetailAction,
 } from '../../actions/courses';
 import * as types from '../../actions/index';
 import { getProfileAction } from '../../actions/profile';
@@ -20,6 +22,9 @@ class OrderInfo extends Component {
     this.props.actions.getProfileAction({
       token: localStorage.getItem(types.TOKEN_KEY),
     });
+
+    let courseId = parseInt(get(this.props, 'match.params.id'), 0);
+    this.props.actions.getCourseDetailAction(courseId);
   }
 
   deposit = depositAmount => {
@@ -148,12 +153,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         buyCourseAction,
         depositAction,
         getProfileAction,
+        getCourseDetailAction,
       },
       dispatch,
     ),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(OrderInfo);

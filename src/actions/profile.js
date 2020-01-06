@@ -20,6 +20,9 @@ import {
   DEPOSIT_MONEY_REQUEST,
   DEPOSIT_MONEY_SUCCESS,
   DEPOSIT_MONEY_FAILURE,
+  GET_ORDER_DETAIL_BY_CODE_REQUEST,
+  GET_ORDER_DETAIL_BY_CODE_SUCCESS,
+  GET_ORDER_DETAIL_BY_CODE_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -198,6 +201,36 @@ const requestDepositSuccess = response => ({
 
 const requestDepositFailure = error => ({
   type: DEPOSIT_MONEY_FAILURE,
+  payload: { error },
+});
+
+// GET ORDER DETAIL BY CODE
+export const getOrderDetailByCode = code => {
+  return dispatch => {
+    dispatch(getOrderDetailByCodeRequest());
+    axios
+      .get(`${BASE_URL}/users/get-order-detail-by-code/${code}`)
+      .then(response => {
+        dispatch(getOrderDetailByCodeSuccess(response.data));
+      })
+      .catch(error =>
+        dispatch(getOrderDetailByCodeFailure(error.response)),
+      );
+  };
+};
+
+const getOrderDetailByCodeRequest = code => ({
+  type: GET_ORDER_DETAIL_BY_CODE_REQUEST,
+  payload: code,
+});
+
+const getOrderDetailByCodeSuccess = response => ({
+  type: GET_ORDER_DETAIL_BY_CODE_SUCCESS,
+  payload: { ...response },
+});
+
+const getOrderDetailByCodeFailure = error => ({
+  type: GET_ORDER_DETAIL_BY_CODE_FAILURE,
   payload: { error },
 });
 
