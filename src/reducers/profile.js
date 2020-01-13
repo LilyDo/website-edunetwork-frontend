@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
         ) {
           setTimeout(function() {
             window.location.pathname = `${routes.accountDashboard}`;
-          }, 3000);
+          }, 500);
         }
       } else {
         toast.error(
