@@ -58,7 +58,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: (action.payload && action.payload.error && action.payload.error.message) || "",
+        error:
+          (action.payload &&
+            action.payload.error &&
+            action.payload.error.message) ||
+          '',
       };
     case types.GET_USER_COURSES_REQUEST:
       return {
