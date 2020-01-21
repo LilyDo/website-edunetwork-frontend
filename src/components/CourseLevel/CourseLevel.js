@@ -7,7 +7,7 @@ import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import { routes } from '../../constants';
-import { getUserFormLocal } from '../../services/appService';
+import {getTranslatedText, getUserFormLocal} from '../../services/appService';
 import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
@@ -31,11 +31,11 @@ class CourseLevel extends Component {
           <div className="CourseLevel">
             <div className="Level_PriceContainer">
               <div className="LevelContainer">
-                <div className="Text">Level</div>
+                <div className="Text">{getTranslatedText("level")}</div>
                 <div className="Level">{courseDetail.level}</div>
               </div>
               <div className="PriceContainer">
-                <div className="Text">Price</div>
+                <div className="Text">{getTranslatedText("price")}</div>
                 <div className="NumberContainer">
                   <div className="PriceNumber">
                     <span>{courseDetail.price}</span>
@@ -47,13 +47,13 @@ class CourseLevel extends Component {
             <div className="PayNow">
               {!isCourseBought && (
                 <div className="PayButton" onClick={this.onPayClick}>
-                  PURCHASE NOW
+                  {getTranslatedText("purchase_now")}
                 </div>
               )}
               <div className="Include">
-                This course included:
+                {getTranslatedText("course_include")}:
                 <div className="Quantity">
-                  Combo {courseDetail.total_course} courses
+                  {getTranslatedText("combo")} {courseDetail.total_course} {getTranslatedText("course")}
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@ class CourseLevel extends Component {
               <div className="Container">
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
-                  Duration:{' '}
+                  {getTranslatedText("duration")}{' '}
                   <span>
                     {formatDurationText(courseDetail.duration)}
                   </span>
@@ -70,18 +70,18 @@ class CourseLevel extends Component {
               <div className="Container">
                 <img alt="book" src={BookIcon}></img>
                 <div className="Text">
-                  Content:{' '}
+                  {getTranslatedText("content")}:{' '}
                   <span>{courseDetail.total_lesson} videos</span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="own" src={OwnerIcon}></img>
-                <div className="Text">Lifetime learning</div>
+                <div className="Text">{getTranslatedText("lifetime")}</div>
               </div>
               <div className="Container">
                 <img alt="student" src={StudentIcon}></img>
                 <div className="Text">
-                  <span>{courseDetail.attendees}</span> members
+                  <span>{courseDetail.attendees}</span> {getTranslatedText("member")}
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../SigninSignup/SigninSignup.scss';
 import { resetPassword } from '../../actions/auth';
 import { bindActionCreators } from 'redux';
-import { getUrlParameter } from '../../services/appService';
+import {getTranslatedText, getUrlParameter} from '../../services/appService';
 
 class ResetPassword extends Component {
   state = {
@@ -32,7 +32,7 @@ class ResetPassword extends Component {
         <div className="Body BodySpacingTop">
           <div className="Signin">
             <div className="Password">
-              <span>Password</span>
+              <span>{getTranslatedText("password")}</span>
               <input
                 type="password"
                 value={password}
@@ -40,7 +40,7 @@ class ResetPassword extends Component {
               ></input>
             </div>
             <div className="Password">
-              <span>Confirm Password</span>
+              <span>{getTranslatedText("confirm_password")}</span>
               <input
                 type="password"
                 value={confirmPassword}
@@ -51,7 +51,7 @@ class ResetPassword extends Component {
         </div>
         <div className="Button">
           <div className="SigninButton" onClick={this.login}>
-            <span>RESET PASSWORD</span>
+            <span>{getTranslatedText("reset_password")}</span>
           </div>
         </div>
       </div>

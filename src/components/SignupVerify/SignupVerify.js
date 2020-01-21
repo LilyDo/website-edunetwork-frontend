@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './SignupVerify.scss';
 import { verifyAccountAction } from '../../actions/auth';
 import { bindActionCreators } from 'redux';
-import { getUrlParameter } from '../../services/appService';
+import {getTranslatedText, getUrlParameter} from '../../services/appService';
 import { routes } from '../../constants';
 
 class SignupVerify extends Component {
@@ -23,18 +23,17 @@ class SignupVerify extends Component {
         {this.props.auth.isVerify}
         {!this.props.auth.isVerify && (
           <span>
-            Please wait a moment. Your account is being activated.
+            {getTranslatedText("wait_moment")}
           </span>
         )}
         {this.props.auth.isVerify && (
           <div>
             <span>
-              Your account has been activated. Now you can login with
-              your account. Thanks.
+              {getTranslatedText("account_activated")}
             </span>
             <div className="ButtonContainer">
               <Link to={`${routes.signin}?tab=login`}>
-                <div className="gotoLogin">LOGIN NOW</div>
+                <div className="gotoLogin">{getTranslatedText("login_now")}</div>
               </Link>
             </div>
           </div>

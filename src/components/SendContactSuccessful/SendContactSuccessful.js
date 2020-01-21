@@ -5,6 +5,7 @@ import './SendContactSuccessful.scss';
 import { verifyAccountAction } from '../../actions/auth';
 import { bindActionCreators } from 'redux';
 import { routes } from '../../constants';
+import {getTranslatedText} from "../../services/appService";
 
 class SendContactSuccessful extends Component {
   state = {
@@ -16,13 +17,13 @@ class SendContactSuccessful extends Component {
       <div className="SendContactSuccess">
         <div>
           <span>
-            Your contact email has been sent to Edunetwork. Thanks!
+            {getTranslatedText("contact_sent")}
             <br />
-            We will be back to you soon.
+            {getTranslatedText("we_will_back")}
           </span>
           <div className="ButtonContainer">
             <Link to={`${routes.home}`}>
-              <div className="GotoHome">GO TO HOME PAGE</div>
+              <div className="GotoHome">{getTranslatedText("go_to_home_page")}</div>
             </Link>
           </div>
         </div>

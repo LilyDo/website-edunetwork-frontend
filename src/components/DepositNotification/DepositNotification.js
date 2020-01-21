@@ -4,7 +4,7 @@ import './DepositNotification.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
-import { currencyFormatter } from '../../services/appService';
+import {currencyFormatter, getTranslatedText} from '../../services/appService';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getOrderDetailByCode } from '../../actions/profile';
@@ -34,22 +34,22 @@ class DepositNotification extends Component {
     return (
       <div className="WithdrawNotification">
         <div className="Title">
-          <div>My Wallet</div>
+          <div>{getTranslatedText("my_wallet")}</div>
           <img alt="arrow right" src={ArrowRight}></img>
-          <div>Deposit</div>
+          <div>{getTranslatedText("deposit")}</div>
         </div>
         <div className="Message">
           <div>
-            Your deposit request has been sent to EDUNETWORK.
+            {getTranslatedText("purchase_success_1")}.
             <br />
             <br />
           </div>
           <div>
-            We will inform you when your request is processed.
+            {getTranslatedText("purchase_success_2")}.
             <br />
             <br />
           </div>
-          You would need to make payment with the amount of:{' '}
+          {getTranslatedText("purchase_success_3")}:{' '}
           <b>
             {currencyFormatter(
               isBuyCourse === 'buy'
@@ -61,35 +61,35 @@ class DepositNotification extends Component {
           <br />
           {isBuyCourse === 'buy' && (
             <div>
-              <br />- Date and time:{' '}
+              <br />- {getTranslatedText("date")}:{' '}
               <b>{this.props.orderObj.date || ''}</b>
-              <br />- Verification code:{' '}
+              <br />- {getTranslatedText("verification_code")}:{' '}
               <b>{this.props.orderObj.payment_code || code}</b>
-              <br />- Member ID:{' '}
+              <br />- {getTranslatedText("member")} ID:{' '}
               <b>{this.props.orderObj.user_code || ''}</b>
-              <br />- Existing balance:{' '}
+              <br />- {getTranslatedText("balance")}:{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount) || ''}
               </b>
-              <br />- Amount to top up:{' '}
+              <br />- {getTranslatedText("amount_top_up")}:{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount_need) ||
                   ''}
               </b>
-              <br />- Course Level:{' '}
+              <br />- {getTranslatedText("course")} {getTranslatedText("level")}:{' '}
               <b>{this.props.orderObj.level || ''}</b>
-              <br />- Status:{' '}
+              <br />- {getTranslatedText("status")}:{' '}
               <b>{this.props.orderObj.status || ''}</b>
             </div>
           )}
           {isBuyCourse === 'deposit' && (
             <div>
-              <br />- Verification code: <b>{code}</b>
+              <br />- {getTranslatedText("verification_code")}: <b>{code}</b>
             </div>
           )}
           <br />
           <br />
-          Transfer information: Please indicate FAST Transfer
+          {getTranslatedText("purchase_success_4")}
           <br />
           <br />
           <div>
@@ -98,28 +98,28 @@ class DepositNotification extends Component {
           </div>
         </div>
         <div>
-          - <b>Vietnam bank account</b>
-          <br />+ Full Name: <b>Ngô Thị Minh Hoa</b>
-          <br />+ Bank account: <b>196981241</b>
-          <br />+ Bank name: <b>VP Bank</b>
+          - <b>Vietnam {getTranslatedText("bank_account")}</b>
+          <br />+ {getTranslatedText("full_name")}: <b>Ngô Thị Minh Hoa</b>
+          <br />+ {getTranslatedText("bank_account")}: <b>196981241</b>
+          <br />+ {getTranslatedText("bank_name")}: <b>VP Bank</b>
           <br />
           <br />
         </div>
         <div>
-          - <b>Singapore bank account</b>
-          <br />+ Company Name: <b>Edunetwork Global Pte Ltd</b>
-          <br />+ Bank Account: <b>687752311001</b> <br />+ Bank name:
-          <b>Oversea-Chinese Banking Corporation Limited</b> <br />+
-          Bank address:{' '}
+          - <b>Singapore {getTranslatedText("bank_account")}</b>
+          <br />+ {getTranslatedText("company_name")}: <b>Edunetwork Global Pte Ltd</b>
+          <br />+ {getTranslatedText("bank_number")}: <b>687752311001</b>
+          <br />+ {getTranslatedText("bank_name")}:<b>Oversea-Chinese Banking Corporation Limited</b> <br />+
+          {getTranslatedText("bank_address")}:{' '}
           <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>{' '}
-          <br />+ Swift Code: <b>OCBCSGSG</b>
+          <br />+ {getTranslatedText("swift_code")}: <b>OCBCSGSG</b>
           <br />
           <br />
         </div>
         <div>
           -{' '}
           <b>
-            Bitcoin wallet address: 1Ay16q45QTmzWCZbpLRZvHNoGmPo85kmSQ
+            {getTranslatedText("bitcoin_address")}: 1Ay16q45QTmzWCZbpLRZvHNoGmPo85kmSQ
           </b>
           <br />
           <br />
@@ -127,19 +127,17 @@ class DepositNotification extends Component {
           <br />
         </div>
         <div>
-          Upon receipt of your request, we will process it within the
-          next 24 hours
+          {getTranslatedText("purchase_success_5")}
           <br />
           <br />
         </div>
         <div>
-          Should you have any further queries, please do not hesitate
-          to contact our support team via: support@edunetwork.global
+          {getTranslatedText("purchase_success_6")}
           <br />
           <br />
         </div>
         <div>
-          Respectfully,
+          {getTranslatedText("respectfully")},
           <br />
           EduNetwork Team
         </div>
@@ -149,7 +147,7 @@ class DepositNotification extends Component {
             onClick={this.props.onGoBackClick}
           >
             <img alt="arrow back" src={ArrowBack}></img>
-            <div>Back to Wallet</div>
+            <div>{getTranslatedText("back_wallet")}</div>
           </div>
         </Link>
       </div>

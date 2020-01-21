@@ -87,16 +87,16 @@ class Header extends Component {
                 <span>{getTranslatedText('home')}</span>
               </Link>
               <Link to={routes.courses} className="NavigationLink">
-                <span>COURSE</span>
+                <span>{getTranslatedText('course')}</span>
               </Link>
               <Link to={routes.contact} className="NavigationLink">
-                <span>CONTACT</span>
+                <span>{getTranslatedText('contact')}</span>
               </Link>
             </div>
             {!this.state.isLogined && (
               <Link to={routes.signin}>
                 <div className="SignInDesktop">
-                  <span>Sign in</span>
+                  <span>{getTranslatedText('signin')}</span>
                   <AccountMenuPopup />
                 </div>
               </Link>
@@ -119,15 +119,15 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>
-                    <div>Dashboard</div>
+                    <div>{getTranslatedText('dashboard')}</div>
                   </Link>
                   <Link to={routes.accountProfile}>
-                    <div>My Profile</div>
+                    <div>{getTranslatedText('profile')}</div>
                   </Link>
                   <Link to={routes.accountCourses}>
-                    <div>My Course</div>
+                    <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout.bind(this)}>Logout</div>
+                  <div onClick={this.doLogout.bind(this)}>{getTranslatedText('logout')}</div>
                 </div>
               </div>
             )}
@@ -145,7 +145,7 @@ class Header extends Component {
             {!this.state.isLogined && (
               <div className="SignInMobile">
                 <Link to={routes.signin}>
-                  <span>Sign in</span>
+                  <span>{getTranslatedText('signin')}</span>
                 </Link>
               </div>
             )}
@@ -169,15 +169,15 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>
-                    <div>Dashboard</div>
+                    <div>{getTranslatedText('dashboard')}</div>
                   </Link>
                   <Link to={routes.accountProfile}>
-                    <div>My Profile</div>
+                    <div>{getTranslatedText('profile')}</div>
                   </Link>
                   <Link to={routes.accountCourses}>
-                    <div>My Course</div>
+                    <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout}>Logout</div>
+                  <div onClick={this.doLogout}>{getTranslatedText('logout')}</div>
                 </div>
               </div>
             )}

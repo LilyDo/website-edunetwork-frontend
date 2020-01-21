@@ -14,7 +14,7 @@ import {
   getCourseDetailAction,
   getUserCourseDetailAction,
 } from '../../actions/courses';
-import { getUserFormLocal } from '../../services/appService';
+import {getTranslatedText, getUserFormLocal} from '../../services/appService';
 import { routes } from '../../constants';
 
 class CourseDetailPage extends Component {
@@ -59,14 +59,14 @@ class CourseDetailPage extends Component {
       <div className="CourseDetailPage">
         <Breadcrumb
           data={[
-            { link: routes.home, text: 'HOME' },
-            { link: routes.courses, text: 'COURSES' },
+            { link: routes.home, text: getTranslatedText('HOME') },
+            { link: routes.courses, text: getTranslatedText('COURSE') },
             {
               link: routes.courseDetail.replace(
                 ':id',
                 courseDetail.id,
               ),
-              text: 'DETAILS',
+              text: getTranslatedText('DETAIL'),
             },
           ]}
         />

@@ -4,22 +4,20 @@ import './WithdrawNotification.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
+import {getTranslatedText} from "../../services/appService";
 
 class WithdrawNotification extends Component {
   render() {
     return (
       <div className="WithdrawNotification">
         <div className="Title">
-          <div>My Wallet</div>
+          <div>{getTranslatedText("my_wallet")}</div>
           <img alt="arrow right" src={ArrowRight}></img>
-          <div>Withdraw</div>
+          <div>{getTranslatedText("withdraw")}</div>
         </div>
         <div className="Message">
           <div>
-            Your withdraw request has been sent to EDUNETWORK.
-          </div>
-          <div>
-            We will inform you when your request is processed.
+            {getTranslatedText("success_withdraw")}
           </div>
         </div>
         <Link to={routes.accountWallet}>
@@ -28,7 +26,7 @@ class WithdrawNotification extends Component {
             onClick={this.props.onGoBackClick}
           >
             <img alt="arrow back" src={ArrowBack}></img>
-            <div>Back to Wallet</div>
+            <div>{getTranslatedText("back_wallet")}</div>
           </div>
         </Link>
       </div>

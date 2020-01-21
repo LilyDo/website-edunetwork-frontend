@@ -8,7 +8,7 @@ import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
-import { formatDurationText } from '../../services/appService';
+import {formatDurationText, getTranslatedText} from '../../services/appService';
 import {
   buyCourseAction,
   depositAction,
@@ -51,19 +51,19 @@ class OrderInfo extends Component {
 
     return (
       <div className="OrderInfoContainer">
-        <div className="Title">YOUR ORDER INFORMATION</div>
+        <div className="Title">{getTranslatedText("your_order_info")}</div>
         <div className="OrderInfo">
           <div className="CourseInfo">
-            <div>Course name</div>
+            <div>{getTranslatedText("course_name")}</div>
             <div className="CourseHeader">
               <div className="HeaderText">{courseDetail.title}</div>
               <div className="LevelPrice">
                 <div className="LevelContainer">
-                  <div className="Text">Level</div>
+                  <div className="Text">{getTranslatedText("Level")}</div>
                   <div className="Level">{courseDetail.level}</div>
                 </div>
                 <div className="PriceContainer">
-                  <div className="Text">Price</div>
+                  <div className="Text">{getTranslatedText("Price")}</div>
                   <div className="NumberContainer">
                     <div className="PriceNumber">
                       <span>{courseDetail.price}</span>
@@ -77,7 +77,7 @@ class OrderInfo extends Component {
               <div className="Container">
                 <img alt="time" src={TimeIcon}></img>
                 <div className="Text">
-                  Duration:{' '}
+                  {getTranslatedText("duration")}{' '}
                   <span>
                     {formatDurationText(courseDetail.duration)}
                   </span>
@@ -86,32 +86,32 @@ class OrderInfo extends Component {
               <div className="Container">
                 <img alt="book" src={BookIcon}></img>
                 <div className="Text">
-                  Content:{' '}
+                  {getTranslatedText("content")}{' '}
                   <span>{courseDetail.total_lesson} videos</span>
                 </div>
               </div>
               <div className="Container">
                 <img alt="own" src={OwnerIcon}></img>
-                <div className="Text">Lifetime learning</div>
+                <div className="Text">{getTranslatedText("Lifetime")}</div>
               </div>
             </div>
           </div>
           <div className="WalletInfoContainer">
-            <div className="WalletTitle">YOUR WALLET</div>
+            <div className="WalletTitle">{getTranslatedText("your_wallet")}</div>
             <div className="WalletInfo">
               <div className="WalletInfoItems">
                 <div className="Container Remaining">
-                  <div className="Text">Balance:</div>
+                  <div className="Text">{getTranslatedText("Balance")}</div>
                   <div className="Number">{profile.total_price}</div>
                   <div className="Currency">USD</div>
                 </div>
                 <div className="Container PendingOrder">
-                  <div className="Text">Need to purchased:</div>
+                  <div className="Text">{getTranslatedText("need_purchase")}</div>
                   <div className="Number">{courseDetail.price}</div>
                   <div className="Currency">USD</div>
                 </div>
                 <div className="Container Missing">
-                  <div className="Text">Amount to top up:</div>
+                  <div className="Text">{getTranslatedText("amount_top_up")}</div>
                   <div className="Number">
                     {shouldDeposit ? shouldDepositAmount : 0}
                   </div>
@@ -124,7 +124,7 @@ class OrderInfo extends Component {
                   this.pay(shouldDeposit, shouldDepositAmount)
                 }
               >
-                {shouldDeposit ? 'DEPOSIT NOW' : 'PURCHASE NOW'}
+                {shouldDeposit ? getTranslatedText("deposit_now") : getTranslatedText("purchase_now")}
               </div>
             </div>
           </div>

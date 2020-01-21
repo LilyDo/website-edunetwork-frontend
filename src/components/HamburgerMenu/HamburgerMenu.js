@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './HamburgerMenu.scss';
 import { Link } from 'react-router-dom';
 import { routes } from '../../constants';
+import {getTranslatedText} from "../../services/appService";
 
 class HamburgerMenu extends Component {
   render() {
@@ -12,21 +13,21 @@ class HamburgerMenu extends Component {
           className="Menu Home"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>HOME</span>
+          <span>{getTranslatedText('home')}</span>
         </Link>
         <Link
           to={routes.courses}
           className="Menu Course"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>COURSE</span>
+          <span>{getTranslatedText('course')}</span>
         </Link>
         <Link
           to={routes.contact}
           className="Menu Contact"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>CONTACT</span>
+          <span>{getTranslatedText('contact')}</span>
         </Link>
       </div>
     );
