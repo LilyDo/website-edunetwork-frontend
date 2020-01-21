@@ -3,6 +3,7 @@ export const USER_WEBSITE_URL =
 export const BASE_URL = process.env.REACT_APP_API_ENV + '/v1';
 export const TOKEN_KEY = 'token';
 export const CURRENT_USER_KEY = 'current_user';
+export const CURRENT_LANG_KEY = 'current_lang';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

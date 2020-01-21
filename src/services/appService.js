@@ -1,7 +1,8 @@
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
-import { CURRENT_USER_KEY } from '../actions';
+import { CURRENT_USER_KEY, CURRENT_LANG_KEY } from '../actions';
 import { routes } from '../constants';
+import { translatedText } from './lang';
 
 export const getUserFormLocal = function() {
   let user = localStorage.getItem(CURRENT_USER_KEY);
@@ -96,4 +97,9 @@ export const clearLocalStorage = () => {
   setTimeout(function() {
     window.location.pathname = routes.signin;
   }, 500);
+};
+
+export const getTranslatedText = key => {
+  let currentLang = localStorage.getItem(CURRENT_LANG_KEY) || 'en';
+  return translatedText[key][currentLang];
 };

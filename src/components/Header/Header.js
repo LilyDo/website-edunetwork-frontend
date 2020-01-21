@@ -10,8 +10,10 @@ import { connect } from 'react-redux';
 import {
   getUserFormLocal,
   clearLocalStorage,
+  getTranslatedText,
 } from '../../services/appService';
 import { routes } from '../../constants';
+import * as types from '../../actions';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 
 class Header extends Component {
@@ -19,6 +21,7 @@ class Header extends Component {
     isLogined: false,
     currentUser: getUserFormLocal(),
     isHamburgerMenuVisible: false,
+    currentLanguage: 'en',
   };
 
   checkCurrentUser() {
@@ -38,20 +41,50 @@ class Header extends Component {
     });
   };
 
+  selectLang(lang) {
+    localStorage.setItem(types.CURRENT_LANG_KEY, lang);
+    window.location.reload();
+  }
+
+  componentDidMount() {
+    this.setState({
+      currentLanguage:
+        localStorage.getItem(types.CURRENT_LANG_KEY) || 'en',
+    });
+  }
+
   render() {
     this.checkCurrentUser();
+
+    const { currentLanguage } = this.state;
 
     return (
       <div className="Header">
         <div className="UpperHeader">
           <div className="LanguageSelector">
-            <div className="text">English</div>
+            <div className="text">
+              {currentLanguage === 'en' ? 'English' : 'Tiếng Việt'}
+            </div>
             <img alt="option" src={ArrowDown} />
+            <div className="LanguageSelectContainer">
+              <div
+                className="LanguageSelectItem"
+                onClick={() => this.selectLang('en')}
+              >
+                English
+              </div>
+              <div
+                className="LanguageSelectItem"
+                onClick={() => this.selectLang('vi')}
+              >
+                Tiếng Việt
+              </div>
+            </div>
           </div>
           <div className="UpperHeaderlinks">
             <div className="NavigationContainer">
               <Link to={routes.home} className="NavigationLink">
-                <span>HOME</span>
+                <span>{getTranslatedText('home')}</span>
               </Link>
               <Link to={routes.courses} className="NavigationLink">
                 <span>COURSE</span>
