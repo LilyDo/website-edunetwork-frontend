@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import PaymentSuccessful from '../PaymentSuccessful/PaymentSuccessful';
 import { routes } from '../../constants';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class PaymentSuccessfulPage extends Component {
   render() {
@@ -13,7 +13,10 @@ class PaymentSuccessfulPage extends Component {
         <Breadcrumb
           data={[
             { link: routes.home, text: getTranslatedText('HOME') },
-            { link: routes.courses, text: getTranslatedText('COURSE') },
+            {
+              link: routes.courses,
+              text: getTranslatedText('COURSE'),
+            },
             {
               link: routes.courseDetail.replace(':id', id),
               text: getTranslatedText('DETAIL'),

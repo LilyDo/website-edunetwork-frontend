@@ -5,7 +5,8 @@ import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import {
   getUserFormLocal,
-  currencyFormatter, getTranslatedText,
+  currencyFormatter,
+  getTranslatedText,
 } from '../../services/appService';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -63,7 +64,9 @@ class MyWallet extends Component {
       <div>
         <AccountBreadcrumb />
         <div className="MyWallet">
-          <div className="Title">{getTranslatedText("my_wallet")}</div>
+          <div className="Title">
+            {getTranslatedText('my_wallet')}
+          </div>
           <div className="Card">
             <div className="User">
               <img
@@ -74,7 +77,9 @@ class MyWallet extends Component {
               <div>{currentUser.name || ''}</div>
             </div>
             <div className="Balance">
-              <div className="Text">{getTranslatedText("Balance")}</div>
+              <div className="Text">
+                {getTranslatedText('Balance')}
+              </div>
               <div className="Number">
                 {currencyFormatter(currentUser.total_price)}
               </div>
@@ -82,10 +87,14 @@ class MyWallet extends Component {
           </div>
           <div className="ButtonContainer">
             <Link to={routes.accountWithdraw}>
-              <div className="WithdrawButton">{getTranslatedText("WITHDRAW")}</div>
+              <div className="WithdrawButton">
+                {getTranslatedText('WITHDRAW')}
+              </div>
             </Link>
             <Link to={routes.accountDeposit}>
-              <div className="TopupButton">{getTranslatedText("DEPOSIT")}</div>
+              <div className="TopupButton">
+                {getTranslatedText('DEPOSIT')}
+              </div>
             </Link>
           </div>
           <div className="Transactions">

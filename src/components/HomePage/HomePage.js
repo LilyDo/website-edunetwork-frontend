@@ -3,29 +3,29 @@ import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
 import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 function HomePage() {
   const infoCarouselData = [
     {
       icon: 'icon_plane.svg',
       title: getTranslatedText('VISION'),
-      subtitle: "",
-      description: getTranslatedText("vision_detail"),
-      image_url: 'info_carousel_1.png',
-    },
-    {
-      icon: 'icon_link.svg',
-      title: getTranslatedText("MISSION"),
       subtitle: '',
-      description: getTranslatedText("mission_detail"),
+      description: getTranslatedText('vision_detail'),
       image_url: 'info_carousel_1.png',
     },
     {
       icon: 'icon_link.svg',
-      title: getTranslatedText("core_values"),
-      subtitle: "",
-      description: getTranslatedText("core_value_detail"),
+      title: getTranslatedText('MISSION'),
+      subtitle: '',
+      description: getTranslatedText('mission_detail'),
+      image_url: 'info_carousel_1.png',
+    },
+    {
+      icon: 'icon_link.svg',
+      title: getTranslatedText('core_values'),
+      subtitle: '',
+      description: getTranslatedText('core_value_detail'),
       image_url: 'info_carousel_1.png',
     },
   ];

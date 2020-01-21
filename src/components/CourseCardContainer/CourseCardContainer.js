@@ -7,7 +7,7 @@ import './CourseCardContainer.scss';
 import CourseBackground from '../../assets/images/course_background.png';
 import CourseCard from '../CourseCard/CourseCard';
 import { getCoursesAction } from '../../actions/courses';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class CourseCardContainer extends Component {
   componentWillMount() {
@@ -28,9 +28,11 @@ class CourseCardContainer extends Component {
       <div>
         <div className="CourseTitleContainer">
           <div className="CourseTitle">
-            <div className="Title">{getTranslatedText("our_courses")}</div>
+            <div className="Title">
+              {getTranslatedText('our_courses')}
+            </div>
             <div className="Note">
-              {getTranslatedText("course_note")}
+              {getTranslatedText('course_note')}
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { sendContactAction } from '../../actions/contact';
 import { keys } from '../../constants';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class ContactPage extends Component {
   state = {
@@ -58,12 +58,12 @@ class ContactPage extends Component {
         <div className="ContactPage">
           <div className="ContentContainer">
             <div className="ContactInfo">
-              <div>{getTranslatedText("contact_edunetwork")}</div>
+              <div>{getTranslatedText('contact_edunetwork')}</div>
               <div className="Name">
-                <div>{getTranslatedText("your_name")}</div>
+                <div>{getTranslatedText('your_name')}</div>
                 <input
                   type="text"
-                  placeholder={getTranslatedText("input_your_name")}
+                  placeholder={getTranslatedText('input_your_name')}
                   value={name}
                   onChange={this.handleChange('name')}
                   required
@@ -73,25 +73,25 @@ class ContactPage extends Component {
                 <div>Email*</div>
                 <input
                   type="email"
-                  placeholder={getTranslatedText("input_your_email")}
+                  placeholder={getTranslatedText('input_your_email')}
                   value={email}
                   onChange={this.handleChange('email')}
                   required
                 />
               </div>
               <div className="Phone">
-                <div>{getTranslatedText("your_phone")}</div>
+                <div>{getTranslatedText('your_phone')}</div>
                 <input
                   type="tel"
-                  placeholder={getTranslatedText("input_your_phone")}
+                  placeholder={getTranslatedText('input_your_phone')}
                   value={phone}
                   onChange={this.handleChange('phone')}
                 />
               </div>
               <div className="Text">
-                <div>{getTranslatedText("text")}</div>
+                <div>{getTranslatedText('text')}</div>
                 <textarea
-                  placeholder={getTranslatedText("let_us_know")}
+                  placeholder={getTranslatedText('let_us_know')}
                   value={message}
                   onChange={this.handleChange('message')}
                   required

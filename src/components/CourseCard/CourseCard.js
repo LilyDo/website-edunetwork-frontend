@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CourseCard.scss';
 import { routes } from '../../constants';
 import { Link } from 'react-router-dom';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class CourseCard extends Component {
   render() {
@@ -30,7 +30,11 @@ class CourseCard extends Component {
                 courseCarouselItem.id,
               )}
             >
-              <div className="PayNow">{isBought ? getTranslatedText("learn_now") : getTranslatedText("see_detail")}</div>
+              <div className="PayNow">
+                {isBought
+                  ? getTranslatedText('learn_now')
+                  : getTranslatedText('see_detail')}
+              </div>
             </Link>
           </div>
         </div>

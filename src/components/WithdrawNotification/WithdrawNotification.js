@@ -4,21 +4,19 @@ import './WithdrawNotification.scss';
 import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class WithdrawNotification extends Component {
   render() {
     return (
       <div className="WithdrawNotification">
         <div className="Title">
-          <div>{getTranslatedText("my_wallet")}</div>
+          <div>{getTranslatedText('my_wallet')}</div>
           <img alt="arrow right" src={ArrowRight}></img>
-          <div>{getTranslatedText("withdraw")}</div>
+          <div>{getTranslatedText('withdraw')}</div>
         </div>
         <div className="Message">
-          <div>
-            {getTranslatedText("success_withdraw")}
-          </div>
+          <div>{getTranslatedText('success_withdraw')}</div>
         </div>
         <Link to={routes.accountWallet}>
           <div
@@ -26,7 +24,7 @@ class WithdrawNotification extends Component {
             onClick={this.props.onGoBackClick}
           >
             <img alt="arrow back" src={ArrowBack}></img>
-            <div>{getTranslatedText("back_wallet")}</div>
+            <div>{getTranslatedText('back_wallet')}</div>
           </div>
         </Link>
       </div>

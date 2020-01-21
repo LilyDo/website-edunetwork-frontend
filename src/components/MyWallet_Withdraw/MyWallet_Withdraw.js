@@ -7,7 +7,8 @@ import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import {
   getUserFormLocal,
-  currencyFormatter, getTranslatedText,
+  currencyFormatter,
+  getTranslatedText,
 } from '../../services/appService';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
@@ -64,7 +65,7 @@ class MyWallet_Withdraw extends Component {
       full_name: this.state.fullName,
       amount: this.state.amount,
       bank_address: this.state.bankAddress,
-      swift_code: this.state.swiftCode
+      swift_code: this.state.swiftCode,
     };
     var form_data = new FormData();
 
@@ -97,20 +98,18 @@ class MyWallet_Withdraw extends Component {
         <AccountBreadcrumb />
         <div className="MyWallet_Withdraw">
           <div className="Title">
-            <div>{getTranslatedText("my_wallet")}</div>
+            <div>{getTranslatedText('my_wallet')}</div>
             <img alt="arrow right" src={ArrowRight}></img>
-            <div>{getTranslatedText("withdraw")}</div>
+            <div>{getTranslatedText('withdraw')}</div>
           </div>
 
           <div className="ContentContainer">
             <div className="TransactionInfo">
-              <div>
-                {getTranslatedText("fill_to_withdraw")}
-              </div>
+              <div>{getTranslatedText('fill_to_withdraw')}</div>
               <div className="BankName">
-                <div>{getTranslatedText("bank_name")}</div>
+                <div>{getTranslatedText('bank_name')}</div>
                 <input
-                  placeholder={getTranslatedText("your_bank_name")}
+                  placeholder={getTranslatedText('your_bank_name')}
                   value={bankName}
                   onChange={this.handleChange('bankName')}
                 />
@@ -124,46 +123,46 @@ class MyWallet_Withdraw extends Component {
                 />
               </div> */}
               <div className="BankAccount">
-                <div>{getTranslatedText("bank_number")}</div>
+                <div>{getTranslatedText('bank_number')}</div>
                 <input
                   type="text"
-                  placeholder={getTranslatedText("your_bank_number")}
+                  placeholder={getTranslatedText('your_bank_number')}
                   value={bankAccount}
                   onChange={this.handleChange('bankAccount')}
                 />
               </div>
               <div className="BankAddress">
-                <div>{getTranslatedText("bank_address")}</div>
+                <div>{getTranslatedText('bank_address')}</div>
                 <input
                   type="text"
-                  placeholder={getTranslatedText("your_bank_address")}
+                  placeholder={getTranslatedText('your_bank_address')}
                   value={bankAddress}
                   onChange={this.handleChange('bankAddress')}
                 />
               </div>
               <div className="SwiftCode">
-                <div>{getTranslatedText("swift_code")}</div>
+                <div>{getTranslatedText('swift_code')}</div>
                 <input
                   type="text"
-                  placeholder={getTranslatedText("your_swift_code")}
+                  placeholder={getTranslatedText('your_swift_code')}
                   value={swiftCode}
                   onChange={this.handleChange('swiftCode')}
                 />
               </div>
               <div className="FullName">
-                <div>{getTranslatedText("full_name")}</div>
+                <div>{getTranslatedText('full_name')}</div>
                 <input
                   type="text"
-                  placeholder={getTranslatedText("full_name")}
+                  placeholder={getTranslatedText('full_name')}
                   value={fullName}
                   onChange={this.handleChange('fullName')}
                 />
               </div>
               <div className="WithdrawAmount">
-                <div>{getTranslatedText("amount")}</div>
+                <div>{getTranslatedText('amount')}</div>
                 <input
                   type="number"
-                  placeholder={getTranslatedText("amount_withdraw")}
+                  placeholder={getTranslatedText('amount_withdraw')}
                   value={amount}
                   onChange={this.handleChange('amount')}
                   step="1"
@@ -171,7 +170,7 @@ class MyWallet_Withdraw extends Component {
                 />
               </div>
               <div className="Note">
-                {getTranslatedText("important_withdraw")}
+                {getTranslatedText('important_withdraw')}
               </div>
             </div>
 
@@ -187,7 +186,9 @@ class MyWallet_Withdraw extends Component {
                 <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
-                <div className="Text">{getTranslatedText("Balance")}</div>
+                <div className="Text">
+                  {getTranslatedText('Balance')}
+                </div>
                 <div className="Number">
                   {currencyFormatter(
                     this.state.currentUser.total_price,
@@ -200,10 +201,12 @@ class MyWallet_Withdraw extends Component {
             className="TransactionRequest"
             onClick={this.withdrawMoneyAction}
           >
-            {getTranslatedText("REQUEST")}
+            {getTranslatedText('REQUEST')}
           </div>
           <Link to={routes.accountWallet}>
-            <div className="CancelButton">{getTranslatedText("CANCEL")}</div>
+            <div className="CancelButton">
+              {getTranslatedText('CANCEL')}
+            </div>
           </Link>
         </div>
       </div>

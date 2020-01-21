@@ -6,7 +6,8 @@ import './RequestDeposit.scss';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
 import {
   getUserFormLocal,
-  currencyFormatter, getTranslatedText,
+  currencyFormatter,
+  getTranslatedText,
 } from '../../services/appService';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
@@ -76,27 +77,25 @@ class RequestDeposit extends Component {
         <AccountBreadcrumb />
         <div className="MyWallet_Withdraw">
           <div className="Title">
-            <div>{getTranslatedText("my_wallet")}</div>
+            <div>{getTranslatedText('my_wallet')}</div>
             <img alt="arrow right" src={ArrowRight}></img>
-            <div>{getTranslatedText("my_wallet")}Deposit</div>
+            <div>{getTranslatedText('my_wallet')}Deposit</div>
           </div>
 
           <div className="ContentContainer">
             <div className="TransactionInfo">
-              <div>
-                {getTranslatedText("input_deposit")}
-              </div>
+              <div>{getTranslatedText('input_deposit')}</div>
               <div className="WithdrawAmount">
-                <div>{getTranslatedText("amount")} (USD)</div>
+                <div>{getTranslatedText('amount')} (USD)</div>
                 <input
                   type="number"
-                  placeholder={getTranslatedText("amount_deposit")}
+                  placeholder={getTranslatedText('amount_deposit')}
                   value={amount}
                   onChange={this.handleChange('amount')}
                 />
               </div>
               <div className="Note">
-                {getTranslatedText("important_deposit")}
+                {getTranslatedText('important_deposit')}
               </div>
             </div>
 
@@ -112,7 +111,9 @@ class RequestDeposit extends Component {
                 <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
-                <div className="Text">{getTranslatedText("balance")}</div>
+                <div className="Text">
+                  {getTranslatedText('balance')}
+                </div>
                 <div className="Number">
                   {currencyFormatter(
                     this.state.currentUser.total_price,
@@ -125,10 +126,12 @@ class RequestDeposit extends Component {
             className="TransactionRequest"
             onClick={this.requestDeposit}
           >
-            {getTranslatedText("REQUEST")}
+            {getTranslatedText('REQUEST')}
           </div>
           <Link to={routes.accountWallet}>
-            <div className="CancelButton">{getTranslatedText("CANCEL")}</div>
+            <div className="CancelButton">
+              {getTranslatedText('CANCEL')}
+            </div>
           </Link>
         </div>
       </div>

@@ -12,7 +12,8 @@ import {
   getProfileAction,
 } from '../../actions/profile';
 import {
-  currencyFormatter, getTranslatedText,
+  currencyFormatter,
+  getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
 import * as types from '../../actions/index';
@@ -49,7 +50,9 @@ class AccountDashboardPage extends Component {
         <AccountBreadcrumb />
         <div className="AccountDashboardPage">
           <div className="Overview">
-            <div className="Title">{getTranslatedText('summary')}</div>
+            <div className="Title">
+              {getTranslatedText('summary')}
+            </div>
             <div className="OverviewContainer">
               <div
                 className={
@@ -67,7 +70,13 @@ class AccountDashboardPage extends Component {
                   <img
                     alt="rank"
                     className="RankImg"
-                    src={(currentUser.rank === 'manager')? ManagerRank : ((currentUser.rank === "director")? DirectorRank : "")}
+                    src={
+                      currentUser.rank === 'manager'
+                        ? ManagerRank
+                        : currentUser.rank === 'director'
+                        ? DirectorRank
+                        : ''
+                    }
                   />
                 )}
               </div>
@@ -81,7 +90,9 @@ class AccountDashboardPage extends Component {
                         )) ||
                         '0'}
                     </div>
-                    <div className="Text">{getTranslatedText('total_commission')}</div>
+                    <div className="Text">
+                      {getTranslatedText('total_commission')}
+                    </div>
                   </div>
                   <div className="Money TotalRevenue">
                     <div className="Number">
@@ -89,7 +100,9 @@ class AccountDashboardPage extends Component {
                         currencyFormatter(dashboard.total_revenue)) ||
                         '0'}
                     </div>
-                    <div className="Text">{getTranslatedText('total_group_revenue')}</div>
+                    <div className="Text">
+                      {getTranslatedText('total_group_revenue')}
+                    </div>
                   </div>
                 </div>
                 <div className="PeopleContainer">
@@ -97,7 +110,9 @@ class AccountDashboardPage extends Component {
                     <div className="Number">
                       {dashboard.total_user || '0'}
                     </div>
-                    <div className="Text">{getTranslatedText('total_ref')}</div>
+                    <div className="Text">
+                      {getTranslatedText('total_ref')}
+                    </div>
                   </div>
                   <div className="People TotalActive">
                     <div className="Number">
@@ -105,14 +120,18 @@ class AccountDashboardPage extends Component {
                         dashboard.total_active_user.length) ||
                         '0'}
                     </div>
-                    <div className="Text">{getTranslatedText('total_active_user')}</div>
+                    <div className="Text">
+                      {getTranslatedText('total_active_user')}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="RevenueChart">
-            <div className="Title">{getTranslatedText('revenue_chart')}</div>
+            <div className="Title">
+              {getTranslatedText('revenue_chart')}
+            </div>
             <div className="Chart">
               <DashboardChart
                 data={{
@@ -124,11 +143,15 @@ class AccountDashboardPage extends Component {
             </div>
           </div>
           <div className="RevenueTable">
-            <div className="Title">{getTranslatedText('statistic')}</div>
+            <div className="Title">
+              {getTranslatedText('statistic')}
+            </div>
             <table className="Table">
               <thead className="RevenueTableHead">
                 <tr>
-                  <th className="FirstCell">{getTranslatedText('group_revenue')}</th>
+                  <th className="FirstCell">
+                    {getTranslatedText('group_revenue')}
+                  </th>
                   <th className="EqualCell">Jan</th>
                   <th className="EqualCell">Feb</th>
                   <th className="EqualCell">Mar</th>
@@ -145,7 +168,9 @@ class AccountDashboardPage extends Component {
               </thead>
               <tbody className="RevenueTableBody">
                 <tr>
-                  <td className="FirstCell">{getTranslatedText('commission')}</td>
+                  <td className="FirstCell">
+                    {getTranslatedText('commission')}
+                  </td>
                   {dashboard &&
                     dashboard.total_commission_month &&
                     dashboard.total_commission_month.map(
@@ -168,7 +193,9 @@ class AccountDashboardPage extends Component {
             </table>
           </div>
           <div className="Member">
-            <div className="Title">{getTranslatedText('your_member')}</div>
+            <div className="Title">
+              {getTranslatedText('your_member')}
+            </div>
             <div className="Status">
               <div
                 className={isShowPaid ? 'Paid active' : 'Paid'}
@@ -191,7 +218,9 @@ class AccountDashboardPage extends Component {
                   <th>Email</th>
                   <th>{getTranslatedText('your_phone')}</th>
                   <th>
-                    {isShowPaid ? getTranslatedText("active_date") : getTranslatedText("register_date")}
+                    {isShowPaid
+                      ? getTranslatedText('active_date')
+                      : getTranslatedText('register_date')}
                   </th>
                   <th>{getTranslatedText('course')}</th>
                   <th>{getTranslatedText('commission')}</th>

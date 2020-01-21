@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './MyProfile.scss';
 import EditIcon from '../../assets/images/icon_edit.svg';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
-import {getTranslatedText, getUserFormLocal} from '../../services/appService';
+import {
+  getTranslatedText,
+  getUserFormLocal,
+} from '../../services/appService';
 import { USER_WEBSITE_URL } from '../../actions/index';
 import { routes } from '../../constants';
 
@@ -24,7 +27,7 @@ class MyProfile extends Component {
 
     return (
       <div className="MyProfile">
-        <div className="Title">{getTranslatedText("my_wallet")}</div>
+        <div className="Title">{getTranslatedText('my_wallet')}</div>
         <div className="Profile">
           <img
             className="EditIcon"
@@ -42,7 +45,9 @@ class MyProfile extends Component {
           </div>
           <div className="GroupProfile">
             <div className="Fullname">
-              <div className="Text">{getTranslatedText("full_name")}</div>
+              <div className="Text">
+                {getTranslatedText('full_name')}
+              </div>
               <div className="Data">
                 {this.state.currentUser.name}
               </div>
@@ -54,32 +59,42 @@ class MyProfile extends Component {
               </div>
             </div>
             <div className="PhoneNumber">
-              <div className="Text">{getTranslatedText("your_phone")}</div>
+              <div className="Text">
+                {getTranslatedText('your_phone')}
+              </div>
               <div className="Data">
                 {this.state.currentUser.phone}
               </div>
             </div>
             <div className="Country">
-              <div className="Text">{getTranslatedText("Country")}</div>
+              <div className="Text">
+                {getTranslatedText('Country')}
+              </div>
               <div className="Data">
                 {this.state.currentUser.country}
               </div>
             </div>
 
             <div className="ReferralCode">
-              <div className="Text">{getTranslatedText("ref_code")}</div>
+              <div className="Text">
+                {getTranslatedText('ref_code')}
+              </div>
               <div className="Data">
                 {this.state.currentUser.code}
               </div>
             </div>
             <div className="Password">
-              <div className="Text">{getTranslatedText("ref_link")}</div>
+              <div className="Text">
+                {getTranslatedText('ref_link')}
+              </div>
               <div className="Data">
                 {`${USER_WEBSITE_URL}${routes.signin}?refUser=${this.state.currentUser.code}`}
               </div>
             </div>
             <div className="Sponsor">
-              <div className="Text">{getTranslatedText("your_ref")}</div>
+              <div className="Text">
+                {getTranslatedText('your_ref')}
+              </div>
               <div className="Data">
                 {this.state.currentUser.presenter_code}
               </div>

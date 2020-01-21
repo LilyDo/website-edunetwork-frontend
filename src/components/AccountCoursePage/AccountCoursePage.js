@@ -37,7 +37,11 @@ class AccountCoursePage extends Component {
           <div className="CourseName">Your courses</div>
           <div className="CoursesContainer">
             {buy.map((course, index) => (
-              <CourseCard courseCarouselItem={course} key={index} isBought={true} />
+              <CourseCard
+                courseCarouselItem={course}
+                key={index}
+                isBought={true}
+              />
             ))}
           </div>
         </div>

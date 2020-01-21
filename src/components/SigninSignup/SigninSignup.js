@@ -7,7 +7,10 @@ import {
   toggleForgotPasswordPopup,
 } from '../../actions/auth';
 import { bindActionCreators } from 'redux';
-import {getTranslatedText, getUrlParameter} from '../../services/appService';
+import {
+  getTranslatedText,
+  getUrlParameter,
+} from '../../services/appService';
 
 class SigninSignup extends Component {
   state = {
@@ -74,7 +77,7 @@ class SigninSignup extends Component {
       cf_password: this.state.rePassword,
       user_code: this.state.refUser,
       phone: this.state.number,
-      country: this.state.country
+      country: this.state.country,
     };
     console.log('data reg:', data);
     this.props.actions.registerAction(data);
@@ -126,18 +129,18 @@ class SigninSignup extends Component {
             onClick={this.showLoginForm.bind(this, true)}
           >
             <div>
-              <span>{getTranslatedText("login")}</span>
+              <span>{getTranslatedText('login')}</span>
             </div>
-            <div>{getTranslatedText("already_member")}</div>
+            <div>{getTranslatedText('already_member')}</div>
           </div>
           <div
             className={!isShowLogin ? 'Title Active' : 'Title'}
             onClick={this.showLoginForm.bind(this, false)}
           >
             <div>
-              <span>{getTranslatedText("register")}</span>
+              <span>{getTranslatedText('register')}</span>
             </div>
-            <div>{getTranslatedText("become_member")}</div>
+            <div>{getTranslatedText('become_member')}</div>
           </div>
         </div>
 
@@ -153,7 +156,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Password">
-                <span>{getTranslatedText("password")}</span>
+                <span>{getTranslatedText('password')}</span>
                 <input
                   type="password"
                   value={password}
@@ -164,14 +167,14 @@ class SigninSignup extends Component {
                 className="ForgotPassword"
                 onClick={this.showForgotPasswordPopup}
               >
-                {getTranslatedText("forgot_password")}?
+                {getTranslatedText('forgot_password')}?
               </div>
             </div>
           )}
           {!isShowLogin && (
             <div className="Signup">
               <div className="Fullname">
-                <span>{getTranslatedText("full_name")}</span>
+                <span>{getTranslatedText('full_name')}</span>
                 <input
                   type="text"
                   value={fullName}
@@ -179,7 +182,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Username">
-                <span>{getTranslatedText("username")}</span>
+                <span>{getTranslatedText('username')}</span>
                 <input
                   type="text"
                   value={userName}
@@ -195,7 +198,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Sponsor">
-                <span>{getTranslatedText("ref_code")}</span>
+                <span>{getTranslatedText('ref_code')}</span>
                 <input
                   type="text"
                   value={refUser}
@@ -204,7 +207,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="PhoneNumber">
-                <span>{getTranslatedText("your_phone")}</span>
+                <span>{getTranslatedText('your_phone')}</span>
                 <input
                   type="number"
                   value={number}
@@ -212,7 +215,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Password">
-                <span>{getTranslatedText("password")}</span>
+                <span>{getTranslatedText('password')}</span>
                 <input
                   type="password"
                   value={password}
@@ -220,7 +223,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="RePassword">
-                <span>{getTranslatedText("confirm_password")}</span>
+                <span>{getTranslatedText('confirm_password')}</span>
                 <input
                   type="password"
                   value={rePassword}
@@ -228,7 +231,7 @@ class SigninSignup extends Component {
                 ></input>
               </div>
               <div className="Country">
-                <span>{getTranslatedText("country")}</span>
+                <span>{getTranslatedText('country')}</span>
                 <select
                   id="country"
                   name="country"
@@ -236,7 +239,9 @@ class SigninSignup extends Component {
                   value={country}
                   onChange={this.setCountry}
                 >
-                  <option value="">{getTranslatedText("select_country")}</option>
+                  <option value="">
+                    {getTranslatedText('select_country')}
+                  </option>
                   <option value="Afghanistan">Afghanistan</option>
                   <option value="Åland Islands">Åland Islands</option>
                   <option value="Albania">Albania</option>
@@ -593,12 +598,12 @@ class SigninSignup extends Component {
         <div className="Button">
           {isShowLogin && (
             <div className="SigninButton" onClick={this.login}>
-              <span>{getTranslatedText("LOGIN")}</span>
+              <span>{getTranslatedText('LOGIN')}</span>
             </div>
           )}
           {!isShowLogin && (
             <div className="SignupButton" onClick={this.register}>
-              <span>{getTranslatedText("REGISTER")}</span>
+              <span>{getTranslatedText('REGISTER')}</span>
             </div>
           )}
         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './HamburgerMenu.scss';
 import { Link } from 'react-router-dom';
 import { routes } from '../../constants';
-import {getTranslatedText} from "../../services/appService";
+import { getTranslatedText } from '../../services/appService';
 
 class HamburgerMenu extends Component {
   render() {

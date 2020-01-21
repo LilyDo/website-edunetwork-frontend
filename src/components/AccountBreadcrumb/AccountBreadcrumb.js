@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
-import {getTranslatedText, getUserFormLocal} from '../../services/appService';
+import {
+  getTranslatedText,
+  getUserFormLocal,
+} from '../../services/appService';
 import { routes } from '../../constants';
 
 class AccountBreadcrumb extends Component {

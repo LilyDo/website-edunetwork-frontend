@@ -127,7 +127,9 @@ class Header extends Component {
                   <Link to={routes.accountCourses}>
                     <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout.bind(this)}>{getTranslatedText('logout')}</div>
+                  <div onClick={this.doLogout.bind(this)}>
+                    {getTranslatedText('logout')}
+                  </div>
                 </div>
               </div>
             )}
@@ -177,7 +179,9 @@ class Header extends Component {
                   <Link to={routes.accountCourses}>
                     <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout}>{getTranslatedText('logout')}</div>
+                  <div onClick={this.doLogout}>
+                    {getTranslatedText('logout')}
+                  </div>
                 </div>
               </div>
             )}
