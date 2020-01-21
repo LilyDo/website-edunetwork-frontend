@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './AccountBreadcrumb.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_grey_arrow_down.svg';
-import { getUserFormLocal } from '../../services/appService';
+import {
+  getTranslatedText,
+  getUserFormLocal,
+} from '../../services/appService';
 import { routes } from '../../constants';
 
 class AccountBreadcrumb extends Component {
@@ -31,7 +34,7 @@ class AccountBreadcrumb extends Component {
                   : ''
               }
             >
-              <span>Dashboard</span>
+              <span>{getTranslatedText('dashboard')}</span>
             </Link>
 
             <div className="profile-menu">
@@ -49,16 +52,16 @@ class AccountBreadcrumb extends Component {
 
               <div className="dropdown-content">
                 <Link to={routes.accountProfile}>
-                  <div>Personal Information</div>
+                  <div>{getTranslatedText('personal_info')}</div>
                 </Link>
                 <Link to={routes.accountWallet}>
-                  <div>My Wallet</div>
+                  <div>{getTranslatedText('my_wallet')}</div>
                 </Link>
                 <Link to={routes.accountWithdraw}>
-                  <div>Withdraw</div>
+                  <div>{getTranslatedText('withdraw')}</div>
                 </Link>
                 <Link to={routes.accountDeposit}>
-                  <div>Deposit</div>
+                  <div>{getTranslatedText('deposit')}</div>
                 </Link>
               </div>
             </div>
@@ -71,11 +74,11 @@ class AccountBreadcrumb extends Component {
                   : ''
               }
             >
-              <span>Course</span>
+              <span>{getTranslatedText('course')}</span>
             </Link>
           </div>
           <div className="AccountContainer">
-            <div className="Text">Hello! </div>
+            <div className="Text">{getTranslatedText('hello')}! </div>
             <div className="Fullname">
               {this.state.currentUser.name}
             </div>

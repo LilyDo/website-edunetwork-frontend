@@ -7,6 +7,7 @@ import IconTwitter from '../../assets/images/icon_twitter.svg';
 import IconYoutube from '../../assets/images/icon_youtube.svg';
 import IconLinkedin from '../../assets/images/icon_linkedin.svg';
 import IconPinterest from '../../assets/images/icon_pinterest.svg';
+import { getTranslatedText } from '../../services/appService';
 
 function Footer() {
   return (
@@ -18,19 +19,29 @@ function Footer() {
           <div className="UpperFooterInfo">
             <div className="FooterNavigation">
               <div className="NavigationLink Home">
-                <Link to={routes.home}>HOME</Link>
+                <Link to={routes.home}>
+                  {getTranslatedText('HOME')}
+                </Link>
               </div>
               <div className="NavigationLink Course">
-                <Link to={routes.courses}>COURSE</Link>
+                <Link to={routes.courses}>
+                  {getTranslatedText('COURSE')}
+                </Link>
               </div>
               <div className="NavigationLink Contact">
-                <Link to={routes.contact}>CONTACT</Link>
+                <Link to={routes.contact}>
+                  {getTranslatedText('CONTACT')}
+                </Link>
               </div>
             </div>
             <div className="FooterContact">
-              <div className="Title">CONNECT WITH US</div>
+              <div className="Title">
+                {getTranslatedText('connect_with_us')}
+              </div>
               <div className="ContactInfo">
-                <div className="Email">Email: info@edunetwork.global</div>
+                <div className="Email">
+                  Email: info@edunetwork.global
+                </div>
                 {/* <div className="Facebook">
                   Fanpage: fb.com/EduNetwork
                 </div> */}

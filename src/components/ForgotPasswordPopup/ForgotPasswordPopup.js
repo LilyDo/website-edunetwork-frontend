@@ -8,6 +8,7 @@ import {
 } from '../../actions/auth';
 import './ForgotPasswordPopup.scss';
 import CancelButton from '../../assets/images/icon_cancel.svg';
+import { getTranslatedText } from '../../services/appService';
 
 class ForgotPasswordPopup extends React.Component {
   state = {
@@ -39,14 +40,16 @@ class ForgotPasswordPopup extends React.Component {
               onClick={this.hideForgotPasswordPopup}
             ></img>
           </div>
-          <div className="Title">FORGOT PASSWORD</div>
+          <div className="Title">
+            {getTranslatedText('forgot_password')}
+          </div>
           <div className="Text">
-            Please input your email to reset your password.
+            {getTranslatedText('input_email_reset_password')}
           </div>
           <input
             className="Email.GetPassword"
             type="email"
-            placeholder="Enter your email..."
+            placeholder={getTranslatedText('your_email')}
             value={this.state.email}
             onChange={this.setEmail}
           ></input>
@@ -54,7 +57,7 @@ class ForgotPasswordPopup extends React.Component {
             className="SendButton"
             onClick={this.sendForgotPasswordEmail}
           >
-            <span>SEND</span>
+            <span>{getTranslatedText('SEND')}</span>
           </div>
         </div>
       </div>

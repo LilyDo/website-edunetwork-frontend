@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import './PaymentSuccessful.scss';
 import { routes } from '../../constants';
+import { getTranslatedText } from '../../services/appService';
 
 class PaymentSuccessful extends Component {
   render() {
@@ -12,21 +13,26 @@ class PaymentSuccessful extends Component {
       <div className="PaymentSucessful">
         {status === 'successful' ? (
           <Fragment>
-            <div className="Title">PURCHASE SUCCESSFUL!</div>
-            <div>Congratulation! You owned this course.</div>
+            <div className="Title">
+              {getTranslatedText('purchase_success')}
+            </div>
+            <div>{getTranslatedText('own_course')}</div>
             <Link to={routes.accountCourses}>
-              <div className="JoinClassButton">LEARN NOW</div>
+              <div className="JoinClassButton">
+                {getTranslatedText('learn_now')}
+              </div>
             </Link>
           </Fragment>
         ) : (
           <Fragment>
-            <div className="Title">REQUEST A PAYMENT SUCCESSFUL!</div>
-            <div>
-              Your request will be processed soon. Please check your
-              mail box for more information.
+            <div className="Title">
+              {getTranslatedText('request_payment_success')}
             </div>
+            <div>{getTranslatedText('request_process_soon')}</div>
             <Link to={routes.courses}>
-              <div className="JoinClassButton">GO TO COURSE PAGE</div>
+              <div className="JoinClassButton">
+                {getTranslatedText('go_to_course_page')}
+              </div>
             </Link>
           </Fragment>
         )}
