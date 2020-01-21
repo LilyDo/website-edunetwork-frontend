@@ -102,5 +102,7 @@ export const clearLocalStorage = () => {
 export const getTranslatedText = key => {
   key = key.toLowerCase();
   let currentLang = localStorage.getItem(CURRENT_LANG_KEY) || 'en';
+  if (typeof translatedText[key] == "undefined")
+    return key;
   return translatedText[key][currentLang];
 };
