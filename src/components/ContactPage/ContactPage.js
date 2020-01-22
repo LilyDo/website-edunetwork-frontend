@@ -106,7 +106,7 @@ class ContactPage extends Component {
             <div className="LogoContainer"></div>
           </div>
           <div className="SendContact" onClick={this.sendContact}>
-            {getTranslatedText("SEND")}
+            {getTranslatedText('SEND')}
           </div>
         </div>
       </div>

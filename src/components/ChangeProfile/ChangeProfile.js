@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './ChangeProfile.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
   getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
-import {updateProfileAction} from '../../actions/profile';
-import {bindActionCreators} from 'redux';
+import { updateProfileAction } from '../../actions/profile';
+import { bindActionCreators } from 'redux';
 
 class ChangeProfile extends Component {
   state = {
@@ -38,7 +38,7 @@ class ChangeProfile extends Component {
 
   handleImageChange = e => {
     let file = URL.createObjectURL(e.target.files[0]);
-    const {name} = e.target;
+    const { name } = e.target;
     this.setState({
       [name]: file,
     });
@@ -82,7 +82,7 @@ class ChangeProfile extends Component {
                   this.state.avatar
                     ? this.state.avatar
                     : this.state.currentUser.avatar ||
-                    DefaultUserAvatar
+                      DefaultUserAvatar
                 }
               />
               <div>

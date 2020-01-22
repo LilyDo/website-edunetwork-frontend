@@ -150,7 +150,9 @@ class OrderInfo extends Component {
             </div>
           </div>
         </div>
-        <div className="TextNotice">{getTranslatedText("note_after_payment")}</div>
+        <div className="TextNotice">
+          {getTranslatedText('note_after_payment')}
+        </div>
       </div>
     );
   }
