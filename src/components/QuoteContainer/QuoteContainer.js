@@ -1,12 +1,13 @@
 import React from 'react';
 import './QuoteContainer.scss';
+import { getTranslatedText } from '../../services/appService';
 
 function QuoteContainer() {
   return (
     <div className="QuoteContainer">
       <div className="Quote">
         <span>"</span>
-        {`Building a community to enpower and enrich every individual's lives through education and networking.`}
+        {getTranslatedText('slogan')}
         <span>"</span>
       </div>
     </div>

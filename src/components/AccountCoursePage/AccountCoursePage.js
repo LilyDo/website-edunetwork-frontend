@@ -11,6 +11,7 @@ import {
   getUserCoursesAction,
   buyCourseAction,
 } from '../../actions/courses';
+import { getTranslatedText } from '../../services/appService';
 
 class AccountCoursePage extends Component {
   componentWillMount() {
@@ -48,7 +49,9 @@ class AccountCoursePage extends Component {
 
         {unboughtCourses.length > 0 && (
           <div className="CourseBlock">
-            <div className="CourseName">Other courses</div>
+            <div className="CourseName">
+              {getTranslatedText('other_courses')}
+            </div>
             <div className="CoursesContainer">
               {unboughtCourses.map((course, index) => (
                 <CourseCard courseCarouselItem={course} key={index} />
