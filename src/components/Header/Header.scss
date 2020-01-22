@@ -95,7 +95,7 @@
     &:hover{
       .LanguageSelectContainer {
         opacity: 1;
-        height: 80px;
+        height: 52px;
         z-index: 1;
       }
     }
@@ -103,7 +103,7 @@
       opacity: 0;
       height: 0;
       position: absolute;
-      top: 34px;
+      top: 10px;
       background: white;
       color: #d59e29;
       padding: 5px;
@@ -113,7 +113,7 @@
       transition: all 0.5s ease;
 
       .LanguageSelectItem {
-        height: 25px;
+        height: 18px;
         border-bottom: solid 1px #d59e2978;
         padding: 3px;
         &:hover {
