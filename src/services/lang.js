@@ -457,7 +457,7 @@ export const translatedText = {
   },
   course_name: {
     en: 'Course name',
-    vi: 'Course name',
+    vi: 'Tên khóa học',
   },
   note_after_payment: {
     en:
@@ -620,5 +620,13 @@ export const translatedText = {
   go_to_home_page: {
     en: 'GO TO HOME PAGE',
     vi: 'Trở vê trang chủ',
+  },
+  lang_en: {
+    en: 'English',
+    vi: 'Tiếng Anh',
+  },
+  lang_vi: {
+    en: 'Vietnamese',
+    vi: 'Tiếng Việt',
   },
 };

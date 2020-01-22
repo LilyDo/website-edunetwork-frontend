@@ -63,7 +63,7 @@ class Header extends Component {
         <div className="UpperHeader">
           <div className="LanguageSelector">
             <div className="text">
-              {currentLanguage === 'en' ? 'English' : 'Tiếng Việt'}
+              {currentLanguage === 'en' ? getTranslatedText("lang_en") : getTranslatedText("lang_vi")}
             </div>
             <img alt="option" src={ArrowDown} />
             <div className="LanguageSelectContainer">
@@ -71,13 +71,13 @@ class Header extends Component {
                 className="LanguageSelectItem"
                 onClick={() => this.selectLang('en')}
               >
-                English
+                {getTranslatedText("lang_en")}
               </div>
               <div
                 className="LanguageSelectItem"
                 onClick={() => this.selectLang('vi')}
               >
-                Tiếng Việt
+                {getTranslatedText("lang_vi")}
               </div>
             </div>
           </div>

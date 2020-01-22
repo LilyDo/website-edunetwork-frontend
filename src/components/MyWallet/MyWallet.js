@@ -98,15 +98,15 @@ class MyWallet extends Component {
             </Link>
           </div>
           <div className="Transactions">
-            <div className="Text">TRANSACTIONS</div>
+            <div className="Text">{getTranslatedText("TRANSACTIONS")}</div>
             <div className="Actions">
               <div
                 className={
-                  'Withdraw ' + (isShowWithdraw && 'ActiveTab')
+                  getTranslatedText("withdraw") + " " + (isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab.bind(this, true)}
               >
-                Withdraw
+                {getTranslatedText("Withdraw")}
               </div>
               <div
                 className={
@@ -121,10 +121,10 @@ class MyWallet extends Component {
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
-                    <th className="Date">Date</th>
-                    <th className="Code">Transaction Code</th>
-                    <th className="Amount">Amount</th>
-                    <th className="Status">Status</th>
+                    <th className="Date">{getTranslatedText("date")}</th>
+                    <th className="Code">{getTranslatedText("transaction_code")}</th>
+                    <th className="Amount">{getTranslatedText("Amount")}</th>
+                    <th className="Status">{getTranslatedText("Status")}</th>
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
@@ -146,10 +146,10 @@ class MyWallet extends Component {
               <table>
                 <thead className="TransactionTableHead">
                   <tr>
-                    <th className="Date">Date</th>
-                    <th className="Code">Transaction Code</th>
-                    <th className="Amount">Amount</th>
-                    <th className="Status">Status</th>
+                    <th className="Date">{getTranslatedText("date")}</th>
+                    <th className="Code">{getTranslatedText("transaction_code")}</th>
+                    <th className="Amount">{getTranslatedText("Amount")}</th>
+                    <th className="Status">{getTranslatedText("Status")}</th>
                   </tr>
                 </thead>
                 <tbody className="TransactionTableBody">

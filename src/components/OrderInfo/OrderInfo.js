@@ -150,11 +150,7 @@ class OrderInfo extends Component {
             </div>
           </div>
         </div>
-        <div className="TextNotice">{`Note:
-
-After payment, your course will be activated immediately.
-
-Beside, we sent the course information to your email. Please check, thanks!`}</div>
+        <div className="TextNotice">{getTranslatedText("note_after_payment")}</div>
       </div>
     );
   }

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './ChangeProfile.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
   getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
-import { updateProfileAction } from '../../actions/profile';
-import { bindActionCreators } from 'redux';
+import {updateProfileAction} from '../../actions/profile';
+import {bindActionCreators} from 'redux';
 
 class ChangeProfile extends Component {
   state = {
@@ -38,7 +38,7 @@ class ChangeProfile extends Component {
 
   handleImageChange = e => {
     let file = URL.createObjectURL(e.target.files[0]);
-    const { name } = e.target;
+    const {name} = e.target;
     this.setState({
       [name]: file,
     });
@@ -82,9 +82,9 @@ class ChangeProfile extends Component {
                   this.state.avatar
                     ? this.state.avatar
                     : this.state.currentUser.avatar ||
-                      DefaultUserAvatar
+                    DefaultUserAvatar
                 }
-              ></img>
+              />
               <div>
                 <div className="ChangePhotoText">
                   {getTranslatedText('update_avatar')}
@@ -109,7 +109,7 @@ class ChangeProfile extends Component {
                     name="name"
                     value={this.state.fullName}
                     onChange={this.handleChange('fullName')}
-                  ></input>
+                  />
                 </div>
                 <div className="Email">
                   <div className="Text">Email</div>
@@ -117,7 +117,7 @@ class ChangeProfile extends Component {
                     type="text"
                     defaultValue={this.state.currentUser.email}
                     disabled
-                  ></input>
+                  />
                 </div>
                 <div className="PhoneNumber">
                   <div className="Text">
@@ -128,7 +128,7 @@ class ChangeProfile extends Component {
                     name="phone"
                     value={this.state.phone}
                     onChange={this.handleChange('phone')}
-                  ></input>
+                  />
                 </div>
               </div>
               <div className="GroupProfile2">
@@ -139,7 +139,7 @@ class ChangeProfile extends Component {
                   <select
                     id="country"
                     name="country"
-                    class="form-control"
+                    className="form-control"
                     value={this.state.country}
                     onChange={this.handleChange('country')}
                   >

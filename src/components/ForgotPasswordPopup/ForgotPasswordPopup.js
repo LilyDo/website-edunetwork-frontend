@@ -57,7 +57,7 @@ class ForgotPasswordPopup extends React.Component {
             className="SendButton"
             onClick={this.sendForgotPasswordEmail}
           >
-            <span>{getTranslatedText('SEND')}</span>
+            <span>{getTranslatedText('send')}</span>
           </div>
         </div>
       </div>
