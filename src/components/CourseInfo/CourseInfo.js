@@ -8,6 +8,7 @@ import PlayIcon from '../../assets/images/icon_play.svg';
 import AttachmentIcon from '../../assets/images/icon_attachment.svg';
 import {
   formatDuration,
+  getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
 
@@ -103,7 +104,7 @@ class CourseInfo extends Component {
               }
               onClick={this.showCourseIntroduction}
             >
-              <span>Course detail</span>
+              <span>{getTranslatedText('course_detail')}</span>
             </div>
             {!(currentUser.max_price < courseDetail.price) && (
               <div
@@ -114,7 +115,7 @@ class CourseInfo extends Component {
                 }
                 onClick={this.hideCourseIntroduction}
               >
-                <span>Content</span>
+                <span>{getTranslatedText('content')}</span>
               </div>
             )}
           </div>
@@ -122,7 +123,9 @@ class CourseInfo extends Component {
           {isIntroductionVisible && (
             <div className="CourseIntroduction">
               <div className="IntroductionContent">
-                <div className="Head">Course introduction</div>
+                <div className="Head">
+                  {getTranslatedText('course_introduction')}
+                </div>
                 <p>{courseDetail.description}</p>
               </div>
             </div>

@@ -10,8 +10,10 @@ import { connect } from 'react-redux';
 import {
   getUserFormLocal,
   clearLocalStorage,
+  getTranslatedText,
 } from '../../services/appService';
 import { routes } from '../../constants';
+import * as types from '../../actions';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 
 class Header extends Component {
@@ -19,6 +21,7 @@ class Header extends Component {
     isLogined: false,
     currentUser: getUserFormLocal(),
     isHamburgerMenuVisible: false,
+    currentLanguage: 'en',
   };
 
   checkCurrentUser() {
@@ -38,32 +41,64 @@ class Header extends Component {
     });
   };
 
+  selectLang(lang) {
+    localStorage.setItem(types.CURRENT_LANG_KEY, lang);
+    window.location.reload();
+  }
+
+  componentDidMount() {
+    this.setState({
+      currentLanguage:
+        localStorage.getItem(types.CURRENT_LANG_KEY) || 'en',
+    });
+  }
+
   render() {
     this.checkCurrentUser();
+
+    const { currentLanguage } = this.state;
 
     return (
       <div className="Header">
         <div className="UpperHeader">
           <div className="LanguageSelector">
-            <div className="text">English</div>
+            <div className="text">
+              {currentLanguage === 'en'
+                ? getTranslatedText('lang_en')
+                : getTranslatedText('lang_vi')}
+            </div>
             <img alt="option" src={ArrowDown} />
+            <div className="LanguageSelectContainer">
+              <div
+                className="LanguageSelectItem"
+                onClick={() => this.selectLang('en')}
+              >
+                {getTranslatedText('lang_en')}
+              </div>
+              <div
+                className="LanguageSelectItem"
+                onClick={() => this.selectLang('vi')}
+              >
+                {getTranslatedText('lang_vi')}
+              </div>
+            </div>
           </div>
           <div className="UpperHeaderlinks">
             <div className="NavigationContainer">
               <Link to={routes.home} className="NavigationLink">
-                <span>HOME</span>
+                <span>{getTranslatedText('home')}</span>
               </Link>
               <Link to={routes.courses} className="NavigationLink">
-                <span>COURSE</span>
+                <span>{getTranslatedText('course')}</span>
               </Link>
               <Link to={routes.contact} className="NavigationLink">
-                <span>CONTACT</span>
+                <span>{getTranslatedText('contact')}</span>
               </Link>
             </div>
             {!this.state.isLogined && (
               <Link to={routes.signin}>
                 <div className="SignInDesktop">
-                  <span>Sign in</span>
+                  <span>{getTranslatedText('signin')}</span>
                   <AccountMenuPopup />
                 </div>
               </Link>
@@ -86,15 +121,17 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>
-                    <div>Dashboard</div>
+                    <div>{getTranslatedText('dashboard')}</div>
                   </Link>
                   <Link to={routes.accountProfile}>
-                    <div>My Profile</div>
+                    <div>{getTranslatedText('profile')}</div>
                   </Link>
                   <Link to={routes.accountCourses}>
-                    <div>My Course</div>
+                    <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout.bind(this)}>Logout</div>
+                  <div onClick={this.doLogout.bind(this)}>
+                    {getTranslatedText('logout')}
+                  </div>
                 </div>
               </div>
             )}
@@ -112,7 +149,7 @@ class Header extends Component {
             {!this.state.isLogined && (
               <div className="SignInMobile">
                 <Link to={routes.signin}>
-                  <span>Sign in</span>
+                  <span>{getTranslatedText('signin')}</span>
                 </Link>
               </div>
             )}
@@ -136,15 +173,17 @@ class Header extends Component {
                 </div>
                 <div className="dropdown-content">
                   <Link to={routes.accountDashboard}>
-                    <div>Dashboard</div>
+                    <div>{getTranslatedText('dashboard')}</div>
                   </Link>
                   <Link to={routes.accountProfile}>
-                    <div>My Profile</div>
+                    <div>{getTranslatedText('profile')}</div>
                   </Link>
                   <Link to={routes.accountCourses}>
-                    <div>My Course</div>
+                    <div>{getTranslatedText('my_course')}</div>
                   </Link>
-                  <div onClick={this.doLogout}>Logout</div>
+                  <div onClick={this.doLogout}>
+                    {getTranslatedText('logout')}
+                  </div>
                 </div>
               </div>
             )}

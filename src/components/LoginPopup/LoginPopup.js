@@ -1,6 +1,7 @@
 import React from 'react';
 import './LoginPopup.scss';
 import CancelButton from '../../assets/images/icon_cancel.svg';
+import { getTranslatedText } from '../../services/appService';
 
 function LoginPopup() {
   return (
@@ -9,34 +10,38 @@ function LoginPopup() {
         <div className="CancelButton">
           <img alt="cancel" src={CancelButton}></img>
         </div>
-        <div>Hãy đăng nhập để tiến hành thanh toán</div>
+        <div>{getTranslatedText('login_payment')}</div>
 
         <div className="Container">
           <div className="Signin">
             <div className="Title">
               <div>
-                <span>ĐĂNG NHẬP</span>
+                <span>{getTranslatedText('login')}</span>
               </div>
-              <div>Đã là thành viên của EDUNETWORK</div>
+              <div>{getTranslatedText('is_member')}</div>
             </div>
             <div className="Email">
               <span>Email</span>
               <input type="text"></input>
             </div>
             <div className="Password">
-              <span>Mật khẩu</span>
+              <span>{getTranslatedText('password')}</span>
               <input type="text"></input>
             </div>
-            <div className="ForgotPassword">Quên mật khẩu?</div>
-            <div className="SigninButton">ĐĂNG NHẬP</div>
+            <div className="ForgotPassword">
+              {getTranslatedText('forgot_password')}
+            </div>
+            <div className="SigninButton">
+              {getTranslatedText('login')}
+            </div>
           </div>
 
           <div className="Signup">
             <div className="Title">
               <div>
-                <span>ĐĂNG KÝ</span>
+                <span>{getTranslatedText('register')}</span>
               </div>
-              <div>Dành cho thành viên mới</div>
+              <div>{getTranslatedText('for_new_member')}</div>
             </div>
           </div>
         </div>

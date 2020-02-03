@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './ChangeProfile.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
-import { getUserFormLocal } from '../../services/appService';
+import {
+  getTranslatedText,
+  getUserFormLocal,
+} from '../../services/appService';
 import { updateProfileAction } from '../../actions/profile';
 import { bindActionCreators } from 'redux';
 
@@ -17,7 +20,7 @@ class ChangeProfile extends Component {
     phone: '',
     avatar: null,
     token: '',
-    country: ''
+    country: '',
   };
 
   checkCurrentUser() {
@@ -53,7 +56,7 @@ class ChangeProfile extends Component {
       phone: this.state.currentUser.phone,
       avatar: this.state.currentUser.avatar,
       token: localStorage.getItem('token'),
-      country: this.state.currentUser.country
+      country: this.state.currentUser.country,
     });
   }
 
@@ -67,7 +70,9 @@ class ChangeProfile extends Component {
         method="POST"
       >
         <div className="ChangeProfile">
-          <div className="Title">Personal Information</div>
+          <div className="Title">
+            {getTranslatedText('personal_info')}
+          </div>
           <div className="Profile">
             <div className="Avatar">
               <img
@@ -79,9 +84,11 @@ class ChangeProfile extends Component {
                     : this.state.currentUser.avatar ||
                       DefaultUserAvatar
                 }
-              ></img>
+              />
               <div>
-                <div className="ChangePhotoText">Update avatar</div>
+                <div className="ChangePhotoText">
+                  {getTranslatedText('update_avatar')}
+                </div>
                 <input
                   type="file"
                   className="form-control"
@@ -94,13 +101,15 @@ class ChangeProfile extends Component {
             <div className="GroupProfile">
               <div className="GroupProfile1">
                 <div className="Fullname">
-                  <div className="Text">Full Name</div>
+                  <div className="Text">
+                    {getTranslatedText('full_name')}
+                  </div>
                   <input
                     type="text"
                     name="name"
                     value={this.state.fullName}
                     onChange={this.handleChange('fullName')}
-                  ></input>
+                  />
                 </div>
                 <div className="Email">
                   <div className="Text">Email</div>
@@ -108,29 +117,35 @@ class ChangeProfile extends Component {
                     type="text"
                     defaultValue={this.state.currentUser.email}
                     disabled
-                  ></input>
+                  />
                 </div>
                 <div className="PhoneNumber">
-                  <div className="Text">Phone Number</div>
+                  <div className="Text">
+                    {getTranslatedText('your_phone')}
+                  </div>
                   <input
                     type="number"
                     name="phone"
                     value={this.state.phone}
                     onChange={this.handleChange('phone')}
-                  ></input>
+                  />
                 </div>
               </div>
               <div className="GroupProfile2">
                 <div className="Country">
-                  <div className="Text">Country</div>
+                  <div className="Text">
+                    {getTranslatedText('country')}
+                  </div>
                   <select
                     id="country"
                     name="country"
-                    class="form-control"
+                    className="form-control"
                     value={this.state.country}
                     onChange={this.handleChange('country')}
                   >
-                    <option value="">Select country</option>
+                    <option value="">
+                      {getTranslatedText('select_country')}
+                    </option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">
                       Åland Islands
@@ -500,7 +515,9 @@ class ChangeProfile extends Component {
                   </select>
                 </div>
                 <div className="Password">
-                  <div className="Text">Password</div>
+                  <div className="Text">
+                    {getTranslatedText('password')}
+                  </div>
                   <input
                     type="password"
                     name="old_password"
@@ -510,7 +527,9 @@ class ChangeProfile extends Component {
                 </div>
                 <div className="NewPassword">
                   <div>
-                    <div className="Text">New Password</div>
+                    <div className="Text">
+                      {getTranslatedText('new_password')}
+                    </div>
                     <input
                       type="password"
                       name="new_password"
@@ -519,7 +538,9 @@ class ChangeProfile extends Component {
                     ></input>
                   </div>
                   <div>
-                    <div className="Text">Confirm Password</div>
+                    <div className="Text">
+                      {getTranslatedText('confirm_password')}
+                    </div>
                     <input
                       type="password"
                       name="cf_password"
@@ -544,12 +565,12 @@ class ChangeProfile extends Component {
               className="CancelButton"
               onClick={this.props.onCancel}
             >
-              CANCEL
+              {getTranslatedText('cancel')}
             </div>
             <input
               className="UpdateButton"
               type="submit"
-              value="UPDATE"
+              value={getTranslatedText('update')}
             />
           </div>
         </div>
