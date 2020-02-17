@@ -307,7 +307,7 @@ export const translatedText = {
   },
   bank_name: {
     en: 'Name of Beneficiary Bank*',
-    vi: 'Tên ngân hàng thụ hưởng',
+    vi: 'Tên ngân hàng thụ hưởng*',
   },
   your_bank_name: {
     en: 'What is your name of beneficiary bank',
