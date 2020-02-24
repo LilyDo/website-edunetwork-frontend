@@ -146,8 +146,8 @@ export const translatedText = {
     vi: 'Dành cho thành viên mới!',
   },
   full_name: {
-    en: 'Full Name',
-    vi: 'Họ và tên',
+    en: 'Full Name*',
+    vi: 'Họ và tên*',
   },
   username: {
     en: 'Username',
@@ -286,8 +286,8 @@ export const translatedText = {
     vi: 'Mã giao dịch',
   },
   amount: {
-    en: 'Amount',
-    vi: 'Số tiền giao dịch',
+    en: 'Amount*',
+    vi: 'Số tiền giao dịch*',
   },
   status: {
     en: 'Status',

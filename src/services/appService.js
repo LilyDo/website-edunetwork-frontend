@@ -71,9 +71,17 @@ export const formatDurationText = duration => {
 };
 
 export const extractAndShoweErrorMessages = error => {
-  let errObj = JSON.parse(error.data.message);
-  let keys = Object.keys(errObj);
-  keys.map(key => toast.error(errObj[key][0]));
+  try{
+    let errObj = JSON.parse(error.data.message);
+    let keys = Object.keys(errObj);
+    keys.map(key => toast.error(errObj[key][0]));
+  }
+  catch(e){
+    toast.error(error.data.message);
+  }
+
+
+
 };
 
 export const formDataToObject = formData => {
