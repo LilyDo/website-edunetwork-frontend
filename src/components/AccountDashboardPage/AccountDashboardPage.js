@@ -214,7 +214,9 @@ class AccountDashboardPage extends Component {
             <table className="Table">
               <thead className="MemberTableHead">
                 <tr>
-                  <th>{getTranslatedText('full_name').replace("*", "")}</th>
+                  <th>
+                    {getTranslatedText('full_name').replace('*', '')}
+                  </th>
 
                   <th>{getTranslatedText('username')}</th>
                   <th>Email</th>
@@ -225,7 +227,11 @@ class AccountDashboardPage extends Component {
                       : getTranslatedText('register_date')}
                   </th>
                   <th>{getTranslatedText('course')}</th>
-                  <th>{capitalizeFirstLetter(getTranslatedText('commission').toLowerCase())}</th>
+                  <th>
+                    {capitalizeFirstLetter(
+                      getTranslatedText('commission').toLowerCase(),
+                    )}
+                  </th>
                 </tr>
               </thead>
               {isShowPaid && (

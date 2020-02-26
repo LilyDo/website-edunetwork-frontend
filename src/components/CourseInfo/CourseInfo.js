@@ -11,7 +11,7 @@ import {
   getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
-import {CURRENT_LANG_KEY} from "../../actions";
+import { CURRENT_LANG_KEY } from '../../actions';
 
 class CourseInfo extends Component {
   state = {
@@ -127,14 +127,20 @@ class CourseInfo extends Component {
                 <div className="Head">
                   {getTranslatedText('content')}
                 </div>
-                <p>{(localStorage.getItem(CURRENT_LANG_KEY) === "vi")? courseDetail.description_vi : courseDetail.description}</p>
+                <p>
+                  {localStorage.getItem(CURRENT_LANG_KEY) === 'vi'
+                    ? courseDetail.description_vi
+                    : courseDetail.description}
+                </p>
               </div>
             </div>
           )}
 
           {!isIntroductionVisible && (
             <div className="CourseCurriculum">
-              <div className="Head">{getTranslatedText("content")}</div>
+              <div className="Head">
+                {getTranslatedText('content')}
+              </div>
               <div className="CurriculumContent">
                 {chapters.map(chapter => (
                   <div className="Course" key={chapter.id}>
