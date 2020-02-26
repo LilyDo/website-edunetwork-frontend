@@ -65,7 +65,7 @@ class CourseDetailPage extends Component {
             { link: routes.home, text: getTranslatedText('HOME') },
             {
               link: routes.courses,
-              text: getTranslatedText('COURSE'),
+              text: getTranslatedText('COURSE').toUpperCase(),
             },
             {
               link: routes.courseDetail.replace(
