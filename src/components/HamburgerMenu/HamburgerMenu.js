@@ -13,21 +13,21 @@ class HamburgerMenu extends Component {
           className="Menu Home"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>{getTranslatedText('home')}</span>
+          <span>{getTranslatedText('home').toUpperCase()}</span>
         </Link>
         <Link
           to={routes.courses}
           className="Menu Course"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>{getTranslatedText('course')}</span>
+          <span>{getTranslatedText('course').toUpperCase()}</span>
         </Link>
         <Link
           to={routes.contact}
           className="Menu Contact"
           onClick={this.props.toggleHamburgerMenu}
         >
-          <span>{getTranslatedText('contact')}</span>
+          <span>{getTranslatedText('contact').toUpperCase()}</span>
         </Link>
       </div>
     );
