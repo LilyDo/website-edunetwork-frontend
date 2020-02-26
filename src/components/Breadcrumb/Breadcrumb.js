@@ -11,7 +11,7 @@ class Breadcrumb extends Component {
         {data.map((menu, index) => (
           <Fragment key={index}>
             <Link to={menu.link} className="BreadcrumbItem">
-              <span>{menu.text}</span>
+              <span>{menu.text.toUpperCase()}</span>
             </Link>
             {index !== data.length - 1 && (
               <div className="ArrowRight">
