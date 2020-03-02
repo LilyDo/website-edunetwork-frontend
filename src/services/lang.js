@@ -146,8 +146,8 @@ export const translatedText = {
     vi: 'Dành cho thành viên mới!',
   },
   full_name: {
-    en: 'Full Name',
-    vi: 'Họ và tên',
+    en: 'Full Name*',
+    vi: 'Họ và tên*',
   },
   username: {
     en: 'Username',
@@ -286,8 +286,8 @@ export const translatedText = {
     vi: 'Mã giao dịch',
   },
   amount: {
-    en: 'Amount',
-    vi: 'Số tiền giao dịch',
+    en: 'Amount*',
+    vi: 'Số tiền giao dịch*',
   },
   status: {
     en: 'Status',
@@ -307,7 +307,7 @@ export const translatedText = {
   },
   bank_name: {
     en: 'Name of Beneficiary Bank*',
-    vi: 'Tên ngân hàng thụ hưởng',
+    vi: 'Tên ngân hàng thụ hưởng*',
   },
   your_bank_name: {
     en: 'What is your name of beneficiary bank',
@@ -413,7 +413,7 @@ export const translatedText = {
   },
   price: {
     en: 'Price',
-    vi: '',
+    vi: 'Giá',
   },
   course_include: {
     en: 'This course included:',
@@ -565,7 +565,7 @@ export const translatedText = {
   },
   input_deposit: {
     en: 'Please please enter the amount of money you want to deposit',
-    vi: 'Vui lòng nhập số tiền bạn muốn gửi',
+    vi: 'Vui lòng nhập số tiền bạn muốn nạp',
   },
   purchase_success: {
     en: 'PURCHASE SUCCESSFUL!',
@@ -628,5 +628,9 @@ export const translatedText = {
   lang_vi: {
     en: 'Vietnamese',
     vi: 'Tiếng Việt',
+  },
+  your_course: {
+    en: 'Your courses',
+    vi: 'Các khoá học của bạn',
   },
 };

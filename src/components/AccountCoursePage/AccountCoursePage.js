@@ -35,7 +35,9 @@ class AccountCoursePage extends Component {
         <AccountBreadcrumb />
 
         <div className="CourseBlock">
-          <div className="CourseName">Your courses</div>
+          <div className="CourseName">
+            {getTranslatedText('your_course')}
+          </div>
           <div className="CoursesContainer">
             {buy.map((course, index) => (
               <CourseCard

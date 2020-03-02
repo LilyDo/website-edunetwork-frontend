@@ -104,9 +104,7 @@ class MyWallet extends Component {
             <div className="Actions">
               <div
                 className={
-                  getTranslatedText('withdraw') +
-                  ' ' +
-                  (isShowWithdraw && 'ActiveTab')
+                  'Withdraw ' + (isShowWithdraw && 'ActiveTab')
                 }
                 onClick={this.toggleShowTab.bind(this, true)}
               >
@@ -118,7 +116,7 @@ class MyWallet extends Component {
                 }
                 onClick={this.toggleShowTab.bind(this, false)}
               >
-                Deposit
+                {getTranslatedText('Deposit')}
               </div>
             </div>
             {isShowWithdraw && (

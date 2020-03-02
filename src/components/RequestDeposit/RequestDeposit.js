@@ -79,7 +79,7 @@ class RequestDeposit extends Component {
           <div className="Title">
             <div>{getTranslatedText('my_wallet')}</div>
             <img alt="arrow right" src={ArrowRight}></img>
-            <div>{getTranslatedText('my_wallet')}Deposit</div>
+            <div>{getTranslatedText('Deposit')}</div>
           </div>
 
           <div className="ContentContainer">
