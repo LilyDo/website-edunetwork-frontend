@@ -633,4 +633,16 @@ export const translatedText = {
     en: 'Your courses',
     vi: 'Các khoá học của bạn',
   },
+  note_policy: {
+    en: 'Note: By clicking on REGISTER, you accept with our',
+    vi: 'Lưu ý: Khi click nút ĐĂNG KÝ, bạn đã đồng ý với',
+  },
+  privacy_policy: {
+    en: 'Privacy Policy',
+    vi: 'Chính sách bảo mật',
+  },
+  term_of_service: {
+    en: 'Term Of Service',
+    vi: 'Điều khoản sử dụng',
+  },
 };

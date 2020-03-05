@@ -42,6 +42,8 @@ import ScaleLoader from 'react-spinners/ScaleLoader';
 // services
 import { getUserFormLocal } from './services/appService';
 import DepositNotification from './components/DepositNotification/DepositNotification';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import TermOfService from './components/TermOfService/TermOfService';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -179,6 +181,12 @@ class App extends Component {
                   />
                   <Route exact path={routes.contact}>
                     <ContactPage />
+                  </Route>
+                  <Route exact path={routes.privacyPolicy}>
+                    <PrivacyPolicy />
+                  </Route>
+                  <Route exact path={routes.termOfService}>
+                    <TermOfService />
                   </Route>
                 </Switch>
               </div>

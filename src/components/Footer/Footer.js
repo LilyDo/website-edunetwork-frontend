@@ -42,9 +42,16 @@ function Footer() {
                 <div className="Email">
                   Email: info@edunetwork.global
                 </div>
-                {/* <div className="Facebook">
-                  Fanpage: fb.com/EduNetwork
-                </div> */}
+                <div className="PrivacyPolicy">
+                  <Link to={routes.privacyPolicy}>
+                    Privacy Policy
+                  </Link>
+                </div>
+                <div className="TermsOfService">
+                  <Link to={routes.termOfService}>
+                    Terms of Service
+                  </Link>
+                </div>
               </div>
             </div>
 

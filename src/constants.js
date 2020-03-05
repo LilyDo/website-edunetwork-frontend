@@ -23,6 +23,9 @@ export const routes = {
     '/account/profile/deposit-noti/:isBuyCourse/:code/:amount',
   // misc
   contact: '/contact',
+  // Terms of Service
+  privacyPolicy: '/privacy-policy',
+  termOfService: '/term-of-service'
 };
 
 export const toastDuration = 3000;

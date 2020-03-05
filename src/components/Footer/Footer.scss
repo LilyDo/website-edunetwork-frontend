@@ -1,5 +1,5 @@
-@import '../../shared.scss';
-@import '../../assets/font/font.scss';
+@import "../../shared.scss";
+@import "../../assets/font/font.scss";
 
 %FooterTitle {
   @extend %fontSemiBold;
@@ -26,12 +26,12 @@
     max-width: $appMaxWidth;
     margin: auto;
     @media only screen and (max-width: $inBetweenBreakpoint) {
-      background-image: url('../../assets/images/footer_background_2.svg');
+      background-image: url("../../assets/images/footer_background_2.svg");
       font-size: 6px;
     }
 
     @media only screen and (min-width: $inBetweenBreakpoint + 1) {
-      background-image: url('../../assets/images/footer_background.svg');
+      background-image: url("../../assets/images/footer_background.svg");
     }
   }
 
@@ -95,6 +95,9 @@
       }
       .ContactInfo {
         @extend %fontSmallText;
+        a {
+          color: white;
+        }
       }
     }
 
