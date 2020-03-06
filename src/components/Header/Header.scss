@@ -100,18 +100,10 @@
     padding: 15px 20px 80px 0;
     @media only screen and (max-width: $mobileBreakPoint) {
       padding: 15px 20px 50px 0;
-      .NotificationSelector{
+      .NotificationSelector {
         float: right !important;
         margin-left: 20px;
       }
-    }
-
-    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
-
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      
     }
 
     .NotificationSelector {
@@ -147,6 +139,9 @@
         overflow-y: scroll;
         border-radius: 3px;
         padding: 10px;
+        -webkit-box-shadow: 3px 3px 3px 3px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow: 3px 3px 3px 3px #ccc; /* Firefox 3.5 - 3.6 */
+        box-shadow: 3px 3px 3px 3px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
         .NotiItem {
           padding: 10px;
           border-bottom: solid 2px white;
@@ -204,6 +199,9 @@
           opacity: 1;
           height: 52px;
           z-index: 1;
+          -webkit-box-shadow: 3px 3px 3px 3px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+          -moz-box-shadow: 3px 3px 3px 3px #ccc; /* Firefox 3.5 - 3.6 */
+          box-shadow: 3px 3px 3px 3px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
         }
       }
       .LanguageSelectContainer {
