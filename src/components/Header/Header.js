@@ -8,9 +8,7 @@ import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {
-  getNotifications
-} from '../../actions/profile';
+import { getNotifications } from '../../actions/profile';
 import {
   getUserFormLocal,
   clearLocalStorage,
@@ -19,7 +17,7 @@ import {
 import { routes } from '../../constants';
 import * as types from '../../actions';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
-import {get} from "lodash";
+import { get } from 'lodash';
 
 class Header extends Component {
   state = {
@@ -63,12 +61,11 @@ class Header extends Component {
     }
   }
   popupNotification = () => {
-    let display = document.getElementsByClassName("NotiContainer");
-    if (typeof display[0] !== "undefined"){
-      if (display[0].style.display === "none")
-        display[0].style.display = "block";
-      else
-        display[0].style.display = "none";
+    let display = document.getElementsByClassName('NotiContainer');
+    if (typeof display[0] !== 'undefined') {
+      if (display[0].style.display === 'none')
+        display[0].style.display = 'block';
+      else display[0].style.display = 'none';
     }
   };
 
@@ -85,10 +82,18 @@ class Header extends Component {
           <div className="HeaderSelector">
             <div className="NotificationSelector">
               <div className="NotiIcon">
-                <img alt="noti-icon" src={NotiIcon} style={{cursor: "pointer"}} onClick={() => this.popupNotification()} />
+                <img
+                  alt="noti-icon"
+                  src={NotiIcon}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => this.popupNotification()}
+                />
                 <div className="NotiNumber">0</div>
               </div>
-              <div className="NotiContainer" style={{display: "none"}}>
+              <div
+                className="NotiContainer"
+                style={{ display: 'none' }}
+              >
                 <div className="NotiItem">
                   <div className="NotiTitle">
                     This is the noti title
@@ -311,9 +316,12 @@ const mapStateToProps = ({ profile }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators({
-      getNotifications
-    }, dispatch),
+    actions: bindActionCreators(
+      {
+        getNotifications,
+      },
+      dispatch,
+    ),
   };
 };
 

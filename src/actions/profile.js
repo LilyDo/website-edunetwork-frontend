@@ -285,11 +285,13 @@ export const getNotifications = () => {
       .then(response => {
         dispatch(
           getNotificationSuccess({
-            notifications: response.data
+            notifications: response.data,
           }),
         );
       })
-      .catch(error => dispatch(getNotificationFailure(error.message)));
+      .catch(error =>
+        dispatch(getNotificationFailure(error.message)),
+      );
   };
 };
 
@@ -318,11 +320,13 @@ export const viewNotification = () => {
       .then(response => {
         dispatch(
           viewNotificationSuccess({
-            notifications: response.data
+            notifications: response.data,
           }),
         );
       })
-      .catch(error => dispatch(viewNotificationFailure(error.message)));
+      .catch(error =>
+        dispatch(viewNotificationFailure(error.message)),
+      );
   };
 };
 
