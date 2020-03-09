@@ -3,6 +3,7 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
+import NotiIcon from '../../assets/images/notification-outline-white.png';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
 import { bindActionCreators } from 'redux';
@@ -111,7 +112,7 @@ class Header extends Component {
                     This is the noti title
                   </div>
                   <div className="NotiSummary">
-                    This is the noti summary zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+                    This is the noti summary
                   </div>
                   <div className="NotiTimer">12/02/2020 13:55</div>
                 </div>
@@ -162,22 +163,30 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-            <img alt="option" src={ArrowDown} />
-            <div className="LanguageSelectContainer">
-              <div
-                className="LanguageSelectItem"
-                onClick={() => this.selectLang('en')}
-              >
-                {getTranslatedText('lang_en')}
+            <div className="LanguageSelector">
+              <div className="text">
+                {currentLanguage === 'en'
+                  ? getTranslatedText('lang_en')
+                  : getTranslatedText('lang_vi')}
               </div>
-              <div
-                className="LanguageSelectItem"
-                onClick={() => this.selectLang('vi')}
-              >
-                {getTranslatedText('lang_vi')}
+              <img alt="option" src={ArrowDown} />
+              <div className="LanguageSelectContainer">
+                <div
+                  className="LanguageSelectItem"
+                  onClick={() => this.selectLang('en')}
+                >
+                  {getTranslatedText('lang_en')}
+                </div>
+                <div
+                  className="LanguageSelectItem"
+                  onClick={() => this.selectLang('vi')}
+                >
+                  {getTranslatedText('lang_vi')}
+                </div>
               </div>
             </div>
           </div>
+
           <div className="UpperHeaderlinks">
             <div className="NavigationContainer">
               <Link to={routes.home} className="NavigationLink">
