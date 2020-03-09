@@ -8,6 +8,9 @@ import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
+  getNotifications
+} from '../../actions/profile';
+import {
   getUserFormLocal,
   clearLocalStorage,
   getTranslatedText,
@@ -15,6 +18,7 @@ import {
 import { routes } from '../../constants';
 import * as types from '../../actions';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
+import {get} from "lodash";
 
 class Header extends Component {
   state = {
@@ -51,21 +55,112 @@ class Header extends Component {
       currentLanguage:
         localStorage.getItem(types.CURRENT_LANG_KEY) || 'en',
     });
+    if (getUserFormLocal()) {
+      this.props.actions.getNotifications({
+        token: localStorage.getItem(types.TOKEN_KEY),
+      });
+    }
   }
+  popupNotification = () => {
+    let display = document.getElementsByClassName("NotiContainer");
+    if (typeof display[0] !== "undefined"){
+      if (display[0].style.display === "none")
+        display[0].style.display = "block";
+      else
+        display[0].style.display = "none";
+    }
+  };
 
   render() {
     this.checkCurrentUser();
 
     const { currentLanguage } = this.state;
+    const { notifications } = this.props;
+    console.log(notifications);
 
     return (
       <div className="Header">
         <div className="UpperHeader">
-          <div className="LanguageSelector">
-            <div className="text">
-              {currentLanguage === 'en'
-                ? getTranslatedText('lang_en')
-                : getTranslatedText('lang_vi')}
+          <div className="HeaderSelector">
+            <div className="NotificationSelector">
+              <div className="NotiIcon">
+                <img alt="noti-icon" src={NotiIcon} style={{cursor: "pointer"}} onClick={() => this.popupNotification()} />
+                <div className="NotiNumber">0</div>
+              </div>
+              <div className="NotiContainer" style={{display: "none"}}>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem Unread">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem Unread">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+                <div className="NotiItem">
+                  <div className="NotiTitle">
+                    This is the noti title
+                  </div>
+                  <div className="NotiSummary">
+                    This is the noti summary
+                  </div>
+                  <div className="NotiTimer">12/02/2020 13:55</div>
+                </div>
+              </div>
             </div>
             <img alt="option" src={ArrowDown} />
             <div className="LanguageSelectContainer">
@@ -199,13 +294,17 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return state;
+const mapStateToProps = ({ profile }) => {
+  return {
+    notifications: get(profile, 'notifications', {}),
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    actions: bindActionCreators({}, dispatch),
+    actions: bindActionCreators({
+      getNotifications
+    }, dispatch),
   };
 };
 
