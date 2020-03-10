@@ -38,7 +38,7 @@ function NotificationDetailModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>{props.currentnoti.content}</p>
+        <div>{props.currentnoti.content}</div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
