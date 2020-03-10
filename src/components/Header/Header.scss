@@ -131,12 +131,13 @@
       .NotiContainer {
         position: absolute;
         width: 250px;
+        height: 350px;
         top: 30px;
         right: 0;
         background: white;
         color: #707070;
-        height: 350px;
-        overflow-y: scroll;
+        // overflow-y: scroll;
+        overflow: auto;
         border-radius: 3px;
         padding: 10px;
         -webkit-box-shadow: 3px 3px 3px 3px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */

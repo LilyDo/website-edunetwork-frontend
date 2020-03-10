@@ -275,13 +275,14 @@ const getUserDashboardFailure = error => ({
 });
 
 // GET USER NOTIFICATIONS
-export const getNotifications = () => {
+export const getNotifications = (currentPage = 1) => {
   return dispatch => {
     dispatch(getNotificationRequest());
+    let token = localStorage.getItem(types.TOKEN_KEY) || '';
     axios
-      .post(`${BASE_URL}/users/get-notification`, {
-        token: localStorage.getItem(types.TOKEN_KEY) || '',
-      })
+      .get(
+        `${BASE_URL}/users/get-notification?page=${currentPage}&token=${token}`,
+      )
       .then(response => {
         dispatch(
           getNotificationSuccess({
@@ -310,11 +311,11 @@ const getNotificationFailure = error => ({
 });
 
 // VIEW NOTIFICATION
-export const viewNotification = () => {
+export const viewNotification = notiId => {
   return dispatch => {
     dispatch(viewNotificationRequest());
     axios
-      .post(`${BASE_URL}/users/get-notification`, {
+      .post(`${BASE_URL}/users/view-notification/${notiId}`, {
         token: localStorage.getItem(types.TOKEN_KEY) || '',
       })
       .then(response => {

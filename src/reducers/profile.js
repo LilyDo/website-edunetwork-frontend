@@ -15,6 +15,10 @@ const initialState = {
   chargeList: [],
   dashboard: {},
   timeStamp: Date.now(),
+  notificationLst: [],
+  notificationCurrentPage: 1,
+  notificationLastPage: 1,
+  unreadNotification: 0,
 };
 
 export default function(state = initialState, action) {
@@ -262,6 +266,50 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
+      };
+
+    // GET NOTIFICATIONS
+    case types.GET_NOTIFICATIONS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_NOTIFICATIONS_SUCCESS:
+      if (
+        action.payload.notifications.statusCode === 200 &&
+        action.payload.notifications.errors.length === 0
+      ) {
+        return {
+          ...state,
+          loading: false,
+          error: null,
+          notificationLst: state.notificationLst.concat(
+            action.payload.notifications.data.data.data,
+          ),
+          notificationCurrentPage:
+            action.payload.notifications.data.data.current_page,
+          notificationLastPage:
+            action.payload.notifications.data.data.last_page,
+          unreadNotification:
+            action.payload.notifications.data.unread,
+        };
+      } else {
+        toast.error(action.payload.notifications.errors[0]);
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.GET_NOTIFICATIONS_FAILURE:
+      toast.error('Cannot get notifications!');
+
+      return {
+        ...state,
+        loading: false,
       };
 
     default:

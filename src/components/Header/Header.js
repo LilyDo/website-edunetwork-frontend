@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
 import ArrowDown from '../../assets/images/icon_select.svg';
 import HamburgerIcon from '../../assets/images/icon_hamburger.svg';
 import NotiIcon from '../../assets/images/notification-outline-white.png';
@@ -8,7 +9,10 @@ import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
 import AccountMenuPopup from '../../components/AccountMenuPopup/AccountMenuPopup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getNotifications } from '../../actions/profile';
+import {
+  getNotifications,
+  viewNotification,
+} from '../../actions/profile';
 import {
   getUserFormLocal,
   clearLocalStorage,
@@ -18,6 +22,30 @@ import { routes } from '../../constants';
 import * as types from '../../actions';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import { get } from 'lodash';
+import InfiniteScroll from 'react-infinite-scroller';
+
+function NotificationDetailModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          {props.currentnoti.title}
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>{props.currentnoti.content}</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 class Header extends Component {
   state = {
@@ -25,6 +53,9 @@ class Header extends Component {
     currentUser: getUserFormLocal(),
     isHamburgerMenuVisible: false,
     currentLanguage: 'en',
+    modalShow: false,
+    currentNoti: {},
+    isShowNotiContainer: false,
   };
 
   checkCurrentUser() {
@@ -55,26 +86,44 @@ class Header extends Component {
         localStorage.getItem(types.CURRENT_LANG_KEY) || 'en',
     });
     if (getUserFormLocal()) {
-      this.props.actions.getNotifications({
-        token: localStorage.getItem(types.TOKEN_KEY),
-      });
+      this.props.actions.getNotifications(1);
     }
   }
+
   popupNotification = () => {
-    let display = document.getElementsByClassName('NotiContainer');
-    if (typeof display[0] !== 'undefined') {
-      if (display[0].style.display === 'none')
-        display[0].style.display = 'block';
-      else display[0].style.display = 'none';
+    this.setState({
+      isShowNotiContainer: !this.state.isShowNotiContainer,
+    });
+  };
+
+  loadMoreNotifications = () => {
+    this.props.actions.getNotifications(
+      this.props.notificationCurrentPage + 1,
+    );
+  };
+
+  setModalShow = (currentNoti, prop) => {
+    this.setState({ currentNoti: currentNoti, modalShow: prop });
+    if (prop) {
+      this.props.actions.viewNotification(currentNoti.id || 1);
     }
   };
 
   render() {
     this.checkCurrentUser();
 
-    const { currentLanguage } = this.state;
-    const { notifications } = this.props;
-    console.log(notifications);
+    const {
+      currentLanguage,
+      modalShow,
+      currentNoti,
+      isShowNotiContainer,
+    } = this.state;
+    const {
+      notificationLst,
+      notificationCurrentPage,
+      notificationLastPage,
+      unreadNotification,
+    } = this.props;
 
     return (
       <div className="Header">
@@ -88,86 +137,45 @@ class Header extends Component {
                   style={{ cursor: 'pointer' }}
                   onClick={() => this.popupNotification()}
                 />
-                <div className="NotiNumber">0</div>
+                <div className="NotiNumber">{unreadNotification}</div>
               </div>
-              <div
-                className="NotiContainer"
-                style={{ display: 'none' }}
-              >
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
+              {isShowNotiContainer && (
+                <div className="NotiContainer">
+                  <InfiniteScroll
+                    pageStart={1}
+                    loadMore={this.loadMoreNotifications}
+                    hasMore={
+                      notificationCurrentPage < notificationLastPage
+                    }
+                    loader={
+                      <div className="loader" key={0}>
+                        Loading ...
+                      </div>
+                    }
+                    useWindow={false}
+                  >
+                    {notificationLst.map(noti => (
+                      <div
+                        key={noti.id}
+                        className={
+                          'NotiItem' + (noti.seen ? '' : ' Unread')
+                        }
+                        onClick={() => this.setModalShow(noti, true)}
+                      >
+                        <div className="NotiTitle">{noti.title}</div>
+                        <div className="NotiSummary">
+                          {noti.summary}
+                        </div>
+                        <div className="NotiTimer">
+                          {noti.created_at}
+                        </div>
+                      </div>
+                    ))}
+                  </InfiniteScroll>
                 </div>
-                <div className="NotiItem Unread">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem Unread">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-                <div className="NotiItem">
-                  <div className="NotiTitle">
-                    This is the noti title
-                  </div>
-                  <div className="NotiSummary">
-                    This is the noti summary
-                  </div>
-                  <div className="NotiTimer">12/02/2020 13:55</div>
-                </div>
-              </div>
+              )}
             </div>
+
             <div className="LanguageSelector">
               <div className="text">
                 {currentLanguage === 'en'
@@ -247,6 +255,12 @@ class Header extends Component {
           </div>
         </div>
 
+        <NotificationDetailModal
+          show={modalShow}
+          currentnoti={currentNoti}
+          onHide={() => this.setModalShow({}, false)}
+        />
+
         <div>
           <div className="LowerHeader">
             <div
@@ -310,7 +324,10 @@ class Header extends Component {
 
 const mapStateToProps = ({ profile }) => {
   return {
-    notifications: get(profile, 'notifications', {}),
+    notificationLst: get(profile, 'notificationLst', []),
+    notificationCurrentPage: get(profile, 'notificationCurrentPage'),
+    notificationLastPage: get(profile, 'notificationLastPage'),
+    unreadNotification: get(profile, 'unreadNotification'),
   };
 };
 
@@ -319,6 +336,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getNotifications,
+        viewNotification,
       },
       dispatch,
     ),
