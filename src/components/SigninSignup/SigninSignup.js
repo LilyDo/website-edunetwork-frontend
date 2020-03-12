@@ -601,7 +601,8 @@ class SigninSignup extends Component {
                 ,{' '}
                 <a href={routes.termOfService} target="blank">
                   {getTranslatedText('term_of_service')}
-                </a>.
+                </a>
+                .
               </div>
             </div>
           )}
