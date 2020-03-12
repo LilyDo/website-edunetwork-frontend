@@ -645,4 +645,48 @@ export const translatedText = {
     en: 'Term Of Service',
     vi: 'Điều khoản sử dụng',
   },
+  login_success: {
+    en: 'Login successful!',
+    vi: 'Đăng nhập thành công',
+  },
+  active_account_success: {
+    en: 'Active account successful!',
+    vi: 'Kích hoạt tài khoản thành công',
+  },
+  check_email_reset: {
+    en: 'Please check your email to reset password!',
+    vi: 'Vui lòng kiểm tra email của bạn để thay đổi mật khẩu',
+  },
+  password_reset: {
+    en: 'Password have been reset',
+    vi: 'Mật khẩu đã được thay đổi',
+  },
+  send_success: {
+    en: 'Contact has been sent!',
+    vi: 'Thông tin liên hệ đã được gửi đi!',
+  },
+  request_buy_course: {
+    en: 'Request to buy course successfully!',
+    vi: 'Yêu cầu mua khóa học đã được gửi đi!',
+  },
+  buy_course: {
+    en: 'Buy course successfully!',
+    vi: 'Mua khóa học thành công',
+  },
+  update_profile_success: {
+    en: 'Update profile success!',
+    vi: 'Cập nhật thông tin cá nhân thành công',
+  },
+  withdraw_success: {
+    en: 'Request to withdraw successfully',
+    vi: 'Yêu cầu rút tiền đã được gửi đi',
+  },
+  deposit_success: {
+    en: 'Request to deposit successfully',
+    vi: 'Yêu cầu nạp tiền đã được gửi đi',
+  },
+  sorry_disable_deposit: {
+    en: "Sorry but deposit is disabled",
+    vi: "Xin lỗi nhưng tính năng nạp tiền hiện đang bảo trì"
+  }
 };

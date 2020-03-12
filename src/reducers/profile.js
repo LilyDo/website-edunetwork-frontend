@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { routes, toastDuration } from '../constants';
 import {
   extractAndShoweErrorMessages,
-  checkSessionLogout,
+  checkSessionLogout, getTranslatedText,
 } from '../services/appService';
 
 const initialState = {
@@ -89,7 +89,7 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Update profile successful!');
+        toast.success(getTranslatedText("update_profile_success"));
       } else {
         toast.error(action.payload.errors[0]);
       }
@@ -163,7 +163,7 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Request successful!');
+        toast.success(getTranslatedText("withdraw_success"));
         setTimeout(function() {
           window.location.pathname = routes.accountWithdrawNoti;
         }, 3000);
@@ -198,7 +198,7 @@ export default function(state = initialState, action) {
         action.payload.statusCode === 200 &&
         action.payload.errors.length === 0
       ) {
-        toast.success('Request successful!', {
+        toast.success(getTranslatedText("deposit_success"), {
           autoClose: toastDuration,
         });
         let pathname = routes.accountDepositNoti

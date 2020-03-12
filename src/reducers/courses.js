@@ -2,7 +2,7 @@ import * as types from '../actions';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { routes, toastDuration } from '../constants';
-import { clearLocalStorage } from '../services/appService';
+import {clearLocalStorage, getTranslatedText} from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -92,13 +92,13 @@ export default function(state = initialState, action) {
       let orderObj = {};
       if (action.payload.shouldDepositAmount > 0) {
         orderObj = action.payload.data || {};
-        message = 'Request course successfully!';
+        message = getTranslatedText("request_buy_course");
         pathname = routes.accountDepositNoti
           .replace(':isBuyCourse', 'buy')
           .replace(':code', orderObj.payment_code)
           .replace(':amount', orderObj.amount_need);
       } else {
-        message = 'Buy course successfully!';
+        message = getTranslatedText("buy_course");
         pathname = routes.coursePaymentSuccessful.replace(
           ':status',
           'successful',

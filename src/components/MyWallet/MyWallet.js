@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './MyWallet.scss';
 import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import AccountBreadcrumb from '../AccountBreadcrumb/AccountBreadcrumb';
@@ -8,13 +8,13 @@ import {
   currencyFormatter,
   getTranslatedText,
 } from '../../services/appService';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {
   getChargeHistoryAction,
   getProfileAction,
 } from '../../actions/profile';
-import { routes } from '../../constants';
+import {routes} from '../../constants';
 import * as types from '../../actions/index';
 
 class MyWallet extends Component {
@@ -58,11 +58,11 @@ class MyWallet extends Component {
   }
 
   render() {
-    const { currentUser, isShowWithdraw } = this.state;
+    const {currentUser, isShowWithdraw} = this.state;
 
     return (
       <div>
-        <AccountBreadcrumb />
+        <AccountBreadcrumb/>
         <div className="MyWallet">
           <div className="Title">
             {getTranslatedText('my_wallet')}
@@ -73,7 +73,7 @@ class MyWallet extends Component {
                 className="Photo"
                 alt="avatar"
                 src={currentUser.avatar || DefaultUserAvatar}
-              ></img>
+              />
               <div>{currentUser.name || ''}</div>
             </div>
             <div className="Balance">
@@ -91,11 +91,11 @@ class MyWallet extends Component {
                 {getTranslatedText('WITHDRAW')}
               </div>
             </Link>
-            <Link to={routes.accountDeposit}>
-              <div className="TopupButton">
-                {getTranslatedText('DEPOSIT')}
-              </div>
-            </Link>
+            {/*<Link to={routes.accountDeposit}>*/}
+            {/*  <div className="TopupButton">*/}
+            {/*    {getTranslatedText('DEPOSIT')}*/}
+            {/*  </div>*/}
+            {/*</Link>*/}
           </div>
           <div className="Transactions">
             <div className="Text">
@@ -122,66 +122,66 @@ class MyWallet extends Component {
             {isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
-                  <tr>
-                    <th className="Date">
-                      {getTranslatedText('date')}
-                    </th>
-                    <th className="Code">
-                      {getTranslatedText('transaction_code')}
-                    </th>
-                    <th className="Amount">
-                      {getTranslatedText('Amount')}
-                    </th>
-                    <th className="Status">
-                      {getTranslatedText('Status')}
-                    </th>
-                  </tr>
+                <tr>
+                  <th className="Date">
+                    {getTranslatedText('date')}
+                  </th>
+                  <th className="Code">
+                    {getTranslatedText('transaction_code')}
+                  </th>
+                  <th className="Amount">
+                    {getTranslatedText('Amount')}
+                  </th>
+                  <th className="Status">
+                    {getTranslatedText('Status')}
+                  </th>
+                </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  {this.props.state.drawList &&
-                    this.props.state.drawList.map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.created_at || ''}</td>
-                        <td>{item.charge_code || 'not available'}</td>
-                        <td>{currencyFormatter(item.price) || ''}</td>
-                        <td className="capitalize">
-                          {item.status || ''}
-                        </td>
-                      </tr>
-                    ))}
+                {this.props.state.drawList &&
+                this.props.state.drawList.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.created_at || ''}</td>
+                    <td>{item.charge_code || 'not available'}</td>
+                    <td>{currencyFormatter(item.price) || ''}</td>
+                    <td className="capitalize">
+                      {item.status || ''}
+                    </td>
+                  </tr>
+                ))}
                 </tbody>
               </table>
             )}
             {!isShowWithdraw && (
               <table>
                 <thead className="TransactionTableHead">
-                  <tr>
-                    <th className="Date">
-                      {getTranslatedText('date')}
-                    </th>
-                    <th className="Code">
-                      {getTranslatedText('transaction_code')}
-                    </th>
-                    <th className="Amount">
-                      {getTranslatedText('Amount')}
-                    </th>
-                    <th className="Status">
-                      {getTranslatedText('Status')}
-                    </th>
-                  </tr>
+                <tr>
+                  <th className="Date">
+                    {getTranslatedText('date')}
+                  </th>
+                  <th className="Code">
+                    {getTranslatedText('transaction_code')}
+                  </th>
+                  <th className="Amount">
+                    {getTranslatedText('Amount')}
+                  </th>
+                  <th className="Status">
+                    {getTranslatedText('Status')}
+                  </th>
+                </tr>
                 </thead>
                 <tbody className="TransactionTableBody">
-                  {this.props.state.chargeList &&
-                    this.props.state.chargeList.map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.created_at || ''}</td>
-                        <td>{item.charge_code || 'not available'}</td>
-                        <td>{currencyFormatter(item.price) || ''}</td>
-                        <td className="capitalize">
-                          {item.status || ''}
-                        </td>
-                      </tr>
-                    ))}
+                {this.props.state.chargeList &&
+                this.props.state.chargeList.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.created_at || ''}</td>
+                    <td>{item.charge_code || 'not available'}</td>
+                    <td>{currencyFormatter(item.price) || ''}</td>
+                    <td className="capitalize">
+                      {item.status || ''}
+                    </td>
+                  </tr>
+                ))}
                 </tbody>
               </table>
             )}
@@ -192,7 +192,7 @@ class MyWallet extends Component {
   }
 }
 
-const mapStateToProps = ({ profile }, ownProps) => {
+const mapStateToProps = ({profile}, ownProps) => {
   return {
     state: {
       drawList: profile.withdrawList,
