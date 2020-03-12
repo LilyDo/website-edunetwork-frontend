@@ -89,13 +89,13 @@ class CourseLevel extends Component {
                   {getTranslatedText('lifetime')}
                 </div>
               </div>
-              <div className="Container">
-                <img alt="student" src={StudentIcon}></img>
-                <div className="Text">
-                  <span>{courseDetail.attendees}</span>{' '}
-                  {getTranslatedText('member')}
-                </div>
-              </div>
+              {/*<div className="Container">*/}
+              {/*  <img alt="student" src={StudentIcon}></img>*/}
+              {/*  <div className="Text">*/}
+              {/*    <span>{courseDetail.attendees}</span>{' '}*/}
+              {/*    {getTranslatedText('member')}*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>

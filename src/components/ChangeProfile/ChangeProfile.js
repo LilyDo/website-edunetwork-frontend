@@ -109,6 +109,7 @@ class ChangeProfile extends Component {
                     name="name"
                     value={this.state.fullName}
                     onChange={this.handleChange('fullName')}
+                    disabled={true}
                   />
                 </div>
                 <div className="Email">

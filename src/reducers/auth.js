@@ -1,7 +1,10 @@
 import * as types from '../actions';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
-import { extractAndShoweErrorMessages } from '../services/appService';
+import {
+  extractAndShoweErrorMessages,
+  getTranslatedText,
+} from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -26,7 +29,7 @@ export default function(state = initialState, action) {
           types.TOKEN_KEY,
           action.payload.data.token,
         );
-        toast.success('Login successful!');
+        toast.success(getTranslatedText('login_success'));
       } else {
         toast.error(action.payload.errors[0]);
       }
@@ -83,7 +86,7 @@ export default function(state = initialState, action) {
       };
 
     case types.ACTIVE_ACCOUNT_SUCCESS:
-      toast.success('Active account successful!');
+      toast.success(getTranslatedText('active_account_success'));
       return {
         ...state,
         loading: false,
@@ -112,7 +115,7 @@ export default function(state = initialState, action) {
         loading: true,
       };
     case types.SEND_FORGOT_PASSWORD_EMAIL_SUCCESS:
-      toast.success('Please check your email to reset password!');
+      toast.success(getTranslatedText('check_email_reset'));
       return {
         ...state,
         loading: false,
@@ -134,7 +137,7 @@ export default function(state = initialState, action) {
         loading: true,
       };
     case types.RESET_PASSWORD_SUCCESS:
-      toast.success('Password reseted!');
+      toast.success(getTranslatedText('password_reset'));
       return {
         ...state,
         loading: false,

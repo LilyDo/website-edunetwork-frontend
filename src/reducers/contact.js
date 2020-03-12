@@ -1,6 +1,7 @@
 import * as types from '../actions';
 import { toast } from 'react-toastify';
 import { routes } from '../constants';
+import { getTranslatedText } from '../services/appService';
 
 const initialState = {
   loading: false,
@@ -22,7 +23,7 @@ export default function(state = initialState, action) {
         response.data.statusCode === 200 &&
         response.data.errors.length === 0
       ) {
-        toast.success('Sent sucessfull!');
+        toast.success(getTranslatedText('send_success'));
         setTimeout(function() {
           window.location.pathname = `${routes.sendContactSuccessful}`;
         }, 3000);
