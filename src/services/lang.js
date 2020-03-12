@@ -686,7 +686,7 @@ export const translatedText = {
     vi: 'Yêu cầu nạp tiền đã được gửi đi',
   },
   sorry_disable_deposit: {
-    en: "Sorry but deposit is disabled",
-    vi: "Xin lỗi nhưng tính năng nạp tiền hiện đang bảo trì"
-  }
+    en: 'Sorry but deposit is disabled',
+    vi: 'Xin lỗi nhưng tính năng nạp tiền hiện đang bảo trì',
+  },
 };
