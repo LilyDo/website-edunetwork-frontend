@@ -73,7 +73,7 @@ class MyWallet extends Component {
                 className="Photo"
                 alt="avatar"
                 src={currentUser.avatar || DefaultUserAvatar}
-              ></img>
+              />
               <div>{currentUser.name || ''}</div>
             </div>
             <div className="Balance">
@@ -91,11 +91,11 @@ class MyWallet extends Component {
                 {getTranslatedText('WITHDRAW')}
               </div>
             </Link>
-            <Link to={routes.accountDeposit}>
-              <div className="TopupButton">
-                {getTranslatedText('DEPOSIT')}
-              </div>
-            </Link>
+            {/*<Link to={routes.accountDeposit}>*/}
+            {/*  <div className="TopupButton">*/}
+            {/*    {getTranslatedText('DEPOSIT')}*/}
+            {/*  </div>*/}
+            {/*</Link>*/}
           </div>
           <div className="Transactions">
             <div className="Text">

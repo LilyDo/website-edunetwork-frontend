@@ -23,6 +23,15 @@ import {
   GET_ORDER_DETAIL_BY_CODE_REQUEST,
   GET_ORDER_DETAIL_BY_CODE_SUCCESS,
   GET_ORDER_DETAIL_BY_CODE_FAILURE,
+  GET_NOTIFICATIONS_REQUEST,
+  GET_NOTIFICATIONS_SUCCESS,
+  GET_NOTIFICATIONS_FAILURE,
+  GET_NOTIFICATION_REQUEST,
+  GET_NOTIFICATION_SUCCESS,
+  GET_NOTIFICATION_FAILURE,
+  UPDATE_NOTIFICATION_REQUEST,
+  UPDATE_NOTIFICATION_SUCCESS,
+  UPDATE_NOTIFICATION_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 
@@ -262,5 +271,76 @@ const getUserDashboardSuccess = response => ({
 
 const getUserDashboardFailure = error => ({
   type: GET_USER_DASHBOARD_FAILURE,
+  payload: { error },
+});
+
+// GET USER NOTIFICATIONS
+export const getNotifications = (currentPage = 1) => {
+  return dispatch => {
+    dispatch(getNotificationRequest());
+    let token = localStorage.getItem(types.TOKEN_KEY) || '';
+    axios
+      .get(
+        `${BASE_URL}/users/get-notification?page=${currentPage}&token=${token}`,
+      )
+      .then(response => {
+        dispatch(
+          getNotificationSuccess({
+            notifications: response.data,
+          }),
+        );
+      })
+      .catch(error =>
+        dispatch(getNotificationFailure(error.message)),
+      );
+  };
+};
+
+const getNotificationRequest = () => ({
+  type: GET_NOTIFICATIONS_REQUEST,
+});
+
+const getNotificationSuccess = payload => ({
+  type: GET_NOTIFICATIONS_SUCCESS,
+  payload: payload,
+});
+
+const getNotificationFailure = error => ({
+  type: GET_NOTIFICATIONS_FAILURE,
+  payload: { error },
+});
+
+// VIEW NOTIFICATION
+export const viewNotification = notiId => {
+  return dispatch => {
+    dispatch(viewNotificationRequest());
+    axios
+      .post(`${BASE_URL}/users/view-notification/${notiId}`, {
+        token: localStorage.getItem(types.TOKEN_KEY) || '',
+      })
+      .then(response => {
+        dispatch(
+          viewNotificationSuccess({
+            notifications: response.data,
+          }),
+        );
+      })
+      .catch(error =>
+        dispatch(viewNotificationFailure(error.message)),
+      );
+  };
+};
+
+const viewNotificationRequest = () => ({
+  type: GET_NOTIFICATION_REQUEST,
+});
+
+const viewNotificationSuccess = payload => ({
+  type: GET_NOTIFICATION_SUCCESS,
+  payload: payload,
+});
+
+const viewNotificationFailure = error => ({
+  type: GET_NOTIFICATION_FAILURE,
   payload: { error },
 });

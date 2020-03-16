@@ -63,68 +63,6 @@
   margin: auto;
   width: 100%;
 
-  .LanguageSelector {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    @media only screen and (max-width: $mobileBreakPoint) {
-      padding: 25px 25px 25px 0;
-      > img {
-        padding-left: 10px;
-      }
-    }
-
-    @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
-      padding: 33px 25px 33px 0;
-    }
-
-    @media only screen and (min-width: $mobileBreakPoint + 1) {
-      padding: 15px 20px 80px 0;
-
-      > img {
-        padding-left: 40px;
-      }
-    }
-
-    img {
-      z-index: 2;
-    }
-
-    &:hover{
-      .LanguageSelectContainer {
-        opacity: 1;
-        height: 52px;
-        z-index: 1;
-      }
-    }
-    .LanguageSelectContainer {
-      opacity: 0;
-      height: 0;
-      position: absolute;
-      top: 10px;
-      background: white;
-      color: #d59e29;
-      padding: 5px;
-      right: 25px;
-      border-radius: 3px;
-      text-align: center;
-      transition: all 0.5s ease;
-
-      .LanguageSelectItem {
-        height: 18px;
-        border-bottom: solid 1px #d59e2978;
-        padding: 3px;
-        &:hover {
-          cursor: pointer;
-        }
-        &:last-child {
-          margin-top: 5px;
-        }
-      }
-    }
-  }
   .UpperHeaderlinks {
     // display: flex;
     flex-direction: row;
@@ -154,6 +92,144 @@
       padding: 10px 30px;
       margin-bottom: 15px;
       margin-left: 15px;
+    }
+  }
+
+  .HeaderSelector {
+    position: relative;
+    padding: 15px 20px 80px 0;
+    @media only screen and (max-width: $mobileBreakPoint) {
+      padding: 15px 20px 50px 0;
+      .NotificationSelector {
+        float: right !important;
+        margin-left: 20px;
+      }
+    }
+
+    .NotificationSelector {
+      position: relative;
+      z-index: 999;
+      float: left;
+      .NotiIcon {
+        width: 30px;
+        img {
+          max-width: 100%;
+        }
+        .NotiNumber {
+          position: absolute;
+          background-color: #2196f3;
+          padding: 3px;
+          border-radius: 4px;
+          top: -5px;
+          right: -10px;
+          font-weight: 600;
+          :hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .NotiContainer {
+        position: absolute;
+        width: 250px;
+        height: 350px;
+        top: 30px;
+        right: 0;
+        background: white;
+        color: #707070;
+        // overflow-y: scroll;
+        overflow: auto;
+        border-radius: 3px;
+        padding: 10px;
+        -webkit-box-shadow: 3px 3px 3px 3px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow: 3px 3px 3px 3px #ccc; /* Firefox 3.5 - 3.6 */
+        box-shadow: 3px 3px 3px 3px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+        .NotiItem {
+          padding: 10px;
+          border-bottom: solid 2px white;
+          &.Unread {
+            background-color: #e3e4e4;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: #f6c1254a;
+          }
+        }
+
+        .NotiTitle {
+          font-weight: 600;
+          font-size: 1.1em;
+        }
+
+        .NotiTimer {
+          text-align: right;
+          font-size: smaller;
+        }
+      }
+    }
+
+    .LanguageSelector {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      float: left;
+      margin: 10px 0 0 35px;
+      @media only screen and (max-width: $mobileBreakPoint) {
+        > img {
+          padding-left: 10px;
+        }
+      }
+
+      @media only screen and (min-width: $smallMobileBreakPoint) and (max-width: $mobileBreakPoint) {
+        padding: 33px 25px 33px 0;
+      }
+
+      @media only screen and (min-width: $mobileBreakPoint + 1) {
+        > img {
+          padding-left: 40px;
+        }
+      }
+
+      img {
+        z-index: 2;
+      }
+
+      &:hover {
+        .LanguageSelectContainer {
+          opacity: 1;
+          height: 52px;
+          z-index: 1;
+          -webkit-box-shadow: 3px 3px 3px 3px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+          -moz-box-shadow: 3px 3px 3px 3px #ccc; /* Firefox 3.5 - 3.6 */
+          box-shadow: 3px 3px 3px 3px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+        }
+      }
+      .LanguageSelectContainer {
+        opacity: 0;
+        height: 0;
+        position: absolute;
+        top: 10px;
+        background: white;
+        color: #d59e29;
+        padding: 5px;
+        right: 25px;
+        border-radius: 3px;
+        text-align: center;
+        transition: all 0.5s ease;
+
+        .LanguageSelectItem {
+          height: 18px;
+          border-bottom: solid 1px #d59e2978;
+          padding: 3px;
+          &:hover {
+            cursor: pointer;
+          }
+          &:last-child {
+            margin-top: 5px;
+          }
+        }
+      }
     }
   }
 }

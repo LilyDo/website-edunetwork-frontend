@@ -11,6 +11,7 @@ import {
   getTranslatedText,
   getUrlParameter,
 } from '../../services/appService';
+import { routes } from '../../constants';
 
 class SigninSignup extends Component {
   state = {
@@ -591,6 +592,17 @@ class SigninSignup extends Component {
                   <option value="Zambia">Zambia</option>
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
+              </div>
+              <div>
+                {getTranslatedText('note_policy')}{' '}
+                <a href={routes.privacyPolicy} target="blank">
+                  {getTranslatedText('privacy_policy')}
+                </a>
+                ,{' '}
+                <a href={routes.termOfService} target="blank">
+                  {getTranslatedText('term_of_service')}
+                </a>
+                .
               </div>
             </div>
           )}
