@@ -18,8 +18,8 @@ function AccountMenuPopup() {
         <div className="Menu MyCourse">
           {getTranslatedText('my_course')}
         </div>
+        <div className="Menu Logout">{getTranslatedText('logout')}</div>
       </div>
-      <div className="Logout">{getTranslatedText('logout')}</div>
     </div>
   );
 }
