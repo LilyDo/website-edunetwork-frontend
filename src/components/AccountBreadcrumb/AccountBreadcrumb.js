@@ -60,9 +60,9 @@ class AccountBreadcrumb extends Component {
                 <Link to={routes.accountWithdraw}>
                   <div>{getTranslatedText('withdraw')}</div>
                 </Link>
-                <Link to={routes.accountDeposit}>
-                  <div>{getTranslatedText('deposit')}</div>
-                </Link>
+                {/*<Link to={routes.accountDeposit}>*/}
+                {/*  <div>{getTranslatedText('deposit')}</div>*/}
+                {/*</Link>*/}
               </div>
             </div>
 
