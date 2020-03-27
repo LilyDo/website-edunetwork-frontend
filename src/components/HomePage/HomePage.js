@@ -3,6 +3,7 @@ import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
 import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
+import LoginGame from '../Game/Login/LoginGame';
 import { getTranslatedText } from '../../services/appService';
 
 function HomePage() {
@@ -75,6 +76,7 @@ function HomePage() {
       </div>
 
       <QuoteContainer />
+      {/* <LoginGame /> */}
 
       <CourseCardContainer />
     </div>

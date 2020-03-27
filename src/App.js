@@ -39,7 +39,7 @@ import SendContactSuccessful from './components/SendContactSuccessful/SendContac
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
-
+import MainGame from '../src/components/Game/MainGame/MainGame';
 // services
 import { getUserFormLocal } from './services/appService';
 import DepositNotification from './components/DepositNotification/DepositNotification';
@@ -99,7 +99,9 @@ class App extends Component {
               <div className="Content">
                 <Switch>
                   <Route exact path={routes.home}>
-                    <HomePage />
+                    {/* <HomePage />
+                     */}
+                     <MainGame />
                   </Route>
                   <Route exact path={routes.courses}>
                     <CoursePage />
