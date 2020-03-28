@@ -126,7 +126,6 @@ const RankList = () => {
                     <Table
                         scroll={true}
                         bordered
-                        size='large'
                         className='table_container'
                         columns={columns}
                         dataSource={data}

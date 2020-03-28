@@ -1,40 +1,44 @@
-
 .ruleGame__container {
-    height: 595px !important;
-    width: 1366px !important;
-    background-color: white;
-    border: black solid 1px;
-    display: flex !important;
-    justify-content: center !important;
+  height: 595px !important;
+  width: 1366px !important;
+  background-color: white;
+  display: flex !important;
+  justify-content: center !important;
+  overflow: scroll;
+  margin-bottom: 60px;
 }
 
+
 .header_container {
-    background-color: white;
-    border: red solid 1px;
-    height: 203px !important;
-    width: 1089.5px !important;
-    margin-left: 142px;
+  background-color: white;
+  border-bottom: #D59E29 solid 1px;
+  border-top: #D59E29 solid 1px; ;
+  height: 103px !important;
+  width: 1089.5px !important;
+  margin-left: 142px;
+  margin-top: 33px;
+  justify-content: center;
+  display: flex;
 }
 
 .content_container {
-    background-color: white;
-    margin-left: 142px;
-    width: 1087px !important;
+  background-color: white;
+  margin-left: 142px;
+  width: 1087px !important;
 }
 
 .child_header_container {
-    background-color: white;
+  background-color: white;
 }
 
 .main_content_container {
-    background-color: white;
+  background-color: white;
 }
 
 .header__divider {
-    padding: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 .tabPanel__container {
-    border: wheat solid 1px;
-    height: 255px !important;
+  height: 345px !important;
 }

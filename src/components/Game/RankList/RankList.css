@@ -1,23 +1,22 @@
 .layout_rank_container {
-    background-image: url('../../../assets/images/game_result_background.png');
-    display: flex;
-    justify-content: center;
-
+  background-image: url('../../../assets/images/game_result_background.png');
+  display: flex;
+  justify-content: center;
 }
 
 .rank_header_container {
-    background: transparent;
+  background: transparent;
 }
 
 .content_container {
-    background: transparent;
-    justify-content: 'center';
-    /* border: black solid 1px; */
+  background: transparent;
+  justify-content: 'center';
+  /* border: black solid 1px; */
 }
 
 .table_container {
-    background: transparent !important;
-    width: 825px !important;
-    height: 540px !important;
-    border-radius: 10px;
+  background: transparent !important;
+  width: 825px !important;
+  height: 140px !important;
+  border-radius: 10px;
 }

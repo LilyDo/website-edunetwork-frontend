@@ -1,60 +1,59 @@
 .modal__container {
-    width: 1089px !important;
-    height: 609px !important;
+  width: 1089px !important;
+  height: 609px !important;
 }
 
 .logo__container {
-    background-color: white;
-    height: 120px !important;
-    display: flex;
-    justify-content: center;
+  background-color: white;
+  height: 120px !important;
+  display: flex;
+  justify-content: center;
 }
 
 .layout__container {
-    background-color: white;
-    height: 490px !important;
+  background-color: white;
+  height: 490px !important;
 }
 
 .subheading__container {
-    background-color: white;
-    margin-left: 90px;
+  background-color: white;
+  margin-left: 90px;
 }
 
 .heading__container {
-    margin-left: 90px !important;
+  margin-left: 90px !important;
 }
 
 .heading_divider__container {
-    /* margin-left: 90px !important; */
-    width: 710px !important;
-} 
+  /* margin-left: 90px !important; */
+  width: 710px !important;
+}
 
 .form__container {
-    width: 390px !important;
-    height: 290px !important;
-    margin-left: 90px;
+  width: 390px !important;
+  height: 290px !important;
+  margin-left: 90px;
 }
 
 .form_item_input {
-    width: 336px !important;
-    height:  52px !important;
+  width: 336px !important;
+  height: 52px !important;
 }
 
 .forget_password__button {
-    background: transparent;
-    border: none;
-
+  background: transparent;
+  border: none;
 }
 
 .login__button {
-    background-color: #B97A2A;
-    width: 335px !important;
-    height: 43px !important;
-    border-radius: 10px;
-    border: none;
+  background-color: #b97a2a;
+  width: 335px !important;
+  height: 43px !important;
+  border-radius: 10px;
+  border: none;
 }
 
 .login__button_label {
-    font-size: 14px;
-    font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
 }

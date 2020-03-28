@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Layout,
     Typography,
-    Divider,
     Col,
     Row,
     Tabs
@@ -12,6 +11,7 @@ import '../MainGame/MainGame.css';
 import styled from 'styled-components';
 import RuleGame from '../RuleGame/RuleGame';
 import RankList from '../RankList/RankList';
+import Game from '../Game/Game';
 const { Header, Content} = Layout;
 const { TabPane } = Tabs;
 
@@ -33,24 +33,12 @@ const MainGame = () => {
                 <Header
                     className="header_container"
                 >
-                    <Row>
-                        <Col span={24}>
-                            <Divider
-                                className="header__divider"
-                            />
-                        </Col>
-                        <Col span={24}>
-                            <Typography.Text>
-                                Navigation - Name
-                            </Typography.Text>
-                            <Typography.Text>
-                                Ten user
-                            </Typography.Text>
-                        </Col>
-                        <Col span={24}>
-                            <Divider/>
-                        </Col>
-                    </Row>
+                    <Typography.Text>
+                        Navigation - Name
+                    </Typography.Text>
+                    <Typography.Text>
+                        Ten user
+                    </Typography.Text>
                 </Header>
                 <Content
                     className="content_container"
@@ -59,16 +47,41 @@ const MainGame = () => {
                         <TabPane 
                             className="tabPanel__container"
                             tab={<TabButton>
-                                <Typography.Text>
-                                    Dieu kien quy dinh
+                                <Typography.Text
+                                    style={{
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    ĐIỀU KIỆN & QUY ĐỊNH
                                 </Typography.Text>
                             </TabButton>} key="1">
                                 <RuleGame />
                         </TabPane>
-                        <TabPane tab={<TabButton />} key="2">
-                        Content of Tab Pane 2
+                        <TabPane
+                            className="tabPanel__container"
+                            tab={<TabButton>
+                                <Typography.Text
+                                    style={{
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    VÒNG QUAY TRÚNG THƯỞNG
+                                </Typography.Text>
+                            </TabButton>} key="2">
+                                <Game />
                         </TabPane>
-                        <TabPane tab={<TabButton />} key="3">
+                        <TabPane tab={<TabButton>
+                                <Typography.Text
+                                    style={{
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    BẢNG XẾP HẠNG
+                                </Typography.Text>
+                            </TabButton>} key="3">
                                 <RankList />
                         </TabPane>
                     </Tabs>
