@@ -118,21 +118,25 @@ export const rollingGame = async () => {
   // This function is service used to play game
   // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
   // Method: POST
-  // Body: token 
+  // Body: token
   const data = {
-    token: 'token'
-  }
-  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
+    token: 'token',
+  };
+  const url =
+    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
   await fetch(url, {
     method: 'POST',
-    body: JSON.stringify(data)
-  }).then((response) => {
-    return response.json()
-  }).then((data) => {
-    console.log(data);
-  }).catch((error) => {
-    console.log(error);
+    body: JSON.stringify(data),
   })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 export const addMoneyToWallet = async () => {
@@ -142,33 +146,39 @@ export const addMoneyToWallet = async () => {
   // Body: token, money
   const data = {
     token: 'token',
-    money: '10'
-  }
-  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet';
+    money: '10',
+  };
+  const url =
+    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet';
   await fetch(url, {
     method: 'POST',
-    body: JSON.stringify(data)
-  }).then((response) => {
-    return response.json()
-  }).then((data) => {
-    console.log(data);
-  }).catch((error) => {
-    console.log(error);
+    body: JSON.stringify(data),
   })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 export const resultGame = async () => {
   // This function is service used to get result of game
   // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/result
   // Method: GET
-  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/result';
-  await fetch(url).then(
-    (response) => {
-      return response.json()
-    }
-  ).then((data) => {
-    console.log(data);
-  }).catch((error) => {
-    console.log(error);
-  })
-}
+  const url =
+    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/result';
+  await fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

@@ -98,10 +98,11 @@ class App extends Component {
               <Header />
               <div className="Content">
                 <Switch>
+                  <Route exact path={routes.game}>
+                    <MainGame />
+                  </Route>
                   <Route exact path={routes.home}>
-                    {/* <HomePage />
-                     */}
-                     <MainGame />
+                    <HomePage />
                   </Route>
                   <Route exact path={routes.courses}>
                     <CoursePage />
