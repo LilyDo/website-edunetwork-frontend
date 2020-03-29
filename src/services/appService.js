@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { CURRENT_USER_KEY, CURRENT_LANG_KEY } from '../actions';
 import { routes } from '../constants';
 import { translatedText } from './lang';
+import axios from "axios";
 
 export const getUserFormLocal = function() {
   let user = localStorage.getItem(CURRENT_USER_KEY);
@@ -119,21 +120,16 @@ export const rollingGame = async () => {
   // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
   // Method: POST
   // Body: token
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
   const login_token = window.localStorage.getItem('token');
-  console.log(login_token);
-  const token = {
+  // console.log(login_token);
+  // const token = {
+  //   token: login_token
+  // };
+  // const url = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
+  await axios.post(base_url + "/v1/users/rolling", {
     token: login_token
-  };
-  const url = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
-  await fetch(url, {
-    method: 'POST',
-    // headers: {
-    //   // 'Content-Type': 'application/json'
-    //   'Content-Type': 'application/x-www-form-urlencoded',
-    // },
-    // body: JSON.stringify(token)
-  })
-    .then(response => {
+  }).then(response => {
       return response.json();
     })
     .then(data => {
