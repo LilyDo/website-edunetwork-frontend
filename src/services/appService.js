@@ -113,3 +113,62 @@ export const getTranslatedText = key => {
 export const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+export const rollingGame = async () => {
+  // This function is service used to play game
+  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
+  // Method: POST
+  // Body: token 
+  const data = {
+    token: 'token'
+  }
+  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
+  await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data);
+  }).catch((error) => {
+    console.log(error);
+  })
+};
+
+export const addMoneyToWallet = async () => {
+  // This function is service used to push money to wallet
+  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet
+  // Method: POST
+  // Body: token, money
+  const data = {
+    token: 'token',
+    money: '10'
+  }
+  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet';
+  await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data);
+  }).catch((error) => {
+    console.log(error);
+  })
+};
+
+export const resultGame = async () => {
+  // This function is service used to get result of game
+  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/result
+  // Method: GET
+  const url = 'https://edunetwork.dev.gkcsoftware.com/api/v1/users/result';
+  await fetch(url).then(
+    (response) => {
+      return response.json()
+    }
+  ).then((data) => {
+    console.log(data);
+  }).catch((error) => {
+    console.log(error);
+  })
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Row,
     Col,
@@ -7,9 +7,11 @@ import {
     Typography,
     Layout,
     Tag,
+    Modal
 } from 'antd';
 import 'antd/dist/antd.css'
 import '../Game/Game.css';
+import { rollingGame, addMoneyToWallet} from '../../../services/appService';
 
 const data = [
     '1',
@@ -31,6 +33,7 @@ class Wheel extends React.Component {
     selectItem() {
         if (this.state.selectedItem === null) {
           const selectedItem = Math.floor(Math.random() * this.props.items.length);
+          console.log(selectedItem)
           if (this.props.onSelectItem) {
             this.props.onSelectItem(selectedItem);
           }
@@ -65,7 +68,61 @@ class Wheel extends React.Component {
       }
 }
 
+const ResultWheelModal = () => {
+    return (
+        <React.Fragment>
+            <Layout>
+                <Layout.Header>
+
+                </Layout.Header>
+                <Layout.Content>
+
+                </Layout.Content>
+                <Layout.Footer>
+
+                </Layout.Footer>
+            </Layout>
+        </React.Fragment>
+    );
+};
+
+const AddMoneyToWallet = () => {
+    return (
+        <React.Fragment>
+            <Layout>
+                <Layout.Header>
+                    
+                </Layout.Header>
+                <Layout.Content>
+
+                </Layout.Content>
+                <Layout.Footer>
+
+                </Layout.Footer>
+            </Layout>
+        </React.Fragment>
+    );
+};
+
 const Game = () => {
+
+    const [ selectedItem, setSelectedItem ] = useState(null);
+    const [ resultGameModalVisible, setResultGameModalVisible ] = useState(false);
+    const [ addMoneyToWalletModalVisible, setAddMoneyToWaletModalVisible ] = useState(false);
+
+    useEffect(() => {
+        rollingGame()
+        .then(response => {
+            console.log(response);
+        })
+    }, [])
+
+    // render status number of turn
+
+    const TurnStatusTag = () => {
+
+    };
+
     return (
         <Row>
             <Col
@@ -162,6 +219,14 @@ const Game = () => {
                     </Layout.Footer>
                 </Layout>
             </Col>
+            <Modal
+
+            >
+                <ResultWheelModal />
+            </Modal>
+            <Modal>
+                <AddMoneyToWallet />
+            </Modal>
         </Row>
     );
 };

@@ -10,24 +10,28 @@ import '../RankList/RankList.css';
 const { Header, Content, Footer } = Layout;
 const columns = [
     {
-      title: 'Hang',
+      title: 'HẠNG',
       dataIndex: 'rank',
       key: 'rank',
+      align: 'center'
     },
     {
-      title: 'User name',
+      title: 'USERNAME',
       dataIndex: 'username',
       key: 'username',
+      align: 'center'
     },
     {
-      title: 'Ho ten',
+      title: 'HỌ TÊN',
       dataIndex: 'fullname',
       key: 'fullname',
+      align: 'center'
     },
     {
-        title: 'So sale, so vong quay',
+        title: 'SỐ SALE SỐ VÒNG QUAY',
         dataIndex: 'saleNumber',
         key: 'saleNumber',
+        align: 'center'
     }
 ];
 

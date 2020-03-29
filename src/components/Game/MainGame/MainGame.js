@@ -25,6 +25,7 @@ const TabButton = styled.button`
 
 
 const MainGame = () => {
+
     return (
         <React.Fragment>
             <Layout

@@ -97,6 +97,7 @@
 
 /* Element sur la roue */
 .wheel-item {
+  border: black solid 1px;
   display: block;
   position: absolute;
   box-sizing: border-box;
