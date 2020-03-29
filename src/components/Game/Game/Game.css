@@ -6,9 +6,9 @@
   --wheel-color: #d59e29;
   --neutral-color: white;
   --PI: 3.14159265358979;
-  --nb-item: 0;
-  --item-nb: 0;
-  --selected-item: 0;
+  --nb-item: 1;
+  --item-nb: 1;
+  --selected-item: 1;
   --nb-turn: 5;
   --spinning-duration: 4s;
   --reset-duration: 0.25s;
@@ -142,7 +142,7 @@
     var(--PI) * var(--wheel-size) + var(--wheel-size) / 2
   );
   --slice-width: calc(
-    (var(--slice-max-width) / var(--nb-item)) -
+    (var(--slice-max-width) / var(--nb-item, 1)) -
       var(--wheel-slice-spacing)
   );
   border: solid transparent calc(var(--slice-width) / 2);
