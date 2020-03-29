@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import {
     Layout,
     Typography,
@@ -26,6 +26,13 @@ const TabButton = styled.button`
 
 const MainGame = () => {
 
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        const user = JSON.parse(window.localStorage.getItem('current_user'));
+        setUserName(user.name);
+    }, [])
+
     return (
         <React.Fragment>
             <Layout
@@ -35,10 +42,7 @@ const MainGame = () => {
                     className="header_container"
                 >
                     <Typography.Text>
-                        Navigation - Name
-                    </Typography.Text>
-                    <Typography.Text>
-                        Ten user
+                        {userName}
                     </Typography.Text>
                 </Header>
                 <Content

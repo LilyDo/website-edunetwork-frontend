@@ -116,17 +116,22 @@ export const capitalizeFirstLetter = string => {
 
 export const rollingGame = async () => {
   // This function is service used to play game
-  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
   // Method: POST
   // Body: token
-  const data = {
-    token: 'token',
+  const login_token = window.localStorage.getItem('token');
+  console.log(login_token);
+  const token = {
+    token: login_token
   };
-  const url =
-    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
+  const url = 'https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling';
   await fetch(url, {
     method: 'POST',
-    body: JSON.stringify(data),
+    // headers: {
+    //   // 'Content-Type': 'application/json'
+    //   'Content-Type': 'application/x-www-form-urlencoded',
+    // },
+    // body: JSON.stringify(token)
   })
     .then(response => {
       return response.json();
@@ -141,7 +146,7 @@ export const rollingGame = async () => {
 
 export const addMoneyToWallet = async () => {
   // This function is service used to push money to wallet
-  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet
   // Method: POST
   // Body: token, money
   const data = {
@@ -149,7 +154,7 @@ export const addMoneyToWallet = async () => {
     money: '10',
   };
   const url =
-    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet';
+    'https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet';
   await fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -167,10 +172,10 @@ export const addMoneyToWallet = async () => {
 
 export const resultGame = async () => {
   // This function is service used to get result of game
-  // Request url : https://edunetwork.dev.gkcsoftware.com/api/v1/users/result
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/result
   // Method: GET
   const url =
-    'https://edunetwork.dev.gkcsoftware.com/api/v1/users/result';
+    'https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/result';
   await fetch(url)
     .then(response => {
       return response.json();

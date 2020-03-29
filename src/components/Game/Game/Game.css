@@ -97,7 +97,6 @@
 
 /* Element sur la roue */
 .wheel-item {
-  border: black solid 1px;
   display: block;
   position: absolute;
   box-sizing: border-box;
@@ -202,6 +201,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .col__container {
@@ -217,4 +218,46 @@
   height: 43px !important;
   background-color: #b97a2a;
   border-radius: 10px;
+}
+
+.button_label {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.logo__container {
+  background-color: white;
+  height: 120px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.content__container {
+  background-color: white;
+  padding-top: 56px;
+  padding-bottom: 56px;
+  border-top: #707070 solid 0.25px;
+  border-bottom: #707070 solid 0.25px;
+}
+
+.footer__container {
+  background-color: white;
+}
+
+/* .tag_info {
+  width: 114px !important;
+  height: 55px !important;
+  background-color: #D59E29;
+  color: white;
+} */
+.modal_card_container {
+  width: 796px !important;
+  height: 399px !important;
+}
+
+.content_heading {
+  color: #929292;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }

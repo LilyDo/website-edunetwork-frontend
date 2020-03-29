@@ -13,20 +13,13 @@ import 'antd/dist/antd.css'
 import '../Game/Game.css';
 import { rollingGame, addMoneyToWallet} from '../../../services/appService';
 
-const data = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-];
-
 class Wheel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedItem: null,
         };
+
     this.selectItem = this.selectItem.bind(this);
     }
 
@@ -46,14 +39,18 @@ class Wheel extends React.Component {
 
       render() {
         const { selectedItem } = this.state;
-        const { items } = this.props;
+        const { items, setResultGameModalVisible } = this.props;
     
         const wheelVars = {
           '--nb-item': items.length,
           '--selected-item': selectedItem,
         };
         const spinning = selectedItem !== null ? 'spinning' : '';
-    
+        if(selectedItem !==null) {
+            setTimeout(() => {
+                setResultGameModalVisible(true);
+            }, 4500)
+        }
         return (
           <div className="wheel-container">
             <div className={`wheel ${spinning}`} style={wheelVars} onClick={this.selectItem}>
@@ -72,14 +69,65 @@ const ResultWheelModal = () => {
     return (
         <React.Fragment>
             <Layout>
-                <Layout.Header>
-
+                <Layout.Header
+                    className="logo__container"
+                >
+                    <img 
+                        src={require('../../../assets/images/logo.svg')} />
                 </Layout.Header>
-                <Layout.Content>
-
+                <Layout.Content
+                    className="content__container"
+                >
+                    <Row>
+                        <Col span={24}>
+                            <Typography.Text
+                                className="content_heading"
+                            >
+                                XIN CHÚC MỪNG!
+                            </Typography.Text>
+                        </Col>
+                        <Col span={16}>
+                            <Typography.Text>
+                                Bạn vừa tham gia vòng quay may mắn, và lượt quay của bạn nhận được tiền thưởng là:
+                            </Typography.Text>
+                        </Col>
+                        <Col span={8}>
+                            <Tag
+                                color="#FAC857"
+                                className='tag__info'
+                            >
+                                4 $
+                            </Tag>
+                        </Col>
+                    </Row>
                 </Layout.Content>
-                <Layout.Footer>
-
+                <Layout.Footer
+                    className="footer__container"
+                >
+                    <Row>
+                        <Col span={12}>
+                            <Button
+                                className="button"
+                            >
+                                <Typography.Text
+                                    className="button_label"
+                                >
+                                    QUAY LƯỢT TIẾP
+                                </Typography.Text>
+                            </Button>
+                        </Col>
+                        <Col span={12}>
+                            <Button
+                                className="button"
+                            >
+                                <Typography.Text
+                                    className="button_label"
+                                >
+                                    XEM TIỀN THƯỞNG CỦA TÔI 
+                                </Typography.Text>
+                            </Button>
+                        </Col>
+                    </Row>
                 </Layout.Footer>
             </Layout>
         </React.Fragment>
@@ -90,14 +138,57 @@ const AddMoneyToWallet = () => {
     return (
         <React.Fragment>
             <Layout>
-                <Layout.Header>
-                    
+                <Layout.Header
+                    className="logo__container"
+                >
+                    <img 
+                        src={require('../../../assets/images/logo.svg')} />
                 </Layout.Header>
-                <Layout.Content>
-
+                <Layout.Content
+                    className="content__container"
+                >
+                    <Row>
+                        <Col span={24}>
+                            <Typography.Text
+                                className="content_heading"
+                            >
+                                NẠP TIỀN VÀO VÍ THÀNH CÔNG!
+                            </Typography.Text>
+                        </Col>
+                        <Col span={16}>
+                            <Typography.Text>
+                                Xin chúc mừng! Bạn vừa nạp thêm tiền vào ví thành công.
+                            </Typography.Text>
+                        </Col>
+                        <Col span={8}>
+                            <Typography.Text>
+                                Số tiền bạn vừa nạp vào ví
+                            </Typography.Text>
+                            <Tag
+                                color="#FAC857"
+                                className='tag__info'
+                            >
+                                15 $
+                            </Tag>
+                        </Col>
+                    </Row>
                 </Layout.Content>
-                <Layout.Footer>
-
+                <Layout.Footer
+                    className="footer__container"
+                >
+                    <Row>
+                        <Col span={24}>
+                            <Button
+                                className="button"
+                            >
+                                <Typography.Text
+                                    className="button_label"
+                                >
+                                    XEM VÍ NGAY  
+                                </Typography.Text>
+                            </Button>
+                        </Col>
+                    </Row>
                 </Layout.Footer>
             </Layout>
         </React.Fragment>
@@ -106,15 +197,22 @@ const AddMoneyToWallet = () => {
 
 const Game = () => {
 
-    const [ selectedItem, setSelectedItem ] = useState(null);
+    const [ givenItem, setGivenItem ] = useState(null);
     const [ resultGameModalVisible, setResultGameModalVisible ] = useState(false);
     const [ addMoneyToWalletModalVisible, setAddMoneyToWaletModalVisible ] = useState(false);
+    const [dataList, setDataList] = useState([])
 
     useEffect(() => {
         rollingGame()
         .then(response => {
             console.log(response);
         })
+        // const user_amount = JSON.parse(window.localStorage.getItem('current_user'));
+        // console.log(typeof(user_amount.roll_amount))
+        // for (let index = 1; index <= user_amount.roll_amount; index++) {
+        //     const item = index.toString();
+        //     setDataList(dataList.push(item))
+        // }
     }, [])
 
     // render status number of turn
@@ -130,7 +228,7 @@ const Game = () => {
             >
                 <List
                     className="list_number_of_turn__container"
-                    dataSource={data}
+                    dataSource={dataList}
                     renderItem={item => (
                         <List.Item>
                             <Tag
@@ -150,6 +248,7 @@ const Game = () => {
             >
                 <Wheel
                     items={['$5', '$2', '$3', '$10', '$1', '$4']}
+                    setResultGameModalVisible={setResultGameModalVisible}
                 />
             </Col>
             <Col span={6}>
@@ -211,20 +310,29 @@ const Game = () => {
                     >
                         <Button
                             className="button"
+                            onClick={() => setAddMoneyToWaletModalVisible(true)}
                         >
-                            <Typography.Text>
-                                Nap tien vao tai khoan
+                            <Typography.Text
+                                className="button_label"
+                            >
+                                NẠP TIỀN VÀO VÍ NGAY
                             </Typography.Text>
                         </Button>
                     </Layout.Footer>
                 </Layout>
             </Col>
             <Modal
-
+                className="modal_card_container"
+                visible={resultGameModalVisible}
+                footer={null}
             >
                 <ResultWheelModal />
             </Modal>
-            <Modal>
+            <Modal
+                className="modal_card_container"
+                visible={addMoneyToWalletModalVisible}
+                footer={null}
+            >
                 <AddMoneyToWallet />
             </Modal>
         </Row>
