@@ -1,17 +1,17 @@
 :root {
-    --wheel-font: 'Lato', 'Quicksand', sans-serif;
-    --wheel-size: 320px;
-    --wheel-slice-spacing: 50px;
-    --wheel-border-size: 5px;
-    --wheel-color: #D59E29;
-    --neutral-color: white;
-    --PI: 3.14159265358979;
-    --nb-item: 0;
-    --item-nb: 0;
-    --selected-item: 0;
-    --nb-turn: 5;
-    --spinning-duration: 4s;
-    --reset-duration: 0.25s;
+  --wheel-font: 'Lato', 'Quicksand', sans-serif;
+  --wheel-size: 320px;
+  --wheel-slice-spacing: 50px;
+  --wheel-border-size: 5px;
+  --wheel-color: #d59e29;
+  --neutral-color: white;
+  --PI: 3.14159265358979;
+  --nb-item: 0;
+  --item-nb: 0;
+  --selected-item: 0;
+  --nb-turn: 5;
+  --spinning-duration: 4s;
+  --reset-duration: 0.25s;
 }
 
 .wheel-container {
@@ -72,7 +72,12 @@
 
 .wheel.spinning {
   transition: transform var(--spinning-duration);
-  transform: rotate(calc(var(--nb-turn) * 360deg + (-360deg * var(--selected-item) / var(--nb-item, 1))));
+  transform: rotate(
+    calc(
+      var(--nb-turn) * 360deg +
+        (-360deg * var(--selected-item) / var(--nb-item, 1))
+    )
+  );
 }
 
 /* Centre de la roue = rond blanc au centre */
@@ -101,7 +106,8 @@
   left: 50%;
   width: 50%;
   transform-origin: center left;
-  transform: translateY(-50%) rotate(calc(var(--item-nb) * (360deg / var(--nb-item, 1))));
+  transform: translateY(-50%)
+    rotate(calc(var(--item-nb) * (360deg / var(--nb-item, 1))));
 
   /* texte */
   color: var(--neutral-color);
@@ -132,8 +138,13 @@
     mais globalement ca marche a peu près bien 
     TODO: A étudier 
   */
-  --slice-max-width: calc(var(--PI) * var(--wheel-size) + var(--wheel-size) / 2);
-  --slice-width: calc((var(--slice-max-width) / var(--nb-item)) - var(--wheel-slice-spacing));
+  --slice-max-width: calc(
+    var(--PI) * var(--wheel-size) + var(--wheel-size) / 2
+  );
+  --slice-width: calc(
+    (var(--slice-max-width) / var(--nb-item)) -
+      var(--wheel-slice-spacing)
+  );
   border: solid transparent calc(var(--slice-width) / 2);
   border-left: solid transparent 0;
   /* profondeur du triangle = du centre de la roue à la bordure = 300px / 2 */
@@ -141,68 +152,68 @@
 }
 
 .list_number_of_turn__container {
-    width: 186px !important;
-    height: 296px !important;
-    border: #D6D6D6 solid 0.5px;
-    align-items: center;
-    overflow: scroll;
-    margin-left: 55px;
+  width: 186px !important;
+  height: 296px !important;
+  border: #d6d6d6 solid 0.5px;
+  align-items: center;
+  overflow: scroll;
+  margin-left: 55px;
 }
 
 .event_info__container {
-    background-color: white;
-    width: 304px !important;
-    height: 340px !important;
+  background-color: white;
+  width: 304px !important;
+  height: 340px !important;
 }
 
 .tag_turn {
-    width: 108px !important;
-    height: 38px !important;
-    border-radius: 10px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 108px !important;
+  height: 38px !important;
+  border-radius: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time_event_header_container {
-    width: 304px !important;
-    height: 110px !important;
-    background-color: white;
-    display: flex;
-     flex-direction: column;
-    justify-content: space-between; 
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+  width: 304px !important;
+  height: 110px !important;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 .time_event_header_container p {
-    height: 20px;
-    font-weight: bolder;
-    font-size: 17px;
-    margin-bottom: 0px;
+  height: 20px;
+  font-weight: bolder;
+  font-size: 17px;
+  margin-bottom: 0px;
 }
 
 .tag__info {
-    width: 114px !important;
-    height: 55px !important;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 114px !important;
+  height: 55px !important;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .col__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 10px;
-    /* flex-direction: row; */
-    /* /* justify-content: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+  /* flex-direction: row; */
+  /* /* justify-content: center; */
 }
 
 .button {
-    width: 230px !important;
-    height: 43px !important;
-    background-color: #B97A2A;
-    border-radius: 10px;
+  width: 230px !important;
+  height: 43px !important;
+  background-color: #b97a2a;
+  border-radius: 10px;
 }

@@ -12,9 +12,9 @@
 } */
 
 .rule_content__container {
-    width: 1087px !important;
-    height: 283px !important;
-    overflow: scroll !important;
-    padding-left: 45px;
-    padding-top: 28px;
+  width: 1087px !important;
+  height: 283px !important;
+  overflow: scroll !important;
+  padding-left: 45px;
+  padding-top: 28px;
 }
