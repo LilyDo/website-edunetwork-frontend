@@ -48,7 +48,7 @@ const MainGame = () => {
                 <Content
                     className="content_container"
                 >
-                    <Tabs size='small' defaultActiveKey="3">
+                    <Tabs size='small' defaultActiveKey="2">
                         <TabPane 
                             className="tabPanel__container"
                             tab={<TabButton>

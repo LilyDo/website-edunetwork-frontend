@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Table,
     Layout,
@@ -6,6 +6,7 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import '../RankList/RankList.css';
+import { resultGame } from '../../../services/appService';
 
 const { Header, Content, Footer } = Layout;
 const columns = [
@@ -17,20 +18,20 @@ const columns = [
     },
     {
       title: 'USERNAME',
-      dataIndex: 'username',
-      key: 'username',
+      dataIndex: 'code',
+      key: 'code',
       align: 'center'
     },
     {
       title: 'HỌ TÊN',
-      dataIndex: 'fullname',
-      key: 'fullname',
+      dataIndex: 'name',
+      key: 'name',
       align: 'center'
     },
     {
         title: 'SỐ SALE SỐ VÒNG QUAY',
-        dataIndex: 'saleNumber',
-        key: 'saleNumber',
+        dataIndex: 'roll_amount',
+        key: 'roll_amount',
         align: 'center'
     }
 ];
@@ -109,6 +110,17 @@ const data = [
 ]
 
 const RankList = () => {
+
+    const [tableData, setTableData] = useState([]);
+
+    useEffect(() => {
+        resultGame()
+        .then(response => {
+            console.log(response);
+            setTableData(response.data.data);
+        });
+    },[])
+
     return (
         <React.Fragment>
             <Layout
@@ -132,7 +144,7 @@ const RankList = () => {
                         bordered
                         className='table_container'
                         columns={columns}
-                        dataSource={data}
+                        dataSource={tableData}
                     />
                 </Content>
             </Layout>

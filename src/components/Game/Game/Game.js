@@ -11,9 +11,10 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css'
 import '../Game/Game.css';
-import { rollingGame, addMoneyToWallet} from '../../../services/appService';
+import { rollingGame, addMoneyToWallet, getRollAmount} from '../../../services/appService';
 
 class Wheel extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,9 +24,14 @@ class Wheel extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     }
 
-    selectItem() {
+    async selectItem() {
+        var givenItem = '';
+        await rollingGame()
+        .then(response => {
+            givenItem = response.data.result
+        })
         if (this.state.selectedItem === null) {
-          const selectedItem = Math.floor(Math.random() * this.props.items.length);
+          const selectedItem = givenItem;
           console.log(selectedItem)
           if (this.props.onSelectItem) {
             this.props.onSelectItem(selectedItem);
@@ -39,24 +45,25 @@ class Wheel extends React.Component {
 
       render() {
         const { selectedItem } = this.state;
-        const { items, setResultGameModalVisible } = this.props;
+        const { items, setResultGameModalVisible, setGivenResult } = this.props;
     
         const wheelVars = {
           '--nb-item': items.length,
           '--selected-item': selectedItem,
         };
         const spinning = selectedItem !== null ? 'spinning' : '';
-        if(selectedItem !==null) {
+        if (selectedItem !== null) {
             setTimeout(() => {
+                setGivenResult(selectedItem)
                 setResultGameModalVisible(true);
-            }, 4500)
+            }, 4100)
         }
         return (
           <div className="wheel-container">
             <div className={`wheel ${spinning}`} style={wheelVars} onClick={this.selectItem}>
               {items.map((item, index) => (
                 <div className="wheel-item" key={index} style={{ '--item-nb': index }}>
-                  {item}
+                  ${item}
                 </div>
               ))}
             </div>
@@ -65,7 +72,12 @@ class Wheel extends React.Component {
       }
 }
 
-const ResultWheelModal = () => {
+const ResultWheelModal = (props) => {
+
+    const {
+        givenResult,
+        setResultGameModalVisible,
+    } = props;
     return (
         <React.Fragment>
             <Layout>
@@ -96,7 +108,7 @@ const ResultWheelModal = () => {
                                 color="#FAC857"
                                 className='tag__info'
                             >
-                                4 $
+                                {givenResult}$
                             </Tag>
                         </Col>
                     </Row>
@@ -108,6 +120,7 @@ const ResultWheelModal = () => {
                         <Col span={12}>
                             <Button
                                 className="button"
+                                onClick={() => setResultGameModalVisible(false)}
                             >
                                 <Typography.Text
                                     className="button_label"
@@ -197,26 +210,26 @@ const AddMoneyToWallet = () => {
 
 const Game = () => {
 
-    const [ givenItem, setGivenItem ] = useState(null);
     const [ resultGameModalVisible, setResultGameModalVisible ] = useState(false);
     const [ addMoneyToWalletModalVisible, setAddMoneyToWaletModalVisible ] = useState(false);
     const [dataList, setDataList] = useState([])
+    const [givenResult, setGivenResult] = useState('');
 
     useEffect(() => {
-        rollingGame()
+        getRollAmount()
         .then(response => {
             console.log(response);
         })
-        // const user_amount = JSON.parse(window.localStorage.getItem('current_user'));
-        // console.log(typeof(user_amount.roll_amount))
-        // for (let index = 1; index <= user_amount.roll_amount; index++) {
-        //     const item = index.toString();
-        //     setDataList(dataList.push(item))
-        // }
     }, [])
 
-    // render status number of turn
+    const handleAddMoneyToWallet = () => {
+        addMoneyToWallet()
+        .then(response => {
+            setAddMoneyToWaletModalVisible(true);
+        });
+    };
 
+    // render status number of turn
     const TurnStatusTag = () => {
 
     };
@@ -247,8 +260,9 @@ const Game = () => {
                 offset={1}
             >
                 <Wheel
-                    items={['$5', '$2', '$3', '$10', '$1', '$4']}
+                    items={['5', '2', '3', '10', '1', '4']}
                     setResultGameModalVisible={setResultGameModalVisible}
+                    setGivenResult={setGivenResult}
                 />
             </Col>
             <Col span={6}>
@@ -282,7 +296,7 @@ const Game = () => {
                                     className="tag__info"
                                     color="#FAC857"
                                 >
-                                    4 $
+                                    {givenResult}$
                                 </Tag>
                             </Col>
                             <Col span={24}
@@ -310,7 +324,7 @@ const Game = () => {
                     >
                         <Button
                             className="button"
-                            onClick={() => setAddMoneyToWaletModalVisible(true)}
+                            onClick={() => handleAddMoneyToWallet()}
                         >
                             <Typography.Text
                                 className="button_label"
@@ -326,7 +340,10 @@ const Game = () => {
                 visible={resultGameModalVisible}
                 footer={null}
             >
-                <ResultWheelModal />
+                <ResultWheelModal
+                    givenResult={givenResult}
+                    setResultGameModalVisible={setResultGameModalVisible}
+                />
             </Modal>
             <Modal
                 className="modal_card_container"
