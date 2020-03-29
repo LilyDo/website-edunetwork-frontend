@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { CURRENT_USER_KEY, CURRENT_LANG_KEY } from '../actions';
 import { routes } from '../constants';
 import { translatedText } from './lang';
+import axios from "axios";
 
 export const getUserFormLocal = function() {
   let user = localStorage.getItem(CURRENT_USER_KEY);
@@ -112,4 +113,67 @@ export const getTranslatedText = key => {
 
 export const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const rollingGame = async () => {
+  // This function is service used to play game
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
+  // Method: POST
+  // Body: token
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const login_token = window.localStorage.getItem('token');
+  return await axios.post(base_url + "/v1/users/rolling", {
+    token: login_token
+  }).then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const addMoneyToWallet = async () => {
+  // This function is service used to push money to wallet
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet
+  // Method: POST
+  // Body: token, money
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const login_token = window.localStorage.getItem('token');
+  return await axios.post(base_url + '/v1/users/add-to-wallet', {
+    token: login_token
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const getRollAmount = async () => {
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const login_token = window.localStorage.getItem('token');
+  return await axios.post(base_url + '/v1/users/get-roll-amount', {
+    token: login_token
+  })
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    }); 
+}
+
+export const resultGame = async () => {
+  // This function is service used to get result of game
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/result
+  // Method: GET
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  return await axios.get(base_url + '/v1/result')
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
