@@ -2,16 +2,16 @@ import React, {useState, useEffect } from 'react';
 import {
     Layout,
     Typography,
-    Col,
-    Row,
-    Tabs
+    Tabs,
 } from 'antd';
 import 'antd/dist/antd.css';
+import { getTranlastedText, getTranslatedText } from '../../../services/appService';
 import '../MainGame/MainGame.css';
 import styled from 'styled-components';
 import RuleGame from '../RuleGame/RuleGame';
 import RankList from '../RankList/RankList';
 import Game from '../Game/Game';
+import LoginGame from '../Login/LoginGame';
 const { Header, Content} = Layout;
 const { TabPane } = Tabs;
 
@@ -27,10 +27,21 @@ const TabButton = styled.button`
 const MainGame = () => {
 
     const [userName, setUserName] = useState('');
+    const [loginVisible, setLoginVisible] = useState(false);
+    const [buttonMainGameDisable, setButtonMainGameDisable] = useState(false);
 
     useEffect(() => {
-        const user = JSON.parse(window.localStorage.getItem('current_user'));
-        setUserName(user.name);
+        const current_user = JSON.parse(window.localStorage.getItem('current_user'));
+        // 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
+        if (current_user === null) {
+            setLoginVisible(true);
+            setButtonMainGameDisable(true);
+        } else {
+            if (current_user.roll_amount === 0) {
+                setButtonMainGameDisable(true);
+                alert('You have no sale to play this game');
+            };
+        };
     }, [])
 
     return (
@@ -58,21 +69,23 @@ const MainGame = () => {
                                         fontWeight: 'bold',
                                     }}
                                 >
-                                    ĐIỀU KIỆN & QUY ĐỊNH
+                                    {getTranslatedText('rule_game')}
                                 </Typography.Text>
                             </TabButton>} key="1">
                                 <RuleGame />
                         </TabPane>
                         <TabPane
                             className="tabPanel__container"
-                            tab={<TabButton>
+                            tab={<TabButton
+                                    disabled={buttonMainGameDisable}
+                                    >
                                 <Typography.Text
                                     style={{
                                         color: 'white',
                                         fontWeight: 'bold',
                                     }}
                                 >
-                                    VÒNG QUAY TRÚNG THƯỞNG
+                                    {getTranslatedText('play_game')}
                                 </Typography.Text>
                             </TabButton>} key="2">
                                 <Game />
@@ -84,13 +97,16 @@ const MainGame = () => {
                                         fontWeight: 'bold',
                                     }}
                                 >
-                                    BẢNG XẾP HẠNG
+                                    {getTranslatedText('rank_game')}
                                 </Typography.Text>
                             </TabButton>} key="3">
                                 <RankList />
                         </TabPane>
                     </Tabs>
                 </Content>
+                <LoginGame
+                    loginVisible={loginVisible}
+                />
             </Layout>
         </React.Fragment>
     );

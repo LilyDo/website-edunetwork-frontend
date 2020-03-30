@@ -6,108 +6,36 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import '../RankList/RankList.css';
+import { getTranslatedText } from '../../../services/appService'
 import { resultGame } from '../../../services/appService';
 
 const { Header, Content, Footer } = Layout;
 const columns = [
     {
-      title: 'HẠNG',
-      dataIndex: 'rank',
-      key: 'rank',
-      align: 'center'
+        title: getTranslatedText('table_column_rank'),
+        dataIndex: 'rank',
+        key: 'rank',
+        align: 'center'
     },
     {
-      title: 'USERNAME',
-      dataIndex: 'code',
-      key: 'code',
-      align: 'center'
+        title: getTranslatedText('table_column_username'),
+        dataIndex: 'code',
+        key: 'code',
+        align: 'center'
     },
     {
-      title: 'HỌ TÊN',
-      dataIndex: 'name',
-      key: 'name',
-      align: 'center'
+        title: getTranslatedText('table_column_name'),
+        dataIndex: 'name',
+        key: 'name',
+        align: 'center'
     },
     {
-        title: 'SỐ SALE SỐ VÒNG QUAY',
+        title: getTranslatedText('table_column_sale_amount'),
         dataIndex: 'roll_amount',
         key: 'roll_amount',
         align: 'center'
     }
 ];
-
-const data = [
-    {
-        key: '1',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '2',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '3',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '4',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '5',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '6',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '7',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '8',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '9',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    },
-    {
-        key: '10',
-        rank: '1',
-        username: 'holoi',
-        fullname: 'ho duc loi',
-        saleNumber: '12',
-    }
-]
 
 const RankList = () => {
 
@@ -140,6 +68,7 @@ const RankList = () => {
                     className='content_container'
                 >
                     <Table
+                        rowKey="uid"
                         scroll={true}
                         bordered
                         className='table_container'

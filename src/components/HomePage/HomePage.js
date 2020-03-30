@@ -33,6 +33,9 @@ function HomePage() {
 
   return (
     <div>
+      <div>
+      <a href="/game">Visit Game!</a>
+      </div>
       <div className="Video">
         <iframe
           title="home-video"
