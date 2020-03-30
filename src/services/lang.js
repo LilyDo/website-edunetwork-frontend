@@ -719,7 +719,7 @@ export const translatedText = {
     
     ###### **QUY ĐỊNH**:
     *  Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
-    *  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`
+    *  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`,
   },
   play_game: {
     en: 'WHEEL REWARDS',
@@ -735,7 +735,7 @@ export const translatedText = {
   },
   game_turn: {
     en: 'Turn',
-    vi: 'Lượt'
+    vi: 'Lượt',
   },
   current_result_text: {
     en: 'You have just received',
@@ -743,15 +743,15 @@ export const translatedText = {
   },
   current_total_money_text: {
     en: 'Your total bonus',
-    vi: 'Tổng tiền thưởng của bạn:'
+    vi: 'Tổng tiền thưởng của bạn:',
   },
   table_column_rank: {
     en: 'RANK',
-    vi: 'HẠNG'
+    vi: 'HẠNG',
   },
   table_column_username: {
     en: 'USERNAME',
-    vi: 'USERNAME'
+    vi: 'USERNAME',
   },
   table_column_name: {
     en: 'NAME',
@@ -759,35 +759,38 @@ export const translatedText = {
   },
   table_column_sale_amount: {
     en: 'SALE AMOUNT',
-    vi: 'SỐ SALE SỐ VÒNG QUAY'
+    vi: 'SỐ SALE SỐ VÒNG QUAY',
   },
   turn_list_label: {
     en: 'Your draw turn',
-    vi: 'Lượt quay thưởng'
+    vi: 'Lượt quay thưởng',
   },
   add_money_success: {
     en: 'DEPOSIT TO SUCCESSFULLY!',
-    vi: 'NẠP TIỀN VÀO VÍ THÀNH CÔNG!'
+    vi: 'NẠP TIỀN VÀO VÍ THÀNH CÔNG!',
   },
   add_money_content: {
-    en: 'Congratulations! You have just added money to your wallet successfully.',
-    vi: 'Xin chúc mừng! Bạn vừa nạp thêm tiền vào ví thành công.'
+    en:
+      'Congratulations! You have just added money to your wallet successfully.',
+    vi: 'Xin chúc mừng! Bạn vừa nạp thêm tiền vào ví thành công.',
   },
   current_money_add: {
     en: 'The amount you just added into your wallet',
-    vi: 'Số tiền bạn vừa nạp vào ví'
+    vi: 'Số tiền bạn vừa nạp vào ví',
   },
   button_check_wallet: {
     en: 'VIEW WALLET NOW',
-    vi: 'XEM VÍ NGAY'
+    vi: 'XEM VÍ NGAY',
   },
   result_modal_sub_heading: {
-    en: 'You just took part in the lucky draw, and your spin receives a bonus of:',
-    vi: 'Bạn vừa tham gia vòng quay may mắn, và lượt quay của bạn nhận được tiền thưởng là:'
+    en:
+      'You just took part in the lucky draw, and your spin receives a bonus of:',
+    vi:
+      'Bạn vừa tham gia vòng quay may mắn, và lượt quay của bạn nhận được tiền thưởng là:',
   },
   result_modal_heading: {
     en: 'CONGRATULATIONS!',
-    vi: 'XIN CHÚC MỪNG!'
+    vi: 'XIN CHÚC MỪNG!',
   },
   result_modal_next_round_button: {
     en: 'NEXT TURN',
@@ -795,10 +798,11 @@ export const translatedText = {
   },
   result_modal_watch_bonus: {
     en: 'SEE MY REWARDS',
-    vi: 'XEM TIỀN THƯỞNG CỦA TÔI'
+    vi: 'XEM TIỀN THƯỞNG CỦA TÔI',
   },
   login_game_sub_heading: {
     en: 'To join the lucky draw, please log in to your account.',
-    vi: 'Để tham gia vòng quay may mắn trúng thưởng, bạn vui lòng đăng nhập vào tài khoản của mình.'
+    vi:
+      'Để tham gia vòng quay may mắn trúng thưởng, bạn vui lòng đăng nhập vào tài khoản của mình.',
   },
 };
