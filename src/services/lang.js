@@ -689,4 +689,116 @@ export const translatedText = {
     en: 'Sorry but deposit is disabled',
     vi: 'Xin lỗi nhưng tính năng nạp tiền hiện đang bảo trì',
   },
+  rule_game: {
+    en: 'TERMS & CONDITIONS',
+    vi: 'ĐIỀU KIỆN & QUY ĐỊNH',
+  },
+  game_term_condition_content: {
+    en: `###### **RULES**
+    *  Each member will be given lucky draw by Edunetwork corresponding to the number of members currently managing. 
+    *  When the lucky spin starts, the member has a chance to receive the corresponding bonuses on the wheel. 
+    ###### **NOTE**
+    * If the member's turn is not over, Admin will save it for later rounds
+    
+    ###### **CONDITIONS OF PARTICIPATION**
+    *  As a member of EduNetwork
+    *  The account owner is real, does not violate any regulations on EduNetwork.
+    
+    ###### **REGULATIONS**:
+    *  Members are not allowed to use the software to disrupt and adjust the results of the Lucky Draw. If violating this regulation and discovered, members will be permanently locked account at EduNetwork.
+    *  The amount of member drawn will be deposited directly into that member's wallet account. No transfer or transfer in any form to another member.`,
+    vi: `###### **THỂ LỆ**
+    *  Mỗi thành viên sẽ được Edunetwork tặng số lượt quay may mắn tương ứng với số thành viên đang quản lý. 
+    *  Khi Vòng quay may mắn bắt đầu khởi động, thành viên có cơ hội nhận được những số tiền thưởng tương ứng trên vòng quay. 
+    ###### **LƯU Ý**
+    * Nếu lượt quay của thành viên chưa hết thì sẽ được Admin bảo lưu lại để quay tiếp ở những vòng sau
+    
+    ###### **ĐIỀU KIỆN THAM GIA**
+    *  Là thành viên của EduNetwork
+    *  Chủ tài khoản là người thật, không vi phạm bất kỳ quy định nào trên EduNetwork.
+    
+    ###### **QUY ĐỊNH**:
+    *  Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
+    *  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`
+  },
+  play_game: {
+    en: 'WHEEL REWARDS',
+    vi: 'VÒNG QUAY TRÚNG THƯỞNG',
+  },
+  rank_game: {
+    en: 'RANKER',
+    vi: 'BẢNG XẾP HẠNG',
+  },
+  button_add_money_to_wallet: {
+    en: 'TAKE MONEY TO WALLET',
+    vi: 'NẠP TIỀN VÀO VÍ NGAY',
+  },
+  game_turn: {
+    en: 'Turn',
+    vi: 'Lượt'
+  },
+  current_result_text: {
+    en: 'You have just received',
+    vi: 'Bạn vừa quay được:',
+  },
+  current_total_money_text: {
+    en: 'Your total bonus',
+    vi: 'Tổng tiền thưởng của bạn:'
+  },
+  table_column_rank: {
+    en: 'RANK',
+    vi: 'HẠNG'
+  },
+  table_column_username: {
+    en: 'USERNAME',
+    vi: 'USERNAME'
+  },
+  table_column_name: {
+    en: 'NAME',
+    vi: 'HỌ TÊN',
+  },
+  table_column_sale_amount: {
+    en: 'SALE AMOUNT',
+    vi: 'SỐ SALE SỐ VÒNG QUAY'
+  },
+  turn_list_label: {
+    en: 'Your draw turn',
+    vi: 'Lượt quay thưởng'
+  },
+  add_money_success: {
+    en: 'DEPOSIT TO SUCCESSFULLY!',
+    vi: 'NẠP TIỀN VÀO VÍ THÀNH CÔNG!'
+  },
+  add_money_content: {
+    en: 'Congratulations! You have just added money to your wallet successfully.',
+    vi: 'Xin chúc mừng! Bạn vừa nạp thêm tiền vào ví thành công.'
+  },
+  current_money_add: {
+    en: 'The amount you just added into your wallet',
+    vi: 'Số tiền bạn vừa nạp vào ví'
+  },
+  button_check_wallet: {
+    en: 'VIEW WALLET NOW',
+    vi: 'XEM VÍ NGAY'
+  },
+  result_modal_sub_heading: {
+    en: 'You just took part in the lucky draw, and your spin receives a bonus of:',
+    vi: 'Bạn vừa tham gia vòng quay may mắn, và lượt quay của bạn nhận được tiền thưởng là:'
+  },
+  result_modal_heading: {
+    en: 'CONGRATULATIONS!',
+    vi: 'XIN CHÚC MỪNG!'
+  },
+  result_modal_next_round_button: {
+    en: 'NEXT TURN',
+    vi: 'QUAY LƯỢT TIẾP',
+  },
+  result_modal_watch_bonus: {
+    en: 'SEE MY REWARDS',
+    vi: 'XEM TIỀN THƯỞNG CỦA TÔI'
+  },
+  login_game_sub_heading: {
+    en: 'To join the lucky draw, please log in to your account.',
+    vi: 'Để tham gia vòng quay may mắn trúng thưởng, bạn vui lòng đăng nhập vào tài khoản của mình.'
+  },
 };

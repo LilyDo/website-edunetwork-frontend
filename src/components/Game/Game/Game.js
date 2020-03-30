@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Row,
     Col,
@@ -11,6 +12,8 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css'
 import '../Game/Game.css';
+import { getTranslatedText } from '../../../services/appService';
+import { routes } from '../../../constants';
 import { rollingGame, addMoneyToWallet, getRollAmount} from '../../../services/appService';
 
 class Wheel extends React.Component {
@@ -25,14 +28,17 @@ class Wheel extends React.Component {
     }
 
     async selectItem() {
-        var givenItem = '';
+        var givenItem = null;
         await rollingGame()
         .then(response => {
             givenItem = response.data.result
-        })
+        }).catch(error => {
+                alert('Have some error, please try later, thanks')
+            }
+        );
         if (this.state.selectedItem === null) {
           const selectedItem = givenItem;
-          console.log(selectedItem)
+          console.log('given', selectedItem)
           if (this.props.onSelectItem) {
             this.props.onSelectItem(selectedItem);
           }
@@ -53,10 +59,11 @@ class Wheel extends React.Component {
         };
         const spinning = selectedItem !== null ? 'spinning' : '';
         if (selectedItem !== null) {
+            console.log('in 1',selectedItem)
             setTimeout(() => {
-                setGivenResult(selectedItem)
                 setResultGameModalVisible(true);
-            }, 4100)
+                this.setState({selectedItem: null});
+            }, 4000)
         }
         return (
           <div className="wheel-container">
@@ -78,6 +85,11 @@ const ResultWheelModal = (props) => {
         givenResult,
         setResultGameModalVisible,
     } = props;
+
+    const handleNextRoundButton = () => {
+        setResultGameModalVisible(false);
+    };
+
     return (
         <React.Fragment>
             <Layout>
@@ -95,12 +107,12 @@ const ResultWheelModal = (props) => {
                             <Typography.Text
                                 className="content_heading"
                             >
-                                XIN CHÚC MỪNG!
+                                {getTranslatedText('result_modal_heading')}
                             </Typography.Text>
                         </Col>
                         <Col span={16}>
                             <Typography.Text>
-                                Bạn vừa tham gia vòng quay may mắn, và lượt quay của bạn nhận được tiền thưởng là:
+                                {getTranslatedText('result_modal_sub_heading')}
                             </Typography.Text>
                         </Col>
                         <Col span={8}>
@@ -120,12 +132,12 @@ const ResultWheelModal = (props) => {
                         <Col span={12}>
                             <Button
                                 className="button"
-                                onClick={() => setResultGameModalVisible(false)}
+                                onClick={handleNextRoundButton}
                             >
                                 <Typography.Text
                                     className="button_label"
                                 >
-                                    QUAY LƯỢT TIẾP
+                                    {getTranslatedText('result_modal_next_round_button')}
                                 </Typography.Text>
                             </Button>
                         </Col>
@@ -136,7 +148,7 @@ const ResultWheelModal = (props) => {
                                 <Typography.Text
                                     className="button_label"
                                 >
-                                    XEM TIỀN THƯỞNG CỦA TÔI 
+                                    {getTranslatedText('result_modal_watch_bonus')}
                                 </Typography.Text>
                             </Button>
                         </Col>
@@ -147,7 +159,15 @@ const ResultWheelModal = (props) => {
     );
 };
 
-const AddMoneyToWallet = () => {
+const AddMoneyToWallet = (props) => {
+    const {
+        setAddMoneyToWaletModalVisible
+    } = props;
+
+    const handleCheckWalletButton = () => {
+        setAddMoneyToWaletModalVisible(false);
+    };
+
     return (
         <React.Fragment>
             <Layout>
@@ -165,17 +185,17 @@ const AddMoneyToWallet = () => {
                             <Typography.Text
                                 className="content_heading"
                             >
-                                NẠP TIỀN VÀO VÍ THÀNH CÔNG!
+                                {getTranslatedText('add_money_success')}
                             </Typography.Text>
                         </Col>
                         <Col span={16}>
                             <Typography.Text>
-                                Xin chúc mừng! Bạn vừa nạp thêm tiền vào ví thành công.
+                                {getTranslatedText('add_money_content')}
                             </Typography.Text>
                         </Col>
                         <Col span={8}>
                             <Typography.Text>
-                                Số tiền bạn vừa nạp vào ví
+                                {getTranslatedText('current_money_add')}
                             </Typography.Text>
                             <Tag
                                 color="#FAC857"
@@ -191,15 +211,20 @@ const AddMoneyToWallet = () => {
                 >
                     <Row>
                         <Col span={24}>
-                            <Button
-                                className="button"
+                            <Link
+                                to={routes.accountWallet}
                             >
-                                <Typography.Text
-                                    className="button_label"
+                                <Button
+                                    className="button"
+                                    // onClick={handleCheckWalletButton()}
                                 >
-                                    XEM VÍ NGAY  
-                                </Typography.Text>
-                            </Button>
+                                    <Typography.Text
+                                        className="button_label"
+                                    >
+                                        {getTranslatedText('button_check_wallet')}
+                                    </Typography.Text>
+                                </Button>
+                            </Link>
                         </Col>
                     </Row>
                 </Layout.Footer>
@@ -213,12 +238,17 @@ const Game = () => {
     const [ resultGameModalVisible, setResultGameModalVisible ] = useState(false);
     const [ addMoneyToWalletModalVisible, setAddMoneyToWaletModalVisible ] = useState(false);
     const [dataList, setDataList] = useState([])
-    const [givenResult, setGivenResult] = useState('');
+    const [givenResult, setGivenResult] = useState(null);
 
     useEffect(() => {
+        const rollAmountArray = []
         getRollAmount()
         .then(response => {
-            console.log(response);
+            const rollAmount = response.data.data.roll_amount;
+            for (let index = 1; index <= rollAmount; index++) {
+                rollAmountArray.push(index.toString())
+            };
+            setDataList(rollAmountArray);
         })
     }, [])
 
@@ -238,7 +268,13 @@ const Game = () => {
         <Row>
             <Col
                 span={4}
+                className="game_turn_container"
             >
+                <Typography.Text
+                    className="label_turn"
+                >
+                    {getTranslatedText('turn_list_label')}
+                </Typography.Text>
                 <List
                     className="list_number_of_turn__container"
                     dataSource={dataList}
@@ -248,7 +284,7 @@ const Game = () => {
                                 className="tag_turn"
                                 color="#FAC857"
                             >
-                                {item}
+                                {getTranslatedText('game_turn')} {item}
                             </Tag>
                         </List.Item>
                     )}
@@ -290,14 +326,23 @@ const Game = () => {
                                 <Typography.Text
                                     strong
                                 >
-                                    Bạn vừa quay được:
+                                    {getTranslatedText('current_result_text')}
                                 </Typography.Text>
-                                <Tag
-                                    className="tag__info"
-                                    color="#FAC857"
-                                >
-                                    {givenResult}$
-                                </Tag>
+                                {givenResult ? (
+                                    <Tag
+                                        className="tag__info"
+                                        color="#FAC857"
+                                    > 
+                                        {givenResult}$
+                                    </Tag>
+                                ) : (
+                                    <Tag
+                                        className="tag__info"
+                                        color="#FAC857"
+                                    > 
+                                     0 $
+                                    </Tag>
+                                )}
                             </Col>
                             <Col span={24}
                                 className="col__container"
@@ -305,8 +350,7 @@ const Game = () => {
                                 <Typography.Text
                                     strong
                                 >
-                                    Tổng tiền thưởng
-                                    của bạn:
+                                    {getTranslatedText('current_total_money_text')}
                                 </Typography.Text>
                                 <Tag
                                     className="tag__info"
@@ -326,11 +370,7 @@ const Game = () => {
                             className="button"
                             onClick={() => handleAddMoneyToWallet()}
                         >
-                            <Typography.Text
-                                className="button_label"
-                            >
-                                NẠP TIỀN VÀO VÍ NGAY
-                            </Typography.Text>
+                            {getTranslatedText('button_add_money_to_wallet')}
                         </Button>
                     </Layout.Footer>
                 </Layout>
@@ -350,7 +390,9 @@ const Game = () => {
                 visible={addMoneyToWalletModalVisible}
                 footer={null}
             >
-                <AddMoneyToWallet />
+                <AddMoneyToWallet
+                    setAddMoneyToWaletModalVisible={setAddMoneyToWaletModalVisible}
+                />
             </Modal>
         </Row>
     );

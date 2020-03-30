@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
     Layout,
     Form,
@@ -7,18 +8,36 @@ import {
     Modal,
     Typography,
     Divider,
-    Avatar,
 } from 'antd';
 import 'antd/dist/antd.css';
+import { getTranslatedText } from '../../../services/appService'
+import {
+    loginAction
+} from '../../../actions/auth';
+import { bindActionCreators } from 'redux';
 import '../Login/LoginGame.css';
 
 const { Header, Content } = Layout;
 
-const LoginGame = () => {
+const LoginGame = (props) => {
+    const {
+        loginVisible,
+        actions
+    } = props;
+
+    const login = (values) => {
+        console.log('success', values);
+        const user_account = {
+            email: values.email,
+            password: values.password
+        };
+        actions.loginAction(user_account);
+    }
+
     return (
         <React.Fragment>
             <Modal
-                visible={true}
+                visible={loginVisible}
                 className="modal__container"
                 footer={null}
             >
@@ -26,68 +45,68 @@ const LoginGame = () => {
                     <Header
                         className="logo__container"
                     >
-                        <img 
+                        <img
                             src={require('../../../assets/images/logo.svg')} />
                     </Header>
                     <Content
                         className="layout__container"
                     >
-                        {/* <Layout
-                            className="layout__container"
-                        > */}
-                            {/* <Content
-                                className="content_form__container"
-                            > */}
-                                <Typography.Text
-                                    className="heading__container"
-                                >
-                                    Để tham gia vòng quay may mắn trúng thưởng, bạn vui lòng đăng nhập vào tài khoản của mình.
+                        <Typography.Text
+                            className="heading__container"
+                        >
+                            {getTranslatedText('login_game_sub_heading')}
                                 </Typography.Text>
-                                <Divider
-                                    className="heading_divider__container"
+                        <Divider
+                            className="heading_divider__container"
+                        />
+                        <Form
+                            layout='vertical'
+                            className="form__container"
+                            onFinish={login}
+                        >
+                            <Form.Item
+                                label={getTranslatedText('input_your_email')}
+                                name="email"
+                                rules={[{ required: true, message: 'Please input your email!' }]}
+                            >
+                                <Input
+                                    className="form_item_input"
                                 />
-                                <Form
-                                    layout='vertical'
-                                    className="form__container"
+                            </Form.Item>
+                            <Form.Item
+                                label={getTranslatedText('password')}
+                                name="password"
+                                rules={[{ required: true, message: 'Please input your password!' }]}
+                            >
+                                <Input
+                                    type='password'
+                                    className="form_item_input"
+                                />
+                            </Form.Item>
+                            <Form.Item>
+                                <Button
+                                    className="forget_password__button"
                                 >
-                                    <Form.Item
-                                        label="Email"
+                                    <Typography.Text
                                     >
-                                        <Input
-                                            className="form_item_input"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label="Mat khau"
+                                        {getTranslatedText('forgot_password')}
+                                    </Typography.Text>
+                                </Button>
+                            </Form.Item>
+                            <Form.Item>
+                                <Button
+                                    className="login__button"
+                                    type='submit'
+                                    htmlType='submit'
+                                >
+                                    <Typography.Text
+                                        className="login__button_label"
                                     >
-                                        <Input
-                                           className="form_item_input" 
-                                        />
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Button
-                                            className="forget_password__button"
-                                        >
-                                            <Typography.Text
-                                            >
-                                                Quen mat khau?
-                                            </Typography.Text>
-                                        </Button>
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Button
-                                            className="login__button"
-                                        >
-                                            <Typography.Text
-                                                className="login__button_label"
-                                            >
-                                                {'Dang nhap'.toUpperCase()}
-                                            </Typography.Text>
-                                        </Button>
-                                    </Form.Item>
-                                </Form>
-                            {/* </Content> */}
-                        {/* </Layout> */}
+                                        {getTranslatedText('signin').toUpperCase()}
+                                    </Typography.Text>
+                                </Button>
+                            </Form.Item>
+                        </Form>
                     </Content>
                 </Layout>
             </Modal>
@@ -95,4 +114,15 @@ const LoginGame = () => {
     );
 };
 
-export default LoginGame;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      actions: bindActionCreators(
+        {
+          loginAction,
+        },
+        dispatch,
+      ),
+    };
+  };
+
+export default connect(null, mapDispatchToProps)(LoginGame);
