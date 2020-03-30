@@ -59,7 +59,7 @@ class Wheel extends React.Component {
         };
         const spinning = selectedItem !== null ? 'spinning' : '';
         if (selectedItem !== null) {
-            console.log('in 1',selectedItem)
+            console.log('selected item',selectedItem)
             setTimeout(() => {
                 setResultGameModalVisible(true);
                 this.setState({selectedItem: null});
@@ -379,6 +379,8 @@ const Game = () => {
                 className="modal_card_container"
                 visible={resultGameModalVisible}
                 footer={null}
+                onCancel={() => setResultGameModalVisible(false)}
+                destroyOnClose={true}
             >
                 <ResultWheelModal
                     givenResult={givenResult}
@@ -389,6 +391,8 @@ const Game = () => {
                 className="modal_card_container"
                 visible={addMoneyToWalletModalVisible}
                 footer={null}
+                onCancel={() => setAddMoneyToWaletModalVisible(false)}
+                destroyOnClose={true}
             >
                 <AddMoneyToWallet
                     setAddMoneyToWaletModalVisible={setAddMoneyToWaletModalVisible}

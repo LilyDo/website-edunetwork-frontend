@@ -18,7 +18,8 @@ const { TabPane } = Tabs;
 const TabButton = styled.button`
     width: 311px;
     height: 58px;
-    background-color: #D59E29;
+
+    background-color: ${props => props.disabled ? '#F0F0F0' : '#D59E29' };
     transform: skew(-30deg);
     margin-left: 20px;
 `
@@ -41,6 +42,7 @@ const MainGame = () => {
                 setButtonMainGameDisable(true);
                 alert('You have no sale to play this game');
             };
+            setUserName(current_user.name);
         };
     }, [])
 
@@ -53,7 +55,7 @@ const MainGame = () => {
                     className="header_container"
                 >
                     <Typography.Text>
-                        {userName}
+                        {getTranslatedText('hello')} {userName}
                     </Typography.Text>
                 </Header>
                 <Content
@@ -75,10 +77,11 @@ const MainGame = () => {
                                 <RuleGame />
                         </TabPane>
                         <TabPane
+                            disabled={buttonMainGameDisable}
                             className="tabPanel__container"
                             tab={<TabButton
                                     disabled={buttonMainGameDisable}
-                                    >
+                                >
                                 <Typography.Text
                                     style={{
                                         color: 'white',
@@ -106,6 +109,7 @@ const MainGame = () => {
                 </Content>
                 <LoginGame
                     loginVisible={loginVisible}
+                    setLoginVisible={setLoginVisible}
                 />
             </Layout>
         </React.Fragment>

@@ -805,4 +805,8 @@ export const translatedText = {
     vi:
       'Để tham gia vòng quay may mắn trúng thưởng, bạn vui lòng đăng nhập vào tài khoản của mình.',
   },
+  hello: {
+    en: 'Hello!',
+    vi: 'Xin chào!'
+  }
 };
