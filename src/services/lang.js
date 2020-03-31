@@ -807,6 +807,6 @@ export const translatedText = {
   },
   hello: {
     en: 'Hello!',
-    vi: 'Xin chào!'
-  }
+    vi: 'Xin chào!',
+  },
 };
