@@ -127,7 +127,7 @@ export const rollingGame = async () => {
       token: login_token,
     })
     .then(response => {
-      return response.data;
+      return response;
     })
     .catch(error => {
       console.log(error);
@@ -146,7 +146,7 @@ export const addMoneyToWallet = async () => {
       token: login_token,
     })
     .then(response => {
-      return response.json();
+      return response;
     })
     .catch(error => {
       console.log(error);
@@ -161,7 +161,17 @@ export const getRollAmount = async () => {
       token: login_token,
     })
     .then(response => {
-      return response;
+      const rollAmountArray = [];
+      const rollAmount = response.data.data.roll_amount;
+					for (let index = 1; index <= rollAmount; index++) {
+						const turn_data_object = {
+							index: index - 1,
+							turn: index.toString(),
+							used: 'none',
+						}
+						rollAmountArray.push(turn_data_object);
+					};
+      return rollAmountArray;
     })
     .catch(error => {
       console.log(error);
@@ -175,6 +185,21 @@ export const resultGame = async () => {
   const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
   return await axios
     .get(base_url + '/v1/result')
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const getRatioWheelOption = async () => {
+  // This function is service used to get option in whell of game
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/get-ratio
+  // Method: GET
+  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  return await axios
+    .get(base_url + '/v1/get-ratio')
     .then(response => {
       return response;
     })

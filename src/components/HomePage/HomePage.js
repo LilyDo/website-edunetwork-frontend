@@ -1,9 +1,16 @@
 import React from 'react';
+import {
+  Row,
+  Col,
+  Button,
+} from 'antd';
+import 'antd/dist/antd.css';
+import { Link } from 'react-router-dom';
+import { routes } from '../../constants';
 import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
 import CourseCardContainer from '../CourseCardContainer/CourseCardContainer';
-import LoginGame from '../Game/Login/LoginGame';
 import { getTranslatedText } from '../../services/appService';
 
 function HomePage() {
@@ -33,9 +40,18 @@ function HomePage() {
 
   return (
     <div>
-      <div>
-      <a href="/game">Visit Game!</a>
-      </div>
+      <Row>
+        <Col span={4} offset={20}>
+          <Link to={routes.game}>
+            <Button
+              className="button_minigame"
+              type='primary'
+            >
+              Mini Game
+            </Button>
+          </Link>
+        </Col>
+      </Row>
       <div className="Video">
         <iframe
           title="home-video"

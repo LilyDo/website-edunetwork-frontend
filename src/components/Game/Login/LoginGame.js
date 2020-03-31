@@ -12,7 +12,8 @@ import {
 import 'antd/dist/antd.css';
 import { getTranslatedText } from '../../../services/appService'
 import {
-    loginAction
+    loginAction,
+    toggleForgotPasswordPopup,
 } from '../../../actions/auth';
 import { bindActionCreators } from 'redux';
 import '../Login/LoginGame.css';
@@ -22,6 +23,7 @@ const { Header, Content } = Layout;
 const LoginGame = (props) => {
     const {
         loginVisible,
+        setLoginVisible,
         actions
     } = props;
 
@@ -34,12 +36,17 @@ const LoginGame = (props) => {
         actions.loginAction(user_account);
     }
 
+    const handleForgetPasswordButton = () => {
+        actions.toggleForgotPasswordPopup(true);
+    }
+
     return (
         <React.Fragment>
             <Modal
                 visible={loginVisible}
                 className="modal__container"
                 footer={null}
+                onCancel={() => setLoginVisible(false)}
             >
                 <Layout>
                     <Header
@@ -86,6 +93,7 @@ const LoginGame = (props) => {
                             <Form.Item>
                                 <Button
                                     className="forget_password__button"
+                                    // onClick={handleForgetPasswordButton()}
                                 >
                                     <Typography.Text
                                     >
@@ -119,6 +127,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       actions: bindActionCreators(
         {
           loginAction,
+          toggleForgotPasswordPopup,
         },
         dispatch,
       ),
