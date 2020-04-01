@@ -1,9 +1,9 @@
-import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { CURRENT_USER_KEY, CURRENT_LANG_KEY } from '../actions';
 import { routes } from '../constants';
 import { translatedText } from './lang';
 import axios from 'axios';
+import _ from 'lodash';
 
 export const getUserFormLocal = function() {
   let user = localStorage.getItem(CURRENT_USER_KEY);
@@ -120,7 +120,7 @@ export const rollingGame = async () => {
   // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/rolling
   // Method: POST
   // Body: token
-  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const base_url = process.env.REACT_APP_API_ENV;
   const login_token = window.localStorage.getItem('token');
   return await axios
     .post(base_url + '/v1/users/rolling', {
@@ -139,7 +139,7 @@ export const addMoneyToWallet = async () => {
   // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/add-to-wallet
   // Method: POST
   // Body: token, money
-  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const base_url = process.env.REACT_APP_API_ENV;
   const login_token = window.localStorage.getItem('token');
   return await axios
     .post(base_url + '/v1/users/add-to-wallet', {
@@ -154,24 +154,25 @@ export const addMoneyToWallet = async () => {
 };
 
 export const getRollAmount = async () => {
-  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  // This function is service used to get total roll of user, current used turn, current total bonus
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/get-roll-amount
+  // Method: GET
+  // return array object roll, current total bonus
+  const base_url = process.env.REACT_APP_API_ENV;
   const login_token = window.localStorage.getItem('token');
   return await axios
     .post(base_url + '/v1/users/get-roll-amount', {
       token: login_token,
     })
     .then(response => {
-      const rollAmountArray = [];
+      const currentLastTotalBonus = response.data.data.total_not_add;
+      const rollUsed = response.data.data.rolled;
       const rollAmount = response.data.data.roll_amount;
-					for (let index = 1; index <= rollAmount; index++) {
-						const turn_data_object = {
-							index: index - 1,
-							turn: index.toString(),
-							used: 'none',
-						}
-						rollAmountArray.push(turn_data_object);
-					};
-      return rollAmountArray;
+      const rollAmountLeft = rollAmount - rollUsed;
+      return {
+        rollAmountLeft: rollAmountLeft,
+        currentLastTotalBonus: currentLastTotalBonus
+      };
     })
     .catch(error => {
       console.log(error);
@@ -182,7 +183,7 @@ export const resultGame = async () => {
   // This function is service used to get result of game
   // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/users/result
   // Method: GET
-  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const base_url = process.env.REACT_APP_API_ENV;
   return await axios
     .get(base_url + '/v1/result')
     .then(response => {
@@ -197,7 +198,7 @@ export const getRatioWheelOption = async () => {
   // This function is service used to get option in whell of game
   // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/get-ratio
   // Method: GET
-  const base_url = process.env.REACT_APP_USER_WEBSITE_URL;
+  const base_url = process.env.REACT_APP_API_ENV;
   return await axios
     .get(base_url + '/v1/get-ratio')
     .then(response => {
@@ -207,3 +208,58 @@ export const getRatioWheelOption = async () => {
       console.log(error);
     });
 };
+
+export const getEventProgress = async () => {
+  // This function is service used to event progress,
+  // 1. Start Date
+  // 2. End date
+  // 3. Now time => thoi gian khi request
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/get-date-event
+  // Method: GET
+  // After get response, this service will handle data to return progess of event
+  const base_url = process.env.REACT_APP_API_ENV;
+  return await axios
+    .get(base_url + '/v1/get-date-event')
+    .then(response => {
+      console.log(response)
+      const startDate = Date.parse(response.data.data.start);
+      const endDate = Date.parse(response.data.data.end);
+      const nowDate = Date.parse(response.data.data.now);
+      const totalTimeOfEvent = endDate - startDate;
+      console.log('total time', totalTimeOfEvent);
+      const currentTotalTimeOfEvent = nowDate - startDate;
+      console.log('total current', currentTotalTimeOfEvent);
+      const processEvent = (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
+      console.log('progress', processEvent);
+      return processEvent;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const getEventTime = async () => {
+  // This function is service used to get time of event,
+  // 1. Start Date
+  // 2. End date
+  // 3. Now time => thoi gian khi request
+  // Request url : https://api.edunetwork.dev.gkcsoftware.com/api/v1/get-date-event
+  // Method: GET
+  // After get response, this service will handle data to return start date and end date
+  const base_url = process.env.REACT_APP_API_ENV;
+  return await axios
+    .get(base_url + '/v1/get-date-event')
+    .then(response => {
+      let startDateConvert = _.replace(response.data.data.start, '-', '/');
+      startDateConvert = _.replace(startDateConvert, '-', '/');
+      let endDateConvert = _.replace(response.data.data.end, '-', '/');
+      endDateConvert = _.replace(endDateConvert, '-', '/');
+      return {
+        startDate: startDateConvert,
+        endDate: endDateConvert,
+      };
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}

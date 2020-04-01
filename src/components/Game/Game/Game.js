@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
 	Row,
 	Col,
-	List,
 	Button,
 	Typography,
 	Layout,
@@ -12,13 +11,14 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css'
 import '../Game/Game.css';
-import { getTranslatedText, resultGame } from '../../../services/appService';
+import { getTranslatedText } from '../../../services/appService';
 import { routes } from '../../../constants';
 import {
 	rollingGame,
 	addMoneyToWallet,
 	getRollAmount,
 	getRatioWheelOption,
+	getEventTime
 } from '../../../services/appService';
 
 function Wheel(props) {
@@ -28,7 +28,7 @@ function Wheel(props) {
 		setGivenResult,
 		listOptionWheel,
 		setTotalBonus,
-		setTurnLeft,
+		setRollAmountLeft,
 	} = props;
 
 	const [selectedItem, setSelectedItem] = useState(null);
@@ -42,23 +42,24 @@ function Wheel(props) {
 			setSelectedItem(null);
 			setSpinning('');
 		}, 4000);
-		// selectItem();
 	}, [selectedItem]);
 
 	const selectItem = async () => {
 		rollingGame()
 		.then(response => {
-			console.log(response)
-			const givenResult = response.data.data.result;
-			console.log(givenResult);
-			const givenSelectItem = listOptionWheel.indexOf(givenResult);
-			setSelectedItem(givenSelectItem);
-			setTurnLeft(response.data.data.number);
-			setTimeout(() => {
-				setGivenResult(givenResult)
-				setResultGameModalVisible(true);
-				setTotalBonus(response.data.data.money);
-			},4000)
+			if(response.statusCode === 403) {
+				alert('This customer has reached the end of the spin')
+			} else {
+				const givenResult = response.data.data.result;
+				const givenSelectItem = listOptionWheel.indexOf(givenResult);
+				setSelectedItem(givenSelectItem);
+				setRollAmountLeft(response.data.data.number);
+				setTimeout(() => {
+					setGivenResult(givenResult)
+					setResultGameModalVisible(true);
+					setTotalBonus(response.data.data.money);
+				},4000)
+			}
 		});
 	}
 
@@ -66,7 +67,6 @@ function Wheel(props) {
 		'--nb-item': listOptionWheel.length,
 		'--selected-item': selectedItem,
 	};
-	// const spinning = selectedItem !== null ? 'spinning' : '';
 
 	return (
 		<div className="wheel-container">
@@ -86,10 +86,25 @@ const ResultWheelModal = (props) => {
 	const {
 		givenResult,
 		setResultGameModalVisible,
+		setAddMoneyToWaletModalVisible,
+		setTotalMoneyAdded,
 	} = props;
 
 	const handleNextRoundButton = () => {
 		setResultGameModalVisible(false);
+	};
+
+	const handleAddMoneyToWallet = () => {
+		addMoneyToWallet()
+			.then(response => {
+				console.log('add money to wallet', response);
+				setTotalMoneyAdded(response.data.data.total);
+				setAddMoneyToWaletModalVisible(true);
+				setResultGameModalVisible(false);
+			})
+			.catch(error => {
+				console.log(error)
+			})
 	};
 
 	return (
@@ -134,7 +149,7 @@ const ResultWheelModal = (props) => {
 						<Col span={12}>
 							<Button
 								className="button"
-								onClick={handleNextRoundButton}
+								onClick={() => handleNextRoundButton()}
 							>
 								<Typography.Text
 									className="button_label"
@@ -146,11 +161,12 @@ const ResultWheelModal = (props) => {
 						<Col span={12}>
 							<Button
 								className="button"
+								onClick={() => handleAddMoneyToWallet()}
 							>
 								<Typography.Text
 									className="button_label"
 								>
-									{getTranslatedText('result_modal_watch_bonus')}
+									{getTranslatedText('button_add_money_to_wallet')}
 								</Typography.Text>
 							</Button>
 						</Col>
@@ -165,6 +181,7 @@ const AddMoneyToWallet = (props) => {
 	const {
 		setAddMoneyToWaletModalVisible,
 		totalBonus,
+		totalMoneyAdded,
 	} = props;
 
 	const handleCheckWalletButton = () => {
@@ -206,6 +223,15 @@ const AddMoneyToWallet = (props) => {
 							>
 								{totalBonus} $
                             </Tag>
+							<Typography.Text>
+								{getTranslatedText('total_money_added')}
+							</Typography.Text>
+							<Tag
+								color="#FAC857"
+								className='tag__info'
+							>
+								{totalMoneyAdded} $
+                            </Tag>
 						</Col>
 					</Row>
 				</Layout.Content>
@@ -239,41 +265,23 @@ const AddMoneyToWallet = (props) => {
 // render status number of turn
 const TurnStatusTag = (props) => {
 
-		
 	const {
-		listTurnArray,
+		rollAmountLeft,
 	} = props;
-
-	const [listTurnArrayRender, setListTurnArrayRender] = useState([]);
-	useEffect(() => {
-		setListTurnArrayRender(listTurnArray);
-	}, [listTurnArray]);
 
 	return (
 		<React.Fragment>
-			<List
-					className="list_number_of_turn__container"
-					dataSource={listTurnArrayRender}
-					renderItem={item => (
-						<List.Item>
-							{item.used === 'used' ? (
-								<Tag
-									className="tag_turn"
-									color="#F0F0F0"
-								>
-								{getTranslatedText('game_turn')} {item.turn}
-								</Tag>	
-							) : (
-								<Tag
-									className="tag_turn"
-									color="#FAC857"
-								>
-								{getTranslatedText('game_turn')} {item.turn}
-								</Tag>
-							)}
-						</List.Item>
-					)}
-				/>
+			<Typography.Text
+				strong
+			>
+				{getTranslatedText('roll_amount_left')}
+			</Typography.Text>
+			<Tag
+				className="tag__info"
+				color="#FAC857"
+			>
+				{rollAmountLeft} {getTranslatedText('game_turn')}
+			</Tag>
 		</React.Fragment>
 	)
 };
@@ -282,11 +290,13 @@ const Game = () => {
 
 	const [resultGameModalVisible, setResultGameModalVisible] = useState(false);
 	const [addMoneyToWalletModalVisible, setAddMoneyToWaletModalVisible] = useState(false);
-	const [listTurnArray, setListTurnArray] = useState([]);
+	const [rollAmountLeft, setRollAmountLeft] = useState([]);
 	const [givenResult, setGivenResult] = useState(null);
-	const [totalBonus, setTotalBonus] = useState(null);
+	const [totalBonus, setTotalBonus] = useState(0);
 	const [listOptionWheel, setListOptionWheel] = useState([]);
-	const [turnLeft, setTurnLeft] = useState(0);
+	const [totalMoneyAdded, setTotalMoneyAdded] = useState(0);
+	const [startDate, setStartDate] = useState('');
+	const [endDate, setEndDate] = useState('');
 
 
 	// render component Game, request list option cho con quay
@@ -301,40 +311,48 @@ const Game = () => {
 		});
 	}, []);
 
+	// get data time of event to display to screen
+	useEffect(() => {
+		getEventTime()
+		.then(response => {
+			setStartDate(response.startDate);
+			setEndDate(response.endDate);
+		})
+		.catch(e => {
+			console.log(e);
+		});
+	}, []);
+
 	// Lay tong so roll cua nguoi dung
 	useEffect(() => {
 			getRollAmount()
 				.then(response => {
-					setListTurnArray(response);
-					console.log('roll amount', response)
+					setRollAmountLeft(response.rollAmountLeft);
+					setTotalBonus(response.currentLastTotalBonus);
+					// console.log('roll amount', response)
 			})
+			.catch(e => {
+				console.log(e);
+			});
 	}, []);
 
-	// Lay tong so tien bonus
+	// reset total bonus after add money to wallet success
 	useEffect(() => {
-		if (resultGameModalVisible === true) {
-			const turnUsed = listTurnArray.length - turnLeft;
-			console.log('turn use', turnUsed)
-			for (let i = 0; i < turnUsed; i++) {
-				console.log('turn')
-				listTurnArray.forEach(element => {
-					if (element.index === i) {
-						console.log('Yes');
-						element.used = 'used'
-					}
-				});
-			}
-			setListTurnArray(listTurnArray);
-			console.log('new list turn', listTurnArray);
+		if(addMoneyToWalletModalVisible === false) {
+			setTotalBonus(0);
 		}
-	}, [resultGameModalVisible]);
+	}, [addMoneyToWalletModalVisible])
 
 	const handleAddMoneyToWallet = () => {
 		addMoneyToWallet()
 			.then(response => {
-				console.log(response);
+				console.log('add money to wallet', response);
+				setTotalMoneyAdded(response.data.data.total);
 				setAddMoneyToWaletModalVisible(true);
-			});
+			})
+			.catch(error => {
+				console.log(error)
+			})
 	};
 
 	return (
@@ -343,14 +361,9 @@ const Game = () => {
 				span={4}
 				className="game_turn_container"
 			>
-				<Typography.Text
-					className="label_turn"
-				>
-					{getTranslatedText('turn_list_label')} {listTurnArray.length - turnLeft}
-				</Typography.Text>
-					<TurnStatusTag
-						listTurnArray={listTurnArray}
-					/>
+				<TurnStatusTag
+					rollAmountLeft={rollAmountLeft}
+				/>
 			</Col>
 			<Col
 				span={12}
@@ -361,7 +374,7 @@ const Game = () => {
 					setGivenResult={setGivenResult}
 					listOptionWheel={listOptionWheel}
 					setTotalBonus={setTotalBonus}
-					setTurnLeft={setTurnLeft}
+					setRollAmountLeft={setRollAmountLeft}
 				/>
 			</Col>
 			<Col span={6}>
@@ -371,7 +384,7 @@ const Game = () => {
 					<Layout.Header
 						className="time_event_header_container"
 					>
-						<p>Thời gian event:<br /> 25/03/2020 - 25/04/2020 </p>
+						<p>{getTranslatedText('time_event_title')}<br/>{startDate}-{endDate}</p>
 					</Layout.Header>
 					<Layout.Content
 						style={{
@@ -457,6 +470,9 @@ const Game = () => {
 				<ResultWheelModal
 					givenResult={givenResult}
 					setResultGameModalVisible={setResultGameModalVisible}
+					setAddMoneyToWaletModalVisible={setAddMoneyToWaletModalVisible}
+					setTotalMoneyAdded={setTotalMoneyAdded}
+					setTotalBonus={setTotalBonus}
 				/>
 			</Modal>
 			<Modal
@@ -468,6 +484,7 @@ const Game = () => {
 			>
 				<AddMoneyToWallet
 					totalBonus={totalBonus}
+					totalMoneyAdded={totalMoneyAdded}
 					setAddMoneyToWaletModalVisible={setAddMoneyToWaletModalVisible}
 				/>
 			</Modal>

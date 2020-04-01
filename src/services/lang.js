@@ -778,6 +778,10 @@ export const translatedText = {
     en: 'The amount you just added into your wallet',
     vi: 'Số tiền bạn vừa nạp vào ví',
   },
+  total_money_added: {
+    en: 'The total amount you have deposited into your wallet',
+    vi: 'Tổng số tiền bạn đã nạp vào ví'
+  },
   button_check_wallet: {
     en: 'VIEW WALLET NOW',
     vi: 'XEM VÍ NGAY',
@@ -809,4 +813,12 @@ export const translatedText = {
     en: 'Hello!',
     vi: 'Xin chào!',
   },
+  time_event_title: {
+    en: 'Event time:',
+    vi: 'Thời gian event:'
+  },
+  roll_amount_left: {
+    en: 'Your remaining spin',
+    vi: 'Lượt quay còn lại của bạn'
+  }
 };

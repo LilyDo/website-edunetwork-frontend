@@ -10,7 +10,7 @@
   --item-nb: 1;
   --selected-item: 1;
   --nb-turn: 5;
-  --spinning-duration: 3.5s;
+  --spinning-duration: 4s;
   --reset-duration: 0.25s;
 }
 
@@ -65,7 +65,7 @@
   border-radius: 50%;
   border: solid var(--wheel-color) var(--wheel-border-size);
   background-color: var(--wheel-color);
-  transition: transform var(--reset-duration);
+  /* transition: transform var(--reset-duration); */
   transform: rotate(0deg);
   cursor: pointer;
 }
@@ -269,4 +269,8 @@
 }
 .game_turn_container {
   width: 185px !important;
+  margin-left: 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }

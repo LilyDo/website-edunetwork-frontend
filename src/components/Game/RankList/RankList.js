@@ -7,9 +7,12 @@ import {
 import 'antd/dist/antd.css';
 import '../RankList/RankList.css';
 import { getTranslatedText } from '../../../services/appService'
-import { resultGame } from '../../../services/appService';
+import {
+    resultGame,
+    getEventProgress,
+} from '../../../services/appService';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const columns = [
     {
         title: getTranslatedText('table_column_rank'),
@@ -40,14 +43,24 @@ const columns = [
 const RankList = () => {
 
     const [tableData, setTableData] = useState([]);
+    const [eventProgess, setEventProgess] = useState(0);
 
     useEffect(() => {
         resultGame()
         .then(response => {
-            console.log(response);
             setTableData(response.data.data);
+        })
+        .catch(error => {
+            console.log(error);
         });
-    },[])
+        getEventProgress()
+        .then(response => {
+            setEventProgess(response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    },[]);
 
     return (
         <React.Fragment>
@@ -60,8 +73,9 @@ const RankList = () => {
                     <Progress
                         strokeWidth={30}
                         strokeColor='#D59E29'
-                        percent={70}
-                        showInfo
+                        percent={eventProgess}
+                        // showInfo
+                        status='exception'
                     />
                 </Header>
                 <Content
