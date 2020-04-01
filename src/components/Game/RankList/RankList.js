@@ -74,7 +74,6 @@ const RankList = () => {
                         strokeWidth={30}
                         strokeColor='#D59E29'
                         percent={eventProgess}
-                        // showInfo
                         status='exception'
                     />
                 </Header>
