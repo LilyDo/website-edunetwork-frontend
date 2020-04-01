@@ -169,10 +169,17 @@ export const getRollAmount = async () => {
       const rollUsed = response.data.data.rolled;
       const rollAmount = response.data.data.roll_amount;
       const rollAmountLeft = rollAmount - rollUsed;
-      return {
-        rollAmountLeft: rollAmountLeft,
-        currentLastTotalBonus: currentLastTotalBonus
-      };
+      if (rollAmount === 0) {
+        return {
+          rollAmountLeft: 0,
+          currentLastTotalBonus: 0,
+        };
+      } else {
+        return {
+          rollAmountLeft: rollAmountLeft,
+          currentLastTotalBonus: currentLastTotalBonus,
+        };
+      }
     })
     .catch(error => {
       console.log(error);
@@ -221,7 +228,7 @@ export const getEventProgress = async () => {
   return await axios
     .get(base_url + '/v1/get-date-event')
     .then(response => {
-      console.log(response)
+      console.log(response);
       const startDate = Date.parse(response.data.data.start);
       const endDate = Date.parse(response.data.data.end);
       const nowDate = Date.parse(response.data.data.now);
@@ -229,7 +236,8 @@ export const getEventProgress = async () => {
       console.log('total time', totalTimeOfEvent);
       const currentTotalTimeOfEvent = nowDate - startDate;
       console.log('total current', currentTotalTimeOfEvent);
-      const processEvent = (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
+      const processEvent =
+        (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
       console.log('progress', processEvent);
       return processEvent;
     })
@@ -250,9 +258,17 @@ export const getEventTime = async () => {
   return await axios
     .get(base_url + '/v1/get-date-event')
     .then(response => {
-      let startDateConvert = _.replace(response.data.data.start, '-', '/');
+      let startDateConvert = _.replace(
+        response.data.data.start,
+        '-',
+        '/',
+      );
       startDateConvert = _.replace(startDateConvert, '-', '/');
-      let endDateConvert = _.replace(response.data.data.end, '-', '/');
+      let endDateConvert = _.replace(
+        response.data.data.end,
+        '-',
+        '/',
+      );
       endDateConvert = _.replace(endDateConvert, '-', '/');
       return {
         startDate: startDateConvert,
@@ -262,4 +278,4 @@ export const getEventTime = async () => {
     .catch(error => {
       console.log(error);
     });
-}
+};
