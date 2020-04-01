@@ -29,6 +29,7 @@ function Wheel(props) {
 		listOptionWheel,
 		setTotalBonus,
 		setRollAmountLeft,
+		rollAmountLeft
 	} = props;
 
 	const [selectedItem, setSelectedItem] = useState(null);
@@ -45,22 +46,29 @@ function Wheel(props) {
 	}, [selectedItem]);
 
 	const selectItem = async () => {
-		rollingGame()
-		.then(response => {
-			if(response.statusCode === 403) {
-				alert('This customer has reached the end of the spin')
-			} else {
-				const givenResult = response.data.data.result;
-				const givenSelectItem = listOptionWheel.indexOf(givenResult);
-				setSelectedItem(givenSelectItem);
-				setRollAmountLeft(response.data.data.number);
-				setTimeout(() => {
-					setGivenResult(givenResult)
-					setResultGameModalVisible(true);
-					setTotalBonus(response.data.data.money);
-				},4000)
-			}
-		});
+		if (rollAmountLeft === 0) {
+			alert(getTranslatedText('end_of_roll'))
+		} else {
+			rollingGame()
+			.then(response => {
+				if(response.statusCode === 403) {
+					alert('This customer has reached the end of the spin')
+				} else {
+					const givenResult = response.data.data.result;
+					const givenSelectItem = listOptionWheel.indexOf(givenResult);
+					setSelectedItem(givenSelectItem);
+					setRollAmountLeft(response.data.data.number);
+					setTimeout(() => {
+						setGivenResult(givenResult)
+						setResultGameModalVisible(true);
+						setTotalBonus(response.data.data.money);
+					},4000)
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			});
+		}
 	}
 
 	const wheelVars = {
@@ -375,6 +383,7 @@ const Game = () => {
 					listOptionWheel={listOptionWheel}
 					setTotalBonus={setTotalBonus}
 					setRollAmountLeft={setRollAmountLeft}
+					rollAmountLeft={rollAmountLeft}
 				/>
 			</Col>
 			<Col span={6}>

@@ -780,7 +780,7 @@ export const translatedText = {
   },
   total_money_added: {
     en: 'The total amount you have deposited into your wallet',
-    vi: 'Tổng số tiền bạn đã nạp vào ví'
+    vi: 'Tổng số tiền bạn đã nạp vào ví',
   },
   button_check_wallet: {
     en: 'VIEW WALLET NOW',
@@ -815,10 +815,14 @@ export const translatedText = {
   },
   time_event_title: {
     en: 'Event time:',
-    vi: 'Thời gian event:'
+    vi: 'Thời gian event:',
   },
   roll_amount_left: {
     en: 'Your remaining spin',
-    vi: 'Lượt quay còn lại của bạn'
+    vi: 'Lượt quay còn lại của bạn',
+  },
+  end_of_roll: {
+    en: 'You do not have any sales yet, please refill the sale to participate in the prize drawing',
+    vi: 'Bạn chưa có lượt sale nào, vui lòng nạp sale để tham gia quay thưởng'
   }
 };
