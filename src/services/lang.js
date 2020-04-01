@@ -822,7 +822,9 @@ export const translatedText = {
     vi: 'Lượt quay còn lại của bạn',
   },
   end_of_roll: {
-    en: 'You do not have any sales yet, please refill the sale to participate in the prize drawing',
-    vi: 'Bạn chưa có lượt sale nào, vui lòng nạp sale để tham gia quay thưởng'
-  }
+    en:
+      'You do not have any sales yet, please refill the sale to participate in the prize drawing',
+    vi:
+      'Bạn chưa có lượt sale nào, vui lòng nạp sale để tham gia quay thưởng',
+  },
 };

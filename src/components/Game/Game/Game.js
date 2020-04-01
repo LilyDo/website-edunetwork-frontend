@@ -38,11 +38,11 @@ function Wheel(props) {
 	useEffect(() => {
 		if (selectedItem !== null) {
 			setSpinning('spinning');
+			setTimeout(() => {
+				setSelectedItem(null);
+				setSpinning('');
+			}, 4000);
 		}
-		setTimeout(() => {
-			setSelectedItem(null);
-			setSpinning('');
-		}, 4000);
 	}, [selectedItem]);
 
 	const selectItem = async () => {

@@ -169,11 +169,11 @@ export const getRollAmount = async () => {
       const rollUsed = response.data.data.rolled;
       const rollAmount = response.data.data.roll_amount;
       const rollAmountLeft = rollAmount - rollUsed;
-      if ( rollAmount === 0 ) {
+      if (rollAmount === 0) {
         return {
           rollAmountLeft: 0,
           currentLastTotalBonus: 0,
-        }
+        };
       } else {
         return {
           rollAmountLeft: rollAmountLeft,
