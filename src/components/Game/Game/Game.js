@@ -47,12 +47,12 @@ function Wheel(props) {
 
 	const selectItem = async () => {
 		if (rollAmountLeft === 0) {
-			alert(getTranslatedText('end_of_roll'))
+			alert(getTranslatedText('end_of_roll'));
 		} else {
 			rollingGame()
 			.then(response => {
 				if(response.statusCode === 403) {
-					alert('This customer has reached the end of the spin')
+					alert(getTranslatedText('end_of_roll'));
 				} else {
 					const givenResult = response.data.data.result;
 					const givenSelectItem = listOptionWheel.indexOf(givenResult);
@@ -105,7 +105,6 @@ const ResultWheelModal = (props) => {
 	const handleAddMoneyToWallet = () => {
 		addMoneyToWallet()
 			.then(response => {
-				console.log('add money to wallet', response);
 				setTotalMoneyAdded(response.data.data.total);
 				setAddMoneyToWaletModalVisible(true);
 				setResultGameModalVisible(false);
@@ -311,7 +310,6 @@ const Game = () => {
 	useEffect(() => {
 		getRatioWheelOption()
 		.then(response => {
-			console.log(response.data.data);
 			setListOptionWheel(response.data.data);
 		})
 		.catch(e => {
@@ -354,7 +352,6 @@ const Game = () => {
 	const handleAddMoneyToWallet = () => {
 		addMoneyToWallet()
 			.then(response => {
-				console.log('add money to wallet', response);
 				setTotalMoneyAdded(response.data.data.total);
 				setAddMoneyToWaletModalVisible(true);
 			})

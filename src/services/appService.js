@@ -228,17 +228,12 @@ export const getEventProgress = async () => {
   return await axios
     .get(base_url + '/v1/get-date-event')
     .then(response => {
-      console.log(response);
       const startDate = Date.parse(response.data.data.start);
       const endDate = Date.parse(response.data.data.end);
       const nowDate = Date.parse(response.data.data.now);
       const totalTimeOfEvent = endDate - startDate;
-      console.log('total time', totalTimeOfEvent);
       const currentTotalTimeOfEvent = nowDate - startDate;
-      console.log('total current', currentTotalTimeOfEvent);
-      const processEvent =
-        (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
-      console.log('progress', processEvent);
+      const processEvent = (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
       return processEvent;
     })
     .catch(error => {
