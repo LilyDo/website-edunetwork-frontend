@@ -5,7 +5,7 @@ import {
     Tabs,
 } from 'antd';
 import 'antd/dist/antd.css';
-import { getTranlastedText, getTranslatedText } from '../../../services/appService';
+import {  getTranslatedText } from '../../../services/appService';
 import '../MainGame/MainGame.css';
 import styled from 'styled-components';
 import RuleGame from '../RuleGame/RuleGame';
@@ -16,12 +16,12 @@ const { Header, Content} = Layout;
 const { TabPane } = Tabs;
 
 const TabButton = styled.button`
-    width: 311px;
-    height: 58px;
+    width: 21.6vw;
+    height: 6.4vh;
 
     background-color: ${props => props.disabled ? '#F0F0F0' : '#D59E29' };
     transform: skew(-30deg);
-    margin-left: 20px;
+    margin-left: 1.38vw;
 `
 
 
@@ -49,7 +49,7 @@ const MainGame = () => {
     return (
         <React.Fragment>
             <Layout
-                className="ruleGame__container"
+                className="main_game__container"
             >
                 <Header
                     className="header_container"
@@ -61,12 +61,17 @@ const MainGame = () => {
                 <Content
                     className="content_container"
                 >
-                    <Tabs size='small' defaultActiveKey="2">
+                    <Tabs
+                        className="tab_container"
+                        size='small'
+                        defaultActiveKey="2"
+                    >
                         <TabPane 
                             className="tabPanel__container"
                             tab={<TabButton>
                                 <Typography.Text
                                     style={{
+                                        fontSize: 16,
                                         color: 'white',
                                         fontWeight: 'bold',
                                     }}
@@ -84,6 +89,7 @@ const MainGame = () => {
                                 >
                                 <Typography.Text
                                     style={{
+                                        fontSize: 16,
                                         color: 'white',
                                         fontWeight: 'bold',
                                     }}
@@ -96,6 +102,7 @@ const MainGame = () => {
                         <TabPane tab={<TabButton>
                                 <Typography.Text
                                     style={{
+                                        fontSize: 16,
                                         color: 'white',
                                         fontWeight: 'bold',
                                     }}

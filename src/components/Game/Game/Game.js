@@ -152,10 +152,12 @@ const ResultWheelModal = (props) => {
 				<Layout.Footer
 					className="footer__container"
 				>
-					<Row>
-						<Col span={12}>
+					<Row
+						gutter={16}
+					>
+						<Col span={12} xs={2}>
 							<Button
-								className="button"
+								className="modal__button"
 								onClick={() => handleNextRoundButton()}
 							>
 								<Typography.Text
@@ -165,9 +167,9 @@ const ResultWheelModal = (props) => {
 								</Typography.Text>
 							</Button>
 						</Col>
-						<Col span={12}>
+						<Col span={12} xs={2}>
 							<Button
-								className="button"
+								className="modal__button"
 								onClick={() => handleAddMoneyToWallet()}
 							>
 								<Typography.Text
@@ -361,6 +363,7 @@ const Game = () => {
 	};
 
 	return (
+		<React.Fragment>
 		<Row>
 			<Col
 				span={4}
@@ -372,7 +375,7 @@ const Game = () => {
 			</Col>
 			<Col
 				span={12}
-				offset={1}
+				// md={6}
 			>
 				<Wheel
 					setResultGameModalVisible={setResultGameModalVisible}
@@ -383,7 +386,9 @@ const Game = () => {
 					rollAmountLeft={rollAmountLeft}
 				/>
 			</Col>
-			<Col span={6}>
+			<Col
+				span={6}
+			>
 				<Layout
 					className="event_info__container"
 				>
@@ -495,6 +500,7 @@ const Game = () => {
 				/>
 			</Modal>
 		</Row>
+		</React.Fragment>
 	);
 };
 

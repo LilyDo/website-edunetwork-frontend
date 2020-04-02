@@ -233,7 +233,8 @@ export const getEventProgress = async () => {
       const nowDate = Date.parse(response.data.data.now);
       const totalTimeOfEvent = endDate - startDate;
       const currentTotalTimeOfEvent = nowDate - startDate;
-      const processEvent = (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
+      const processEvent =
+        (currentTotalTimeOfEvent / totalTimeOfEvent) * 100;
       return processEvent;
     })
     .catch(error => {

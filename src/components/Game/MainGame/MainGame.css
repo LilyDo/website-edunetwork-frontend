@@ -1,29 +1,29 @@
-.ruleGame__container {
-  height: 595px !important;
-  width: 1366px !important;
+.main_game__container {
+  height: 56.72vh !important;
+  width: 100vw !important;
   background-color: white;
   display: flex !important;
   justify-content: center !important;
   overflow: scroll;
-  margin-bottom: 60px;
+  margin-bottom: 6.2vh;
 }
 
 .header_container {
+  width: 100vw !important;
   background-color: white;
   border-bottom: #d59e29 solid 1px;
   border-top: #d59e29 solid 1px;
-  height: 103px !important;
-  width: 1089.5px !important;
-  margin-left: 142px;
-  margin-top: 33px;
+  height: 6.52vh !important;
+  margin-left: 0px;
+  margin-top: 3.46vh;
   justify-content: flex-end;
   display: flex;
 }
 
 .content_container {
   background-color: white;
-  margin-left: 142px;
-  width: 1087px !important;
+  width: 100vw !important;
+
 }
 
 .child_header_container {
@@ -39,5 +39,11 @@
 }
 
 .tabPanel__container {
-  height: 345px !important;
+  height: 50.68vh !important;
+  overflow: scroll;
+}
+
+.ant-tabs-nav-scroll {
+  display: flex;
+  justify-content: center;
 }
