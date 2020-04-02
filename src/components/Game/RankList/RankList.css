@@ -1,5 +1,6 @@
 .layout_rank_container {
   background-image: url('../../../assets/images/game_result_background.png');
+  background-size: contain;
   display: flex;
   justify-content: center;
 }
@@ -10,13 +11,12 @@
 
 .content_container {
   background: transparent;
-  justify-content: 'center';
-  /* border: black solid 1px; */
 }
 
 .table_container {
   background: transparent !important;
-  width: 825px !important;
-  height: 140px !important;
+  width: 60.4vw !important;
+  /* height: 140px !important; */
   border-radius: 10px;
+  margin: auto;
 }

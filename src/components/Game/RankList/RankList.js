@@ -81,10 +81,10 @@ const RankList = () => {
                     className='content_container'
                 >
                     <Table
+                        className='table_container'
                         rowKey="uid"
                         scroll={true}
                         bordered
-                        className='table_container'
                         columns={columns}
                         dataSource={tableData}
                     />

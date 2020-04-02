@@ -10,7 +10,7 @@ import {
 	Modal
 } from 'antd';
 import 'antd/dist/antd.css'
-import '../Game/Game.css';
+import '../Game/Game.scss';
 import { getTranslatedText } from '../../../services/appService';
 import { routes } from '../../../constants';
 import {
@@ -135,7 +135,9 @@ const ResultWheelModal = (props) => {
 							</Typography.Text>
 						</Col>
 						<Col span={16}>
-							<Typography.Text>
+							<Typography.Text
+								className='container___text'
+							>
 								{getTranslatedText('result_modal_sub_heading')}
 							</Typography.Text>
 						</Col>
@@ -152,10 +154,16 @@ const ResultWheelModal = (props) => {
 				<Layout.Footer
 					className="footer__container"
 				>
-					<Row>
-						<Col span={12}>
+					<Row
+						gutter={16}
+					>
+						<Col
+						 span={12}
+						 xs={24}
+						 xl={12}
+						>
 							<Button
-								className="button"
+								className="modal__button"
 								onClick={() => handleNextRoundButton()}
 							>
 								<Typography.Text
@@ -165,9 +173,13 @@ const ResultWheelModal = (props) => {
 								</Typography.Text>
 							</Button>
 						</Col>
-						<Col span={12}>
+						<Col
+						 span={12}
+						 xs={24}
+						 xl={12}
+						>
 							<Button
-								className="button"
+								className="modal__button"
 								onClick={() => handleAddMoneyToWallet()}
 							>
 								<Typography.Text
@@ -216,12 +228,16 @@ const AddMoneyToWallet = (props) => {
 							</Typography.Text>
 						</Col>
 						<Col span={16}>
-							<Typography.Text>
+							<Typography.Text
+								className='container___text'
+							>
 								{getTranslatedText('add_money_content')}
 							</Typography.Text>
 						</Col>
 						<Col span={8}>
-							<Typography.Text>
+							<Typography.Text
+								className='container___text'
+							>
 								{getTranslatedText('current_money_add')}
 							</Typography.Text>
 							<Tag
@@ -230,7 +246,9 @@ const AddMoneyToWallet = (props) => {
 							>
 								{totalBonus} $
                             </Tag>
-							<Typography.Text>
+							<Typography.Text
+								className='container___text'
+							>
 								{getTranslatedText('total_money_added')}
 							</Typography.Text>
 							<Tag
@@ -280,6 +298,7 @@ const TurnStatusTag = (props) => {
 		<React.Fragment>
 			<Typography.Text
 				strong
+				className='container___text'
 			>
 				{getTranslatedText('roll_amount_left')}
 			</Typography.Text>
@@ -361,6 +380,7 @@ const Game = () => {
 	};
 
 	return (
+		<React.Fragment>
 		<Row>
 			<Col
 				span={4}
@@ -372,7 +392,7 @@ const Game = () => {
 			</Col>
 			<Col
 				span={12}
-				offset={1}
+				// md={6}
 			>
 				<Wheel
 					setResultGameModalVisible={setResultGameModalVisible}
@@ -383,7 +403,9 @@ const Game = () => {
 					rollAmountLeft={rollAmountLeft}
 				/>
 			</Col>
-			<Col span={6}>
+			<Col
+				span={6}
+			>
 				<Layout
 					className="event_info__container"
 				>
@@ -407,6 +429,7 @@ const Game = () => {
 							>
 								<Typography.Text
 									strong
+									className='container___text'
 								>
 									{getTranslatedText('current_result_text')}
 								</Typography.Text>
@@ -431,6 +454,7 @@ const Game = () => {
 							>
 								<Typography.Text
 									strong
+									className='container___text'
 								>
 									{getTranslatedText('current_total_money_text')}
 								</Typography.Text>
@@ -495,6 +519,7 @@ const Game = () => {
 				/>
 			</Modal>
 		</Row>
+		</React.Fragment>
 	);
 };
 

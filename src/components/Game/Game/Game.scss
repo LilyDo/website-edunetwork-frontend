@@ -1,7 +1,7 @@
 :root {
   --wheel-font: 'Lato', 'Quicksand', sans-serif;
-  --wheel-size: 320px;
-  --wheel-slice-spacing: 50px;
+  --wheel-size: 30vmin;
+  --wheel-slice-spacing: 1px;
   --wheel-border-size: 5px;
   --wheel-color: #d59e29;
   --neutral-color: white;
@@ -112,7 +112,7 @@
   /* texte */
   color: var(--neutral-color);
   text-align: right;
-  padding: 0 25px 0 50px;
+  padding: 0 10px 0 30px;
   font-family: var(--wheel-font);
 }
 
@@ -151,58 +151,57 @@
   border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
 }
 
-.list_number_of_turn__container {
-  width: 186px !important;
-  height: 296px !important;
-  border: #d6d6d6 solid 0.5px;
-  align-items: center;
-  overflow: scroll;
-  margin-left: 55px;
-}
-
 .event_info__container {
   background-color: white;
-  width: 304px !important;
-  height: 340px !important;
-}
-
-.tag_turn {
-  width: 108px !important;
-  height: 38px !important;
-  border-radius: 10px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 23.2vw !important;
+  height: 38.4vh !important;
 }
 
 .time_event_header_container {
-  width: 304px !important;
-  height: 110px !important;
+  width: 21.1vw !important;
+  height: 14.2vh !important;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
 
 .time_event_header_container p {
-  height: 20px;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
   font-weight: bolder;
   font-size: 17px;
-  margin-bottom: 0px;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 .tag__info {
-  width: 114px !important;
-  height: 55px !important;
+  @media only screen and (max-width: 414px) {
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 26px;
+  }
+  width: 8.34vw !important;
+  height: 5.69vh !important;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
+}
+
+.container___text {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .col__container {
@@ -214,22 +213,69 @@
 }
 
 .button {
-  width: 230px !important;
-  height: 43px !important;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  width: 24.15vw !important;
+  height: 4.45vh !important;
   background-color: #b97a2a;
-  border-radius: 10px;
+  border-radius: 0.73vw;
   color: white;
   font-size: 16px;
 }
 
+.modal__button {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  white-space: normal;
+  word-wrap: break-word;
+  width: 20.15vw !important;
+  height: 4.45vh !important;
+  background-color: #b97a2a;
+  border-radius: 0.73vw;
+  color: white;
+  font-size: 16px;
+}
+
+// .modal__button_take_money {
+//   @media only screen and (max-width: 414px) {
+//     font-size: 10px;
+//   }
+//   @media only screen and (min-width: 415px) and (max-width: 768px) {
+//     font-size: 12px;
+//   }
+//   width: 34vw !important;
+//   height: 4.45vh !important;
+//   background-color: #b97a2a;
+//   border-radius: 0.73vw;
+//   color: white;
+//   font-size: 16px;
+//   text-align: center;
+//   align-content: center;
+//   align-items: center;
+// }
+
 .button_label {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
   color: #ffffff;
   font-size: 16px;
 }
 
 .logo__container {
   background-color: white;
-  height: 120px !important;
+  height: 12.42vh !important;
   display: flex;
   justify-content: center;
 }
@@ -246,15 +292,9 @@
   background-color: white;
 }
 
-/* .tag_info {
-  width: 114px !important;
-  height: 55px !important;
-  background-color: #D59E29;
-  color: white;
-} */
 .modal_card_container {
-  width: 796px !important;
-  height: 399px !important;
+  width: 58.2vw !important;
+  height: 41.3vh !important;
 }
 
 .content_heading {
@@ -263,13 +303,9 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
-.label_turn {
-  margin-left: 60px;
-  width: 185px !important;
-}
+
 .game_turn_container {
-  width: 185px !important;
-  margin-left: 40px;
+  width: 13.54vw !important;
   align-items: center;
   display: flex;
   flex-direction: column;
