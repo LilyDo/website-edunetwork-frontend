@@ -112,7 +112,7 @@
   /* texte */
   color: var(--neutral-color);
   text-align: right;
-  padding: 0 25px 0 50px;
+  padding: 0 10px 0 30px;
   font-family: var(--wheel-font);
 }
 
@@ -166,22 +166,42 @@
 }
 
 .time_event_header_container p {
-  /* height: 20px; */
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
   font-weight: bolder;
-  font-size: 1.24vw;
+  font-size: 17px;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
 
 .tag__info {
+  @media only screen and (max-width: 414px) {
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 26px;
+  }
   width: 8.34vw !important;
   height: 5.69vh !important;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.92vw;
+  font-size: 40px;
   font-weight: bold;
+}
+
+.container___text {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .col__container {
@@ -193,6 +213,12 @@
 }
 
 .button {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
   width: 24.15vw !important;
   height: 4.45vh !important;
   background-color: #b97a2a;
@@ -202,6 +228,14 @@
 }
 
 .modal__button {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  white-space: normal;
+  word-wrap: break-word;
   width: 20.15vw !important;
   height: 4.45vh !important;
   background-color: #b97a2a;
@@ -210,7 +244,31 @@
   font-size: 16px;
 }
 
+// .modal__button_take_money {
+//   @media only screen and (max-width: 414px) {
+//     font-size: 10px;
+//   }
+//   @media only screen and (min-width: 415px) and (max-width: 768px) {
+//     font-size: 12px;
+//   }
+//   width: 34vw !important;
+//   height: 4.45vh !important;
+//   background-color: #b97a2a;
+//   border-radius: 0.73vw;
+//   color: white;
+//   font-size: 16px;
+//   text-align: center;
+//   align-content: center;
+//   align-items: center;
+// }
+
 .button_label {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
   color: #ffffff;
   font-size: 16px;
 }
@@ -248,7 +306,6 @@
 
 .game_turn_container {
   width: 13.54vw !important;
-  /* margin-left: 40px; */
   align-items: center;
   display: flex;
   flex-direction: column;

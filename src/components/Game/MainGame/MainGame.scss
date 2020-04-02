@@ -23,7 +23,6 @@
 .content_container {
   background-color: white;
   width: 100vw !important;
-
 }
 
 .child_header_container {
@@ -47,3 +46,28 @@
   display: flex;
   justify-content: center;
 }
+
+.tabPanel__button_label {
+  @media only screen and (max-width: 414px) {
+    font-size: 8px;
+    color: white;
+    font-weight: bold ;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+    color: white;
+    font-weight: bold ;
+  }
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+
+// @media only screen and (max-width: 414px) {
+//   .tabPanel__button_label {
+//     font-size: 10px;
+//     color: 'white';
+//     font-weight: 'bold';
+//   }
+// }
