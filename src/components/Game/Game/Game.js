@@ -381,9 +381,15 @@ const Game = () => {
 
 	return (
 		<React.Fragment>
-		<Row>
+		<Row
+			justify='space-around'
+		>
 			<Col
-				span={4}
+				// span={4}
+				lg={4}
+				xl={4}
+				md={4}
+				xs={4}
 				className="game_turn_container"
 			>
 				<TurnStatusTag
@@ -391,8 +397,11 @@ const Game = () => {
 				/>
 			</Col>
 			<Col
-				span={12}
-				// md={6}
+				// span={6}
+				lg={6}
+				xl={6}
+				md={6}
+				xs={12}
 			>
 				<Wheel
 					setResultGameModalVisible={setResultGameModalVisible}
@@ -404,16 +413,16 @@ const Game = () => {
 				/>
 			</Col>
 			<Col
-				span={6}
+				// span={6}
+				lg={6}
+				xl={6}
+				md={6}
+				xs={24}
+				className='col_event_container'
 			>
 				<Layout
 					className="event_info__container"
 				>
-					<Layout.Header
-						className="time_event_header_container"
-					>
-						<p>{getTranslatedText('time_event_title')}<br/>{startDate}-{endDate}</p>
-					</Layout.Header>
 					<Layout.Content
 						style={{
 							backgroundColor: 'white',
@@ -424,7 +433,18 @@ const Game = () => {
 						<Row
 							justify='space-between'
 						>
-							<Col span={24}
+							<Col
+								className="event__container_text"
+								span={24}
+							>
+								{getTranslatedText('time_event_title')}<br/>
+								{startDate}-{endDate}
+							</Col>
+							<Col
+								lg={24}
+								xl={24}
+								md={24}
+								xs={12}
 								className="col__container"
 							>
 								<Typography.Text
@@ -449,7 +469,11 @@ const Game = () => {
 										</Tag>
 									)}
 							</Col>
-							<Col span={24}
+							<Col 
+								lg={24}
+								xl={24}
+								md={24}
+								xs={12}
 								className="col__container"
 							>
 								<Typography.Text
@@ -477,9 +501,7 @@ const Game = () => {
 						</Row>
 					</Layout.Content>
 					<Layout.Footer
-						style={{
-							backgroundColor: 'white'
-						}}
+						className='event_info_footer'
 					>
 						<Button
 							className="button"

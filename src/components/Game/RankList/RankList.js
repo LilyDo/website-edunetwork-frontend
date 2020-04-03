@@ -3,40 +3,94 @@ import {
     Table,
     Layout,
     Progress,
+    Typography
 } from 'antd';
 import 'antd/dist/antd.css';
-import '../RankList/RankList.css';
+import '../RankList/RankList.scss';
 import { getTranslatedText } from '../../../services/appService'
 import {
     resultGame,
     getEventProgress,
 } from '../../../services/appService';
+import styled from 'styled-components';
 
 const { Header, Content } = Layout;
+
+const TableColumnTitle = styled.p`
+    color: black;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16;
+`
+
+const RenderColor = (props) => {
+    const {
+        text
+    } = props;
+
+    return (
+        <React.Fragment>
+            {console.log(text)}
+            {text <= 5 ? (
+                <Typography.Text
+                    style={{
+                        color: 'red',
+                    }}
+                >
+                    {text}
+                </Typography.Text>
+            ) : (
+                <Typography.Text>
+                    {text}
+                </Typography.Text>
+            )}
+        </React.Fragment>
+    );
+}
+
 const columns = [
     {
-        title: getTranslatedText('table_column_rank'),
+        title: (<TableColumnTitle>
+            {getTranslatedText('table_column_rank')}
+        </TableColumnTitle>),
         dataIndex: 'rank',
         key: 'rank',
-        align: 'center'
+        align: 'center',
+        render: text => (
+            <RenderColor
+                text={text}
+            />
+        )
     },
     {
-        title: getTranslatedText('table_column_username'),
+        title: (
+            <TableColumnTitle>
+                {getTranslatedText('table_column_username')}
+            </TableColumnTitle>
+        ),
         dataIndex: 'code',
         key: 'code',
-        align: 'center'
+        align: 'center',
     },
     {
-        title: getTranslatedText('table_column_name'),
+        title: (
+            <TableColumnTitle>
+                {getTranslatedText('table_column_name')}
+            </TableColumnTitle>
+        ),
         dataIndex: 'name',
         key: 'name',
-        align: 'center'
+        align: 'center',
     },
     {
-        title: getTranslatedText('table_column_sale_amount'),
+        title: (
+            <TableColumnTitle>
+                {getTranslatedText('table_column_sale_amount')}
+            </TableColumnTitle>
+        ),
         dataIndex: 'roll_amount',
         key: 'roll_amount',
-        align: 'center'
+        align: 'center',
     }
 ];
 
@@ -78,7 +132,7 @@ const RankList = () => {
                     />
                 </Header>
                 <Content
-                    className='content_container'
+                    className='table_content_container'
                 >
                     <Table
                         className='table_container'

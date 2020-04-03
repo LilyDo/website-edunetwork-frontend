@@ -16,8 +16,29 @@
   height: 6.52vh !important;
   margin-left: 0px;
   margin-top: 3.46vh;
-  justify-content: flex-end;
+  justify-content: space-between;
   display: flex;
+}
+
+.header_container__breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+.header_container__breadcrumb_item {
+  color: #B97A2A;
+  font-family: 'Poppins', sans-serif;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  font-size: 20px;
+}
+
+.header_container__userName {
+  font-family: 'Poppins', sans-serif;
 }
 
 .content_container {
@@ -61,6 +82,8 @@
   font-size: 16px;
   color: white;
   font-weight: bold;
+  font-style: normal;
+  font-family: 'Poppins', sans-serif;
 }
 
 

@@ -40,18 +40,6 @@ function HomePage() {
 
   return (
     <div>
-      <Row>
-        <Col span={4} offset={20}>
-          <Link to={routes.game}>
-            <Button
-              className="button_minigame"
-              type='primary'
-            >
-              Mini Game
-            </Button>
-          </Link>
-        </Col>
-      </Row>
       <div className="Video">
         <iframe
           title="home-video"

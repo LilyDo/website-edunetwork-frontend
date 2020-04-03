@@ -3,6 +3,9 @@ import {
     Layout,
     Typography,
     Tabs,
+    Col,
+    Row,
+    Breadcrumb
 } from 'antd';
 import 'antd/dist/antd.css';
 import {  getTranslatedText } from '../../../services/appService';
@@ -12,6 +15,8 @@ import RuleGame from '../RuleGame/RuleGame';
 import RankList from '../RankList/RankList';
 import Game from '../Game/Game';
 import LoginGame from '../Login/LoginGame';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../constants';
 const { Header, Content} = Layout;
 const { TabPane } = Tabs;
 
@@ -28,11 +33,13 @@ const TabButton = styled.button`
 const MainGame = () => {
 
     const [userName, setUserName] = useState('');
+    const [codeName, setCodeName] = useState('');
     const [loginVisible, setLoginVisible] = useState(false);
     const [buttonMainGameDisable, setButtonMainGameDisable] = useState(false);
 
     useEffect(() => {
         const current_user = JSON.parse(window.localStorage.getItem('current_user'));
+        console.log(current_user)
         // 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
         if (current_user === null) {
             setLoginVisible(true);
@@ -43,6 +50,7 @@ const MainGame = () => {
                 alert('You have no sale to play this game');
             };
             setUserName(current_user.name);
+            setCodeName(current_user.code);
         };
     }, [])
 
@@ -54,9 +62,40 @@ const MainGame = () => {
                 <Header
                     className="header_container"
                 >
-                    <Typography.Text>
-                        {getTranslatedText('hello')} {userName}
-                    </Typography.Text>
+                    <Breadcrumb
+                        className='header_container__breadcrumb'
+                    >
+                        <Link to={routes.home}>
+                        <Breadcrumb.Item
+                            className='header_container__breadcrumb_item'
+                        >
+                            HOME
+                        </Breadcrumb.Item>
+                        </Link>
+                        <Breadcrumb.Item
+                            className='header_container__breadcrumb_item'
+                        >
+                            MINIGAME
+                        </Breadcrumb.Item>
+                    </Breadcrumb>
+                    <Row gutter={16}>
+                        <Col span={4}>
+                            {getTranslatedText('hello')}
+                        </Col>
+                        <Col span={10}
+                            className='header_container__userName'
+                        >
+                            {userName}
+                        </Col>
+                        <Col span={4}>
+                            ({codeName})
+                        </Col>
+                    </Row>
+                    {/* <Typography.Text
+                        className='header_container__userName'
+                    >
+                          ({codeName})
+                    </Typography.Text> */}
                 </Header>
                 <Content
                     className="content_container"
