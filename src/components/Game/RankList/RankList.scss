@@ -9,14 +9,17 @@
   background: transparent;
 }
 
-.content_container {
+.table_content_container {
   background: transparent;
+  width: 60.4vw !important;
+  margin: auto;
+  @media only screen and (max-width: 414px) {
+    width: 100vw !important;
+  }
 }
 
 .table_container {
   background: transparent !important;
-  width: 60.4vw !important;
-  /* height: 140px !important; */
   border-radius: 10px;
   margin: auto;
 }

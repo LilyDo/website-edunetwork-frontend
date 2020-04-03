@@ -113,7 +113,15 @@
   color: var(--neutral-color);
   text-align: right;
   padding: 0 10px 0 30px;
-  font-family: var(--wheel-font);
+  // font-family: var(--wheel-font);
+  font-family: 'Poppins', sans-serif;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 18px;
+  }
+  font-size: 30px;
 }
 
 /* Background de l'élément = triangle rose plus clair */
@@ -151,39 +159,61 @@
   border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
 }
 
+// .col_event_container {
+//   border: black solid 1px;
+// }
+
 .event_info__container {
   background-color: white;
-  width: 23.2vw !important;
+  width: 24.2vw !important;
   height: 38.4vh !important;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+    width: 100vw !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .time_event_header_container {
   width: 21.1vw !important;
-  height: 14.2vh !important;
+  height: 10.2vh !important;
   background-color: white;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
 
-.time_event_header_container p {
+.event__container_text {
   @media only screen and (max-width: 414px) {
     font-size: 10px;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
   }
-  font-weight: bolder;
+  font-family: 'Poppins', sans-serif;
   font-size: 17px;
-  margin: 0 0 0 0;
+  margin: 0 0 5.86vh 0;
   padding: 0 0 0 0;
+  color: #000000;
+}
+
+.event_info_footer {
+  // border: black solid 1px;
+  background-color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .tag__info {
   @media only screen and (max-width: 414px) {
     font-size: 16px;
+    width: 20vw !important;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
-    font-size: 26px;
+    font-size: 22px;
+    width: 14vw !important;
   }
   width: 8.34vw !important;
   height: 5.69vh !important;
@@ -191,8 +221,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 26px;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container___text {
@@ -202,34 +233,39 @@
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
   }
+  font-family: 'Poppins', sans-serif;
 }
 
 .col__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 10px;
-  /* flex-direction: row; */
-  /* /* justify-content: center; */
+  padding-bottom: 10px;
+  border-bottom: #707070 dashed 1px;
 }
 
 .button {
   @media only screen and (max-width: 414px) {
     font-size: 10px;
+    width: 40vw !important;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
   }
-  width: 24.15vw !important;
+  width: 20.15vw !important;
   height: 4.45vh !important;
   background-color: #b97a2a;
   border-radius: 0.73vw;
   color: white;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal__button {
   @media only screen and (max-width: 414px) {
     font-size: 10px;
+    width: 40vw !important;
+    height: 6.45vh !important;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
@@ -242,25 +278,8 @@
   border-radius: 0.73vw;
   color: white;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
 }
-
-// .modal__button_take_money {
-//   @media only screen and (max-width: 414px) {
-//     font-size: 10px;
-//   }
-//   @media only screen and (min-width: 415px) and (max-width: 768px) {
-//     font-size: 12px;
-//   }
-//   width: 34vw !important;
-//   height: 4.45vh !important;
-//   background-color: #b97a2a;
-//   border-radius: 0.73vw;
-//   color: white;
-//   font-size: 16px;
-//   text-align: center;
-//   align-content: center;
-//   align-items: center;
-// }
 
 .button_label {
   @media only screen and (max-width: 414px) {
@@ -271,6 +290,7 @@
   }
   color: #ffffff;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .logo__container {
@@ -290,6 +310,9 @@
 
 .footer__container {
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal_card_container {
@@ -302,6 +325,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .game_turn_container {
@@ -309,4 +333,5 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin-left: 7.24vw;
 }
