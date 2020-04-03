@@ -827,4 +827,8 @@ export const translatedText = {
     vi:
       'Bạn chưa có lượt sale nào, vui lòng nạp sale để tham gia quay thưởng',
   },
+  date_update: {
+    en: 'Update',
+    vi: 'Cập nhật',
+  }
 };
