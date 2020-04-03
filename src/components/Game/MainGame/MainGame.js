@@ -130,7 +130,9 @@ const MainGame = () => {
                             </TabButton>} key="2">
                                 <Game />
                         </TabPane>
-                        <TabPane tab={<TabButton>
+                        <TabPane
+                            className="tabPanel__container"
+                            tab={<TabButton>
                                 <Typography.Text
                                     className="tabPanel__button_label"
                                 >

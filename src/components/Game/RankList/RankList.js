@@ -98,6 +98,7 @@ const RankList = () => {
 
     const [tableData, setTableData] = useState([]);
     const [eventProgess, setEventProgess] = useState(0);
+    const [dateUpdate, setDateUpdate] = useState('');
 
     useEffect(() => {
         resultGame()
@@ -109,7 +110,8 @@ const RankList = () => {
         });
         getEventProgress()
         .then(response => {
-            setEventProgess(response);
+            setEventProgess(response.processEvent);
+            setDateUpdate(response.dateUpdate);
         })
         .catch(error => {
             console.log(error);
@@ -118,6 +120,11 @@ const RankList = () => {
 
     return (
         <React.Fragment>
+            <Typography.Text
+                className="update_date_event"
+            >
+                {getTranslatedText('date_update')} {dateUpdate}
+            </Typography.Text>
             <Layout
                 className='layout_rank_container'
             >
@@ -125,10 +132,11 @@ const RankList = () => {
                     className='rank_header_container'
                 >
                     <Progress
+                        className='event_progress'
                         strokeWidth={30}
                         strokeColor='#D59E29'
                         percent={eventProgess}
-                        status='exception'
+                        t
                     />
                 </Header>
                 <Content
@@ -138,7 +146,10 @@ const RankList = () => {
                         className='table_container'
                         rowKey="uid"
                         scroll={true}
-                        bordered
+                        bordered={true}
+                        pagination={{
+                            pageSize: 7,
+                        }}
                         columns={columns}
                         dataSource={tableData}
                     />

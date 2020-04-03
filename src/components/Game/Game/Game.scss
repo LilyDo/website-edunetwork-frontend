@@ -1,6 +1,6 @@
 :root {
   --wheel-font: 'Lato', 'Quicksand', sans-serif;
-  --wheel-size: 30vmin;
+  --wheel-size: 42vmin;
   --wheel-slice-spacing: 1px;
   --wheel-border-size: 5px;
   --wheel-color: #d59e29;
@@ -112,11 +112,11 @@
   /* texte */
   color: var(--neutral-color);
   text-align: right;
-  padding: 0 10px 0 30px;
+  padding: 0 20px 0 40px;
   // font-family: var(--wheel-font);
   font-family: 'Poppins', sans-serif;
   @media only screen and (max-width: 414px) {
-    font-size: 10px;
+    font-size: 13px;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 18px;
