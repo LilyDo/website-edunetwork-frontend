@@ -830,5 +830,5 @@ export const translatedText = {
   date_update: {
     en: 'Update',
     vi: 'Cập nhật',
-  }
+  },
 };

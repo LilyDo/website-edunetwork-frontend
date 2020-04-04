@@ -1,0 +1,10 @@
+.rule_content__container {
+  width: 79.57vw !important;
+  height: 29.29vh !important;
+  @media only screen and (max-width: 414px) {
+    height: 50.29vh !important;
+  }
+  overflow: scroll !important;
+  padding-left: 10.55vw;
+  padding-top: 28px;
+}

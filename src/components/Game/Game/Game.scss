@@ -1,6 +1,9 @@
 :root {
   --wheel-font: 'Lato', 'Quicksand', sans-serif;
   --wheel-size: 42vmin;
+  @media only screen and (max-width: 414px) {
+    --wheel-size: 52vmin;
+  }
   --wheel-slice-spacing: 1px;
   --wheel-border-size: 5px;
   --wheel-color: #d59e29;
@@ -187,6 +190,11 @@
 .event__container_text {
   @media only screen and (max-width: 414px) {
     font-size: 10px;
+    position: absolute;
+    top: -70px;
+    padding-bottom: 5px;
+    border-bottom: #707070 dashed 1px;
+    margin-left: 5px;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
@@ -196,6 +204,16 @@
   margin: 0 0 5.86vh 0;
   padding: 0 0 0 0;
   color: #000000;
+}
+
+.event_container_body {
+  background-color: white;
+  padding-top: 12;
+  padding-left: 16;
+  @media only screen and (max-width: 414px) {
+    margin-top: 15px;
+    margin-left: 5px;
+  }
 }
 
 .event_info_footer {
@@ -248,6 +266,7 @@
   @media only screen and (max-width: 414px) {
     font-size: 10px;
     width: 40vw !important;
+    margin: auto;
   }
   @media only screen and (min-width: 415px) and (max-width: 768px) {
     font-size: 12px;
@@ -335,4 +354,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 7.24vw;
+  @media only screen and (max-width: 414px) {
+    margin-left: 0;
+  }
 }
