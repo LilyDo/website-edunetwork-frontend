@@ -21,6 +21,7 @@ const { Header, Content } = Layout;
 const { TabPane } = Tabs;
 
 const TabButton = styled.button`
+		display: ${props => props.disabled ? 'none' : 'inline'}
     width: 23.6vw;
     height: 6.4vh;
 		background-color: #F0F0F0;
@@ -43,11 +44,10 @@ const MainGame = () => {
 
 	useEffect(() => {
 		const current_user = JSON.parse(window.localStorage.getItem('current_user'));
-		console.log(current_user)
 		// 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
 		if (current_user === null) {
 			setLoginVisible(true);
-			setButtonDisable(true);
+			setButtonDisable(true)
 		} else {
 			if (current_user.roll_amount === 0) {
 				setButtonDisable(true);
@@ -59,10 +59,8 @@ const MainGame = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log('hello');
 		switch (activeKey) {
 			case '1':
-				console.log('hello 1');
 				setActiveKey1('tab_button1');
 				setActiveKey2('');
 				setActiveKey3('');
@@ -154,6 +152,7 @@ const MainGame = () => {
 							tab={
 								<TabButton
 									className={activeKey2}
+									disabled={buttonDisable}
 								>
 									<Typography.Text
 										className="tabPanel__button_label"
