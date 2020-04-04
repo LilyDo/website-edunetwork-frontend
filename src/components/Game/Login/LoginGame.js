@@ -28,7 +28,6 @@ const LoginGame = (props) => {
     } = props;
 
     const login = (values) => {
-        console.log('success', values);
         const user_account = {
             email: values.email,
             password: values.password
@@ -38,6 +37,7 @@ const LoginGame = (props) => {
 
     const handleForgetPasswordButton = () => {
         actions.toggleForgotPasswordPopup(true);
+        setLoginVisible(false);
     }
 
     return (
@@ -93,7 +93,7 @@ const LoginGame = (props) => {
                             <Form.Item>
                                 <Button
                                     className="forget_password__button"
-                                    // onClick={handleForgetPasswordButton()}
+                                    onClick={() => handleForgetPasswordButton()}
                                 >
                                     <Typography.Text
                                     >
