@@ -4,6 +4,9 @@
   @media only screen and (max-width: 414px) {
     --wheel-size: 52vmin;
   }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    --wheel-size: 28vmin;
+  }
   --wheel-slice-spacing: 1px;
   --wheel-border-size: 5px;
   --wheel-color: #d59e29;
@@ -216,13 +219,13 @@
   }
 }
 
-.event_info_footer {
-  // border: black solid 1px;
-  background-color: white;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+// .event_info_footer {
+//   // border: black solid 1px;
+//   background-color: white;
+//   align-items: center;
+//   display: flex;
+//   justify-content: center;
+// }
 
 .tag__info {
   @media only screen and (max-width: 414px) {

@@ -86,11 +86,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
+// .tab_button {
+//   background-color: #F0F0F0;
+// }
 
-// @media only screen and (max-width: 414px) {
-//   .tabPanel__button_label {
-//     font-size: 10px;
-//     color: 'white';
-//     font-weight: 'bold';
-//   }
+.tab_button1 {
+  background-color: #D59E29 !important;
+}
+
+.tab_button2 {
+  background-color: #D59E29 !important;
+}
+
+.tab_button3 {
+  background-color: #D59E29 !important;
+}
+
+// .tab_button:focus {
+//   background-color: #D59E29;
 // }
