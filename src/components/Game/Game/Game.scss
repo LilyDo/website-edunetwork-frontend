@@ -165,19 +165,15 @@
   border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
 }
 
-// .col_event_container {
-//   border: black solid 1px;
-// }
-
 .event_info__container {
   background-color: white;
   width: 24.2vw !important;
   height: 38.4vh !important;
-  @media only screen and (max-width: 414px) {
+  @media only screen and (max-width: 425px) {
     font-size: 10px;
     width: 100vw !important;
   }
-  @media only screen and (min-width: 415px) and (max-width: 768px) {
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
     font-size: 12px;
   }
 }
