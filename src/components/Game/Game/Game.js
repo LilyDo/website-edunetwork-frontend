@@ -354,7 +354,6 @@ const Game = () => {
 				.then(response => {
 					setRollAmountLeft(response.rollAmountLeft);
 					setTotalBonus(response.currentLastTotalBonus);
-					// console.log('roll amount', response)
 			})
 			.catch(e => {
 				console.log(e);
@@ -413,7 +412,6 @@ const Game = () => {
 				/>
 			</Col>
 			<Col
-				// span={6}
 				lg={6}
 				xl={6}
 				md={6}
