@@ -30,7 +30,6 @@ const RenderColor = (props) => {
 
     return (
         <React.Fragment>
-            {console.log(text)}
             {text <= 5 ? (
                 <Typography.Text
                     style={{

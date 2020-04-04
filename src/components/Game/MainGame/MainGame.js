@@ -36,6 +36,7 @@ const MainGame = () => {
     const [codeName, setCodeName] = useState('');
     const [loginVisible, setLoginVisible] = useState(false);
     const [buttonMainGameDisable, setButtonMainGameDisable] = useState(false);
+    const [activeKey, setActiveKey] = useState('2');
 
     useEffect(() => {
         const current_user = JSON.parse(window.localStorage.getItem('current_user'));
@@ -52,7 +53,11 @@ const MainGame = () => {
             setUserName(current_user.name);
             setCodeName(current_user.code);
         };
-    }, [])
+    }, []);
+
+    const handleOnChangeTab = (key) => {
+        setActiveKey(key);
+    }
 
     return (
         <React.Fragment>
@@ -91,11 +96,6 @@ const MainGame = () => {
                             ({codeName})
                         </Col>
                     </Row>
-                    {/* <Typography.Text
-                        className='header_container__userName'
-                    >
-                          ({codeName})
-                    </Typography.Text> */}
                 </Header>
                 <Content
                     className="content_container"
@@ -103,7 +103,8 @@ const MainGame = () => {
                     <Tabs
                         className="tab_container"
                         size='small'
-                        defaultActiveKey="2"
+                        activeKey={activeKey}
+                        onChange={(key) => handleOnChangeTab(key)}
                     >
                         <TabPane 
                             className="tabPanel__container"

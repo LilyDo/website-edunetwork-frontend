@@ -5,7 +5,7 @@ import {
 import MDReactComponent from 'markdown-react-js';
 import { CURRENT_LANG_KEY } from '../../../actions';
 import 'antd/dist/antd.css';
-import '../RuleGame/RuleGame.css';
+import '../RuleGame/RuleGame.scss';
 
 const gameRuleContent_en = `###### **RULES**
 *  Each member will be given lucky draw by Edunetwork corresponding to the number of members currently managing. 
@@ -51,11 +51,11 @@ const RuleGame = () => {
                 >
                     {currentLanguage === 'en' ? (
                         <MDReactComponent
-                        text={gameRuleContent_en}
+                            text={gameRuleContent_en}
                         />
                     ) : (
                         <MDReactComponent
-                        text={gameRuleContent_vn}
+                            text={gameRuleContent_vn}
                         />
                     )}
                 </Col>

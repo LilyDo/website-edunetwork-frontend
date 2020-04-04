@@ -424,11 +424,7 @@ const Game = () => {
 					className="event_info__container"
 				>
 					<Layout.Content
-						style={{
-							backgroundColor: 'white',
-							paddingTop: 12,
-							paddingLeft: 16,
-						}}
+						className='event_container_body'
 					>
 						<Row
 							justify='space-between'
@@ -498,18 +494,23 @@ const Game = () => {
 										</Tag>
 									)}
 							</Col>
+							<Col
+								span={24}
+								style={{
+									display: 'flex',
+									justifyContent: 'center'
+								}}
+							>
+								<Button
+									className="button"
+									onClick={() => handleAddMoneyToWallet()}
+								>
+									{getTranslatedText('button_add_money_to_wallet')}
+								</Button>
+							</Col>
+
 						</Row>
 					</Layout.Content>
-					<Layout.Footer
-						className='event_info_footer'
-					>
-						<Button
-							className="button"
-							onClick={() => handleAddMoneyToWallet()}
-						>
-							{getTranslatedText('button_add_money_to_wallet')}
-						</Button>
-					</Layout.Footer>
 				</Layout>
 			</Col>
 			<Modal

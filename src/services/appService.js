@@ -236,16 +236,13 @@ export const getEventProgress = async () => {
         '-',
         '.',
       );
-      nowDateConvert = _.replace(
-        nowDateConvert,
-        '-',
-        '.',
-      );
+      nowDateConvert = _.replace(nowDateConvert, '-', '.');
       const totalTimeOfEvent = endDate - startDate;
       const currentTotalTimeOfEvent = nowDate - startDate;
-      const processEvent =
-        parseInt((currentTotalTimeOfEvent / totalTimeOfEvent) * 100);
-      
+      const processEvent = parseInt(
+        (currentTotalTimeOfEvent / totalTimeOfEvent) * 100,
+      );
+
       return {
         processEvent: processEvent,
         dateUpdate: nowDateConvert,
