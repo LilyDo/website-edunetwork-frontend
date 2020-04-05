@@ -105,10 +105,10 @@ class DepositNotification extends Component {
         <div>
           - <b>Vietnam {getTranslatedText('bank_account')}</b>
           <br />+ {getTranslatedText('full_name')}:{' '}
-          <b>Ngô Thị Minh Hoa</b>
+          <b>Ngo Thi Minh Hoa</b>
           <br />+ {getTranslatedText('bank_account')}:{' '}
-          <b>196981241</b>
-          <br />+ {getTranslatedText('bank_name')}: <b>VP Bank</b>
+          <b>908062415500001</b>
+          <br />+ {getTranslatedText('bank_name')}: <b>Nam A Bank</b>
           <br />
           <br />
         </div>
