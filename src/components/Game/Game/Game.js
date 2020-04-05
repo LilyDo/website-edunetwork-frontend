@@ -158,7 +158,7 @@ const ResultWheelModal = (props) => {
 						gutter={16}
 					>
 						<Col
-						 span={12}
+						 sm={12}
 						 xs={24}
 						 xl={12}
 						>
@@ -174,7 +174,7 @@ const ResultWheelModal = (props) => {
 							</Button>
 						</Col>
 						<Col
-						 span={12}
+						 sm={12}
 						 xs={24}
 						 xl={12}
 						>
@@ -227,14 +227,22 @@ const AddMoneyToWallet = (props) => {
 								{getTranslatedText('add_money_success')}
 							</Typography.Text>
 						</Col>
-						<Col span={16}>
+						<Col
+							sm={12}
+							xs={24}
+							xl={16}
+						>
 							<Typography.Text
 								className='container___text'
 							>
 								{getTranslatedText('add_money_content')}
 							</Typography.Text>
 						</Col>
-						<Col span={8}>
+						<Col
+							sm={12}
+							xs={24}
+							xl={8}
+						>
 							<Typography.Text
 								className='container___text'
 							>
@@ -303,7 +311,7 @@ const TurnStatusTag = (props) => {
 				{getTranslatedText('roll_amount_left')}
 			</Typography.Text>
 			<Tag
-				className="tag__info"
+				className="tag_turn__info"
 				color="#FAC857"
 			>
 				{rollAmountLeft} {getTranslatedText('game_turn')}
@@ -384,7 +392,6 @@ const Game = () => {
 			justify='space-around'
 		>
 			<Col
-				// span={4}
 				lg={4}
 				xl={4}
 				md={4}
@@ -396,7 +403,6 @@ const Game = () => {
 				/>
 			</Col>
 			<Col
-				// span={6}
 				lg={6}
 				xl={6}
 				md={6}
