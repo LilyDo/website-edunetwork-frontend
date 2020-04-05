@@ -21,10 +21,10 @@ const { Header, Content } = Layout;
 const { TabPane } = Tabs;
 
 const TabButton = styled.button`
-		display: ${props => props.disabled ? 'none' : 'inline'}
+	display: ${props => props.disabled ? 'none' : 'inline'}
     width: 23.6vw;
     height: 6.4vh;
-		background-color: #F0F0F0;
+	background-color: #F0F0F0;
     transform: skew(-30deg);
     margin-left: 1.38vw;
 `
@@ -47,11 +47,13 @@ const MainGame = () => {
 		// 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
 		if (current_user === null) {
 			setLoginVisible(true);
-			setButtonDisable(true)
+			setButtonDisable(true);
+			setActiveKey('1');
 		} else {
 			if (current_user.roll_amount === 0) {
 				setButtonDisable(true);
 				alert(getTranslatedText('end_of_roll'));
+				setActiveKey('1');
 			};
 			setUserName(current_user.name);
 			setCodeName(current_user.code);
