@@ -19,7 +19,7 @@
   justify-content: space-between;
   display: flex;
   padding-left: 4vw;
-  padding-right: 4vw;
+  padding-right: 10vw;
 }
 
 .header_container__breadcrumb {
@@ -41,6 +41,8 @@
 
 .header_container__userName {
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  height: 100%;
 }
 
 .content_container {
@@ -90,10 +92,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-// .tab_button {
-//   background-color: #F0F0F0;
-// }
-
 .tab_button1 {
   background-color: #D59E29 !important;
 }
@@ -105,7 +103,3 @@
 .tab_button3 {
   background-color: #D59E29 !important;
 }
-
-// .tab_button:focus {
-//   background-color: #D59E29;
-// }
