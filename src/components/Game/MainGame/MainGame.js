@@ -111,10 +111,13 @@ const MainGame = () => {
 					</Breadcrumb>
 					<Row 
 					>
-						<Col span={8}>
+						<Col span={6}>
 							{getTranslatedText('hello')}
 						</Col>
-						<Col span={10}
+						<Col
+							lg={14}
+							sm={14}
+							xs={14}
 							className='header_container__userName'
 						>
 							{userName}
