@@ -1,0 +1,57 @@
+.layout_rank_container {
+  background-image: url('../../../assets/images/game_result_background.png');
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  width: 79.42vw !important;
+  @media only screen and (max-width: 414px) {
+    width: 100vw !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    width: 100vw !important;
+  }
+  margin: auto;
+}
+
+.rank_header_container {
+  background: transparent;
+}
+
+.table_content_container {
+  background: transparent;
+  width: 60.4vw !important;
+  // height: 60vh !important;
+  margin: auto;
+  @media only screen and (max-width: 414px) {
+    width: 100vw !important;
+  }
+}
+
+.table_container {
+  background: transparent !important;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.event_progress {
+  font-family: 'Poppins', sans-serif;
+}
+
+.ant-progress-text {
+  color: white !important;
+}
+
+.update_date_event {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-size: 17px;
+  margin-left: 81.69vw;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+    margin-left: 69.69vw;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 13px;
+    margin-left: 73.69vw;
+  }
+}

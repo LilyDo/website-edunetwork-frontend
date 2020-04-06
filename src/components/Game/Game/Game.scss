@@ -1,0 +1,383 @@
+:root {
+  --wheel-font: 'Lato', 'Quicksand', sans-serif;
+  --wheel-size: 42vmin;
+  @media only screen and (max-width: 425px) {
+    --wheel-size: 52vmin;
+  }
+  @media only screen and (min-width: 426px) and (max-width: 1024px) {
+    --wheel-size: 28vmin;
+  }
+  --wheel-slice-spacing: 1px;
+  --wheel-border-size: 5px;
+  --wheel-color: #d59e29;
+  --neutral-color: white;
+  --PI: 3.14159265358979;
+  --nb-item: 1;
+  --item-nb: 1;
+  --selected-item: 1;
+  --nb-turn: 5;
+  --spinning-duration: 4s;
+  --reset-duration: 0.25s;
+}
+
+.wheel-container {
+  display: block;
+  position: relative;
+  box-sizing: content-box;
+  width: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+  height: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+  padding: 3px;
+  margin: auto;
+  background-color: var(--neutral-color);
+  border: solid var(--wheel-color) 3px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+/* Triangle de sélection = 1 rose +  1 blanc */
+.wheel-container::before,
+.wheel-container::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: solid transparent 20px;
+  border-left-width: 0;
+}
+
+.wheel-container::before {
+  right: 0px;
+  border-right-color: var(--wheel-color);
+}
+
+.wheel-container::after {
+  right: -5px;
+  border-right-color: var(--neutral-color);
+}
+
+/* Roue */
+.wheel {
+  display: block;
+  position: relative;
+  box-sizing: content-box;
+  margin: auto;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid var(--wheel-color) var(--wheel-border-size);
+  background-color: var(--wheel-color);
+  /* transition: transform var(--reset-duration); */
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+.wheel.spinning {
+  transition: transform var(--spinning-duration);
+  transform: rotate(
+    calc(
+      var(--nb-turn) * 360deg +
+        (-360deg * var(--selected-item) / var(--nb-item, 1))
+    )
+  );
+}
+
+/* Centre de la roue = rond blanc au centre */
+.wheel::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background-color: var(--neutral-color);
+  width: 25px;
+  height: 25px;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* Element sur la roue */
+.wheel-item {
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+
+  /* position de l'item */
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform-origin: center left;
+  transform: translateY(-50%)
+    rotate(calc(var(--item-nb) * (360deg / var(--nb-item, 1))));
+
+  /* texte */
+  color: var(--neutral-color);
+  text-align: right;
+  padding: 0 20px 0 40px;
+  // font-family: var(--wheel-font);
+  font-family: 'Poppins', sans-serif;
+  @media only screen and (max-width: 414px) {
+    font-size: 13px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 18px;
+  }
+  font-size: 30px;
+}
+
+/* Background de l'élément = triangle rose plus clair */
+.wheel-item:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 0px;
+  opacity: 0.25;
+
+  /* 
+    Largeur du triangle
+    Je ne sais pas pourquoi j'ai besoin d'ajouter 
+      " + var(--wheel-size) / 2 " dans slice-max-width  ==> donne 2.PI.R + R
+    mais globalement ca marche a peu près bien 
+    TODO: A étudier 
+  */
+  --slice-max-width: calc(
+    var(--PI) * var(--wheel-size) + var(--wheel-size) / 2
+  );
+  --slice-width: calc(
+    (var(--slice-max-width) / var(--nb-item, 1)) -
+      var(--wheel-slice-spacing)
+  );
+  border: solid transparent calc(var(--slice-width) / 2);
+  border-left: solid transparent 0;
+  /* profondeur du triangle = du centre de la roue à la bordure = 300px / 2 */
+  border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
+}
+
+.event_info__container {
+  background-color: white;
+  width: 24.2vw !important;
+  height: 38.4vh !important;
+  @media only screen and (max-width: 425px) {
+    font-size: 10px;
+    width: 100vw !important;
+  }
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.time_event_header_container {
+  width: 21.1vw !important;
+  height: 10.2vh !important;
+  background-color: white;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.event__container_text {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+    position: absolute;
+    top: -70px;
+    padding-bottom: 5px;
+    border-bottom: #707070 dashed 1px;
+    margin-left: 5px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  margin: 0 0 5.86vh 0;
+  padding: 0 0 0 0;
+  color: #000000;
+}
+
+.event_container_body {
+  background-color: white;
+  padding-top: 12;
+  padding-left: 16;
+  @media only screen and (max-width: 414px) {
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+}
+
+// .event_info_footer {
+//   // border: black solid 1px;
+//   background-color: white;
+//   align-items: center;
+//   display: flex;
+//   justify-content: center;
+// }
+
+.tag__info {
+  @media only screen and (max-width: 414px) {
+    font-size: 16px;
+    width: 20vw !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 22px;
+    width: 14vw !important;
+  }
+  margin: auto;
+  width: 8.34vw !important;
+  height: 5.69vh !important;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tag_turn__info {
+  @media only screen and (max-width: 414px) {
+    font-size: 16px;
+    width: 20vw !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 22px;
+    width: 14vw !important;
+  }
+  width: 8.34vw !important;
+  height: 5.69vh !important;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container___text {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  font-family: 'Poppins', sans-serif;
+}
+
+.col__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: #707070 dashed 1px;
+}
+
+.button {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+    width: 40vw !important;
+    margin: auto;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+    width: 22vw !important;
+  }
+  width: 20.15vw !important;
+  height: 4.45vh !important;
+  background-color: #b97a2a;
+  border-radius: 0.73vw;
+  color: white;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal__button {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+    width: 40vw !important;
+    height: 6.45vh !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  white-space: normal;
+  word-wrap: break-word;
+  width: 20.15vw !important;
+  height: 4.45vh !important;
+  background-color: #b97a2a;
+  border-radius: 0.73vw;
+  color: white;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button_label {
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo__container {
+  background-color: white;
+  height: 12.42vh !important;
+  display: flex;
+  justify-content: center;
+}
+
+.content__container {
+  background-color: white;
+  padding-top: 56px;
+  padding-bottom: 56px;
+  border-top: #707070 solid 0.25px;
+  border-bottom: #707070 solid 0.25px;
+}
+
+.footer__container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_card_container {
+  width: 58.2vw !important;
+  height: 41.3vh !important;
+  @media only screen and (max-width: 425px) {
+    width: 90.2vw !important;
+  }
+}
+
+.content_heading {
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.game_turn_container {
+  width: 13.54vw !important;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 7.24vw;
+  @media only screen and (max-width: 414px) {
+    margin-left: 0;
+  }
+}

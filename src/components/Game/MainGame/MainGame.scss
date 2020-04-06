@@ -1,0 +1,111 @@
+.main_game__container {
+  height: 88.14vh !important;
+  width: 100vw !important;
+  background-color: white;
+  display: flex !important;
+  justify-content: center !important;
+  overflow: scroll;
+  margin-bottom: 6.2vh;
+}
+
+.header_container {
+  width: 100vw !important;
+  background-color: white;
+  border-bottom: #d59e29 solid 1px;
+  border-top: #d59e29 solid 1px;
+  height: 6.52vh !important;
+  margin-left: 0px;
+  margin-top: 3.46vh;
+  justify-content: space-between;
+  display: flex;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.header_container__breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+.header_container__breadcrumb_item {
+  color: #B97A2A;
+  font-family: 'Poppins', sans-serif;
+  @media only screen and (max-width: 414px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+  font-size: 20px;
+}
+
+.header_container__userName {
+  font-family: 'Poppins', sans-serif;
+}
+
+.content_container {
+  background-color: white;
+  width: 100vw !important;
+}
+
+.child_header_container {
+  background-color: white;
+}
+
+.main_content_container {
+  background-color: white;
+}
+
+.header__divider {
+  padding: 0 0 0 0;
+}
+
+.tabPanel__container {
+  height: 80.68vh !important;
+  overflow: scroll;
+}
+
+.ant-tabs-nav-scroll {
+  display: flex;
+  justify-content: center;
+}
+
+.tabPanel__button_label {
+  @media only screen and (max-width: 414px) {
+    font-size: 7px;
+    color: white;
+    font-weight: bold;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    font-size: 12px;
+    color: white;
+    font-weight: bold ;
+  }
+  position: relative;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  font-style: normal;
+  font-family: 'Poppins', sans-serif;
+}
+
+// .tab_button {
+//   background-color: #F0F0F0;
+// }
+
+.tab_button1 {
+  background-color: #D59E29 !important;
+}
+
+.tab_button2 {
+  background-color: #D59E29 !important;
+}
+
+.tab_button3 {
+  background-color: #D59E29 !important;
+}
+
+// .tab_button:focus {
+//   background-color: #D59E29;
+// }

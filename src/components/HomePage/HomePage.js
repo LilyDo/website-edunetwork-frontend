@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  Row,
+  Col,
+  Button,
+} from 'antd';
+import 'antd/dist/antd.css';
+import { Link } from 'react-router-dom';
+import { routes } from '../../constants';
 import './HomePage.scss';
 import Carousel from '../Carousel/Carousel';
 import QuoteContainer from '../QuoteContainer/QuoteContainer';
@@ -75,6 +83,7 @@ function HomePage() {
       </div>
 
       <QuoteContainer />
+      {/* <LoginGame /> */}
 
       <CourseCardContainer />
     </div>

@@ -1,5 +1,16 @@
 @import '../../shared.scss';
 
+.button_minigame {
+  width: 180px !important;
+  height: 43px !important;
+  background-color: #D59E29;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
 .Video {
   background-image: url('../../assets/images/video_background.png');
   background-size: cover;

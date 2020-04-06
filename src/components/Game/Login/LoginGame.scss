@@ -1,0 +1,58 @@
+.modal__container {
+  width: 79.72vw !important;
+  height: 63.04vh !important;
+}
+
+.logo__container {
+  background-color: white;
+  height: 12.42vh !important;
+  display: flex;
+  justify-content: center;
+}
+
+.layout__container {
+  background-color: white;
+  height: 50.72vh !important;
+}
+
+.subheading__container {
+  background-color: white;
+  margin-left: 6.58vw;
+}
+
+.heading__container {
+  margin-left: 6.58vw !important;
+}
+
+.heading_divider__container {
+  width: 51.97vw !important;
+}
+
+.form__container {
+  width: 28.55vw !important;
+  height: 30vh !important;
+  margin-left: 6.58vw;
+}
+
+.form_item_input {
+  width: 24.59vw !important;
+  height: 5.38vh !important;
+}
+
+.forget_password__button {
+  background: transparent;
+  border: none;
+}
+
+.login__button {
+  background-color: #b97a2a;
+  width: 24.52vw !important;
+  height: 4.45vh !important;
+  border-radius: 10px;
+  border: none;
+}
+
+.login__button_label {
+  font-size: 14px;
+  font-weight: bold;
+}

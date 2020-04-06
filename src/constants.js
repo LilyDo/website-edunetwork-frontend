@@ -26,6 +26,8 @@ export const routes = {
   // Terms of Service
   privacyPolicy: '/privacy-policy',
   termOfService: '/term-of-service',
+  // Game
+  game: '/game'
 };
 
 export const toastDuration = 3000;

@@ -3,32 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apexcharts": "^3.10.1",
-    "axios": "^0.19.0",
+    "antd": "^4.0.4",
+    "apexcharts": "^3.17.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.1",
-    "env-cmd": "^10.0.1",
+    "caniuse-lite": "^1.0.30001038",
+    "chart.js": "^2.9.3",
+    "env-cmd": "^10.1.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.12.0",
-    "react": "^16.9.0",
-    "react-apexcharts": "^1.3.3",
-    "react-bootstrap": "^1.0.0-beta.17",
-    "react-chartjs-2": "^2.8.0",
-    "react-dom": "^16.9.0",
+    "markdown-react-js": "^1.0.2",
+    "node-sass": "^4.13.1",
+    "react": "^16.13.1",
+    "react-apexcharts": "^1.3.6",
+    "react-bootstrap": "^1.0.0",
+    "react-chartjs-2": "^2.9.0",
+    "react-dom": "^16.13.1",
     "react-google-recaptcha": "^2.0.1",
     "react-infinite-scroller": "^1.2.4",
     "react-loading-overlay": "^1.0.1",
-    "react-redux": "^7.1.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "react-spinners": "^0.6.1",
-    "react-swipeable": "^5.4.0",
-    "react-toastify": "^5.4.0",
-    "redux": "^4.0.4",
+    "react-swipeable": "^5.5.1",
+    "react-toastify": "^5.5.0",
+    "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -63,8 +66,8 @@
     "since 2010"
   ],
   "devDependencies": {
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
   }
 }
