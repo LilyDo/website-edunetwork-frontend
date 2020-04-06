@@ -16,7 +16,7 @@ import {
     toggleForgotPasswordPopup,
 } from '../../../actions/auth';
 import { bindActionCreators } from 'redux';
-import '../Login/LoginGame.css';
+import '../Login/LoginGame.scss';
 
 const { Header, Content } = Layout;
 
