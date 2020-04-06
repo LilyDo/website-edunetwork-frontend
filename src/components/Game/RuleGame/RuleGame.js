@@ -7,33 +7,29 @@ import { CURRENT_LANG_KEY } from '../../../actions';
 import 'antd/dist/antd.css';
 import '../RuleGame/RuleGame.scss';
 
-const gameRuleContent_en = `###### **RULES**
-*  Each member will be given lucky draw by Edunetwork corresponding to the number of members currently managing. 
-*  When the lucky spin starts, the member has a chance to receive the corresponding bonuses on the wheel. 
-###### **NOTE**
-* If the member's turn is not over, Admin will save it for later rounds
+const gameRuleContent_en = `###### **CONDITIONS OF PARTICIPATION**
+*  As a member of EduNetwork and does not violate any provision on EduNetwork.
 
-###### **CONDITIONS OF PARTICIPATION**
-*  As a member of EduNetwork
-*  The account owner is real, does not violate any regulations on EduNetwork.
+###### **RULES**
+* Each Edunetwork member who has 1 sale will receive a lucky draw of 100%.
+* When the lucky spin starts, the member has a chance to receive the corresponding bonuses on the spin.
+* The TOP 50 members with the highest Sale corresponding to the highest number of turns will be updated on the rankings.
 
-###### **REGULATIONS**:
+###### **REGULATIONS**
 *  Members are not allowed to use the software to disrupt and adjust the results of the Lucky Draw. If violating this regulation and discovered, members will be permanently locked account at EduNetwork.
-*  The amount of member drawn will be deposited directly into that member's wallet account. No transfer or transfer in any form to another member.`
+*  The amount of member drawn will be deposited directly into that member's wallet account.`
 
-const gameRuleContent_vn = `###### **THỂ LỆ**
-*  Mỗi thành viên sẽ được Edunetwork tặng số lượt quay may mắn tương ứng với số thành viên đang quản lý. 
-*  Khi Vòng quay may mắn bắt đầu khởi động, thành viên có cơ hội nhận được những số tiền thưởng tương ứng trên vòng quay. 
-###### **LƯU Ý**
-* Nếu lượt quay của thành viên chưa hết thì sẽ được Admin bảo lưu lại để quay tiếp ở những vòng sau
+const gameRuleContent_vn = `###### **ĐIỀU KIỆN THAM GIA**
+*  Là thành viên của EduNetwork và không vi phạm bất kỳ quy định nào trên EduNetwork.
 
-###### **ĐIỀU KIỆN THAM GIA**
-*  Là thành viên của EduNetwork
-*  Chủ tài khoản là người thật, không vi phạm bất kỳ quy định nào trên EduNetwork.
+###### **THỂ LỆ**
+* Mỗi thành viên Edunetwork khi có 1 Sale phát sinh sẽ được nhận 1 lượt quay may mắn 100% trúng.
+* Khi Vòng quay may mắn bắt đầu khởi động, thành viên có cơ hội nhận được những số tiền thưởng tương ứng trên vòng quay.
+* TOP 50 thành viên có số Sale cao nhất tương ứng với có số lượt quay nhiều nhất sẽ được cập nhật trên bảng xếp hạng.
 
-###### **QUY ĐỊNH**:
-*  Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
-*  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`
+###### **QUY ĐỊNH**
+* Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
+* Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó.`
 
 const RuleGame = () => {
 
