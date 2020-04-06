@@ -109,7 +109,8 @@ const MainGame = () => {
 							MINIGAME
 						</Breadcrumb.Item>
 					</Breadcrumb>
-					<Row gutter={16}>
+					<Row 
+					>
 						<Col span={8}>
 							{getTranslatedText('hello')}
 						</Col>
