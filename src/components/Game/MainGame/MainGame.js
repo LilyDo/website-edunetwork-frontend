@@ -110,7 +110,7 @@ const MainGame = () => {
 						</Breadcrumb.Item>
 					</Breadcrumb>
 					<Row gutter={16}>
-						<Col span={4}>
+						<Col span={8}>
 							{getTranslatedText('hello')}
 						</Col>
 						<Col span={10}
