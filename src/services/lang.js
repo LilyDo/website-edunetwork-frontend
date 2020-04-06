@@ -723,7 +723,7 @@ export const translatedText = {
   },
   play_game: {
     en: 'WHEEL REWARDS',
-    vi: 'VÒNG QUAY TRÚNG THƯỞNG',
+    vi: 'VÒNG QUAY MAY MẮN',
   },
   rank_game: {
     en: 'RANKER',

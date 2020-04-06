@@ -22,11 +22,11 @@ const { TabPane } = Tabs;
 
 const TabButton = styled.button`
 	display: ${props => props.disabled ? 'none' : 'inline'}
-    width: 23.6vw;
+    width: 24.6vw;
     height: 6.4vh;
 	background-color: #F0F0F0;
     transform: skew(-30deg);
-    margin-left: 1.38vw;
+	margin-left: 1.38vw;
 `
 
 // background-color: ${props => props.disabled ? '#F0F0F0' : '#D59E29'};
