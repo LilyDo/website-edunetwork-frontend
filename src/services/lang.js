@@ -7,6 +7,10 @@ export const translatedText = {
     en: 'HOME',
     vi: 'TRANG CHỦ',
   },
+  blog: {
+    en: 'BLOG',
+    vi: 'BLOG',
+  },
   contact: {
     en: 'CONTACT',
     vi: 'LIÊN HỆ',
