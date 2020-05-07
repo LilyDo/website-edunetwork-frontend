@@ -10,18 +10,27 @@ import {updateOrderAction} from "../../actions/courses";
 import {connect} from "react-redux";
 
 class PaymentSuccessful extends Component {
+  state = {
+    status: "",
+    code: ""
+  };
+
+  componentDidMount() {
+    this.setState({
+      status: this.props.status,
+      code: this.props.code
+    });
+    this.props.actions.updateOrderAction({
+      status: "accept",
+      order_code: this.state.code
+    });
+  }
 
   render() {
-    const { status = 'successful', code = ""  } = get(this, 'props.match.params');
-    if (code){
-      this.props.actions.updateOrderAction({
-        status: "accept",
-        order_code: code
-      });
-    }
+
     return (
       <div className="PaymentSucessful">
-        {status === 'successful' ? (
+        {"aasdasd" === 'successful' ? (
           <Fragment>
             <div className="Title">
               {getTranslatedText('purchase_success')}
@@ -52,9 +61,7 @@ class PaymentSuccessful extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    dashboard: get(state, 'dashboard', {}),
-  };
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

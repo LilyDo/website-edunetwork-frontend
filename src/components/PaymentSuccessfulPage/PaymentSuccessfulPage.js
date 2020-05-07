@@ -7,7 +7,7 @@ import { getTranslatedText } from '../../services/appService';
 
 class PaymentSuccessfulPage extends Component {
   render() {
-    const { id } = this.props.match.params;
+    const { id, status, code } = this.props.match.params;
     return (
       <div>
         <Breadcrumb
@@ -27,7 +27,7 @@ class PaymentSuccessfulPage extends Component {
             },
           ]}
         />
-        <PaymentSuccessful />
+        <PaymentSuccessful status={status} code={code} />
       </div>
     );
   }
