@@ -214,7 +214,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MyWallet);
+export default connect(mapStateToProps, mapDispatchToProps)(MyWallet);

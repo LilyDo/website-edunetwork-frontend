@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-	Layout,
-	Typography,
-	Tabs,
-	Col,
-	Row,
-	Breadcrumb
-} from 'antd';
+import { Layout, Typography, Tabs, Col, Row, Breadcrumb } from 'antd';
 import 'antd/dist/antd.css';
 import { getTranslatedText } from '../../../services/appService';
 import '../MainGame/MainGame.scss';
@@ -21,26 +14,43 @@ const { Header, Content } = Layout;
 const { TabPane } = Tabs;
 
 const TabButton = styled.button`
-	display: ${props => props.disabled ? 'none' : 'inline'}
-    width: 24.6vw;
+		display: ${props => (props.disabled ? 'none' : 'inline')}
+    width: 23.6vw;
     height: 6.4vh;
 	background-color: #F0F0F0;
     transform: skew(-30deg);
-	margin-left: 1.38vw;
-`
+    margin-left: 1.38vw;
+`;
 
 // background-color: ${props => props.disabled ? '#F0F0F0' : '#D59E29'};
 
 const MainGame = () => {
+  const [userName, setUserName] = useState('');
+  const [codeName, setCodeName] = useState('');
+  const [loginVisible, setLoginVisible] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState(false);
+  const [activeKey, setActiveKey] = useState('2');
+  const [activeKey1, setActiveKey1] = useState('');
+  const [activeKey2, setActiveKey2] = useState('');
+  const [activeKey3, setActiveKey3] = useState('');
 
-	const [userName, setUserName] = useState('');
-	const [codeName, setCodeName] = useState('');
-	const [loginVisible, setLoginVisible] = useState(false);
-	const [buttonDisable, setButtonDisable] = useState(false);
-	const [activeKey, setActiveKey] = useState('2');
-	const [activeKey1, setActiveKey1] = useState('');
-	const [activeKey2, setActiveKey2] = useState('');
-	const [activeKey3, setActiveKey3] = useState('');
+  useEffect(() => {
+    const current_user = JSON.parse(
+      window.localStorage.getItem('current_user'),
+    );
+    // 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
+    if (current_user === null) {
+      setLoginVisible(true);
+      setButtonDisable(true);
+    } else {
+      if (current_user.roll_amount === 0) {
+        setButtonDisable(true);
+        alert(getTranslatedText('end_of_roll'));
+      }
+      setUserName(current_user.name);
+      setCodeName(current_user.code);
+    }
+  }, []);
 
 	useEffect(() => {
 		const current_user = JSON.parse(window.localStorage.getItem('current_user'));
@@ -59,26 +69,30 @@ const MainGame = () => {
 			setCodeName(current_user.code);
 		};
 	}, []);
+  useEffect(() => {
+    switch (activeKey) {
+      case '1':
+        setActiveKey1('tab_button1');
+        setActiveKey2('');
+        setActiveKey3('');
+        break;
+      case '3':
+        setActiveKey1('');
+        setActiveKey2('');
+        setActiveKey3('tab_button3');
+        break;
+      default:
+        setActiveKey1('');
+        setActiveKey2('tab_button2');
+        setActiveKey3('');
+        break;
+    }
+  }, [activeKey]);
 
-	useEffect(() => {
-		switch (activeKey) {
-			case '1':
-				setActiveKey1('tab_button1');
-				setActiveKey2('');
-				setActiveKey3('');
-				break;
-			case '3':
-				setActiveKey1('');
-				setActiveKey2('');
-				setActiveKey3('tab_button3');
-				break;
-			default: 
-				setActiveKey1('');
-				setActiveKey2('tab_button2');
-				setActiveKey3('');
-				break;
-		};
-	}, [activeKey])
+  const handleOnChangeTab = key => {
+    setActiveKey(key);
+    console.log(typeof key);
+  };
 
 	const handleOnChangeTab = (key) => {
 		setActiveKey(key);

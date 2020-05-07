@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Row,
-  Col,
-  Button,
-} from 'antd';
+import { Row, Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { routes } from '../../constants';

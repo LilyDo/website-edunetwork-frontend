@@ -19,7 +19,7 @@ import {
   BUY_COURSE_FAILURE,
   DEPOSIT_REQUEST,
   DEPOSIT_SUCCESS,
-  DEPOSIT_FAILURE,
+  DEPOSIT_FAILURE, UPDATE_ORDER_REQUEST, UPDATE_ORDER_SUCCESS, UPDATE_ORDER_FAILURE,
 } from './index';
 
 /**
@@ -194,6 +194,39 @@ const buyCourseSuccess = (response, shouldDepositAmount) => ({
 const buyCourseFailure = error => ({
   type: BUY_COURSE_FAILURE,
   payload: { error },
+});
+
+export const updateOrderAction = (payload) => {
+  return dispatch => {
+    dispatch(updateOrderRequest(payload));
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    axios
+    .post(
+      `${BASE_URL}/users/update-order?token=${token}&order_code=${payload.order_code}&method=${payload.method}&status=${payload.status}`,
+    )
+    .then(response => {
+      dispatch(
+        updateOrderSuccess(response.data),
+      );
+    })
+    .catch(error => dispatch(updateOrderFailure(error.message)));
+  };
+};
+
+const updateOrderRequest = payload => ({
+  type: UPDATE_ORDER_REQUEST,
+  payload: payload
+});
+
+const updateOrderSuccess = payload => ({
+  type: UPDATE_ORDER_SUCCESS,
+  payload: payload
+});
+
+const updateOrderFailure = payload => ({
+  type: UPDATE_ORDER_FAILURE,
+  payload: { payload }
 });
 
 /**

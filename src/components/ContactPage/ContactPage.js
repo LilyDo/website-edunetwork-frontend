@@ -125,7 +125,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(ContactPage);
+export default connect(null, mapDispatchToProps)(ContactPage);
