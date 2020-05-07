@@ -84,8 +84,8 @@ class AccountBreadcrumb extends Component {
                   : ''
               }
             >
-            <span>Mini game</span>
-          </Link>
+              <span>Mini game</span>
+            </Link>
           </div>
           <div className="AccountContainer">
             <div className="Text">{getTranslatedText('hello')}! </div>

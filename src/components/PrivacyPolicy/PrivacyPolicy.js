@@ -977,7 +977,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(PrivacyPolicy);
+export default connect(null, mapDispatchToProps)(PrivacyPolicy);

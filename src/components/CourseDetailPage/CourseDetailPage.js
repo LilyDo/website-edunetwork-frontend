@@ -115,8 +115,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 export default compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
 )(CourseDetailPage);

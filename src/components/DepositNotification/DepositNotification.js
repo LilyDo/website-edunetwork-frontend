@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getOrderDetailByCode } from '../../actions/profile';
+import { updateOrderAction } from '../../actions/courses';
 
 class DepositNotification extends Component {
   state = {
@@ -29,6 +30,11 @@ class DepositNotification extends Component {
     });
 
     this.props.actions.getOrderDetailByCode(code);
+    this.props.actions.updateOrderAction({
+      status: "waiting",
+      order_code: code,
+      method: "traditional"
+    });
   }
 
   render() {
@@ -177,6 +183,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getOrderDetailByCode,
+        updateOrderAction
       },
       dispatch,
     ),

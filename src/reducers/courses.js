@@ -93,24 +93,27 @@ export default function(state = initialState, action) {
       let message = '';
       let pathname = '';
       let orderObj = {};
-      if (action.payload.shouldDepositAmount > 0) {
-        orderObj = action.payload.data || {};
-        message = getTranslatedText('request_buy_course');
-        pathname = routes.accountDepositNoti
-          .replace(':isBuyCourse', 'buy')
-          .replace(':code', orderObj.payment_code)
-          .replace(':amount', orderObj.amount_need);
-      } else {
-        message = getTranslatedText('buy_course');
-        pathname = routes.coursePaymentSuccessful.replace(
-          ':status',
-          'successful',
-        );
-      }
+      // console.log(action.payload.data.url);
+      orderObj = action.payload.data;
+      pathname = action.payload.data.url;
+      // if (action.payload.shouldDepositAmount > 0) {
+      //   orderObj = action.payload.data || {};
+      //   message = getTranslatedText('request_buy_course');
+      //   pathname = routes.accountDepositNoti
+      //     .replace(':isBuyCourse', 'buy')
+      //     .replace(':code', orderObj.payment_code)
+      //     .replace(':amount', orderObj.amount_need);
+      // } else {
+      //   message = getTranslatedText('buy_course');
+      //   pathname = routes.coursePaymentSuccessful.replace(
+      //     ':status',
+      //     'successful',
+      //   );
+      // }
 
-      toast.success(message);
+      // toast.success(message);
       setTimeout(function() {
-        window.location.pathname = pathname;
+        window.location.href = pathname;
       }, toastDuration);
 
       return {

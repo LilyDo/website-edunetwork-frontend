@@ -1,7 +1,5 @@
-import React, {useState , useEffect } from 'react';
-import {
-    Layout, Row, Col
-} from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Layout, Row, Col } from 'antd';
 import MDReactComponent from 'markdown-react-js';
 import { CURRENT_LANG_KEY } from '../../../actions';
 import 'antd/dist/antd.css';
@@ -19,7 +17,7 @@ const gameRuleContent_en = `###### **RULES**
 
 ###### **REGULATIONS**:
 *  Members are not allowed to use the software to disrupt and adjust the results of the Lucky Draw. If violating this regulation and discovered, members will be permanently locked account at EduNetwork.
-*  The amount of member drawn will be deposited directly into that member's wallet account. No transfer or transfer in any form to another member.`
+*  The amount of member drawn will be deposited directly into that member's wallet account. No transfer or transfer in any form to another member.`;
 
 const gameRuleContent_vn = `###### **THỂ LỆ**
 *  Mỗi thành viên sẽ được Edunetwork tặng số lượt quay may mắn tương ứng với số thành viên đang quản lý. 
@@ -33,35 +31,29 @@ const gameRuleContent_vn = `###### **THỂ LỆ**
 
 ###### **QUY ĐỊNH**:
 *  Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
-*  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`
+*  Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó. Không chấp nhận việc sang nhượng hay chuyển đổi dưới mọi hình thức cho thành viên khác.`;
 
 const RuleGame = () => {
+  const [currentLanguage, setCurrentLanguage] = useState('');
 
-    const [currentLanguage, setCurrentLanguage] = useState('');
-
-    useEffect(() => {
-        let current_language = window.localStorage.getItem(CURRENT_LANG_KEY) || 'en';
-        setCurrentLanguage(current_language);
-    })
-    return (
-        <React.Fragment>
-            <Row>
-                <Col span={24}
-                    className="rule_content__container"
-                >
-                    {currentLanguage === 'en' ? (
-                        <MDReactComponent
-                            text={gameRuleContent_en}
-                        />
-                    ) : (
-                        <MDReactComponent
-                            text={gameRuleContent_vn}
-                        />
-                    )}
-                </Col>
-            </Row>
-        </React.Fragment>
-    );
+  useEffect(() => {
+    let current_language =
+      window.localStorage.getItem(CURRENT_LANG_KEY) || 'en';
+    setCurrentLanguage(current_language);
+  });
+  return (
+    <React.Fragment>
+      <Row>
+        <Col span={24} className="rule_content__container">
+          {currentLanguage === 'en' ? (
+            <MDReactComponent text={gameRuleContent_en} />
+          ) : (
+            <MDReactComponent text={gameRuleContent_vn} />
+          )}
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
 };
 
 export default RuleGame;
