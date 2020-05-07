@@ -1017,7 +1017,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(TermOfService);
+export default connect(null, mapDispatchToProps)(TermOfService);

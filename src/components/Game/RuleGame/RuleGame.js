@@ -1,7 +1,5 @@
-import React, {useState , useEffect } from 'react';
-import {
-    Layout, Row, Col
-} from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Layout, Row, Col } from 'antd';
 import MDReactComponent from 'markdown-react-js';
 import { CURRENT_LANG_KEY } from '../../../actions';
 import 'antd/dist/antd.css';
@@ -32,32 +30,26 @@ const gameRuleContent_vn = `###### **ĐIỀU KIỆN THAM GIA**
 * Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó.`
 
 const RuleGame = () => {
+  const [currentLanguage, setCurrentLanguage] = useState('');
 
-    const [currentLanguage, setCurrentLanguage] = useState('');
-
-    useEffect(() => {
-        let current_language = window.localStorage.getItem(CURRENT_LANG_KEY) || 'en';
-        setCurrentLanguage(current_language);
-    })
-    return (
-        <React.Fragment>
-            <Row>
-                <Col span={24}
-                    className="rule_content__container"
-                >
-                    {currentLanguage === 'en' ? (
-                        <MDReactComponent
-                            text={gameRuleContent_en}
-                        />
-                    ) : (
-                        <MDReactComponent
-                            text={gameRuleContent_vn}
-                        />
-                    )}
-                </Col>
-            </Row>
-        </React.Fragment>
-    );
+  useEffect(() => {
+    let current_language =
+      window.localStorage.getItem(CURRENT_LANG_KEY) || 'en';
+    setCurrentLanguage(current_language);
+  });
+  return (
+    <React.Fragment>
+      <Row>
+        <Col span={24} className="rule_content__container">
+          {currentLanguage === 'en' ? (
+            <MDReactComponent text={gameRuleContent_en} />
+          ) : (
+            <MDReactComponent text={gameRuleContent_vn} />
+          )}
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
 };
 
 export default RuleGame;
