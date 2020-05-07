@@ -6,31 +6,32 @@ import './PaymentSuccessful.scss';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
 import { bindActionCreators } from 'redux';
-import {updateOrderAction} from "../../actions/courses";
-import {connect} from "react-redux";
+import { updateOrderAction } from '../../actions/courses';
+import { connect } from 'react-redux';
 
 class PaymentSuccessful extends Component {
   state = {
-    status: "",
-    code: ""
+    status: '',
+    code: '',
   };
 
   componentDidMount() {
     this.setState({
       status: this.props.status,
-      code: this.props.code
+      code: this.props.code,
     });
-    this.props.actions.updateOrderAction({
-      status: "accept",
-      order_code: this.state.code
-    });
+    if (this.state.code){
+      this.props.actions.updateOrderAction({
+        status: 'accept',
+        order_code: this.state.code,
+      });
+    }
   }
 
   render() {
-
     return (
       <div className="PaymentSucessful">
-        {"aasdasd" === 'successful' ? (
+        {'aasdasd' === 'successful' ? (
           <Fragment>
             <div className="Title">
               {getTranslatedText('purchase_success')}
@@ -68,7 +69,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
-        updateOrderAction
+        updateOrderAction,
       },
       dispatch,
     ),
