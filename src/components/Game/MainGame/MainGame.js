@@ -94,11 +94,6 @@ const MainGame = () => {
     console.log(typeof key);
   };
 
-	const handleOnChangeTab = (key) => {
-		setActiveKey(key);
-		console.log(typeof(key));
-	}
-
 	return (
 		<React.Fragment>
 			<Layout
