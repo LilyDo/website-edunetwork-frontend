@@ -52,23 +52,25 @@ const MainGame = () => {
     }
   }, []);
 
-	useEffect(() => {
-		const current_user = JSON.parse(window.localStorage.getItem('current_user'));
-		// 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
-		if (current_user === null) {
-			setLoginVisible(true);
-			setButtonDisable(true);
-			setActiveKey('1');
-		} else {
-			if (current_user.roll_amount === 0) {
-				setButtonDisable(true);
-				alert(getTranslatedText('end_of_roll'));
-				setActiveKey('1');
-			};
-			setUserName(current_user.name);
-			setCodeName(current_user.code);
-		};
-	}, []);
+  useEffect(() => {
+    const current_user = JSON.parse(
+      window.localStorage.getItem('current_user'),
+    );
+    // 2. Vào trang game, check token người dùng, nếu không có thì hiện trang login. Login xong thì vào trang thể lệ game.
+    if (current_user === null) {
+      setLoginVisible(true);
+      setButtonDisable(true);
+      setActiveKey('1');
+    } else {
+      if (current_user.roll_amount === 0) {
+        setButtonDisable(true);
+        alert(getTranslatedText('end_of_roll'));
+        setActiveKey('1');
+      }
+      setUserName(current_user.name);
+      setCodeName(current_user.code);
+    }
+  }, []);
   useEffect(() => {
     switch (activeKey) {
       case '1':
@@ -94,117 +96,91 @@ const MainGame = () => {
     console.log(typeof key);
   };
 
-	return (
-		<React.Fragment>
-			<Layout
-				className="main_game__container"
-			>
-				<Header
-					className="header_container"
-				>
-					<Breadcrumb
-						className='header_container__breadcrumb'
-					>
-						<Link to={routes.home}>
-							<Breadcrumb.Item
-								className='header_container__breadcrumb_item'
-							>
-								HOME
-							</Breadcrumb.Item>
-						</Link>
-						<Breadcrumb.Item
-							className='header_container__breadcrumb_item'
-						>
-							MINIGAME
-						</Breadcrumb.Item>
-					</Breadcrumb>
-					<Row 
-					>
-						<Col span={6}>
-							{getTranslatedText('hello')}
-						</Col>
-						<Col
-							lg={14}
-							sm={14}
-							xs={14}
-							className='header_container__userName'
-						>
-							{userName}
-						</Col>
-						<Col span={4}>
-							({codeName})
-						</Col>
-					</Row>
-				</Header>
-				<Content
-					className="content_container"
-				>
-					<Tabs
-						className="tab_container"
-						size='small'
-						activeKey={activeKey}
-						onChange={(key) => handleOnChangeTab(key)}
-					>
-						<TabPane
-							className="tabPanel__container"
-							tab={
-								<TabButton
-									className={activeKey1}
-								>
-									<Typography.Text
-										className="tabPanel__button_label"
-									>
-										{getTranslatedText('rule_game')}
-									</Typography.Text>
-								</TabButton>
-							}
-							key="1"
-						>
-							<RuleGame />
-						</TabPane>
-						<TabPane
-							className="tabPanel__container"
-							tab={
-								<TabButton
-									className={activeKey2}
-									disabled={buttonDisable}
-								>
-									<Typography.Text
-										className="tabPanel__button_label"
-									>
-										{getTranslatedText('play_game')}
-									</Typography.Text>
-								</TabButton>
-							} 
-							key="2">
-								<Game />
-						</TabPane>
-						<TabPane
-							className="tabPanel__container"
-							tab={
-								<TabButton
-									className={activeKey3}
-								>
-									<Typography.Text
-										className="tabPanel__button_label"
-									>
-										{getTranslatedText('rank_game')}
-									</Typography.Text>
-								</TabButton>
-							}
-							key="3"
-						>
-							<RankList />
-						</TabPane>
-					</Tabs>
-				</Content>
-				<LoginGame
-					loginVisible={loginVisible}
-					setLoginVisible={setLoginVisible}
-				/>
-			</Layout>
-		</React.Fragment>
-	);
+  return (
+    <React.Fragment>
+      <Layout className="main_game__container">
+        <Header className="header_container">
+          <Breadcrumb className="header_container__breadcrumb">
+            <Link to={routes.home}>
+              <Breadcrumb.Item className="header_container__breadcrumb_item">
+                HOME
+              </Breadcrumb.Item>
+            </Link>
+            <Breadcrumb.Item className="header_container__breadcrumb_item">
+              MINIGAME
+            </Breadcrumb.Item>
+          </Breadcrumb>
+          <Row>
+            <Col span={6}>{getTranslatedText('hello')}</Col>
+            <Col
+              lg={14}
+              sm={14}
+              xs={14}
+              className="header_container__userName"
+            >
+              {userName}
+            </Col>
+            <Col span={4}>({codeName})</Col>
+          </Row>
+        </Header>
+        <Content className="content_container">
+          <Tabs
+            className="tab_container"
+            size="small"
+            activeKey={activeKey}
+            onChange={key => handleOnChangeTab(key)}
+          >
+            <TabPane
+              className="tabPanel__container"
+              tab={
+                <TabButton className={activeKey1}>
+                  <Typography.Text className="tabPanel__button_label">
+                    {getTranslatedText('rule_game')}
+                  </Typography.Text>
+                </TabButton>
+              }
+              key="1"
+            >
+              <RuleGame />
+            </TabPane>
+            <TabPane
+              className="tabPanel__container"
+              tab={
+                <TabButton
+                  className={activeKey2}
+                  disabled={buttonDisable}
+                >
+                  <Typography.Text className="tabPanel__button_label">
+                    {getTranslatedText('play_game')}
+                  </Typography.Text>
+                </TabButton>
+              }
+              key="2"
+            >
+              <Game />
+            </TabPane>
+            <TabPane
+              className="tabPanel__container"
+              tab={
+                <TabButton className={activeKey3}>
+                  <Typography.Text className="tabPanel__button_label">
+                    {getTranslatedText('rank_game')}
+                  </Typography.Text>
+                </TabButton>
+              }
+              key="3"
+            >
+              <RankList />
+            </TabPane>
+          </Tabs>
+        </Content>
+        <LoginGame
+          loginVisible={loginVisible}
+          setLoginVisible={setLoginVisible}
+        />
+      </Layout>
+    </React.Fragment>
+  );
 };
 
 export default MainGame;

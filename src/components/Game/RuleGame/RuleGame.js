@@ -15,7 +15,7 @@ const gameRuleContent_en = `###### **CONDITIONS OF PARTICIPATION**
 
 ###### **REGULATIONS**
 *  Members are not allowed to use the software to disrupt and adjust the results of the Lucky Draw. If violating this regulation and discovered, members will be permanently locked account at EduNetwork.
-*  The amount of member drawn will be deposited directly into that member's wallet account.`
+*  The amount of member drawn will be deposited directly into that member's wallet account.`;
 
 const gameRuleContent_vn = `###### **ĐIỀU KIỆN THAM GIA**
 *  Là thành viên của EduNetwork và không vi phạm bất kỳ quy định nào trên EduNetwork.
@@ -27,7 +27,7 @@ const gameRuleContent_vn = `###### **ĐIỀU KIỆN THAM GIA**
 
 ###### **QUY ĐỊNH**
 * Thành viên không được sử dụng phần mềm để gây rối, điều chỉnh kết quả của Vòng quay may mắn. Nếu vi phạm quy định này và bị phát hiện, thành viên sẽ bị khóa tài khoản vĩnh viễn tại EduNetwork.
-* Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó.`
+* Số tiền thành viên đã quay trúng thưởng sẽ được nạp trực tiếp vào tài khoản Ví của thành viên đó.`;
 
 const RuleGame = () => {
   const [currentLanguage, setCurrentLanguage] = useState('');

@@ -6,22 +6,32 @@ import './PaymentSuccessful.scss';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
 import { bindActionCreators } from 'redux';
-import {updateOrderAction} from "../../actions/courses";
-import {connect} from "react-redux";
+import { updateOrderAction } from '../../actions/courses';
+import { connect } from 'react-redux';
 
 class PaymentSuccessful extends Component {
+  state = {
+    status: '',
+    code: '',
+  };
 
-  render() {
-    const { status = 'successful', code = ""  } = get(this, 'props.match.params');
-    if (code){
+  componentDidMount() {
+    this.setState({
+      status: this.props.status,
+      code: this.props.code,
+    });
+    if (this.state.code){
       this.props.actions.updateOrderAction({
-        status: "accept",
-        order_code: code
+        status: 'accept',
+        order_code: this.state.code,
       });
     }
+  }
+
+  render() {
     return (
       <div className="PaymentSucessful">
-        {status === 'successful' ? (
+        {'aasdasd' === 'successful' ? (
           <Fragment>
             <div className="Title">
               {getTranslatedText('purchase_success')}
@@ -52,16 +62,14 @@ class PaymentSuccessful extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    dashboard: get(state, 'dashboard', {}),
-  };
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     actions: bindActionCreators(
       {
-        updateOrderAction
+        updateOrderAction,
       },
       dispatch,
     ),
