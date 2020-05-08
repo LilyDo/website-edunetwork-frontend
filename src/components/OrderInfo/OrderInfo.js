@@ -50,12 +50,12 @@ class OrderInfo extends Component {
   renderButtons = (
     <Row gutter={16}>
       <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={this.onTransferClick}>
+        <button className="pay_button" onClick={() => this.onTransferClick()}>
           {getTranslatedText('transfer_money')}
         </button>
       </Col>
       <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={this.onPaypalClick}>
+        <button className="pay_button" onClick={() => this.onPaypalClick()}>
           {getTranslatedText('paypal')}
         </button>
       </Col>
@@ -66,10 +66,17 @@ class OrderInfo extends Component {
 
   onTransferClick = () => {
     // Xử lý cho onclick transfer ở đây
+    this.props.actions.buyCourseAction(
+      this.props.courseDetail.id
+    );
   }
 
   onPaypalClick = () => {
     // Xử lý cho onclick paypal ở đây
+    this.props.actions.buyCourseAction(
+      this.props.courseDetail.id,
+      "online-banking"
+    );
   }
 
   render() {
