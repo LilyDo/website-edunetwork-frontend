@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  Popover, Row, Col,
+} from 'antd';
+import 'antd/dist/antd.css';
 import { get } from 'lodash';
 
 import './CourseLevel.scss';
@@ -14,6 +18,7 @@ import {
 import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
+
   onPayClick = () => {
     const url = getUserFormLocal()
       ? routes.courseOrder.replace(':id', this.props.courseDetail.id)
@@ -53,9 +58,9 @@ class CourseLevel extends Component {
             </div>
             <div className="PayNow">
               {!isCourseBought && (
-                <div className="PayButton" onClick={this.onPayClick}>
-                  {getTranslatedText('purchase_now')}
-                </div>
+                  <div className="PayButton" onClick={this.onPayClick}>
+                    {getTranslatedText('purchase_now')}
+                  </div>
               )}
               <div className="Include">
                 {getTranslatedText('course_include')}:
