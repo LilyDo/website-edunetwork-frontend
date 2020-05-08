@@ -184,3 +184,20 @@ $mobilePaddingLine: 0 0 7px 0;
     }
   }
 }
+
+.pay_button {
+  color: white;
+  background-color: #d59e29;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 20vw;
+  font-weight: bold;
+  align-self: center;
+  @media only screen and (min-width: 414px) {
+    width: 200px;
+  }
+}

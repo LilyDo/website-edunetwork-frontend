@@ -455,6 +455,14 @@ export const translatedText = {
     en: 'ORDER',
     vi: 'ĐẶT HÀNG',
   },
+  transfer_money: {
+    en: 'TRANSFER TO BANK',
+    vi: 'CHUYỂN KHOẢN'
+  },
+  paypal: {
+    en: 'PAYPAL',
+    vi: 'PAYPAL'
+  },
   your_order_info: {
     en: 'YOUR ORDER INFORMATION',
     vi: 'THÔNG TIN ĐẶT HÀNG CỦA BẠN',
