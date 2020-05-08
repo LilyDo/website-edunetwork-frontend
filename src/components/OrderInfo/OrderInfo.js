@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  Popover, Row, Col,
+} from 'antd';
+import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators, compose } from 'redux';
@@ -41,6 +45,32 @@ class OrderInfo extends Component {
         shouldDeposit ? shouldDepositAmount : 0,
       );
   };
+
+  // Popup button purchase
+  renderButtons = (
+    <Row gutter={16}>
+      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+        <button className="pay_button" onClick={this.onTransferClick}>
+          {getTranslatedText('transfer_money')}
+        </button>
+      </Col>
+      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+        <button className="pay_button" onClick={this.onPaypalClick}>
+          {getTranslatedText('paypal')}
+        </button>
+      </Col>
+    </Row>
+  );
+  // End
+
+
+  onTransferClick = () => {
+    // Xử lý cho onclick transfer ở đây
+  }
+
+  onPaypalClick = () => {
+    // Xử lý cho onclick paypal ở đây
+  }
 
   render() {
     const { courseDetail, profile } = this.props;
@@ -137,16 +167,32 @@ class OrderInfo extends Component {
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              <div
-                className="CTAButton"
-                onClick={() =>
-                  this.pay(shouldDeposit, shouldDepositAmount)
-                }
-              >
-                {shouldDeposit
-                  ? getTranslatedText('deposit_now')
-                  : getTranslatedText('purchase_now')}
-              </div>
+              {shouldDeposit ? (
+                <Popover
+                  placement='bottom'
+                  content={this.renderButtons}
+                  trigger='click'
+                >
+                <div
+                  className="CTAButton"
+                  // Atemp lock this onClick to debug
+                  // onClick={() =>
+                  //   this.pay(shouldDeposit, shouldDepositAmount)
+                  // }
+                >
+                    {getTranslatedText('deposit_now')}
+                  </div>
+                </Popover>
+              ) : (
+                <div
+                  className="CTAButton"
+                  onClick={() =>
+                    this.pay(shouldDeposit, shouldDepositAmount)
+                  }
+                >
+                  {getTranslatedText('purchase_now')}
+                </div>
+              )}
             </div>
           </div>
         </div>

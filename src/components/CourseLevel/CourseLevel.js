@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Popover, Row, Col, Transfer,
+  Popover, Row, Col,
 } from 'antd';
 import 'antd/dist/antd.css';
 import { get } from 'lodash';
@@ -18,30 +18,6 @@ import {
 import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
-  
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     popoverDisable: true,
-  //   }
-  // }
-
-  // Popup button purchase
-  renderButtons = (
-    <Row gutter={16}>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={this.onTransferClick}>
-          {getTranslatedText('transfer_money')}
-        </button>
-      </Col>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={this.onPaypalClick}>
-          {getTranslatedText('paypal')}
-        </button>
-      </Col>
-    </Row>
-  );
-  // End
 
   onPayClick = () => {
     const url = getUserFormLocal()
@@ -49,14 +25,6 @@ class CourseLevel extends Component {
       : routes.signin;
     window.location.pathname = url;
   };
-
-  onTransferClick = () => {
-    // Xử lý cho onclick transfer ở đây
-  }
-
-  onPaypalClick = () => {
-    // Xử lý cho onclick paypal ở đây
-  }
 
   render() {
     const { courseDetail, userCourses } = this.props;
@@ -90,15 +58,9 @@ class CourseLevel extends Component {
             </div>
             <div className="PayNow">
               {!isCourseBought && (
-                <Popover
-                  placement='bottom'
-                  content={this.renderButtons}
-                  trigger='click'
-                >
-                  <div className="PayButton">
+                  <div className="PayButton" onClick={this.onPayClick}>
                     {getTranslatedText('purchase_now')}
                   </div>
-                </Popover>
               )}
               <div className="Include">
                 {getTranslatedText('course_include')}:
