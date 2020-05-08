@@ -457,11 +457,11 @@ export const translatedText = {
   },
   transfer_money: {
     en: 'TRANSFER TO BANK',
-    vi: 'CHUYỂN KHOẢN'
+    vi: 'CHUYỂN KHOẢN',
   },
   paypal: {
     en: 'PAYPAL',
-    vi: 'PAYPAL'
+    vi: 'PAYPAL',
   },
   your_order_info: {
     en: 'YOUR ORDER INFORMATION',
