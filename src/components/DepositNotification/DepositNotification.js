@@ -31,9 +31,9 @@ class DepositNotification extends Component {
 
     this.props.actions.getOrderDetailByCode(code);
     this.props.actions.updateOrderAction({
-      status: "waiting",
+      status: 'waiting',
       order_code: code,
-      method: "traditional"
+      method: 'traditional',
     });
   }
 
@@ -183,7 +183,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getOrderDetailByCode,
-        updateOrderAction
+        updateOrderAction,
       },
       dispatch,
     ),
