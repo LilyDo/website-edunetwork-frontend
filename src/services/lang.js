@@ -459,9 +459,25 @@ export const translatedText = {
     en: 'TRANSFER TO BANK',
     vi: 'CHUYỂN KHOẢN',
   },
-  paypal: {
-    en: 'PAYPAL',
-    vi: 'PAYPAL',
+  visa: {
+    en: 'VISA',
+    vi: 'VISA',
+  },
+  card_number: {
+    en: 'Card number',
+    vi: 'Mã số thẻ'
+  },
+  exprie_date: {
+    en: 'Expiry date Month/Year',
+    vi: 'Ngày hết hạn'
+  },
+  security_code: {
+    en: 'Security code',
+    vi: 'Mã bảo vệ'
+  },
+  name_account_holder: {
+    en: 'Name of account holder',
+    vi: 'Tên chủ tài khoản'
   },
   your_order_info: {
     en: 'YOUR ORDER INFORMATION',
