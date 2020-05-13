@@ -34,6 +34,12 @@ class MyWallet_Withdraw extends Component {
       this.setState({
         currentUser: getUserFormLocal(),
       });
+
+      this.setState({
+        bankAccount: this.state.currentUser.bank_account,
+        bankName: this.state.currentUser.bank_name,
+        fullName: this.state.currentUser.bank_full_name,
+      })
     }
   }
 
@@ -112,6 +118,7 @@ class MyWallet_Withdraw extends Component {
                   placeholder={getTranslatedText('your_bank_name')}
                   value={bankName}
                   onChange={this.handleChange('bankName')}
+                  disabled={this.state.currentUser.bank_name}
                 />
               </div>
               {/* <div className="BankBranch">
@@ -129,6 +136,7 @@ class MyWallet_Withdraw extends Component {
                   placeholder={getTranslatedText('your_bank_number')}
                   value={bankAccount}
                   onChange={this.handleChange('bankAccount')}
+                  disabled={this.state.currentUser.bank_account}
                 />
               </div>
               <div className="BankAddress">
@@ -156,6 +164,7 @@ class MyWallet_Withdraw extends Component {
                   placeholder={getTranslatedText('full_name')}
                   value={fullName}
                   onChange={this.handleChange('fullName')}
+                  disabled={this.state.currentUser.bank_full_name}
                 />
               </div>
               <div className="WithdrawAmount">

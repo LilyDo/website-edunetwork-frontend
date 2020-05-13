@@ -465,19 +465,19 @@ export const translatedText = {
   },
   card_number: {
     en: 'Card number',
-    vi: 'Mã số thẻ'
+    vi: 'Mã số thẻ',
   },
   exprie_date: {
     en: 'Expiry date Month/Year',
-    vi: 'Ngày hết hạn'
+    vi: 'Ngày hết hạn',
   },
   security_code: {
     en: 'Security code',
-    vi: 'Mã bảo vệ'
+    vi: 'Mã bảo vệ',
   },
   name_account_holder: {
     en: 'Name of account holder',
-    vi: 'Tên chủ tài khoản'
+    vi: 'Tên chủ tài khoản',
   },
   your_order_info: {
     en: 'YOUR ORDER INFORMATION',
