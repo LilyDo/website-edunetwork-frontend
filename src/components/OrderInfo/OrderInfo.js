@@ -32,6 +32,8 @@ import {
 import * as types from '../../actions/index';
 import { getProfileAction } from '../../actions/profile';
 
+import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
+
 class OrderInfo extends Component {
 
   state = {
@@ -69,70 +71,70 @@ class OrderInfo extends Component {
     });
   };
 
-  onChangeRadio = e => {
-    console.log('radio checked', e.target.value);
-    this.setState({
-      radioValue: e.target.value,
-    });
-    if (this.state.radioValue === 'paypal') {
-      this.setState({
-        inputDisable: true
-      });
-    } else {
-      this.setState({
-        inputDisable: false
-      });
-    }
-  }
+  // onChangeRadio = e => {
+  //   console.log('radio checked', e.target.value);
+  //   this.setState({
+  //     radioValue: e.target.value,
+  //   });
+  //   if (this.state.radioValue === 'paypal') {
+  //     this.setState({
+  //       inputDisable: true
+  //     });
+  //   } else {
+  //     this.setState({
+  //       inputDisable: false
+  //     });
+  //   }
+  // }
 
   // This function render form for visa infomation
-  renderFormVisa = (
-    <>
-    <Radio.Group onChange={this.onChangeRadio} value={this.state.radioValue}>
-      <Row gutter={16}>
-        <Form
-          onFinish={(values) => this.handOnFinish(values)}
-        >
-        <Col span={24}>
-          <Radio value='master_card'><img src={require('../../assets/images/master_card_icon.png')} /></Radio>
-            <Form.Item
-              label={getTranslatedText('card_number')}
-              name='cardNumber'
-            >
-              <Input disabled={this.state.inputDisable} />
-            </Form.Item>
-            <Form.Item
-              label={getTranslatedText('exprie_date')}
-              name='expiryDate'
-            >
-              <DatePicker disabled={this.state.inputDisable} picker='month' />
-            </Form.Item>
-            <Form.Item
-              label={getTranslatedText('security_code')}
-              name='securityCode'
-            >
-              <InputNumber disabled={this.state.inputDisable} />
-            </Form.Item>
-            <Form.Item
-              label={getTranslatedText('name_account_holder')}
-              name='nameAccountHolder'
-            >
-              <Input disabled={this.state.inputDisable} />
-            </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Radio value='paypal'><img src={require('../../assets/images/paypal_icon.png')} /></Radio>
-        </Col>
-        <Col span={24}>
-          <Form.Item>
-            <Button style={{ backgroundColor: 'green', borderRadius: '5px', marginTop: '8px'}} htmlType='submit'>Pay</Button>
-          </Form.Item>
-        </Col>
-        </Form>
-      </Row>
-    </Radio.Group>
-    </>
-  );
+  // renderFormVisa = (
+  //   <>
+  //   <Radio.Group onChange={this.onChangeRadio} value={this.state.radioValue}>
+  //     <Row gutter={16}>
+  //       <Form
+  //         onFinish={(values) => this.handOnFinish(values)}
+  //       >
+  //       <Col span={24}>
+  //         <Radio value='master_card'><img src={require('../../assets/images/master_card_icon.png')} /></Radio>
+  //           <Form.Item
+  //             label={getTranslatedText('card_number')}
+  //             name='cardNumber'
+  //           >
+  //             <Input disabled={this.state.inputDisable} />
+  //           </Form.Item>
+  //           <Form.Item
+  //             label={getTranslatedText('exprie_date')}
+  //             name='expiryDate'
+  //           >
+  //             <DatePicker disabled={this.state.inputDisable} picker='month' />
+  //           </Form.Item>
+  //           <Form.Item
+  //             label={getTranslatedText('security_code')}
+  //             name='securityCode'
+  //           >
+  //             <InputNumber disabled={this.state.inputDisable} />
+  //           </Form.Item>
+  //           <Form.Item
+  //             label={getTranslatedText('name_account_holder')}
+  //             name='nameAccountHolder'
+  //           >
+  //             <Input disabled={this.state.inputDisable} />
+  //           </Form.Item>
+  //       </Col>
+  //       <Col span={24}>
+  //         <Radio value='paypal'><img src={require('../../assets/images/paypal_icon.png')} /></Radio>
+  //       </Col>
+  //       <Col span={24}>
+  //         <Form.Item>
+  //           <Button style={{ backgroundColor: 'green', borderRadius: '5px', marginTop: '8px'}} htmlType='submit'>Pay</Button>
+  //         </Form.Item>
+  //       </Col>
+  //       </Form>
+  //     </Row>
+  //   </Radio.Group>
+  //   </>
+  // );
 
   // Popup button purchase
   renderButtons = (
@@ -145,7 +147,7 @@ class OrderInfo extends Component {
       <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
         <Popover
           placement='top'
-          content={this.renderFormVisa}
+          content={<VisaPaymentComponent />}
           trigger='click'
         >
             <button className="pay_button" onClick={this.onPaypalClick}>
