@@ -34,6 +34,32 @@ import { getProfileAction } from '../../actions/profile';
 
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
 
+class RenderButtons extends React.Component {
+  
+  render() {
+    return (
+  <Row gutter={16}>
+    <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+      <button className="pay_button" onClick={() => this.onTransferClick()}>
+        {getTranslatedText('transfer_money')}
+      </button>
+    </Col>
+    <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+      <Popover
+        placement='top'
+        content={<VisaPaymentComponent course_detail={this.props.courseDetail} />}
+        trigger='click'
+      >
+          <button className="pay_button" onClick={this.onPaypalClick}>
+            {getTranslatedText('visa')}
+          </button>
+      </Popover>
+    </Col>
+  </Row>
+  )
+  }
+};
+
 class OrderInfo extends Component {
 
   state = {
@@ -137,26 +163,26 @@ class OrderInfo extends Component {
   // );
 
   // Popup button purchase
-  renderButtons = (
-    <Row gutter={16}>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={() => this.onTransferClick()}>
-          {getTranslatedText('transfer_money')}
-        </button>
-      </Col>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <Popover
-          placement='top'
-          content={<VisaPaymentComponent course_detail={this.props.courseDetail} />}
-          trigger='click'
-        >
-            <button className="pay_button" onClick={this.onPaypalClick}>
-              {getTranslatedText('visa')}
-            </button>
-        </Popover>
-      </Col>
-    </Row>
-  );
+  // renderButtons = (
+  //   <Row gutter={16}>
+  //     <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+  //       <button className="pay_button" onClick={() => this.onTransferClick()}>
+  //         {getTranslatedText('transfer_money')}
+  //       </button>
+  //     </Col>
+  //     <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
+  //       <Popover
+  //         placement='top'
+  //         content={<VisaPaymentComponent course_detail={this.props.courseDetail} />}
+  //         trigger='click'
+  //       >
+  //           <button className="pay_button" onClick={this.onPaypalClick}>
+  //             {getTranslatedText('visa')}
+  //           </button>
+  //       </Popover>
+  //     </Col>
+  //   </Row>
+  // );
   // End
 
 
@@ -273,9 +299,8 @@ class OrderInfo extends Component {
               {shouldDeposit ? (
                 <Popover
                   placement='bottom'
-                  content={this.renderButtons}
+                  content={<RenderButtons courseDetail={this.props.courseDetail} />}
                   trigger='click'
-                  course_detail={this.props.courseDetail}
                 >
                 <div
                   className="CTAButton"

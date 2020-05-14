@@ -24,6 +24,7 @@ class VisaPaymentComponent extends React.Component {
   };
 
   async componentDidMount() {
+    console.log(this.props);
     // Get a client token for authorization from your server
     const response = await fetch(BASE_URL + "/users/get-braintree-token?token=" + localStorage.getItem("token"));
     // console.log(await response.json());
