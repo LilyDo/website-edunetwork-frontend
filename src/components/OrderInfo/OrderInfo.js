@@ -47,7 +47,7 @@ class RenderButtons extends React.Component {
     <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
       <Popover
         placement='top'
-        content={<VisaPaymentComponent course_detail={this.props.courseDetail} />}
+        content={<VisaPaymentComponent price={this.props.courseDetail.price} />}
         trigger='click'
       >
           <button className="pay_button" onClick={this.onPaypalClick}>

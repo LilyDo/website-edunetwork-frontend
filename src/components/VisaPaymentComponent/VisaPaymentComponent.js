@@ -14,6 +14,7 @@ import DropIn from "braintree-web-drop-in-react";
 
 import { getTranslatedText } from '../../services/appService';
 import {BASE_URL} from "../../actions";
+import {toast} from "react-toastify";
 
 class VisaPaymentComponent extends React.Component {
   instance;
@@ -39,9 +40,29 @@ class VisaPaymentComponent extends React.Component {
   async buy() {
     // Send the nonce to your server
     const { nonce } = await this.instance.requestPaymentMethod();
-    console.log(this.props);
-    console.log(nonce); return;
-    await fetch(`server.test/purchase/${nonce}`);
+    const { price } = this.props;
+    const response = await fetch(BASE_URL + "/users/buy-course-by-braintree", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        methodNonce: nonce,
+        price: price,
+        token: localStorage.getItem("token")
+      })
+    });
+
+    const result = response.json();
+    if (result.statusCode === 200){
+      toast.success("Transaction is create!");
+      // redirect to any page
+    }
+    else{
+      toast.error(result.errors.join(", "));
+      // do something
+    }
   }
 
   render() {
