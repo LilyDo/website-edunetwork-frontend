@@ -13,35 +13,34 @@ import 'antd/dist/antd.css';
 import DropIn from "braintree-web-drop-in-react";
 
 import { getTranslatedText } from '../../services/appService';
+import {BASE_URL} from "../../actions";
 
 class VisaPaymentComponent extends React.Component {
-
   instance;
 
   state = {
-    radioValue: 'master_card',
+    // radioValue: 'master_card',
     clientToken: null,
   };
 
   async componentDidMount() {
     // Get a client token for authorization from your server
-    const response = await fetch("server.test/client_token");
+    const response = await fetch(BASE_URL + "/users/get-braintree-token?token=" + localStorage.getItem("token"));
+    // console.log(await response.json());
     const clientToken = await response.json(); // If returned as JSON string
+    // console.log(clientToken);
  
-    this.setState({
-      clientToken,
+    await this.setState({
+      clientToken: clientToken.data.token
     });
   }
 
   async buy() {
     // Send the nonce to your server
     const { nonce } = await this.instance.requestPaymentMethod();
+    console.log(this.props);
+    console.log(nonce); return;
     await fetch(`server.test/purchase/${nonce}`);
-  }
-  onChangeRadio = e => {
-    this.setState({
-      radioValue: e.target.value,
-    });
   }
 
   render() {
@@ -50,17 +49,13 @@ class VisaPaymentComponent extends React.Component {
       <Radio.Group onChange={this.onChangeRadio} value={this.state.radioValue}>
       <Row gutter={16}>
         <Col span={24}>
-          <Radio value='master_card'><img src={require('../../assets/images/master_card_icon.png')} /></Radio>
-        </Col>
-        <Col span={24}>
-          <DropIn
-            options={{ authorization: this.state.clientToken }}
-            onInstance={(instance) => (this.instance = instance)}
-          />
+          {this.state.clientToken && (
+            <DropIn
+              options={{ authorization: this.state.clientToken }}
+              onInstance={(instance) => (this.instance = instance)}
+            />
+          )}
           <button onClick={this.buy.bind(this)}>Buy</button>
-        </Col>
-        <Col span={24}>
-          <Radio value='paypal'><img src={require('../../assets/images/paypal_icon.png')} /></Radio>
         </Col>
       </Row>
     </Radio.Group>

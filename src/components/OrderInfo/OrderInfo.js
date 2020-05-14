@@ -147,7 +147,7 @@ class OrderInfo extends Component {
       <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
         <Popover
           placement='top'
-          content={<VisaPaymentComponent />}
+          content={<VisaPaymentComponent course_detail={this.props.courseDetail} />}
           trigger='click'
         >
             <button className="pay_button" onClick={this.onPaypalClick}>
@@ -275,6 +275,7 @@ class OrderInfo extends Component {
                   placement='bottom'
                   content={this.renderButtons}
                   trigger='click'
+                  course_detail={this.props.courseDetail}
                 >
                 <div
                   className="CTAButton"
