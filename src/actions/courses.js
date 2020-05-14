@@ -166,7 +166,7 @@ const getUserCourseDetailFailure = error => ({
  * | BUY COURSE |
  * +------------+
  */
-export const buyCourseAction = (courseId, method = "traditional") => {
+export const buyCourseAction = (courseId, method = 'traditional') => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
 
@@ -176,9 +176,7 @@ export const buyCourseAction = (courseId, method = "traditional") => {
         `${BASE_URL}/users/buying-course?course_id=${courseId}&method=${method}&token=${token}`,
       )
       .then(response => {
-        dispatch(
-          buyCourseSuccess(response.data),
-        );
+        dispatch(buyCourseSuccess(response.data));
       })
       .catch(error => dispatch(buyCourseFailure(error.message)));
   };
@@ -189,7 +187,7 @@ const buyCourseRequest = courseId => ({
   payload: { course_id: courseId },
 });
 
-const buyCourseSuccess = (response) => ({
+const buyCourseSuccess = response => ({
   type: BUY_COURSE_SUCCESS,
   payload: { ...response },
 });

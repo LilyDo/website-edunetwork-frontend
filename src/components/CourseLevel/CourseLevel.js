@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Popover, Row, Col,
-} from 'antd';
-import 'antd/dist/antd.css';
 import { get } from 'lodash';
 
 import './CourseLevel.scss';
