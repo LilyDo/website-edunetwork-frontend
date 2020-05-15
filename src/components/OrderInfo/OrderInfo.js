@@ -58,7 +58,7 @@ class OrderInfo extends Component {
     window.confirm('Are you sure you want to buy this course?') &&
       this.props.actions.buyCourseAction(
         this.props.courseDetail.id,
-        shouldDeposit ? shouldDepositAmount : 0,
+        "traditional",
       );
   };
 
@@ -171,10 +171,10 @@ class OrderInfo extends Component {
 
   onPaypalClick = () => {
     // Xử lý cho onclick paypal ở đây
-    this.props.actions.buyCourseAction(
-      this.props.courseDetail.id,
-      "online-banking"
-    );
+    // this.props.actions.buyCourseAction(
+    //   this.props.courseDetail.id,
+    //   "online-banking"
+    // );
   }
 
   render() {
@@ -272,7 +272,7 @@ class OrderInfo extends Component {
                   <div className="Currency">usd</div>
                 </div>
               </div>
-              {!shouldDeposit ? (
+              {shouldDeposit ? (
                 <Popover
                   placement='bottom'
                   // content={<RenderButtons courseDetail={this.props.courseDetail} />}
