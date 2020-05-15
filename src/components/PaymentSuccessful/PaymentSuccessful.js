@@ -20,7 +20,7 @@ class PaymentSuccessful extends Component {
       status: this.props.status,
       code: this.props.code,
     });
-    if (this.state.code){
+    if (this.state.code) {
       this.props.actions.updateOrderAction({
         status: 'accept',
         order_code: this.state.code,
@@ -31,7 +31,7 @@ class PaymentSuccessful extends Component {
   render() {
     return (
       <div className="PaymentSucessful">
-        {'aasdasd' === 'successful' ? (
+        {this.state.status === 'successful' ? (
           <Fragment>
             <div className="Title">
               {getTranslatedText('purchase_success')}
