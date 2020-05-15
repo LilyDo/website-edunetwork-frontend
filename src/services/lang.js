@@ -859,4 +859,16 @@ export const translatedText = {
     en: 'Update',
     vi: 'Cập nhật',
   },
+  withdraw_type: {
+    en: "Withdraw Type",
+    vi: "Hình thức chuyển khoản"
+  },
+  paypal_name: {
+    en: "PayPal Name",
+    vi: "Tên tài khoản PayPal"
+  },
+  paypal_email: {
+    en: "PayPal Email",
+    vi: "Email tài khoản PayPal"
+  },
 };
