@@ -27,9 +27,9 @@ class MyWallet_Withdraw extends Component {
     swiftCode: '',
     fullName: '',
     amount: '',
-    type: "traditional",
-    paypal_email: "",
-    paypal_name: ""
+    type: 'traditional',
+    paypal_email: '',
+    paypal_name: '',
   };
 
   checkCurrentUser() {
@@ -42,7 +42,9 @@ class MyWallet_Withdraw extends Component {
         bankAccount: this.state.currentUser.bank_account,
         bankName: this.state.currentUser.bank_name,
         fullName: this.state.currentUser.bank_full_name,
-      })
+        paypal_email: this.state.currentUser.paypal_email,
+        paypal_name: this.state.currentUser.paypal_name,
+      });
     }
   }
 
@@ -105,7 +107,7 @@ class MyWallet_Withdraw extends Component {
       amount,
       paypal_email,
       paypal_name,
-      type
+      type,
     } = this.state;
 
     return (
@@ -123,12 +125,16 @@ class MyWallet_Withdraw extends Component {
               <div>{getTranslatedText('fill_to_withdraw')}</div>
               <div className="BankName">
                 <div>{getTranslatedText('withdraw_type')}</div>
-                <select onChange={row => this.setState({type: row.target.value})}>
+                <select
+                  onChange={row =>
+                    this.setState({ type: row.target.value })
+                  }
+                >
                   <option value="traditional">Bank</option>
                   <option value="online-banking">Paypal</option>
                 </select>
               </div>
-              {(type === "online-banking")? (
+              {type === 'online-banking' ? (
                 <>
                   <div className="PaypalEmail">
                     <div>{getTranslatedText('paypal_email')}</div>
@@ -156,7 +162,9 @@ class MyWallet_Withdraw extends Component {
                   <div className="BankName">
                     <div>{getTranslatedText('bank_name')}</div>
                     <input
-                      placeholder={getTranslatedText('your_bank_name')}
+                      placeholder={getTranslatedText(
+                        'your_bank_name',
+                      )}
                       value={bankName}
                       onChange={this.handleChange('bankName')}
                       disabled={this.state.currentUser.bank_name}
@@ -174,7 +182,9 @@ class MyWallet_Withdraw extends Component {
                     <div>{getTranslatedText('bank_number')}</div>
                     <input
                       type="text"
-                      placeholder={getTranslatedText('your_bank_number')}
+                      placeholder={getTranslatedText(
+                        'your_bank_number',
+                      )}
                       value={bankAccount}
                       onChange={this.handleChange('bankAccount')}
                       disabled={this.state.currentUser.bank_account}
@@ -184,7 +194,9 @@ class MyWallet_Withdraw extends Component {
                     <div>{getTranslatedText('bank_address')}</div>
                     <input
                       type="text"
-                      placeholder={getTranslatedText('your_bank_address')}
+                      placeholder={getTranslatedText(
+                        'your_bank_address',
+                      )}
                       value={bankAddress}
                       onChange={this.handleChange('bankAddress')}
                     />
@@ -193,7 +205,9 @@ class MyWallet_Withdraw extends Component {
                     <div>{getTranslatedText('swift_code')}</div>
                     <input
                       type="text"
-                      placeholder={getTranslatedText('your_swift_code')}
+                      placeholder={getTranslatedText(
+                        'your_swift_code',
+                      )}
                       value={swiftCode}
                       onChange={this.handleChange('swiftCode')}
                     />
