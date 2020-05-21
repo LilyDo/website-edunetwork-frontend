@@ -326,11 +326,11 @@ export const translatedText = {
     vi: 'Số tài khoản ngân hàng của bạn là gì',
   },
   bank_address: {
-    en: 'Address of Beneficiary Bank',
+    en: 'Recipient Address',
     vi: 'Địa chỉ ngân hàng thụ hưởng',
   },
   your_bank_address: {
-    en: 'What is your address of beneficiary bank',
+    en: 'What is your address of recipient',
     vi: 'Địa chỉ ngân hàng thụ hưởng của bạn là gì',
   },
   swift_code: {
@@ -554,10 +554,6 @@ export const translatedText = {
   respectfully: {
     en: 'Respectfully',
     vi: 'Trân trọng',
-  },
-  hello: {
-    en: 'Hello',
-    vi: 'Xin chào',
   },
   my_course: {
     en: 'My Course',
@@ -860,15 +856,15 @@ export const translatedText = {
     vi: 'Cập nhật',
   },
   withdraw_type: {
-    en: "Withdraw Type",
-    vi: "Hình thức chuyển khoản"
+    en: 'Withdraw Type',
+    vi: 'Hình thức chuyển khoản',
   },
   paypal_name: {
-    en: "PayPal Name",
-    vi: "Tên tài khoản PayPal"
+    en: 'PayPal Name',
+    vi: 'Tên tài khoản PayPal',
   },
   paypal_email: {
-    en: "PayPal Email",
-    vi: "Email tài khoản PayPal"
+    en: 'PayPal Email',
+    vi: 'Email tài khoản PayPal',
   },
 };

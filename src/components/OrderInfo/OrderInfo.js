@@ -33,9 +33,9 @@ import * as types from '../../actions/index';
 import { getProfileAction } from '../../actions/profile';
 
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
+import {routes} from "../../constants";
 
 class OrderInfo extends Component {
-
   state = {
     radioValue: 'master_card',
     inputDisable: false,
@@ -58,7 +58,7 @@ class OrderInfo extends Component {
     window.confirm('Are you sure you want to buy this course?') &&
       this.props.actions.buyCourseAction(
         this.props.courseDetail.id,
-        "traditional",
+        'traditional',
       );
   };
 
@@ -67,9 +67,9 @@ class OrderInfo extends Component {
     console.log(expiryDate);
     console.log({
       ...values,
-      expiryDate: values.expiryDate.format('YYYY:MM')
+      expiryDate: values.expiryDate.format('YYYY:MM'),
     });
-  };
+  }
 
   // onChangeRadio = e => {
   //   console.log('radio checked', e.target.value);
@@ -139,43 +139,45 @@ class OrderInfo extends Component {
   // Popup button purchase
   renderButtons(courseDetail) {
     return (
-    <Row gutter={16}>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <button className="pay_button" onClick={() => this.onTransferClick()}>
-          {getTranslatedText('transfer_money')}
-        </button>
-      </Col>
-      <Col style={{ display: 'flex', justifyContent: 'center'}} xs={24} lg={12}>
-        <Popover
-          placement='top'
-          content={<VisaPaymentComponent course_detail={courseDetail} />}
-          trigger='click'
+      <Row gutter={16}>
+        <Col
+          style={{ display: 'flex', justifyContent: 'center' }}
+          xs={24}
+          lg={12}
         >
-            <button className="pay_button" onClick={this.onPaypalClick}>
-              {getTranslatedText('visa')}
-            </button>
-        </Popover>
-      </Col>
-    </Row>
-    )
-  };
+          <button
+            className="pay_button"
+            onClick={() => this.onTransferClick()}
+          >
+            {getTranslatedText('transfer_money')}
+          </button>
+        </Col>
+        <Col
+          style={{ display: 'flex', justifyContent: 'center' }}
+          xs={24}
+          lg={12}
+        >
+          <button
+            className="pay_button"
+            onClick={() => this.onPaypalClick(courseDetail)}
+          >
+            {getTranslatedText('visa')}
+          </button>
+        </Col>
+      </Row>
+    );
+  }
   // End
-
 
   onTransferClick = () => {
     // Xử lý cho onclick transfer ở đây
-    this.props.actions.buyCourseAction(
-      this.props.courseDetail.id
-    );
-  }
+    this.props.actions.buyCourseAction(this.props.courseDetail.id);
+  };
 
-  onPaypalClick = () => {
-    // Xử lý cho onclick paypal ở đây
-    // this.props.actions.buyCourseAction(
-    //   this.props.courseDetail.id,
-    //   "online-banking"
-    // );
-  }
+  onPaypalClick = (detail) => {
+    let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
+    window.location.href = link;
+  };
 
   render() {
     const { courseDetail, profile } = this.props;
@@ -274,18 +276,20 @@ class OrderInfo extends Component {
               </div>
               {shouldDeposit ? (
                 <Popover
-                  placement='bottom'
+                  placement="bottom"
                   // content={<RenderButtons courseDetail={this.props.courseDetail} />}
-                  content={this.renderButtons(this.props.courseDetail)}
-                  trigger='click'
+                  content={this.renderButtons(
+                    this.props.courseDetail,
+                  )}
+                  trigger="click"
                 >
-                <div
-                  className="CTAButton"
-                  // Atemp lock this onClick to debug
-                  // onClick={() =>
-                  //   this.pay(shouldDeposit, shouldDepositAmount)
-                  // }
-                >
+                  <div
+                    className="CTAButton"
+                    // Atemp lock this onClick to debug
+                    // onClick={() =>
+                    //   this.pay(shouldDeposit, shouldDepositAmount)
+                    // }
+                  >
                     {getTranslatedText('deposit_now')}
                   </div>
                 </Popover>

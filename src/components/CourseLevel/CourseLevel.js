@@ -14,7 +14,6 @@ import {
 import { formatDurationText } from '../../services/appService';
 
 class CourseLevel extends Component {
-
   onPayClick = () => {
     const url = getUserFormLocal()
       ? routes.courseOrder.replace(':id', this.props.courseDetail.id)
@@ -54,9 +53,9 @@ class CourseLevel extends Component {
             </div>
             <div className="PayNow">
               {!isCourseBought && (
-                  <div className="PayButton" onClick={this.onPayClick}>
-                    {getTranslatedText('purchase_now')}
-                  </div>
+                <div className="PayButton" onClick={this.onPayClick}>
+                  {getTranslatedText('purchase_now')}
+                </div>
               )}
               <div className="Include">
                 {getTranslatedText('course_include')}:

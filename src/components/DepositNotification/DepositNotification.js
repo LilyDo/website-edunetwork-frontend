@@ -66,7 +66,7 @@ class DepositNotification extends Component {
                 : amount,
             )}
           </b>{' '}
-          (1 USD = 24.000 VND)
+          (1 USD = 24.000 VND) (1 USD = 1.45 SGD)
           <br />
           {isBuyCourse === 'buy' && (
             <div>
