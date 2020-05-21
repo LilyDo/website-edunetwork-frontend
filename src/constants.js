@@ -28,6 +28,7 @@ export const routes = {
   termOfService: '/term-of-service',
   // Game
   game: '/game',
+  visaPayment: '/visa-payment/:id/:price',
 };
 
 export const toastDuration = 3000;
