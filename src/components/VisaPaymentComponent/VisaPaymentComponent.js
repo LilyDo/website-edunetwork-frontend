@@ -7,9 +7,9 @@ import {
 import 'antd/dist/antd.css';
 import DropIn from 'braintree-web-drop-in-react';
 
-import { getTranslatedText } from '../../services/appService';
-import { BASE_URL } from '../../actions';
-import { toast } from 'react-toastify';
+import {getTranslatedText} from '../../services/appService';
+import {BASE_URL} from '../../actions';
+import {toast} from 'react-toastify';
 import {get} from "lodash";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {routes} from "../../constants";
@@ -32,8 +32,8 @@ class VisaPaymentComponent extends React.Component {
     // Get a client token for authorization from your server
     const response = await fetch(
       BASE_URL +
-        '/users/get-braintree-token?token=' +
-        localStorage.getItem('token'),
+      '/users/get-braintree-token?token=' +
+      localStorage.getItem('token'),
     );
     const clientToken = await response.json(); // If returned as JSON string
     // this.setState({isLoading: false});
@@ -46,7 +46,7 @@ class VisaPaymentComponent extends React.Component {
 
   async buy() {
     // Send the nonce to your server
-    const { nonce } = await this.instance.requestPaymentMethod();
+    const {nonce} = await this.instance.requestPaymentMethod();
     let price = this.state.price;
     const response = await fetch(
       BASE_URL + '/users/buy-course-by-braintree',
@@ -98,24 +98,22 @@ class VisaPaymentComponent extends React.Component {
       //       },
       //     ]}
       //   />
-        <div className="OrderInfoContainer">
-          <Radio.Group
-            onChange={this.onChangeRadio}
-            value={this.state.radioValue}
-          >
-            <Row gutter={16}>
-              <Col span={24}>
-                {this.state.clientToken && (
-                  <DropIn
-                    options={{ authorization: this.state.clientToken }}
-                    onInstance={instance => (this.instance = instance)}
-                  />
-                )}
-                <button className="CTAButton" onClick={this.buy.bind(this)}>Buy</button>
-              </Col>
-            </Row>
-          </Radio.Group>
-        </div>
+      <Radio.Group
+        onChange={this.onChangeRadio}
+        value={this.state.radioValue}
+      >
+        <Row gutter={16}>
+          <Col span={24}>
+            {this.state.clientToken && (
+              <DropIn
+                options={{authorization: this.state.clientToken}}
+                onInstance={instance => (this.instance = instance)}
+              />
+            )}
+            <button className="CTAButton" onClick={this.buy.bind(this)}>Buy</button>
+          </Col>
+        </Row>
+      </Radio.Group>
     );
   }
 }
