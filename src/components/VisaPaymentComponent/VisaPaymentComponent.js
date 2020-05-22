@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Radio,
   Row,
   Col,
-  Form,
-  Input,
-  Button,
-  InputNumber,
-  DatePicker,
 } from 'antd';
 import 'antd/dist/antd.css';
 import DropIn from 'braintree-web-drop-in-react';
@@ -40,8 +35,6 @@ class VisaPaymentComponent extends React.Component {
         '/users/get-braintree-token?token=' +
         localStorage.getItem('token'),
     );
-    // this.setState({isLoading: true});
-    // console.log(await response.json());
     const clientToken = await response.json(); // If returned as JSON string
     // this.setState({isLoading: false});
     // console.log(clientToken);
@@ -87,24 +80,24 @@ class VisaPaymentComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <Breadcrumb
-          data={[
-            { link: routes.home, text: getTranslatedText('HOME') },
-            {
-              link: routes.courses,
-              text: getTranslatedText('COURSE'),
-            },
-            {
-              link: routes.courseDetail.replace(':id', this.state.id),
-              text: getTranslatedText('DETAIL'),
-            },
-            {
-              link: routes.courseOrder.replace(':id', this.state.id),
-              text: getTranslatedText('ORDER'),
-            },
-          ]}
-        />
+      // <div>
+      //   <Breadcrumb
+      //     data={[
+      //       { link: routes.home, text: getTranslatedText('HOME') },
+      //       {
+      //         link: routes.courses,
+      //         text: getTranslatedText('COURSE'),
+      //       },
+      //       {
+      //         link: routes.courseDetail.replace(':id', this.state.id),
+      //         text: getTranslatedText('DETAIL'),
+      //       },
+      //       {
+      //         link: routes.courseOrder.replace(':id', this.state.id),
+      //         text: getTranslatedText('ORDER'),
+      //       },
+      //     ]}
+      //   />
         <div className="OrderInfoContainer">
           <Radio.Group
             onChange={this.onChangeRadio}
@@ -123,8 +116,6 @@ class VisaPaymentComponent extends React.Component {
             </Row>
           </Radio.Group>
         </div>
-      </div>
-
     );
   }
 }

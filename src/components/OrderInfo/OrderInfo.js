@@ -39,6 +39,7 @@ class OrderInfo extends Component {
   state = {
     radioValue: 'master_card',
     inputDisable: false,
+    paypalPay: true,
   };
 
   componentDidMount() {
@@ -175,9 +176,18 @@ class OrderInfo extends Component {
   };
 
   onPaypalClick = (detail) => {
-    let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
-    window.location.href = link;
+    // let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
+    // window.location.href = link;
+    this.setState({
+      paypalPay: true,
+    })
   };
+
+  cancelPaypal = () => {
+    this.setState({
+      paypalPay: false
+    })
+  }
 
   render() {
     const { courseDetail, profile } = this.props;
@@ -244,68 +254,73 @@ class OrderInfo extends Component {
               </div>
             </div>
           </div>
+          {!this.state.paypalPay ? (
           <div className="WalletInfoContainer">
             <div className="WalletTitle">
-              {getTranslatedText('your_wallet')}
-            </div>
-            <div className="WalletInfo">
-              <div className="WalletInfoItems">
-                <div className="Container Remaining">
-                  <div className="Text">
-                    {getTranslatedText('Balance')}
-                  </div>
-                  <div className="Number">{profile.total_price}</div>
-                  <div className="Currency">USD</div>
+            {getTranslatedText('your_wallet')}
+          </div>
+          <div className="WalletInfo">
+            <div className="WalletInfoItems">
+              <div className="Container Remaining">
+                <div className="Text">
+                  {getTranslatedText('Balance')}
                 </div>
-                <div className="Container PendingOrder">
-                  <div className="Text">
-                    {getTranslatedText('need_purchase')}
-                  </div>
-                  <div className="Number">{courseDetail.price}</div>
-                  <div className="Currency">USD</div>
-                </div>
-                <div className="Container Missing">
-                  <div className="Text">
-                    {getTranslatedText('amount_top_up')}
-                  </div>
-                  <div className="Number">
-                    {shouldDeposit ? shouldDepositAmount : 0}
-                  </div>
-                  <div className="Currency">usd</div>
-                </div>
+                <div className="Number">{profile.total_price}</div>
+                <div className="Currency">USD</div>
               </div>
-              {shouldDeposit ? (
-                <Popover
-                  placement="bottom"
-                  // content={<RenderButtons courseDetail={this.props.courseDetail} />}
-                  content={this.renderButtons(
-                    this.props.courseDetail,
-                  )}
-                  trigger="click"
-                >
-                  <div
-                    className="CTAButton"
-                    // Atemp lock this onClick to debug
-                    // onClick={() =>
-                    //   this.pay(shouldDeposit, shouldDepositAmount)
-                    // }
-                  >
-                    {getTranslatedText('deposit_now')}
-                  </div>
-                </Popover>
-              ) : (
+              <div className="Container PendingOrder">
+                <div className="Text">
+                  {getTranslatedText('need_purchase')}
+                </div>
+                <div className="Number">{courseDetail.price}</div>
+                <div className="Currency">USD</div>
+              </div>
+              <div className="Container Missing">
+                <div className="Text">
+                  {getTranslatedText('amount_top_up')}
+                </div>
+                <div className="Number">
+                  {shouldDeposit ? shouldDepositAmount : 0}
+                </div>
+                <div className="Currency">usd</div>
+              </div>
+            </div>
+            {!shouldDeposit ? (
+              <Popover
+                placement="bottom"
+                // content={<RenderButtons courseDetail={this.props.courseDetail} />}
+                content={this.renderButtons(
+                  this.props.courseDetail,
+                )}
+                trigger="click"
+              >
                 <div
                   className="CTAButton"
-                  onClick={() =>
-                    this.pay(shouldDeposit, shouldDepositAmount)
-                  }
                 >
-                  {getTranslatedText('purchase_now')}
+                  {getTranslatedText('deposit_now')}
                 </div>
-              )}
+              </Popover>
+            ) : (
+              <div
+                className="CTAButton"
+                onClick={() =>
+                  this.pay(shouldDeposit, shouldDepositAmount)
+                }
+              >
+                {getTranslatedText('purchase_now')}
+              </div>
+            )}
             </div>
+            </div>
+            // Doan o duoi de render paypal. dua vao state paypalPay
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'row'}}>
+              <VisaPaymentComponent />
+              <button style={{ height: '30px', width: '30px', borderRadius: '15px'}} onClick={() => this.cancelPaypal()}>X</button>
+              </div>
+            )}
+            
           </div>
-        </div>
         <div className="TextNotice">
           {getTranslatedText('note_after_payment')}
         </div>
