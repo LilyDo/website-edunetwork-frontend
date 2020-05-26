@@ -327,7 +327,7 @@ export const translatedText = {
   },
   bank_address: {
     en: 'Recipient Address',
-    vi: 'Địa chỉ ngân hàng thụ hưởng',
+    vi: 'Địa chỉ người nhận',
   },
   your_bank_address: {
     en: 'What is your address of recipient',
