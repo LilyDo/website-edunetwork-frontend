@@ -493,6 +493,12 @@ export const translatedText = {
     vi:
       'Lưu ý: Sau khi thanh toán, khóa học của bạn sẽ được kích hoạt trong vòng 24 giờ. Bên cạnh đó, chúng tôi đã gửi thông tin khóa học vào email của bạn. Vui lòng kiểm tra, cảm ơn!',
   },
+  note_buy_braintree: {
+    en:
+      'When buying a course with a visa card will cost an additional 10% of the course fee',
+    vi:
+      'Khi mua khóa học bằng thẻ visa sẽ mất thêm 10% phí của khóa học',
+  },
   your_wallet: {
     en: 'YOUR WALLET',
     vi: 'VÍ CỦA BẠN',

@@ -330,7 +330,8 @@ class OrderInfo extends Component {
           )}
         </div>
         <div className="TextNotice">
-          {getTranslatedText('note_after_payment')}
+          {getTranslatedText('note_after_payment')} <br/>
+          {getTranslatedText('note_buy_braintree')}
         </div>
       </div>
     );
