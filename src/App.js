@@ -40,12 +40,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import MainGame from '../src/components/Game/MainGame/MainGame';
-import QuizHeader from '../src/components/QuizHeader/QuizHeader';
-import QuizQuestion from '../src/components/QuizQuestion/QuizQuestion';
-import QuizRank from '../src/components/QuizRank/QuizRank';
-import QuizModal from '../src/components/QuizModal/QuizModal';
-import QuizReportCard from '../src/components/QuizReportCard/QuizReportCard';
-import QuizListQuestionContainer from '../src/containers/QuizContainer/QuizListQuestion';
+import QuizContainer from '../src/containers/Quiz/Quiz';
 // services
 import { getUserFormLocal } from './services/appService';
 import DepositNotification from './components/DepositNotification/DepositNotification';
@@ -109,11 +104,7 @@ class App extends Component {
                     <MainGame />
                   </Route>
                   <Route exact path={routes.home}>
-                    {/* <HomePage /> */}
-                    {/* <QuizRank /> */}
-                    {/* <QuizModal /> */}
-                    {/* <QuizReportCard /> */}
-                    <QuizListQuestionContainer />
+                    <HomePage />
                   </Route>
                   <Route exact path={routes.courses}>
                     <CoursePage />
@@ -199,6 +190,12 @@ class App extends Component {
                     exact
                     path={routes.accountCourses}
                     component={AccountCoursePage}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
+                    path={routes.quiz.main}
+                    component={QuizContainer}
                   />
                   <Route exact path={routes.contact}>
                     <ContactPage />
