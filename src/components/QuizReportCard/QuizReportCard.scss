@@ -1,0 +1,21 @@
+@import '../../shared.scss';
+
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+.card_container {
+  width: 254px;
+  height: 102px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card_header {
+  color: #B97A2A;
+  font-family: 'Poppins', sans-serif;
+}
