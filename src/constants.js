@@ -33,7 +33,7 @@ export const routes = {
   // Quiz
   quiz: {
     main: '/quiz',
-    exam: '',
+    exam: '/quiz/test',
   }
 };
 

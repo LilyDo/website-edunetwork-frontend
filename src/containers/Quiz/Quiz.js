@@ -7,20 +7,19 @@ import {
   Route,
   useRouteMatch,
 } from 'react-router-dom';
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import QuizHeader from '../../components/QuizHeader/QuizHeader';
 import QuizListQuestionContainer from '../QuizContainer/QuizListQuestion';
+import QuizStartScreen from '../QuizStartScreen/QuizStartScreen';
 
 const QuizContainer = () => {
 
   const match = useRouteMatch();
+  console.log(match);
 
   return (
     <React.Fragment>
-        <Breadcrumb />
-        <QuizHeader />
       <Switch>
-        <Route exact path={match.url} component={QuizListQuestionContainer} />
+        <Route exact path={match.url} component={QuizStartScreen} />
+        <Route path={`${match.url}/test`} component={QuizListQuestionContainer} />
       </Switch>
     </React.Fragment>
   );
