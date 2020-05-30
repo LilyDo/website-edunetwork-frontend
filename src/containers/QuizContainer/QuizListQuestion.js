@@ -3,32 +3,58 @@
 //----------//
 // Import component: QuizQuestion
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import QuizHeader from '../../components/QuizHeader/QuizHeader';
 import QuizQuestion from '../../components/QuizQuestion/QuizQuestion';
 
 import './QuizListQuestion.scss';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {
+  getQuizAction
+} from '../../actions/quiz';
 
-const data = [1,2,3,4,5,6,7,8,9,10];
+const QuizListQuestionContainer = (props) => {
 
-const QuizListQuestionContainer = () => {
+  const {actions, data} = props;
+  useEffect(() => {
+    actions.getQuizAction({token: localStorage.getItem("token"), lang: "vi"});
+  }, []);
 
   return (
     <React.Fragment>
       <div class='question_container'>
         <Breadcrumb />
         <QuizHeader clock={true} />
-        <div className='list_container'>
-          {data.map((item, index) => (
-            <div className='list_item'>
-              <QuizQuestion />
-            </div>
-          ))}
-        </div>
+      <div className='list_container'>
+        {data.questions.map((item, index) => (
+          <QuizQuestion key={index} number={index} question={item} />
+        ))}
+      </div>
       </div>
     </React.Fragment>
   );
 };
 
-export default QuizListQuestionContainer;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    data: state.quiz.data || []
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        getQuizAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(QuizListQuestionContainer);
