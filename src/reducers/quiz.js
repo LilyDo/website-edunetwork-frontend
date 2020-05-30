@@ -5,13 +5,13 @@ import {
   checkSessionLogout,
   getTranslatedText,
 } from '../services/appService';
-import {toast} from "react-toastify";
+import { toast } from 'react-toastify';
 
 const initialState = {
   loading: false,
   data: {
-    questions: []
-  }
+    questions: [],
+  },
 };
 
 export default function(state = initialState, action) {
@@ -23,19 +23,18 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_QUIZ_SUCCESS:
-
       return {
         ...state,
         loading: false,
-        data: action.payload.data
+        data: action.payload.data,
       };
 
     case types.GET_QUIZ_FAILURE:
       // console.log(action.payload);
-      toast.error(action.payload.errors.join(", "));
+      toast.error(action.payload.errors.join(', '));
       return {
         ...state,
-        loading: false
+        loading: false,
       };
 
     default:

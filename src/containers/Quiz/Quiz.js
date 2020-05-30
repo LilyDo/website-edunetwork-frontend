@@ -9,6 +9,8 @@ import {
 } from 'react-router-dom';
 import QuizListQuestionContainer from '../QuizContainer/QuizListQuestion';
 import QuizStartScreen from '../QuizStartScreen/QuizStartScreen';
+import QuizResultContainer from '../QuizResult/QuizResult';
+import QuizRank from '../../components/QuizRank/QuizRank';
 
 const QuizContainer = () => {
 
@@ -20,6 +22,8 @@ const QuizContainer = () => {
       <Switch>
         <Route exact path={match.url} component={QuizStartScreen} />
         <Route path={`${match.url}/test`} component={QuizListQuestionContainer} />
+        <Route path={`${match.url}/result`} component={QuizResultContainer} />
+        <Route path={`${match.url}/rank`} component={QuizRank} />
       </Switch>
     </React.Fragment>
   );

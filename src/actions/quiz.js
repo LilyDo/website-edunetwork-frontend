@@ -5,23 +5,29 @@ import {
   BASE_URL,
   GET_QUIZ_REQUEST,
   GET_QUIZ_SUCCESS,
-  GET_QUIZ_FAILURE
+  GET_QUIZ_FAILURE,
 } from './index';
-import {toast} from "react-toastify";
+import { toast } from 'react-toastify';
 
 // GET PROFILE
 export const getQuizAction = payload => {
   return dispatch => {
     dispatch(getQuizRequest());
-    axios.get(`${BASE_URL}/users/get-test?token=` + payload.token + "&lang=" + payload.lang)
-    .then(response => {
-      if (response.data.statusCode === 200)
-        dispatch(getQuizSuccess(response.data));
-      else
-        dispatch(getQuizFailure(response.data));
-    }).catch(error => {
-      toast.error("Something went wrong!")
-    });
+    axios
+      .get(
+        `${BASE_URL}/users/get-test?token=` +
+          payload.token +
+          '&lang=' +
+          payload.lang,
+      )
+      .then(response => {
+        if (response.data.statusCode === 200)
+          dispatch(getQuizSuccess(response.data));
+        else dispatch(getQuizFailure(response.data));
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
   };
 };
 

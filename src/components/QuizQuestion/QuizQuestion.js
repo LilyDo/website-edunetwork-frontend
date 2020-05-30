@@ -1,6 +1,6 @@
 // Usage: This component is used display a question
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Row,
   Col,
@@ -11,11 +11,16 @@ import './QuizQuestion.scss';
 
 const QuizQuestion = (props) => {
 
-  const {question, number} = props;
+  const {
+    question,
+    number,
+  } = props;
+
 
   return (
     <React.Fragment>
-      <div className='question_container'>
+      {number%2 !== 0 ? (
+        <div style={{ backgroundColor: '#F7F7F7'}} className='question_container'>
         <p>{parseInt(number) + 1}. {question.question}</p>
         <div>
           <Row gutter={16}>
@@ -46,6 +51,39 @@ const QuizQuestion = (props) => {
           </Row>
         </div>
       </div>
+      ) : (
+        <div className='question_container'>
+        <p>{parseInt(number) + 1}. {question.question}</p>
+        <div>
+          <Row gutter={16}>
+            <Col xs={24} lg={12}>
+              <div className='answer_container'>
+                <Checkbox value='A'>A</Checkbox>
+                <p>{question.answer_A}</p>
+              </div>
+            </Col>
+            <Col xs={24} lg={12}>
+              <div className='answer_container'> 
+                <Checkbox value='B'>B</Checkbox>
+                <p>{question.answer_B}</p>
+              </div>
+            </Col>
+            <Col xs={24} lg={12}>
+              <div className='answer_container'>
+                <Checkbox value='C'>C</Checkbox>
+                <p>{question.answer_C}</p>
+              </div>
+            </Col>
+            <Col xs={24} lg={12}>
+              <div className='answer_container'>
+                <Checkbox value='D'>D</Checkbox>
+                <p>{question.answer_D}</p>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+      )}
     </React.Fragment>
   );
 };
