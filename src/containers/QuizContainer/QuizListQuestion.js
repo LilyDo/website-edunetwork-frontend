@@ -20,6 +20,7 @@ import 'antd/dist/antd.css';
 import QuizModal from '../../components/QuizModal/QuizModal';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
+import { Link } from 'react-router-dom';
 
 const QuizListQuestionContainer = (props) => {
 
@@ -63,7 +64,11 @@ const QuizListQuestionContainer = (props) => {
         >
             <QuizModal />
         </Modal>
-        <button className='yellow_light_btn'>XEM KẾT QUẢ NGAY</button>
+        <Link
+          to={routes.quiz.result}
+        >
+          <button className='yellow_light_btn'>XEM KẾT QUẢ NGAY</button>
+        </Link>
       </div>
     </React.Fragment>
   );
