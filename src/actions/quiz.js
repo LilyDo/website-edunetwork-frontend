@@ -6,10 +6,15 @@ import {
   GET_QUIZ_REQUEST,
   GET_QUIZ_SUCCESS,
   GET_QUIZ_FAILURE,
+  GET_PERMISSION_QUIZ_REQUEST,
+  GET_PERMISSION_QUIZ_SUCCESS,
+  GET_PERMISSION_QUIZ_FAILURE,
+  POST_RESULT_QUIZ_REQUEST,
+  POST_RESULT_QUIZ_SUCCESS,
+  POST_RESULT_QUIZ_FAILURE,
 } from './index';
 import { toast } from 'react-toastify';
 
-// GET PROFILE
 export const getQuizAction = payload => {
   return dispatch => {
     dispatch(getQuizRequest());
@@ -42,5 +47,71 @@ const getQuizSuccess = payload => ({
 
 const getQuizFailure = payload => ({
   type: GET_QUIZ_FAILURE,
+  payload: payload,
+});
+
+export const getPermissionQuizAction = payload => {
+  return dispatch => {
+    dispatch(getPermissionQuizRequest());
+    axios
+      .get(
+        `${BASE_URL}/users/accept-for-examination?token=` +
+          payload.token
+      )
+      .then(response => {
+        if (response.data.statusCode === 200)
+          dispatch(getPermissionQuizSuccess(response.data));
+        else dispatch(getPermissionQuizFailure(response.data));
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
+  };
+};
+
+const getPermissionQuizRequest = () => ({
+  type: GET_PERMISSION_QUIZ_REQUEST,
+});
+
+const getPermissionQuizSuccess = payload => ({
+  type: GET_PERMISSION_QUIZ_SUCCESS,
+  payload: payload,
+});
+
+const getPermissionQuizFailure = payload => ({
+  type: GET_PERMISSION_QUIZ_FAILURE,
+  payload: payload,
+});
+
+export const postResultQuizAction = payload => {
+  return dispatch => {
+    dispatch(postResultQuizRequest());
+    axios
+    .post(
+      `${BASE_URL}/users/post-test-result`,
+      payload
+    )
+    .then(response => {
+      if (response.data.statusCode === 200)
+        dispatch(postResultQuizSuccess(response.data));
+      else dispatch(postResultQuizFailure(response.data));
+    })
+    .catch(error => {
+      toast.error('Something went wrong!');
+    });
+  };
+};
+
+const postResultQuizRequest = () => ({
+  type: POST_RESULT_QUIZ_REQUEST,
+});
+
+const postResultQuizSuccess = payload => ({
+  type: POST_RESULT_QUIZ_SUCCESS,
+  payload: payload,
+});
+
+const postResultQuizFailure = payload => ({
+  type: POST_RESULT_QUIZ_FAILURE,
   payload: payload,
 });

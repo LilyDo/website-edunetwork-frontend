@@ -1,11 +1,11 @@
 import * as types from '../actions';
-import { routes, toastDuration } from '../constants';
+import {routes, toastDuration} from '../constants';
 import {
   extractAndShoweErrorMessages,
   checkSessionLogout,
   getTranslatedText,
 } from '../services/appService';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 const initialState = {
   loading: false,
@@ -14,7 +14,7 @@ const initialState = {
   },
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case types.GET_QUIZ_REQUEST:
       return {
@@ -35,6 +35,50 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
+      };
+
+
+    case types.GET_PERMISSION_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_PERMISSION_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload.data,
+        canContinue: 1,
+      };
+
+    case types.GET_PERMISSION_QUIZ_FAILURE:
+      // console.log(action.payload);
+      toast.error(action.payload.errors.join(', '));
+      return {
+        ...state,
+        canContinue: 0,
+        loading: false,
+      };
+
+      case types.POST_RESULT_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.POST_RESULT_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case types.POST_RESULT_QUIZ_FAILURE:
+      // console.log(action.payload);
+      toast.error(action.payload.errors.join(', '));
+      return {
+        ...state,
+        loading: false
       };
 
     default:

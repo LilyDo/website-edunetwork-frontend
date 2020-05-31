@@ -28,11 +28,16 @@ const QuizListQuestionContainer = props => {
   const [visible, setVisible] = useState(false);
   const [startCountdown, setStartCountdown] = useState(true);
 
+  let answer = 0;
   let right = 0;
 
   const updateQuestionRight = async val => {
     if (val === 'right') right += 1;
+    answer += 1;
   };
+
+  const moveToResult = () => {
+  }
 
   useEffect(() => {
     actions.getQuizAction({
@@ -72,11 +77,9 @@ const QuizListQuestionContainer = props => {
         <Modal visible={visible} footer={false} width="796px">
           <QuizModal />
         </Modal>
-        <Link to={routes.quiz.result}>
-          <button className="yellow_light_btn">
+          <button className="yellow_light_btn" onClick={moveToResult}>
             XEM KẾT QUẢ NGAY
           </button>
-        </Link>
       </div>
     </React.Fragment>
   );

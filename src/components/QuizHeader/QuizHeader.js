@@ -6,7 +6,7 @@
 // 3. timeNow + 15min = timetillEnd
 // 4. Set interval to update clock
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './QuizHeader.scss';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -21,7 +21,7 @@ const QuizHeader = props => {
 
   const [minute, setMinute] = useState(null);
   const [second, setSecond] = useState(null);
-  const user = JSON.parse(localStorage.getItem("current_user"));
+  const user = JSON.parse(localStorage.getItem('current_user'));
 
   useEffect(() => {
     console.log(startCountdown);
@@ -71,7 +71,7 @@ const QuizHeader = props => {
             </div>
             <div className="right_container_time_timer">
               <p>{minute}</p>
-              <div className="vertical_line"/>
+              <div className="vertical_line" />
               <p>{second}</p>
             </div>
           </div>
