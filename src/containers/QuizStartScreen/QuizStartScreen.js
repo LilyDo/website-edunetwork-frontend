@@ -9,12 +9,18 @@ import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import QuizHeader from '../../components/QuizHeader/QuizHeader';
 
 import './QuizStartScreen.scss';
+import { getTranslatedText } from '../../services/appService';
 
 const QuizStartScreen = () => {
 
   return (
     <React.Fragment>
-      <Breadcrumb />
+      <Breadcrumb
+        data={[
+          {link: routes.home, text: getTranslatedText('home')},
+          {link: routes.quiz.main, text: getTranslatedText('quiz')}
+        ]}
+      />
       <div className='start_screen_container'>
         <QuizHeader />
         <div className='start_screen_content'>

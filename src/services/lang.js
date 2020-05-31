@@ -867,4 +867,16 @@ export const translatedText = {
     en: 'PayPal Email',
     vi: 'Email tài khoản PayPal',
   },
+  quiz: {
+    en: 'quiz',
+    vi: 'thi trắc nghiệm'
+  },
+  result: {
+    en: 'result',
+    vi: 'KẾT QUẢ',
+  },
+  rank: {
+    en: 'rank',
+    vi: 'BẢNG XẾP HẠNG'
+  }
 };

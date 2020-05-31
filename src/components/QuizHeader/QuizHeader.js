@@ -35,7 +35,6 @@ const QuizHeader = (props) => {
         const second = countDown.format('ss');
         setMinute(mininute);
         setSecond(second);
-        console.log(countDown);
         now = moment.now();
         if (countDown.format('mm:ss') === '00:00') {
           clearInterval(countdownClock);

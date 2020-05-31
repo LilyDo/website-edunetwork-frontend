@@ -5,6 +5,8 @@ import './QuizRank.scss';
 import styled from 'styled-components';
 
 import { getTranslatedText } from '../../services/appService';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import { routes } from '../../constants';
 
 const { Header, Content } = Layout;
 
@@ -104,6 +106,13 @@ const QuizRank = () => {
 
   return (
     <React.Fragment>
+      <Breadcrumb
+        data={[
+          {link: routes.home, text: getTranslatedText('home')},
+          {link: routes.quiz.main, text: getTranslatedText('quiz')},
+          {link: routes.quiz.rank,  text: getTranslatedText('rank')}
+        ]}
+      />
       <Typography.Text className="update_date_event">
         {getTranslatedText('date_update')} {dateUpdate}
       </Typography.Text>

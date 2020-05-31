@@ -18,6 +18,8 @@ import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
 import QuizModal from '../../components/QuizModal/QuizModal';
+import { routes } from '../../constants';
+import { getTranslatedText } from '../../services/appService';
 
 const QuizListQuestionContainer = (props) => {
 
@@ -37,7 +39,12 @@ const QuizListQuestionContainer = (props) => {
   return (
     <React.Fragment>
       <div class='question_list_container'>
-        <Breadcrumb />
+        <Breadcrumb
+          data={[
+            {link: routes.home, text: getTranslatedText('home')},
+            {link: routes.quiz.main, text: getTranslatedText('quiz')}
+          ]}
+        />
         <QuizHeader
           clock={true}
           startCountdown={startCountdown}

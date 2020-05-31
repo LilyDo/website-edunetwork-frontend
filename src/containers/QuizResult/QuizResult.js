@@ -8,13 +8,21 @@ import QuizReportQuestionCard from '../../components/QuizReportCard/QuizReportCa
 import QuizReportRightQuestionCard from '../../components/QuizReportRightQuestionCard/QuizReportRightQuestionCard';
 
 import './QuizResult.scss';
+import { routes } from '../../constants';
+import { getTranslatedText } from '../../services/appService';
 
 
 const QuizResultContainer = () => {
 
   return (
     <React.Fragment>
-      <Breadcrumb />
+      <Breadcrumb
+        data={[
+          {link: routes.home, text: getTranslatedText('home')},
+          {link: routes.quiz.main, text: getTranslatedText('quiz')},
+          {link: routes.quiz.result,  text: getTranslatedText('result')}
+        ]}
+      />
       <div className='result_container'>
         <p className='result_container_header'>KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN</p>
         <div className='result_container_body'>
