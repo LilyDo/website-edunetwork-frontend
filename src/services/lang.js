@@ -869,7 +869,7 @@ export const translatedText = {
   },
   quiz: {
     en: 'quiz',
-    vi: 'thi trắc nghiệm'
+    vi: 'thi trắc nghiệm',
   },
   result: {
     en: 'result',
@@ -877,6 +877,6 @@ export const translatedText = {
   },
   rank: {
     en: 'rank',
-    vi: 'BẢNG XẾP HẠNG'
-  }
+    vi: 'BẢNG XẾP HẠNG',
+  },
 };
