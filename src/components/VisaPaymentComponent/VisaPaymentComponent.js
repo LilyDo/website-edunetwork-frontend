@@ -1,19 +1,15 @@
 import React from 'react';
-import {
-  Radio,
-  Row,
-  Col,
-} from 'antd';
+import { Radio, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 import DropIn from 'braintree-web-drop-in-react';
 
-import {getTranslatedText} from '../../services/appService';
-import {BASE_URL} from '../../actions';
-import {toast} from 'react-toastify';
-import {get} from "lodash";
-import Breadcrumb from "../Breadcrumb/Breadcrumb";
-import {routes} from "../../constants";
-import OrderInfo from "../OrderInfo/OrderInfo";
+import { getTranslatedText } from '../../services/appService';
+import { BASE_URL } from '../../actions';
+import { toast } from 'react-toastify';
+import { get } from 'lodash';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import { routes } from '../../constants';
+import OrderInfo from '../OrderInfo/OrderInfo';
 
 class VisaPaymentComponent extends React.Component {
   instance;
@@ -22,18 +18,18 @@ class VisaPaymentComponent extends React.Component {
     // radioValue: 'master_card',
     clientToken: null,
     price: 0,
-    id: 0
+    id: 0,
   };
 
   async componentDidMount() {
     let id = get(this.props, 'match.params.id');
     let price = get(this.props, 'match.params.price');
-    this.setState({id: id, price: price});
+    this.setState({ id: id, price: price });
     // Get a client token for authorization from your server
     const response = await fetch(
       BASE_URL +
-      '/users/get-braintree-token?token=' +
-      localStorage.getItem('token'),
+        '/users/get-braintree-token?token=' +
+        localStorage.getItem('token'),
     );
     const clientToken = await response.json(); // If returned as JSON string
     // this.setState({isLoading: false});
@@ -46,7 +42,7 @@ class VisaPaymentComponent extends React.Component {
 
   async buy() {
     // Send the nonce to your server
-    const {nonce} = await this.instance.requestPaymentMethod();
+    const { nonce } = await this.instance.requestPaymentMethod();
     let price = this.state.price;
     const response = await fetch(
       BASE_URL + '/users/buy-course-by-braintree',
@@ -67,15 +63,17 @@ class VisaPaymentComponent extends React.Component {
     const result = response.json();
     await result.then(data => {
       if (data.statusCode === 200) {
-        toast.success("Giao dịch đã được tạo thành công!");
-        let link = routes.coursePaymentSuccessful.replace(":status", "pending").replace("code", data.charge_code);
+        toast.success('Giao dịch đã được tạo thành công!');
+        let link = routes.coursePaymentSuccessful
+          .replace(':status', 'pending')
+          .replace('code', data.charge_code);
         window.location.href = link;
         // redirect to any page
       } else {
-        toast.error(data.errors.join(", "))
+        toast.error(data.errors.join(', '));
         // do something
       }
-    })
+    });
   }
 
   render() {
@@ -106,11 +104,16 @@ class VisaPaymentComponent extends React.Component {
           <Col span={24}>
             {this.state.clientToken && (
               <DropIn
-                options={{authorization: this.state.clientToken}}
+                options={{ authorization: this.state.clientToken }}
                 onInstance={instance => (this.instance = instance)}
               />
             )}
-            <button className="CTAButton" onClick={this.buy.bind(this)}>Buy</button>
+            <button
+              className="CTAButton"
+              onClick={this.buy.bind(this)}
+            >
+              Buy
+            </button>
           </Col>
         </Row>
       </Radio.Group>

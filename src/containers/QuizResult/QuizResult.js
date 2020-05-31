@@ -11,9 +11,7 @@ import './QuizResult.scss';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
 
-
 const QuizResultContainer = () => {
-
   return (
     <React.Fragment>
       <Breadcrumb
@@ -31,15 +29,17 @@ const QuizResultContainer = () => {
             <QuizReportQuestionCard />
             <QuizReportRightQuestionCard />
           </div>
-          <div className='body_footer'>
+          <div className="body_footer">
             <img src={require('../../assets/images/warn_icon.png')} />
-            <p>Bạn cần phải đạt đủ 30 ĐIỂM để tham gia xếp hạng với các thành viên khác. 
-            Bạn muốn thi lại không?</p>
+            <p>
+              Bạn cần phải đạt đủ 30 ĐIỂM để tham gia xếp hạng với các
+              thành viên khác. Bạn muốn thi lại không?
+            </p>
           </div>
         </div>
-        <div className='result_container_footer'>
-          <button className='yellow_btn'>THI LẠI NGAY</button>
-          <button className='grey_btn'>HỦY BỎ</button>
+        <div className="result_container_footer">
+          <button className="yellow_btn">THI LẠI NGAY</button>
+          <button className="grey_btn">HỦY BỎ</button>
         </div>
       </div>
     </React.Fragment>

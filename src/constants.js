@@ -29,7 +29,7 @@ export const routes = {
   // Game
   game: '/game',
   visaPayment: '/visa-payment/:id/:price',
-  
+
   // Quiz
   quiz: {
     main: '/quiz',
