@@ -32,7 +32,6 @@ const QuizListQuestionContainer = (props) => {
 
   useEffect(() => {
     actions.getQuizAction({token: localStorage.getItem("token"), lang: "vi"});
-    // setStartCountdown(true)
   }, []);
 
   return (
@@ -42,6 +41,7 @@ const QuizListQuestionContainer = (props) => {
         <QuizHeader
           clock={true}
           startCountdown={startCountdown}
+          setStartCountdown={setStartCountdown}
           isLoading={isLoading}
         />
         <div className='list_container'>
