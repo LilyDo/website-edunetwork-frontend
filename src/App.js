@@ -193,7 +193,6 @@ class App extends Component {
                   />
                   <PrivateRoute
                     authed={this.state.isLogined}
-                    
                     path={routes.quiz.main}
                     component={QuizContainer}
                   />

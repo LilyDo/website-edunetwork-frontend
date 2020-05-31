@@ -19,7 +19,9 @@ const QuizStartScreen = () => {
         <QuizHeader />
         <div className='start_screen_content'>
           <Link to={routes.quiz.exam}>
-          <button className='screen_btn'>
+          <button
+            className='screen_btn'
+          >
             <img src={require('../../assets/images/start_icon.png')} />
             BẮT ĐẦU THI
           </button>

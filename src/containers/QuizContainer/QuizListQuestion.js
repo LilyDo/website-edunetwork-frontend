@@ -21,18 +21,29 @@ import QuizModal from '../../components/QuizModal/QuizModal';
 
 const QuizListQuestionContainer = (props) => {
 
-  const {actions, data} = props;
+  const {
+    actions,
+    data,
+    isLoading,
+  } = props;
 
   const [visible, setVisible] = useState(false);
+  const [startCountdown, setStartCountdown] = useState(true);
+
   useEffect(() => {
     actions.getQuizAction({token: localStorage.getItem("token"), lang: "vi"});
+    // setStartCountdown(true)
   }, []);
 
   return (
     <React.Fragment>
       <div class='question_list_container'>
         <Breadcrumb />
-        <QuizHeader clock={true} />
+        <QuizHeader
+          clock={true}
+          startCountdown={startCountdown}
+          isLoading={isLoading}
+        />
         <div className='list_container'>
           {data.questions.map((item, index) => (
             <QuizQuestion key={index} number={index} question={item} />
@@ -45,6 +56,7 @@ const QuizListQuestionContainer = (props) => {
         >
             <QuizModal />
         </Modal>
+        <button className='yellow_light_btn'>XEM KẾT QUẢ NGAY</button>
       </div>
     </React.Fragment>
   );
@@ -52,7 +64,8 @@ const QuizListQuestionContainer = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.quiz.data || []
+    data: state.quiz.data || [],
+    isLoading: state.quiz.loading,
   };
 };
 
