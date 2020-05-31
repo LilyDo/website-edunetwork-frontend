@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './QuizHeader.scss';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
 
 const QuizHeader = (props) => {

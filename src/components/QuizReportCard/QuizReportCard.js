@@ -1,7 +1,10 @@
+// Usage: This component to display how many question which
+      //  user answer
+
 import React from 'react';
 import './QuizReportCard.scss';
 
-const QuizReportCard = () => {
+const QuizReportQuestionCard = () => {
 
   return (
     <React.Fragment>
@@ -13,4 +16,4 @@ const QuizReportCard = () => {
   );
 };
 
-export default QuizReportCard;
+export default QuizReportQuestionCard;

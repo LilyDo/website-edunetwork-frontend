@@ -4,7 +4,8 @@
 import React from 'react';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import QuizReportCard from '../../components/QuizReportCard/QuizReportCard';
+import QuizReportQuestionCard from '../../components/QuizReportCard/QuizReportCard';
+import QuizReportRightQuestionCard from '../../components/QuizReportRightQuestionCard/QuizReportRightQuestionCard';
 
 import './QuizResult.scss';
 
@@ -19,8 +20,8 @@ const QuizResultContainer = () => {
         <div className='result_container_body'>
           <p>Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên dưới là kết quả của bạn</p>
           <div className='body_content_card'>
-            <QuizReportCard />
-            <QuizReportCard />
+            <QuizReportQuestionCard />
+            <QuizReportRightQuestionCard />
           </div>
           <div className='body_footer'>
             <img src={require('../../assets/images/warn_icon.png')} />
