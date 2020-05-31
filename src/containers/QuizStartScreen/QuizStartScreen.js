@@ -14,20 +14,20 @@ const QuizStartScreen = () => {
     <React.Fragment>
       <Breadcrumb
         data={[
-          {link: routes.home, text: getTranslatedText('home')},
-          {link: routes.quiz.main, text: getTranslatedText('quiz')}
+          { link: routes.home, text: getTranslatedText('home') },
+          { link: routes.quiz.main, text: getTranslatedText('quiz') },
         ]}
       />
-      <div className='start_screen_container'>
+      <div className="start_screen_container">
         <QuizHeader />
         <div className="start_screen_content">
           <Link to={routes.quiz.exam}>
-          <button
-            className='screen_btn'
-          >
-            <img src={require('../../assets/images/start_icon.png')} />
-            BẮT ĐẦU THI
-          </button>
+            <button className="screen_btn">
+              <img
+                src={require('../../assets/images/start_icon.png')}
+              />
+              BẮT ĐẦU THI
+            </button>
           </Link>
           <p>
             Thời gian diễn ra chương trình: từ 25/05/2020 - 25/06/2020

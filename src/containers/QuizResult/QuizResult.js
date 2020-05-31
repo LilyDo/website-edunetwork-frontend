@@ -16,16 +16,24 @@ const QuizResultContainer = () => {
     <React.Fragment>
       <Breadcrumb
         data={[
-          {link: routes.home, text: getTranslatedText('home')},
-          {link: routes.quiz.main, text: getTranslatedText('quiz')},
-          {link: routes.quiz.result,  text: getTranslatedText('result')}
+          { link: routes.home, text: getTranslatedText('home') },
+          { link: routes.quiz.main, text: getTranslatedText('quiz') },
+          {
+            link: routes.quiz.result,
+            text: getTranslatedText('result'),
+          },
         ]}
       />
-      <div className='result_container'>
-        <p className='result_container_header'>KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN</p>
-        <div className='result_container_body'>
-          <p>Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên dưới là kết quả của bạn</p>
-          <div className='body_content_card'>
+      <div className="result_container">
+        <p className="result_container_header">
+          KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN
+        </p>
+        <div className="result_container_body">
+          <p>
+            Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên
+            dưới là kết quả của bạn
+          </p>
+          <div className="body_content_card">
             <QuizReportQuestionCard />
             <QuizReportRightQuestionCard />
           </div>

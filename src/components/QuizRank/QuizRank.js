@@ -108,9 +108,9 @@ const QuizRank = () => {
     <React.Fragment>
       <Breadcrumb
         data={[
-          {link: routes.home, text: getTranslatedText('home')},
-          {link: routes.quiz.main, text: getTranslatedText('quiz')},
-          {link: routes.quiz.rank,  text: getTranslatedText('rank')}
+          { link: routes.home, text: getTranslatedText('home') },
+          { link: routes.quiz.main, text: getTranslatedText('quiz') },
+          { link: routes.quiz.rank, text: getTranslatedText('rank') },
         ]}
       />
       <Typography.Text className="update_date_event">

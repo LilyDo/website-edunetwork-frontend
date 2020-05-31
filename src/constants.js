@@ -36,7 +36,7 @@ export const routes = {
     exam: '/quiz/test',
     result: '/quiz/result',
     rank: '/quiz/rank',
-  }
+  },
 };
 
 export const toastDuration = 3000;
