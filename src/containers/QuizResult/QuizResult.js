@@ -1,7 +1,7 @@
 // Usage: This container to display result quiz of user
 //Import component: QuizReportCard
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {
   useRouteMatch,
@@ -22,10 +22,16 @@ import {connect} from "react-redux";
 const QuizResultContainer = (props) => {
   const {actions} = props;
 
-  let match = useRouteMatch('/quiz/result/:answer/:right')
-  console.log(match);
-  // receive answer and right here and call postResultQuizAction
-  // const { answer } = React.useContext(globalStateContext);
+  let match = useRouteMatch('/quiz/result/:answer/:right/:target');
+  // console.log(match);
+
+  useEffect(() => {
+    actions.postResultQuizAction({
+      token: localStorage.getItem("token"),
+      test_success: match.answer >= match.target
+    })
+  }, [])
+
   return (
     <React.Fragment>
       <Breadcrumb
@@ -53,12 +59,13 @@ const QuizResultContainer = (props) => {
             />
             <QuizReportRightQuestionCard
               right={match.params.right}
+              target={match.params.target}
             />
           </div>
           <div className="body_footer">
             <img src={require('../../assets/images/warn_icon.png')} />
             <p>
-              Bạn cần phải đạt đủ 30 ĐIỂM để tham gia xếp hạng với các
+              Bạn cần phải đạt đủ {match.params.target} ĐIỂM để tham gia xếp hạng với các
               thành viên khác. Bạn muốn thi lại không?
             </p>
           </div>

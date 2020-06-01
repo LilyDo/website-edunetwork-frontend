@@ -27,13 +27,12 @@ const QuizListQuestionContainer = props => {
 
   const [visible, setVisible] = useState(false);
   const [startCountdown, setStartCountdown] = useState(true);
-
-  let answer = 0;
-  let right = 0;
+  const [answer, setAnswer] = useState(0);
+  const [right, setRight] = useState(0);
 
   const updateQuestionRight = async val => {
-    if (val === 'right') right += 1;
-    answer += 1;
+    if (val === 'right') setRight(right + 1);
+    setAnswer(answer + 1);
   };
 
   // const moveToResult = () => {
@@ -78,7 +77,7 @@ const QuizListQuestionContainer = props => {
           <QuizModal />
         </Modal>
         <Link
-          to={routes.quiz.result.replace(':answer', answer).replace(':right', right)}
+          to={routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question)}
         >
           <button className="yellow_light_btn">
             XEM KẾT QUẢ NGAY
