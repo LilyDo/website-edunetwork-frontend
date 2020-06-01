@@ -22,9 +22,10 @@ class VisaPaymentComponent extends React.Component {
   };
 
   async componentDidMount() {
-    let id = get(this.props, 'match.params.id');
-    let price = get(this.props, 'match.params.price');
-    this.setState({ id: id, price: price });
+
+    // let id = get(this.props, 'match.params.id');
+    let {price} = this.props;
+    this.setState({ price: price });
     // Get a client token for authorization from your server
     const response = await fetch(
       BASE_URL +
