@@ -17,9 +17,9 @@ import { Modal, Row } from 'antd';
 import 'antd/dist/antd.css';
 
 import QuizModal from '../../components/QuizModal/QuizModal';
-import {routes} from '../../constants';
-import {getTranslatedText} from '../../services/appService';
-import {toast} from 'react-toastify';
+import { routes } from '../../constants';
+import { getTranslatedText } from '../../services/appService';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const QuizListQuestionContainer = props => {
@@ -28,17 +28,16 @@ const QuizListQuestionContainer = props => {
   const [visible, setVisible] = useState(false);
   const [startCountdown, setStartCountdown] = useState(true);
 
+  let answer = 0;
   let right = 0;
 
   const updateQuestionRight = async val => {
     if (val === 'right') right += 1;
-
-    console.log(right);
+    answer += 1;
   };
 
-  const viewResult = () => {
-    toast.success('Bạn đã hoàn thành đúng ' + right + ' câu');
-  };
+  const moveToResult = () => {
+  }
 
   useEffect(() => {
     actions.getQuizAction({
@@ -75,19 +74,12 @@ const QuizListQuestionContainer = props => {
             />
           ))}
         </div>
-        <div className="list_container">
-          <Row>
-            <button onClick={() => viewResult()}>Xem kết quả</button>
-          </Row>
-        </div>
         <Modal visible={visible} footer={false} width="796px">
           <QuizModal />
         </Modal>
-        <Link
-          to={routes.quiz.result}
-        >
-          <button className='yellow_light_btn'>XEM KẾT QUẢ NGAY</button>
-        </Link>
+          <button className="yellow_light_btn" onClick={moveToResult}>
+            XEM KẾT QUẢ NGAY
+          </button>
       </div>
     </React.Fragment>
   );

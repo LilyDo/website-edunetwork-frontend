@@ -21,6 +21,7 @@ const QuizHeader = props => {
 
   const [minute, setMinute] = useState(null);
   const [second, setSecond] = useState(null);
+  const user = JSON.parse(localStorage.getItem('current_user'));
 
   useEffect(() => {
     console.log(startCountdown);
@@ -68,17 +69,10 @@ const QuizHeader = props => {
               <p>phút</p>
               <p>giây</p>
             </div>
-            ) : (
-            <div className="right_container">
-              <div className="right_container_header">
-                <p>phút</p>
-                <p>giây</p>
-              </div>
-              <div className="right_container_time_timer">
-                <p>{minute}</p>
-                <div className="vertical_line"></div>
-                <p>{second}</p>
-              </div>
+            <div className="right_container_time_timer">
+              <p>{minute}</p>
+              <div className="vertical_line" />
+              <p>{second}</p>
             </div>
           </div>
         )}

@@ -44,6 +44,12 @@ export default function(state = initialState, action) {
         loading: true,
       };
 
+    case types.GET_PERMISSION_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
     case types.GET_QUIZ_RANK_SUCCESS:
       return {
         ...state,
@@ -57,6 +63,43 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
       };
+    case types.GET_PERMISSION_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload.data,
+        canContinue: 1,
+      };
+
+    case types.GET_PERMISSION_QUIZ_FAILURE:
+      // console.log(action.payload);
+      toast.error(action.payload.errors.join(', '));
+      return {
+        ...state,
+        canContinue: 0,
+        loading: false,
+      };
+
+    case types.POST_RESULT_QUIZ_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.POST_RESULT_QUIZ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case types.POST_RESULT_QUIZ_FAILURE:
+      // console.log(action.payload);
+      toast.error(action.payload.errors.join(', '));
+      return {
+        ...state,
+        loading: false,
+      };
+
     default:
       return state;
   }

@@ -10,8 +10,14 @@ import QuizReportRightQuestionCard from '../../components/QuizReportRightQuestio
 import './QuizResult.scss';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
+import {bindActionCreators} from "redux";
+import {postResultQuizAction} from "../../actions/quiz";
+import {connect} from "react-redux";
 
-const QuizResultContainer = () => {
+const QuizResultContainer = (props) => {
+  const {actions} = props;
+  // receive answer and right here and call postResultQuizAction
+  // const { answer } = React.useContext(globalStateContext);
   return (
     <React.Fragment>
       <Breadcrumb
@@ -53,5 +59,24 @@ const QuizResultContainer = () => {
     </React.Fragment>
   );
 };
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLoading: state.quiz.loading,
+  };
+};
 
-export default QuizResultContainer;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    actions: bindActionCreators(
+      {
+        postResultQuizAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(QuizResultContainer);
