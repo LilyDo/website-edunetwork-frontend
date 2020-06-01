@@ -17,6 +17,8 @@ const QuizHeader = props => {
     clock,
     isLoading,
     setStartCountdown,
+    setVisible,
+    setRenderType,
   } = props;
 
   const [minute, setMinute] = useState(null);
@@ -38,6 +40,8 @@ const QuizHeader = props => {
         if (countDown.format('mm:ss') === '00:00') {
           clearInterval(countdownClock);
           setStartCountdown(false);
+          setRenderType('overTime');
+          setVisible(true);
         }
       }, 1000);
     }
@@ -86,6 +90,8 @@ QuizHeader.propTypes = {
   startCountdown: PropTypes.bool,
   isLoading: PropTypes.bool,
   setStartCountdown: PropTypes.func,
+  setVisible: PropTypes.func,
+  setRenderType: PropTypes.func,
 };
 
 export default QuizHeader;

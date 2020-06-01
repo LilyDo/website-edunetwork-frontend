@@ -28,6 +28,7 @@ const TableColumnTitle = styled.p`
 `;
 
 const RenderColor = props => {
+  
   const { text } = props;
 
   return (
@@ -72,7 +73,7 @@ const columns = [
   {
     title: (
       <TableColumnTitle>
-        {getTranslatedText('table_column_name')}
+        {getTranslatedText('column_sale')}
       </TableColumnTitle>
     ),
     dataIndex: 'sale',
@@ -118,7 +119,7 @@ const QuizRank = (props) => {
       <Typography.Text className="update_date_event">
         {getTranslatedText('date_update')} {dateUpdate}
       </Typography.Text>
-      <Layout className="layout_rank_container">
+      <Layout className="layout_rank_quiz_container">
         <Header className="rank_header_container">
           <Progress
             className="event_progress"
@@ -164,7 +165,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(QuizRank);

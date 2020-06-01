@@ -5,7 +5,8 @@ import React, {useEffect} from 'react';
 
 import {
   useRouteMatch,
-  useParams
+  useParams,
+  Link
 } from 'react-router-dom';
 
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
@@ -23,14 +24,56 @@ const QuizResultContainer = (props) => {
   const {actions} = props;
 
   let match = useRouteMatch('/quiz/result/:answer/:right/:target');
-  // console.log(match);
 
   useEffect(() => {
     actions.postResultQuizAction({
       token: localStorage.getItem("token"),
       test_success: match.answer >= match.target
     })
-  }, [])
+  }, []);
+
+  function renderBodyFooter(right) {
+    if (right === '30') {
+      return (
+        <React.Fragment>
+          <img src={require('../../assets/images/success_icon.png')} />
+          <p>
+            Xin chúc mừng bạn đã trả lời chính xác toàn bộ câu hỏi trắc nghiệm của chúng tôi. 
+            Bạn đã được tham gia vào bảng xếp hạng với các thành viên khác.
+          </p>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <img src={require('../../assets/images/warn_icon.png')} />
+          <p>
+            Bạn cần phải đạt đủ {match.params.target} ĐIỂM để tham gia xếp hạng với các
+            thành viên khác. Bạn muốn thi lại không?
+          </p>
+        </React.Fragment>
+      )
+    }
+  }
+
+  function renderResultButton(right) {
+    if (right === '30') {
+      return (
+        <React.Fragment>
+          <Link to={routes.quiz.rank}>
+            <button className="yellow_result_btn">XEM BẢNG XẾP HẠNG NGAY</button>
+          </Link>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <button className="yellow_btn">THI LẠI NGAY</button>
+          <button className="grey_btn">HỦY BỎ</button>
+        </React.Fragment>
+      )
+    }
+  };
 
   return (
     <React.Fragment>
@@ -63,16 +106,11 @@ const QuizResultContainer = (props) => {
             />
           </div>
           <div className="body_footer">
-            <img src={require('../../assets/images/warn_icon.png')} />
-            <p>
-              Bạn cần phải đạt đủ {match.params.target} ĐIỂM để tham gia xếp hạng với các
-              thành viên khác. Bạn muốn thi lại không?
-            </p>
+            {renderBodyFooter(match.params.right)}
           </div>
         </div>
         <div className="result_container_footer">
-          <button className="yellow_btn">THI LẠI NGAY</button>
-          <button className="grey_btn">HỦY BỎ</button>
+          {renderResultButton(match.params.right)}
         </div>
       </div>
     </React.Fragment>
