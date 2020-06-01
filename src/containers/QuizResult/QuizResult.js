@@ -3,6 +3,11 @@
 
 import React from 'react';
 
+import {
+  useRouteMatch,
+  useParams
+} from 'react-router-dom';
+
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import QuizReportQuestionCard from '../../components/QuizReportCard/QuizReportCard';
 import QuizReportRightQuestionCard from '../../components/QuizReportRightQuestionCard/QuizReportRightQuestionCard';
@@ -16,6 +21,9 @@ import {connect} from "react-redux";
 
 const QuizResultContainer = (props) => {
   const {actions} = props;
+
+  let match = useRouteMatch('/quiz/result/:answer/:right')
+  console.log(match);
   // receive answer and right here and call postResultQuizAction
   // const { answer } = React.useContext(globalStateContext);
   return (
@@ -40,8 +48,12 @@ const QuizResultContainer = (props) => {
             dưới là kết quả của bạn
           </p>
           <div className="body_content_card">
-            <QuizReportQuestionCard />
-            <QuizReportRightQuestionCard />
+            <QuizReportQuestionCard
+              answer={match.params.answer}
+            />
+            <QuizReportRightQuestionCard
+              right={match.params.right}
+            />
           </div>
           <div className="body_footer">
             <img src={require('../../assets/images/warn_icon.png')} />

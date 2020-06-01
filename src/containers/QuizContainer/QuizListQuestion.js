@@ -36,8 +36,8 @@ const QuizListQuestionContainer = props => {
     answer += 1;
   };
 
-  const moveToResult = () => {
-  }
+  // const moveToResult = () => {
+  // }
 
   useEffect(() => {
     actions.getQuizAction({
@@ -77,9 +77,13 @@ const QuizListQuestionContainer = props => {
         <Modal visible={visible} footer={false} width="796px">
           <QuizModal />
         </Modal>
-          <button className="yellow_light_btn" onClick={moveToResult}>
+        <Link
+          to={routes.quiz.result.replace(':answer', answer).replace(':right', right)}
+        >
+          <button className="yellow_light_btn">
             XEM KẾT QUẢ NGAY
           </button>
+        </Link>
       </div>
     </React.Fragment>
   );

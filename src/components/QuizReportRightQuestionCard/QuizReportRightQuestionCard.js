@@ -3,11 +3,16 @@
 import React from 'react';
 import './QuizReportRightQuestionCard.scss';
 
-const QuizReportRightQuestionCard = () => {
+const QuizReportRightQuestionCard = (props) => {
+
+  const {
+    right,
+  } = props;
+
   return (
     <React.Fragment>
       <div className="card_right_container">
-        <h1 className="card_right_header">29/30</h1>
+        <h1 className="card_right_header">{right}/30</h1>
         <p className="card_right_content">
           TỔNG SỐ ĐIỂM BẠN ĐẠT ĐƯỢC
         </p>

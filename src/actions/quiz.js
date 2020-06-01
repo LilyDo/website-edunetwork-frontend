@@ -79,7 +79,7 @@ export const getPermissionQuizAction = payload => {
     axios
       .get(
         `${BASE_URL}/users/accept-for-examination?token=` +
-          payload.token
+          payload.token,
       )
       .then(response => {
         if (response.data.statusCode === 200)
@@ -96,7 +96,7 @@ const getQuizRankRequest = () => ({
   type: GET_QUIZ_RANK_REQUEST,
 });
 
-const getQuizRankSuccess = () => ({
+const getQuizRankSuccess = (payload) => ({
   type: GET_QUIZ_RANK_SUCCESS,
   payload: payload,
 });
@@ -123,18 +123,15 @@ export const postResultQuizAction = payload => {
   return dispatch => {
     dispatch(postResultQuizRequest());
     axios
-    .post(
-      `${BASE_URL}/users/post-test-result`,
-      payload
-    )
-    .then(response => {
-      if (response.data.statusCode === 200)
-        dispatch(postResultQuizSuccess(response.data));
-      else dispatch(postResultQuizFailure(response.data));
-    })
-    .catch(error => {
-      toast.error('Something went wrong!');
-    });
+      .post(`${BASE_URL}/users/post-test-result`, payload)
+      .then(response => {
+        if (response.data.statusCode === 200)
+          dispatch(postResultQuizSuccess(response.data));
+        else dispatch(postResultQuizFailure(response.data));
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
   };
 };
 
