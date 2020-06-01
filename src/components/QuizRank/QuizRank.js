@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Layout, Progress, Typography } from 'antd';
+import {
+  Table,
+  Layout,
+  Progress,
+  Typography
+} from 'antd';
 import 'antd/dist/antd.css';
 import './QuizRank.scss';
 import styled from 'styled-components';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { getQuizRankAction } from '../../actions/quiz';
 
 import { getTranslatedText } from '../../services/appService';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
@@ -65,8 +75,8 @@ const columns = [
         {getTranslatedText('table_column_name')}
       </TableColumnTitle>
     ),
-    dataIndex: 'name',
-    key: 'name',
+    dataIndex: 'sale',
+    key: 'sale',
     align: 'center',
   },
   {
@@ -75,34 +85,26 @@ const columns = [
         {getTranslatedText('table_column_sale_amount')}
       </TableColumnTitle>
     ),
-    dataIndex: 'roll_amount',
-    key: 'roll_amount',
+    dataIndex: 'group_revenue',
+    key: 'group_revenue',
     align: 'center',
   },
 ];
 
-const QuizRank = () => {
+const QuizRank = (props) => {
+
+  const {
+    actions,
+    rank,
+  } = props
+
   const [tableData, setTableData] = useState([]);
   const [eventProgess, setEventProgess] = useState(0);
   const [dateUpdate, setDateUpdate] = useState('');
 
-  // useEffect(() => {
-  //   resultGame()
-  //     .then(response => {
-  //       setTableData(response.data.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  //   getEventProgress()
-  //     .then(response => {
-  //       setEventProgess(response.processEvent);
-  //       setDateUpdate(response.dateUpdate);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    actions.getQuizRankAction();
+  }, []);
 
   return (
     <React.Fragment>
@@ -144,4 +146,25 @@ const QuizRank = () => {
   );
 };
 
-export default QuizRank;
+const mapStateToProps = (state) => {
+  return {
+    rank: state.quiz.rank,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(
+      {
+        getQuizRankAction,
+      },
+      dispatch,
+    ),
+  };
+};
+
+
+export default(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuizRank);

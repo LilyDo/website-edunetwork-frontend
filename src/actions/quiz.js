@@ -8,7 +8,7 @@ import {
   GET_QUIZ_FAILURE,
   GET_QUIZ_RANK_REQUEST,
   GET_QUIZ_RANK_SUCCESS,
-  GET_QUIZ_RANK_FAILURE
+  GET_QUIZ_RANK_FAILURE,
 } from './index';
 import { toast } from 'react-toastify';
 
@@ -53,22 +53,20 @@ export const getQuizRankAction = payload => {
   return dispatch => {
     dispatch(getQuizRankRequest());
     axios
-      .get(
-        `${BASE_URL}/users/result-revenue`
-      ).then(response => {
+      .get(`${BASE_URL}/users/result-revenue`)
+      .then(response => {
         if (response.data.statusCode === 200) {
           dispatch(getQuizRankSuccess(response.data));
         } else {
           dispatch(getQuizRankFailure(response.data));
         }
-      }).catch(error => {
+      })
+      .catch(error => {
         // toast.error('Something went wrong!');
         toast.error(error.toString());
       });
   };
 };
-
-
 
 const getQuizRankRequest = () => ({
   type: GET_QUIZ_RANK_REQUEST,
@@ -82,5 +80,4 @@ const getQuizRankSuccess = () => ({
 const getQuizRankFailure = payload => ({
   type: GET_QUIZ_RANK_FAILURE,
   payload: payload,
-})
-
+});
