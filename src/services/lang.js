@@ -887,6 +887,6 @@ export const translatedText = {
   },
   column_sale: {
     en: 'SALE',
-    vi: 'SỐ SALE'
-  }
+    vi: 'SỐ SALE',
+  },
 };
