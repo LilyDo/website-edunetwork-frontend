@@ -22,6 +22,7 @@ class VisaPaymentComponent extends React.Component {
   };
 
   async componentDidMount() {
+
     // let id = get(this.props, 'match.params.id');
     let {price} = this.props;
     this.setState({ price: price });

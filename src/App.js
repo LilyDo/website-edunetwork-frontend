@@ -46,7 +46,7 @@ import { getUserFormLocal } from './services/appService';
 import DepositNotification from './components/DepositNotification/DepositNotification';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import TermOfService from './components/TermOfService/TermOfService';
-import VisaPaymentComponent from "./components/VisaPaymentComponent/VisaPaymentComponent";
+import VisaPaymentComponent from './components/VisaPaymentComponent/VisaPaymentComponent';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -193,7 +193,6 @@ class App extends Component {
                   />
                   <PrivateRoute
                     authed={this.state.isLogined}
-                    
                     path={routes.quiz.main}
                     component={QuizContainer}
                   />

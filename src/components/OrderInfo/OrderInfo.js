@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Popover,
   Row,
@@ -11,10 +11,10 @@ import {
   DatePicker,
 } from 'antd';
 import 'antd/dist/antd.css';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { bindActionCreators, compose } from 'redux';
-import { get } from 'lodash';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+import {bindActionCreators, compose} from 'redux';
+import {get} from 'lodash';
 
 import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
@@ -30,10 +30,10 @@ import {
   getCourseDetailAction,
 } from '../../actions/courses';
 import * as types from '../../actions/index';
-import { getProfileAction } from '../../actions/profile';
+import {getProfileAction} from '../../actions/profile';
 
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
-import { routes } from '../../constants';
+import {routes} from '../../constants';
 
 class OrderInfo extends Component {
   state = {
@@ -57,10 +57,10 @@ class OrderInfo extends Component {
 
   pay = (shouldDeposit, shouldDepositAmount) => {
     window.confirm('Are you sure you want to buy this course?') &&
-      this.props.actions.buyCourseAction(
-        this.props.courseDetail.id,
-        'traditional',
-      );
+    this.props.actions.buyCourseAction(
+      this.props.courseDetail.id,
+      'traditional',
+    );
   };
 
   handOnFinish(values) {
@@ -142,7 +142,7 @@ class OrderInfo extends Component {
     return (
       <Row gutter={16}>
         <Col
-          style={{ display: 'flex', justifyContent: 'center' }}
+          style={{display: 'flex', justifyContent: 'center'}}
           xs={24}
           lg={12}
         >
@@ -154,7 +154,7 @@ class OrderInfo extends Component {
           </button>
         </Col>
         <Col
-          style={{ display: 'flex', justifyContent: 'center' }}
+          style={{display: 'flex', justifyContent: 'center'}}
           xs={24}
           lg={12}
         >
@@ -191,7 +191,7 @@ class OrderInfo extends Component {
   };
 
   render() {
-    const { courseDetail, profile } = this.props;
+    const {courseDetail, profile} = this.props;
     let shouldDepositAmount =
       profile.total_price - courseDetail.price;
     let shouldDeposit = false;
@@ -314,8 +314,8 @@ class OrderInfo extends Component {
               </div>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <VisaPaymentComponent price={courseDetail.price} />
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <VisaPaymentComponent price={courseDetail.price}/>
               <button
                 style={{
                   height: '30px',

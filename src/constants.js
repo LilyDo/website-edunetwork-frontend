@@ -29,12 +29,14 @@ export const routes = {
   // Game
   game: '/game',
   visaPayment: '/visa-payment/:id/:price',
-  
+
   // Quiz
   quiz: {
     main: '/quiz',
     exam: '/quiz/test',
-  }
+    result: '/quiz/result/:answer/:right/:target',
+    rank: '/quiz/rank',
+  },
 };
 
 export const toastDuration = 3000;

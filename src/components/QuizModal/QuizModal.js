@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-  Layout,
-  Row,
-  Col,
-  Button,
-  Typography
-} from 'antd';
+import { Layout, Row, Col, Button, Typography } from 'antd';
 import 'antd/dist/antd.css';
 
 import { getTranslatedText } from '../../services/appService';
 
 const QuizModal = () => {
-
   return (
     <React.Fragment>
       <Layout>
