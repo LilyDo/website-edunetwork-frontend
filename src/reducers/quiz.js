@@ -37,26 +37,26 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
       };
-    
+
     case types.GET_QUIZ_RANK_REQUEST:
       return {
         ...state,
         loading: true,
-      }
+      };
 
     case types.GET_QUIZ_RANK_SUCCESS:
       return {
         ...state,
         loading: false,
         rank: action.payload.data,
-      }
+      };
 
     case types.GET_QUIZ_RANK_FAILURE:
       toast.error(action.payload.errors.join(', '));
       return {
         ...state,
-        loading: false
-      }
+        loading: false,
+      };
     default:
       return state;
   }
