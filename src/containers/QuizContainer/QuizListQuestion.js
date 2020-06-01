@@ -23,9 +23,14 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const QuizListQuestionContainer = props => {
-  const { actions, data, isLoading } = props;
+  const {
+    actions,
+    data,
+    isLoading,
+  } = props;
 
   const [visible, setVisible] = useState(false);
+  const [renderType, setRenderType] = useState(null);
   const [startCountdown, setStartCountdown] = useState(true);
   const [answer, setAnswer] = useState(0);
   const [right, setRight] = useState(0);
@@ -35,14 +40,15 @@ const QuizListQuestionContainer = props => {
     setAnswer(answer + 1);
   };
 
-  // const moveToResult = () => {
-  // }
-
   useEffect(() => {
     actions.getQuizAction({
       token: localStorage.getItem('token'),
       lang: 'vi',
     });
+    if (data.max_customer_turn === 2) {
+      setRenderType('overTurn');
+      setVisible(true);
+    };
   }, []);
 
   return (
@@ -62,6 +68,8 @@ const QuizListQuestionContainer = props => {
           startCountdown={startCountdown}
           setStartCountdown={setStartCountdown}
           isLoading={isLoading}
+          setVisible={setVisible}
+          setRenderType={setRenderType}
         />
         <div className="list_container">
           {data.questions.map((item, index) => (
@@ -74,10 +82,23 @@ const QuizListQuestionContainer = props => {
           ))}
         </div>
         <Modal visible={visible} footer={false} width="796px">
-          <QuizModal />
+          <QuizModal
+            renderType={renderType}
+          />
         </Modal>
         <Link
-          to={routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question)}
+          to={location => {
+            if (0 < answer && answer < 30) {
+              setRenderType('notEnoughAnswer');
+              setVisible(true)
+            } else {
+              return ({
+                ...location,
+                pathname: routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question) 
+              })
+            }
+          }}
+          className='link_center'
         >
           <button className="yellow_light_btn">
             XEM KẾT QUẢ NGAY

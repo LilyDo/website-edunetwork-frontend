@@ -885,4 +885,8 @@ export const translatedText = {
     en: 'rank',
     vi: 'BẢNG XẾP HẠNG',
   },
+  column_sale: {
+    en: 'SALE',
+    vi: 'SỐ SALE'
+  }
 };
