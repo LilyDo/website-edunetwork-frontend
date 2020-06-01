@@ -96,7 +96,7 @@ const getQuizRankRequest = () => ({
   type: GET_QUIZ_RANK_REQUEST,
 });
 
-const getQuizRankSuccess = (payload) => ({
+const getQuizRankSuccess = payload => ({
   type: GET_QUIZ_RANK_SUCCESS,
   payload: payload,
 });

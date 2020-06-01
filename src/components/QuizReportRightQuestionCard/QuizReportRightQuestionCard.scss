@@ -6,6 +6,7 @@ p {
 }
 
 .card_right_container {
+  position: relative;
   width: 254px;
   height: 102px;
   display: flex;
@@ -18,4 +19,10 @@ p {
 .card_right_header {
   color: #3794FC;
   font-family: 'Poppins', sans-serif;
+}
+
+.card_badge {
+  position: absolute;
+  top: -15px;
+  right: -14px;
 }

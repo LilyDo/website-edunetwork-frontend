@@ -28,6 +28,7 @@ const TableColumnTitle = styled.p`
 `;
 
 const RenderColor = props => {
+  
   const { text } = props;
 
   return (
@@ -164,7 +165,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(QuizRank);
