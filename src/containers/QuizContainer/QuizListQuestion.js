@@ -29,7 +29,7 @@ const QuizListQuestionContainer = props => {
     isLoading,
   } = props;
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [renderType, setRenderType] = useState(null);
   const [startCountdown, setStartCountdown] = useState(true);
   const [answer, setAnswer] = useState(0);
