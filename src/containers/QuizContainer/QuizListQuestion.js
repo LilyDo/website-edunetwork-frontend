@@ -29,7 +29,7 @@ const QuizListQuestionContainer = props => {
     isLoading,
   } = props;
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [renderType, setRenderType] = useState(null);
   const [startCountdown, setStartCountdown] = useState(true);
   const [answer, setAnswer] = useState(0);
@@ -81,9 +81,16 @@ const QuizListQuestionContainer = props => {
             />
           ))}
         </div>
-        <Modal visible={visible} footer={false} width="796px">
+        <Modal
+          visible={visible}
+          footer={false}
+          width="796px"
+          onCancel={() => setVisible(false)}
+          destroyOnClose={true}
+        >
           <QuizModal
-            renderType={renderType}
+            renderType={'overTurn'}
+            setVisible={setVisible}
           />
         </Modal>
         <Link
