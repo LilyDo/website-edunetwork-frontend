@@ -58,7 +58,7 @@ export const getQuizRankAction = payload => {
   return dispatch => {
     dispatch(getQuizRankRequest());
     axios
-      .get(`${BASE_URL}/users/result-revenue`)
+      .get(`${BASE_URL}/result-revenue`)
       .then(response => {
         if (response.data.statusCode === 200) {
           dispatch(getQuizRankSuccess(response.data));

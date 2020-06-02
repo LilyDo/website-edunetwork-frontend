@@ -40,6 +40,16 @@ const QuizListQuestionContainer = props => {
     setAnswer(answer + 1);
   };
 
+  const completeTheQuiz = () => {
+    if (0 < answer && answer < 30) {
+      setRenderType('notEnoughAnswer');
+      setVisible(true);
+    } else {
+      let link = routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(':target', data.max_question);
+      window.location.href = link;
+    }
+  };
+
   useEffect(() => {
     actions.getQuizAction({
       token: localStorage.getItem('token'),
@@ -48,7 +58,8 @@ const QuizListQuestionContainer = props => {
     if (data.max_customer_turn === 2) {
       setRenderType('overTurn');
       setVisible(true);
-    };
+    }
+    ;
   }, []);
 
   return (
@@ -93,24 +104,10 @@ const QuizListQuestionContainer = props => {
             setVisible={setVisible}
           />
         </Modal>
-        <Link
-          to={location => {
-            if (0 < answer && answer < 30) {
-              setRenderType('notEnoughAnswer');
-              setVisible(true)
-            } else {
-              return ({
-                ...location,
-                pathname: routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question) 
-              })
-            }
-          }}
-          className='link_center'
-        >
-          <button className="yellow_light_btn">
+
+          <button className="yellow_light_btn" onClick={completeTheQuiz}>
             XEM KẾT QUẢ NGAY
           </button>
-        </Link>
       </div>
     </React.Fragment>
   );
