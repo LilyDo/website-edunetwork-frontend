@@ -68,8 +68,16 @@ const QuizResultContainer = (props) => {
     } else {
       return (
         <React.Fragment>
-          <button className="yellow_btn">THI LẠI NGAY</button>
-          <button className="grey_btn">HỦY BỎ</button>
+          <Link
+            to={routes.quiz.main}
+          >
+            <button className="yellow_btn">THI LẠI NGAY</button>
+          </Link>
+          <Link
+            to={routes.home}
+          >
+            <button className="grey_btn">HỦY BỎ</button>
+          </Link>
         </React.Fragment>
       )
     }
