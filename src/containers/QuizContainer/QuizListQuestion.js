@@ -81,7 +81,13 @@ const QuizListQuestionContainer = props => {
             />
           ))}
         </div>
-        <Modal visible={visible} footer={false} width="796px">
+        <Modal
+          visible={visible}
+          footer={false}
+          width="796px"
+          onCancel={() => setVisible(false)}
+          destroyOnClose={true}
+        >
           <QuizModal
             renderType={renderType}
           />
