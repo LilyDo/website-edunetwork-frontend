@@ -139,7 +139,7 @@ const QuizRank = (props) => {
               pageSize: 7,
             }}
             columns={columns}
-            dataSource={tableData}
+            dataSource={rank}
           />
         </Content>
       </Layout>
@@ -149,7 +149,7 @@ const QuizRank = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    rank: state.quiz.rank,
+    rank: state.quiz.rank || [],
   };
 };
 
