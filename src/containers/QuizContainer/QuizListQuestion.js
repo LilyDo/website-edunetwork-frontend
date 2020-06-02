@@ -89,7 +89,7 @@ const QuizListQuestionContainer = props => {
           destroyOnClose={true}
         >
           <QuizModal
-            renderType={'overTurn'}
+            renderType={renderType}
             setVisible={setVisible}
           />
         </Modal>
