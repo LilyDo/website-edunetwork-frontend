@@ -5,11 +5,13 @@ import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
 
 import { getTranslatedText } from '../../services/appService';
+import { routes } from '../../constants';
 
 const QuizModal = (props) => {
 
   const {
     renderType,
+    setVisible
   } = props;
 
   function renderModalContentAndFooter(renderType) {
@@ -33,7 +35,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleNextRoundButton()}
+                  onClick={() => setVisible(false)}
                   >
                     <Typography.Text className="button_label">
                       {/* {getTranslatedText(
@@ -46,7 +48,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleAddMoneyToWallet()}
+                    onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
                   >
                     HỦY BỎ
                   </Button>
@@ -73,7 +75,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleNextRoundButton()}
+                    onClick={() => {setVisible(false); window.location.href=routes.quiz.exam}}
                   >
                     <Typography.Text className="button_label">
                       OK, TÔI THI LẠI
@@ -83,7 +85,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleAddMoneyToWallet()}
+                    onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
                   >
                     TÔI KHÔNG MUỐN THI NỮA
                   </Button>
@@ -111,7 +113,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleNextRoundButton()}
+                    onClick={() => {setVisible(false); window.location.href=routes.home}}
                   >
                     <Typography.Text className="button_label">
                       OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC
@@ -121,7 +123,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  // onClick={() => handleAddMoneyToWallet()}
+                    onClick={() => {setVisible(false); window.location.href=routes.home}}
                   >
                     TÔI KHÔNG MUỐN THI NỮA
                   </Button>
@@ -152,6 +154,7 @@ const QuizModal = (props) => {
 
 QuizModal.propTypes = {
   renderType: PropTypes.string,
+  setVisible: PropTypes.func,
 }
 
 export default QuizModal;

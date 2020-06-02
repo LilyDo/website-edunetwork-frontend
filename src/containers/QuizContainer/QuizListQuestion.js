@@ -3,24 +3,24 @@
 //----------//
 // Import component: QuizQuestion
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import QuizHeader from '../../components/QuizHeader/QuizHeader';
 import QuizQuestion from '../../components/QuizQuestion/QuizQuestion';
 
 import './QuizListQuestion.scss';
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {getQuizAction} from '../../actions/quiz';
-import {Modal, Row} from 'antd';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getQuizAction } from '../../actions/quiz';
+import { Modal, Row } from 'antd';
 import 'antd/dist/antd.css';
 
 import QuizModal from '../../components/QuizModal/QuizModal';
-import {routes} from '../../constants';
-import {getTranslatedText} from '../../services/appService';
-import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
+import { routes } from '../../constants';
+import { getTranslatedText } from '../../services/appService';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const QuizListQuestionContainer = props => {
   const {
@@ -29,7 +29,7 @@ const QuizListQuestionContainer = props => {
     isLoading,
   } = props;
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [renderType, setRenderType] = useState(null);
   const [startCountdown, setStartCountdown] = useState(true);
   const [answer, setAnswer] = useState(0);
@@ -40,16 +40,6 @@ const QuizListQuestionContainer = props => {
     setAnswer(answer + 1);
   };
 
-  const completeTheTest = () => {
-    if (0 < answer && answer < 30) {
-      setRenderType('notEnoughAnswer');
-      setVisible(true)
-    } else {
-      let link = routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question);
-      window.location.href = link;
-    }
-  }
-
   useEffect(() => {
     actions.getQuizAction({
       token: localStorage.getItem('token'),
@@ -58,8 +48,7 @@ const QuizListQuestionContainer = props => {
     if (data.max_customer_turn === 2) {
       setRenderType('overTurn');
       setVisible(true);
-    }
-    ;
+    };
   }, []);
 
   return (
@@ -67,7 +56,7 @@ const QuizListQuestionContainer = props => {
       <div class="question_list_container">
         <Breadcrumb
           data={[
-            {link: routes.home, text: getTranslatedText('home')},
+            { link: routes.home, text: getTranslatedText('home') },
             {
               link: routes.quiz.main,
               text: getTranslatedText('quiz'),
@@ -100,13 +89,28 @@ const QuizListQuestionContainer = props => {
           destroyOnClose={true}
         >
           <QuizModal
-            renderType={renderType}
+            renderType={'overTurn'}
+            setVisible={setVisible}
           />
         </Modal>
-
-        <button className="yellow_light_btn" onClick={completeTheTest}>
-          XEM KẾT QUẢ NGAY
-        </button>
+        <Link
+          to={location => {
+            if (0 < answer && answer < 30) {
+              setRenderType('notEnoughAnswer');
+              setVisible(true)
+            } else {
+              return ({
+                ...location,
+                pathname: routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(":target", data.max_question) 
+              })
+            }
+          }}
+          className='link_center'
+        >
+          <button className="yellow_light_btn">
+            XEM KẾT QUẢ NGAY
+          </button>
+        </Link>
       </div>
     </React.Fragment>
   );
