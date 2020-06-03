@@ -35,6 +35,9 @@ const QuizQuestion = props => {
           <p>
             {parseInt(number) + 1}. {question.question}
           </p>
+          <p>
+            <img src={require(question.image)} alt=""/>
+          </p>
           <div>
             <Row gutter={16}>
               <Col xs={24} lg={12}>
