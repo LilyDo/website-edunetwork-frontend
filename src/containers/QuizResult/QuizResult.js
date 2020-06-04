@@ -55,7 +55,7 @@ const QuizResultContainer = (props) => {
   }
 
   function renderResultButton(right) {
-    if (right === '30') {
+    if (right >= match.params.target) {
       return (
         <React.Fragment>
           <Link to={routes.quiz.rank}>

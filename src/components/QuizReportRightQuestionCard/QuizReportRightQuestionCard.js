@@ -13,7 +13,7 @@ const QuizReportRightQuestionCard = (props) => {
 
   function renderTickIcon(right) {
     //If right === 30 => display tick icon on top-right of card
-    if (right === '30') {
+    if (right >= target) {
       return (
         <React.Fragment>
           <img class='card_badge' src={require('../../assets/images/tick_icon.png')} />

@@ -308,8 +308,8 @@ class Header extends Component {
                   <Link to={routes.accountProfile}>
                     <div>{getTranslatedText('profile')}</div>
                   </Link>
-                  <Link to={routes.accountCourses}>
-                    <div>{getTranslatedText('my_course')}</div>
+                  <Link to={routes.quiz.rank} className="NavigationLink">
+                    <div>{getTranslatedText('quiz_rank')}</div>
                   </Link>
                   <div onClick={this.doLogout}>
                     {getTranslatedText('logout')}

@@ -6,6 +6,7 @@ import {
   getTranslatedText,
 } from '../services/appService';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 
 const initialState = {
   loading: false,
@@ -13,6 +14,8 @@ const initialState = {
     questions: [],
   },
   rank: [],
+  time_event: {},
+  progress_event: '',
 };
 
 export default function(state = initialState, action) {
@@ -100,6 +103,39 @@ export default function(state = initialState, action) {
         loading: false,
       };
 
+    case types.GET_TIME_QUIZ_EVENT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    
+    case types.GET_TIME_QUIZ_EVENT_SUCCESS:
+      const startDate = Date.parse(action.payload.data.start);
+      const endDate = Date.parse(action.payload.data.end);
+      const nowDate = Date.parse(action.payload.data.now);
+      let nowDateConvert = _.replace(
+        action.payload.data.now,
+        '-',
+        '.',
+      );
+      nowDateConvert = _.replace(nowDateConvert, '-', '.');
+      const totalTimeOfEvent = endDate - startDate;
+      const currentTotalTimeOfEvent = nowDate - startDate;
+      const progressEvent = parseInt(
+        (currentTotalTimeOfEvent / totalTimeOfEvent) * 100,
+      );
+      return {
+        ...state,
+        loading: false,
+        time_event: action.payload.data,
+        progress_event: progressEvent,
+      }
+    case types.GET_TIME_QUIZ_EVENT_FAILURE:
+      toast.error(action.payload.errors.join(','));
+      return {
+        ...state,
+        loading: false,
+      }
     default:
       return state;
   }

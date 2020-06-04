@@ -15,6 +15,9 @@ import {
   POST_RESULT_QUIZ_REQUEST,
   POST_RESULT_QUIZ_SUCCESS,
   POST_RESULT_QUIZ_FAILURE,
+  GET_TIME_QUIZ_EVENT_REQUEST,
+  GET_TIME_QUIZ_EVENT_SUCCESS,
+  GET_TIME_QUIZ_EVENT_FAILURE
 } from './index';
 import { toast } from 'react-toastify';
 
@@ -146,5 +149,39 @@ const postResultQuizSuccess = payload => ({
 
 const postResultQuizFailure = payload => ({
   type: POST_RESULT_QUIZ_FAILURE,
+  payload: payload,
+});
+
+// GET QUIZ TIME
+export const getTimeEventQuizAction = payload => {
+  return dispatch => {
+    dispatch(getTimeEventQuizRequest());
+    axios
+      .get(
+        `${BASE_URL}/get-date-event-examination`
+      )
+      .then(response => {
+          console.log(response)
+        if (response.data.statusCode === 200)
+          dispatch(getTimeEventQuizSuccess(response.data));
+        else dispatch(getTimeEventQuizFailure(response.data));
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
+  };
+};
+
+const getTimeEventQuizRequest = () => ({
+  type: GET_TIME_QUIZ_EVENT_REQUEST,
+});
+
+const getTimeEventQuizSuccess = payload => ({
+  type: GET_TIME_QUIZ_EVENT_SUCCESS,
+  payload: payload,
+});
+
+const getTimeEventQuizFailure = payload => ({
+  type: GET_TIME_QUIZ_EVENT_FAILURE,
   payload: payload,
 });

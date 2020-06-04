@@ -12,7 +12,10 @@ import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getQuizRankAction } from '../../actions/quiz';
+import {
+  getQuizRankAction,
+  getTimeEventQuizAction,
+} from '../../actions/quiz';
 
 import { getTranslatedText } from '../../services/appService';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
@@ -97,14 +100,19 @@ const QuizRank = (props) => {
   const {
     actions,
     rank,
+    time_event,
+    progress_event,
   } = props
 
   const [tableData, setTableData] = useState([]);
-  const [eventProgess, setEventProgess] = useState(0);
-  const [dateUpdate, setDateUpdate] = useState('');
 
   useEffect(() => {
     actions.getQuizRankAction();
+    actions.getTimeEventQuizAction();
+  }, []);
+
+  useEffect(() => {
+    console.log(time_event)
   }, []);
 
   return (
@@ -117,7 +125,7 @@ const QuizRank = (props) => {
         ]}
       />
       <Typography.Text className="update_date_event">
-        {getTranslatedText('date_update')} {dateUpdate}
+        {getTranslatedText('date_update')} {time_event.now}
       </Typography.Text>
       <Layout className="layout_rank_quiz_container">
         <Header className="rank_header_container">
@@ -125,7 +133,7 @@ const QuizRank = (props) => {
             className="event_progress"
             strokeWidth={30}
             strokeColor="#D59E29"
-            percent={eventProgess}
+            percent={progress_event}
             t
           />
         </Header>
@@ -150,6 +158,8 @@ const QuizRank = (props) => {
 const mapStateToProps = (state) => {
   return {
     rank: state.quiz.rank || [],
+    time_event: state.quiz.time_event,
+    progress_event: state.quiz.progress_event
   };
 };
 
@@ -158,6 +168,7 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators(
       {
         getQuizRankAction,
+        getTimeEventQuizAction,
       },
       dispatch,
     ),
