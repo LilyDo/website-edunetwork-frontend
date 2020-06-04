@@ -23,6 +23,13 @@ class HamburgerMenu extends Component {
           <span>{getTranslatedText('course').toUpperCase()}</span>
         </Link>
         <Link
+          to={routes.quiz.rank}
+          className="Menu Course"
+          onClick={this.props.toggleHamburgerMenu}
+        >
+          <span>{getTranslatedText('quiz_rank').toUpperCase()}</span>
+        </Link>
+        <Link
           to={routes.contact}
           className="Menu Contact"
           onClick={this.props.toggleHamburgerMenu}
