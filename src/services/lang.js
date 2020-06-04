@@ -878,7 +878,7 @@ export const translatedText = {
     vi: 'Thi Trắc Nghiệm',
   },
   quiz_rank: {
-    en: 'Quiz Rank',
+    en: 'Leaderboard',
     vi: 'Bảng Xếp Hạng',
   },
   result: {

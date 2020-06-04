@@ -77,16 +77,6 @@ class AccountBreadcrumb extends Component {
               <span>{getTranslatedText('course')}</span>
             </Link>
             <Link
-              to={routes.game}
-              className={
-                window.location.pathname === routes.accountCourses
-                  ? 'ActiveTab'
-                  : ''
-              }
-            >
-              <span>Mini game</span>
-            </Link>
-            <Link
               to={routes.quiz.main}
               className={
                 window.location.pathname === routes.accountCourses
@@ -95,16 +85,6 @@ class AccountBreadcrumb extends Component {
               }
             >
               <span>{getTranslatedText('quiz')}</span>
-            </Link>
-            <Link
-              to={routes.quiz.rank}
-              className={
-                window.location.pathname === routes.accountCourses
-                  ? 'ActiveTab'
-                  : ''
-              }
-            >
-              <span>{getTranslatedText('quiz_rank')}</span>
             </Link>
           </div>
           <div className="AccountContainer">

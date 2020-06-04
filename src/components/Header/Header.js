@@ -212,6 +212,9 @@ class Header extends Component {
               <Link to={routes.courses} className="NavigationLink">
                 <span>{getTranslatedText('course')}</span>
               </Link>
+              <Link to={routes.quiz.rank} className="NavigationLink">
+                <span>{getTranslatedText('quiz_rank')}</span>
+              </Link>
               <Link to={routes.contact} className="NavigationLink">
                 <span>{getTranslatedText('contact')}</span>
               </Link>
