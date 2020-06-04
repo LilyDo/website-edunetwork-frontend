@@ -3,6 +3,7 @@
 
 import React from 'react';
 import './QuizReportCard.scss';
+import { getTranslatedText } from '../../services/appService';
 
 const QuizReportQuestionCard = (props) => {
 
@@ -14,7 +15,7 @@ const QuizReportQuestionCard = (props) => {
     <React.Fragment>
       <div className="card_container">
         <h1 className="card_header">{answer}</h1>
-        <p className="card_content">TỔNG CÂU HỎI BẠN ĐÃ TRẢ LỜI</p>
+        <p className="card_content">{getTranslatedText('quiz_answer')}</p>
       </div>
     </React.Fragment>
   );

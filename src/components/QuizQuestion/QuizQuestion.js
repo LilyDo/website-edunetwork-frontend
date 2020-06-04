@@ -9,6 +9,12 @@ import './QuizQuestion.scss';
 const QuizQuestion = props => {
   const { question, number, setQuestionRight } = props;
 
+  useEffect(() => {
+    if(typeof(question.image) === 'string') {
+      console.log(question)
+    }
+  }, []);
+
   const checkingValue = e => {
     if (e.checked) {
       if (e.value == question.answer_right) setQuestionRight('right');
@@ -35,6 +41,13 @@ const QuizQuestion = props => {
           <p>
             {parseInt(number) + 1}. {question.question}
           </p>
+          {typeof(question.image) === 'string' ? (
+            console.log('hello'),
+            <img src={question.image}/>
+
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
           <div>
             <Row gutter={16}>
               <Col xs={24} lg={12}>
@@ -93,6 +106,12 @@ const QuizQuestion = props => {
           <p>
             {parseInt(number) + 1}. {question.question}
           </p>
+          {typeof(question.image) === 'string' ? (
+            console.log('hello'),
+            <img src={question.image} alt=""/>
+          ): (
+            <React.Fragment></React.Fragment>
+          )}
           <div>
             <Row gutter={16}>
               <Col xs={24} lg={12}>

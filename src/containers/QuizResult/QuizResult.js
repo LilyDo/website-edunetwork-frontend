@@ -38,8 +38,7 @@ const QuizResultContainer = (props) => {
         <React.Fragment>
           <img src={require('../../assets/images/success_icon.png')} />
           <p>
-            Xin chúc mừng bạn đã trả lời chính xác toàn bộ câu hỏi trắc nghiệm của chúng tôi. 
-            Bạn đã được tham gia vào bảng xếp hạng với các thành viên khác.
+            {getTranslatedText('quiz_result_success')}
           </p>
         </React.Fragment>
       )
@@ -48,8 +47,7 @@ const QuizResultContainer = (props) => {
         <React.Fragment>
           <img src={require('../../assets/images/warn_icon.png')} />
           <p>
-            Bạn cần phải đạt đủ {match.params.target} ĐIỂM để tham gia xếp hạng với các
-            thành viên khác. Bạn muốn thi lại không?
+            {getTranslatedText('quiz_result_failure_1')} {match.params.target} {getTranslatedText('quiz_result_failure_2')}
           </p>
         </React.Fragment>
       )
@@ -61,7 +59,7 @@ const QuizResultContainer = (props) => {
       return (
         <React.Fragment>
           <Link to={routes.quiz.rank}>
-            <button className="yellow_result_btn">XEM BẢNG XẾP HẠNG NGAY</button>
+            <button className="yellow_result_btn">{getTranslatedText('btn_rank')}</button>
           </Link>
         </React.Fragment>
       )
@@ -71,12 +69,12 @@ const QuizResultContainer = (props) => {
           <Link
             to={routes.quiz.main}
           >
-            <button className="yellow_btn">THI LẠI NGAY</button>
+            <button className="yellow_btn">{getTranslatedText('btn_test_again')}</button>
           </Link>
           <Link
             to={routes.home}
           >
-            <button className="grey_btn">HỦY BỎ</button>
+            <button className="grey_btn">{getTranslatedText('btn_cancel')}</button>
           </Link>
         </React.Fragment>
       )
@@ -97,12 +95,11 @@ const QuizResultContainer = (props) => {
       />
       <div className="result_container">
         <p className="result_container_header">
-          KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN
+          {getTranslatedText('quiz_result')}
         </p>
         <div className="result_container_body">
           <p>
-            Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên
-            dưới là kết quả của bạn
+            {getTranslatedText('quiz_result_subheading')}
           </p>
           <div className="body_content_card">
             <QuizReportQuestionCard

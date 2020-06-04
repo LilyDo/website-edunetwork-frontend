@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react';
 import './QuizHeader.scss';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { getTranslatedText } from '../../services/appService';
 
 const QuizHeader = props => {
   const {
@@ -50,28 +51,28 @@ const QuizHeader = props => {
   return (
     <React.Fragment>
       <div className="quiz_header_container">
-        <div className="left_container">ĐỀ THI TRẮC NGHIỆM</div>
+        <div className="left_container">{getTranslatedText('quiz_title')}</div>
         <div className="mid_container">
-          <p>Level</p>
+          <p>{getTranslatedText('quiz_level')}</p>
           <p className="mid_container_footer">{user.level}</p>
         </div>
         {!clock ? (
           <div className="right_container">
-            <p>Thời gian làm bài</p>
+            <p>{getTranslatedText('quiz_time_exam')}</p>
             <div className="right_container_time">
               <img
                 className="time_icon"
                 src={require('../../assets/images/clock_icon.png')}
               />
               <p className="time_content">15</p>
-              <p className="time_unit">phút</p>
+              <p className="time_unit">{getTranslatedText('time_unit_minute')}</p>
             </div>
           </div>
         ) : (
           <div className="right_container">
             <div className="right_container_header">
-              <p>phút</p>
-              <p>giây</p>
+              <p>{getTranslatedText('time_unit_minute')}</p>
+              <p>{getTranslatedText('time_unit_seconds')}</p>
             </div>
             <div className="right_container_time_timer">
               <p>{minute}</p>

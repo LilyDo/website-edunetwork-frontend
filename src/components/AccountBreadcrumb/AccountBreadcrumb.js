@@ -86,6 +86,16 @@ class AccountBreadcrumb extends Component {
             >
               <span>Mini game</span>
             </Link>
+            <Link
+              to={routes.quiz.main}
+              className={
+                window.location.pathname === routes.accountCourses
+                  ? 'ActiveTab'
+                  : ''
+              }
+            >
+              <span>{getTranslatedText('quiz')}</span>
+            </Link>
           </div>
           <div className="AccountContainer">
             <div className="Text">{getTranslatedText('hello')}! </div>

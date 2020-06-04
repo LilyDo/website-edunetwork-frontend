@@ -2,6 +2,7 @@
 
 import React from 'react';
 import './QuizReportRightQuestionCard.scss';
+import { getTranslatedText } from '../../services/appService';
 
 const QuizReportRightQuestionCard = (props) => {
 
@@ -30,8 +31,8 @@ const QuizReportRightQuestionCard = (props) => {
       <div className="card_right_container">
         <h1 className="card_right_header">{right}/{target}</h1>
         {renderTickIcon(right)}
-        <p className="card_right_content">
-          TỔNG SỐ ĐIỂM BẠN ĐẠT ĐƯỢC
+        <p className="card_content">
+          {getTranslatedText('quiz_score')}
         </p>
       </div>
     </React.Fragment>

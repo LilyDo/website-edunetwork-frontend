@@ -1,3 +1,8 @@
+// media query
+$smallMobileBreakPoint: 600px;
+$mobileBreakPoint: 768px;
+$inBetweenBreakpoint: 1024px;
+
 .start_screen_container {
   height: 360px;
   display: flex;
@@ -30,4 +35,34 @@
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
+}
+
+@media only screen and (min-width: $mobileBreakPoint) and (max-width: $inBetweenBreakpoint) {
+
+}
+
+@media only screen and (max-width: $smallMobileBreakPoint) {
+  .start_screen_container {
+    height: 460px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .screen_btn {
+    width: 140px;
+    height: 60px;
+    border-radius: 60px;
+    background-color: #D59E29;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    outline: 0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+  }
 }

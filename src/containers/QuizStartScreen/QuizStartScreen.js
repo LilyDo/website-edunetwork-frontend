@@ -42,11 +42,11 @@ const QuizStartScreen = props => {
             <img
               src={require('../../assets/images/start_icon.png')}
             />
-            BẮT ĐẦU THI
+            {getTranslatedText('start_quiz')}
           </button>
           {/*</Link>*/}
           <p>
-            Thời gian diễn ra chương trình: từ {data.start_date} -{' '}
+            {getTranslatedText('quiz_during_time')} {getTranslatedText('quiz_time_from')} {data.start_date} -{' '}
             {data.end_date}
           </p>
         </div>

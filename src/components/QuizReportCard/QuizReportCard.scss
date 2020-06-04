@@ -1,5 +1,10 @@
 @import '../../shared.scss';
 
+// media query
+$smallMobileBreakPoint: 600px;
+$mobileBreakPoint: 768px;
+$inBetweenBreakpoint: 1024px;
+
 
 p {
   font-family: 'Poppins', sans-serif;
@@ -18,4 +23,10 @@ p {
 .card_header {
   color: #B97A2A;
   font-family: 'Poppins', sans-serif;
+}
+
+@media only screen and (max-width: $smallMobileBreakPoint) {
+  .card_content {
+    margin: auto;
+  }
 }
