@@ -106,7 +106,7 @@ const QuizListQuestionContainer = props => {
         </Modal>
 
           <button className="yellow_light_btn" onClick={completeTheQuiz}>
-            XEM KẾT QUẢ NGAY
+            {getTranslatedText('btn_result')}
           </button>
       </div>
     </React.Fragment>
