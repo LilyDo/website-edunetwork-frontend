@@ -877,6 +877,10 @@ export const translatedText = {
     en: 'Quiz',
     vi: 'Thi Trắc Nghiệm',
   },
+  quiz_rank: {
+    en: 'Quiz Rank',
+    vi: 'Bảng Xếp Hạng',
+  },
   result: {
     en: 'result',
     vi: 'KẾT QUẢ',
@@ -891,19 +895,19 @@ export const translatedText = {
   },
   start_quiz: {
     en: 'START QUIZ',
-    vi: 'BẮT ĐẦU THI'
+    vi: 'BẮT ĐẦU THI',
   },
   quiz_during_time: {
     en: 'Time of the event:',
-    vi: 'Thời gian diễn ra chương trình:'
+    vi: 'Thời gian diễn ra chương trình:',
   },
   quiz_time_from: {
     en: 'from',
-    vi: 'từ'
+    vi: 'từ',
   },
   quiz_title: {
     en: 'QUIZ TEST',
-    vi: 'ĐỀ THI TRẮC NGHIỆM'
+    vi: 'ĐỀ THI TRẮC NGHIỆM',
   },
   quiz_time_exam: {
     en: 'Time to do the quiz',
@@ -918,24 +922,28 @@ export const translatedText = {
     vi: 'giây',
   },
   quiz_result_success: {
-    en: 'Congratulations on answering our entire quiz question correctly. You have been participating in the rankings with other members.',
-    vi: 'Xin chúc mừng bạn đã trả lời chính xác toàn bộ câu hỏi trắc nghiệm của chúng tôi. Bạn đã được tham gia vào bảng xếp hạng với các thành viên khác.',
+    en:
+      'Congratulations on answering our entire quiz question correctly. You have been participating in the rankings with other members.',
+    vi:
+      'Xin chúc mừng bạn đã trả lời chính xác toàn bộ câu hỏi trắc nghiệm của chúng tôi. Bạn đã được tham gia vào bảng xếp hạng với các thành viên khác.',
   },
   quiz_result_failure_1: {
     en: 'You need to get enoungh',
-    vi: 'Bạn cần phải đạt đủ'
+    vi: 'Bạn cần phải đạt đủ',
   },
   quiz_result_failure_2: {
-    en: 'SCORE to participate in ranking with other members. Do you want to retake the quiz?',
-    vi: 'ĐIỂM để tham gia xếp hạng với các thành viên khác. Bạn muốn thi lại không?'
+    en:
+      'SCORE to participate in ranking with other members. Do you want to retake the quiz?',
+    vi:
+      'ĐIỂM để tham gia xếp hạng với các thành viên khác. Bạn muốn thi lại không?',
   },
   btn_result: {
     en: 'VIEW RESULT',
-    vi: 'XEM KẾT QUẢ NGAY'
+    vi: 'XEM KẾT QUẢ NGAY',
   },
   btn_rank: {
     en: 'VIEW RANK',
-    vi: 'XEM BẢNG XẾP HẠNG NGAY'
+    vi: 'XEM BẢNG XẾP HẠNG NGAY',
   },
   btn_test_again: {
     en: 'DO QUIZ AGAIN',
@@ -943,26 +951,27 @@ export const translatedText = {
   },
   btn_cancel: {
     en: 'CANCEL',
-    vi: 'HỦY BỎ'
+    vi: 'HỦY BỎ',
   },
   quiz_result: {
     en: 'YOUR RESULT',
-    vi: 'KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN'
+    vi: 'KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN',
   },
   quiz_result_subheading: {
     en: 'Thank you for taking your quiz. Below are your results',
-    vi: 'Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên dưới là kết quả của bạn'
+    vi:
+      'Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên dưới là kết quả của bạn',
   },
   quiz_level: {
     en: 'Level',
-    vi: 'Cấp độ'
+    vi: 'Cấp độ',
   },
   quiz_score: {
     en: 'TOTAL SCORE YOU REACH',
-    vi: 'TỔNG SỐ ĐIỂM BẠN ĐẠT ĐƯỢC'
+    vi: 'TỔNG SỐ ĐIỂM BẠN ĐẠT ĐƯỢC',
   },
   quiz_answer: {
     en: 'TOTAL QUESTION YOU HAVE ANSWED',
-    vi: 'TỔNG CÂU HỎI BẠN ĐÃ TRẢ LỜI'
-  }
+    vi: 'TỔNG CÂU HỎI BẠN ĐÃ TRẢ LỜI',
+  },
 };
