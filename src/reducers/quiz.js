@@ -106,9 +106,9 @@ export default function(state = initialState, action) {
     case types.GET_TIME_QUIZ_EVENT_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    
+
     case types.GET_TIME_QUIZ_EVENT_SUCCESS:
       const startDate = Date.parse(action.payload.data.start);
       const endDate = Date.parse(action.payload.data.end);
@@ -129,13 +129,13 @@ export default function(state = initialState, action) {
         loading: false,
         time_event: action.payload.data,
         progress_event: progressEvent,
-      }
+      };
     case types.GET_TIME_QUIZ_EVENT_FAILURE:
       toast.error(action.payload.errors.join(','));
       return {
         ...state,
         loading: false,
-      }
+      };
     default:
       return state;
   }

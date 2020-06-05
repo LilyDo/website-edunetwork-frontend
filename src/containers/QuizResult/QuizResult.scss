@@ -84,7 +84,7 @@ $inBetweenBreakpoint: 1024px;
 @media only screen and (max-width: $smallMobileBreakPoint) {
 
   .result_container {
-    height: 370px;
+    height: 400px;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -96,19 +96,20 @@ $inBetweenBreakpoint: 1024px;
 
   .result_container_body {
     width: 100%;
-    height: auto;
+    height: 320px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 10px;
   }
 
   .result_container_body p {
-    width: 100vw;
+    width: auto;
   }
 
   .body_content_card {
     width: 100vw;
-    height: 240px;
+    height: 140px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -127,5 +128,33 @@ $inBetweenBreakpoint: 1024px;
   .body_footer p {
     width: 240px;
     word-break: break-all;
+  }
+  .result_container_footer {
+    width: 293px;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 28px;
+  }
+
+  .result_container_header {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+
+  .yellow_result_btn {
+    width: 219px;
+    height: 43px;
+    border-radius: 10px;
+    background-color: #B97A2A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin: auto;
+  }
+
+  .yellow_result_btn + a {
+    margin: auto;
   }
 }

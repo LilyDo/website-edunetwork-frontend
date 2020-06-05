@@ -104,15 +104,9 @@ const QuizRank = (props) => {
     progress_event,
   } = props
 
-  const [tableData, setTableData] = useState([]);
-
   useEffect(() => {
     actions.getQuizRankAction();
     actions.getTimeEventQuizAction();
-  }, []);
-
-  useEffect(() => {
-    console.log(time_event)
   }, []);
 
   return (
