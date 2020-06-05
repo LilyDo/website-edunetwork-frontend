@@ -20,6 +20,9 @@ import {
   DEPOSIT_REQUEST,
   DEPOSIT_SUCCESS,
   DEPOSIT_FAILURE,
+  UPDATE_ORDER_REQUEST,
+  UPDATE_ORDER_SUCCESS,
+  UPDATE_ORDER_FAILURE,
 } from './index';
 
 /**
@@ -163,19 +166,17 @@ const getUserCourseDetailFailure = error => ({
  * | BUY COURSE |
  * +------------+
  */
-export const buyCourseAction = (courseId, shouldDepositAmount) => {
+export const buyCourseAction = (courseId, method = 'traditional') => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/buying-course?course_id=${courseId}&should_deposit_amount=${shouldDepositAmount}&token=${token}`,
+        `${BASE_URL}/users/buying-course?course_id=${courseId}&method=${method}&token=${token}`,
       )
       .then(response => {
-        dispatch(
-          buyCourseSuccess(response.data, shouldDepositAmount),
-        );
+        dispatch(buyCourseSuccess(response.data));
       })
       .catch(error => dispatch(buyCourseFailure(error.message)));
   };
@@ -186,14 +187,45 @@ const buyCourseRequest = courseId => ({
   payload: { course_id: courseId },
 });
 
-const buyCourseSuccess = (response, shouldDepositAmount) => ({
+const buyCourseSuccess = response => ({
   type: BUY_COURSE_SUCCESS,
-  payload: { ...response, shouldDepositAmount },
+  payload: { ...response },
 });
 
 const buyCourseFailure = error => ({
   type: BUY_COURSE_FAILURE,
   payload: { error },
+});
+
+export const updateOrderAction = payload => {
+  return dispatch => {
+    dispatch(updateOrderRequest(payload));
+
+    const token = localStorage.getItem(TOKEN_KEY);
+    axios
+      .post(
+        `${BASE_URL}/users/update-order?token=${token}&order_code=${payload.order_code}&method=${payload.method}&status=${payload.status}`,
+      )
+      .then(response => {
+        dispatch(updateOrderSuccess(response.data));
+      })
+      .catch(error => dispatch(updateOrderFailure(error.message)));
+  };
+};
+
+const updateOrderRequest = payload => ({
+  type: UPDATE_ORDER_REQUEST,
+  payload: payload,
+});
+
+const updateOrderSuccess = payload => ({
+  type: UPDATE_ORDER_SUCCESS,
+  payload: payload,
+});
+
+const updateOrderFailure = payload => ({
+  type: UPDATE_ORDER_FAILURE,
+  payload: { payload },
 });
 
 /**

@@ -1,0 +1,19 @@
+.layout_rank_quiz_container {
+  background-image: url('../../assets/images/quiz_rank_backgroud.png');
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  width: 79.42vw !important;
+  @media only screen and (max-width: 414px) {
+    width: 100vw !important;
+  }
+  @media only screen and (min-width: 415px) and (max-width: 768px) {
+    width: 100vw !important;
+  }
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.layout_rank_container {
+  margin-bottom: 60px;
+}

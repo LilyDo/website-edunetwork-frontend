@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getOrderDetailByCode } from '../../actions/profile';
+import { updateOrderAction } from '../../actions/courses';
 
 class DepositNotification extends Component {
   state = {
@@ -29,6 +30,11 @@ class DepositNotification extends Component {
     });
 
     this.props.actions.getOrderDetailByCode(code);
+    this.props.actions.updateOrderAction({
+      status: 'waiting',
+      order_code: code,
+      method: 'traditional',
+    });
   }
 
   render() {
@@ -60,7 +66,7 @@ class DepositNotification extends Component {
                 : amount,
             )}
           </b>{' '}
-          (1 USD = 24.000 VND)
+          (1 USD = 24.000 VND) (1 USD = 1.45 SGD)
           <br />
           {isBuyCourse === 'buy' && (
             <div>
@@ -177,6 +183,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getOrderDetailByCode,
+        updateOrderAction,
       },
       dispatch,
     ),

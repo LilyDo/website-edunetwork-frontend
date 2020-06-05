@@ -212,6 +212,9 @@ class Header extends Component {
               <Link to={routes.courses} className="NavigationLink">
                 <span>{getTranslatedText('course')}</span>
               </Link>
+              <Link to={routes.quiz.rank} className="NavigationLink">
+                <span>{getTranslatedText('quiz_rank')}</span>
+              </Link>
               <Link to={routes.contact} className="NavigationLink">
                 <span>{getTranslatedText('contact')}</span>
               </Link>
@@ -305,8 +308,8 @@ class Header extends Component {
                   <Link to={routes.accountProfile}>
                     <div>{getTranslatedText('profile')}</div>
                   </Link>
-                  <Link to={routes.accountCourses}>
-                    <div>{getTranslatedText('my_course')}</div>
+                  <Link to={routes.quiz.rank} className="NavigationLink">
+                    <div>{getTranslatedText('quiz_rank')}</div>
                   </Link>
                   <div onClick={this.doLogout}>
                     {getTranslatedText('logout')}
@@ -347,7 +350,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

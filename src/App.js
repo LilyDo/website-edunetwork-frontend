@@ -40,11 +40,13 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadingOverlay from 'react-loading-overlay';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import MainGame from '../src/components/Game/MainGame/MainGame';
+import QuizContainer from '../src/containers/Quiz/Quiz';
 // services
 import { getUserFormLocal } from './services/appService';
 import DepositNotification from './components/DepositNotification/DepositNotification';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import TermOfService from './components/TermOfService/TermOfService';
+import VisaPaymentComponent from './components/VisaPaymentComponent/VisaPaymentComponent';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -156,6 +158,12 @@ class App extends Component {
                   <PrivateRoute
                     authed={this.state.isLogined}
                     exact
+                    path={routes.visaPayment}
+                    component={VisaPaymentComponent}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
                     path={routes.accountWithdraw}
                     component={MyWallet_Withdraw}
                   />
@@ -182,6 +190,11 @@ class App extends Component {
                     exact
                     path={routes.accountCourses}
                     component={AccountCoursePage}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    path={routes.quiz.main}
+                    component={QuizContainer}
                   />
                   <Route exact path={routes.contact}>
                     <ContactPage />
@@ -218,7 +231,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

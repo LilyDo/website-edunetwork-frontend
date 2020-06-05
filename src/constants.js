@@ -3,7 +3,7 @@ export const routes = {
   sendContactSuccessful: '/send-contact-successful',
   // course
   courses: '/courses',
-  coursePaymentSuccessful: '/courses/payment/:status', // this should be declared before courseDetail or "paymentsucessful" will become the id param
+  coursePaymentSuccessful: '/courses/payment/:status/:code', // this should be declared before courseDetail or "paymentsucessful" will become the id param
   courseOrder: '/courses/order/:id', // this should be declared before courseDetail or "order" will become the id param
   courseDetail: '/courses/:id',
   // auth
@@ -27,7 +27,16 @@ export const routes = {
   privacyPolicy: '/privacy-policy',
   termOfService: '/term-of-service',
   // Game
-  game: '/game'
+  game: '/game',
+  visaPayment: '/visa-payment/:id/:price',
+
+  // Quiz
+  quiz: {
+    main: '/quiz',
+    exam: '/quiz/test',
+    result: '/quiz/result/:answer/:right/:target',
+    rank: '/quiz/rank',
+  },
 };
 
 export const toastDuration = 3000;

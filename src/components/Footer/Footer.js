@@ -29,7 +29,10 @@ function Footer() {
                 </Link>
               </div>
               <div className="NavigationLink Contact">
-                <a href='https://blog.edunetwork.global/' target="_blank">
+                <a
+                  href="https://blog.edunetwork.global/"
+                  target="_blank"
+                >
                   {getTranslatedText('BLOG')}
                 </a>
               </div>

@@ -326,11 +326,11 @@ export const translatedText = {
     vi: 'Số tài khoản ngân hàng của bạn là gì',
   },
   bank_address: {
-    en: 'Address of Beneficiary Bank',
-    vi: 'Địa chỉ ngân hàng thụ hưởng',
+    en: 'Recipient Address',
+    vi: 'Địa chỉ người nhận',
   },
   your_bank_address: {
-    en: 'What is your address of beneficiary bank',
+    en: 'What is your address of recipient',
     vi: 'Địa chỉ ngân hàng thụ hưởng của bạn là gì',
   },
   swift_code: {
@@ -455,6 +455,30 @@ export const translatedText = {
     en: 'ORDER',
     vi: 'ĐẶT HÀNG',
   },
+  transfer_money: {
+    en: 'TRANSFER TO BANK',
+    vi: 'CHUYỂN KHOẢN',
+  },
+  visa: {
+    en: 'VISA',
+    vi: 'VISA',
+  },
+  card_number: {
+    en: 'Card number',
+    vi: 'Mã số thẻ',
+  },
+  exprie_date: {
+    en: 'Expiry date Month/Year',
+    vi: 'Ngày hết hạn',
+  },
+  security_code: {
+    en: 'Security code',
+    vi: 'Mã bảo vệ',
+  },
+  name_account_holder: {
+    en: 'Name of account holder',
+    vi: 'Tên chủ tài khoản',
+  },
   your_order_info: {
     en: 'YOUR ORDER INFORMATION',
     vi: 'THÔNG TIN ĐẶT HÀNG CỦA BẠN',
@@ -468,6 +492,12 @@ export const translatedText = {
       'Note: After payment, your course will be activated immediately. Beside, we sent the course information to your email. Please check, thanks!',
     vi:
       'Lưu ý: Sau khi thanh toán, khóa học của bạn sẽ được kích hoạt trong vòng 24 giờ. Bên cạnh đó, chúng tôi đã gửi thông tin khóa học vào email của bạn. Vui lòng kiểm tra, cảm ơn!',
+  },
+  note_buy_braintree: {
+    en:
+      'When buying a course with a visa card will cost an additional 10% of the course fee',
+    vi:
+      'Khi mua khóa học bằng thẻ visa sẽ mất thêm 10% phí của khóa học',
   },
   your_wallet: {
     en: 'YOUR WALLET',
@@ -530,10 +560,6 @@ export const translatedText = {
   respectfully: {
     en: 'Respectfully',
     vi: 'Trân trọng',
-  },
-  hello: {
-    en: 'Hello',
-    vi: 'Xin chào',
   },
   my_course: {
     en: 'My Course',
@@ -834,5 +860,152 @@ export const translatedText = {
   date_update: {
     en: 'Update',
     vi: 'Cập nhật',
+  },
+  withdraw_type: {
+    en: 'Withdraw Type',
+    vi: 'Hình thức chuyển khoản',
+  },
+  paypal_name: {
+    en: 'PayPal Name',
+    vi: 'Tên tài khoản PayPal',
+  },
+  paypal_email: {
+    en: 'PayPal Email',
+    vi: 'Email tài khoản PayPal',
+  },
+  quiz: {
+    en: 'Quiz',
+    vi: 'Thi Trắc Nghiệm',
+  },
+  quiz_rank: {
+    en: 'Leaderboard',
+    vi: 'Bảng Xếp Hạng',
+  },
+  result: {
+    en: 'result',
+    vi: 'KẾT QUẢ',
+  },
+  rank: {
+    en: 'rank',
+    vi: 'BẢNG XẾP HẠNG',
+  },
+  column_sale: {
+    en: 'SALE',
+    vi: 'SỐ SALE',
+  },
+  start_quiz: {
+    en: 'START QUIZ',
+    vi: 'BẮT ĐẦU THI',
+  },
+  quiz_during_time: {
+    en: 'Time of the event:',
+    vi: 'Thời gian diễn ra chương trình:',
+  },
+  quiz_time_from: {
+    en: 'from',
+    vi: 'từ',
+  },
+  quiz_title: {
+    en: 'QUIZ TEST',
+    vi: 'ĐỀ THI TRẮC NGHIỆM',
+  },
+  quiz_time_exam: {
+    en: 'Time to do the quiz',
+    vi: 'Thời gian làm bài',
+  },
+  time_unit_minute: {
+    en: 'minute',
+    vi: 'phút',
+  },
+  time_unit_seconds: {
+    en: 'seconds',
+    vi: 'giây',
+  },
+  quiz_result_success: {
+    en:
+      'Congratulations on answering our entire quiz question correctly. You have been participating in the rankings with other members.',
+    vi:
+      'Xin chúc mừng bạn đã trả lời chính xác toàn bộ câu hỏi trắc nghiệm của chúng tôi. Bạn đã được tham gia vào bảng xếp hạng với các thành viên khác.',
+  },
+  quiz_result_failure_1: {
+    en: 'You need to get enoungh',
+    vi: 'Bạn cần phải đạt đủ',
+  },
+  quiz_result_failure_2: {
+    en:
+      'SCORE to participate in ranking with other members. Do you want to retake the quiz?',
+    vi:
+      'ĐIỂM để tham gia xếp hạng với các thành viên khác. Bạn muốn thi lại không?',
+  },
+  btn_result: {
+    en: 'VIEW RESULT',
+    vi: 'XEM KẾT QUẢ NGAY',
+  },
+  btn_rank: {
+    en: 'VIEW RANK',
+    vi: 'XEM BẢNG XẾP HẠNG NGAY',
+  },
+  btn_test_again: {
+    en: 'DO QUIZ AGAIN',
+    vi: 'THI LẠI NGAY',
+  },
+  btn_cancel: {
+    en: 'CANCEL',
+    vi: 'HỦY BỎ',
+  },
+  quiz_result: {
+    en: 'YOUR RESULT',
+    vi: 'KẾT QUẢ THI TRẮC NGHIỆM CỦA BẠN',
+  },
+  quiz_result_subheading: {
+    en: 'Thank you for taking your quiz. Below are your results',
+    vi:
+      'Cảm ơn bạn đã tham gia phần thi trắc nghiệm của mình. Bên dưới là kết quả của bạn',
+  },
+  quiz_level: {
+    en: 'Level',
+    vi: 'Cấp độ',
+  },
+  quiz_score: {
+    en: 'TOTAL SCORE YOU REACH',
+    vi: 'TỔNG SỐ ĐIỂM BẠN ĐẠT ĐƯỢC',
+  },
+  quiz_answer: {
+    en: 'TOTAL QUESTION YOU HAVE ANSWED',
+    vi: 'TỔNG CÂU HỎI BẠN ĐÃ TRẢ LỜI',
+  },
+  quiz_not_enough_answer: {
+    en:
+      'You have not answered all our questions. You need to answer all 30 questions to see the result.',
+    vi:
+      'Bạn trả lời chưa hết các câu hỏi của chúng tôi. Bạn cần trả lời hết 30 câu hỏi để xem kết quả.',
+  },
+  btn_watch_question_again: {
+    en: 'REVIEW THE QUESTION TABLE',
+    vi: 'XEM LẠI BẢNG CÂU HỎI',
+  },
+  quiz_over_time: {
+    en:
+      'You have run out of 15 minutes of test time. Do you want to retake the exam?',
+    vi:
+      'Bạn đã hết 15 phút thời gian làm bài. Bạn có muốn thi lại không?',
+  },
+  btn_test_again: {
+    en: 'OK, I TAKE AGAIN',
+    vi: 'OK, TÔI THI LẠI',
+  },
+  btn_cancel_test: {
+    en: 'I DON"T WANT TO TAKE ANYTHING',
+    vi: 'TÔI KHÔNG MUỐN THI NỮA',
+  },
+  quiz_over_turn: {
+    en:
+      'You have already taken the multiple-choice test twice today. If you have not met the test score and want to retake the test, join it again tomorrow or another day!',
+    vi:
+      'Bạn đã tham gia thi trắc nghiệm 2 lần trong ngày hôm nay rồi. Nếu bạn chưa đạt đủ số điểm thi trắc nghiệm và muốn thi lại, hãy tham gia trở lại vào ngày mai hoặc ngày khác nhé!',
+  },
+  btn_test_another_day: {
+    en: 'OK, I"M PARTICIPATING ON THE OTHER DAY',
+    vi: 'OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC',
   },
 };

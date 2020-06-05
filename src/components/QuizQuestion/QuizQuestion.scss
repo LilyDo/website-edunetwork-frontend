@@ -1,0 +1,63 @@
+@import '../../shared.scss';
+
+// media query
+$smallMobileBreakPoint: 600px;
+$mobileBreakPoint: 768px;
+$inBetweenBreakpoint: 1024px;
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+.question_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  padding-left: 138px;
+  margin-bottom: 15px;
+  padding-right: 138px;
+}
+
+.answer_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin-top: 28px;
+}
+
+.answer_container .ant-checkbox-wrapper {
+  width: 50px !important;
+}
+
+.question_image {
+  position: relative;
+  width: 30%;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: $smallMobileBreakPoint) {
+  .question_container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    justify-content: space-between;
+    padding-left: 0px;
+    margin-bottom: 15px;
+    padding-right: 0px;
+  }
+
+  .question_image {
+    position: relative;
+    width: 60%;
+    margin: auto;
+  }
+
+  .answer_container p {
+    height: auto;
+    width: 310px;
+  }
+}
