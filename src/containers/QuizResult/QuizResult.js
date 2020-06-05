@@ -58,7 +58,7 @@ const QuizResultContainer = (props) => {
     if (right >= match.params.target) {
       return (
         <React.Fragment>
-          <Link to={routes.quiz.rank}>
+          <Link style={{ margin: 'auto'}} to={routes.quiz.rank}>
             <button className="yellow_result_btn">{getTranslatedText('btn_rank')}</button>
           </Link>
         </React.Fragment>
