@@ -53,7 +53,7 @@ const QuizListQuestionContainer = props => {
   useEffect(() => {
     actions.getQuizAction({
       token: localStorage.getItem('token'),
-      lang: 'vi',
+      lang: (localStorage.getItem("current_lang"))? localStorage.getItem("current_lang") : "en",
     });
     if (data.max_customer_turn === 2) {
       setRenderType('overTurn');

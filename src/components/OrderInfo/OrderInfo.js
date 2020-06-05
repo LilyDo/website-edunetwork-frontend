@@ -34,6 +34,7 @@ import {getProfileAction} from '../../actions/profile';
 
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
 import {routes} from '../../constants';
+import { toast } from 'react-toastify';
 
 class OrderInfo extends Component {
   state = {
@@ -179,9 +180,10 @@ class OrderInfo extends Component {
   onPaypalClick = detail => {
     // let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
     // window.location.href = link;
-    this.setState({
-      paypalPay: true,
-    });
+    // this.setState({
+    //   paypalPay: true,
+    // }
+    toast.info("The payment method is updating ...");
   };
 
   cancelPaypal = () => {
