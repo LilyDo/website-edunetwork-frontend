@@ -105,7 +105,6 @@ const QuizQuestion = props => {
             {parseInt(number) + 1}. {question.question}
           </p>
           {typeof(question.image) === 'string' ? (
-            console.log('hello'),
             <img className='question_image' src={question.image} alt=""/>
           ): (
             <React.Fragment></React.Fragment>
