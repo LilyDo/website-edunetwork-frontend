@@ -24,8 +24,7 @@ const QuizModal = (props) => {
                 <Col span={16}>
                   <Typography.Text className="container___text">
                     {/* {getTranslatedText('result_modal_sub_heading')} */}
-                    Bạn trả lời chưa hết các câu hỏi của chúng tôi.
-                    Bạn cần trả lời hết 30 câu hỏi để xem kết quả.
+                    {getTranslatedText('quiz_not_enough_answer')}
                   </Typography.Text>
                 </Col>
               </Row>
@@ -41,7 +40,7 @@ const QuizModal = (props) => {
                       {/* {getTranslatedText(
                         'result_modal_next_round_button',
                       )} */}
-                      XEM LẠI BẢNG CÂU HỎI
+                      {getTranslatedText('btn_watch_question_again')}
                     </Typography.Text>
                   </Button>
                 </Col>
@@ -50,7 +49,7 @@ const QuizModal = (props) => {
                     className="modal__button"
                     onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
                   >
-                    HỦY BỎ
+                    {getTranslatedText('btn_cancel')}
                   </Button>
                 </Col>
               </Row>
@@ -64,8 +63,7 @@ const QuizModal = (props) => {
               <Row>
                 <Col span={16}>
                   <Typography.Text className="container___text">
-                    Bạn đã hết 15 phút thời gian làm bài.
-                    Bạn có muốn thi lại không?
+                    {getTranslatedText('quiz_over_time')}
                   </Typography.Text>
                 </Col>
               </Row>
@@ -78,7 +76,7 @@ const QuizModal = (props) => {
                     onClick={() => {setVisible(false); window.location.href=routes.quiz.exam}}
                   >
                     <Typography.Text className="button_label">
-                      OK, TÔI THI LẠI
+                      {getTranslatedText('btn_test_again')}
                     </Typography.Text>
                   </Button>
                 </Col>
@@ -87,7 +85,7 @@ const QuizModal = (props) => {
                     className="modal__button"
                     onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
                   >
-                    TÔI KHÔNG MUỐN THI NỮA
+                    {getTranslatedText('btn_cancel_test')}
                   </Button>
                 </Col>
               </Row>
@@ -102,8 +100,7 @@ const QuizModal = (props) => {
               <Row>
                 <Col span={16}>
                   <Typography.Text className="container___text">
-                    Bạn đã tham gia thi trắc nghiệm 2 lần trong ngày hôm nay rồi.
-                    Nếu bạn chưa đạt đủ số điểm thi trắc nghiệm và muốn thi lại, hãy tham gia trở lại vào ngày mai hoặc ngày khác nhé!
+                    {getTranslatedText('quiz_over_turn')}
                   </Typography.Text>
                 </Col>
               </Row>
@@ -116,7 +113,7 @@ const QuizModal = (props) => {
                     onClick={() => {setVisible(false); window.location.href=routes.home}}
                   >
                     <Typography.Text className="button_label">
-                      OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC
+                      {getTranslatedText('btn_test_another_day')}
                     </Typography.Text>
                   </Button>
                 </Col>
@@ -125,7 +122,7 @@ const QuizModal = (props) => {
                     className="modal__button"
                     onClick={() => {setVisible(false); window.location.href=routes.home}}
                   >
-                    TÔI KHÔNG MUỐN THI NỮA
+                    {getTranslatedText('btn_cancel_test')}
                   </Button>
                 </Col>
               </Row>

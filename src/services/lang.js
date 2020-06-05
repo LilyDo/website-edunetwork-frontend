@@ -974,4 +974,32 @@ export const translatedText = {
     en: 'TOTAL QUESTION YOU HAVE ANSWED',
     vi: 'TỔNG CÂU HỎI BẠN ĐÃ TRẢ LỜI',
   },
+  quiz_not_enough_answer: {
+    en: 'You have not answered all our questions. You need to answer all 30 questions to see the result.',
+    vi: 'Bạn trả lời chưa hết các câu hỏi của chúng tôi. Bạn cần trả lời hết 30 câu hỏi để xem kết quả.'
+  },
+  btn_watch_question_again: {
+    en: 'REVIEW THE QUESTION TABLE',
+    vi: 'XEM LẠI BẢNG CÂU HỎI'
+  },
+  quiz_over_time: {
+    en: 'You have run out of 15 minutes of test time. Do you want to retake the exam?',
+    vi: 'Bạn đã hết 15 phút thời gian làm bài. Bạn có muốn thi lại không?'
+  },
+  btn_test_again: {
+    en: 'OK, I TAKE AGAIN',
+    vi: 'OK, TÔI THI LẠI'
+  },
+  btn_cancel_test: {
+    en: 'I DON"T WANT TO TAKE ANYTHING',
+    vi: 'TÔI KHÔNG MUỐN THI NỮA'
+  },
+  quiz_over_turn: {
+    en: 'You have already taken the multiple-choice test twice today. If you have not met the test score and want to retake the test, join it again tomorrow or another day!',
+    vi: 'Bạn đã tham gia thi trắc nghiệm 2 lần trong ngày hôm nay rồi. Nếu bạn chưa đạt đủ số điểm thi trắc nghiệm và muốn thi lại, hãy tham gia trở lại vào ngày mai hoặc ngày khác nhé!'
+  },
+  btn_test_another_day: {
+    en: 'OK, I"M PARTICIPATING ON THE OTHER DAY',
+    vi: 'OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC'
+  }
 };
