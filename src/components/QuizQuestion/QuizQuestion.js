@@ -40,14 +40,13 @@ const QuizQuestion = props => {
         >
           <p>
             {parseInt(number) + 1}. {question.question}
+            {typeof(question.image) === 'string' ? (
+              <div><img src={question.image} width="15%" height="15%" alt="" style={{position: "relative"}}/></div>
+            ) : (
+              <div/>
+            )}
           </p>
-          {typeof(question.image) === 'string' ? (
-            console.log('hello'),
-            <img src={question.image}/>
-
-          ) : (
-            <React.Fragment></React.Fragment>
-          )}
+          
           <div>
             <Row gutter={16}>
               <Col xs={24} lg={12}>

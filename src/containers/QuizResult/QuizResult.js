@@ -23,17 +23,17 @@ import {connect} from "react-redux";
 const QuizResultContainer = (props) => {
   const {actions} = props;
 
-  let match = useRouteMatch('/quiz/result/:answer/:right/:target');
+  const match = useRouteMatch('/quiz/result/:answer/:right/:target');
 
   useEffect(() => {
     actions.postResultQuizAction({
       token: localStorage.getItem("token"),
-      test_success: match.answer >= match.target
+      test_success: match.params.right >= match.params.target
     })
   }, []);
 
   function renderBodyFooter(right) {
-    if (right === '30') {
+    if (right >= match.params.target) {
       return (
         <React.Fragment>
           <img src={require('../../assets/images/success_icon.png')} />

@@ -9,16 +9,17 @@ import QuizHeader from '../../components/QuizHeader/QuizHeader';
 import './QuizStartScreen.scss';
 import { getTranslatedText } from '../../services/appService';
 import { bindActionCreators } from 'redux';
-import { getPermissionQuizAction } from '../../actions/quiz';
+import { getPermissionQuizAction, getTimeEventQuizAction } from '../../actions/quiz';
 import { connect } from 'react-redux';
 
 const QuizStartScreen = props => {
-  const { actions, data, canContinue } = props;
+  const { actions, data, canContinue, time_event } = props;
 
   useEffect(() => {
     actions.getPermissionQuizAction({
       token: localStorage.getItem('token')
     });
+    actions.getTimeEventQuizAction();
   }, []);
 
   const getQuiz = () => {
@@ -46,8 +47,8 @@ const QuizStartScreen = props => {
           </button>
           {/*</Link>*/}
           <p>
-            {getTranslatedText('quiz_during_time')} {getTranslatedText('quiz_time_from')} {data.start_date} -{' '}
-            {data.end_date}
+            {getTranslatedText('quiz_during_time')} {getTranslatedText('quiz_time_from')} {time_event.start} - {' '}
+            {time_event.end}
           </p>
         </div>
       </div>
@@ -59,6 +60,7 @@ const mapStateToProps = (state, ownProps) => {
     data: state.quiz.data || [],
     isLoading: state.quiz.loading,
     canContinue: state.quiz.canContinue || 0,
+    time_event: state.quiz.time_event,
   };
 };
 
@@ -67,6 +69,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getPermissionQuizAction,
+        getTimeEventQuizAction
       },
       dispatch,
     ),
