@@ -76,16 +76,6 @@ const columns = [
   {
     title: (
       <TableColumnTitle>
-        {getTranslatedText('column_sale')}
-      </TableColumnTitle>
-    ),
-    dataIndex: 'sale',
-    key: 'sale',
-    align: 'center',
-  },
-  {
-    title: (
-      <TableColumnTitle>
         {getTranslatedText('table_column_sale_amount')}
       </TableColumnTitle>
     ),
