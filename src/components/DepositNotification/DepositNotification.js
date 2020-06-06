@@ -15,7 +15,7 @@ import { updateOrderAction } from '../../actions/courses';
 
 class DepositNotification extends Component {
   state = {
-    isBuyCourse: 'buy',
+    isBuyCourse: 0,
     code: '',
     amount: 0,
   };
@@ -39,6 +39,7 @@ class DepositNotification extends Component {
 
   render() {
     const { isBuyCourse, code, amount } = this.state;
+    console.log(isBuyCourse);
 
     return (
       <div className="WithdrawNotification">
@@ -61,14 +62,14 @@ class DepositNotification extends Component {
           {getTranslatedText('purchase_success_3')}:{' '}
           <b>
             {currencyFormatter(
-              isBuyCourse === 'buy'
+              isBuyCourse
                 ? this.props.orderObj.amount_need
                 : amount,
             )}
           </b>{' '}
           (1 USD = 24.000 VND) (1 USD = 1.45 SGD)
           <br />
-          {isBuyCourse === 'buy' && (
+          {isBuyCourse && (
             <div>
               <br />- {getTranslatedText('date')}:{' '}
               <b>{this.props.orderObj.date || ''}</b>
@@ -90,12 +91,6 @@ class DepositNotification extends Component {
               <b>{this.props.orderObj.level || ''}</b>
               <br />- {getTranslatedText('status')}:{' '}
               <b>{this.props.orderObj.status || ''}</b>
-            </div>
-          )}
-          {isBuyCourse === 'deposit' && (
-            <div>
-              <br />- {getTranslatedText('verification_code')}:{' '}
-              <b>{code}</b>
             </div>
           )}
           <br />
