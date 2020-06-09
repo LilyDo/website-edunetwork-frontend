@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Table,
-  Layout,
-  Progress,
-  Typography
-} from 'antd';
+import { Table, Layout, Progress, Typography } from 'antd';
 import 'antd/dist/antd.css';
 import './QuizRank.scss';
 import styled from 'styled-components';
@@ -31,7 +26,6 @@ const TableColumnTitle = styled.p`
 `;
 
 const RenderColor = props => {
-  
   const { text } = props;
 
   return (
@@ -85,14 +79,8 @@ const columns = [
   },
 ];
 
-const QuizRank = (props) => {
-
-  const {
-    actions,
-    rank,
-    time_event,
-    progress_event,
-  } = props
+const QuizRank = props => {
+  const { actions, rank, time_event, progress_event } = props;
 
   useEffect(() => {
     actions.getQuizRankAction();
@@ -128,7 +116,7 @@ const QuizRank = (props) => {
             scroll={true}
             bordered={true}
             pagination={{
-              pageSize: 7,
+              pageSize: 10,
             }}
             columns={columns}
             dataSource={rank}
@@ -139,15 +127,15 @@ const QuizRank = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     rank: state.quiz.rank || [],
     time_event: state.quiz.time_event,
-    progress_event: state.quiz.progress_event
+    progress_event: state.quiz.progress_event,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators(
       {
@@ -159,8 +147,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuizRank);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizRank);
