@@ -1,19 +1,18 @@
 // Usage: This component is used display a question
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Row, Col, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import './QuizQuestion.scss';
-// import Checkbox from "antd/es/Checkbox";
 
 const QuizQuestion = props => {
   const { question, number, setQuestionRight } = props;
 
-  useEffect(() => {
-    if(typeof(question.image) === 'string') {
-      console.log(question)
-    }
-  }, []);
+  // useEffect(() => {
+  //   if(question.image !== '') {
+  //     console.log(question)
+  //   }
+  // }, []);
 
   const checkingValue = e => {
     if (e.checked) {
@@ -41,7 +40,7 @@ const QuizQuestion = props => {
           <p>
             {parseInt(number) + 1}. {question.question}
           </p>
-          {typeof(question.image) === 'string' ? (
+          {question.image !== '' ? (
               <img className='question_image' src={question.image} alt=""/>
             ) : (
               <React.Fragment></React.Fragment>
@@ -104,7 +103,7 @@ const QuizQuestion = props => {
           <p>
             {parseInt(number) + 1}. {question.question}
           </p>
-          {typeof(question.image) === 'string' ? (
+          {question.image !== '' ? (
             <img className='question_image' src={question.image} alt=""/>
           ): (
             <React.Fragment></React.Fragment>
