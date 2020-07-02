@@ -35,6 +35,7 @@ import {getProfileAction} from '../../actions/profile';
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
 import {routes} from '../../constants';
 import { toast } from 'react-toastify';
+import { PayPalButton } from "react-paypal-button-v2";
 
 class OrderInfo extends Component {
   state = {
@@ -139,7 +140,7 @@ class OrderInfo extends Component {
   // );
 
   // Popup button purchase
-  renderButtons(courseDetail) {
+  renderButtons(courseDetail, depositAmount) {
     return (
       <Row gutter={16}>
         <Col
@@ -159,12 +160,20 @@ class OrderInfo extends Component {
           xs={24}
           lg={12}
         >
-          <button
-            className="pay_button"
-            onClick={() => this.onPaypalClick(courseDetail)}
-          >
-            {getTranslatedText('visa')}
-          </button>
+          {/*<button*/}
+          {/*  className="pay_button"*/}
+          {/*  onClick={() => this.onPaypalClick(courseDetail)}*/}
+          {/*>*/}
+          {/*  PAYPAL*/}
+          {/*</button>*/}
+          <PayPalButton
+            amount={depositAmount}
+            currency={"USD"}
+            onSuccess={(details, data) => this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking")}
+            options={{
+              clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
+            }}
+          />
         </Col>
       </Row>
     );
@@ -183,7 +192,7 @@ class OrderInfo extends Component {
     // this.setState({
     //   paypalPay: true,
     // }
-    toast.info("The payment method is updating ...");
+    this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking");
   };
 
   cancelPaypal = () => {
@@ -295,7 +304,7 @@ class OrderInfo extends Component {
                     placement="bottom"
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
-                      this.props.courseDetail,
+                      this.props.courseDetail, shouldDepositAmount
                     )}
                     trigger="click"
                   >
