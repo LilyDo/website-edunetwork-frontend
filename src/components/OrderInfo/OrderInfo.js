@@ -155,9 +155,12 @@ class OrderInfo extends Component {
           <PayPalButton
             amount={depositAmount}
             currency={"USD"}
-            onSuccess={(details, data) => this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking")}
+            onSuccess={(details, data) => {
+              this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking", data.orderID)
+            }}
             options={{
               clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
+              // clientId: "AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt",
               locale: "en_VN"
             }}
           />
@@ -173,14 +176,6 @@ class OrderInfo extends Component {
     this.props.actions.buyCourseAction(this.props.courseDetail.id);
   };
 
-  onPaypalClick = detail => {
-    // let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
-    // window.location.href = link;
-    // this.setState({
-    //   paypalPay: true,
-    // }
-    this.props.actions.buyCourseAction(this.props.courseDetail.id, 'online-banking');
-  };
 
   cancelPaypal = () => {
     this.setState({
