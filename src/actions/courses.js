@@ -166,14 +166,14 @@ const getUserCourseDetailFailure = error => ({
  * | BUY COURSE |
  * +------------+
  */
-export const buyCourseAction = (courseId, method = 'traditional') => {
+export const buyCourseAction = (courseId, method = 'traditional', paypal_order = "") => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/buying-course?course_id=${courseId}&method=${method}&token=${token}`,
+        `${BASE_URL}/users/buying-course?course_id=${courseId}&method=${method}&token=${token}&paypal_order_id=${paypal_order}`,
       )
       .then(response => {
         dispatch(buyCourseSuccess(response.data));
