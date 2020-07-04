@@ -156,7 +156,8 @@ class OrderInfo extends Component {
             amount={depositAmount}
             currency={"USD"}
             onSuccess={(details, data) => {
-              this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking", data.orderID)
+              let paypal_transaction_id = details.purchase_units[0].payments.captures[0].id;
+              this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking", paypal_transaction_id)
             }}
             options={{
               clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
