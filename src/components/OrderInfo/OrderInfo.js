@@ -287,7 +287,7 @@ class OrderInfo extends Component {
                     placement="bottom"
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
-                      this.props.courseDetail, shouldDepositAmount,
+                      this.props.courseDetail, courseDetail.price + (courseDetail.price / 10)
                     )}
                     trigger="click"
                     overlayStyle={{ width: '255px' }}
