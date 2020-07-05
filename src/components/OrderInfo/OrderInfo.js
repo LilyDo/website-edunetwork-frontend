@@ -160,8 +160,12 @@ class OrderInfo extends Component {
               this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking", paypal_transaction_id)
             }}
             options={{
-              clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
+              // sandbox client
+              // clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
+              // sandbox dev
               // clientId: "AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt",
+              // live client
+              clientId: "AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV",
               locale: "en_VN"
             }}
           />
