@@ -1,3 +1,5 @@
+import { CURRENT_LANG_KEY } from './actions';
+
 export const routes = {
   home: '/',
   sendContactSuccessful: '/send-contact-successful',
@@ -44,4 +46,10 @@ export const toastDuration = 3000;
 export const keys = {
   // google key
   googleRecaptchaSiteKey: '6LfkxsAUAAAAABCC_nnWUKz-0OhBcio0H0rtInIH',
+};
+
+export const headerLang = {
+  headers: {
+    "Application-Lang": localStorage.getItem(CURRENT_LANG_KEY)
+  }
 };

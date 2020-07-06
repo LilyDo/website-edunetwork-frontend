@@ -59,10 +59,10 @@ class OrderInfo extends Component {
 
   pay = (shouldDeposit, shouldDepositAmount) => {
     window.confirm('Are you sure you want to buy this course?') &&
-    this.props.actions.buyCourseAction(
-      this.props.courseDetail.id,
-      'traditional',
-    );
+      this.props.actions.buyCourseAction(
+        this.props.courseDetail.id,
+        'traditional',
+      );
   };
 
   handOnFinish(values) {
@@ -143,7 +143,7 @@ class OrderInfo extends Component {
   renderButtons(courseDetail, depositAmount) {
     return (
       <div>
-        <Row gutter={16} justify={"center"}>
+        <Row gutter={16} justify={'center'}>
           <button
             className="pay_button"
             onClick={() => this.onTransferClick()}
@@ -151,13 +151,18 @@ class OrderInfo extends Component {
             {getTranslatedText('transfer_money')}
           </button>
         </Row>
-        <Row gutter={16} justify={"center"}>
+        <Row gutter={16} justify={'center'}>
           <PayPalButton
             amount={depositAmount}
-            currency={"USD"}
+            currency={'USD'}
             onSuccess={(details, data) => {
-              let paypal_transaction_id = details.purchase_units[0].payments.captures[0].id;
-              this.props.actions.buyCourseAction(this.props.courseDetail.id, "online-banking", paypal_transaction_id)
+              let paypal_transaction_id =
+                details.purchase_units[0].payments.captures[0].id;
+              this.props.actions.buyCourseAction(
+                this.props.courseDetail.id,
+                'online-banking',
+                paypal_transaction_id,
+              );
             }}
             options={{
               // sandbox client
@@ -165,8 +170,9 @@ class OrderInfo extends Component {
               // sandbox dev
               // clientId: "AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt",
               // live client
-              clientId: "AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV",
-              locale: "en_VN"
+              clientId:
+                'AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV',
+              locale: 'en_VN',
             }}
           />
         </Row>
@@ -180,7 +186,6 @@ class OrderInfo extends Component {
     // Xử lý cho onclick transfer ở đây
     this.props.actions.buyCourseAction(this.props.courseDetail.id);
   };
-
 
   cancelPaypal = () => {
     this.setState({
@@ -291,7 +296,8 @@ class OrderInfo extends Component {
                     placement="bottom"
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
-                      this.props.courseDetail, courseDetail.price + (courseDetail.price / 10)
+                      this.props.courseDetail,
+                      courseDetail.price + courseDetail.price / 10,
                     )}
                     trigger="click"
                     overlayStyle={{ width: '255px' }}
@@ -314,7 +320,7 @@ class OrderInfo extends Component {
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <VisaPaymentComponent price={courseDetail.price}/>
+              <VisaPaymentComponent price={courseDetail.price} />
               <button
                 style={{
                   height: '30px',
@@ -329,7 +335,7 @@ class OrderInfo extends Component {
           )}
         </div>
         <div className="TextNotice">
-          {getTranslatedText('note_after_payment')} <br/>
+          {getTranslatedText('note_after_payment')} <br />
           {getTranslatedText('note_buy_braintree')}
         </div>
       </div>

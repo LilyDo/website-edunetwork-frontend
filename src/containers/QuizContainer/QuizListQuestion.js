@@ -23,11 +23,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 const QuizListQuestionContainer = props => {
-  const {
-    actions,
-    data,
-    isLoading,
-  } = props;
+  const { actions, data, isLoading } = props;
 
   const [visible, setVisible] = useState(false);
   const [renderType, setRenderType] = useState(null);
@@ -45,7 +41,10 @@ const QuizListQuestionContainer = props => {
       setRenderType('notEnoughAnswer');
       setVisible(true);
     } else {
-      let link = routes.quiz.result.replace(':answer', answer).replace(':right', right).replace(':target', data.max_question);
+      let link = routes.quiz.result
+        .replace(':answer', answer)
+        .replace(':right', right)
+        .replace(':target', data.max_question);
       window.location.href = link;
     }
   };
@@ -53,13 +52,14 @@ const QuizListQuestionContainer = props => {
   useEffect(() => {
     actions.getQuizAction({
       token: localStorage.getItem('token'),
-      lang: (localStorage.getItem("current_lang"))? localStorage.getItem("current_lang") : "en",
+      lang: localStorage.getItem('current_lang')
+        ? localStorage.getItem('current_lang')
+        : 'en',
     });
     if (data.max_customer_turn === 2) {
       setRenderType('overTurn');
       setVisible(true);
     }
-    ;
   }, []);
 
   return (
@@ -105,9 +105,12 @@ const QuizListQuestionContainer = props => {
           />
         </Modal>
 
-          <button className="yellow_light_btn" onClick={completeTheQuiz}>
-            {getTranslatedText('btn_result')}
-          </button>
+        <button
+          className="yellow_light_btn"
+          onClick={completeTheQuiz}
+        >
+          {getTranslatedText('btn_result')}
+        </button>
       </div>
     </React.Fragment>
   );

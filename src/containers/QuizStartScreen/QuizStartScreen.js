@@ -9,7 +9,10 @@ import QuizHeader from '../../components/QuizHeader/QuizHeader';
 import './QuizStartScreen.scss';
 import { getTranslatedText } from '../../services/appService';
 import { bindActionCreators } from 'redux';
-import { getPermissionQuizAction, getTimeEventQuizAction } from '../../actions/quiz';
+import {
+  getPermissionQuizAction,
+  getTimeEventQuizAction,
+} from '../../actions/quiz';
 import { connect } from 'react-redux';
 
 const QuizStartScreen = props => {
@@ -17,7 +20,7 @@ const QuizStartScreen = props => {
 
   useEffect(() => {
     actions.getPermissionQuizAction({
-      token: localStorage.getItem('token')
+      token: localStorage.getItem('token'),
     });
     actions.getTimeEventQuizAction();
   }, []);
@@ -47,7 +50,8 @@ const QuizStartScreen = props => {
           </button>
           {/*</Link>*/}
           <p>
-            {getTranslatedText('quiz_during_time')} {getTranslatedText('quiz_time_from')} {time_event.start} - {' '}
+            {getTranslatedText('quiz_during_time')}{' '}
+            {getTranslatedText('quiz_time_from')} {time_event.start} -{' '}
             {time_event.end}
           </p>
         </div>
@@ -69,7 +73,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     actions: bindActionCreators(
       {
         getPermissionQuizAction,
-        getTimeEventQuizAction
+        getTimeEventQuizAction,
       },
       dispatch,
     ),

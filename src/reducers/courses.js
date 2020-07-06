@@ -112,7 +112,7 @@ export default function(state = initialState, action) {
 
       // toast.success(message);
       setTimeout(function() {
-          window.location.href = pathname;
+        window.location.href = pathname;
       }, toastDuration);
 
       return {

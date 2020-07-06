@@ -5,13 +5,14 @@ import {
   SEND_CONTACT_SUCCESS,
   SEND_CONTACT_FAILURE,
 } from './index';
+import { headerLang } from '../constants';
 
 // GET PROFILE
 export const sendContactAction = payload => {
   return dispatch => {
     dispatch(sendContactRequest());
     axios
-      .post(`${BASE_URL}/send-contact`, payload)
+      .post(`${BASE_URL}/send-contact`, payload, headerLang)
       .then(response => {
         dispatch(sendContactSuccess(response));
       })
