@@ -20,6 +20,7 @@ import {
   GET_TIME_QUIZ_EVENT_FAILURE,
 } from './index';
 import { toast } from 'react-toastify';
+import { headerLang } from '../constants';
 
 export const getQuizAction = payload => {
   return dispatch => {
@@ -29,7 +30,7 @@ export const getQuizAction = payload => {
         `${BASE_URL}/users/get-test?token=` +
           payload.token +
           '&lang=' +
-          payload.lang,
+          payload.lang, headerLang
       )
       .then(response => {
         if (response.data.statusCode === 200)
@@ -61,7 +62,7 @@ export const getQuizRankAction = payload => {
   return dispatch => {
     dispatch(getQuizRankRequest());
     axios
-      .get(`${BASE_URL}/result-revenue`)
+      .get(`${BASE_URL}/result-revenue`, headerLang)
       .then(response => {
         if (response.data.statusCode === 200) {
           dispatch(getQuizRankSuccess(response.data));
@@ -82,7 +83,7 @@ export const getPermissionQuizAction = payload => {
     axios
       .get(
         `${BASE_URL}/users/accept-for-examination?token=` +
-          payload.token,
+          payload.token, headerLang
       )
       .then(response => {
         if (response.data.statusCode === 200)
@@ -126,7 +127,7 @@ export const postResultQuizAction = payload => {
   return dispatch => {
     dispatch(postResultQuizRequest());
     axios
-      .post(`${BASE_URL}/users/post-test-result`, payload)
+      .post(`${BASE_URL}/users/post-test-result`, payload, headerLang)
       .then(response => {
         if (response.data.statusCode === 200)
           dispatch(postResultQuizSuccess(response.data));
@@ -157,7 +158,7 @@ export const getTimeEventQuizAction = payload => {
   return dispatch => {
     dispatch(getTimeEventQuizRequest());
     axios
-      .get(`${BASE_URL}/get-date-event-examination`)
+      .get(`${BASE_URL}/get-date-event-examination`, headerLang)
       .then(response => {
         console.log(response);
         if (response.data.statusCode === 200)

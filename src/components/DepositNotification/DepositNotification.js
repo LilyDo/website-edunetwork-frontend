@@ -62,9 +62,7 @@ class DepositNotification extends Component {
           {getTranslatedText('purchase_success_3')}:{' '}
           <b>
             {currencyFormatter(
-              isBuyCourse
-                ? this.props.orderObj.amount_need
-                : amount,
+              isBuyCourse ? this.props.orderObj.amount_need : amount,
             )}
           </b>{' '}
           (1 USD = 24.000 VND) (1 USD = 1.45 SGD)

@@ -24,6 +24,7 @@ import {
   UPDATE_ORDER_SUCCESS,
   UPDATE_ORDER_FAILURE,
 } from './index';
+import { headerLang } from '../constants';
 
 /**
  * +-------------+
@@ -35,7 +36,7 @@ export const getCoursesAction = () => {
     dispatch(getCoursesRequest());
 
     axios
-      .get(`${BASE_URL}/courses`)
+      .get(`${BASE_URL}/courses`, headerLang)
       .then(response => dispatch(getCoursesSuccess(response.data)))
       .catch(error => dispatch(getCoursesFailure(error.message)));
   };
@@ -66,7 +67,7 @@ export const getCourseDetailAction = courseId => {
     dispatch(getCourseDetailRequest());
 
     axios
-      .get(`${BASE_URL}/courses/${courseId}`)
+      .get(`${BASE_URL}/courses/${courseId}`, headerLang)
       .then(response =>
         dispatch(getCourseDetailSuccess(response.data)),
       )
@@ -102,7 +103,7 @@ export const getUserCoursesAction = () => {
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses?token=${token}`)
+      .post(`${BASE_URL}/users/courses`, {token: token}, headerLang)
       .then(response =>
         dispatch(getUserCoursesSuccess(response.data)),
       )
@@ -136,7 +137,7 @@ export const getUserCourseDetailAction = courseId => {
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses/${courseId}?token=${token}`)
+      .post(`${BASE_URL}/users/courses/${courseId}`, {token: token}, headerLang)
       .then(response =>
         dispatch(getUserCourseDetailSuccess(response.data)),
       )
@@ -166,15 +167,23 @@ const getUserCourseDetailFailure = error => ({
  * | BUY COURSE |
  * +------------+
  */
-export const buyCourseAction = (courseId, method = 'traditional', paypal_order = "") => {
+export const buyCourseAction = (
+  courseId,
+  method = 'traditional',
+  paypal_order = '',
+) => {
   return dispatch => {
     dispatch(buyCourseRequest(courseId));
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/buying-course?course_id=${courseId}&method=${method}&token=${token}&paypal_order_id=${paypal_order}`,
-      )
+        `${BASE_URL}/users/buying-course`, {
+        course_id: courseId,
+        method: method,
+        token: token,
+        paypal_order_id: paypal_order
+      }, headerLang)
       .then(response => {
         dispatch(buyCourseSuccess(response.data));
       })
@@ -204,7 +213,12 @@ export const updateOrderAction = payload => {
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/update-order?token=${token}&order_code=${payload.order_code}&method=${payload.method}&status=${payload.status}`,
+        `${BASE_URL}/users/update-order`,{
+          token: token,
+          order_code: payload.order_code,
+          method: payload.method,
+          status: payload.status
+        }, headerLang
       )
       .then(response => {
         dispatch(updateOrderSuccess(response.data));
@@ -240,7 +254,10 @@ export const depositAction = amount => {
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/recharge?price=${amount}&token=${token}`,
+        `${BASE_URL}/users/recharge`,{
+          price: amount,
+          token: token
+        }, headerLang
       )
       .then(response => {
         dispatch(depositSuccess(response.data));

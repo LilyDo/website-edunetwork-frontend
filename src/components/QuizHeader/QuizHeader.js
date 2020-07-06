@@ -51,7 +51,9 @@ const QuizHeader = props => {
   return (
     <React.Fragment>
       <div className="quiz_header_container">
-        <div className="left_container">{getTranslatedText('quiz_title')}</div>
+        <div className="left_container">
+          {getTranslatedText('quiz_title')}
+        </div>
         <div className="mid_container">
           <p>{getTranslatedText('quiz_level')}</p>
           <p className="mid_container_footer">{user.level}</p>
@@ -65,7 +67,9 @@ const QuizHeader = props => {
                 src={require('../../assets/images/clock_icon.png')}
               />
               <p className="time_content">15</p>
-              <p className="time_unit">{getTranslatedText('time_unit_minute')}</p>
+              <p className="time_unit">
+                {getTranslatedText('time_unit_minute')}
+              </p>
             </div>
           </div>
         ) : (

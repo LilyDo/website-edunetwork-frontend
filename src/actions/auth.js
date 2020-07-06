@@ -21,14 +21,14 @@ import {
 } from './index';
 import { getProfileAction } from './profile';
 import { toast } from 'react-toastify';
-import { routes, toastDuration } from '../constants';
+import { headerLang, routes, toastDuration } from '../constants';
 
 export const loginAction = user => {
   return dispatch => {
     dispatch(loginRequest());
 
     axios
-      .post(`${BASE_URL}/users/login`, user)
+      .post(`${BASE_URL}/users/login`, user, headerLang)
       .then(response => {
         dispatch(loginSuccess(response.data));
         dispatch(
@@ -69,7 +69,7 @@ export const registerAction = user => {
     dispatch(registerRequest());
 
     axios
-      .post(`${BASE_URL}/users/register`, user)
+      .post(`${BASE_URL}/users/register`, user, headerLang)
       .then(response => {
         if (
           response.data.statusCode === 200 &&
@@ -120,7 +120,7 @@ export const verifyAccountAction = code => {
     axios
       .post(`${BASE_URL}/users/verify-register`, {
         verify_code: code,
-      })
+      }, headerLang)
       .then(response => {
         if (
           response.data.statusCode === 200 &&
@@ -181,7 +181,7 @@ export const sendForgotPasswordEmail = email => {
     axios
       .post(`${BASE_URL}/users/send-email-reset-password`, {
         email,
-      })
+      }, headerLang)
       .then(response =>
         dispatch(sendForgotPasswordEmailSuccess(response.data)),
       )
@@ -215,7 +215,7 @@ export const resetPassword = data => {
         code: data.code,
         password: data.password,
         cf_password: data.confirmPassword,
-      })
+      }, headerLang)
       .then(response => dispatch(resetPasswordSuccess(response.data)))
       .catch(error => dispatch(resetPasswordFailure(error.message)));
   };
