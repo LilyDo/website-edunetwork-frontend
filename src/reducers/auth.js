@@ -94,7 +94,7 @@ export default function(state = initialState, action) {
       };
 
     case types.ACTIVE_ACCOUNT_FAILURE:
-      toast.error('Cannot active the account');
+      toast.error(getTranslatedText('Cannot active the account'));
 
       return {
         ...state,
@@ -123,7 +123,7 @@ export default function(state = initialState, action) {
       };
     case types.SEND_FORGOT_PASSWORD_EMAIL_FAILURE:
       toast.error(
-        'Cannot reset password, make sure you enter correct email address!',
+        getTranslatedText('cannot_reset_password'),
       );
 
       return {
@@ -144,7 +144,7 @@ export default function(state = initialState, action) {
       };
     case types.RESET_PASSWORD_FAILURE:
       toast.error(
-        'Cannot reset password, make sure you enter correct email address!',
+        getTranslatedText('cannot_reset_password'),
       );
 
       return {
