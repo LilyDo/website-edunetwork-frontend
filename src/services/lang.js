@@ -1004,4 +1004,12 @@ export const translatedText = {
     en: 'OK, I"M PARTICIPATING ON THE OTHER DAY',
     vi: 'OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC',
   },
+  cannot_active_account: {
+    en: 'Cannot active the account',
+    vi: 'Không thể kích hoạt tài khoản',
+  },
+  cannot_reset_password: {
+    en: 'Cannot reset password, make sure you enter correct email address!',
+    vi: 'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
+  },
 };

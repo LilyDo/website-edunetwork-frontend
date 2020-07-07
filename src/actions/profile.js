@@ -41,9 +41,13 @@ export const getProfileAction = payload => {
   return dispatch => {
     dispatch(getProfileRequest());
     axios
-      .post(`${BASE_URL}/users/profile`, {
-        token: payload.token,
-      }, headerLang)
+      .post(
+        `${BASE_URL}/users/profile`,
+        {
+          token: payload.token,
+        },
+        headerLang,
+      )
       .then(response => {
         dispatch(
           getProfileSuccess({
@@ -75,7 +79,11 @@ export const updateProfileAction = userProfile => {
   return dispatch => {
     dispatch(updateProfileRequest(userProfile));
     axios
-      .post(`${BASE_URL}/users/update-profile`, userProfile, headerLang)
+      .post(
+        `${BASE_URL}/users/update-profile`,
+        userProfile,
+        headerLang,
+      )
       .then(response => {
         dispatch(updateProfileSuccess(response.data));
         dispatch(
@@ -122,9 +130,13 @@ export const getChargeHistoryAction = () => {
   return dispatch => {
     dispatch(getChargeHistoryRequest());
     axios
-      .post(`${BASE_URL}/users/charge-history`, {
-        token: localStorage.getItem(types.TOKEN_KEY),
-      }, headerLang)
+      .post(
+        `${BASE_URL}/users/charge-history`,
+        {
+          token: localStorage.getItem(types.TOKEN_KEY),
+        },
+        headerLang,
+      )
       .then(response => {
         dispatch(getChargeHistorySuccess(response.data));
       })
@@ -219,7 +231,10 @@ export const getOrderDetailByCode = code => {
   return dispatch => {
     dispatch(getOrderDetailByCodeRequest());
     axios
-      .get(`${BASE_URL}/users/get-order-detail-by-code/${code}`, headerLang)
+      .get(
+        `${BASE_URL}/users/get-order-detail-by-code/${code}`,
+        headerLang,
+      )
       .then(response => {
         dispatch(getOrderDetailByCodeSuccess(response.data));
       })
@@ -249,9 +264,13 @@ export const getUserDashboardAction = () => {
   return dispatch => {
     dispatch(getUserDashboardRequest());
     axios
-      .post(`${BASE_URL}/users/dashboard`, {
-        token: localStorage.getItem(types.TOKEN_KEY) || '',
-      }, headerLang)
+      .post(
+        `${BASE_URL}/users/dashboard`,
+        {
+          token: localStorage.getItem(types.TOKEN_KEY) || '',
+        },
+        headerLang,
+      )
       .then(response => {
         dispatch(getUserDashboardSuccess(response.data));
       })
@@ -282,7 +301,8 @@ export const getNotifications = (currentPage = 1) => {
     let token = localStorage.getItem(types.TOKEN_KEY) || '';
     axios
       .get(
-        `${BASE_URL}/users/get-notification?page=${currentPage}&token=${token}`, headerLang
+        `${BASE_URL}/users/get-notification?page=${currentPage}&token=${token}`,
+        headerLang,
       )
       .then(response => {
         dispatch(
@@ -316,9 +336,13 @@ export const viewNotification = notiId => {
   return dispatch => {
     dispatch(viewNotificationRequest());
     axios
-      .post(`${BASE_URL}/users/view-notification/${notiId}`, {
-        token: localStorage.getItem(types.TOKEN_KEY) || '',
-      }, headerLang)
+      .post(
+        `${BASE_URL}/users/view-notification/${notiId}`,
+        {
+          token: localStorage.getItem(types.TOKEN_KEY) || '',
+        },
+        headerLang,
+      )
       .then(response => {
         dispatch(
           viewNotificationSuccess({

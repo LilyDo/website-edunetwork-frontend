@@ -103,7 +103,7 @@ export const getUserCoursesAction = () => {
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses`, {token: token}, headerLang)
+      .post(`${BASE_URL}/users/courses`, { token: token }, headerLang)
       .then(response =>
         dispatch(getUserCoursesSuccess(response.data)),
       )
@@ -137,7 +137,11 @@ export const getUserCourseDetailAction = courseId => {
 
     const token = localStorage.getItem(TOKEN_KEY);
     axios
-      .post(`${BASE_URL}/users/courses/${courseId}`, {token: token}, headerLang)
+      .post(
+        `${BASE_URL}/users/courses/${courseId}`,
+        { token: token },
+        headerLang,
+      )
       .then(response =>
         dispatch(getUserCourseDetailSuccess(response.data)),
       )
@@ -178,12 +182,15 @@ export const buyCourseAction = (
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/buying-course`, {
-        course_id: courseId,
-        method: method,
-        token: token,
-        paypal_order_id: paypal_order
-      }, headerLang)
+        `${BASE_URL}/users/buying-course`,
+        {
+          course_id: courseId,
+          method: method,
+          token: token,
+          paypal_order_id: paypal_order,
+        },
+        headerLang,
+      )
       .then(response => {
         dispatch(buyCourseSuccess(response.data));
       })
@@ -213,12 +220,14 @@ export const updateOrderAction = payload => {
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/update-order`,{
+        `${BASE_URL}/users/update-order`,
+        {
           token: token,
           order_code: payload.order_code,
           method: payload.method,
-          status: payload.status
-        }, headerLang
+          status: payload.status,
+        },
+        headerLang,
       )
       .then(response => {
         dispatch(updateOrderSuccess(response.data));
@@ -254,10 +263,12 @@ export const depositAction = amount => {
     const token = localStorage.getItem(TOKEN_KEY);
     axios
       .post(
-        `${BASE_URL}/users/recharge`,{
+        `${BASE_URL}/users/recharge`,
+        {
           price: amount,
-          token: token
-        }, headerLang
+          token: token,
+        },
+        headerLang,
       )
       .then(response => {
         dispatch(depositSuccess(response.data));

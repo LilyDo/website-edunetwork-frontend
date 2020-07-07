@@ -30,7 +30,8 @@ export const getQuizAction = payload => {
         `${BASE_URL}/users/get-test?token=` +
           payload.token +
           '&lang=' +
-          payload.lang, headerLang
+          payload.lang,
+        headerLang,
       )
       .then(response => {
         if (response.data.statusCode === 200)
@@ -83,7 +84,8 @@ export const getPermissionQuizAction = payload => {
     axios
       .get(
         `${BASE_URL}/users/accept-for-examination?token=` +
-          payload.token, headerLang
+          payload.token,
+        headerLang,
       )
       .then(response => {
         if (response.data.statusCode === 200)

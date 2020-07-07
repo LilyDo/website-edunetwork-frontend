@@ -50,6 +50,6 @@ export const keys = {
 
 export const headerLang = {
   headers: {
-    "Application-Lang": localStorage.getItem(CURRENT_LANG_KEY)
-  }
+    'Application-Lang': localStorage.getItem(CURRENT_LANG_KEY),
+  },
 };
