@@ -1009,7 +1009,9 @@ export const translatedText = {
     vi: 'Không thể kích hoạt tài khoản',
   },
   cannot_reset_password: {
-    en: 'Cannot reset password, make sure you enter correct email address!',
-    vi: 'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
+    en:
+      'Cannot reset password, make sure you enter correct email address!',
+    vi:
+      'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
 };

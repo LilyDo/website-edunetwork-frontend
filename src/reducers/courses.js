@@ -121,7 +121,7 @@ export default function(state = initialState, action) {
         orderObj: orderObj,
       };
     case types.BUY_COURSE_FAILURE:
-      toast.error('The account is locked for transactions!');
+      toast.error(action.payload.error.split(", "));
       return {
         ...state,
         loading: false,
