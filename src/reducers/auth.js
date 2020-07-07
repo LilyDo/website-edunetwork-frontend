@@ -122,9 +122,7 @@ export default function(state = initialState, action) {
         isForgotPasswordPopupShown: false,
       };
     case types.SEND_FORGOT_PASSWORD_EMAIL_FAILURE:
-      toast.error(
-        getTranslatedText('cannot_reset_password'),
-      );
+      toast.error(getTranslatedText('cannot_reset_password'));
 
       return {
         ...state,
@@ -143,9 +141,7 @@ export default function(state = initialState, action) {
         loading: false,
       };
     case types.RESET_PASSWORD_FAILURE:
-      toast.error(
-        getTranslatedText('cannot_reset_password'),
-      );
+      toast.error(getTranslatedText('cannot_reset_password'));
 
       return {
         ...state,
