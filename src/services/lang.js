@@ -495,9 +495,9 @@ export const translatedText = {
   },
   note_buy_braintree: {
     en:
-      'When buying a course with a visa card will cost an additional 10% of the course fee',
+      'When buying a course with PayPal account or a visa card will cost an additional 10% of the course fee',
     vi:
-      'Khi mua khóa học bằng thẻ visa sẽ mất thêm 10% phí của khóa học',
+      'Khi mua khóa học bằng tài khoản PayPal hoặc thẻ visa sẽ mất thêm 10% phí của khóa học',
   },
   your_wallet: {
     en: 'YOUR WALLET',
@@ -990,10 +990,6 @@ export const translatedText = {
     vi:
       'Bạn đã hết 15 phút thời gian làm bài. Bạn có muốn thi lại không?',
   },
-  btn_test_again: {
-    en: 'OK, I TAKE AGAIN',
-    vi: 'OK, TÔI THI LẠI',
-  },
   btn_cancel_test: {
     en: 'I DON"T WANT TO TAKE ANYTHING',
     vi: 'TÔI KHÔNG MUỐN THI NỮA',
@@ -1007,5 +1003,15 @@ export const translatedText = {
   btn_test_another_day: {
     en: 'OK, I"M PARTICIPATING ON THE OTHER DAY',
     vi: 'OK, TÔI SẼ THAM GIA VÀO NGÀY KHÁC',
+  },
+  cannot_active_account: {
+    en: 'Cannot active the account',
+    vi: 'Không thể kích hoạt tài khoản',
+  },
+  cannot_reset_password: {
+    en:
+      'Cannot reset password, make sure you enter correct email address!',
+    vi:
+      'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
 };

@@ -7,12 +7,8 @@ import PropTypes from 'prop-types';
 import { getTranslatedText } from '../../services/appService';
 import { routes } from '../../constants';
 
-const QuizModal = (props) => {
-
-  const {
-    renderType,
-    setVisible
-  } = props;
+const QuizModal = props => {
+  const { renderType, setVisible } = props;
 
   function renderModalContentAndFooter(renderType) {
     switch (renderType) {
@@ -34,7 +30,7 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                  onClick={() => setVisible(false)}
+                    onClick={() => setVisible(false)}
                   >
                     <Typography.Text className="button_label">
                       {/* {getTranslatedText(
@@ -47,7 +43,10 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                    onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
+                    onClick={() => {
+                      setVisible(false);
+                      window.location.href = routes.quiz.main;
+                    }}
                   >
                     {getTranslatedText('btn_cancel')}
                   </Button>
@@ -73,7 +72,10 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                    onClick={() => {setVisible(false); window.location.href=routes.quiz.exam}}
+                    onClick={() => {
+                      setVisible(false);
+                      window.location.href = routes.quiz.exam;
+                    }}
                   >
                     <Typography.Text className="button_label">
                       {getTranslatedText('btn_test_again')}
@@ -83,7 +85,10 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                    onClick={() => {setVisible(false); window.location.href=routes.quiz.main}}
+                    onClick={() => {
+                      setVisible(false);
+                      window.location.href = routes.quiz.main;
+                    }}
                   >
                     {getTranslatedText('btn_cancel_test')}
                   </Button>
@@ -91,8 +96,8 @@ const QuizModal = (props) => {
               </Row>
             </Layout.Footer>
           </React.Fragment>
-        )
-      
+        );
+
       case 'overTurn':
         return (
           <React.Fragment>
@@ -110,7 +115,10 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                    onClick={() => {setVisible(false); window.location.href=routes.home}}
+                    onClick={() => {
+                      setVisible(false);
+                      window.location.href = routes.home;
+                    }}
                   >
                     <Typography.Text className="button_label">
                       {getTranslatedText('btn_test_another_day')}
@@ -120,7 +128,10 @@ const QuizModal = (props) => {
                 <Col span={12} xs={24} xl={12}>
                   <Button
                     className="modal__button"
-                    onClick={() => {setVisible(false); window.location.href=routes.home}}
+                    onClick={() => {
+                      setVisible(false);
+                      window.location.href = routes.home;
+                    }}
                   >
                     {getTranslatedText('btn_cancel_test')}
                   </Button>
@@ -128,13 +139,11 @@ const QuizModal = (props) => {
               </Row>
             </Layout.Footer>
           </React.Fragment>
-        )
+        );
       default:
-        return (
-          <React.Fragment></React.Fragment>
-        )
-    };
-  };
+        return <React.Fragment></React.Fragment>;
+    }
+  }
 
   return (
     <React.Fragment>
@@ -152,6 +161,6 @@ const QuizModal = (props) => {
 QuizModal.propTypes = {
   renderType: PropTypes.string,
   setVisible: PropTypes.func,
-}
+};
 
 export default QuizModal;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Popover,
   Row,
@@ -11,10 +11,10 @@ import {
   DatePicker,
 } from 'antd';
 import 'antd/dist/antd.css';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
-import {bindActionCreators, compose} from 'redux';
-import {get} from 'lodash';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { bindActionCreators, compose } from 'redux';
+import { get } from 'lodash';
 
 import './OrderInfo.scss';
 import TimeIcon from '../../assets/images/icon_time.svg';
@@ -30,11 +30,12 @@ import {
   getCourseDetailAction,
 } from '../../actions/courses';
 import * as types from '../../actions/index';
-import {getProfileAction} from '../../actions/profile';
+import { getProfileAction } from '../../actions/profile';
 
 import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
-import {routes} from '../../constants';
+import { routes } from '../../constants';
 import { toast } from 'react-toastify';
+import { PayPalButton } from 'react-paypal-button-v2';
 
 class OrderInfo extends Component {
   state = {
@@ -58,10 +59,10 @@ class OrderInfo extends Component {
 
   pay = (shouldDeposit, shouldDepositAmount) => {
     window.confirm('Are you sure you want to buy this course?') &&
-    this.props.actions.buyCourseAction(
-      this.props.courseDetail.id,
-      'traditional',
-    );
+      this.props.actions.buyCourseAction(
+        this.props.courseDetail.id,
+        'traditional',
+      );
   };
 
   handOnFinish(values) {
@@ -139,34 +140,43 @@ class OrderInfo extends Component {
   // );
 
   // Popup button purchase
-  renderButtons(courseDetail) {
+  renderButtons(courseDetail, depositAmount) {
     return (
-      <Row gutter={16}>
-        <Col
-          style={{display: 'flex', justifyContent: 'center'}}
-          xs={24}
-          lg={12}
-        >
+      <div>
+        <Row gutter={16} justify={'center'}>
           <button
             className="pay_button"
             onClick={() => this.onTransferClick()}
           >
             {getTranslatedText('transfer_money')}
           </button>
-        </Col>
-        <Col
-          style={{display: 'flex', justifyContent: 'center'}}
-          xs={24}
-          lg={12}
-        >
-          <button
-            className="pay_button"
-            onClick={() => this.onPaypalClick(courseDetail)}
-          >
-            {getTranslatedText('visa')}
-          </button>
-        </Col>
-      </Row>
+        </Row>
+        <Row gutter={16} justify={'center'}>
+          <PayPalButton
+            amount={depositAmount}
+            currency={'USD'}
+            onSuccess={(details, data) => {
+              let paypal_transaction_id =
+                details.purchase_units[0].payments.captures[0].id;
+              this.props.actions.buyCourseAction(
+                this.props.courseDetail.id,
+                'online-banking',
+                paypal_transaction_id,
+              );
+            }}
+            options={{
+              // sandbox client
+              // clientId: "AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21",
+              // sandbox dev
+              // clientId: "AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt",
+              // live client
+              clientId:
+                'AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV',
+              locale: 'en_VN',
+            }}
+          />
+        </Row>
+      </div>
     );
   }
 
@@ -177,15 +187,6 @@ class OrderInfo extends Component {
     this.props.actions.buyCourseAction(this.props.courseDetail.id);
   };
 
-  onPaypalClick = detail => {
-    // let link = routes.visaPayment.replace(":price", detail.price).replace(":id", detail.id);
-    // window.location.href = link;
-    // this.setState({
-    //   paypalPay: true,
-    // }
-    toast.info("The payment method is updating ...");
-  };
-
   cancelPaypal = () => {
     this.setState({
       paypalPay: false,
@@ -193,7 +194,7 @@ class OrderInfo extends Component {
   };
 
   render() {
-    const {courseDetail, profile} = this.props;
+    const { courseDetail, profile } = this.props;
     let shouldDepositAmount =
       profile.total_price - courseDetail.price;
     let shouldDeposit = false;
@@ -296,8 +297,10 @@ class OrderInfo extends Component {
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
                       this.props.courseDetail,
+                      courseDetail.price + courseDetail.price / 10,
                     )}
                     trigger="click"
+                    overlayStyle={{ width: '255px' }}
                   >
                     <div className="CTAButton">
                       {getTranslatedText('deposit_now')}
@@ -316,8 +319,8 @@ class OrderInfo extends Component {
               </div>
             </div>
           ) : (
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <VisaPaymentComponent price={courseDetail.price}/>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <VisaPaymentComponent price={courseDetail.price} />
               <button
                 style={{
                   height: '30px',
@@ -332,7 +335,7 @@ class OrderInfo extends Component {
           )}
         </div>
         <div className="TextNotice">
-          {getTranslatedText('note_after_payment')} <br/>
+          {getTranslatedText('note_after_payment')} <br />
           {getTranslatedText('note_buy_braintree')}
         </div>
       </div>

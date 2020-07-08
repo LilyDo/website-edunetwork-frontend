@@ -90,12 +90,11 @@ export default function(state = initialState, action) {
         loading: true,
       };
     case types.BUY_COURSE_SUCCESS:
-      let message = '';
       let pathname = '';
-      let orderObj = {};
+      let new_tab = false;
+      let orderObj = action.payload.data;
       // console.log(action.payload.data.url);
-      orderObj = action.payload.data;
-      pathname = action.payload.data.url;
+      pathname = orderObj.url;
       // if (action.payload.shouldDepositAmount > 0) {
       //   orderObj = action.payload.data || {};
       //   message = getTranslatedText('request_buy_course');
@@ -122,7 +121,7 @@ export default function(state = initialState, action) {
         orderObj: orderObj,
       };
     case types.BUY_COURSE_FAILURE:
-      toast.error('The account is locked for transactions!');
+      toast.error(action.payload.error.split(", "));
       return {
         ...state,
         loading: false,

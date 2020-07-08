@@ -41,10 +41,14 @@ const QuizQuestion = props => {
             {parseInt(number) + 1}. {question.question}
           </p>
           {question.image !== '' ? (
-              <img className='question_image' src={question.image} alt=""/>
-            ) : (
-              <React.Fragment></React.Fragment>
-            )}
+            <img
+              className="question_image"
+              src={question.image}
+              alt=""
+            />
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
           <div>
             <Row gutter={16}>
               <Col xs={24} lg={12}>
@@ -104,8 +108,12 @@ const QuizQuestion = props => {
             {parseInt(number) + 1}. {question.question}
           </p>
           {question.image !== '' ? (
-            <img className='question_image' src={question.image} alt=""/>
-          ): (
+            <img
+              className="question_image"
+              src={question.image}
+              alt=""
+            />
+          ) : (
             <React.Fragment></React.Fragment>
           )}
           <div>
