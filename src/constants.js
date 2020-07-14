@@ -34,9 +34,9 @@ export const routes = {
 
   // Quiz
   quiz: {
-    main: '/quiz',
-    exam: '/quiz/test',
-    result: '/quiz/result/:answer/:right/:target',
+    // main: '/quiz',
+    // exam: '/quiz/test',
+    // result: '/quiz/result/:answer/:right/:target',
     rank: '/quiz/rank',
   },
 };
