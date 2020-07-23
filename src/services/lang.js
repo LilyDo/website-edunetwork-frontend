@@ -347,9 +347,9 @@ export const translatedText = {
   },
   important_withdraw: {
     en:
-      'Important: The money you want to withdraw must be lower than you balance',
+      'Important: The money you want to withdraw must be lower than you balance, and will be convert to integer. Ex: 40.000 = 40 or 40.500 = 40',
     vi:
-      'Quan trọng: Số tiền bạn muốn rút phải thấp hơn hoặc bằng số dư của bạn',
+      'Quan trọng: Số tiền bạn muốn rút phải thấp hơn hoặc bằng số dư của bạn, và sẽ được chuyển đổi thành số nguyên. Vd: 40.000 = 40 hoặc 40.500 = 40',
   },
   request: {
     en: 'REQUEST',

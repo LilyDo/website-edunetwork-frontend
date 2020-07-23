@@ -15,15 +15,15 @@ const QuizContainer = () => {
   return (
     <React.Fragment>
       <Switch>
-        <Route exact path={match.url} component={QuizStartScreen} />
-        <Route
-          path={`${match.url}/test`}
-          component={QuizListQuestionContainer}
-        />
-        <Route
-          path={`${match.url}/result`}
-          component={QuizResultContainer}
-        />
+        {/*<Route exact path={match.url} component={QuizStartScreen} />*/}
+        {/*<Route*/}
+        {/*  path={`${match.url}/test`}*/}
+        {/*  component={QuizListQuestionContainer}*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path={`${match.url}/result`}*/}
+        {/*  component={QuizResultContainer}*/}
+        {/*/>*/}
         <Route path={`${match.url}/rank`} component={QuizRank} />
       </Switch>
     </React.Fragment>
