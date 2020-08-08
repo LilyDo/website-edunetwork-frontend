@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import {
   getUserDashboardAction,
   getProfileAction,
+  getChildUserAction
 } from '../../actions/profile';
 import {
   capitalizeFirstLetter,
@@ -30,6 +31,8 @@ class AccountDashboardPage extends Component {
       currentUser: getUserFormLocal(),
     });
     this.props.actions.getUserDashboardAction();
+    this.props.actions.getChildUserAction({page: 1, active: 1, token: localStorage.getItem("token")});
+    this.props.actions.getChildUserAction({page: 1, active: 0, token: localStorage.getItem("token")});
     this.props.actions.getProfileAction({
       token: localStorage.getItem(types.TOKEN_KEY),
     });
@@ -41,10 +44,13 @@ class AccountDashboardPage extends Component {
     });
   };
 
+
+
   render() {
     const { isShowPaid, currentUser } = this.state;
 
-    const { dashboard } = this.props;
+    const { dashboard, activeUser, inactiveUser } = this.props;
+    console.log(activeUser, inactiveUser)
 
     return (
       <div>
@@ -279,6 +285,13 @@ class AccountDashboardPage extends Component {
                 </tbody>
               )}
             </table>
+            <div className="paging text-center">
+              <ul className="pagination">
+                <li className="active">1</li>
+                <li className="">2</li>
+                <li className="">3</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -289,6 +302,8 @@ class AccountDashboardPage extends Component {
 const mapStateToProps = ({ profile }, ownProps) => {
   return {
     dashboard: get(profile, 'dashboard', {}),
+    activeUser: get(profile, 'activeUser', {}),
+    inactiveUser: get(profile, 'inactiveUser', {}),
   };
 };
 
@@ -298,6 +313,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         getUserDashboardAction,
         getProfileAction,
+        getChildUserAction
       },
       dispatch,
     ),
