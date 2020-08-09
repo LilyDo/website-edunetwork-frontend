@@ -285,12 +285,15 @@ class AccountDashboardPage extends Component {
                 </tbody>
               )}
             </table>
-            <div className="paging text-center">
-              <ul className="pagination">
-                <li className="active">1</li>
-                <li className="">2</li>
-                <li className="">3</li>
-              </ul>
+            <div className="pagination">
+              <a href="#">&laquo;</a>
+              <a href="#">1</a>
+              <a class="active" href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+              <a href="#">6</a>
+              <a href="#">&raquo;</a>
             </div>
           </div>
         </div>
