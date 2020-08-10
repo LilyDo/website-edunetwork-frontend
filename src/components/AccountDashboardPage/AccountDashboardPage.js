@@ -44,13 +44,15 @@ class AccountDashboardPage extends Component {
     });
   };
 
+  showPage = (page, active) => {
+    this.props.actions.getChildUserAction({page: page, active: active, token: localStorage.getItem("token")});
+  }
+
 
 
   render() {
     const { isShowPaid, currentUser } = this.state;
-
     const { dashboard, activeUser, inactiveUser } = this.props;
-    console.log(activeUser, inactiveUser)
 
     return (
       <div>
@@ -242,9 +244,7 @@ class AccountDashboardPage extends Component {
               </thead>
               {isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {dashboard &&
-                    dashboard.total_active_user &&
-                    dashboard.total_active_user.map((item, index) => (
+                  {activeUser.data.map((item, index) => (
                       <tr key={index}>
                         <td>{item.name}</td>
                         <td>{item.code}</td>
@@ -263,9 +263,7 @@ class AccountDashboardPage extends Component {
               )}
               {!isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {dashboard &&
-                    dashboard.total_inactive_user &&
-                    dashboard.total_inactive_user.map(
+                  {inactiveUser.data.map(
                       (item, index) => (
                         <tr key={index}>
                           <td>{item.name}</td>
@@ -285,16 +283,60 @@ class AccountDashboardPage extends Component {
                 </tbody>
               )}
             </table>
+            {(isShowPaid) ? (
             <div className="pagination">
-              <a href="#">&laquo;</a>
-              <a href="#">1</a>
-              <a class="active" href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">&raquo;</a>
+              {(activeUser.current_page != 1 &&
+                activeUser.current_page != 2) && (
+                <>
+                  <a href={null} onClick={() => this.showPage(1, 1)}>&laquo;</a>
+                  <a href={null}>...</a>
+                </>
+              )}
+              {(activeUser.current_page > 1 && activeUser.current_page != 1) && (
+                <a href={null} onClick={() => this.showPage(activeUser.current_page - 1, 1)}>{activeUser.current_page - 1}</a>
+              )}
+              <a href={null} class="active">{activeUser.current_page}</a>
+              {(activeUser.current_page < activeUser.last_page && activeUser.current_page != activeUser.last_page) && (
+                <a href={null} onClick={() => this.showPage(activeUser.current_page + 1, 1)}>{activeUser.current_page + 1}</a>
+              )}
+              {(activeUser.current_page != activeUser.last_page &&
+                activeUser.current_page != activeUser.last_page - 1) &&
+              (
+                <>
+                  <a href={null}>...</a>
+                  <a href={null} onClick={() => this.showPage(activeUser.last_page, 1)}>&raquo;</a>
+                </>
+              )}
+
             </div>
+            ) : (
+              <div className="pagination">
+                {(inactiveUser.current_page != 1 &&
+                  inactiveUser.current_page != 2) && (
+                  <>
+                    <a href={null} onClick={() => this.showPage(1, 0)}>&laquo;</a>
+                    <a href={null}>...</a>
+                  </>
+                )}
+                {(inactiveUser.current_page >= 1 && inactiveUser.current_page != 1) && (
+                  <a href={null}
+                     onClick={() => this.showPage(inactiveUser.current_page - 1, 0)}>{inactiveUser.current_page - 1}</a>
+                )}
+                <a href={null} className="active">{inactiveUser.current_page}</a>
+                {(inactiveUser.current_page < inactiveUser.last_page && inactiveUser.current_page != inactiveUser.last_page) && (
+                  <a href={null}
+                     onClick={() => this.showPage(inactiveUser.current_page + 1, 0)}>{inactiveUser.current_page + 1}</a>
+                )}
+                {(inactiveUser.current_page != inactiveUser.last_page &&
+                  inactiveUser.current_page != inactiveUser.last_page - 1) &&
+                (
+                  <>
+                    <a href={null}>...</a>
+                    <a href={null} onClick={() => this.showPage(inactiveUser.last_page, 0)}>&raquo;</a>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
