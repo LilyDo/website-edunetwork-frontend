@@ -20,6 +20,13 @@ const initialState = {
   notificationCurrentPage: 1,
   notificationLastPage: 1,
   unreadNotification: 0,
+  activeUser: {
+    data: []
+  },
+  inactiveUser: {
+    data: []
+  },
+
 };
 
 export default function(state = initialState, action) {
@@ -306,6 +313,50 @@ export default function(state = initialState, action) {
       };
 
     case types.GET_NOTIFICATIONS_FAILURE:
+      toast.error('Cannot get notifications!');
+
+      return {
+        ...state,
+        loading: false,
+      };
+
+      // GET NOTIFICATIONS
+    case types.GET_CHILD_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.GET_CHILD_USER_SUCCESS:
+      if (
+        action.payload.data.statusCode === 200 &&
+        action.payload.data.errors.length === 0
+      ) {
+        if (action.payload.active)
+        return {
+          ...state,
+          loading: false,
+          error: null,
+          activeUser: action.payload.data.data
+        };
+        else
+          return {
+            ...state,
+            loading: false,
+            error: null,
+            inactiveUser: action.payload.data.data
+          };
+      } else {
+        toast.error(action.payload.notifications.errors[0]);
+      }
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.GET_CHILD_USER_FAILURE:
       toast.error('Cannot get notifications!');
 
       return {
