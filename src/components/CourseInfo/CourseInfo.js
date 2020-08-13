@@ -215,21 +215,12 @@ class CourseInfo extends Component {
                                   {lesson.attachments.map(
                                     (attachment, index) =>
                                       attachment.type === 'PDF' && (
-                                        <div
-                                          key={index}
-                                          className="Attachment"
-                                          onClick={() =>
-                                            this.setActiveAttachment(
-                                              attachment,
-                                            )
-                                          }
-                                        >
-                                          <img
-                                            src={AttachmentIcon}
-                                            alt="attachment"
-                                          />
-                                          {attachment.name}
-                                        </div>
+                                        <a href={attachment.link_file} target="_blank">
+                                          <div key={index} className="Attachment">
+                                            <img src={AttachmentIcon} alt="attachment"/>
+                                            {attachment.name}
+                                          </div>
+                                        </a>
                                       ),
                                   )}
                                 </div>
