@@ -90,7 +90,7 @@ class CourseInfo extends Component {
         ) : (
           <div className="CourseAvatar">
             {courseDetail.avatar && (
-              <img src={courseDetail.avatar} alt="course avatar" />
+              <img src={courseDetail.avatar} alt="course avatar"/>
             )}
           </div>
         )}
@@ -157,88 +157,74 @@ class CourseInfo extends Component {
                     </div>
 
                     {this.state[`isChapter${chapter.id}Visible`] &&
-                      chapter.parts.map((part, index) => (
-                        <Fragment key={index}>
-                          <div
-                            className="Part"
-                            key={part.id}
-                            onClick={() => this.togglePart(part)}
-                          >
-                            {this.state[`isPart${part.id}Visible`] ? (
-                              <img
-                                alt="bullet"
-                                src={BulletIcon}
-                              ></img>
-                            ) : (
-                              <img alt="plus" src={PlusIcon}></img>
-                            )}
-                            <div>{part.title}</div>
-                          </div>
+                    chapter.parts.map((part, index) => (
+                      <Fragment key={index}>
+                        <div
+                          className="Part"
+                          key={part.id}
+                          onClick={() => this.togglePart(part)}
+                        >
+                          {this.state[`isPart${part.id}Visible`] ? (
+                            <img
+                              alt="bullet"
+                              src={BulletIcon}
+                            ></img>
+                          ) : (
+                            <img alt="plus" src={PlusIcon}></img>
+                          )}
+                          <div>{part.title}</div>
+                        </div>
 
-                          {this.state[`isPart${part.id}Visible`] &&
-                            part.lessons.map((lesson, index) => (
+                        {this.state[`isPart${part.id}Visible`] &&
+                        part.lessons.map((lesson, index) => (
+                          <div
+                            className="Lessons"
+                            key={lesson.id}
+                          >
+                            <div className="LessonContainer">
                               <div
-                                className="Lessons"
-                                key={lesson.id}
+                                className="Lesson"
+                                onClick={() =>
+                                  this.setActiveAttachment(
+                                    lesson.attachments[0],
+                                  )
+                                }
                               >
-                                <div className="LessonContainer">
-                                  <div
-                                    className="Lesson"
-                                    onClick={() =>
-                                      this.setActiveAttachment(
-                                        lesson.attachments[0],
-                                      )
-                                    }
-                                  >
-                                    <div className="Duration">
-                                      {formatDuration(
-                                        lesson.duration,
-                                      )}
-                                    </div>
-                                    <div
-                                      className={
-                                        'LessonTitle ' +
-                                        (activeAttachment ===
-                                        lesson.attachments[0]
-                                          ? 'Active'
-                                          : '')
-                                      }
-                                    >
-                                      {lesson.title}
-                                    </div>
-                                  </div>
-                                  <img
-                                    alt="play"
-                                    src={PlayIcon}
-                                  ></img>
-                                </div>
-                                <div className="Attachments">
-                                  {lesson.attachments.map(
-                                    (attachment, index) =>
-                                      !attachment.type ===
-                                        'Video' && (
-                                        <div
-                                          key={index}
-                                          className="Attachment"
-                                          onClick={() =>
-                                            this.setActiveAttachment(
-                                              attachment,
-                                            )
-                                          }
-                                        >
-                                          <img
-                                            src={AttachmentIcon}
-                                            alt="attachment"
-                                          />
-                                          {attachment.link_file}
-                                        </div>
-                                      ),
+                                <div className="Duration">
+                                  {formatDuration(
+                                    lesson.duration,
                                   )}
                                 </div>
+                                <div
+                                  className={
+                                    'LessonTitle ' +
+                                    (activeAttachment ===
+                                    lesson.attachments[0]
+                                      ? 'Active'
+                                      : '')
+                                  }
+                                >
+                                  {lesson.title}
+                                </div>
                               </div>
-                            ))}
-                        </Fragment>
-                      ))}
+                              <div>
+                                <img alt="play" src={PlayIcon} />
+                              </div>
+                            </div>
+                            <div className="Attachments">
+                              {lesson.attachments.map((attachment, index) => (
+                                attachment.type === "PDF" && (
+                                  <div key={index} className="Attachment" onClick={() => this.setActiveAttachment(attachment)}>
+                                    <img src={AttachmentIcon} alt="attachment"/>
+                                    {attachment.name}
+                                  </div>
+                                )
+                                ))}
+                            </div>
+                          </div>
+                        ))}
+                      </Fragment>
+                    ))}
                   </div>
                 ))}
               </div>
