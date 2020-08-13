@@ -375,12 +375,17 @@ const viewNotificationFailure = error => ({
 
 // GET CHILD USER
 export const getChildUserAction = payload => {
-  console.log(payload)
+  // console.log(payload);
   return dispatch => {
     dispatch(getChildUserRequest());
     axios
       .get(
-        `${BASE_URL}/users/child-user?token=` + payload.token + "&active=" + payload.active + "&page=" + payload.page,
+        `${BASE_URL}/users/child-user?token=` +
+          payload.token +
+          '&active=' +
+          payload.active +
+          '&page=' +
+          payload.page,
         {},
         headerLang,
       )
@@ -401,7 +406,6 @@ const getChildUserRequest = () => ({
 });
 
 const getChildUserSuccess = payload => ({
-
   type: GET_CHILD_USER_SUCCESS,
   payload: payload,
 });
