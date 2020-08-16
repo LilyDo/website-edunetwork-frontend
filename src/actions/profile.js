@@ -32,6 +32,9 @@ import {
   UPDATE_NOTIFICATION_REQUEST,
   UPDATE_NOTIFICATION_SUCCESS,
   UPDATE_NOTIFICATION_FAILURE,
+  GET_CHILD_USER_REQUEST,
+  GET_CHILD_USER_SUCCESS,
+  GET_CHILD_USER_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 import { headerLang } from '../constants';
@@ -367,5 +370,47 @@ const viewNotificationSuccess = payload => ({
 
 const viewNotificationFailure = error => ({
   type: GET_NOTIFICATION_FAILURE,
+  payload: { error },
+});
+
+// GET CHILD USER
+export const getChildUserAction = payload => {
+  // console.log(payload);
+  return dispatch => {
+    dispatch(getChildUserRequest());
+    axios
+      .get(
+        `${BASE_URL}/users/child-user?token=` +
+          payload.token +
+          '&active=' +
+          payload.active +
+          '&page=' +
+          payload.page,
+        {},
+        headerLang,
+      )
+      .then(response => {
+        dispatch(
+          getChildUserSuccess({
+            data: response.data,
+            active: payload.active,
+          }),
+        );
+      })
+      .catch(error => dispatch(getChildUserFailure(error.message)));
+  };
+};
+
+const getChildUserRequest = () => ({
+  type: GET_CHILD_USER_REQUEST,
+});
+
+const getChildUserSuccess = payload => ({
+  type: GET_CHILD_USER_SUCCESS,
+  payload: payload,
+});
+
+const getChildUserFailure = error => ({
+  type: GET_CHILD_USER_FAILURE,
   payload: { error },
 });

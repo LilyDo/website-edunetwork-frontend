@@ -207,31 +207,20 @@ class CourseInfo extends Component {
                                       {lesson.title}
                                     </div>
                                   </div>
-                                  <img
-                                    alt="play"
-                                    src={PlayIcon}
-                                  ></img>
+                                  <div>
+                                    <img alt="play" src={PlayIcon} />
+                                  </div>
                                 </div>
                                 <div className="Attachments">
                                   {lesson.attachments.map(
                                     (attachment, index) =>
-                                      !attachment.type ===
-                                        'Video' && (
-                                        <div
-                                          key={index}
-                                          className="Attachment"
-                                          onClick={() =>
-                                            this.setActiveAttachment(
-                                              attachment,
-                                            )
-                                          }
-                                        >
-                                          <img
-                                            src={AttachmentIcon}
-                                            alt="attachment"
-                                          />
-                                          {attachment.link_file}
-                                        </div>
+                                      attachment.type === 'PDF' && (
+                                        <a href={attachment.link_file} target="_blank">
+                                          <div key={index} className="Attachment">
+                                            <img src={AttachmentIcon} alt="attachment"/>
+                                            {attachment.name}
+                                          </div>
+                                        </a>
                                       ),
                                   )}
                                 </div>
