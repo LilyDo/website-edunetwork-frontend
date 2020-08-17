@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import {
   getUserDashboardAction,
   getProfileAction,
-  getChildUserAction
+  getChildUserAction,
 } from '../../actions/profile';
 import {
   capitalizeFirstLetter,
@@ -31,8 +31,16 @@ class AccountDashboardPage extends Component {
       currentUser: getUserFormLocal(),
     });
     this.props.actions.getUserDashboardAction();
-    this.props.actions.getChildUserAction({page: 1, active: 1, token: localStorage.getItem("token")});
-    this.props.actions.getChildUserAction({page: 1, active: 0, token: localStorage.getItem("token")});
+    this.props.actions.getChildUserAction({
+      page: 1,
+      active: 1,
+      token: localStorage.getItem('token'),
+    });
+    this.props.actions.getChildUserAction({
+      page: 1,
+      active: 0,
+      token: localStorage.getItem('token'),
+    });
     this.props.actions.getProfileAction({
       token: localStorage.getItem(types.TOKEN_KEY),
     });
@@ -45,10 +53,12 @@ class AccountDashboardPage extends Component {
   };
 
   showPage = (page, active) => {
-    this.props.actions.getChildUserAction({page: page, active: active, token: localStorage.getItem("token")});
-  }
-
-
+    this.props.actions.getChildUserAction({
+      page: page,
+      active: active,
+      token: localStorage.getItem('token'),
+    });
+  };
 
   render() {
     const { isShowPaid, currentUser } = this.state;
@@ -125,8 +135,7 @@ class AccountDashboardPage extends Component {
                   </div>
                   <div className="People TotalActive">
                     <div className="Number">
-                      {(dashboard.total_active_user &&
-                        dashboard.total_active_user.length) ||
+                      {(dashboard.total_active_user) ||
                         '0'}
                     </div>
                     <div className="Text">
@@ -245,96 +254,159 @@ class AccountDashboardPage extends Component {
               {isShowPaid && (
                 <tbody className="MemberTableBody">
                   {activeUser.data.map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.name}</td>
-                        <td>{item.code}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.register_date}</td>
-                        <td>
-                          {currencyFormatter(item.max_price || 0)}
-                        </td>
-                        <td>
-                          {currencyFormatter(item.commission) || 0}
-                        </td>
-                      </tr>
-                    ))}
+                    <tr key={index}>
+                      <td>{item.name}</td>
+                      <td>{item.code}</td>
+                      <td>{item.email}</td>
+                      <td>{item.phone}</td>
+                      <td>{item.register_date}</td>
+                      <td>
+                        {currencyFormatter(item.max_price || 0)}
+                      </td>
+                      <td>
+                        {currencyFormatter(item.commission) || 0}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               )}
               {!isShowPaid && (
                 <tbody className="MemberTableBody">
-                  {inactiveUser.data.map(
-                      (item, index) => (
-                        <tr key={index}>
-                          <td>{item.name}</td>
-                          <td>{item.code}</td>
-                          <td>{item.email}</td>
-                          <td>{item.phone}</td>
-                          <td>{item.register_date}</td>
-                          <td>
-                            {currencyFormatter(item.max_price || 0)}
-                          </td>
-                          <td>
-                            {currencyFormatter(item.commission || 0)}
-                          </td>
-                        </tr>
-                      ),
-                    )}
+                  {inactiveUser.data.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.name}</td>
+                      <td>{item.code}</td>
+                      <td>{item.email}</td>
+                      <td>{item.phone}</td>
+                      <td>{item.register_date}</td>
+                      <td>
+                        {currencyFormatter(item.max_price || 0)}
+                      </td>
+                      <td>
+                        {currencyFormatter(item.commission || 0)}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               )}
             </table>
-            {(isShowPaid) ? (
-            <div className="pagination">
-              {(activeUser.current_page != 1 &&
-                activeUser.current_page != 2) && (
-                <>
-                  <a href={null} onClick={() => this.showPage(1, 1)}>&laquo;</a>
-                  <a href={null}>...</a>
-                </>
-              )}
-              {(activeUser.current_page > 1 && activeUser.current_page != 1) && (
-                <a href={null} onClick={() => this.showPage(activeUser.current_page - 1, 1)}>{activeUser.current_page - 1}</a>
-              )}
-              <a href={null} class="active">{activeUser.current_page}</a>
-              {(activeUser.current_page < activeUser.last_page && activeUser.current_page != activeUser.last_page) && (
-                <a href={null} onClick={() => this.showPage(activeUser.current_page + 1, 1)}>{activeUser.current_page + 1}</a>
-              )}
-              {(activeUser.current_page != activeUser.last_page &&
-                activeUser.current_page != activeUser.last_page - 1) &&
-              (
-                <>
-                  <a href={null}>...</a>
-                  <a href={null} onClick={() => this.showPage(activeUser.last_page, 1)}>&raquo;</a>
-                </>
-              )}
-
-            </div>
+            {isShowPaid ? (
+              <div className="pagination">
+                {activeUser.current_page != 1 &&
+                  activeUser.current_page != 2 && (
+                    <>
+                      <a
+                        href={null}
+                        onClick={() => this.showPage(1, 1)}
+                      >
+                        &laquo;
+                      </a>
+                      <a href={null}>...</a>
+                    </>
+                  )}
+                {activeUser.current_page > 1 &&
+                  activeUser.current_page != 1 && (
+                    <a
+                      href={null}
+                      onClick={() =>
+                        this.showPage(activeUser.current_page - 1, 1)
+                      }
+                    >
+                      {activeUser.current_page - 1}
+                    </a>
+                  )}
+                <a href={null} class="active">
+                  {activeUser.current_page}
+                </a>
+                {activeUser.current_page < activeUser.last_page &&
+                  activeUser.current_page != activeUser.last_page && (
+                    <a
+                      href={null}
+                      onClick={() =>
+                        this.showPage(activeUser.current_page + 1, 1)
+                      }
+                    >
+                      {activeUser.current_page + 1}
+                    </a>
+                  )}
+                {activeUser.current_page != activeUser.last_page &&
+                  activeUser.current_page !=
+                    activeUser.last_page - 1 && (
+                    <>
+                      <a href={null}>...</a>
+                      <a
+                        href={null}
+                        onClick={() =>
+                          this.showPage(activeUser.last_page, 1)
+                        }
+                      >
+                        &raquo;
+                      </a>
+                    </>
+                  )}
+              </div>
             ) : (
               <div className="pagination">
-                {(inactiveUser.current_page != 1 &&
-                  inactiveUser.current_page != 2) && (
-                  <>
-                    <a href={null} onClick={() => this.showPage(1, 0)}>&laquo;</a>
-                    <a href={null}>...</a>
-                  </>
-                )}
-                {(inactiveUser.current_page >= 1 && inactiveUser.current_page != 1) && (
-                  <a href={null}
-                     onClick={() => this.showPage(inactiveUser.current_page - 1, 0)}>{inactiveUser.current_page - 1}</a>
-                )}
-                <a href={null} className="active">{inactiveUser.current_page}</a>
-                {(inactiveUser.current_page < inactiveUser.last_page && inactiveUser.current_page != inactiveUser.last_page) && (
-                  <a href={null}
-                     onClick={() => this.showPage(inactiveUser.current_page + 1, 0)}>{inactiveUser.current_page + 1}</a>
-                )}
-                {(inactiveUser.current_page != inactiveUser.last_page &&
-                  inactiveUser.current_page != inactiveUser.last_page - 1) &&
-                (
-                  <>
-                    <a href={null}>...</a>
-                    <a href={null} onClick={() => this.showPage(inactiveUser.last_page, 0)}>&raquo;</a>
-                  </>
-                )}
+                {inactiveUser.current_page != 1 &&
+                  inactiveUser.current_page != 2 && (
+                    <>
+                      <a
+                        href={null}
+                        onClick={() => this.showPage(1, 0)}
+                      >
+                        &laquo;
+                      </a>
+                      <a href={null}>...</a>
+                    </>
+                  )}
+                {inactiveUser.current_page >= 1 &&
+                  inactiveUser.current_page != 1 && (
+                    <a
+                      href={null}
+                      onClick={() =>
+                        this.showPage(
+                          inactiveUser.current_page - 1,
+                          0,
+                        )
+                      }
+                    >
+                      {inactiveUser.current_page - 1}
+                    </a>
+                  )}
+                <a href={null} className="active">
+                  {inactiveUser.current_page}
+                </a>
+                {inactiveUser.current_page < inactiveUser.last_page &&
+                  inactiveUser.current_page !=
+                    inactiveUser.last_page && (
+                    <a
+                      href={null}
+                      onClick={() =>
+                        this.showPage(
+                          inactiveUser.current_page + 1,
+                          0,
+                        )
+                      }
+                    >
+                      {inactiveUser.current_page + 1}
+                    </a>
+                  )}
+                {inactiveUser.current_page !=
+                  inactiveUser.last_page &&
+                  inactiveUser.current_page !=
+                    inactiveUser.last_page - 1 && (
+                    <>
+                      <a href={null}>...</a>
+                      <a
+                        href={null}
+                        onClick={() =>
+                          this.showPage(inactiveUser.last_page, 0)
+                        }
+                      >
+                        &raquo;
+                      </a>
+                    </>
+                  )}
               </div>
             )}
           </div>
@@ -358,7 +430,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         getUserDashboardAction,
         getProfileAction,
-        getChildUserAction
+        getChildUserAction,
       },
       dispatch,
     ),
