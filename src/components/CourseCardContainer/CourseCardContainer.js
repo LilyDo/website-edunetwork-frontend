@@ -31,9 +31,6 @@ class CourseCardContainer extends Component {
             <div className="Title">
               {getTranslatedText('our_courses')}
             </div>
-            <div className="Note">
-              {getTranslatedText('course_note')}
-            </div>
           </div>
         </div>
 
