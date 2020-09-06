@@ -8,7 +8,7 @@ export const translatedText = {
     vi: 'TRANG CHỦ',
   },
   blog: {
-    en: 'BLOG',
+    en: 'AFFILIATE',
     vi: 'BLOG',
   },
   contact: {
@@ -363,7 +363,7 @@ export const translatedText = {
     en:
       'Your withdraw request has been sent to EDUNETWORK. We will inform you when your request is processed.',
     vi:
-      'Yêu cầu rút tiền của bạn đã được gửi đến EDUNETORK.Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý thành công.',
+      'Yêu cầu rút tiền của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý thành công.',
   },
   back_wallet: {
     en: 'Back to Wallet',
