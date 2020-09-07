@@ -480,10 +480,10 @@ class TermOfService extends Component {
                 effective shall mean that you accept those changes. Any
                 revised Terms shall supersede all previous Terms.
                 <br />
-                11. How to Contact Us
+                10. How to Contact Us
                 <br />
                 The best way to get in touch with us is to contact our
-                Support Center at contact@Edunetwork.pro. We’d love to
+                Support Center at info@edunetwork.global. We’d love to
                 hear your questions, concerns, and feedback about our
                 Services.
               </React.Fragment>
@@ -998,10 +998,10 @@ class TermOfService extends Component {
                 những thay đổi đó. Mọi điều khoản được sửa đổi sẽ thay thế
                 tất cả Điều khoản trước đó.
                 <br />
-                11. Cách liên hệ với chúng tôi
+                10. Cách liên hệ với chúng tôi
                 <br />
                 Cách tốt nhất để liên hệ với chúng tôi là liên hệ với
-                Trung tâm hỗ trợ của chúng tôi tại contact@Edunetwork.pro.
+                Trung tâm hỗ trợ của chúng tôi tại info@edunetwork.global.
                 Chúng tôi rất muốn nghe những câu hỏi, mối quan tâm và
                 phản hồi của các bạn về Dịch vụ của chúng tôi.
               </React.Fragment>
