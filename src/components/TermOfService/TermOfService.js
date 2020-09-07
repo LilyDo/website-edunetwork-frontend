@@ -13,8 +13,7 @@ class TermOfService extends Component {
           <p>
             {(currentLang === "en")? (
               <React.Fragment>
-                Terms of Use
-                <br />
+                <h3 style={{textAlign: "center"}}>Terms of Use</h3>
                 Edunetwork’s mission is to improve lives through learning.
                 We enable anyone anywhere to enroll in these educational
                 courses to learn. We consider our model the best way to
@@ -23,9 +22,7 @@ class TermOfService extends Component {
                 safe for you, us and our instructors. These Terms apply to
                 all your activities on the Edunetwork website, our APIs
                 and other related services (“Services”).
-                <br />
-                1/ Accounts
-                <br />
+                <h5>1. Accounts</h5>
                 You need an account for most activities on our platform,
                 including to purchase a course or to apply to become an
                 affiliate. When setting up and maintaining your account,
@@ -66,9 +63,9 @@ class TermOfService extends Component {
                 account at any time by contacting our Support Center.
                 Check our Privacy Policy to see what happens when you
                 terminate your account.
-                <br />
-                2/ Course Enrollment and Lifetime Access
-                <br />
+
+                <h5>2. Course Enrollment and Lifetime Access</h5>
+
                 Under our Instructor Agreement, when instructors publish a
                 course on Edunetwork, they grant Edunetwork a license to
                 offer a license to the course to our users. This means
@@ -114,11 +111,8 @@ class TermOfService extends Component {
                 instructor may decide at any time to no longer provide
                 teaching assistance or Q&A services in association with a
                 course.
-                <br />
-                3/ Payments and Refunds
-                <br />
-                3.1 Pricing
-                <br />
+                <h5>3. Payments and Refunds</h5>
+                <h6>3.1 Pricing</h6>
                 The prices of courses on Edunetwork are determined based
                 on the terms of the Instructor Agreement and our Pricing
                 and Promotions Policy.
@@ -139,9 +133,7 @@ class TermOfService extends Component {
                 collecting and remitting the tax to the proper tax
                 authorities. In certain countries, the price you see may
                 include such taxes.
-                <br />
-                3.2 Payments
-                <br />
+                <h6>3.2 Payments</h6>
                 You agree to pay the fees for courses that you purchase,
                 and you authorize us to charge your account available
                 balance for those fees. Edunetwork works with third party
@@ -158,9 +150,7 @@ class TermOfService extends Component {
                 cancel your order for a refund. We do not provide credit
                 or refunds for any confirmed purchases. Please check
                 carefully before making a payment transaction.
-                <br />
-                4/ Content Rules
-                <br />
+                <h5>4. Content Rules</h5>
                 If we are put on notice that a course or content violates
                 the law or the rights of others (for example, if it is
                 established that it violates intellectual property or
@@ -193,9 +183,9 @@ class TermOfService extends Component {
                 For more details on how to file a copyright or trademark
                 infringement claim with us, please contact our Customer
                 Center.
-                <br />
-                5/ Using Edunetwork for Learning
-                <br />
+
+                <h5>5. Using Edunetwork for Learning</h5>
+
                 Our principal mission is to improve lives through
                 learning. When purchasing a course in our platform, you
                 agree that your sole purpose is to acquire new knowledge
@@ -205,9 +195,9 @@ class TermOfService extends Component {
                 example, if you purchase a course solely to become an
                 affiliate, we reserve the right to suspend or terminate
                 your account and/or block your access to our services.
-                <br />
-                6/ Using Edunetwork at Your Own Risk
-                <br />
+
+                <h5>6. Using Edunetwork at Your Own Risk</h5>
+
                 Anyone can use Edunetwork to access courses for learning
                 purposes. Like any other learning platforms where a lot of
                 content is published, some things can go wrong, and you
@@ -249,9 +239,7 @@ class TermOfService extends Component {
                 third-party sites, including their collection of
                 information about you. You should also read their terms
                 and conditions and privacy policies.
-                <br />
-                7/ Edunetwork’s Rights
-                <br />
+                <h5>7. Edunetwork’s Rights</h5>
                 All right, title, and interest in and to the Edunetwork
                 platform and Services, including our website, our existing
                 or future applications, our APIs, databases, and the
@@ -302,11 +290,11 @@ class TermOfService extends Component {
                 spamming, or mail-bombing the platforms or services, or in
                 any other manner interfering with or creating an undue
                 burden on the Services.
-                <br />
-                8/ Miscellaneous Legal Terms
-                <br />
-                8.1 Binding Agreement
-                <br />
+
+                <h5>8. Miscellaneous Legal Terms</h5>
+
+                <h6>8.1 Binding Agreement</h6>
+
                 You agree that by registering, accessing or using our
                 Services, you are agreeing to enter into a legally binding
                 contract with Edunetwork. If you do not agree to these
@@ -347,9 +335,7 @@ class TermOfService extends Component {
                 and Lifetime Access), 6 (Using Edunetwork at Your Own
                 Risk), 7 (Edunetwork’s Rights), 8 (Miscellaneous Legal
                 Terms).
-                <br />
-                8.2 Disclaimers
-                <br />
+                <h6>8.2 Disclaimers</h6>
                 It may happen that our platform is down, either for
                 planned maintenance or because something goes down with
                 the site. It may happen that one of our instructors is
@@ -387,9 +373,7 @@ class TermOfService extends Component {
                 our reasonable control, like an act of war, hostility, or
                 sabotage; natural disaster; electrical, internet, or
                 telecommunication outage; or government restrictions.
-                <br />
-                8.3 Limitation of Liability
-                <br />
+                <h6>8.3 Limitation of Liability</h6>
                 There are risks inherent into using our Services, for
                 example, if you enroll in a health and wellness course,
                 and you injure yourself. You fully accept these risks and
@@ -411,9 +395,7 @@ class TermOfService extends Component {
                 don’t allow the exclusion or limitation of liability for
                 consequential or incidental damages, so some of the above
                 may not apply to you.
-                <br />
-                8.4 Indemnification
-                <br />
+                <h6>8.4 Indemnification</h6>
                 If you behave in a way that gets us in legal trouble, we
                 may exercise legal recourse against you. You agree to
                 indemnify, defend (if we so request), and hold harmless
@@ -426,17 +408,15 @@ class TermOfService extends Component {
                 any rights of a third party. Your indemnification
                 obligation will survive the termination of these Terms and
                 your use of the Services.
-                <br />
-                8.5 Governing Law and Jurisdiction
-                <br />
+
+                <h6>8.5 Governing Law and Jurisdiction</h6>
+
                 These Terms are governed by the laws of Singapore without
                 reference to its choice or conflicts of law principles.
                 Where the “Dispute Resolution” section below does not
                 apply, you and we consent to the exclusive jurisdiction
                 and venue of State Courts of Singapore.
-                <br />
-                8.6 Legal Actions and Notices
-                <br />
+                <h6>8.6 Legal Actions and Notices</h6>
                 No action, regardless of form, arising out of or relating
                 to this Agreement may be brought by either party more than
                 one (1) year after the cause of action has accrued.
@@ -445,12 +425,12 @@ class TermOfService extends Component {
                 will be in writing and given by registered or certified
                 mail return receipt requested, or email (by us to the
                 email associated with your account or by you to
-                info@edunetwork.global). 8.7 Relationship Between Us
-                <br />
+                info@edunetwork.global).
+                <h6>8.7 Relationship Between Us</h6>
                 You and we agree that no joint venture, partnership,
                 employment, contractor, or agency relationship exists
-                between us. 8.8 No Assignment
-                <br />
+                between us.
+                <h6>8.8 No Assignment</h6>
                 You may not assign or transfer these Terms (or the rights
                 and licenses granted under them). For example, if you
                 registered an account as an employee of a company, your
@@ -462,9 +442,7 @@ class TermOfService extends Component {
                 You agree that your account is non-transferable and that
                 all rights to your account and other rights under these
                 Terms terminate upon your death.
-                <br />
-                9/ Updating These Terms
-                <br />
+                <h5>9. Updating These Terms</h5>
                 From time to time, we may update these Terms to clarify
                 our practices or to reflect new or different practices
                 (such as when we add new features), and Edunetwork
@@ -479,9 +457,7 @@ class TermOfService extends Component {
                 Your continued use of our Services after changes become
                 effective shall mean that you accept those changes. Any
                 revised Terms shall supersede all previous Terms.
-                <br />
-                10. How to Contact Us
-                <br />
+                <h5>10. How to Contact Us</h5>
                 The best way to get in touch with us is to contact our
                 Support Center at info@edunetwork.global. We’d love to
                 hear your questions, concerns, and feedback about our
@@ -489,8 +465,7 @@ class TermOfService extends Component {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                Điều khoản sử dụng
-                <br />
+                <h3 style={{textAlign: "center"}}>Điều khoản sử dụng</h3>
                 Edunetwork có sứ mệnh làm cho cuộc sống trở nên tốt đẹp
                 thông qua việc giáo dục và đào tạo. Chúng tôi giúp cho bất
                 cứ ai ở bất cứ nơi đâu đều có thể đăng ký học các khóa học
@@ -501,9 +476,7 @@ class TermOfService extends Component {
                 khoản này áp dụng cho tất cả các hoạt động trên trang web
                 Edunetwork, giao diện lập trình ứng dụng và các dịch vụ
                 khác có liên quan.
-                <br />
-                1. Tài khoản
-                <br />
+                <h5>1. Tài khoản</h5>
                 Người dùng cần có một tài khoản cho hầu hết các hoạt động
                 trên nền tảng của Edunetwork, bao gồm việc mua khóa học
                 hoặc đăng ký trở thành học viên. Khi thiết lập và duy trì
@@ -550,9 +523,7 @@ class TermOfService extends Component {
                 bằng cách liên hệ với Trung tâm hỗ trợ của chúng tôi. Kiểm
                 tra Chính sách bảo mật của chúng tôi để xem điều gì xảy ra
                 khi các bạn chấm dứt tài khoản.
-                <br />
-                2. Ghi danh khóa học và truy cập trọn đời
-                <br />
+                <h5>2. Ghi danh khóa học và truy cập trọn đời</h5>
                 Theo Thỏa thuận với giảng viên, khi các giảng viên đăng
                 tải một khóa học trên Edunetwork, họ cấp cho Edunetwork
                 một giấy phép để cung cấp khóa học đến người dùng. Có
@@ -600,11 +571,8 @@ class TermOfService extends Component {
                 vô hiệu hóa bất cứ lúc nào và giảng viên có thể quyết định
                 bất kỳ lúc nào không cung cấp hỗ trợ giảng dạy hoặc dịch
                 vụ hỏi đáp liên kết với một khóa học.
-                <br />
-                3. Thanh toán và hoàn tiền
-                <br />
-                3.1 Giá
-                <br />
+                <h5>3. Thanh toán và hoàn tiền</h5>
+                <h6>3.1 Giá</h6>
                 Giá của các khóa học trên Edunetwork được xác định dựa
                 trên các điều khoản Thỏa thuận với giảng viên và Chính
                 sách giá và khuyến mãi của Edunetwork.
@@ -623,9 +591,7 @@ class TermOfService extends Component {
                 Edunetwork có trách nhiệm thu và nộp thuế cho cơ quan thuế
                 thích hợp. Tại một số quốc gia, giá hiển thị có thể đã bao
                 gồm các loại thuế này.
-                <br />
-                3.2 Thanh toán
-                <br />
+                <h5>3.2 Thanh toán</h5>
                 Người dùng đồng ý với các khoản phí mà Edunetwork đưa ra
                 cho từng khóa học, và đồng ý cho Edunetwork trừ khoản phí
                 này từ tài khoản của mình. Edunetwork làm việc với các đối
@@ -643,9 +609,7 @@ class TermOfService extends Component {
                 tiền. Chúng tôi không cung cấp tín dụng hoặc hoàn lại tiền
                 cho bất kỳ giao dịch mua đã được xác nhận. Vui lòng kiểm
                 tra cẩn thận trước khi thực hiện thanh toán khóa học.
-                <br />
-                4. Nội quy
-                <br />
+                <h5>4. Nội quy</h5>
                 Nếu Chúng tôi phát hiện nội dung khóa học là vi phạm pháp
                 luật hoặc quyền của người khác (ví dụ: vi phạm quyền sở
                 hữu trí tuệ, quyền hình ảnh hoặc nó là một hoạt động bất
@@ -682,9 +646,7 @@ class TermOfService extends Component {
                 chi tiết về cách gửi khiếu nại vi phạm bản quyền hoặc
                 thương hiệu với chúng tôi, vui lòng liên hệ với Trung tâm
                 khách hàng của chúng tôi.
-                <br />
-                5. Sử dụng Edunetwork cho việc học
-                <br />
+                <h5>5. Sử dụng Edunetwork cho việc học</h5>
                 Nhiệm vụ chính của chúng tôi là cải thiện cuộc sống thông
                 qua học tập. Khi mua một khóa học trong nền tảng của
                 Edunetwork, bạn đồng ý rằng mục đích duy nhất của các bạn
@@ -698,9 +660,7 @@ class TermOfService extends Component {
                 học chỉ để trở thành người môi giới, chúng tôi có quyền
                 đình chỉ hoặc chấm dứt tài khoản của bạn và / hoặc chặn
                 quyền truy cập của bạn vào các dịch vụ của chúng tôi.
-                <br />
-                6. Rủi ro khi sử dụng Edunetwork
-                <br />
+                <h5>6. Rủi ro khi sử dụng Edunetwork</h5>
                 Bất cứ ai cũng có thể sử dụng Edunetwork để truy cập các
                 khóa học cho mục đích học tập. Giống như bất kỳ nền tảng
                 học tập nào khác, nơi có rất nhiều nội dung được xuất bản,
@@ -746,9 +706,7 @@ class TermOfService extends Component {
                 trang web bên thứ ba này, bao gồm cả việc thu thập thông
                 tin của họ về các bạn. Các bạn cũng nên đọc các điều khoản
                 và điều kiện và chính sách bảo mật của họ.
-                <br />
-                7. Quyền của Edunetwork
-                <br />
+                <h5>7. Quyền của Edunetwork</h5>
                 Tất cả quyền, quyền sở hữu và quyền lợi đối với nền tảng
                 và Dịch vụ của Edunetwork, bao gồm trang web của chúng
                 tôi, các ứng dụng hiện tại hoặc tương lai, API, cơ sở dữ
@@ -806,11 +764,8 @@ class TermOfService extends Component {
                 vi-rút, gây quá tải, tấn công, spam hoặc bom thư các nền
                 tảng hoặc dịch vụ, hoặc bằng bất kỳ cách nào khác can
                 thiệp hoặc tạo gánh nặng không đáng có cho Dịch vụ.
-                <br />
-                8. Điều khoản pháp lý khác
-                <br />
-                8.1 Thỏa thuận ràng buộc
-                <br />
+                <h5>8. Điều khoản pháp lý khác</h5>
+                <h6>8.1 Thỏa thuận ràng buộc</h6>
                 Người dùng đồng ý rằng qua việc đăng ký, truy cập hoặc sử
                 dụng Dịch vụ của chúng tôi, các bạn đồng ý ký kết hợp đồng
                 ràng buộc về mặt pháp lý với Edunetwork. Nếu các bạn không
@@ -852,9 +807,7 @@ class TermOfService extends Component {
                 khoản này: Phần 2 (Đăng ký khóa học và truy cập trọn đời),
                 6 (Rủi ro khi sử dụng Edunetwork), 7 (Quyền của
                 Edunetwork), 8 (Điều khoản pháp lý khác).
-                <br />
-                8.2 Miễn trừ trách nhiệm
-                <br />
+                <h6>8.2 Miễn trừ trách nhiệm</h6>
                 Điều có thể xảy ra là nền tảng của chúng tôi ngừng hoạt
                 động, hoặc để bảo trì theo kế hoạch hoặc do vấn đề nào đó
                 làm chậm trang web. Điều có thể xảy ra là một trong những
@@ -893,9 +846,9 @@ class TermOfService extends Component {
                 ngoài tầm kiểm soát hợp lý của chúng tôi, như chiến tranh,
                 thù địch hoặc phá hoại; Thiên tai; mất điện, internet hoặc
                 viễn thông; hoặc hạn chế của chính phủ.
-                <br />
-                8.3 Giới hạn trách nhiệm
-                <br />
+             
+                <h6>8.3 Giới hạn trách nhiệm</h6>
+          
                 Có những rủi ro khi sử dụng Dịch vụ của chúng tôi, ví dụ:
                 nếu các bạn đăng ký khóa học về sức khỏe và chăm sóc sức
                 khỏe, và các bạn tự làm mình bị thương. Các bạn hoàn toàn
@@ -919,9 +872,7 @@ class TermOfService extends Component {
                 trừ hoặc giới hạn trách nhiệm đối với các thiệt hại do hậu
                 quả hoặc ngẫu nhiên, vì vậy một số điều trên có thể không
                 áp dụng cho các bạn.
-                <br />
-                8.4 Bồi thường
-                <br />
+                <h6>8.4 Bồi thường</h6>
                 Nếu các bạn cư xử theo cách khiến chúng tôi gặp rắc rối về
                 pháp lý, chúng tôi có thể kiện các bạn. Các bạn đồng ý bồi
                 thường, bảo vệ (nếu chúng tôi yêu cầu) và tránh cho
@@ -934,18 +885,14 @@ class TermOfService extends Component {
                 quyền của bên thứ ba. Nghĩa vụ bồi thường của các bạn sẽ
                 tồn tại sau khi chấm dứt Điều khoản này và việc các bạn sử
                 dụng Dịch vụ.
-                <br />
-                8.5 Luật điều chỉnh và quyền tài phán
-                <br />
+                <h6>8.5 Luật điều chỉnh và quyền tài phán</h6>
                 Điều khoản này được điều chỉnh theo luật pháp Singapore mà
                 không liên quan đến lựa chọn hoặc tranh chấp các nguyên
                 tắc luật pháp. Trường hợp không áp dụng Điều khoản “Giải
                 quyết tranh chấp” dưới đây, các bạn và chúng tôi đồng ý
                 với quyền tài phán và địa điểm độc quyền của Tòa án
                 Singapore.
-                <br />
-                8.6 Các hành động và thông báo pháp lý
-                <br />
+                <h6>8.6 Các hành động và thông báo pháp lý</h6>
                 Không có vụ kiện nào, bất kể dưới hình thức nào, phát sinh
                 hoặc liên quan đến Thỏa thuận này có thể được một bên khởi
                 kiện sau một (1) năm kể từ khi nguyên nhân vụ kiện phát
@@ -956,15 +903,11 @@ class TermOfService extends Component {
                 bảo đảm có yêu cầu báo nhận hoặc gửi qua email (do chúng
                 tôi gửi đến email liên kết với tài khoản của các bạn hoặc
                 do các bạn gửi đến notices@Edunetwork.pro).
-                <br />
-                8.7 Mối quan hệ giữa chúng ta
-                <br />
+                <h6>8.7 Mối quan hệ giữa chúng ta</h6>
                 Các bạn và chúng tôi đồng ý rằng không có mối quan hệ liên
                 doanh, hợp tác, tuyển dụng, nhà thầu hoặc đại lý nào tồn
                 tại giữa chúng ta.
-                <br />
-                8.8 Không chuyển nhượng
-                <br />
+                <h6>8.8 Không chuyển nhượng</h6>
                 Các bạn không được chuyển nhượng hoặc chuyển giao các Điều
                 khoản này (hoặc các quyền và giấy phép được cấp kèm theo).
                 Ví dụ: nếu các bạn đã đăng ký tài khoản với tư cách nhân
@@ -978,9 +921,7 @@ class TermOfService extends Component {
                 các bạn không được chuyển nhượng và tất cả các quyền đối
                 với tài khoản của các bạn và các quyền khác theo Điều
                 khoản này sẽ chấm dứt khi các bạn qua đời.
-                <br />
-                9. Cập nhật các điều khoản này
-                <br />
+                <h5>9. Cập nhật các điều khoản này</h5>
                 Tùy từng thời điểm, chúng tôi có thể cập nhật các Điều
                 khoản này để làm rõ các yêu cầu của chúng tôi hoặc để phản
                 ánh các yêu cầu mới hoặc khác (chẳng hạn như chúng tôi
@@ -997,9 +938,7 @@ class TermOfService extends Component {
                 khi các thay đổi có hiệu lực có nghĩa là các bạn chấp nhận
                 những thay đổi đó. Mọi điều khoản được sửa đổi sẽ thay thế
                 tất cả Điều khoản trước đó.
-                <br />
-                10. Cách liên hệ với chúng tôi
-                <br />
+                <h5>10. Cách liên hệ với chúng tôi</h5>
                 Cách tốt nhất để liên hệ với chúng tôi là liên hệ với
                 Trung tâm hỗ trợ của chúng tôi tại info@edunetwork.global.
                 Chúng tôi rất muốn nghe những câu hỏi, mối quan tâm và

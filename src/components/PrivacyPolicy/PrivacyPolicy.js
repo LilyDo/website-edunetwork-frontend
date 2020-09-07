@@ -18,8 +18,7 @@ class PrivacyPolicy extends Component {
           <p>
             {(currentLang === "en")? (
               <React.Fragment>
-                Affiliate Terms & Conditions
-                <br />
+                <h3>Affiliate Terms & Conditions</h3>
                 THIS IS A LEGAL AGREEMENT BETWEEN YOU (“YOU”, “YOUR”, OR
                 “YOURS”), AND EDUNETWORK, INC., A SINGAPOREAN COMPANY
                 LOCATED IN SINGAPORE (“EDUNETWORK”, “WE”, “US”, OR “OUR”).
@@ -38,9 +37,7 @@ class PrivacyPolicy extends Component {
                 herein shall have the meaning ascribed to them in
                 Edunetwork’s Terms of Use or Pricing and Promotions
                 Policy.
-                <br />
-                1. Overview
-                <br />
+                <h5>1. Overview</h5>
                 These Affiliate Terms contain the complete terms and
                 conditions that apply to You when becoming an affiliate in
                 Edunetwork’s affiliate program (the “Affiliate Program”).
@@ -48,9 +45,7 @@ class PrivacyPolicy extends Component {
                 make affiliate commissions through sales generated from
                 Your website / by You to Our Services in the manner set
                 forth herein.
-                <br />
-                2. Enrollment in the Affiliate Program
-                <br />
+                <h5>2. Enrollment in the Affiliate Program</h5>
                 (a) Application Completion. If You have not already done
                 so, You need to complete an application to the Affiliate
                 Program (the “Application”). You need to identify Your
@@ -87,9 +82,7 @@ class PrivacyPolicy extends Component {
                 communications sent to that email address, even if the
                 email address associated with your account is no longer
                 current.
-                <br />
-                3. Specific Obligations of Affiliates
-                <br />
+                <h5>3. Specific Obligations of Affiliates</h5>
                 As a member of Our Affiliate Program, You represent,
                 warrant, and covenant that You will:
                 <br />
@@ -127,9 +120,7 @@ class PrivacyPolicy extends Component {
                 Edunetwork Course(s) on Your websites and/or platforms, or
                 otherwise alter, terminate or breach their contractual or
                 other business relationship with Us.
-                <br />
-                4. Affiliate Responsibilities
-                <br />
+                <h5>4. Affiliate Responsibilities</h5>
                 As a member of Our Affiliate Program, You understand and
                 agree that:
                 <br />
@@ -257,9 +248,7 @@ class PrivacyPolicy extends Component {
                 <br />
                 These Affiliate Terms will begin and become effective upon
                 Our acceptance of Your Application.
-                <br />
-                5. Affiliate Commissions
-                <br />
+                <h5>5. Affiliate Commissions</h5>
                 (a) Eligibility: Except in jurisdictions in which such a
                 transaction is not permitted, You are eligible to earn
                 affiliate commissions through Referrals (as defined in
@@ -307,9 +296,7 @@ class PrivacyPolicy extends Component {
                 to withhold any accrued fees. Further, any unpaid fees in
                 your account may be subject to escheatment under
                 applicable law.
-                <br />
-                6. Licenses
-                <br />
+                <h5>6. Licenses</h5>
                 (a) You hereby grant Us a non-exclusive, non-transferable,
                 revocable right to use Your names, titles, and logos in
                 the advertising, marketing, promoting, and publicizing in
@@ -328,9 +315,7 @@ class PrivacyPolicy extends Component {
                 granted in these Affiliate Terms, we each retain all
                 right, title, and interest to our respective rights and no
                 right, title, or interest is transferred to the other.
-                <br />
-                7. Disclaimer
-                <br />
+                <h5>7. Disclaimer</h5>
                 WE MAKE NO EXPRESS OR IMPLIED REPRESENTATIONS OR
                 WARRANTIES REGARDING EDUNETWORK. ANY IMPLIED WARRANTIES OF
                 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
@@ -339,9 +324,7 @@ class PrivacyPolicy extends Component {
                 REPRESENTATION THAT THE OPERATION OF OUR WEBSITE WILL BE
                 UNINTERRUPTED OR ERROR FREE, AND WE WILL NOT BE LIABLE FOR
                 THE CONSEQUENCES OF ANY INTERRUPTIONS OR ERRORS.
-                <br />
-                8. Limitations of Liability
-                <br />
+                <h5>8. Limitations of Liability</h5>
                 WE WILL NOT BE LIABLE TO YOU WITH RESPECT TO ANY SUBJECT
                 MATTER OF THESE AFFILIATE TERMS UNDER ANY CONTRACT,
                 NEGLIGENCE, TORT, STRICT LIABILITY, OR OTHER LEGAL OR
@@ -357,9 +340,7 @@ class PrivacyPolicy extends Component {
                 STRICT LIABILITY, TORT, OR OTHER LEGAL OR EQUITABLE
                 THEORY, EXCEED THE TOTAL REFERRAL FEES PAID TO YOU UNDER
                 THESE AFFILIATE TERMS.
-                <br />
-                9. Indemnification
-                <br />
+                <h5>9. Indemnification</h5>
                 You agree to indemnify and hold harmless Edunetwork and
                 its employees, representatives, agents, and affiliates,
                 against any and all claims, suits, actions, or other
@@ -370,17 +351,13 @@ class PrivacyPolicy extends Component {
                 attorneys' fees and costs awarded against or otherwise
                 incurred by Us in connection with or arising from any such
                 claim, suit, action, or proceeding.
-                <br />
-                10. Termination
-                <br />
+                <h5>10. Termination</h5>
                 Edunetwork or You can Each End Our Engagement Under these
                 Affiliate Terms: Either Us or You may end these Affiliate
                 Terms AT ANY TIME, with or without cause, by giving the
                 other party written notice. Written notice can be in the
                 form of mail, email or fax.
-                <br />
-                11. Modification
-                <br />
+                <h5>11. Modification</h5>
                 From time to time, We may update these Terms to clarify
                 Our practices or to reflect new or different practices,
                 for example We may change the scope of Referral Fees,
@@ -402,9 +379,7 @@ class PrivacyPolicy extends Component {
                 any changes to the Affiliate Terms, as any revised
                 Affiliate Terms shall supersede all previous Affiliate
                 Terms.
-                <br />
-                12. Miscellaneous
-                <br />
+                <h5>12. Miscellaneous</h5>
                 (a) You represent and warrant to Us that:
                 <br />
                 (i) These Affiliate Terms constitutes Your legal, valid,
@@ -493,9 +468,7 @@ class PrivacyPolicy extends Component {
                 định nghĩa ở đây sẽ có nghĩa như được quy định trong Điều
                 khoản sử dụng hoặc Chính sách khuyến mại và giá của
                 Edunetwork cung cấp.
-                <br />
-                1. Tổng quan
-                <br />
+                <h5>1. Tổng quan</h5>
                 Các Điều khoản liên kết này bao gồm các điều khoản và điều
                 kiện đầy đủ áp dụng cho các bạn khi trở thành thành viên
                 trong chương trình liên kết của Edunetwork (Chương trình
@@ -504,9 +477,7 @@ class PrivacyPolicy extends Component {
                 hàng được tạo từ trang web của các bạn / bởi các bạn cho
                 Dịch vụ của chúng tôi theo cách được quy định trong điều
                 khoản này.
-                <br />
-                2. Ghi danh vào chương trình liên kết
-                <br />
+                <h5>2. Ghi danh vào chương trình liên kết</h5>
                 (a) Điền đơn đăng ký. Nếu các bạn chưa thực hiện thì các
                 bạn cần phải điền đơn đăng ký cho Chương trình liên kết
                 (Đơn đăng ký). Các bạn cần cung cấp trang web của các bạn
@@ -547,9 +518,7 @@ class PrivacyPolicy extends Component {
                 và các thông tin liên lạc khác được gửi đến địa chỉ email
                 đó, ngay cả khi địa chỉ email được liên kết với tài khoản
                 của các bạn không còn.
-                <br />
-                3. Nghĩa vụ cụ thể của các thành viên
-                <br />
+                <h5>3. Nghĩa vụ cụ thể của các thành viên</h5>
                 Với tư cách thành viên của Chương trình liên kết của, các
                 bạn tuyên bố, bảo đảm và giao ước rằng các bạn sẽ:
                 <br />
@@ -591,9 +560,7 @@ class PrivacyPolicy extends Component {
                 họ trên trang web và / hoặc nền tảng của các bạn, hoặc
                 thay đổi, chấm dứt hoặc vi phạm mối quan hệ hợp đồng hoặc
                 kinh doanh khác của họ với chúng tôi.
-                <br />
-                4. Trách nhiệm thành viên
-                <br />
+                <h5>4. Trách nhiệm thành viên</h5>
                 Là thành viên của Chương trình liên kết Edunetwork, các
                 bạn hiểu và đồng ý rằng:
                 <br />
@@ -742,9 +709,7 @@ class PrivacyPolicy extends Component {
                 <br />
                 Các Điều khoản liên kết này sẽ bắt đầu và có hiệu lực khi
                 chúng tôi chấp nhận Đơn đăng ký của các bạn.
-                <br />
-                5. Hoa hồng liên kết
-                <br />
+                <h5>5. Hoa hồng liên kết</h5>
                 (a) Đủ điều kiện: Ngoại trừ các khu vực pháp lý không được
                 phép giao dịch như vậy, các bạn đủ điều kiện để nhận hoa
                 hồng liên kết thông qua Giới thiệu (theo định nghĩa trong
@@ -796,9 +761,7 @@ class PrivacyPolicy extends Component {
                 tôi sẽ có quyền giữ lại mọi khoản phí lũy kế. Ngoài ra,
                 bất kỳ khoản phí chưa thanh toán trong tài khoản của các
                 bạn có thể bị sung công theo luật hiện hành.
-                <br />
-                6. Giấy phép
-                <br />
+                <h5>6. Giấy phép</h5>
                 (a) Các bạn cấp cho chúng tôi quyền không độc quyền, không
                 thể chuyển nhượng, có thể hủy ngang để sử dụng tên, tiêu
                 đề và logo của các bạn trong quảng cáo, tiếp thị, quảng bá
@@ -821,9 +784,7 @@ class PrivacyPolicy extends Component {
                 đối với các quyền tương ứng của chúng ta và không có
                 quyền, quyền sở hữu hoặc quyền lợi nào được chuyển cho bên
                 kia.
-                <br />
-                7. Miễn trừ trách nhiệm
-                <br />
+                <h5>7. Miễn trừ trách nhiệm</h5>
                 CHÚNG TÔI KHÔNG TUYÊN BỐ HAY BẢO ĐẢM RÕ RÀNG HAY NGỤ Ý VỀ
                 EDUNETWORK. BẤT KỲ BẢO ĐẢM NGỤ Ý VỀ TÍNH THƯƠNG MẠI, TÍNH
                 PHÙ HỢP CHO MỘT MỤC ĐÍCH CỤ THỂ, TÍNH CHÍNH XÁC, ĐỘ TIN
@@ -832,9 +793,7 @@ class PrivacyPolicy extends Component {
                 TRANG WEB CỦA CHÚNG TÔI SẼ KHÔNG BỊ GIÁN ĐOẠN HOẶC KHÔNG
                 CÓ LỖI VÀ CHÚNG TÔI KHÔNG CHỊU TRÁCH NHIỆM VỀ HẬU QUẢ CỦA
                 BẤT KỲ GIÁN ĐOẠN HOẶC LỖI NÀO.
-                <br />
-                8. Hạn chế trách nhiệm pháp lý
-                <br />
+                <h5>8. Hạn chế trách nhiệm pháp lý</h5>
                 CHÚNG TÔI SẼ KHÔNG CHỊU TRÁCH NHIỆM VỚI CÁC BẠN VỀ BẤT KỲ
                 VẤN ĐỀ NÀO TRONG CÁC ĐIỀU KHOẢN LIÊN KẾT NÀY THEO BẤT KỲ
                 HỢP ĐỒNG, SƠ SUẤT, TRÁCH NHIỆM D N SỰ, TRÁCH NHIỆM PHÁP LÝ
@@ -851,9 +810,7 @@ class PrivacyPolicy extends Component {
                 HOẶC LÝ THUYẾT CÔNG BẰNG HOẶC HỢP PHÁP KHÁC, VƯỢT QUÁ TỔNG
                 PHÍ GIỚI THIỆU ĐƯỢC TRẢ CHO CÁC BẠN THEO ĐIỀU KHOẢN LIÊN
                 KẾT NÀY.
-                <br />
-                9. Bồi thường
-                <br />
+                <h5>9. Bồi thường</h5>
                 Các bạn đồng ý bồi thường và tránh tổn hại cho Edunetwork,
                 nhân viên, đại diện, đại lý và chi nhánh của Edunetwork,
                 đối với mọi khiếu nại, vụ kiện, kiện tụng hoặc các thủ tục
@@ -864,18 +821,14 @@ class PrivacyPolicy extends Component {
                 chi phí được quy định hoặc gánh chịu bởi chúng tôi hoặc
                 liên quan hoặc phát sinh từ bất kỳ khiếu nại, vụ kiện,
                 kiện tụng hoặc thủ tục tố tụng nào như vậy.
-                <br />
-                10. Chấm dứt
-                <br />
+                <h5>10. Chấm dứt</h5>
                 Edunetwork hoặc các bạn có thể chấm dứt việc tham gia của
                 chúng tôi theo các Điều khoản liên kết này: Chúng tôi hoặc
                 các bạn có thể kết thúc các Điều khoản liên kết này BẤT CỨ
                 LÚC NÀO, có hoặc không có lý do, bằng cách thông báo bằng
                 văn bản cho bên kia. Thông báo bằng văn bản có thể ở dạng
                 thư, email hoặc fax.
-                <br />
-                11. Sửa đổi
-                <br />
+                <h5>11. Sửa đổi</h5>
                 Tùy từng thời điểm, chúng tôi có thể cập nhật các Điều
                 khoản này để làm rõ các yêu cầu của chúng tôi hoặc để phản
                 ánh các yêu cầu mới hoặc khác, chẳng hạn như chúng tôi có
@@ -899,9 +852,7 @@ class PrivacyPolicy extends Component {
                 với Điều khoản liên kết, vì mọi Điều khoản liên kết được
                 sửa đổi sẽ thay thế tất cả các Điều khoản liên kết trước
                 đó.
-                <br />
-                12. Các điều khoản khác
-                <br />
+                <h5>12. Các điều khoản khác</h5>
                 (a) Các bạn tuyên bố và bảo đảm với chúng tôi rằng:
                 <br />
                 (i) Các Điều khoản liên kết này cấu thành nghĩa vụ pháp

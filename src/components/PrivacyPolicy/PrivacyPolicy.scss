@@ -2,6 +2,17 @@
 @import '../../assets/font/font.scss';
 
 .ContactPage {
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
+
+  h5 {
+    margin-top: 10px;
+  }
+
+  h6 {
+    margin-top: 5px;
+  }
+
   @media only screen and (max-width: $mobileBreakPoint) {
     padding-left: 10px;
     padding-right: 10px;
