@@ -9,7 +9,7 @@ export const translatedText = {
   },
   blog: {
     en: 'AFFILIATE',
-    vi: 'BLOG',
+    vi: 'LIÊN KẾT',
   },
   contact: {
     en: 'CONTACT',
