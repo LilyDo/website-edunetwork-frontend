@@ -8,7 +8,7 @@ export const translatedText = {
     vi: 'TRANG CHỦ',
   },
   blog: {
-    en: 'BLOG',
+    en: 'AFFILIATE',
     vi: 'BLOG',
   },
   contact: {
@@ -63,7 +63,7 @@ export const translatedText = {
   },
   slogan: {
     en:
-      "BUILDING A COMMUNITY TO ENPOWER AND ENRICH EVERY INDIVIDUAL'S LIVES THROUGH EDUCATION AND NETWORKING.",
+      "BUILDING A COMMUNITY TO EMPOWER AND ENRICH EVERY INDIVIDUAL'S LIFE THROUGH EDUCATION AND NETWORKING",
     vi:
       'CHÚNG TÔI MUỐN XÂY DỰNG MỘT CỘNG ĐỒNG THAY ĐỔI VỀ TRI THỨC VÀ THAY ĐỔI VỀ THU NHẬP',
   },
@@ -363,7 +363,7 @@ export const translatedText = {
     en:
       'Your withdraw request has been sent to EDUNETWORK. We will inform you when your request is processed.',
     vi:
-      'Yêu cầu rút tiền của bạn đã được gửi đến EDUNETORK.Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý thành công.',
+      'Yêu cầu rút tiền của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý thành công.',
   },
   back_wallet: {
     en: 'Back to Wallet',
@@ -1013,5 +1013,11 @@ export const translatedText = {
       'Cannot reset password, make sure you enter correct email address!',
     vi:
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
+  },
+  operation_regulation: {
+    en:
+      'Regulation of Operations',
+    vi:
+      'Quy chế hoạt động',
   },
 };

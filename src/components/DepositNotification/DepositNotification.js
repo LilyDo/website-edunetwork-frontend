@@ -102,26 +102,20 @@ class DepositNotification extends Component {
           </div>
         </div>
         <div>
-          - <b>Vietnam {getTranslatedText('bank_account')}</b>
-          <br />+ {getTranslatedText('full_name')}:{' '}
-          <b>Ngo Thi Minh Hoa</b>
-          <br />+ {getTranslatedText('bank_account')}:{' '}
-          <b>196981241</b>
-          <br />+ {getTranslatedText('bank_name')}: <b>VP Bank</b>
+          - <b>Vietnam Bank Account</b>
+          <br />+ Company Name: <b>Edunetwork Global Vietnam Online</b>
+          <br />+ Bank Account Number: <b>220704254</b>
+          <br />+ Bank Name: <b>VP Bank</b>
           <br />
           <br />
         </div>
         <div>
-          - <b>Singapore {getTranslatedText('bank_account')}</b>
-          <br />+ {getTranslatedText('company_name')}:{' '}
-          <b>Edunetwork Global Pte Ltd</b>
-          <br />+ {getTranslatedText('bank_number')}:{' '}
-          <b>687752311001</b>
-          <br />+ {getTranslatedText('bank_name')}:
-          <b>Oversea-Chinese Banking Corporation Limited</b> <br />+
-          {getTranslatedText('bank_address')}:{' '}
-          <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>{' '}
-          <br />+ {getTranslatedText('swift_code')}: <b>OCBCSGSG</b>
+          - <b>Singapore Bank Account</b>
+          <br />+ Company Name: <b>Edunetwork Global Pte Ltd</b>
+          <br />+ Bank Account Number: <b>687752311001</b>
+          <br />+ Bank Name: <b>Oversea-Chinese Banking Corporation Limited</b>
+          <br />+ Bank Address: <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>
+          <br />+ Swift Code: <b>OCBCSGSG</b>
           <br />
           <br />
         </div>
