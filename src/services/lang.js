@@ -1014,4 +1014,10 @@ export const translatedText = {
     vi:
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
+  operation_regulation: {
+    en:
+      'Regulation of Operations',
+    vi:
+      'Quy chế hoạt động',
+  },
 };
