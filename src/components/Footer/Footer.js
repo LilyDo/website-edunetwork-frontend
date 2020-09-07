@@ -60,6 +60,11 @@ function Footer() {
                     Terms of Service
                   </Link>
                 </div>
+                <div className="TermsOfService">
+                  <Link to={routes.operationRegulation}>
+                    Regulation of Operations
+                  </Link>
+                </div>
               </div>
             </div>
 

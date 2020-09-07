@@ -47,6 +47,7 @@ import DepositNotification from './components/DepositNotification/DepositNotific
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import TermOfService from './components/TermOfService/TermOfService';
 import VisaPaymentComponent from './components/VisaPaymentComponent/VisaPaymentComponent';
+import OperationRegulation from './components/OperationRegulation/OperationRegulation';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -204,6 +205,9 @@ class App extends Component {
                   </Route>
                   <Route exact path={routes.termOfService}>
                     <TermOfService />
+                  </Route>
+                  <Route exact path={routes.operationRegulation}>
+                    <OperationRegulation />
                   </Route>
                 </Switch>
               </div>

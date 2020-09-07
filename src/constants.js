@@ -28,6 +28,7 @@ export const routes = {
   // Terms of Service
   privacyPolicy: '/privacy-policy',
   termOfService: '/term-of-service',
+  operationRegulation: '/operation-regulation',
   // Game
   game: '/game',
   visaPayment: '/visa-payment/:id/:price',
