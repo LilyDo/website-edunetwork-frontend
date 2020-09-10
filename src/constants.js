@@ -22,7 +22,7 @@ export const routes = {
   accountCourses: '/account/courses',
   accountDeposit: '/account/deposit',
   accountDepositNoti:
-    '/account/profile/deposit-noti/:isBuyCourse/:code/:amount',
+    '/account/profile/deposit-noti/:isBuyCourse/:code',
   // misc
   contact: '/contact',
   // Terms of Service

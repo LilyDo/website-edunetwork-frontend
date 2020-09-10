@@ -455,9 +455,13 @@ export const translatedText = {
     en: 'ORDER',
     vi: 'ĐẶT HÀNG',
   },
-  transfer_money: {
-    en: 'TRANSFER TO BANK',
-    vi: 'CHUYỂN KHOẢN',
+  transfer_money_vn: {
+    en: 'VN BANK',
+    vi: 'NGÂN HÀNG VN',
+  },
+  transfer_money_singapore: {
+    en: 'SINGAPORE BANK',
+    vi: 'NGÂN HÀNG SINGAPORE',
   },
   visa: {
     en: 'VISA',
@@ -495,9 +499,9 @@ export const translatedText = {
   },
   note_buy_braintree: {
     en:
-      'When buying a course with PayPal account or a visa card will cost an additional 10% of the course fee',
+      'When buying a course with PAYPAL account, VISA card or BANKS IN VIETNAM will cost an additional 10% of the course fee',
     vi:
-      'Khi mua khóa học bằng tài khoản PayPal hoặc thẻ visa sẽ mất thêm 10% phí của khóa học',
+      'Khi mua khóa học bằng tài khoản PAYPAL, thẻ VISA hoặc chuyển khoản từ các NGÂN HÀNG VIỆT NAM sẽ mất thêm 10% phí của khóa học',
   },
   your_wallet: {
     en: 'YOUR WALLET',
@@ -1015,9 +1019,7 @@ export const translatedText = {
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
   operation_regulation: {
-    en:
-      'Regulation of Operations',
-    vi:
-      'Quy chế hoạt động',
+    en: 'Regulation of Operations',
+    vi: 'Quy chế hoạt động',
   },
 };
