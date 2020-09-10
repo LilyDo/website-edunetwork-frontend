@@ -173,7 +173,7 @@ const getUserCourseDetailFailure = error => ({
  */
 export const buyCourseAction = (
   courseId,
-  method = 'traditional',
+  method = 'vn-banking',
   paypal_order = '',
 ) => {
   return dispatch => {

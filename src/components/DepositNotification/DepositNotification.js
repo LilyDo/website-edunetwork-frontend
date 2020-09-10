@@ -30,16 +30,15 @@ class DepositNotification extends Component {
     });
 
     this.props.actions.getOrderDetailByCode(code);
-    this.props.actions.updateOrderAction({
-      status: 'waiting',
-      order_code: code,
-      method: 'traditional',
-    });
+    // this.props.actions.updateOrderAction({
+    //   status: 'waiting',
+    //   order_code: code,
+    //   method: 'vn-banking',
+    // });
   }
 
   render() {
     const { isBuyCourse, code, amount } = this.state;
-    console.log(isBuyCourse);
 
     return (
       <div className="WithdrawNotification">
@@ -101,24 +100,32 @@ class DepositNotification extends Component {
             <br />
           </div>
         </div>
-        <div>
-          - <b>Vietnam Bank Account</b>
-          <br />+ Company Name: <b>Edunetwork Global Vietnam Online</b>
-          <br />+ Bank Account Number: <b>220704254</b>
-          <br />+ Bank Name: <b>VP Bank</b>
-          <br />
-          <br />
-        </div>
-        <div>
-          - <b>Singapore Bank Account</b>
-          <br />+ Company Name: <b>Edunetwork Global Pte Ltd</b>
-          <br />+ Bank Account Number: <b>687752311001</b>
-          <br />+ Bank Name: <b>Oversea-Chinese Banking Corporation Limited</b>
-          <br />+ Bank Address: <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>
-          <br />+ Swift Code: <b>OCBCSGSG</b>
-          <br />
-          <br />
-        </div>
+        {this.props.orderObj.method === "vn-banking" && (
+          <div>
+            - <b>Vietnam Bank Account</b>
+            <br />+ Company Name:{' '}
+            <b>Edunetwork Global Vietnam Online</b>
+            <br />+ Bank Account Number: <b>220704254</b>
+            <br />+ Bank Name: <b>VP Bank</b>
+            <br />
+            <br />
+          </div>
+        )}
+        {this.props.orderObj.method === "sin-banking" && (
+          <div>
+            - <b>Singapore Bank Account</b>
+            <br />+ Company Name: <b>Edunetwork Global Pte Ltd</b>
+            <br />+ Bank Account Number: <b>687752311001</b>
+            <br />+ Bank Name:{' '}
+            <b>Oversea-Chinese Banking Corporation Limited</b>
+            <br />+ Bank Address:{' '}
+            <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>
+            <br />+ Swift Code: <b>OCBCSGSG</b>
+            <br />
+            <br />
+          </div>
+        )}
+
         <div>
           -{' '}
           <b>
