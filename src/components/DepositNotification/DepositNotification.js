@@ -67,18 +67,18 @@ class DepositNotification extends Component {
           (1 USD = 24.000 VND) (1 USD = 1.45 SGD)
           <br />
           {isBuyCourse && (
-            <div>
+            <div style={{fontSize: "19px", color: "red"}}>
               <br />- {getTranslatedText('date')}:{' '}
               <b>{this.props.orderObj.date || ''}</b>
               <br />- {getTranslatedText('verification_code')}:{' '}
               <b>{this.props.orderObj.payment_code || code}</b>
               <br />- {getTranslatedText('member')} ID:{' '}
               <b>{this.props.orderObj.user_code || ''}</b>
-              <br />- {getTranslatedText('balance')}:{' '}
+              <br />- {getTranslatedText('balance')}{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount) || ''}
               </b>
-              <br />- {getTranslatedText('amount_top_up')}:{' '}
+              <br />- {getTranslatedText('amount_top_up')}{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount_need) ||
                   ''}
@@ -100,7 +100,7 @@ class DepositNotification extends Component {
             <br />
           </div>
         </div>
-        {this.props.orderObj.method === "vn-banking" && (
+        {this.props.orderObj.method === 'vn-banking' && (
           <div>
             - <b>Vietnam Bank Account</b>
             <br />+ Company Name:{' '}
@@ -111,7 +111,7 @@ class DepositNotification extends Component {
             <br />
           </div>
         )}
-        {this.props.orderObj.method === "sin-banking" && (
+        {this.props.orderObj.method === 'sin-banking' && (
           <div>
             - <b>Singapore Bank Account</b>
             <br />+ Company Name: <b>Edunetwork Global Pte Ltd</b>
@@ -119,7 +119,9 @@ class DepositNotification extends Component {
             <br />+ Bank Name:{' '}
             <b>Oversea-Chinese Banking Corporation Limited</b>
             <br />+ Bank Address:{' '}
-            <b>OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513</b>
+            <b>
+              OCBC CENTRE 65 CHULIA STREET #01-00 SINGAPORE 049513
+            </b>
             <br />+ Swift Code: <b>OCBCSGSG</b>
             <br />
             <br />
