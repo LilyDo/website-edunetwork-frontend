@@ -565,7 +565,7 @@ export const translatedText = {
   },
   purchase_success_6: {
     en:
-      'Should you have any further queries, please do not hesitate to contact our support team via: support@edunetwork.global',
+      'Should you have any further queries, please do not hesitate to contact our support team via: info@edunetwork.global',
     vi:
       'Nếu bạn có thêm bất kỳ câu hỏi nào, xin vui lòng liên hệ với nhóm hỗ trợ của chúng tôi qua: info@edunetwork.global',
   },
