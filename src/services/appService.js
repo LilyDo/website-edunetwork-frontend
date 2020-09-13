@@ -36,7 +36,7 @@ export const currencyFormatter = (amount, currency = false) => {
   let formatter = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 0,
   });
-  return ((!currency)? '$' : "") + formatter.format(amount);
+  return (!currency ? '$' : '') + formatter.format(amount);
 };
 
 const splitHoursMinutesSeconds = duration => {
