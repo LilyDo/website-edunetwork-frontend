@@ -493,15 +493,17 @@ export const translatedText = {
   },
   note_after_payment: {
     en:
-      'Note:\n' +
-      '- After payment, your course will be activated within 1 business day. Beside, we sent the course information to your email. Please check, thanks!\n' +
-      '- When buying a course with PAYPAL account, VISA card will cost an additional 10% of the course fee\n' +
-      '- When buying a course with BANKS IN VIETNAM will cost an additional 10% of the VAT fee.',
+      "Note: \n" +
+      "- After payment, your course will be activated within 1 business day. We will send the confirmation notice to your email. \n" +
+      "- When you purchase the course using PAYPAL or Credit Card, there will be an additional 10% fee.\n" +
+      "- When you purchase the course with BANKS IN VIETNAM, there will be an additional 10% V.A.T fee.\n" +
+      "- When you purchase the course with BANKS IN SINGAPORE, there will be no additional fees.",
     vi:
-      'Lưu ý: \n' +
-      '- Sau khi thanh toán, khóa học của bạn sẽ được kích hoạt trong vòng 1 ngày làm việc. Ngoài ra, chúng tôi đã gửi thông tin khóa học đến email của bạn. Vui lòng kiểm tra, cảm ơn! \n '+
-      '- Khi mua khóa học bằng tài khoản PAYPAL, thẻ VISA sẽ mất thêm 10% học phí \n' +
-      '- Khi mua khóa học với NGÂN HÀNG TẠI VIỆT NAM sẽ mất thêm 10% phí VAT.',
+      'Ghi chú:\n' +
+      '- Sau khi thanh toán, khóa học của bạn sẽ được kích hoạt trong vòng 1 ngày làm việc. Chúng tôi sẽ gửi thông báo xác nhận đến email của bạn.\n' +
+      '- Khi bạn mua khóa học bằng PAYPAL hoặc Thẻ tín dụng, bạn sẽ phải trả thêm 10% phí.\n' +
+      '- Khi bạn mua khóa học với CÁC NGÂN HÀNG TẠI VIỆT NAM, sẽ có thêm 10% phí V.A.T.\n' +
+      '- Khi bạn mua khóa học với NGÂN HÀNG TẠI SINGAPORE sẽ không phải trả thêm phí.',
   },
   note_buy_braintree: {
     en:
