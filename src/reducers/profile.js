@@ -21,12 +21,11 @@ const initialState = {
   notificationLastPage: 1,
   unreadNotification: 0,
   activeUser: {
-    data: []
+    data: [],
   },
   inactiveUser: {
-    data: []
+    data: [],
   },
-
 };
 
 export default function(state = initialState, action) {
@@ -320,7 +319,7 @@ export default function(state = initialState, action) {
         loading: false,
       };
 
-      // GET NOTIFICATIONS
+    // GET NOTIFICATIONS
     case types.GET_CHILD_USER_REQUEST:
       return {
         ...state,
@@ -333,18 +332,18 @@ export default function(state = initialState, action) {
         action.payload.data.errors.length === 0
       ) {
         if (action.payload.active)
-        return {
-          ...state,
-          loading: false,
-          error: null,
-          activeUser: action.payload.data.data
-        };
+          return {
+            ...state,
+            loading: false,
+            error: null,
+            activeUser: action.payload.data.data,
+          };
         else
           return {
             ...state,
             loading: false,
             error: null,
-            inactiveUser: action.payload.data.data
+            inactiveUser: action.payload.data.data,
           };
       } else {
         toast.error(action.payload.notifications.errors[0]);

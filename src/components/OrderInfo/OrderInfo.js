@@ -61,7 +61,7 @@ class OrderInfo extends Component {
     window.confirm('Are you sure you want to buy this course?') &&
       this.props.actions.buyCourseAction(
         this.props.courseDetail.id,
-        'traditional',
+        'vn-banking',
       );
   };
 
@@ -146,9 +146,17 @@ class OrderInfo extends Component {
         <Row gutter={16} justify={'center'}>
           <button
             className="pay_button"
-            onClick={() => this.onTransferClick()}
+            onClick={() => this.onTransferClick('vn-banking')}
           >
-            {getTranslatedText('transfer_money')}
+            {getTranslatedText('transfer_money_vn')}
+          </button>
+        </Row>
+        <Row gutter={16} justify={'center'}>
+          <button
+            className="pay_button"
+            onClick={() => this.onTransferClick('sin-banking')}
+          >
+            {getTranslatedText('transfer_money_singapore')}
           </button>
         </Row>
         <Row gutter={16} justify={'center'}>
@@ -160,15 +168,15 @@ class OrderInfo extends Component {
                 details.purchase_units[0].payments.captures[0].id;
               this.props.actions.buyCourseAction(
                 this.props.courseDetail.id,
-                'online-banking',
+                'paypal',
                 paypal_transaction_id,
               );
             }}
             options={{
               clientId:
                 'AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV', //live
-                //"AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21", //client
-                //"AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt", //dev
+              //"AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21", //client
+              //"AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt", //dev
               locale: 'en_VN',
             }}
           />
@@ -179,9 +187,12 @@ class OrderInfo extends Component {
 
   // End
 
-  onTransferClick = () => {
+  onTransferClick = method => {
     // Xử lý cho onclick transfer ở đây
-    this.props.actions.buyCourseAction(this.props.courseDetail.id);
+    this.props.actions.buyCourseAction(
+      this.props.courseDetail.id,
+      method,
+    );
   };
 
   cancelPaypal = () => {
@@ -275,7 +286,9 @@ class OrderInfo extends Component {
                     <div className="Text">
                       {getTranslatedText('need_purchase')}
                     </div>
-                    <div className="Number">{courseDetail.price}</div>
+                    <div className="Number">
+                      {shouldDeposit ? shouldDepositAmount : 0}
+                    </div>
                     <div className="Currency">USD</div>
                   </div>
                   <div className="Container Missing">
@@ -294,7 +307,8 @@ class OrderInfo extends Component {
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
                       this.props.courseDetail,
-                      courseDetail.price + courseDetail.price / 10,
+                      courseDetail.price +
+                        2 * (courseDetail.price / 10),
                     )}
                     trigger="click"
                     overlayStyle={{ width: '255px' }}
@@ -332,8 +346,7 @@ class OrderInfo extends Component {
           )}
         </div>
         <div className="TextNotice">
-          {getTranslatedText('note_after_payment')} <br />
-          {getTranslatedText('note_buy_braintree')}
+          {getTranslatedText('note_after_payment')}
         </div>
       </div>
     );

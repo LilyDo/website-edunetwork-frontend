@@ -2,6 +2,15 @@
 @import '../../assets/font/font.scss';
 
 .WithdrawNotification {
+  .deposit-info{
+    font-size: 17px;
+
+    b{
+      color: red;
+      font-size: 21px
+    }
+  }
+
   @media only screen and (max-width: $mobileBreakPoint) {
     padding: 20px 10px 50px 10px;
   }

@@ -121,7 +121,7 @@ export default function(state = initialState, action) {
         orderObj: orderObj,
       };
     case types.BUY_COURSE_FAILURE:
-      toast.error(action.payload.error.split(", "));
+      toast.error(action.payload.error.split(', '));
       return {
         ...state,
         loading: false,

@@ -59,16 +59,16 @@
     <script>
       var button = document.querySelector('#submit-button');
   
-      braintree.dropin.create({
-        authorization: 'CLIENT_TOKEN_FROM_SERVER',
-        container: '#dropin-container'
-      }, function (createErr, instance) {
-        button.addEventListener('click', function () {
-          instance.requestPaymentMethod(function (err, payload) {
-            // Submit payload.nonce to your server
-          });
-        });
-      });
+      // braintree.dropin.create({
+      //   authorization: 'CLIENT_TOKEN_FROM_SERVER',
+      //   container: '#dropin-container'
+      // }, function (createErr, instance) {
+      //   button.addEventListener('click', function () {
+      //     instance.requestPaymentMethod(function (err, payload) {
+      //       // Submit payload.nonce to your server
+      //     });
+      //   });
+      // });
     </script>  
   </body>
 </html>
