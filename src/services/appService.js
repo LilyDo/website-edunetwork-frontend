@@ -32,11 +32,11 @@ export const getUrlParameter = function getUrlParameter(sParam) {
 };
 
 // Create our number formatter.
-export const currencyFormatter = amount => {
+export const currencyFormatter = (amount, vnd = false) => {
   let formatter = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 0,
   });
-  return '$' + formatter.format(amount);
+  return ((!vnd)? '$' : "") + formatter.format(amount) + ((vnd)? " VNĐ" : "");
 };
 
 const splitHoursMinutesSeconds = duration => {
