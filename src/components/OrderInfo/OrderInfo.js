@@ -146,7 +146,7 @@ class OrderInfo extends Component {
         <Row gutter={16} justify={'center'}>
           <button
             className="pay_button"
-            onClick={() => this.onTransferClick("vn-banking")}
+            onClick={() => this.onTransferClick('vn-banking')}
           >
             {getTranslatedText('transfer_money_vn')}
           </button>
@@ -154,7 +154,7 @@ class OrderInfo extends Component {
         <Row gutter={16} justify={'center'}>
           <button
             className="pay_button"
-            onClick={() => this.onTransferClick("sin-banking")}
+            onClick={() => this.onTransferClick('sin-banking')}
           >
             {getTranslatedText('transfer_money_singapore')}
           </button>
@@ -187,9 +187,12 @@ class OrderInfo extends Component {
 
   // End
 
-  onTransferClick = (method) => {
+  onTransferClick = method => {
     // Xử lý cho onclick transfer ở đây
-    this.props.actions.buyCourseAction(this.props.courseDetail.id, method);
+    this.props.actions.buyCourseAction(
+      this.props.courseDetail.id,
+      method,
+    );
   };
 
   cancelPaypal = () => {
@@ -343,8 +346,7 @@ class OrderInfo extends Component {
           )}
         </div>
         <div className="TextNotice">
-          {getTranslatedText('note_after_payment')} <br />
-          {getTranslatedText('note_buy_braintree')}
+          {getTranslatedText('note_after_payment')}
         </div>
       </div>
     );

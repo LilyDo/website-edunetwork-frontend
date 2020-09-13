@@ -67,7 +67,7 @@ class DepositNotification extends Component {
           (1 USD = 24.000 VND) (1 USD = 1.45 SGD)
           <br />
           {isBuyCourse && (
-            <div style={{fontSize: "19px", color: "red"}}>
+            <div className="deposit-info">
               <br />- {getTranslatedText('date')}:{' '}
               <b>{this.props.orderObj.date || ''}</b>
               <br />- {getTranslatedText('verification_code')}:{' '}
@@ -81,7 +81,7 @@ class DepositNotification extends Component {
               <br />- {getTranslatedText('amount_top_up')}{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount_need) ||
-                  ''}
+                  ''}  = {currencyFormatter(this.props.orderObj.amount_need * 24000, true)}
               </b>
               <br />- {getTranslatedText('course')}{' '}
               {getTranslatedText('level')}:{' '}

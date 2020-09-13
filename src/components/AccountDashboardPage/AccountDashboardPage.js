@@ -135,8 +135,7 @@ class AccountDashboardPage extends Component {
                   </div>
                   <div className="People TotalActive">
                     <div className="Number">
-                      {(dashboard.total_active_user) ||
-                        '0'}
+                      {dashboard.total_active_user || '0'}
                     </div>
                     <div className="Text">
                       {getTranslatedText('total_active_user')}
