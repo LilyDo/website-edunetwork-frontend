@@ -457,7 +457,7 @@ export const translatedText = {
   },
   transfer_money_vn: {
     en: 'VIET NAM BANK',
-    vi: 'NGÂN HÀNG VN',
+    vi: 'NGÂN HÀNG VIỆT NAM',
   },
   transfer_money_singapore: {
     en: 'SINGAPORE BANK',
