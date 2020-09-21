@@ -17,6 +17,11 @@ import {
 } from '../../actions/profile';
 import { routes } from '../../constants';
 import * as types from '../../actions/index';
+import QuizModal from '../QuizModal/QuizModal';
+import { Button, Col, Layout, Modal, Row, Tag, Typography } from 'antd';
+import logo from "../../assets/images/logo.svg"
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import contract from "../../assets/images/contract.pdf";
 
 class MyWallet_Withdraw extends Component {
   state = {
@@ -30,6 +35,17 @@ class MyWallet_Withdraw extends Component {
     type: 'traditional',
     paypal_email: '',
     paypal_name: '',
+    front_cmnd: "",
+    back_cmnd: "",
+    preview_front_cmnd: "",
+    preview_back_cmnd: "",
+    address: "",
+    tax_code: "",
+    is_verify_contract: false,
+    modal_visible: false,
+    button_enable: false,
+    numPage: 1,
+    totalPage: 1
   };
 
   checkCurrentUser() {
@@ -44,9 +60,27 @@ class MyWallet_Withdraw extends Component {
         fullName: this.state.currentUser.bank_full_name,
         paypal_email: this.state.currentUser.paypal_email,
         paypal_name: this.state.currentUser.paypal_name,
+        is_verify_contract: this.state.currentUser.is_verify_contract,
       });
     }
   }
+
+  handleImageChange = e => {
+    let files = e.target.files;
+    const { name } = e.target;
+    if (files.length > 0){
+      this.setState({
+        [name]: files[0],
+        ["preview_" + name]: URL.createObjectURL(files[0])
+      });
+    }
+    else{
+      this.setState({
+        [name]: null,
+        ["preview_" + name]: ""
+      });
+    }
+  };
 
   toggleShowTab = () => {
     this.setState({
@@ -69,6 +103,7 @@ class MyWallet_Withdraw extends Component {
   }
 
   withdrawMoneyAction = () => {
+    this.setState({modal_visible: false});
     let payload = {
       bank_name: this.state.bankName,
       // bank_branch: this.state.bankBranch,
@@ -80,10 +115,14 @@ class MyWallet_Withdraw extends Component {
       type: this.state.type,
       paypal_name: this.state.paypal_name,
       paypal_email: this.state.paypal_email,
+      address: this.state.address,
+      front_id_card: this.state.front_cmnd,
+      back_id_card: this.state.back_cmnd,
     };
-    var form_data = new FormData();
 
-    for (var key in payload) {
+    let form_data = new FormData();
+
+    for (let key in payload) {
       form_data.append(key, payload[key]);
     }
 
@@ -95,6 +134,26 @@ class MyWallet_Withdraw extends Component {
       [name]: event.target.value,
     });
   };
+
+  nextPage(){
+    let curPage = this.state.numPage;
+    if (curPage === this.state.totalPage){
+      alert("Last page");
+      return;
+    }
+
+    this.setState({numPage: curPage + 1});
+  }
+
+  prevPage(){
+    let curPage = this.state.numPage;
+    if (curPage === 1){
+      alert("First page");
+      return;
+    }
+
+    this.setState({numPage: curPage - 1});
+  }
 
   render() {
     const {
@@ -108,6 +167,8 @@ class MyWallet_Withdraw extends Component {
       paypal_email,
       paypal_name,
       type,
+      address,
+      tax_code
     } = this.state;
 
     return (
@@ -236,20 +297,70 @@ class MyWallet_Withdraw extends Component {
                   min="0"
                 />
               </div>
+
               <div className="Note">
                 {getTranslatedText('important_withdraw')}
               </div>
+
+              {!this.state.is_verify_contract && (
+                <>
+                  <div className="Note">
+                    {getTranslatedText('verify_contract')}
+                  </div>
+
+                  <div className="WithdrawAmount">
+                    <div>{getTranslatedText('address')}*</div>
+                    <input
+                      type="text"
+                      value={this.state.address}
+                      onChange={this.handleChange('address')}
+                    />
+                  </div>
+
+                  <div className="WithdrawAmount">
+                    <div>{getTranslatedText('tax_code')}</div>
+                    <input
+                      type="text"
+                      value={this.state.tax_code}
+                      name="tax_code"
+                      onChange={this.handleChange('tax_code')}
+                    />
+                  </div>
+
+                  <div className="">
+                    <div>{getTranslatedText('front_cmnd')}*</div>
+                    <input
+                      type="file"
+                      name="front_cmnd"
+                      onChange={this.handleImageChange}
+                    />
+                  </div>
+
+                  <div>
+                    <div>{getTranslatedText('image_of')} {getTranslatedText('front_cmnd')}*</div>
+                    <img src={this.state.preview_front_cmnd} width="150" alt="" />
+                  </div>
+
+                  <div className="">
+                    <div>{getTranslatedText('back_cmnd')}*</div>
+                    <input
+                      type="file"
+                      name="back_cmnd"
+                      onChange={this.handleImageChange}
+                    />
+                  </div>
+
+                  <div>
+                    <div>{getTranslatedText('image_of')} {getTranslatedText('back_cmnd')}*</div>
+                    <img src={this.state.preview_back_cmnd} width="150" alt="" />
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="Card">
               <div className="User">
-                <img
-                  className="Photo"
-                  alt="avatar"
-                  src={
-                    this.state.currentUser.avatar || DefaultUserAvatar
-                  }
-                ></img>
+                <img className="Photo" alt="avatar" src={this.state.currentUser.avatar || DefaultUserAvatar} />
                 <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
@@ -264,18 +375,75 @@ class MyWallet_Withdraw extends Component {
               </div>
             </div>
           </div>
-          <div
-            className="TransactionRequest"
-            onClick={this.withdrawMoneyAction}
-          >
-            {getTranslatedText('REQUEST')}
-          </div>
+          {(this.state.is_verify_contract)? (
+            <div className="TransactionRequest" onClick={this.withdrawMoneyAction}>
+              {getTranslatedText('REQUEST')}
+            </div>
+          ) : (
+            <div className="TransactionRequest" onClick={() => this.setState({modal_visible: true})}>
+              {getTranslatedText('REQUEST')}
+            </div>
+          )}
           <Link to={routes.accountWallet}>
             <div className="CancelButton">
               {getTranslatedText('CANCEL')}
             </div>
           </Link>
         </div>
+        <Modal
+          visible={this.state.modal_visible}
+          footer={false}
+          width="796px"
+          onCancel={() => this.setState({modal_visible: false})}
+          destroyOnClose={true}
+        >
+          <React.Fragment>
+            <Layout>
+              <Layout.Header className="logo__container">
+                <img src={logo} />
+              </Layout.Header>
+              <Layout.Content className="content__container">
+                <Row>
+                  <Col span={24}>
+                    <Typography.Text className="content_heading">
+                      {getTranslatedText('contract_info')}
+                    </Typography.Text>
+                  </Col>
+                  <Col span={16}>
+                    <Document
+                      file={contract}
+                      onLoadSuccess={e => this.setState({totalPage: e.numPages})}
+                    >
+                      <Page pageNumber={this.state.numPage} width="750" />
+                    </Document>
+                    <p>{getTranslatedText("page")} {this.state.numPage} {getTranslatedText("of")} {this.state.totalPage} {getTranslatedText("page")}</p>
+                    <button onClick={() => this.prevPage()}>Prev</button>
+                    <button onClick={() => this.nextPage()}>Next</button>
+                  </Col>
+                  <Col span={12} style={{marginTop: "15px"}}>
+                    <input type="checkbox" id="agree" onChange={e => this.setState({button_enable: e.target.checked})} /> &nbsp;
+                    <label htmlFor="agree"><strong>{getTranslatedText("accept_contract")}</strong></label>
+                  </Col>
+                </Row>
+              </Layout.Content>
+              <Layout.Footer className="footer__container">
+                <Row gutter={16}>
+                  <Col span={12} xs={24} xl={12}>
+                    <Button
+                      className="modal__button"
+                      onClick={this.withdrawMoneyAction}
+                      disabled={!this.state.button_enable}
+                    >
+                      <Typography.Text className="button_label">
+                        {getTranslatedText('request',)}
+                      </Typography.Text>
+                    </Button>
+                  </Col>
+                </Row>
+              </Layout.Footer>
+            </Layout>
+          </React.Fragment>
+        </Modal>
       </div>
     );
   }
