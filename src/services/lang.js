@@ -1026,6 +1026,78 @@ export const translatedText = {
     vi:
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
+  verify_contract: {
+    en:
+      'You need to verify contract first!',
+    vi:
+      'Hợp đồng đồng đồng đồng đồng ',
+  },
+  contract_info: {
+    en:
+      'Contract information',
+    vi:
+      'Nội dung hợp đồng',
+  },
+  address: {
+    en:
+      'Your address',
+    vi:
+      'Địa chỉ',
+  },
+  tax_code: {
+    en:
+      'Tax code (Optional)',
+    vi:
+      'Mã số thuế (nếu có)',
+  },
+  front_cmnd: {
+    en:
+      'The front of your identity card',
+    vi:
+      'Mặt trước CMND',
+  },
+  back_cmnd: {
+    en:
+      'The back of your identity card',
+    vi:
+      'Mặt sau CMND',
+  },
+  image_of: {
+    en:
+      'Image of',
+    vi:
+      'Hình ảnh của',
+  },
+  accept_contract: {
+    en:
+      'Agree to the contract',
+    vi:
+      'Đồng ý với hợp đồng',
+  },
+  first_of_page: {
+    en:
+      'First of page',
+    vi:
+      'Đây là trang đầu tiên',
+  },
+  last_of_page: {
+    en:
+      'Last of page',
+    vi:
+      'Đây là trang cuối cùng',
+  },
+  page: {
+    en:
+      'Page',
+    vi:
+      'Trang',
+  },
+  of: {
+    en:
+      'of',
+    vi:
+      'của',
+  },
   operation_regulation: {
     en: 'Regulation of Operations',
     vi: 'Quy chế hoạt động',
