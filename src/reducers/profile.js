@@ -175,7 +175,10 @@ export default function(state = initialState, action) {
         action.payload.errors.length === 0
       ) {
         toast.success(getTranslatedText('withdraw_success'));
-        let route = routes.accountWithdrawNoti.replace(":type", "default");
+        let route = routes.accountWithdrawNoti.replace(
+          ':type',
+          'default',
+        );
         setTimeout(function() {
           window.location.pathname = route;
         }, 3000);
@@ -364,7 +367,7 @@ export default function(state = initialState, action) {
         loading: false,
       };
 
-      // POST CONTRACT
+    // POST CONTRACT
     case types.POST_CONTRACT_REQUEST:
       return {
         ...state,
@@ -373,7 +376,10 @@ export default function(state = initialState, action) {
 
     case types.POST_CONTRACT_SUCCESS:
       toast.success(getTranslatedText('post_contract_success'));
-      let route = routes.accountWithdrawNoti.replace(":type", "contract");
+      let route = routes.accountWithdrawNoti.replace(
+        ':type',
+        'contract',
+      );
       setTimeout(function() {
         window.location.pathname = route;
       }, 3000);
@@ -386,7 +392,7 @@ export default function(state = initialState, action) {
 
     case types.POST_CONTRACT_FAILURE:
       // console.log(action.payload);
-      toast.error(action.payload.join(" "));
+      toast.error(action.payload.join(' '));
 
       return {
         ...state,

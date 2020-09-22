@@ -14,7 +14,7 @@ import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
   withdrawMoneyAction,
   getProfileAction,
-  postContract
+  postContract,
 } from '../../actions/profile';
 import { routes } from '../../constants';
 import * as types from '../../actions/index';
@@ -55,6 +55,7 @@ class MyWallet_Withdraw extends Component {
     button_enable: false,
     numPage: 1,
     totalPage: 1,
+    id_card: ""
   };
 
   checkCurrentUser() {
@@ -121,7 +122,7 @@ class MyWallet_Withdraw extends Component {
       swift_code: this.state.swiftCode,
       type: this.state.type,
       paypal_name: this.state.paypal_name,
-      paypal_email: this.state.paypal_email
+      paypal_email: this.state.paypal_email,
     };
 
     let form_data = new FormData();
@@ -166,8 +167,9 @@ class MyWallet_Withdraw extends Component {
       address: this.state.address,
       front_id_card: this.state.front_cmnd,
       back_id_card: this.state.back_cmnd,
-      tax_code: this.state.tax_code
-    }
+      tax_code: this.state.tax_code,
+      id_card: this.state.id_card
+    };
 
     let form_data = new FormData();
 
@@ -200,9 +202,18 @@ class MyWallet_Withdraw extends Component {
         <div className="MyWallet_Withdraw">
           <div className="ContentContainer">
             <div className="TransactionInfo">
-              {(!this.state.is_verify_contract)? (
+              {!this.state.is_verify_contract ? (
                 <>
                   <div>{getTranslatedText('verify_contract')}</div>
+
+                  <div className="WithdrawAmount">
+                    <div>{getTranslatedText('id_card')}*</div>
+                    <input
+                      type="number"
+                      value={this.state.id_card}
+                      onChange={this.handleChange('id_card')}
+                    />
+                  </div>
 
                   <div className="WithdrawAmount">
                     <div>{getTranslatedText('address')}*</div>
@@ -289,21 +300,29 @@ class MyWallet_Withdraw extends Component {
                       <div className="PaypalEmail">
                         <div>{getTranslatedText('paypal_email')}</div>
                         <input
-                          placeholder={getTranslatedText('paypal_email')}
+                          placeholder={getTranslatedText(
+                            'paypal_email',
+                          )}
                           value={paypal_email}
                           name="paypal_email"
                           onChange={this.handleChange('paypal_email')}
-                          disabled={this.state.currentUser.paypal_email}
+                          disabled={
+                            this.state.currentUser.paypal_email
+                          }
                         />
                       </div>
                       <div className="PaypalName">
                         <div>{getTranslatedText('paypal_name')}</div>
                         <input
-                          placeholder={getTranslatedText('paypal_name')}
+                          placeholder={getTranslatedText(
+                            'paypal_name',
+                          )}
                           value={paypal_name}
                           name="paypal_name"
                           onChange={this.handleChange('paypal_name')}
-                          disabled={this.state.currentUser.paypal_name}
+                          disabled={
+                            this.state.currentUser.paypal_name
+                          }
                         />
                       </div>
                     </>
@@ -337,7 +356,9 @@ class MyWallet_Withdraw extends Component {
                           )}
                           value={bankAccount}
                           onChange={this.handleChange('bankAccount')}
-                          disabled={this.state.currentUser.bank_account}
+                          disabled={
+                            this.state.currentUser.bank_account
+                          }
                         />
                       </div>
                       <div className="BankAddress">
@@ -369,7 +390,9 @@ class MyWallet_Withdraw extends Component {
                           placeholder={getTranslatedText('full_name')}
                           value={fullName}
                           onChange={this.handleChange('fullName')}
-                          disabled={this.state.currentUser.bank_full_name}
+                          disabled={
+                            this.state.currentUser.bank_full_name
+                          }
                         />
                       </div>
                     </>
@@ -379,7 +402,9 @@ class MyWallet_Withdraw extends Component {
                     <div>{getTranslatedText('amount')}</div>
                     <input
                       type="number"
-                      placeholder={getTranslatedText('amount_withdraw')}
+                      placeholder={getTranslatedText(
+                        'amount_withdraw',
+                      )}
                       value={amount}
                       onChange={this.handleChange('amount')}
                       step="1"
@@ -535,7 +560,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         withdrawMoneyAction,
         getProfileAction,
-        postContract
+        postContract,
       },
       dispatch,
     ),
