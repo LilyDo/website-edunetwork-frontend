@@ -1027,76 +1027,60 @@ export const translatedText = {
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
   verify_contract: {
-    en:
-      'You need to verify contract first!',
-    vi:
-      'Hợp đồng đồng đồng đồng đồng ',
+    en: 'You need to verify contract first!',
+    vi: 'Hợp đồng đồng đồng đồng đồng ',
   },
   contract_info: {
-    en:
-      'Contract information',
-    vi:
-      'Nội dung hợp đồng',
+    en: 'Contract information',
+    vi: 'Nội dung hợp đồng',
   },
   address: {
-    en:
-      'Your address',
-    vi:
-      'Địa chỉ',
+    en: 'Your address',
+    vi: 'Địa chỉ',
   },
   tax_code: {
-    en:
-      'Tax code (Optional)',
-    vi:
-      'Mã số thuế (nếu có)',
+    en: 'Tax code (Optional)',
+    vi: 'Mã số thuế (nếu có)',
   },
   front_cmnd: {
-    en:
-      'The front of your identity card',
-    vi:
-      'Mặt trước CMND',
+    en: 'The front of your identity card',
+    vi: 'Mặt trước CMND',
   },
   back_cmnd: {
-    en:
-      'The back of your identity card',
-    vi:
-      'Mặt sau CMND',
+    en: 'The back of your identity card',
+    vi: 'Mặt sau CMND',
   },
   image_of: {
-    en:
-      'Image of',
-    vi:
-      'Hình ảnh của',
+    en: 'Image of',
+    vi: 'Hình ảnh của',
   },
   accept_contract: {
-    en:
-      'Agree to the contract',
-    vi:
-      'Đồng ý với hợp đồng',
+    en: 'Agree to the contract',
+    vi: 'Đồng ý với hợp đồng',
   },
   first_of_page: {
-    en:
-      'First of page',
-    vi:
-      'Đây là trang đầu tiên',
+    en: 'First of page',
+    vi: 'Đây là trang đầu tiên',
   },
   last_of_page: {
-    en:
-      'Last of page',
-    vi:
-      'Đây là trang cuối cùng',
+    en: 'Last of page',
+    vi: 'Đây là trang cuối cùng',
   },
   page: {
-    en:
-      'Page',
-    vi:
-      'Trang',
+    en: 'Page',
+    vi: 'Trang',
   },
   of: {
-    en:
-      'of',
-    vi:
-      'của',
+    en: 'of',
+    vi: 'của',
+  },
+  post_contract_success: {
+    en: 'Your contract is sent!',
+    vi: 'Hợp đồng của bạn đã được gửi!',
+  },
+  post_contract_success_msg: {
+    en: 'Your contract request has been sent to EDUNETWORK. We will inform you when your request is processed.',
+    vi: 'Hợp đồng của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý',
   },
   operation_regulation: {
     en: 'Regulation of Operations',

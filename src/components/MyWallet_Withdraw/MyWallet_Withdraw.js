@@ -14,14 +14,23 @@ import DefaultUserAvatar from '../../assets/images/user_default_avatar.png';
 import {
   withdrawMoneyAction,
   getProfileAction,
+  postContract
 } from '../../actions/profile';
 import { routes } from '../../constants';
 import * as types from '../../actions/index';
 import QuizModal from '../QuizModal/QuizModal';
-import { Button, Col, Layout, Modal, Row, Tag, Typography } from 'antd';
-import logo from "../../assets/images/logo.svg"
+import {
+  Button,
+  Col,
+  Layout,
+  Modal,
+  Row,
+  Tag,
+  Typography,
+} from 'antd';
+import logo from '../../assets/images/logo.svg';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import contract from "../../assets/images/contract.pdf";
+import contract from '../../assets/images/contract.pdf';
 
 class MyWallet_Withdraw extends Component {
   state = {
@@ -35,17 +44,17 @@ class MyWallet_Withdraw extends Component {
     type: 'traditional',
     paypal_email: '',
     paypal_name: '',
-    front_cmnd: "",
-    back_cmnd: "",
-    preview_front_cmnd: "",
-    preview_back_cmnd: "",
-    address: "",
-    tax_code: "",
+    front_cmnd: '',
+    back_cmnd: '',
+    preview_front_cmnd: '',
+    preview_back_cmnd: '',
+    address: '',
+    tax_code: '',
     is_verify_contract: false,
     modal_visible: false,
     button_enable: false,
     numPage: 1,
-    totalPage: 1
+    totalPage: 1,
   };
 
   checkCurrentUser() {
@@ -68,16 +77,15 @@ class MyWallet_Withdraw extends Component {
   handleImageChange = e => {
     let files = e.target.files;
     const { name } = e.target;
-    if (files.length > 0){
+    if (files.length > 0) {
       this.setState({
         [name]: files[0],
-        ["preview_" + name]: URL.createObjectURL(files[0])
+        ['preview_' + name]: URL.createObjectURL(files[0]),
       });
-    }
-    else{
+    } else {
       this.setState({
         [name]: null,
-        ["preview_" + name]: ""
+        ['preview_' + name]: '',
       });
     }
   };
@@ -103,7 +111,6 @@ class MyWallet_Withdraw extends Component {
   }
 
   withdrawMoneyAction = () => {
-    this.setState({modal_visible: false});
     let payload = {
       bank_name: this.state.bankName,
       // bank_branch: this.state.bankBranch,
@@ -114,10 +121,7 @@ class MyWallet_Withdraw extends Component {
       swift_code: this.state.swiftCode,
       type: this.state.type,
       paypal_name: this.state.paypal_name,
-      paypal_email: this.state.paypal_email,
-      address: this.state.address,
-      front_id_card: this.state.front_cmnd,
-      back_id_card: this.state.back_cmnd,
+      paypal_email: this.state.paypal_email
     };
 
     let form_data = new FormData();
@@ -135,24 +139,43 @@ class MyWallet_Withdraw extends Component {
     });
   };
 
-  nextPage(){
+  nextPage() {
     let curPage = this.state.numPage;
-    if (curPage === this.state.totalPage){
-      alert("Last page");
+    if (curPage === this.state.totalPage) {
+      alert('Last page');
       return;
     }
 
-    this.setState({numPage: curPage + 1});
+    this.setState({ numPage: curPage + 1 });
   }
 
-  prevPage(){
+  prevPage() {
     let curPage = this.state.numPage;
-    if (curPage === 1){
-      alert("First page");
+    if (curPage === 1) {
+      alert('First page');
       return;
     }
 
-    this.setState({numPage: curPage - 1});
+    this.setState({ numPage: curPage - 1 });
+  }
+
+  doPostContract() {
+    this.setState({ modal_visible: false });
+    let payload = {
+      token: this.state.currentUser.remember_token,
+      address: this.state.address,
+      front_id_card: this.state.front_cmnd,
+      back_id_card: this.state.back_cmnd,
+      tax_code: this.state.tax_code
+    }
+
+    let form_data = new FormData();
+
+    for (let key in payload) {
+      form_data.append(key, payload[key]);
+    }
+
+    this.props.actions.postContract(form_data);
   }
 
   render() {
@@ -168,145 +191,18 @@ class MyWallet_Withdraw extends Component {
       paypal_name,
       type,
       address,
-      tax_code
+      tax_code,
     } = this.state;
 
     return (
       <div>
         <AccountBreadcrumb />
         <div className="MyWallet_Withdraw">
-          <div className="Title">
-            <div>{getTranslatedText('my_wallet')}</div>
-            <img alt="arrow right" src={ArrowRight}></img>
-            <div>{getTranslatedText('withdraw')}</div>
-          </div>
-
           <div className="ContentContainer">
             <div className="TransactionInfo">
-              <div>{getTranslatedText('fill_to_withdraw')}</div>
-              <div className="BankName">
-                <div>{getTranslatedText('withdraw_type')}</div>
-                <select
-                  onChange={row =>
-                    this.setState({ type: row.target.value })
-                  }
-                >
-                  <option value="traditional">Bank</option>
-                  <option value="online-banking">Paypal</option>
-                </select>
-              </div>
-              {type === 'online-banking' ? (
+              {(!this.state.is_verify_contract)? (
                 <>
-                  <div className="PaypalEmail">
-                    <div>{getTranslatedText('paypal_email')}</div>
-                    <input
-                      placeholder={getTranslatedText('paypal_email')}
-                      value={paypal_email}
-                      name="paypal_email"
-                      onChange={this.handleChange('paypal_email')}
-                      disabled={this.state.currentUser.paypal_email}
-                    />
-                  </div>
-                  <div className="PaypalName">
-                    <div>{getTranslatedText('paypal_name')}</div>
-                    <input
-                      placeholder={getTranslatedText('paypal_name')}
-                      value={paypal_name}
-                      name="paypal_name"
-                      onChange={this.handleChange('paypal_name')}
-                      disabled={this.state.currentUser.paypal_name}
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="BankName">
-                    <div>{getTranslatedText('bank_name')}</div>
-                    <input
-                      placeholder={getTranslatedText(
-                        'your_bank_name',
-                      )}
-                      value={bankName}
-                      onChange={this.handleChange('bankName')}
-                      disabled={this.state.currentUser.bank_name}
-                    />
-                  </div>
-                  {/* <div className="BankBranch">
-                <div>Branch of Beneficiary Bank</div>
-                <input
-                  placeholder="What is your branch of beneficiary bank"
-                  value={bankBranch}
-                  onChange={this.handleChange('bankBranch')}
-                />
-              </div> */}
-                  <div className="BankAccount">
-                    <div>{getTranslatedText('bank_number')}</div>
-                    <input
-                      type="text"
-                      placeholder={getTranslatedText(
-                        'your_bank_number',
-                      )}
-                      value={bankAccount}
-                      onChange={this.handleChange('bankAccount')}
-                      disabled={this.state.currentUser.bank_account}
-                    />
-                  </div>
-                  <div className="BankAddress">
-                    <div>{getTranslatedText('bank_address')}</div>
-                    <input
-                      type="text"
-                      placeholder={getTranslatedText(
-                        'your_bank_address',
-                      )}
-                      value={bankAddress}
-                      onChange={this.handleChange('bankAddress')}
-                    />
-                  </div>
-                  <div className="SwiftCode">
-                    <div>{getTranslatedText('swift_code')}</div>
-                    <input
-                      type="text"
-                      placeholder={getTranslatedText(
-                        'your_swift_code',
-                      )}
-                      value={swiftCode}
-                      onChange={this.handleChange('swiftCode')}
-                    />
-                  </div>
-                  <div className="FullName">
-                    <div>{getTranslatedText('full_name')}</div>
-                    <input
-                      type="text"
-                      placeholder={getTranslatedText('full_name')}
-                      value={fullName}
-                      onChange={this.handleChange('fullName')}
-                      disabled={this.state.currentUser.bank_full_name}
-                    />
-                  </div>
-                </>
-              )}
-
-              <div className="WithdrawAmount">
-                <div>{getTranslatedText('amount')}</div>
-                <input
-                  type="number"
-                  placeholder={getTranslatedText('amount_withdraw')}
-                  value={amount}
-                  onChange={this.handleChange('amount')}
-                  step="1"
-                  min="0"
-                />
-              </div>
-
-              <div className="Note">
-                {getTranslatedText('important_withdraw')}
-              </div>
-
-              {!this.state.is_verify_contract && (
-                <>
-                  <div className="Note">
-                    {getTranslatedText('verify_contract')}
-                  </div>
+                  <div>{getTranslatedText('verify_contract')}</div>
 
                   <div className="WithdrawAmount">
                     <div>{getTranslatedText('address')}*</div>
@@ -337,8 +233,15 @@ class MyWallet_Withdraw extends Component {
                   </div>
 
                   <div>
-                    <div>{getTranslatedText('image_of')} {getTranslatedText('front_cmnd')}*</div>
-                    <img src={this.state.preview_front_cmnd} width="150" alt="" />
+                    <div>
+                      {getTranslatedText('image_of')}{' '}
+                      {getTranslatedText('front_cmnd')}*
+                    </div>
+                    <img
+                      src={this.state.preview_front_cmnd}
+                      width="150"
+                      alt=""
+                    />
                   </div>
 
                   <div className="">
@@ -351,8 +254,141 @@ class MyWallet_Withdraw extends Component {
                   </div>
 
                   <div>
-                    <div>{getTranslatedText('image_of')} {getTranslatedText('back_cmnd')}*</div>
-                    <img src={this.state.preview_back_cmnd} width="150" alt="" />
+                    <div>
+                      {getTranslatedText('image_of')}{' '}
+                      {getTranslatedText('back_cmnd')}*
+                    </div>
+                    <img
+                      src={this.state.preview_back_cmnd}
+                      width="150"
+                      alt=""
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>{getTranslatedText('fill_to_withdraw')}</div>
+                  <div className="Title">
+                    <div>{getTranslatedText('my_wallet')}</div>
+                    <img alt="arrow right" src={ArrowRight}></img>
+                    <div>{getTranslatedText('withdraw')}</div>
+                  </div>
+                  <div className="BankName">
+                    <div>{getTranslatedText('withdraw_type')}</div>
+                    <select
+                      onChange={row =>
+                        this.setState({ type: row.target.value })
+                      }
+                    >
+                      <option value="traditional">Bank</option>
+                      <option value="online-banking">Paypal</option>
+                    </select>
+                  </div>
+                  {type === 'online-banking' ? (
+                    <>
+                      <div className="PaypalEmail">
+                        <div>{getTranslatedText('paypal_email')}</div>
+                        <input
+                          placeholder={getTranslatedText('paypal_email')}
+                          value={paypal_email}
+                          name="paypal_email"
+                          onChange={this.handleChange('paypal_email')}
+                          disabled={this.state.currentUser.paypal_email}
+                        />
+                      </div>
+                      <div className="PaypalName">
+                        <div>{getTranslatedText('paypal_name')}</div>
+                        <input
+                          placeholder={getTranslatedText('paypal_name')}
+                          value={paypal_name}
+                          name="paypal_name"
+                          onChange={this.handleChange('paypal_name')}
+                          disabled={this.state.currentUser.paypal_name}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="BankName">
+                        <div>{getTranslatedText('bank_name')}</div>
+                        <input
+                          placeholder={getTranslatedText(
+                            'your_bank_name',
+                          )}
+                          value={bankName}
+                          onChange={this.handleChange('bankName')}
+                          disabled={this.state.currentUser.bank_name}
+                        />
+                      </div>
+                      {/* <div className="BankBranch">
+                <div>Branch of Beneficiary Bank</div>
+                <input
+                  placeholder="What is your branch of beneficiary bank"
+                  value={bankBranch}
+                  onChange={this.handleChange('bankBranch')}
+                />
+              </div> */}
+                      <div className="BankAccount">
+                        <div>{getTranslatedText('bank_number')}</div>
+                        <input
+                          type="text"
+                          placeholder={getTranslatedText(
+                            'your_bank_number',
+                          )}
+                          value={bankAccount}
+                          onChange={this.handleChange('bankAccount')}
+                          disabled={this.state.currentUser.bank_account}
+                        />
+                      </div>
+                      <div className="BankAddress">
+                        <div>{getTranslatedText('bank_address')}</div>
+                        <input
+                          type="text"
+                          placeholder={getTranslatedText(
+                            'your_bank_address',
+                          )}
+                          value={bankAddress}
+                          onChange={this.handleChange('bankAddress')}
+                        />
+                      </div>
+                      <div className="SwiftCode">
+                        <div>{getTranslatedText('swift_code')}</div>
+                        <input
+                          type="text"
+                          placeholder={getTranslatedText(
+                            'your_swift_code',
+                          )}
+                          value={swiftCode}
+                          onChange={this.handleChange('swiftCode')}
+                        />
+                      </div>
+                      <div className="FullName">
+                        <div>{getTranslatedText('full_name')}</div>
+                        <input
+                          type="text"
+                          placeholder={getTranslatedText('full_name')}
+                          value={fullName}
+                          onChange={this.handleChange('fullName')}
+                          disabled={this.state.currentUser.bank_full_name}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  <div className="WithdrawAmount">
+                    <div>{getTranslatedText('amount')}</div>
+                    <input
+                      type="number"
+                      placeholder={getTranslatedText('amount_withdraw')}
+                      value={amount}
+                      onChange={this.handleChange('amount')}
+                      step="1"
+                      min="0"
+                    />
+                  </div>
+
+                  <div className="Note">
+                    {getTranslatedText('important_withdraw')}
                   </div>
                 </>
               )}
@@ -360,7 +396,13 @@ class MyWallet_Withdraw extends Component {
 
             <div className="Card">
               <div className="User">
-                <img className="Photo" alt="avatar" src={this.state.currentUser.avatar || DefaultUserAvatar} />
+                <img
+                  className="Photo"
+                  alt="avatar"
+                  src={
+                    this.state.currentUser.avatar || DefaultUserAvatar
+                  }
+                />
                 <div>{this.state.currentUser.name || ''}</div>
               </div>
               <div className="Balance">
@@ -375,12 +417,18 @@ class MyWallet_Withdraw extends Component {
               </div>
             </div>
           </div>
-          {(this.state.is_verify_contract)? (
-            <div className="TransactionRequest" onClick={this.withdrawMoneyAction}>
+          {this.state.is_verify_contract ? (
+            <div
+              className="TransactionRequest"
+              onClick={this.withdrawMoneyAction}
+            >
               {getTranslatedText('REQUEST')}
             </div>
           ) : (
-            <div className="TransactionRequest" onClick={() => this.setState({modal_visible: true})}>
+            <div
+              className="TransactionRequest"
+              onClick={() => this.setState({ modal_visible: true })}
+            >
               {getTranslatedText('REQUEST')}
             </div>
           )}
@@ -394,7 +442,7 @@ class MyWallet_Withdraw extends Component {
           visible={this.state.modal_visible}
           footer={false}
           width="796px"
-          onCancel={() => this.setState({modal_visible: false})}
+          onCancel={() => this.setState({ modal_visible: false })}
           destroyOnClose={true}
         >
           <React.Fragment>
@@ -412,17 +460,43 @@ class MyWallet_Withdraw extends Component {
                   <Col span={16}>
                     <Document
                       file={contract}
-                      onLoadSuccess={e => this.setState({totalPage: e.numPages})}
+                      onLoadSuccess={e =>
+                        this.setState({ totalPage: e.numPages })
+                      }
                     >
-                      <Page pageNumber={this.state.numPage} width="750" />
+                      <Page
+                        pageNumber={this.state.numPage}
+                        width="750"
+                      />
                     </Document>
-                    <p>{getTranslatedText("page")} {this.state.numPage} {getTranslatedText("of")} {this.state.totalPage} {getTranslatedText("page")}</p>
-                    <button onClick={() => this.prevPage()}>Prev</button>
-                    <button onClick={() => this.nextPage()}>Next</button>
+                    <p>
+                      {getTranslatedText('page')} {this.state.numPage}{' '}
+                      {getTranslatedText('of')} {this.state.totalPage}{' '}
+                      {getTranslatedText('page')}
+                    </p>
+                    <button onClick={() => this.prevPage()}>
+                      Prev
+                    </button>
+                    <button onClick={() => this.nextPage()}>
+                      Next
+                    </button>
                   </Col>
-                  <Col span={12} style={{marginTop: "15px"}}>
-                    <input type="checkbox" id="agree" onChange={e => this.setState({button_enable: e.target.checked})} /> &nbsp;
-                    <label htmlFor="agree"><strong>{getTranslatedText("accept_contract")}</strong></label>
+                  <Col span={12} style={{ marginTop: '15px' }}>
+                    <input
+                      type="checkbox"
+                      id="agree"
+                      onChange={e =>
+                        this.setState({
+                          button_enable: e.target.checked,
+                        })
+                      }
+                    />{' '}
+                    &nbsp;
+                    <label htmlFor="agree">
+                      <strong>
+                        {getTranslatedText('accept_contract')}
+                      </strong>
+                    </label>
                   </Col>
                 </Row>
               </Layout.Content>
@@ -431,11 +505,11 @@ class MyWallet_Withdraw extends Component {
                   <Col span={12} xs={24} xl={12}>
                     <Button
                       className="modal__button"
-                      onClick={this.withdrawMoneyAction}
+                      onClick={() => this.doPostContract()}
                       disabled={!this.state.button_enable}
                     >
                       <Typography.Text className="button_label">
-                        {getTranslatedText('request',)}
+                        {getTranslatedText('request')}
                       </Typography.Text>
                     </Button>
                   </Col>
@@ -461,6 +535,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       {
         withdrawMoneyAction,
         getProfileAction,
+        postContract
       },
       dispatch,
     ),

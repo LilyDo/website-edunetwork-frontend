@@ -34,7 +34,7 @@ import {
   UPDATE_NOTIFICATION_FAILURE,
   GET_CHILD_USER_REQUEST,
   GET_CHILD_USER_SUCCESS,
-  GET_CHILD_USER_FAILURE,
+  GET_CHILD_USER_FAILURE, POST_CONTRACT_REQUEST, POST_CONTRACT_SUCCESS, POST_CONTRACT_FAILURE,
 } from './index';
 import * as types from '../actions/index';
 import { headerLang } from '../constants';
@@ -413,4 +413,48 @@ const getChildUserSuccess = payload => ({
 const getChildUserFailure = error => ({
   type: GET_CHILD_USER_FAILURE,
   payload: { error },
+});
+
+
+// Store contract
+export const postContract = payload => {
+  // console.log(payload);
+  return dispatch => {
+    dispatch(postContractRequest());
+    axios
+      .post(
+        `${BASE_URL}/users/contract`,
+        payload,
+        headerLang,
+      )
+      .then(response => {
+        let code = response.data.statusCode;
+        console.log(code)
+        if (code == 200){
+          dispatch(
+            postContractSuccess({
+              data: response.data.data
+            }),
+          );
+        }
+        else
+          dispatch(postContractFailure(response.data.errors))
+
+      })
+      .catch(error => dispatch(postContractFailure(["System error!"])));
+  };
+};
+
+const postContractRequest = () => ({
+  type: POST_CONTRACT_REQUEST,
+});
+
+const postContractSuccess = payload => ({
+  type: POST_CONTRACT_SUCCESS,
+  payload: payload,
+});
+
+const postContractFailure = error => ({
+  type: POST_CONTRACT_FAILURE,
+  payload: error,
 });
