@@ -286,9 +286,7 @@ class OrderInfo extends Component {
                     <div className="Text">
                       {getTranslatedText('need_purchase')}
                     </div>
-                    <div className="Number">
-                      {courseDetail.price}
-                    </div>
+                    <div className="Number">{courseDetail.price}</div>
                     <div className="Currency">USD</div>
                   </div>
                   <div className="Container Missing">
@@ -307,7 +305,7 @@ class OrderInfo extends Component {
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
                       this.props.courseDetail,
-                      shouldDepositAmount + (courseDetail.price / 10),
+                      shouldDepositAmount + courseDetail.price / 10,
                     )}
                     trigger="click"
                     overlayStyle={{ width: '255px' }}
