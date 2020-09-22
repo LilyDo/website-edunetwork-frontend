@@ -1034,6 +1034,10 @@ export const translatedText = {
     en: 'Contract information',
     vi: 'Nội dung hợp đồng',
   },
+  id_card: {
+    en: 'Your id card number',
+    vi: 'Số chứng minh thư',
+  },
   address: {
     en: 'Your address',
     vi: 'Địa chỉ',
@@ -1079,8 +1083,10 @@ export const translatedText = {
     vi: 'Hợp đồng của bạn đã được gửi!',
   },
   post_contract_success_msg: {
-    en: 'Your contract request has been sent to EDUNETWORK. We will inform you when your request is processed.',
-    vi: 'Hợp đồng của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý',
+    en:
+      'Your contract request has been sent to EDUNETWORK. We will inform you when your request is processed.',
+    vi:
+      'Hợp đồng của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý',
   },
   operation_regulation: {
     en: 'Regulation of Operations',

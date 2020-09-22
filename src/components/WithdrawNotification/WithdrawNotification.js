@@ -6,7 +6,6 @@ import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
 
-
 class WithdrawNotification extends Component {
   render() {
     let type = this.props.match.params.type || 'default';
@@ -18,7 +17,11 @@ class WithdrawNotification extends Component {
           <div>{getTranslatedText('withdraw')}</div>
         </div>
         <div className="Message">
-          <div>{(type == "contract")? getTranslatedText('post_contract_success_msg') : getTranslatedText('success_withdraw')}</div>
+          <div>
+            {type == 'contract'
+              ? getTranslatedText('post_contract_success_msg')
+              : getTranslatedText('success_withdraw')}
+          </div>
         </div>
         <Link to={routes.accountWallet}>
           <div
