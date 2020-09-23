@@ -1028,7 +1028,7 @@ export const translatedText = {
   },
   verify_contract: {
     en: 'You need to verify contract first!',
-    vi: 'Hợp đồng đồng đồng đồng đồng ',
+    vi: 'Vui lòng hoàn thiện hợp đồng của bạn!',
   },
   contract_info: {
     en: 'Contract information',
@@ -1087,6 +1087,12 @@ export const translatedText = {
       'Your contract request has been sent to EDUNETWORK. We will inform you when your request is processed.',
     vi:
       'Hợp đồng của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý',
+  },
+  note_contract: {
+    en:
+      'Your contract will be approved in 2-3 working days. Please wait and check email for more contract status',
+    vi:
+      'Hợp đồng của bạn sẽ được duyệt từ 2-3 ngày làm việc. Bạn vui lòng đợi và kiểm tra email để biết thêm tình trạng hợp đồng',
   },
   operation_regulation: {
     en: 'Regulation of Operations',

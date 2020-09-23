@@ -523,6 +523,9 @@ class MyWallet_Withdraw extends Component {
                       </strong>
                     </label>
                   </Col>
+                  <Col>
+                    <div>{getTranslatedText('note_contract')}</div>
+                  </Col>
                 </Row>
               </Layout.Content>
               <Layout.Footer className="footer__container">
