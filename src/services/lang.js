@@ -1059,8 +1059,10 @@ export const translatedText = {
     vi: 'Hình ảnh của',
   },
   accept_contract: {
-    en: 'Agree to the contract (When you agree to the contract, it means that you have signed and abided by our terms)',
-    vi: 'Đồng ý với Hợp đồng (Khi bạn đồng ý với hợp đồng là đồng nghĩa với việc bạn đã ký tên và tuân thủ các điều khoản của chúng tôi)',
+    en:
+      'Agree to the contract (When you agree to the contract, it means that you have signed and abided by our terms)',
+    vi:
+      'Đồng ý với Hợp đồng (Khi bạn đồng ý với hợp đồng là đồng nghĩa với việc bạn đã ký tên và tuân thủ các điều khoản của chúng tôi)',
   },
   first_of_page: {
     en: 'First of page',
