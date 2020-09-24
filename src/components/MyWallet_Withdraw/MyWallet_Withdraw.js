@@ -55,7 +55,7 @@ class MyWallet_Withdraw extends Component {
     button_enable: false,
     numPage: 1,
     totalPage: 1,
-    id_card: ""
+    id_card: '',
   };
 
   checkCurrentUser() {
@@ -168,7 +168,7 @@ class MyWallet_Withdraw extends Component {
       front_id_card: this.state.front_cmnd,
       back_id_card: this.state.back_cmnd,
       tax_code: this.state.tax_code,
-      id_card: this.state.id_card
+      id_card: this.state.id_card,
     };
 
     let form_data = new FormData();
@@ -524,7 +524,7 @@ class MyWallet_Withdraw extends Component {
                     </label>
                   </Col>
                   <Col>
-                    <div>{getTranslatedText('note_contract')}</div>
+                    <div>{getTranslatedText('note_contractl')}</div>
                   </Col>
                 </Row>
               </Layout.Content>
