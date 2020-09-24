@@ -482,7 +482,7 @@ class MyWallet_Withdraw extends Component {
                       {getTranslatedText('contract_info')}
                     </Typography.Text>
                   </Col>
-                  <Col span={16}>
+                  <Col span={24}>
                     <Document
                       file={contract}
                       onLoadSuccess={e =>
@@ -506,25 +506,24 @@ class MyWallet_Withdraw extends Component {
                       Next
                     </button>
                   </Col>
-                  <Col span={12} style={{ marginTop: '15px' }}>
-                    <input
-                      type="checkbox"
-                      id="agree"
-                      onChange={e =>
-                        this.setState({
-                          button_enable: e.target.checked,
-                        })
-                      }
-                    />{' '}
-                    &nbsp;
+                  <Col span={24} style={{ marginTop: '15px' }}>
                     <label htmlFor="agree">
+                      <input
+                        type="checkbox"
+                        id="agree"
+                        onChange={e =>
+                          this.setState({
+                            button_enable: e.target.checked,
+                          })
+                        }
+                      />{' '}
                       <strong>
                         {getTranslatedText('accept_contract')}
                       </strong>
                     </label>
                   </Col>
-                  <Col>
-                    <div>{getTranslatedText('note_contractl')}</div>
+                  <Col span={24}>
+                    <div>{getTranslatedText('note_contract')}</div>
                   </Col>
                 </Row>
               </Layout.Content>
