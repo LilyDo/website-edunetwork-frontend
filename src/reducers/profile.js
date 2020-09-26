@@ -6,6 +6,7 @@ import {
   checkSessionLogout,
   getTranslatedText,
 } from '../services/appService';
+import React from 'react';
 
 const initialState = {
   loading: false,
@@ -392,7 +393,7 @@ export default function(state = initialState, action) {
 
     case types.POST_CONTRACT_FAILURE:
       // console.log(action.payload);
-      toast.error(action.payload.join(' '));
+      toast.error(<div dangerouslySetInnerHTML={{ __html: action.payload.join(' ') }}/>);
 
       return {
         ...state,
