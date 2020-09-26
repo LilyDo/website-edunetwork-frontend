@@ -31,6 +31,7 @@ import {
 import logo from '../../assets/images/logo.svg';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import contract from '../../assets/images/contract.pdf';
+import { toast } from 'react-toastify';
 
 class MyWallet_Withdraw extends Component {
   state = {
@@ -72,6 +73,13 @@ class MyWallet_Withdraw extends Component {
         paypal_name: this.state.currentUser.paypal_name,
         is_verify_contract: this.state.currentUser.is_verify_contract,
       });
+
+      if (this.state.currentUser.is_lock){
+        toast.error(getTranslatedText("banned"));
+        setTimeout(() => {
+          window.location.href = routes.accountDashboard
+        }, 2000);
+      }
     }
   }
 
