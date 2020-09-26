@@ -1100,4 +1100,21 @@ export const translatedText = {
     en: 'Regulation of Operations',
     vi: 'Quy chế hoạt động',
   },
+  banned: {
+    en: 'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
+    vi: 'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
+  },
+  verified: {
+    en: 'Account is verified',
+    vi: 'Tài khoản đã được xác minh',
+  },
+  need_verify: {
+    en: 'Account needs to be verified. Please verify at ',
+    vi: 'Tài khoản cần được xác minh. Vui lòng xác minh tại ',
+  },
+  here: {
+    en: 'here',
+    vi: 'đây',
+  },
+
 };

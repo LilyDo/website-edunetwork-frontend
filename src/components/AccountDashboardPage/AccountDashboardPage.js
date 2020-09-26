@@ -19,6 +19,7 @@ import {
   getUserFormLocal,
 } from '../../services/appService';
 import * as types from '../../actions/index';
+import { routes } from '../../constants';
 
 class AccountDashboardPage extends Component {
   state = {
@@ -27,10 +28,11 @@ class AccountDashboardPage extends Component {
   };
 
   componentDidMount() {
+
+    this.props.actions.getUserDashboardAction();
     this.setState({
       currentUser: getUserFormLocal(),
     });
-    this.props.actions.getUserDashboardAction();
     this.props.actions.getChildUserAction({
       page: 1,
       active: 1,
@@ -72,6 +74,19 @@ class AccountDashboardPage extends Component {
             <div className="Title">
               {getTranslatedText('summary')}
             </div>
+            {(this.state.currentUser.is_lock)? (
+              <div className="danger">
+                {getTranslatedText("banned")}
+              </div>
+            ) : ((this.state.currentUser.is_verify_contract)? (
+              <div className="success">
+                {getTranslatedText("verified")}
+              </div>
+            ) : (
+              <div className="warning">
+                {getTranslatedText("need_verify")}<a href={routes.accountWithdraw}>{getTranslatedText("here")}</a>
+              </div>
+            ))}
             <div className="OverviewContainer">
               <div
                 className={
