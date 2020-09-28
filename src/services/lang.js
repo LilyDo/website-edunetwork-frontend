@@ -1038,6 +1038,10 @@ export const translatedText = {
     en: 'Contract information',
     vi: 'Nội dung hợp đồng',
   },
+  contract_request: {
+    en: 'REQUEST',
+    vi: 'GỬI YÊU CẦU',
+  },
   id_card: {
     en: 'Your id card number',
     vi: 'Số chứng minh thư',
@@ -1119,8 +1123,10 @@ export const translatedText = {
     vi: 'Tài khoản cần được xác minh. Vui lòng xác minh tại ',
   },
   matching_info: {
-    en: 'Note: The contract information must match the withdrawal information',
-    vi: 'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
+    en:
+      'Note: The contract information must match the withdrawal information',
+    vi:
+      'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
   },
   here: {
     en: 'here',
