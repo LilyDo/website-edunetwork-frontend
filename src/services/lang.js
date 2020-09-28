@@ -353,7 +353,7 @@ export const translatedText = {
   },
   request: {
     en: 'REQUEST',
-    vi: 'YÊU CẦU GIAO DỊCH',
+    vi: 'GỬI YÊU CẦU',
   },
   cancel: {
     en: 'CANCEL',
@@ -1119,8 +1119,10 @@ export const translatedText = {
     vi: 'Tài khoản cần được xác minh. Vui lòng xác minh tại ',
   },
   matching_info: {
-    en: 'Note: The contract information must match the withdrawal information',
-    vi: 'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
+    en:
+      'Note: The contract information must match the withdrawal information',
+    vi:
+      'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
   },
   here: {
     en: 'here',
