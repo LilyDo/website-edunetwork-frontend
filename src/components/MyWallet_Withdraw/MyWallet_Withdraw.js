@@ -262,6 +262,9 @@ class MyWallet_Withdraw extends Component {
 
                   <div className="">
                     <div>{getTranslatedText('front_cmnd')}*</div>
+                    <div>{getTranslatedText('max_filesize') + " "}
+                      <a href="https://imagecompressor.com/" target="_blank">{getTranslatedText("here")}</a>
+                    </div>
                     <input
                       type="file"
                       name="front_cmnd"
@@ -283,6 +286,9 @@ class MyWallet_Withdraw extends Component {
 
                   <div className="">
                     <div>{getTranslatedText('back_cmnd')}*</div>
+                    <div>{getTranslatedText('max_filesize') + " "}
+                      <a href="https://imagecompressor.com/" target="_blank">{getTranslatedText("here")}</a>
+                    </div>
                     <input
                       type="file"
                       name="back_cmnd"
