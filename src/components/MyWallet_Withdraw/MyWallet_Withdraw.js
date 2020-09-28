@@ -228,7 +228,9 @@ class MyWallet_Withdraw extends Component {
               {!this.state.is_verify_contract ? (
                 <>
                   <div>{getTranslatedText('verify_contract')}</div>
-                  <div style={{color: "red"}}>{getTranslatedText('matching_info')}</div>
+                  <div style={{ color: 'red' }}>
+                    {getTranslatedText('matching_info')}
+                  </div>
 
                   <div className="WithdrawAmount">
                     <div>{getTranslatedText('id_card')}*</div>
@@ -572,7 +574,7 @@ class MyWallet_Withdraw extends Component {
                       disabled={!this.state.button_enable}
                     >
                       <Typography.Text className="button_label">
-                        {getTranslatedText('request')}
+                        {getTranslatedText('contract_request')}
                       </Typography.Text>
                     </Button>
                   </Col>
