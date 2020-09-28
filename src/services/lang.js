@@ -1118,6 +1118,10 @@ export const translatedText = {
     en: 'Account needs to be verified. Please verify at ',
     vi: 'Tài khoản cần được xác minh. Vui lòng xác minh tại ',
   },
+  matching_info: {
+    en: 'Note: The contract information must match the withdrawal information',
+    vi: 'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
+  },
   here: {
     en: 'here',
     vi: 'đây',

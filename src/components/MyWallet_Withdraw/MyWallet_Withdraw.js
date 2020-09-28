@@ -58,7 +58,7 @@ class MyWallet_Withdraw extends Component {
     numPage: 1,
     totalPage: 1,
     id_card: '',
-    innerWidth: window.innerWidth <= 600 ? 400 : 750,
+    innerWidth: window.innerWidth <= 600 ? 350 : 750,
     selectContract:
       localStorage.getItem('current_lang') == 'vi'
         ? contractVN
@@ -228,6 +228,7 @@ class MyWallet_Withdraw extends Component {
               {!this.state.is_verify_contract ? (
                 <>
                   <div>{getTranslatedText('verify_contract')}</div>
+                  <div style={{color: "red"}}>{getTranslatedText('matching_info')}</div>
 
                   <div className="WithdrawAmount">
                     <div>{getTranslatedText('id_card')}*</div>

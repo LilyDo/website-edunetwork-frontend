@@ -74,10 +74,6 @@ class DepositNotification extends Component {
               <b>{this.props.orderObj.payment_code || code}</b>
               <br />- {getTranslatedText('member')} ID:{' '}
               <b>{this.props.orderObj.user_code || ''}</b>
-              <br />- {getTranslatedText('balance')}{' '}
-              <b>
-                {currencyFormatter(this.props.orderObj.amount) || ''}
-              </b>
               <br />- {getTranslatedText('amount_top_up')}{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount_need) ||
