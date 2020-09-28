@@ -369,6 +369,10 @@ export const translatedText = {
     en: 'Back to Wallet',
     vi: 'Trở lại Ví của tôi',
   },
+  back_dashboard: {
+    en: 'Back to Dashboard',
+    vi: 'Trở lại Bảng điều khiển',
+  },
   deposit: {
     en: 'Deposit',
     vi: 'Nạp tiền',

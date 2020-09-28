@@ -48,6 +48,7 @@ import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import TermOfService from './components/TermOfService/TermOfService';
 import VisaPaymentComponent from './components/VisaPaymentComponent/VisaPaymentComponent';
 import OperationRegulation from './components/OperationRegulation/OperationRegulation';
+import LockNotification from './components/LockNotification/LockNotification';
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -179,6 +180,12 @@ class App extends Component {
                     exact
                     path={routes.accountWithdrawNoti}
                     component={WithdrawNotification}
+                  />
+                  <PrivateRoute
+                    authed={this.state.isLogined}
+                    exact
+                    path={routes.accountTerminate}
+                    component={LockNotification}
                   />
                   <PrivateRoute
                     authed={this.state.isLogined}

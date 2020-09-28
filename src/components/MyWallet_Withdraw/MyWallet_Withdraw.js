@@ -30,7 +30,8 @@ import {
 } from 'antd';
 import logo from '../../assets/images/logo.svg';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import contract from '../../assets/images/contract.pdf';
+import contractVN from '../../assets/images/contract_vi.pdf';
+import contractEN from '../../assets/images/contract_en.pdf';
 import { toast } from 'react-toastify';
 
 class MyWallet_Withdraw extends Component {
@@ -57,6 +58,8 @@ class MyWallet_Withdraw extends Component {
     numPage: 1,
     totalPage: 1,
     id_card: '',
+    innerWidth: (window.innerWidth <= 600)? 400 : 750,
+    selectContract: (localStorage.getItem("current_lang") == "vi")? contractVN : contractEN
   };
 
   checkCurrentUser() {
@@ -75,10 +78,7 @@ class MyWallet_Withdraw extends Component {
       });
 
       if (this.state.currentUser.is_lock){
-        toast.error(getTranslatedText("banned"));
-        setTimeout(() => {
-          window.location.href = routes.accountDashboard
-        }, 2000);
+        window.location.href = routes.accountTerminate
       }
     }
   }
@@ -186,6 +186,18 @@ class MyWallet_Withdraw extends Component {
     }
 
     this.props.actions.postContract(form_data);
+  }
+
+  chooseContractLang(e) {
+    let val = e.target.value;
+    if (val === "en")
+      this.setState({
+        selectContract: contractEN
+      })
+    else
+      this.setState({
+        selectContract: contractVN
+      })
   }
 
   render() {
@@ -492,14 +504,14 @@ class MyWallet_Withdraw extends Component {
                   </Col>
                   <Col span={24}>
                     <Document
-                      file={contract}
+                      file={this.state.selectContract}
                       onLoadSuccess={e =>
                         this.setState({ totalPage: e.numPages })
                       }
                     >
                       <Page
                         pageNumber={this.state.numPage}
-                        width="750"
+                        width={this.state.innerWidth}
                       />
                     </Document>
                     <p>
@@ -507,12 +519,18 @@ class MyWallet_Withdraw extends Component {
                       {getTranslatedText('of')} {this.state.totalPage}{' '}
                       {getTranslatedText('page')}
                     </p>
-                    <button onClick={() => this.prevPage()}>
-                      Prev
-                    </button>
-                    <button onClick={() => this.nextPage()}>
-                      Next
-                    </button>
+                    <div>
+                      <button onClick={() => this.prevPage()}>
+                        Prev
+                      </button>
+                      <button onClick={() => this.nextPage()}>
+                        Next
+                      </button>
+                      <select id="" defaultValue={localStorage.getItem("current_lang")} onChange={e => this.chooseContractLang(e)}>
+                        <option value="en">EN</option>
+                        <option value="vi">VN</option>
+                      </select>
+                    </div>
                   </Col>
                   <Col span={24} style={{ marginTop: '15px' }}>
                     <label htmlFor="agree">
