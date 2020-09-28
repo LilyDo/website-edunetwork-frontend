@@ -480,7 +480,7 @@ class MyWallet_Withdraw extends Component {
               className="TransactionRequest"
               onClick={() => this.setState({ modal_visible: true })}
             >
-              {getTranslatedText('REQUEST')}
+              {getTranslatedText('contract_request')}
             </div>
           )}
           <Link to={routes.accountWallet}>
