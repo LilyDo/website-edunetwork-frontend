@@ -1042,6 +1042,10 @@ export const translatedText = {
     en: 'REQUEST',
     vi: 'GỬI YÊU CẦU',
   },
+  max_filesize: {
+    en: 'Upload image size should be less than 2MB. Images can be compressed online at ',
+    vi: 'Kích cỡ ảnh up lên phải dưới 2MB. Có thể nén ảnh online tại ',
+  },
   id_card: {
     en: 'Your id card number',
     vi: 'Số chứng minh thư',
