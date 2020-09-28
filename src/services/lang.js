@@ -1105,8 +1105,10 @@ export const translatedText = {
     vi: 'Quy chế hoạt động',
   },
   banned: {
-    en: 'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
-    vi: 'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
+    en:
+      'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
+    vi:
+      'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
   },
   verified: {
     en: 'Account is verified',
@@ -1120,5 +1122,4 @@ export const translatedText = {
     en: 'here',
     vi: 'đây',
   },
-
 };

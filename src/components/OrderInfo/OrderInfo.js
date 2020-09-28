@@ -203,13 +203,6 @@ class OrderInfo extends Component {
 
   render() {
     const { courseDetail, profile } = this.props;
-    let shouldDepositAmount =
-      profile.total_price - courseDetail.price;
-    let shouldDeposit = false;
-    if (shouldDepositAmount < 0) {
-      shouldDeposit = true;
-      shouldDepositAmount = shouldDepositAmount * -1;
-    }
 
     return (
       <div className="OrderInfoContainer">
@@ -266,7 +259,7 @@ class OrderInfo extends Component {
               </div>
             </div>
           </div>
-          {!this.state.paypalPay ? (
+          {/*{!this.state.paypalPay ? (*/}
             <div className="WalletInfoContainer">
               <div className="WalletTitle">
                 {getTranslatedText('your_wallet')}
@@ -278,7 +271,7 @@ class OrderInfo extends Component {
                       {getTranslatedText('Balance')}
                     </div>
                     <div className="Number">
-                      {profile.total_price}
+                      0
                     </div>
                     <div className="Currency">USD</div>
                   </div>
@@ -294,18 +287,18 @@ class OrderInfo extends Component {
                       {getTranslatedText('amount_top_up')}
                     </div>
                     <div className="Number">
-                      {shouldDeposit ? shouldDepositAmount : 0}
+                      {courseDetail.price}
                     </div>
                     <div className="Currency">usd</div>
                   </div>
                 </div>
-                {shouldDeposit ? (
+                {/*{shouldDeposit ? (*/}
                   <Popover
                     placement="bottom"
                     // content={<RenderButtons courseDetail={this.props.courseDetail} />}
                     content={this.renderButtons(
                       this.props.courseDetail,
-                      shouldDepositAmount + courseDetail.price / 10,
+                      courseDetail.price + courseDetail.price / 10,
                     )}
                     trigger="click"
                     overlayStyle={{ width: '255px' }}
@@ -314,33 +307,33 @@ class OrderInfo extends Component {
                       {getTranslatedText('deposit_now')}
                     </div>
                   </Popover>
-                ) : (
-                  <div
-                    className="CTAButton"
-                    onClick={() =>
-                      this.pay(shouldDeposit, shouldDepositAmount)
-                    }
-                  >
-                    {getTranslatedText('purchase_now')}
-                  </div>
-                )}
+                {/*) : (*/}
+                {/*  <div*/}
+                {/*    className="CTAButton"*/}
+                {/*    onClick={() =>*/}
+                {/*      this.pay(shouldDeposit, shouldDepositAmount)*/}
+                {/*    }*/}
+                {/*  >*/}
+                {/*    {getTranslatedText('purchase_now')}*/}
+                {/*  </div>*/}
+                {/*)}*/}
               </div>
             </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <VisaPaymentComponent price={courseDetail.price} />
-              <button
-                style={{
-                  height: '30px',
-                  width: '30px',
-                  borderRadius: '15px',
-                }}
-                onClick={() => this.cancelPaypal()}
-              >
-                X
-              </button>
-            </div>
-          )}
+          {/*) : (*/}
+          {/*  <div style={{ display: 'flex', flexDirection: 'row' }}>*/}
+          {/*    <VisaPaymentComponent price={courseDetail.price} />*/}
+          {/*    <button*/}
+          {/*      style={{*/}
+          {/*        height: '30px',*/}
+          {/*        width: '30px',*/}
+          {/*        borderRadius: '15px',*/}
+          {/*      }}*/}
+          {/*      onClick={() => this.cancelPaypal()}*/}
+          {/*    >*/}
+          {/*      X*/}
+          {/*    </button>*/}
+          {/*  </div>*/}
+          {/*)}*/}
         </div>
         <div className="TextNotice">
           {getTranslatedText('note_after_payment')}

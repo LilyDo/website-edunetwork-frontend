@@ -58,8 +58,11 @@ class MyWallet_Withdraw extends Component {
     numPage: 1,
     totalPage: 1,
     id_card: '',
-    innerWidth: (window.innerWidth <= 600)? 400 : 750,
-    selectContract: (localStorage.getItem("current_lang") == "vi")? contractVN : contractEN
+    innerWidth: window.innerWidth <= 600 ? 400 : 750,
+    selectContract:
+      localStorage.getItem('current_lang') == 'vi'
+        ? contractVN
+        : contractEN,
   };
 
   checkCurrentUser() {
@@ -77,8 +80,8 @@ class MyWallet_Withdraw extends Component {
         is_verify_contract: this.state.currentUser.is_verify_contract,
       });
 
-      if (this.state.currentUser.is_lock){
-        window.location.href = routes.accountTerminate
+      if (this.state.currentUser.is_lock) {
+        window.location.href = routes.accountTerminate;
       }
     }
   }
@@ -190,14 +193,14 @@ class MyWallet_Withdraw extends Component {
 
   chooseContractLang(e) {
     let val = e.target.value;
-    if (val === "en")
+    if (val === 'en')
       this.setState({
-        selectContract: contractEN
-      })
+        selectContract: contractEN,
+      });
     else
       this.setState({
-        selectContract: contractVN
-      })
+        selectContract: contractVN,
+      });
   }
 
   render() {
@@ -526,7 +529,13 @@ class MyWallet_Withdraw extends Component {
                       <button onClick={() => this.nextPage()}>
                         Next
                       </button>
-                      <select id="" defaultValue={localStorage.getItem("current_lang")} onChange={e => this.chooseContractLang(e)}>
+                      <select
+                        id=""
+                        defaultValue={localStorage.getItem(
+                          'current_lang',
+                        )}
+                        onChange={e => this.chooseContractLang(e)}
+                      >
                         <option value="en">EN</option>
                         <option value="vi">VN</option>
                       </select>

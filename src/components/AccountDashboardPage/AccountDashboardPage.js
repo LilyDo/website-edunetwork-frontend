@@ -20,9 +20,9 @@ import {
 } from '../../services/appService';
 import * as types from '../../actions/index';
 import { routes } from '../../constants';
-import denied from "../../assets/images/denied.png";
-import success from "../../assets/images/success.png";
-import warning from "../../assets/images/warning.png";
+import denied from '../../assets/images/denied.png';
+import success from '../../assets/images/success.png';
+import warning from '../../assets/images/warning.png';
 
 class AccountDashboardPage extends Component {
   state = {
@@ -31,7 +31,6 @@ class AccountDashboardPage extends Component {
   };
 
   componentDidMount() {
-
     this.props.actions.getUserDashboardAction();
     this.setState({
       currentUser: getUserFormLocal(),
@@ -77,22 +76,25 @@ class AccountDashboardPage extends Component {
             <div className="Title">
               {getTranslatedText('summary')}
             </div>
-            {(this.state.currentUser.is_lock)? (
+            {this.state.currentUser.is_lock ? (
               <div className="danger">
                 <img src={denied} alt="" />
-                {getTranslatedText("banned")}
+                {getTranslatedText('banned')}
               </div>
-            ) : ((this.state.currentUser.is_verify_contract)? (
+            ) : this.state.currentUser.is_verify_contract ? (
               <div className="success">
                 <img src={success} alt="" />
-                {getTranslatedText("verified")}
+                {getTranslatedText('verified')}
               </div>
             ) : (
               <div className="warning">
                 <img src={warning} alt="" />
-                {getTranslatedText("need_verify")}<a href={routes.accountWithdraw}>{getTranslatedText("here")}</a>
+                {getTranslatedText('need_verify')}
+                <a href={routes.accountWithdraw}>
+                  {getTranslatedText('here')}
+                </a>
               </div>
-            ))}
+            )}
             <div className="OverviewContainer">
               <div
                 className={

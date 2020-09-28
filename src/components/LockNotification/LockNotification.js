@@ -17,16 +17,14 @@ class LockNotification extends Component {
           <img alt="arrow right" src={ArrowRight}></img>
           <div>{getTranslatedText('withdraw')}</div>
         </div>
-        <div className="Message" style={{color: "red"}}>
+        <div className="Message" style={{ color: 'red' }}>
           <div>
-            <img src={denied} alt="" width="3%" /> {"  "}
-            {getTranslatedText("banned")}
+            <img src={denied} alt="" width="3%" /> {'  '}
+            {getTranslatedText('banned')}
           </div>
         </div>
         <Link to={routes.accountDashboard}>
-          <div
-            className="BackToWallet"
-          >
+          <div className="BackToWallet">
             <img alt="arrow back" src={ArrowBack}></img>
             <div>{getTranslatedText('back_dashboard')}</div>
           </div>
