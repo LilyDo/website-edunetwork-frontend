@@ -353,7 +353,7 @@ export const translatedText = {
   },
   request: {
     en: 'REQUEST',
-    vi: 'GỬI YÊU CẦU',
+    vi: 'YÊU CẦU GIAO DỊCH',
   },
   cancel: {
     en: 'CANCEL',
@@ -1037,6 +1037,10 @@ export const translatedText = {
   contract_info: {
     en: 'Contract information',
     vi: 'Nội dung hợp đồng',
+  },
+  contract_request: {
+    en: 'REQUEST',
+    vi: 'GỬI YÊU CẦU',
   },
   id_card: {
     en: 'Your id card number',
