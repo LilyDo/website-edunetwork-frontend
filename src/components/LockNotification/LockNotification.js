@@ -5,8 +5,9 @@ import ArrowRight from '../../assets/images/icon_arrow_right.svg';
 import ArrowBack from '../../assets/images/icon_arrow_back.svg';
 import { routes } from '../../constants';
 import { getTranslatedText } from '../../services/appService';
+import denied from '../../assets/images/denied.png';
 
-class WithdrawNotification extends Component {
+class LockNotification extends Component {
   render() {
     let type = this.props.match.params.type || 'default';
     return (
@@ -16,20 +17,16 @@ class WithdrawNotification extends Component {
           <img alt="arrow right" src={ArrowRight}></img>
           <div>{getTranslatedText('withdraw')}</div>
         </div>
-        <div className="Message">
+        <div className="Message" style={{ color: 'red' }}>
           <div>
-            {type == 'contract'
-              ? getTranslatedText('post_contract_success_msg')
-              : getTranslatedText('success_withdraw')}
+            <img src={denied} alt="" width="3%" /> {'  '}
+            {getTranslatedText('banned')}
           </div>
         </div>
-        <Link to={routes.accountWallet}>
-          <div
-            className="BackToWallet"
-            onClick={this.props.onGoBackClick}
-          >
+        <Link to={routes.accountDashboard}>
+          <div className="BackToWallet">
             <img alt="arrow back" src={ArrowBack}></img>
-            <div>{getTranslatedText('back_wallet')}</div>
+            <div>{getTranslatedText('back_dashboard')}</div>
           </div>
         </Link>
       </div>
@@ -37,4 +34,4 @@ class WithdrawNotification extends Component {
   }
 }
 
-export default WithdrawNotification;
+export default LockNotification;

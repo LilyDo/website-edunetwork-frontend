@@ -6,6 +6,7 @@ import {
   checkSessionLogout,
   getTranslatedText,
 } from '../services/appService';
+import React from 'react';
 
 const initialState = {
   loading: false,
@@ -175,8 +176,12 @@ export default function(state = initialState, action) {
         action.payload.errors.length === 0
       ) {
         toast.success(getTranslatedText('withdraw_success'));
+        let route = routes.accountWithdrawNoti.replace(
+          ':type',
+          'default',
+        );
         setTimeout(function() {
-          window.location.pathname = routes.accountWithdrawNoti;
+          window.location.pathname = route;
         }, 3000);
       } else {
         toast.error(action.payload.errors[0]);
@@ -357,6 +362,44 @@ export default function(state = initialState, action) {
 
     case types.GET_CHILD_USER_FAILURE:
       toast.error('Cannot get notifications!');
+
+      return {
+        ...state,
+        loading: false,
+      };
+
+    // POST CONTRACT
+    case types.POST_CONTRACT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case types.POST_CONTRACT_SUCCESS:
+      toast.success(getTranslatedText('post_contract_success'));
+      let route = routes.accountWithdrawNoti.replace(
+        ':type',
+        'contract',
+      );
+      setTimeout(function() {
+        window.location.pathname = route;
+      }, 3000);
+
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case types.POST_CONTRACT_FAILURE:
+      // console.log(action.payload);
+      toast.error(
+        <div
+          dangerouslySetInnerHTML={{
+            __html: action.payload.join(' '),
+          }}
+        />,
+      );
 
       return {
         ...state,

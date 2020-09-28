@@ -369,6 +369,10 @@ export const translatedText = {
     en: 'Back to Wallet',
     vi: 'Trở lại Ví của tôi',
   },
+  back_dashboard: {
+    en: 'Back to Dashboard',
+    vi: 'Trở lại Bảng điều khiển',
+  },
   deposit: {
     en: 'Deposit',
     vi: 'Nạp tiền',
@@ -1026,8 +1030,106 @@ export const translatedText = {
     vi:
       'Không tìm thấy người dùng, vui lòng kiểm tra lại địa chỉ email',
   },
+  verify_contract: {
+    en: 'You need to verify contract first!',
+    vi: 'Vui lòng hoàn thiện hợp đồng của bạn!',
+  },
+  contract_info: {
+    en: 'Contract information',
+    vi: 'Nội dung hợp đồng',
+  },
+  contract_request: {
+    en: 'REQUEST',
+    vi: 'GỬI YÊU CẦU',
+  },
+  id_card: {
+    en: 'Your id card number',
+    vi: 'Số chứng minh thư',
+  },
+  address: {
+    en: 'Your address',
+    vi: 'Địa chỉ',
+  },
+  tax_code: {
+    en: 'Tax code (Optional)',
+    vi: 'Mã số thuế (nếu có)',
+  },
+  front_cmnd: {
+    en: 'The front of your identity card',
+    vi: 'Mặt trước CMND',
+  },
+  back_cmnd: {
+    en: 'The back of your identity card',
+    vi: 'Mặt sau CMND',
+  },
+  image_of: {
+    en: 'Image of',
+    vi: 'Hình ảnh của',
+  },
+  accept_contract: {
+    en:
+      'Agree to the contract (When you agree to the contract, it means that you have signed and abided by our terms)',
+    vi:
+      'Đồng ý với Hợp đồng (Khi bạn đồng ý với hợp đồng là đồng nghĩa với việc bạn đã ký tên và tuân thủ các điều khoản của chúng tôi)',
+  },
+  first_of_page: {
+    en: 'First of page',
+    vi: 'Đây là trang đầu tiên',
+  },
+  last_of_page: {
+    en: 'Last of page',
+    vi: 'Đây là trang cuối cùng',
+  },
+  page: {
+    en: 'Page',
+    vi: 'Trang',
+  },
+  of: {
+    en: 'of',
+    vi: 'của',
+  },
+  post_contract_success: {
+    en: 'Your contract is sent!',
+    vi: 'Hợp đồng của bạn đã được gửi!',
+  },
+  post_contract_success_msg: {
+    en:
+      'Your contract request has been sent to EDUNETWORK. We will inform you when your request is processed.',
+    vi:
+      'Hợp đồng của bạn đã được gửi đến EDUNETWORK. Chúng tôi sẽ thông báo cho bạn khi yêu cầu của bạn được xử lý',
+  },
+  note_contract: {
+    en:
+      'Your contract will be approved in 2-3 working days. Please wait and check email for more contract status',
+    vi:
+      'Hợp đồng của bạn sẽ được duyệt từ 2-3 ngày làm việc. Bạn vui lòng đợi và kiểm tra email để biết thêm tình trạng hợp đồng',
+  },
   operation_regulation: {
     en: 'Regulation of Operations',
     vi: 'Quy chế hoạt động',
+  },
+  banned: {
+    en:
+      'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
+    vi:
+      'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
+  },
+  verified: {
+    en: 'Account is verified',
+    vi: 'Tài khoản đã được xác minh',
+  },
+  need_verify: {
+    en: 'Account needs to be verified. Please verify at ',
+    vi: 'Tài khoản cần được xác minh. Vui lòng xác minh tại ',
+  },
+  matching_info: {
+    en:
+      'Note: The contract information must match the withdrawal information',
+    vi:
+      'Lưu ý: Thông tin hợp đồng phải trùng khớp với thông tin rút tiền',
+  },
+  here: {
+    en: 'here',
+    vi: 'đây',
   },
 };

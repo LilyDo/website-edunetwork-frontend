@@ -74,17 +74,22 @@ class DepositNotification extends Component {
               <b>{this.props.orderObj.payment_code || code}</b>
               <br />- {getTranslatedText('member')} ID:{' '}
               <b>{this.props.orderObj.user_code || ''}</b>
-              <br />- {getTranslatedText('balance')}{' '}
-              <b>
-                {currencyFormatter(this.props.orderObj.amount) || ''}
-              </b>
               <br />- {getTranslatedText('amount_top_up')}{' '}
               <b>
                 {currencyFormatter(this.props.orderObj.amount_need) ||
-                  ''}  = {(this.props.orderObj.method == "vn-banking")?
-                currencyFormatter(this.props.orderObj.amount_need * 24000, true) + " VNĐ" :
-                ((this.props.orderObj.method == "sin-banking")? currencyFormatter(this.props.orderObj.amount_need * 1.45, true) + " SGD" : "")
-              }
+                  ''}{' '}
+                ={' '}
+                {this.props.orderObj.method == 'vn-banking'
+                  ? currencyFormatter(
+                      this.props.orderObj.amount_need * 24000,
+                      true,
+                    ) + ' VNĐ'
+                  : this.props.orderObj.method == 'sin-banking'
+                  ? currencyFormatter(
+                      this.props.orderObj.amount_need * 1.45,
+                      true,
+                    ) + ' SGD'
+                  : ''}
               </b>
               <br />- {getTranslatedText('course')}{' '}
               {getTranslatedText('level')}:{' '}

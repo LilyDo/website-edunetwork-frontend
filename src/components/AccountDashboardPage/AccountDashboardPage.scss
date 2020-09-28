@@ -408,4 +408,28 @@
     padding: 8px 16px;
     text-decoration: none;
   }
+
+  .success {
+    img {
+      width: 3%;
+    }
+    font-size: 17px;
+    color: green;
+  }
+
+  .warning {
+    img {
+      width: 3%;
+    }
+    font-size: 17px;
+    color: orange;
+  }
+
+  .danger {
+    img {
+      width: 3%;
+    }
+    font-size: 17px;
+    color: red;
+  }
 }
