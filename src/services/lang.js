@@ -369,6 +369,10 @@ export const translatedText = {
     en: 'Back to Wallet',
     vi: 'Trở lại Ví của tôi',
   },
+  back_dashboard: {
+    en: 'Back to Dashboard',
+    vi: 'Trở lại Bảng điều khiển',
+  },
   deposit: {
     en: 'Deposit',
     vi: 'Nạp tiền',
@@ -1101,8 +1105,10 @@ export const translatedText = {
     vi: 'Quy chế hoạt động',
   },
   banned: {
-    en: 'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
-    vi: 'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
+    en:
+      'Account has been terminated from the course distribution affiliate cooperation contract Edunetwork',
+    vi:
+      'Tài khoản đã bị cắt hợp đồng hợp tác liên kết phân phối khóa học Edunetwork',
   },
   verified: {
     en: 'Account is verified',
@@ -1116,5 +1122,4 @@ export const translatedText = {
     en: 'here',
     vi: 'đây',
   },
-
 };

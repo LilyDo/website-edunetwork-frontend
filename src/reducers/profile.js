@@ -393,7 +393,13 @@ export default function(state = initialState, action) {
 
     case types.POST_CONTRACT_FAILURE:
       // console.log(action.payload);
-      toast.error(<div dangerouslySetInnerHTML={{ __html: action.payload.join(' ') }}/>);
+      toast.error(
+        <div
+          dangerouslySetInnerHTML={{
+            __html: action.payload.join(' '),
+          }}
+        />,
+      );
 
       return {
         ...state,
