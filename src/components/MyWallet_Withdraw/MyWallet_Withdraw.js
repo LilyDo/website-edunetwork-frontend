@@ -235,7 +235,7 @@ class MyWallet_Withdraw extends Component {
                   <div className="WithdrawAmount">
                     <div>{getTranslatedText('id_card')}*</div>
                     <input
-                      type="number"
+                      type="text"
                       value={this.state.id_card}
                       onChange={this.handleChange('id_card')}
                     />
@@ -262,9 +262,15 @@ class MyWallet_Withdraw extends Component {
 
                   <div className="">
                     <div>{getTranslatedText('front_cmnd')}*</div>
-                    <div>{getTranslatedText('max_filesize') + " "}
-                      <a href="https://imagecompressor.com/" target="_blank">{getTranslatedText("here")}</a>
-                    </div>
+                    {/*<div>*/}
+                    {/*  {getTranslatedText('max_filesize') + ' '}*/}
+                    {/*  <a*/}
+                    {/*    href="https://imagecompressor.com/"*/}
+                    {/*    target="_blank"*/}
+                    {/*  >*/}
+                    {/*    {getTranslatedText('here')}*/}
+                    {/*  </a>*/}
+                    {/*</div>*/}
                     <input
                       type="file"
                       name="front_cmnd"
@@ -286,9 +292,15 @@ class MyWallet_Withdraw extends Component {
 
                   <div className="">
                     <div>{getTranslatedText('back_cmnd')}*</div>
-                    <div>{getTranslatedText('max_filesize') + " "}
-                      <a href="https://imagecompressor.com/" target="_blank">{getTranslatedText("here")}</a>
-                    </div>
+                    {/*<div>*/}
+                    {/*  {getTranslatedText('max_filesize') + ' '}*/}
+                    {/*  <a*/}
+                    {/*    href="https://imagecompressor.com/"*/}
+                    {/*    target="_blank"*/}
+                    {/*  >*/}
+                    {/*    {getTranslatedText('here')}*/}
+                    {/*  </a>*/}
+                    {/*</div>*/}
                     <input
                       type="file"
                       name="back_cmnd"
