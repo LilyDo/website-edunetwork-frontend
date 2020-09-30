@@ -32,7 +32,6 @@ import {
 import * as types from '../../actions/index';
 import { getProfileAction } from '../../actions/profile';
 
-import VisaPaymentComponent from '../VisaPaymentComponent/VisaPaymentComponent';
 import { routes } from '../../constants';
 import { toast } from 'react-toastify';
 import { PayPalButton } from 'react-paypal-button-v2';
@@ -315,21 +314,6 @@ class OrderInfo extends Component {
               {/*)}*/}
             </div>
           </div>
-          {/*) : (*/}
-          {/*  <div style={{ display: 'flex', flexDirection: 'row' }}>*/}
-          {/*    <VisaPaymentComponent price={courseDetail.price} />*/}
-          {/*    <button*/}
-          {/*      style={{*/}
-          {/*        height: '30px',*/}
-          {/*        width: '30px',*/}
-          {/*        borderRadius: '15px',*/}
-          {/*      }}*/}
-          {/*      onClick={() => this.cancelPaypal()}*/}
-          {/*    >*/}
-          {/*      X*/}
-          {/*    </button>*/}
-          {/*  </div>*/}
-          {/*)}*/}
         </div>
         <div className="TextNotice">
           {getTranslatedText('note_after_payment')}
