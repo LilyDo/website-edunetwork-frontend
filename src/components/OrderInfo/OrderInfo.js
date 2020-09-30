@@ -159,27 +159,33 @@ class OrderInfo extends Component {
             {getTranslatedText('transfer_money_singapore')}
           </button>
         </Row>
-        <Row gutter={16} justify={'center'}>
-          <PayPalButton
-            amount={depositAmount}
-            currency={'USD'}
-            onSuccess={(details, data) => {
-              let paypal_transaction_id =
-                details.purchase_units[0].payments.captures[0].id;
-              this.props.actions.buyCourseAction(
-                this.props.courseDetail.id,
-                'paypal',
-                paypal_transaction_id,
-              );
-            }}
-            options={{
-              clientId:
-                'AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV', //live
-              //"AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21", //client
-              //"AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt", //dev
-              locale: 'en_VN',
-            }}
-          />
+        <Row
+          gutter={16}
+          justify={'center'}
+          className="paypal-container-row"
+        >
+          <div className="paypal-button-row">
+            <PayPalButton
+              amount={depositAmount}
+              currency={'USD'}
+              onSuccess={(details, data) => {
+                let paypal_transaction_id =
+                  details.purchase_units[0].payments.captures[0].id;
+                this.props.actions.buyCourseAction(
+                  this.props.courseDetail.id,
+                  'paypal',
+                  paypal_transaction_id,
+                );
+              }}
+              options={{
+                clientId:
+                  'AZ9qz2qPukEpvGcDhK8Br7A_XuPLzPaa-vv0-9-ruQ3k_48UpZpQnkyUNJ8mjUpJfOBJ4LSBP7MAIfsV', //live
+                //"AZik4FOJQcDjyMk48gPIakTLkg_N-ifZnX7jPGPFBU9qGEl88D32GH3ZZooYlniWTi4Fzp61TEIQyL21", //client
+                //"AWmXubxlWhM8bfL6zwEHYQRVKG3O4kZPyPuhE2xaH-TtdDM2mAm-n9ZCMQ7V0jTUIqPhgdf8XHb-U4nt", //dev
+                locale: 'en_VN',
+              }}
+            />
+          </div>
         </Row>
       </div>
     );
