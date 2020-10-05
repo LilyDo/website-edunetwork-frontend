@@ -21,6 +21,7 @@ import TimeIcon from '../../assets/images/icon_time.svg';
 import BookIcon from '../../assets/images/icon_book.svg';
 import OwnerIcon from '../../assets/images/icon_owner.svg';
 import {
+  currencyFormatter,
   formatDurationText,
   getTranslatedText,
 } from '../../services/appService';
@@ -208,6 +209,7 @@ class OrderInfo extends Component {
 
   render() {
     const { courseDetail, profile } = this.props;
+    const lang = localStorage.getItem("current_lang");
 
     return (
       <div className="OrderInfoContainer">
@@ -218,7 +220,7 @@ class OrderInfo extends Component {
           <div className="CourseInfo">
             <div>{getTranslatedText('course_name')}</div>
             <div className="CourseHeader">
-              <div className="HeaderText">{courseDetail.title}</div>
+              <div className="HeaderText">{(lang == "vi")? courseDetail.title_vi : courseDetail.title}</div>
               <div className="LevelPrice">
                 <div className="LevelContainer">
                   <div className="Text">
@@ -232,8 +234,8 @@ class OrderInfo extends Component {
                   </div>
                   <div className="NumberContainer">
                     <div className="PriceNumber">
-                      <span>{courseDetail.price}</span>
-                      <sup>USD</sup>
+                      <span>{currencyFormatter((lang == "vi")? courseDetail.price * 24000 : courseDetail.price, true)}</span>
+                      <sup className="Currency">{(lang == "vi")? "đ" : "USD"}</sup>
                     </div>
                   </div>
                 </div>
@@ -276,21 +278,21 @@ class OrderInfo extends Component {
                     {getTranslatedText('Balance')}
                   </div>
                   <div className="Number">0</div>
-                  <div className="Currency">USD</div>
+                  <div className="Currency">{(lang == "vi")? "đ" : "USD"}</div>
                 </div>
                 <div className="Container PendingOrder">
                   <div className="Text">
                     {getTranslatedText('need_purchase')}
                   </div>
-                  <div className="Number">{courseDetail.price}</div>
-                  <div className="Currency">USD</div>
+                  <div className="Number">{currencyFormatter((lang == "vi")? courseDetail.price * 24000 : courseDetail.price, true)}</div>
+                  <div className="Currency">{(lang == "vi")? "đ" : "USD"}</div>
                 </div>
                 <div className="Container Missing">
                   <div className="Text">
                     {getTranslatedText('amount_top_up')}
                   </div>
-                  <div className="Number">{courseDetail.price}</div>
-                  <div className="Currency">usd</div>
+                  <div className="Number">{currencyFormatter((lang == "vi")? courseDetail.price * 24000 : courseDetail.price, true)}</div>
+                  <div className="Currency">{(lang == "vi")? "đ" : "USD"}</div>
                 </div>
               </div>
               {/*{shouldDeposit ? (*/}
