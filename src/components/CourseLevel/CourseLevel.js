@@ -8,6 +8,7 @@ import OwnerIcon from '../../assets/images/icon_owner.svg';
 import StudentIcon from '../../assets/images/icon_student.svg';
 import { routes } from '../../constants';
 import {
+  currencyFormatter,
   getTranslatedText,
   getUserFormLocal,
 } from '../../services/appService';
@@ -26,10 +27,11 @@ class CourseLevel extends Component {
     const isCourseBought = !!get(userCourses, 'buy', []).find(
       boughtCourse => boughtCourse.id === courseDetail.id,
     );
+    const lang = localStorage.getItem("current_lang");
 
     return (
       <div className="CourseLevelComponentContainer">
-        <div className="CourseName">{courseDetail.title}</div>
+        <div className="CourseName">{(lang == "vi")? courseDetail.title_vi : courseDetail.title}</div>
         <div className="CourseLevelContainer">
           <div className="CourseLevel">
             <div className="Level_PriceContainer">
@@ -45,8 +47,8 @@ class CourseLevel extends Component {
                 </div>
                 <div className="NumberContainer">
                   <div className="PriceNumber">
-                    <span>{courseDetail.price}</span>
-                    <sup>USD</sup>
+                    <span>{currencyFormatter((lang == "vi")? courseDetail.price * 24000 : courseDetail.price, true)}</span>
+                    <sup className="Currency">{(lang == "vi")? "đ" : "USD"}</sup>
                   </div>
                 </div>
               </div>
