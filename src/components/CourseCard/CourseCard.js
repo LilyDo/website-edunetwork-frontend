@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './CourseCard.scss';
 import { routes } from '../../constants';
 import { Link } from 'react-router-dom';
-import { getTranslatedText } from '../../services/appService';
+import { currencyFormatter, getTranslatedText } from '../../services/appService';
 
 class CourseCard extends Component {
   render() {
     const { courseCarouselItem, isBought } = this.props;
+    const lang = localStorage.getItem("current_lang");
 
     return (
       <div className="CourseCard">
@@ -17,12 +18,15 @@ class CourseCard extends Component {
         />
         <div className="Price">
           <div className="ContentWrapper">
-            <span className="Amount">{courseCarouselItem.price}</span>
-            <sup className="Currency">USD</sup>
+            <span className="Amount">{currencyFormatter((lang == "vi")? courseCarouselItem.price * 24000 : courseCarouselItem.price, true)}</span>
+            <sup className="Currency">{(lang == "vi")? "đ" : "USD"}</sup>
           </div>
         </div>
+        <div className="text-center">
+          <span style={{fontSize: "12px"}}>(Chưa bao gồm VAT)</span>
+        </div>
         <div className="TitleButtonGroup">
-          <div className="Title">{courseCarouselItem.title}</div>
+          <div className="Title">{(lang == "vi")? courseCarouselItem.title_vi : courseCarouselItem.title}</div>
           <div className="PayContainer">
             <Link
               to={routes.courseDetail.replace(
