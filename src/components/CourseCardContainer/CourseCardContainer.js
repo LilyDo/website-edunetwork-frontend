@@ -30,7 +30,10 @@ class CourseCardContainer extends Component {
           <div className="CourseTitle">
             <div className="Title">
               {getTranslatedText('our_courses')}
-            </div>
+            </div> <br/>
+            <div className="CourseNote" dangerouslySetInnerHTML={{
+              __html: getTranslatedText("my_course_note")
+            }}/>
           </div>
         </div>
 
