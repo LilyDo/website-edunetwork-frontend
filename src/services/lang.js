@@ -73,9 +73,9 @@ export const translatedText = {
   },
   my_course_note: {
     en: '<b>Note:</b> Lower level courses will automatically be included when you purchased a higher level course. ' +
-      '<br> <b>Example:</b> Join the Marketing Hacks Course for $500. The $50 and $200 courses will be included. <br> All payments are one time.',
+      '<br> <br> <b>Example:</b> Join the Marketing Hacks Course for $500. The $50 and $200 courses will be included. <br> All payments are one time.',
     vi: '<b>Lưu ý:</b> Các khóa học thấp hơn sẽ được tặng khi bạn mua khóa học cao hơn.' +
-      ' <br> <b>Ví dụ:</b> Tham gia mua khoá học: Chiến Lược Marketing Thành Công giá 12.000.000 đ sẽ được tặng thêm 2 khoá 4.800.000 đ và 1.200.000 đ. <br> Tất cả chỉ thanh toán một lần.',
+      ' <br> <br> <b>Ví dụ:</b> Tham gia mua khoá học: Chiến Lược Marketing Thành Công giá 12.000.000 đ sẽ được bao gồm thêm 2 khoá 4.800.000 đ và 1.200.000 đ. <br> Tất cả chỉ thanh toán một lần.',
   },
 
   course_note: {
